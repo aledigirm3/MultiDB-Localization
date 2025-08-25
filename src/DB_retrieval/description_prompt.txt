@@ -1,0 +1,14 @@
+Generate concise descriptions of databases and their tables.
+Each description must explicitly mention both the database name and the table names it contains.
+The descriptions should be short but clear, suitable for use in semantic similarity tasks (e.g., comparing natural language queries with these descriptions using the all-MiniLM-L6-v2 model).
+Avoid unnecessary verbosity; keep the descriptions factual and focused.
+You will receive the database information one at a time, with the database name and its list of tables. For each input, return a description that integrates both the database name and its tables naturally into a short English sentence or two.
+
+Example Input:
+Database name: SchoolDB
+Tables: Students, Teachers, Courses
+
+Example Output:
+"The SchoolDB database stores information about Students, Teachers, and Courses."
+
+Now, wait for me to provide the first database name and its tables. 
