@@ -5,8 +5,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-current_dir = Path(__file__).parent
-env_path = current_dir / "../.env"
+env_path = "../.env"
 load_dotenv(dotenv_path=env_path)
 #===============================================
 
@@ -26,8 +25,8 @@ def query_groq(messages: list, model: str = "llama-3.3-70b-versatile", temperatu
                 {"role": "user", "content": "Write a short poem about rain."}
             ]
         model (str): The model to use for the completion.
-        max_tokens (int): Maximum number of tokens in the output.
         temperature (float): The temperature to use for the completion.
+        max_tokens (int): Maximum number of tokens in the output.
         
     Returns:
         str: The completion from the model.
@@ -41,7 +40,7 @@ def query_groq(messages: list, model: str = "llama-3.3-70b-versatile", temperatu
         # As the temperature approaches zero, the model will become deterministic and repetitive.
         temperature=temperature,
 
-        max_output_tokens=maxTokens
+        max_tokens=maxTokens
     )
 
     return chat_completion.choices[0].message.content
