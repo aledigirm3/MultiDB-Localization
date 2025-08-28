@@ -6,14 +6,29 @@ from ansi_colors import *
 
 def DBs_extraction_eval():
     with open('../../results/DB_retrieval/sim_DBs_extractor@5.json', "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = json.load(f)
 
-    correect_samples = 0
+    correct_samples = 0
     for sample in data:
         if sample['db_id'] in sample['result']:
-            correect_samples += 1
+            correct_samples += 1
         else:
             print(sample['db_id'])
                 
 
-    print(f"\n{GREEN}Accuracy:{RESET} {correect_samples/len(data)}\n")
+    print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
+
+def DB_extraction_eval():
+    with open('../../results/DB_retrieval/DB_extractor@3.json', "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    correct_samples = 0
+    for sample in data:
+        if sample['db_id'] == sample['result']:
+            correct_samples += 1
+        else:
+            print(sample['db_id'])
+    
+    print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
+        
+
