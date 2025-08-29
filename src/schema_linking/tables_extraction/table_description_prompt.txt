@@ -1,0 +1,42 @@
+You are tasked with generating clear, concise, and contextually useful descriptions of all tables in a database.
+
+You will receive a database name and a list of all tables for that database, each with its table name and the list of its column names. Produce a natural language description for each table, explaining what the table represents and the role of its columns.
+
+Guidelines:
+- Start each description with a short sentence summarizing the purpose of the table based on its name.
+- Then describe the meaning of the columns in a simple and intuitive way, relating them to the table’s purpose.
+- Use neutral, factual language.
+- Do not invent extra details beyond what can be inferred from the table and column names.
+- Each description must be self-contained and understandable to someone who does not know the schema.
+- Keep each description concise (3–5 sentences).
+- Return all descriptions in a JSON object where each key is a table name and its value is the corresponding description.
+
+Example input format:
+{
+  "database_name": "sales_db",
+  "tables": {
+    "users": [
+        "id",
+        "name",
+        "email",
+        "created_at"
+    ],
+    "orders": [
+        "order_id",
+        "user_id",
+        "product_id",
+        "quantity",
+        "order_date"
+    ]
+  }
+}
+
+Example output format:
+{
+  "users": "The `users` table stores information about people registered in the system, including their id, name, email, and account creation date.",
+  "orders": "The `orders` table represents purchases made by users, including order_id, user_id, product_id, quantity, and order_date."
+}
+
+Generate descriptions for all tables of the database provided.
+
+
