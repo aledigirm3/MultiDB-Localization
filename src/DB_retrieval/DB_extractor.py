@@ -34,7 +34,7 @@ def extract_DBs(embedder: Embedder):
 			best_score_DB.append((score, desc['name']))
 
 		sorted_best_score_DB = sorted(best_score_DB, reverse=True)
-		best_dbs = [sorted_best_score_DB[0][1], sorted_best_score_DB[1][1], sorted_best_score_DB[2][1]]
+		best_dbs = [sorted_best_score_DB[0][1]]
 
 
 
@@ -42,6 +42,7 @@ def extract_DBs(embedder: Embedder):
 			"question_id": sample['question_id'],
 			"db_id": sample['db_id'],
 			"question": sample['question'],
+			"SQL": sample['SQL'],
 			"result": best_dbs,
 			}
 
@@ -116,8 +117,8 @@ def extract_DB():
 
 if __name__ == '__main__':
 
-	extract_DB()
-	#embedder = Embedder(model_name='all-MiniLM-L12-v2', device_name='cuda')
-	#extract_DBs(embedder)
+	#extract_DB()
+	embedder = Embedder(model_name='all-MiniLM-L12-v2', device_name='cuda')
+	extract_DBs(embedder)
 
 
