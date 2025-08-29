@@ -64,11 +64,56 @@ def print_DB_tables_dict(file_path: str) -> str:
             tables_string = ", ".join(tables)
             
             print(f"Tables: {tables_string}\n")
+
+def print_DB_table_att(file_path):
+    """Formats and prints database schemas from a list of dictionaries.
+
+    This function iterates through a list of database schema objects. For each
+    schema, it restructures the data to map column names directly to their
+    corresponding table names and then prints the simplified structure to the
+    console as a formatted JSON string.
+
+    Args:
+        data: A list of dictionaries, where each dictionary represents a
+              database schema. Each dictionary must contain 'db_id',
+              'table_names', and 'column_names' keys.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            
+            for db_schema in data:
+
+                output_structure = {
+                    "database_name": db_schema["db_id"],
+                    "tables": {}
+                }
+
+                table_names = db_schema["table_names"]
+                for table_name in table_names:
+                    output_structure["tables"][table_name] = []
+
+                for column_info in db_schema["column_names"][1:]:
+                    table_index = column_info[0]
+                    column_name = column_info[1]
+
+                    corresponding_table = table_names[table_index]
+
+                    output_structure["tables"][corresponding_table].append(column_name)
+
+                print(json.dumps(output_structure, indent=2))
+                print("-" * 40)
+            
+    except FileNotFoundError:
+        print(f"Error: The file was not found at path '{file_path}'")
+    except json.JSONDecodeError:
+        print(f"Error: The file '{file_path}' is not a valid JSON.")
     
+
 if __name__ == '__main__':
 
     file_path = '../BIRDdev/dev_tables.json'
-    print_DB_tables_dict(file_path)
+    print_DB_table_att(file_path)
     
 
 
