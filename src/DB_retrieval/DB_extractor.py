@@ -25,16 +25,16 @@ def extract_DBs(embedder: Embedder):
 
 	for sample in data:
 		best_score_DB = []
-		query_embedding = embedder.get_sentence_embedding(sample['question'])
+		query_embedding = embedder.get_sentence_embedding("query: " + sample['question'])
 		
 		for desc in descriptions:
-			desc_embedding = embedder.get_sentence_embedding(desc['description'])
+			desc_embedding = embedder.get_sentence_embedding("passage: " + desc['description'])
 			score = util.cos_sim(query_embedding, desc_embedding).item()
 			
 			best_score_DB.append((score, desc['name']))
 
 		sorted_best_score_DB = sorted(best_score_DB, reverse=True)
-		best_dbs = [sorted_best_score_DB[0][1]]
+		best_dbs = [sorted_best_score_DB[0][1], sorted_best_score_DB[1][1]]
 
 
 
@@ -64,12 +64,13 @@ def DB_descriptions_to_dict():
 
 	return db_dict
 
-# Extracts the most relevant database using LLM
-def extract_DB():
+
+def extract_DB(model: str):
+	"Extracts the most relevant database using LLM"
 	
 	results_folder = '../../results/DB_retrieval'
 	os.makedirs(results_folder, exist_ok=True)
-	result_file_path = os.path.join(results_folder, "DB_extractor.json")
+	result_file_path = os.path.join(results_folder, "llm_DB_extractor.json")
 
 	with open('../../results/DB_retrieval/sim_DBs_extractor@3.json', "r", encoding="utf-8") as f:
 			data = json.load(f)
@@ -95,12 +96,13 @@ def extract_DB():
 			}
 		]
 
-		llm_reply = query_groq(messages, model="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0.1, maxTokens=150)
+		llm_reply = query_groq(messages, model=model, temperature=0.1, maxTokens=150)
 
 		item = {
 			"question_id": sample['question_id'],
 			"db_id": sample['db_id'],
 			"question": sample['question'],
+			"SQL": sample['SQL'],
 			"result": llm_reply,
 			}
 
@@ -117,8 +119,10 @@ def extract_DB():
 
 if __name__ == '__main__':
 
-	#extract_DB()
-	embedder = Embedder(model_name='all-MiniLM-L12-v2', device_name='cuda')
+	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
 	extract_DBs(embedder)
+
+	#model = "meta-llama/llama-4-scout-17b-16e-instruct"
+	#extract_DB(model)
 
 
