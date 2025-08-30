@@ -108,13 +108,37 @@ def print_DB_table_att(file_path):
         print(f"Error: The file was not found at path '{file_path}'")
     except json.JSONDecodeError:
         print(f"Error: The file '{file_path}' is not a valid JSON.")
-    
+
+
+
+def print_sql_queries(file_path):
+
+    "Print all sql queries in the dataset."
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        print("\n")
+        for sample in data:
+
+            print("- " + sample['SQL'])
+
+        print("\n")
+
+    except FileNotFoundError:
+        print(f"Error: The file was not found at path '{file_path}'")
+    except json.JSONDecodeError:
+        print(f"Error: The file '{file_path}' is not a valid JSON.")
 
 if __name__ == '__main__':
 
-    file_path = '../BIRDdev/dev_tables.json'
-    print_DB_table_att(file_path)
-    
+    "Used to call utility functions."
+
+    #file_path = '../BIRDdev/dev_tables.json'
+    #print_DB_table_att(file_path)
+
+    file_path = '../BIRDdev/dev.json'
+    print_sql_queries(file_path)
 
 
 
