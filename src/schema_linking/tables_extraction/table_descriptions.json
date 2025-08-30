@@ -1,0 +1,109 @@
+{
+  "debit_card_specializing": {
+    "customers": "The `customers` table contains information about the clients who use the debit card services. It includes a unique CustomerID, the client segment they belong to, and the currency they primarily use for transactions.",
+    "gas stations": "The `gas stations` table lists the gas stations where transactions can occur. Each station has a Gas Station ID, is associated with a Chain ID, is located in a specific Country, and belongs to a chain segment classification.",
+    "products": "The `products` table stores details of items available for purchase at gas stations. Each product has a Product ID and a Description explaining what the product is.",
+    "transactions": "The `transactions` table records individual debit card purchases at gas stations. Each record includes Transaction ID, Date, Time, the Customer ID who made the purchase, the Card ID used, the Gas Station ID, the Product ID, the Amount purchased, and the Price paid.",
+    "year and month": "The `year and month` table tracks customer consumption over time. It records the Customer ID, the Date of the record, and the total Consumption for that period."
+  },
+
+  "financial": {
+    "account": "The `account` table stores information about bank accounts, including the unique account id, the branch where the account is held, the frequency of account activity, and the date associated with the record. It provides a basic overview of each account's details and activity timing.",
+    "card": "The `card` table contains information about credit cards, including the unique credit card id, the disposition id linking the card to an account and client, the type of card, and the date it was issued. It tracks the issuance and classification of cards in the system.",
+    "client": "The `client` table records information about bank clients, including their unique client_id, gender, birth_date, and the branch location they are associated with. It provides demographic and branch-related context for each client.",
+    "disposition": "The `disposition` table links clients to accounts and describes their role or type of access. It includes a unique disposition id, client_id, account_id, and the type of disposition, defining how a client interacts with a specific account.",
+    "district": "The `district` table contains demographic, economic, and social information about different branch locations. Columns include location of branch, district name, region, population statistics, urbanization ratio, average salary, unemployment rates, entrepreneur density, and crime data. It provides a detailed overview of the characteristics of each district.",
+    "loan": "The `loan` table records information about loans associated with accounts, including the unique loan_id, linked account_id, date of loan, amount, duration, monthly payments, and status. It tracks the financial and repayment details of loans.",
+    "order": "The `order` table represents payment orders made from accounts, including order_id, account_id, the recipient's bank and account information, the debited amount, and the characterization of the payment. It provides details on outgoing transactions and their purposes.",
+    "transaction": "The `transaction` table tracks all account transactions, including transaction id, account_id, date, type of transaction (+/-), mode of transaction, amount, resulting balance, characterization of the transaction, and the partner's bank and account. It provides a comprehensive record of financial movements for each account."
+  },
+
+  "formula_1": {
+    "circuits": "The `circuits` table contains information about Formula 1 race tracks. Each entry includes identifiers, the circuit's name, its reference name, and location details such as city, country, latitude, longitude, and altitude. The `url` column likely links to more information about the circuit.",
+    "constructors": "The `constructors` table stores data about the teams that build the cars for Formula 1 races. Columns include a unique identifier, reference name, full team name, nationality, and a URL for additional details.",
+    "drivers": "The `drivers` table captures information about Formula 1 drivers. It includes identifiers, reference name, car number, code, forename, surname, date of birth, nationality, and a URL for more information.",
+    "seasons": "The `seasons` table represents individual Formula 1 seasons. It includes a race identifier and a URL, possibly pointing to a season overview or related data.",
+    "races": "The `races` table lists all races in the Formula 1 series. Each row contains identifiers, year, round number, the associated circuit, race name, date, time, and a URL for more details.",
+    "constructor results": "The `constructor results` table records the outcomes for each team in individual races. Columns include a unique result ID, the race ID, constructor ID, points scored, and race status.",
+    "constructor standings": "The `constructor standings` table tracks the overall performance of teams throughout the season. It includes standings ID, race ID, constructor ID, total points, position, position as text, and total wins.",
+    "driver standings": "The `driver standings` table summarizes each driver's ranking over a season. It contains standings ID, constructor reference, driver ID, points, position, position as text, and wins.",
+    "lap times": "The `lap times` table records the time each driver takes for individual laps during a race. It includes race ID, driver ID, lap number, position on that lap, lap time, and time in milliseconds.",
+    "pit stops": "The `pit stops` table logs the details of each driver's stops during a race. It includes race ID, driver ID, stop number, lap, time, duration, and duration in milliseconds.",
+    "qualifying": "The `qualifying` table contains information about drivers' qualifying sessions before races. It includes qualifying ID, race ID, driver ID, constructor ID, car number, position, and times for up to three qualifying rounds.",
+    "status": "The `status` table lists possible outcomes or conditions for drivers in races. It includes a unique status ID and a description of the status.",
+    "results": "The `results` table captures detailed race outcomes for each driver. Columns include result ID, race ID, driver ID, constructor ID, car number, starting grid position, finishing position, position text, position order, points, laps completed, total race time, time in milliseconds, fastest lap, rank, fastest lap time, fastest lap speed, and status ID indicating the race outcome."
+  },
+
+  "california_schools": {
+    "free and reduced-price meals": "The `free and reduced-price meals` table contains information about student eligibility for meal assistance programs in California schools. It includes identifiers for schools, districts, and counties (such as CDSCode, County Code, District Code, and School Code), along with names and school type details. Columns track enrollment counts and the number and percentage of students eligible for free or reduced-price meals across different grade levels and age ranges. Additional fields provide details on charter status, funding type, and certification status.",
+    "sat scores": "The `sat scores` table records standardized test performance of students across California schools. It includes school, district, and county identifiers, along with enrollment counts and the number of SAT test takers. The table stores average scores in Reading, Math, and Writing, as well as the number of students achieving a total SAT score of 1500 or higher. These details allow comparison of academic performance across schools and districts.",
+    "schools": "The `schools` table provides comprehensive reference information about schools in California. It contains identifiers such as CDSCode and NCES codes, along with school status, geographic details (county, district, address, city, zip, latitude, longitude), and contact information (phone, website, administrator details). Additional columns capture attributes like charter status, funding type, ownership codes, education options, instruction levels, grade spans, and whether the school is virtual or magnet. Open and close dates and last update timestamps track changes over time."
+  },
+
+  "card_games": {
+    "cards": "The `cards` table stores detailed information about individual cards in the game. It includes identifiers (such as uuid, multiverseId, scryfallId), names and text (name, flavor Text, originalText), and game-related attributes like mana Cost, power, toughness, loyalty, colors, types, subtypes, and rarity. It also contains metadata such as artist, frame style, layout, availability, printings, and promotion details. Additional fields capture external references (tcgplayer, cardKingdom, mtgo), special attributes (is Foil, is Promo, is Reprint), and purchase or set information.",
+    "foreign data": "The `foreign data` table stores translations of cards into different languages. It includes the card's name, type, text, and flavor Text in a given language, along with the language itself. Each record is linked to a card through the uuid and may also reference its multiverseId.",
+    "legalities": "The `legalities` table defines which cards are legal or restricted in different game formats. It records the format name, the legality status (such as legal, banned, or restricted), and links back to the related card using the uuid.",
+    "sets": "The `sets` table represents collections of cards released together as a set. It includes identifiers (id, code, parent Code), descriptive attributes like name, block, type, and release Date, and size details such as base Set Size and total Set Size. Other fields capture publishing constraints (is Foil Only, is Online Only) and references to external marketplaces (magic card market ids, tcg player Group Id).",
+    "set translations": "The `set translations` table stores localized names for card sets in different languages. It includes the set code, language, and the translated name, enabling multilingual representation of sets.",
+    "ruling": "The `ruling` table contains official rulings or clarifications related to cards. Each entry has a date, the ruling text, and links back to the relevant card through the uuid, ensuring that rulings are associated with specific cards."
+  },
+
+  "european_football_2": {
+    "Player Attributes": "The `Player Attributes` table stores detailed performance metrics and characteristics of football players at specific points in time. Columns include identifiers for the player and date of the record, overall ratings, potential, preferred foot, and work rates. Technical skills such as passing, shooting, dribbling, and defensive abilities are recorded, along with physical attributes like speed, agility, stamina, and strength. Goalkeeping-specific attributes are also included, capturing diving, handling, kicking, positioning, and reflexes.",
+    "Player": "The `Player` table contains personal and identification information for football players. It includes unique IDs, names, birthday, height, and weight. It also links to external APIs and the federation international football association for reference and consistency across datasets.",
+    "League": "The `League` table represents football leagues in different countries. It includes a unique league ID, the country it belongs to, and the league's name.",
+    "Country": "The `Country` table stores information about countries. It contains a unique country ID and the country's name.",
+    "Team": "The `Team` table contains information about football teams. It includes unique IDs, links to external APIs and federation identifiers, as well as the team's long and short names for reference.",
+    "Team Attributes": "The `Team Attributes` table captures the tactical and performance characteristics of football teams at specific times. It includes identifiers for the team and date, as well as metrics for build-up play, chance creation, and defensive behavior. Each metric has an associated class describing its qualitative level, such as speed, dribbling, passing, positioning, pressure, aggression, width, and defensive line.",
+    "Match": "The `Match` table stores detailed information about individual football matches. It includes identifiers for the match, country, league, season, stage, and date, as well as home and away teams with their player lineups and positions (X and Y coordinates). Match outcomes are recorded through goals, shots, fouls, cards, crosses, corners, and possession. Betting odds from multiple sources are also included for home, draw, and away results."
+  },
+
+  "thrombosis_prediction": {
+    "Examination": "The `Examination` table records medical test results and clinical observations for patients. Each row includes an ID, the date of the examination, and measurements of various antibodies such as anti-Cardiolipin (IgG, IgM, IgA) and anti-nucleus antibodies, along with patterns observed in ANA tests. It also includes diagnostic information, coagulation measures, reported symptoms, and whether the patient experienced thrombosis. These columns collectively capture the key clinical and laboratory indicators relevant to assessing thrombosis risk.",
+    "Patient": "The `Patient` table contains demographic and administrative information about individuals receiving medical care. It includes the patient ID, sex, birth date, and a brief description, as well as dates of first visit and admission. The table also records the patient's diagnosis, providing a summary of their medical condition. This table serves as a central reference for linking patient data across examinations and laboratory tests.",
+    "Laboratory": "The `Laboratory` table stores detailed laboratory test results for patients. Each entry includes an ID, the test date, and measurements of various biochemical, hematological, and immunological parameters, such as liver enzymes, kidney function markers, blood cell counts, coagulation factors, immunoglobulins, inflammatory markers, and autoantibodies. These results support clinical assessment and monitoring of patient health, particularly in relation to thrombosis and related conditions."
+  },
+
+  "toxicology": {
+    "atom": "The `atom` table represents individual atoms within molecules. Each record includes an atom id, the molecule id it belongs to, and the chemical element type of the atom.",
+    "bond": "The `bond` table describes the chemical bonds within molecules. It includes a bond_id, the molecule_id the bond belongs to, and the bond_type indicating the nature of the connection (e.g., single, double).",
+    "connected": "The `connected` table defines which atoms are linked together by specific bonds. It records two atom ids along with the bond id that connects them.",
+    "molecule": "The `molecule` table stores information about complete molecules. Each entry has a molecule id and a label that serves as an identifier or classification for the molecule."
+  },
+
+  "student_club": {
+    "Event": "The `Event` table records details about activities organized by the club. It includes event id, name, date, type, notes, location, and status to track the specifics and progress of each event.",
+    "Major": "The `Major` table lists academic majors of students. It contains major id, name, associated department, and college information.",
+    "Zip Code": "The `Zip Code` table stores geographical information by postal code. It includes the zip code, type, city, county, state, and a shortened state abbreviation.",
+    "Attendance": "The `Attendance` table connects members to events they attended. It uses references to both events and members to track participation.",
+    "Budget": "The `Budget` table manages financial allocations for events. It records budget id, category, total amount, spent, remaining funds, event status, and a link to the related event.",
+    "Expense": "The `Expense` table tracks costs incurred by the club. It includes expense id, description, date, cost, approval status, and links to the member who submitted it and the related budget.",
+    "Income": "The `Income` table records funds received by the club. It contains income id, date received, amount, source, optional notes, and a link to the member associated with the income.",
+    "Member": "The `Member` table stores information about individuals in the club. It includes member id, first and last name, email, position, t-shirt size, phone number, zip code, and a link to their academic major."
+  },
+
+  "superhero": {
+    "alignment": "The `alignment` table defines the moral or ethical stance of characters, such as whether they are good, evil, or neutral. It includes an `id` as the unique identifier and an `alignment` field describing the stance.",
+    "attribute": "The `attribute` table lists different measurable or descriptive traits that a superhero might have. It contains an `id` for unique identification and an `attribute name` specifying the type of trait.",
+    "colour": "The `colour` table standardizes color values used for superheroes' physical features. It has an `id` and a `colour` name, which can be referenced by other tables.",
+    "gender": "The `gender` table categorizes superheroes by gender. It consists of an `id` and a `gender` value.",
+    "publisher": "The `publisher` table records the comic book publisher or source of a superhero. It includes an `id` and a `publisher_name` field.",
+    "race": "The `race` table defines the species or racial background of superheroes. It includes an `id` and a `race` value.",
+    "superhero": "The `superhero` table stores detailed information about each superhero. It includes basic identifiers like `id`, `superhero name`, and `full name`, along with references to gender, eye color, hair color, skin color, race, publisher, and alignment. It also records physical attributes such as `height cm` and `weight kg`.",
+    "hero attribute": "The `hero attribute` table links superheroes to specific attributes. It contains a `hero id`, an `attribute id`, and an `attribute value`, showing how a particular trait applies to a hero.",
+    "superpower": "The `superpower` table defines distinct powers that superheroes can possess. It has an `id` for identification and a `power name` describing the ability.",
+    "hero power": "The `hero power` table connects superheroes to their powers. It includes a `hero id` and a `power id`, showing which characters have which abilities."
+  },
+
+  "codebase_community": {
+    "badges": "The `badges` table records awards or recognitions given to users. It includes an Id for the badge, the User Id of the recipient, the Name of the badge, and the Date it was granted.",
+    "comments": "The `comments` table stores user comments on posts. It contains an Id for each comment, the associated Post Id, a Score reflecting votes on the comment, the comment Text, and the Creation Date. It also records the User Id or User Display Name of the commenter.",
+    "post History": "The `post History` table tracks changes and revisions made to posts. It includes an Id for each record, the Post History Type Id indicating the type of change, the related Post Id, and a Revision GUID for unique identification. Additional details include Creation Date, User Id or Display Name of the editor, optional Text and Comment fields, and notes about the modification.",
+    "post Links": "The `post Links` table represents relationships between posts. It includes an Id, the Creation Date of the link, the Post Id, the Related Post Id, and a Link Type Id to classify the relationship.",
+    "posts": "The `posts` table contains all submitted content, such as questions and answers. It includes an Id, Post Type Id, and fields like Title, Body, and Tags. It tracks metadata such as Accepted Answer Id, Creation Date, Score, View Count, counts for answers, comments, and favorites, and user details like Owner User Id or Display Name. It also stores information on edits, closures, and community ownership.",
+    "tags": "The `tags` table defines labels used to categorize posts. It includes an Id, Tag Name, and a Count of how often the tag is used. It may also link to an Excerpt Post Id and Wiki Post Id providing tag descriptions or documentation.",
+    "users": "The `users` table stores information about community members. It includes an Id, Reputation score, Creation Date, and Display Name, along with Last Access Date and optional details like Website Url, Location, About Me, Age, and Profile Image Url. It also tracks Views, UpVotes, DownVotes, and an Account Id.",
+    "votes": "The `votes` table records voting activity on posts. It includes an Id, the related Post Id, the Vote Type Id indicating the kind of vote, and the Creation Date. It may also record the User Id of the voter and a Bounty Amount when applicable."
+  }
+}
