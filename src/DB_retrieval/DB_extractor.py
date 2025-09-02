@@ -5,14 +5,12 @@ from sentence_transformers import util
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from embedder import Embedder
 import paths
-from llm import query_groq
 from ansi_colors import *
-from prompts import DB_SYSTEM_PROMPT
 
 # Extracts the 3 most relevant databases using embeddings similarity
 def extract_DBs(embedder: Embedder):
 	
-	with open('./DB_att_descriptions.json', "r", encoding="utf-8") as f:
+	with open('./BIRDdev_DB_descriptions.json', "r", encoding="utf-8") as f:
 		descriptions = json.load(f)
 
 	with open('../' + paths.DATASETS.BIRDdev.value + 'dev.json', "r", encoding="utf-8") as f:
@@ -23,16 +21,21 @@ def extract_DBs(embedder: Embedder):
 	result_file_path = os.path.join(results_folder, "sim_DBs_extractor.json")
 
 	result_list = []
+	
+	desc_embeddings = []
+	for desc in descriptions:
+		desc_embedding = embedder.get_sentence_embedding("passage: " + desc['description'])
+		desc_embeddings.append((desc['name'], desc_embedding))
 
 	for sample in data:
 		best_score_DB = []
 		query_embedding = embedder.get_sentence_embedding("query: " + sample['question'])
 		
-		for desc in descriptions:
-			desc_embedding = embedder.get_sentence_embedding("passage: " + desc['description'])
-			score = util.cos_sim(query_embedding, desc_embedding).item()
+		for desc in desc_embeddings:
+
+			score = util.cos_sim(query_embedding, desc[1]).item()
 			
-			best_score_DB.append((score, desc['name']))
+			best_score_DB.append((score, desc[0]))
 
 		sorted_best_score_DB = sorted(best_score_DB, reverse=True)
 		best_dbs = [sorted_best_score_DB[0][1]]
@@ -54,77 +57,12 @@ def extract_DBs(embedder: Embedder):
 	
 	print(f"{GREEN}JSON file saved at {result_file_path}{RESET}")
 
-def DB_descriptions_to_dict():
-	"""
-	Create a dictionary mapping database names to their descriptions.
-	"""
-	with open('./DB_descriptions.json', "r", encoding="utf-8") as f:
-		descriptions = json.load(f)
 
-	db_dict = {entry["name"]: entry["description"] for entry in descriptions}
-
-	return db_dict
-
-
-def extract_DB(model: str):
-	"Extracts the most relevant database using LLM"
-	
-	results_folder = '../../results/DB_retrieval'
-	os.makedirs(results_folder, exist_ok=True)
-	result_file_path = os.path.join(results_folder, "llm_DB_extractor.json")
-
-	with open('../../results/DB_retrieval/sim_DBs_extractor@3.json', "r", encoding="utf-8") as f:
-			data = json.load(f)
-
-	result_list = []
-	db_dict = DB_descriptions_to_dict()
-
-	for sample in data:
-		user_prompt = ''
-		user_prompt += sample['question'] + '\n\n'
-		dbs = sample['result']
-		for db in dbs:
-			user_prompt += f"{db}: {db_dict[db]}\n"
-
-		messages = [
-			{
-				"role": "system", 
-				"content": DB_SYSTEM_PROMPT
-			},
-			{
-				"role": "user", 
-				"content": user_prompt
-			}
-		]
-
-		llm_reply = query_groq(messages, model=model, temperature=0.1, maxTokens=150)
-
-		item = {
-			"question_id": sample['question_id'],
-			"db_id": sample['db_id'],
-			"question": sample['question'],
-			"SQL": sample['SQL'],
-			"result": llm_reply,
-			}
-
-		result_list.append(item)
-
-		# This section writes the entire result_list to the JSON file after each iteration.
-		# It ensures that no results are lost in case the LLM reaches the token limit
-		# or the process is interrupted, even though it incurs a slightly higher
-		# computational cost due to rewriting the file multiple times.
-		with open(result_file_path, "w", encoding="utf-8") as f:
-			json.dump(result_list, f, ensure_ascii=False, indent=4)
-
-	print(f"{GREEN}JSON file saved at {result_file_path}{RESET}")
-	
 
 if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
 	extract_DBs(embedder)
 
-	#model = "meta-llama/llama-4-scout-17b-16e-instruct"
-	#extract_DB(model)
 
 

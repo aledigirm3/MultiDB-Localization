@@ -19,18 +19,6 @@ def DBs_extraction_eval(filename):
 
     print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
 
-def DB_extraction_eval():
-    with open('../../results/DB_retrieval/DB_extractor@3.json', "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    correct_samples = 0
-    for sample in data:
-        if sample['db_id'] == sample['result']:
-            correct_samples += 1
-        else:
-            print(sample['question_id'])
-    
-    print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
         
 
 if __name__ == '__main__':
@@ -38,4 +26,3 @@ if __name__ == '__main__':
     filename = 'sim_DBs_extractor.json'
 
     DBs_extraction_eval(filename)
-    #DB_extraction_eval()
