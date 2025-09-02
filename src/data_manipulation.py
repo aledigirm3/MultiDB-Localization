@@ -1,4 +1,5 @@
 import json
+import paths
 
 
 def get_databases(file_path: str) -> list:
@@ -130,15 +131,38 @@ def print_sql_queries(file_path):
     except json.JSONDecodeError:
         print(f"Error: The file '{file_path}' is not a valid JSON.")
 
+
+def remove_unused_databases_spider1():
+	
+    question_path = paths.DATASETS.SPIDERdev1.value + 'dev.json'
+    tables_path = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+
+    with open(question_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    db_ids = {sample['db_id'] for sample in data}  # set comprehension
+
+    with open(tables_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    filtered_data = [sample for sample in data if sample['db_id'] in db_ids]
+
+    with open(tables_path, 'w', encoding='utf-8') as f:
+        json.dump(filtered_data, f, indent=4, ensure_ascii=False)
+
+    print(len(filtered_data))
+
 if __name__ == '__main__':
 
     "Used to call utility functions."
 
-    #file_path = '../BIRDdev/dev_tables.json'
+    #file_path = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
     #print_DB_table_att(file_path)
 
-    file_path = '../BIRDdev/dev.json'
-    print_sql_queries(file_path)
+    #file_path = paths.DATASETS.BIRDdev.value + 'dev.json'
+    #print_sql_queries(file_path)
+
+    #remove_unused_databases_spider1()
 
 
 
