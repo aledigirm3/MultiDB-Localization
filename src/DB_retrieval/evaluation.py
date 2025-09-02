@@ -3,9 +3,10 @@ import sys
 import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from ansi_colors import *
+import paths
 
 def DBs_extraction_eval():
-    with open('../../results/DB_retrieval/sim_DBs_extractor.json', "r", encoding="utf-8") as f:
+    with open('../' + paths.RESULTS.DB_RETRIEVAL.value + 'sim_DBs_extractor.json', "r", encoding="utf-8") as f:
         data = json.load(f)
 
     correct_samples = 0

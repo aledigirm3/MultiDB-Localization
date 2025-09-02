@@ -4,6 +4,7 @@ import json
 from sentence_transformers import util
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from embedder import Embedder
+import paths
 from llm import query_groq
 from ansi_colors import *
 from prompts import DB_SYSTEM_PROMPT
@@ -11,13 +12,13 @@ from prompts import DB_SYSTEM_PROMPT
 # Extracts the 3 most relevant databases using embeddings similarity
 def extract_DBs(embedder: Embedder):
 	
-	with open('./DB_descriptions.json', "r", encoding="utf-8") as f:
+	with open('./DB_att_descriptions.json', "r", encoding="utf-8") as f:
 		descriptions = json.load(f)
 
-	with open('../../BIRDdev/dev.json', "r", encoding="utf-8") as f:
+	with open('../' + paths.BIRDdev + 'dev.json', "r", encoding="utf-8") as f:
 		data = json.load(f)
 
-	results_folder = '../../results/DB_retrieval'
+	results_folder = '../' + paths.RESULTS.DB_RETRIEVAL.value
 	os.makedirs(results_folder, exist_ok=True)
 	result_file_path = os.path.join(results_folder, "sim_DBs_extractor.json")
 
@@ -34,7 +35,7 @@ def extract_DBs(embedder: Embedder):
 			best_score_DB.append((score, desc['name']))
 
 		sorted_best_score_DB = sorted(best_score_DB, reverse=True)
-		best_dbs = [sorted_best_score_DB[0][1], sorted_best_score_DB[1][1]]
+		best_dbs = [sorted_best_score_DB[0][1]]
 
 
 
