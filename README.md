@@ -24,6 +24,6 @@ Enabling Natural Language Queries over Tabular Data with Large Language Models
 
 |       | T     | T + A |
 | ----- | ----- | ----- |
-| Top 1 | 0.908 | 0.944 |
+| Top 1 | 0.908 | 0.946 |
 | Top 2 | 0.971 | 0.981 |
 | Top 3 | 0.984 | 0.990 |
