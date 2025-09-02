@@ -1,6 +1,8 @@
 from enum import Enum
 
-BIRDdev = "../BIRDdev/"
+class DATASETS(Enum):
+    BIRDdev = "../datasets/BIRDdev/"
+    SPIDERdev1 = "../datasets/SPIDERdev1.0/"
 
 class RESULTS(Enum):
     DB_RETRIEVAL = '../results/DB_retrieval/'

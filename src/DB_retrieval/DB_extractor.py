@@ -15,7 +15,7 @@ def extract_DBs(embedder: Embedder):
 	with open('./DB_att_descriptions.json', "r", encoding="utf-8") as f:
 		descriptions = json.load(f)
 
-	with open('../' + paths.BIRDdev + 'dev.json', "r", encoding="utf-8") as f:
+	with open('../' + paths.DATASETS.BIRDdev.value + 'dev.json', "r", encoding="utf-8") as f:
 		data = json.load(f)
 
 	results_folder = '../' + paths.RESULTS.DB_RETRIEVAL.value
@@ -117,6 +117,7 @@ def extract_DB(model: str):
 			json.dump(result_list, f, ensure_ascii=False, indent=4)
 
 	print(f"{GREEN}JSON file saved at {result_file_path}{RESET}")
+	
 
 if __name__ == '__main__':
 

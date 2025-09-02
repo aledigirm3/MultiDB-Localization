@@ -5,8 +5,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from ansi_colors import *
 import paths
 
-def DBs_extraction_eval():
-    with open('../' + paths.RESULTS.DB_RETRIEVAL.value + 'sim_DBs_extractor.json', "r", encoding="utf-8") as f:
+def DBs_extraction_eval(filename):
+    with open('../' + paths.RESULTS.DB_RETRIEVAL.value + filename, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     correct_samples = 0
@@ -34,5 +34,8 @@ def DB_extraction_eval():
         
 
 if __name__ == '__main__':
-    DBs_extraction_eval()
+
+    filename = 'sim_DBs_extractor.json'
+
+    DBs_extraction_eval(filename)
     #DB_extraction_eval()
