@@ -1,0 +1,101 @@
+[
+    {
+        "name": "dog_kennels",
+        "description": "The dog_kennels database stores information about breeds, charges, sizes, treatment types, owners, dogs, professionals, and treatments."
+    },
+
+    {
+        "name": "flight_2",
+        "description": "The flight_2 database stores information about airlines, airports, and flights."
+    },
+
+    {
+        "name": "pets_1",
+        "description": "The pets_1 database contains information about students, their pets, and the relationships in has pet."
+    },
+
+    {
+        "name": "concert_singer",
+        "description": "The concert_singer database contains information about stadiums, singers, concerts, and which singers perform in each concert."
+    },
+
+    {
+        "name": "museum_visit",
+        "description": "The museum_visit database stores information about museums, customers, and their visits."
+    },
+
+    {
+        "name": "battle_death",
+        "description": "The battle_death database contains information about battles, ships, and deaths."
+    },
+
+    {
+        "name": "student_transcripts_tracking",
+        "description": "The student_transcripts_tracking database stores information about addresses, courses, departments, degree programs, sections, semesters, students, student enrolment, student enrolment courses, transcripts, and transcript contents."
+    },
+
+    {
+        "name": "singer",
+        "description": "The singer database contains information about singers and their songs."
+    },
+
+    {
+        "name": "cre_Doc_Template_Mgt",
+        "description": "The cre_Doc_Template_Mgt database stores information about reference template types, templates, documents, and paragraphs."
+    },
+
+    {
+        "name": "world_1",
+        "description": "The world_1 database contains information about cities, countries, country languages, and SQLite sequences."
+    },
+
+    {
+        "name": "employee_hire_evaluation",
+        "description": "The employee_hire_evaluation database stores information about employees, shops, hiring records, and evaluations."
+    },
+
+    {
+        "name": "network_1",
+        "description": "The network_1 database contains information about high schoolers, their friends, and the things they like."
+    },
+
+    {
+        "name": "poker_player",
+        "description": "The poker_player database stores information about poker players and people."
+    },
+
+    {
+        "name": "real_estate_properties",
+        "description": "The real_estate_properties database contains information about reference feature types, reference property types, other available features, properties, and other property features."
+    },
+
+    {
+        "name": "course_teach",
+        "description": "The course_teach database stores information about courses, teachers, and course arrangements."
+    },
+
+    {
+        "name": "voter_1",
+        "description": "The voter_1 database contains information about area code states, contestants, and votes."
+    },
+
+    {
+        "name": "wta_1",
+        "description": "The wta_1 database stores information about players, matches, and rankings."
+    },
+
+    {
+        "name": "orchestra",
+        "description": "The orchestra database contains information about conductors, orchestras, performances, and shows."
+    },
+
+    {
+        "name": "car_1",
+        "description": "The car_1 database stores information about continents, countries, car makers, model lists, car names, and car data."
+    },
+
+    {
+        "name": "tvshow",
+        "description": "The tvshow database contains information about TV channels, TV series, and cartoons."
+    }
+]
