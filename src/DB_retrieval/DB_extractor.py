@@ -8,17 +8,35 @@ import paths
 from ansi_colors import *
 
 # Extracts the 3 most relevant databases using embeddings similarity
-def extract_DBs(embedder: Embedder):
+def extract_DBs(embedder: Embedder, dataset: str):
 	
-	with open('./BIRDdev_DB_descriptions.json', "r", encoding="utf-8") as f:
-		descriptions = json.load(f)
+	if dataset == 'BIRDdev':
 
-	with open('../' + paths.DATASETS.BIRDdev.value + 'dev.json', "r", encoding="utf-8") as f:
-		data = json.load(f)
+		with open('./BIRDdev_DB_descriptions.json', "r", encoding="utf-8") as f:
+			descriptions = json.load(f)
 
-	results_folder = '../' + paths.RESULTS.DB_RETRIEVAL.value
-	os.makedirs(results_folder, exist_ok=True)
-	result_file_path = os.path.join(results_folder, "sim_DBs_extractor.json")
+		with open('../' + paths.DATASETS.BIRDdev.value + 'dev.json', "r", encoding="utf-8") as f:
+			data = json.load(f)
+
+		results_folder = '../' + paths.RESULTS.DB_RETRIEVAL.value
+		os.makedirs(results_folder, exist_ok=True)
+		result_file_path = os.path.join(results_folder, "BIRDdev_DB_extractor.json")
+
+	elif dataset == 'SPIDERdev1': 
+		with open('./SPIDERdev1_DB_descriptions.json', "r", encoding="utf-8") as f:
+			descriptions = json.load(f)
+
+		with open('../' + paths.DATASETS.SPIDERdev1.value + 'dev.json', "r", encoding="utf-8") as f:
+			data = json.load(f)
+
+		results_folder = '../' + paths.RESULTS.DB_RETRIEVAL.value
+		os.makedirs(results_folder, exist_ok=True)
+		result_file_path = os.path.join(results_folder, "SPIDERdev1_DB_extractor.json")
+
+	else:
+		print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
+		sys.exit(1)
+	
 
 	result_list = []
 	
@@ -27,6 +45,7 @@ def extract_DBs(embedder: Embedder):
 		desc_embedding = embedder.get_sentence_embedding("passage: " + desc['description'])
 		desc_embeddings.append((desc['name'], desc_embedding))
 
+	i = 0
 	for sample in data:
 		best_score_DB = []
 		query_embedding = embedder.get_sentence_embedding("query: " + sample['question'])
@@ -41,16 +60,27 @@ def extract_DBs(embedder: Embedder):
 		best_dbs = [sorted_best_score_DB[0][1]]
 
 
+		if dataset == 'BIRDdev':
+			item = {
+				"question_id": sample['question_id'],
+				"db_id": sample['db_id'],
+				"question": sample['question'],
+				"SQL": sample['SQL'],
+				"result": best_dbs,
+				}
 
-		item = {
-			"question_id": sample['question_id'],
-			"db_id": sample['db_id'],
-			"question": sample['question'],
-			"SQL": sample['SQL'],
-			"result": best_dbs,
-			}
-
-		result_list.append(item)
+			result_list.append(item)
+		else:
+			item = {
+				"question_id": i,
+				"db_id": sample['db_id'],
+				"question": sample['question'],
+				"SQL": sample['query'],
+				"result": best_dbs,
+				}
+			i += 1
+			result_list.append(item)
+			
 
 	with open(result_file_path, "w", encoding="utf-8") as f:
 		json.dump(result_list, f, ensure_ascii=False, indent=4)
@@ -62,7 +92,8 @@ def extract_DBs(embedder: Embedder):
 if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
-	extract_DBs(embedder)
+	dataset = "SPIDERdev1"
+	extract_DBs(embedder, dataset)
 
 
 

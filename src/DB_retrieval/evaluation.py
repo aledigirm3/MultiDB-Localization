@@ -23,6 +23,6 @@ def DBs_extraction_eval(filename):
 
 if __name__ == '__main__':
 
-    filename = 'sim_DBs_extractor.json'
+    filename = 'SPIDERdev1_DB_extractor.json'
 
     DBs_extraction_eval(filename)
