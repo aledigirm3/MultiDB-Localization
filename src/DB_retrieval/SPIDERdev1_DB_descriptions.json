@@ -1,101 +1,101 @@
 [
     {
         "name": "dog_kennels",
-        "description": "The dog_kennels database stores information about breeds (breed code, breed name), charges (charge id, charge size, charge amount), sizes (size code, size description, treatment types (treatment type code, treatment type description), owners (owner id, first name, last name, street, city, state, zip code, email address, home phone, cell number), dogs (dog id, owner id, abandoned yes or no, breed code, size code, name, age, date of birth, gender, weight, date arrived, date adopted, date departed), professionals (professional id, role code, first name, street, city, state, zip code, last name, email address, home phone, cell number), and treatments (treatment id, dog id, professional id, treatment type code, date of treatment, cost of treatment)."
+        "description": "The dog_kennels database stores information about breeds (breed code, breed name), charges (charge size, charge amount), sizes (size code, size description, treatment types (treatment type code, treatment type description), owners (first name, last name, street, city, state, zip code, email address, home phone, cell number), dogs (owner id, abandoned yes or no, breed code, size code, name, age, date of birth, gender, weight, date arrived, date adopted, date departed), professionals (role code, first name, street, city, state, zip code, last name, email address, home phone, cell number), and treatments (dog id, professional id, treatment type code, date of treatment, cost of treatment)."
     },
 
     {
         "name": "flight_2",
-        "description": "The flight_2 database stores information about airlines (airline id, airline name, abbreviation, country), airports (city, airport code, airport name, country, country abbrev), and flights (airline, flight number, source airport, destination airport)."
+        "description": "The flight_2 database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country, country abbrev), and flights (airline, flight number, source airport, destination airport)."
     },
 
     {
         "name": "pets_1",
-        "description": "The pets_1 database contains information about students (student id, last name, first name, age, sex, major, advisor, city code), their pets (pet id, pet type, pet age, weight), and the relationships in has pet (student id, pet id)."
+        "description": "The pets_1 database contains information about students (last name, first name, age, sex, major, advisor, city code), their pets (pet type, pet age, weight), and the relationships in has pet (student id, pet id)."
     },
 
     {
         "name": "concert_singer",
-        "description": "The concert_singer database contains information about stadiums (stadium id, location, name, capacity, highest, lowest, average), singers (singer id, name, country, song name, song release year, age, is male), concerts (concert id, concert name, theme, stadium id, year), and which singers perform in each concert (concert id, singer id)."
+        "description": "The concert_singer database contains information about stadiums (location, name, capacity, highest, lowest, average), singers (name, country, song name, song release year, age, is male), concerts (concert name, theme, stadium id, year), and which singers perform in each concert (singer id)."
     },
 
     {
         "name": "museum_visit",
-        "description": "The museum_visit database stores information about museums (museum id, name, num of staff, open year), customers (customer id, name, level of membership, age), and their visits (museum id, customer id, num of ticket, total spent)."
+        "description": "The museum_visit database stores information about museums (name, num of staff, open year), customers (name, level of membership, age), and their visits (museum id, customer id, num of ticket, total spent)."
     },
 
     {
         "name": "battle_death",
-        "description": "The battle_death database contains information about battles (id, name, date, bulgarian commander, latin commander, result), ships (lost in battle, id, name, tonnage, ship type, location, disposition of ship), and deaths (caused by ship id, id, note, killed, injured)."
+        "description": "The battle_death database contains information about battles (name, date, bulgarian commander, latin commander, result), ships (lost in battle, id, name, tonnage, ship type, location, disposition of ship), and deaths (caused by ship id, id, note, killed, injured)."
     },
 
     {
         "name": "student_transcripts_tracking",
-        "description": "The student_transcripts_tracking database stores information about addresses (address id, line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course id, course name, course description, other details), departments (department id, department name, department description, other details), degree programs (degree program id, department id, degree summary name, degree summary description, other details), sections (section id, course id, section name, section description, other details), semesters (semester id, semester name, semester description, other details), students (student id, current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, ssn, date first registered, date left, other student details), student enrolment (student enrolment id, degree program id, semester id, student id, other details), student enrolment courses (student course id, course id, student enrolment id), transcripts (transcript id, transcript date, other details), and transcript contents (student course id, transcript id)."
+        "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course name, course description, other details), departments (department name, department description, other details), degree programs (department id, degree summary name, degree summary description, other details), sections (course id, section name, section description, other details), semesters (semester name, semester description, other details), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id, other details), student enrolment courses, transcripts (transcript date, other details), and transcript contents (student course id, transcript id)."
     },
 
     {
         "name": "singer",
-        "description": "The singer database contains information about singers (singer id, name, birth year, net worth millions, citizenship) and their songs (song id, title, singer id, sales, highest position)."
+        "description": "The singer database contains information about singers (name, birth year, net worth millions, citizenship) and their songs (title, singer id, sales, highest position)."
     },
 
     {
         "name": "cre_Doc_Template_Mgt",
-        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (template id, version number, template type code, date effective from, date effective to, template details), documents (document id, template id, document name, document description, other details), and paragraphs (paragraph id, document id, paragraph text, other details)."
+        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description, other details), and paragraphs (document id, paragraph text, other details)."
     },
 
     {
         "name": "world_1",
-        "description": "The world_1 database contains information about cities (id, name, country code, district, population), countries (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, gnp old, local name, government form, head of state, capital, code2), country languages (countrycode, language, is official, percentage), and SQLite sequences (name, seq)."
+        "description": "The world_1 database contains information about cities (name, country code, district, population), countries (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, gnp old, local name, government form, head of state, capital, code2), country languages (countrycode, language, is official, percentage), and SQLite sequences (name, seq)."
     },
 
     {
         "name": "employee_hire_evaluation",
-        "description": "The employee_hire_evaluation database stores information about employees (employee id, name, age, city), shops (shop id, name, location, district, number products, manager name), hiring records (shop id, employee id, start from, is full time), and evaluations (employee id, year awarded, bonus)."
+        "description": "The employee_hire_evaluation database stores information about employees (name, age, city), shops (name, location, district, number products, manager name), hiring records (employee id, start from, is full time), and evaluations (employee id, year awarded, bonus)."
     },
 
     {
         "name": "network_1",
-        "description": "The network_1 database contains information about high schoolers (id, name, grade), their friends (student id, friend id), and the things they like (student id, liked id)."
+        "description": "The network_1 database contains information about high schoolers (name, grade), their friends (student id, friend id), and the things they like (student id, liked id)."
     },
 
     {
         "name": "poker_player",
-        "description": "The poker_player database stores information about poker players (poker player id, people id, final table made, best finish, money rank, earnings) and people (people id, nationality, name, birth date, height)."
+        "description": "The poker_player database stores information about poker players (people id, final table made, best finish, money rank, earnings) and people (nationality, name, birth date, height)."
     },
 
     {
         "name": "real_estate_properties",
-        "description": "The real_estate_properties database contains information about reference feature types (feature type code, feature type name), reference property types (property type code, property type description), other available features (feature id, feature type code, feature name, feature description), properties (property id, property type code, date on market, date sold, property name, property address, room count, vendor requested price, buyer offered price, agreed selling price, apt feature 1, apt feature 2, apt feature 3, fld feature 1, fld feature 2, fld feature 3, hse feature 1, hse feature 2, hse feature 3, oth feature 1, oth feature 2, oth feature 3, shp feature 1, shp feature 2, shp feature 3, other property details), and other property features (property id, feature id, property feature description)."
+        "description": "The real_estate_properties database contains information about reference feature types (feature type code, feature type name), reference property types (property type code, property type description), other available features (feature type code, feature name, feature description), properties (property type code, date on market, date sold, property name, property address, room count, vendor requested price, buyer offered price, agreed selling price, apt feature, fld feature, hse feature, oth feature, shp feature, other property details), and other property features (property id, property feature description)."
     },
 
     {
         "name": "course_teach",
-        "description": "The course_teach database stores information about courses (course id, staring date, course), teachers (teacher id, name, age, hometown), and course arrangements (course id, teacher id, grade)."
+        "description": "The course_teach database stores information about courses (staring date, course), teachers (name, age, hometown), and course arrangements (teacher id, grade)."
     },
 
     {
         "name": "voter_1",
-        "description": "The voter_1 database contains information about area code states (area code, state), contestants (contestant number, contestant name), and votes (vote id, phone number, state, contestant number, created)."
+        "description": "The voter_1 database contains information about area code states (area code, state), contestants (contestant number, contestant name), and votes (phone number, state, contestant number, created)."
     },
 
     {
         "name": "wta_1",
-        "description": "The wta_1 database stores information about players (player id, first name, last name, hand, birth date, country code), matches (best of, draw size, loser age, loser entry, loser hand, loser ht, loser id, loser ioc, loser name, loser rank, loser rank points, loser seed, match num, minutes, round, score, surface, tourney date, tourney id, tourney level, tourney name, winner age, winner entry, winner hand, winner ht, winner id, winner ioc, winner name, winner rank, winner rank points, winner seed, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
+        "description": "The wta_1 database stores information about players (first name, last name, hand, birth date, country code), matches (best of, draw size, loser age, loser entry, loser hand, loser ht, loser id, loser ioc, loser name, loser rank, loser rank points, loser seed, match num, minutes, round, score, surface, tourney date, tourney id, tourney level, tourney name, winner age, winner entry, winner hand, winner ht, winner id, winner ioc, winner name, winner rank, winner rank points, winner seed, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
     },
 
     {
         "name": "orchestra",
-        "description": "The orchestra database contains information about conductors (conductor id, name, age, nationality, year of work), orchestras (orchestra id, orchestra, conductor id, record company, year of founded, major record format), performances (performance id, orchestra id, type, date, official ratings (millions), weekly rank, share), and shows (show id, performance id, if first show, result, attendance)."
+        "description": "The orchestra database contains information about conductors (name, age, nationality, year of work), orchestras (orchestra, conductor id, record company, year of founded, major record format), performances (orchestra id, type, date, official ratings (millions), weekly rank, share), and shows (performance id, if first show, result, attendance)."
     },
 
     {
         "name": "car_1",
-        "description": "The car_1 database stores information about continents (cont id, continent), countries (country id, country name, continent), car makers (id, maker, full name, country), model lists (model id, maker, model), car names (make id, model, make), and car data (id, mpg, cylinders, edispl, horsepower, weight, accelerate, year)."
+        "description": "The car_1 database stores information about continents, countries (country name, continent), car makers (maker, full name, country), model lists (maker, model), car names (make id, model, make), and car data (mpg, cylinders, edispl, horsepower, weight, accelerate, year)."
     },
 
     {
         "name": "tvshow",
-        "description": "The tvshow database contains information about TV channels (id, series name, country, language, content, pixel aspect ratio par, hight definition tv, pay per view ppv, package option), TV series (id, episode, air date, rating, share, 18 49 rating share, viewers m, weekly rank, channel), and cartoons (id, title, directed by, written by, original air date, production code, channel)."
+        "description": "The tvshow database contains information about TV channels (series name, country, language, content, pixel aspect ratio par, hight definition tv, pay per view ppv, package option), TV series (episode, air date, rating, share, 18 49 rating share, viewers m, weekly rank, channel), and cartoons (title, directed by, written by, original air date, production code, channel)."
     }
 ]

@@ -22,8 +22,15 @@ Enabling Natural Language Queries over Tabular Data with Large Language Models
 
 ### BAAI/bge-large-en-v1.5
 
-|       | T     | T + A |
-| ----- | ----- | ----- |
-| Top 1 | 0.908 | 0.946 |
+BIRD dev
+|       | T     | T + A |      
+| ----- | ----- | ----- |               
+| Top 1 | 0.908 | 0.946 |         
 | Top 2 | 0.971 | 0.981 |
 | Top 3 | 0.984 | 0.990 |
+
+
+SPIDER dev 1.0
+|       | T     | T + A |
+| ----- | ----- | ----- |
+| Top 1 | 0.854 | 0.910 |
