@@ -1,5 +1,6 @@
 import json
 import paths
+from typing import Dict
 
 
 def get_databases(file_path: str) -> list:
@@ -152,17 +153,61 @@ def remove_unused_databases_spider1():
 
     print(len(filtered_data))
 
+
+def create_table_name_mapping(filename: str) -> Dict[str, Dict[str, str]]:
+    """
+    Parses a JSON file to create a mapping between user-friendly table names
+    and their original names in the database schema.
+
+    The input JSON file is expected to be a list of objects, where each object
+    represents a database and contains 'db_id', 'table_names', and
+    'table_names_original' keys.
+
+    Args:
+        filename: The path to the input JSON file.
+
+    Returns:
+        A dictionary where each key is a 'db_id' and its value is another
+        dictionary that maps the friendly table names from 'table_names'
+        to the original names from 'table_names_original'.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+        json.JSONDecodeError: If the file is not a valid JSON.
+        KeyError: If an object in the JSON is missing one of the required keys
+                  ('db_id', 'table_names', 'table_names_original').
+    """
+    output_dict = {}
+
+    with open(filename, 'r') as f:
+        data = json.load(f)
+
+    for item in data:
+        db_id = item['db_id']
+        friendly_names = item['table_names']
+        original_names = item['table_names_original']
+
+        # The zip function pairs elements from both lists, and dict()
+        # converts these pairs into a key-value dictionary.
+        output_dict[db_id] = dict(zip(friendly_names, original_names))
+
+    return output_dict
+
 if __name__ == '__main__':
 
     "Used to call utility functions."
 
-    file_path = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
-    print_DB_table_att(file_path)
+    #file_path = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+    #print_DB_table_att(file_path)
 
     #file_path = paths.DATASETS.BIRDdev.value + 'dev.json'
     #print_sql_queries(file_path)
 
     #remove_unused_databases_spider1()
+
+    #filename = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+    #dict = create_table_name_mapping(filename)
+    #print(dict)
 
 
 
