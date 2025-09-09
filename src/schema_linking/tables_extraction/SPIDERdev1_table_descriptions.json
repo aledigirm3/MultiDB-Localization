@@ -1,0 +1,142 @@
+{
+	"dog_kennels": {
+		"breeds": "The `breeds` table lists the types of dog breeds recognized in the kennel system. It includes a `breed code` as an identifier and a `breed name` describing the breed.",
+		"charges": "The `charges` table defines different types of fees or costs related to kennel services. It contains a `charge id` as the identifier, a `charge type` describing the kind of charge, and a `charge amount` specifying the cost.",
+		"sizes": "The `sizes` table categorizes dogs based on their physical size. It includes a `size code` as an identifier and a `size description` explaining the category (such as small, medium, or large).",
+		"treatment types": "The `treatment types` table defines the categories of medical or care treatments offered. It has a `treatment type code` as the identifier and a `treatment type description` explaining the treatment.",
+		"owners": "The `owners` table stores information about people who own or previously owned dogs. It includes details such as `owner id`, personal names, address fields (`street`, `city`, `state`, `zip code`), and contact information like `email address`, `home phone`, and `cell number`.",
+		"dogs": "The `dogs` table records individual dogs housed in or associated with the kennel. It includes identifiers (`dog id`, `owner id`), details about the dog (`name`, `age`, `date of birth`, `gender`, `weight`), classification fields (`breed code`, `size code`), and status information such as `abandoned yes or no`, `date arrived`, `date adopted`, and `date departed`.",
+		"professionals": "The `professionals` table contains information about staff or external specialists who provide services to the dogs. It includes a `professional id`, a `role code` to define their function, personal names, address details, and contact information such as `email address`, `home phone`, and `cell number`.",
+		"treatments": "The `treatments` table logs individual care or medical treatments provided to dogs. It includes identifiers (`treatment id`, `dog id`, `professional id`, `treatment type code`), along with the `date of treatment` and the `cost of treatment`."
+	},
+
+	"flight_2": {
+		"airlines": "The `airlines` table stores information about airline companies. It includes an `airline id` as the identifier, the `airline name`, an `abbreviation`, and the `country` where the airline is based.",
+		"airports": "The `airports` table lists airport details. It contains the `city` where the airport is located, the `airport code`, the `airport name`, and the `country` along with its `country abbrev`.",
+		"flights": "The `flights` table records scheduled flight routes. It includes the `airline` operating the flight, the `flight number`, the `source airport` where the flight departs, and the `destination airport` where it arrives."
+	},
+
+	"pets_1": {
+		"student": "The `student` table stores information about students. It includes identifiers (`student id`), personal details (`last name`, `first name`, `age`, `sex`), academic information (`major`, `advisor`), and a `city code` referencing their location.",
+		"has pet": "The `has pet` table represents the relationship between students and their pets. It links a `student id` with a `pet id`, showing which student owns which pet.",
+		"pets": "The `pets` table contains information about animals owned by students. It includes a `pet id` as the identifier, the `pet type`, the `pet age`, and the `weight` of the pet."
+	},
+
+	"concert_singer": {
+		"stadium": "The `stadium` table stores details about venues where concerts are held. It includes a `stadium id`, the `location`, the `name`, the `capacity` of the stadium, and statistics such as `highest`, `lowest`, and `average` values, likely related to attendance or performance measures.",
+		"singer": "The `singer` table contains information about musical performers. It includes identifiers (`singer id`), personal details (`name`, `country`, `age`, `is male`), as well as information about their music (`song name`, `song release year`).",
+		"concert": "The `concert` table records events performed in stadiums. It includes a `concert id`, the `concert name`, a `theme`, the `stadium id` where it takes place, and the `year` of the concert.",
+		"singer in concert": "The `singer in concert` table represents the relationship between singers and concerts. It links a `concert id` with a `singer id`, showing which performers participated in which events."
+	},
+
+	"museum_visit": {
+		"museum": "The `museum` table stores information about museums. It includes a `museum id` as the identifier, the `name` of the museum, the `num of staff` working there, and the `open year` when it was established.",
+		"customer": "The `customer` table contains details about visitors to museums. It includes a `customer id`, the visitor's `name`, their `level of membership`, and their `age`.",
+		"visit": "The `visit` table records interactions between customers and museums. It links a `museum id` with a `customer id` and includes details such as the `num of ticket` purchased and the `total spent` during the visit."
+	},
+
+	"battle_death": {
+		"battle": "The `battle` table stores information about historical battles. It includes an `id`, the `name` of the battle, the `date` it occurred, the `bulgarian commander` and `latin commander` involved, and the `result` of the conflict.",
+		"ship": "The `ship` table contains details about ships associated with battles. It includes identifiers (`id`, `name`), characteristics such as `tonnage` and `ship type`, contextual information like `location` and `disposition of ship`, and a field `lost in battle` indicating whether the ship was destroyed or lost during a battle.",
+		"death": "The `death` table records casualties related to battles. It includes an `id`, a link to the ship responsible (`caused by ship id`), descriptive notes (`note`), and counts of those `killed` and `injured`."
+	},
+
+	"student_transcripts_tracking": {
+		"addresses": "The `addresses` table stores location information. It includes an `address id` as the identifier and details such as address lines, `city`, `zip postcode`, `state province county`, `country`, and any `other address details`.",
+		"courses": "The `courses` table contains information about academic courses. It includes a `course id`, the `course name`, a `course description`, and any `other details` about the course.",
+		"departments": "The `departments` table stores details about academic departments. It includes a `department id`, the `department name`, a `department description`, and `other details`.",
+		"degree programs": "The `degree programs` table defines programs offered by departments. It includes a `degree program id`, the associated `department id`, a `degree summary name`, a `degree summary description`, and `other details`.",
+		"sections": "The `sections` table records specific sections of courses. It includes a `section id`, the associated `course id`, a `section name`, a `section description`, and `other details`.",
+		"semesters": "The `semesters` table stores information about academic terms. It includes a `semester id`, a `semester name`, a `semester description`, and `other details`.",
+		"students": "The `students` table contains personal and academic information about students. It includes a `student id`, links to `current address id` and `permanent address id`, personal details such as names and contact information, `ssn`, enrollment dates (`date first registered`, `date left`), and `other student details`.",
+		"student enrolment": "The `student enrolment` table records the enrollment of students in degree programs for specific semesters. It includes a `student enrolment id`, the associated `degree program id`, `semester id`, `student id`, and `other details`.",
+		"student enrolment courses": "The `student enrolment courses` table links student enrollments to the courses taken. It includes a `student course id`, the associated `course id`, and the `student enrolment id`.",
+		"transcripts": "The `transcripts` table stores records of official academic transcripts. It includes a `transcript id`, the `transcript date`, and `other details`.",
+		"transcript contents": "The `transcript contents` table maps courses to transcripts. It includes a `student course id` and a `transcript id`, indicating which courses appear in which transcript."
+	},
+
+	"singer": {
+		"singer": "The `singer` table stores information about musical artists. It includes a `singer id` as the identifier, the `name`, the `birth year`, their `net worth millions`, and their `citizenship`.",
+		"song": "The `song` table contains details about songs performed by singers. It includes a `song id`, the `title`, the associated `singer id`, along with performance metrics such as `sales` and `highest position` achieved."
+	},
+
+	"cre_Doc_Template_Mgt": {
+		"reference template types": "The `reference template types` table defines categories of templates. It includes a `template type code` as the identifier and a `template type description` explaining the category.",
+		"templates": "The `templates` table stores information about document templates. It includes a `template id`, `version number`, the associated `template type code`, effective date ranges (`date effective from`, `date effective to`), and the `template details`.",
+		"documents": "The `documents` table contains records of documents created from templates. It includes a `document id`, the associated `template id`, the `document name`, a `document description`, and any `other details`.",
+		"paragraphs": "The `paragraphs` table stores sections of text that belong to documents. It includes a `paragraph id`, the associated `document id`, the `paragraph text`, and `other details`."
+	},
+
+	"world_1": {
+		"city": "The `city` table stores information about cities. It includes an `id` as the identifier, the `name` of the city, the `country code` linking it to a country, the `district` it belongs to, and its `population`.",
+		"sqlite sequence": "The `sqlite sequence` table tracks the current state of AUTOINCREMENT fields in the database. It includes the `name` of the table with the sequence and the current `seq` value.",
+		"country": "The `country` table contains information about countries. It includes a `code` as the identifier, the `name`, `continent`, `region`, `surface area`, `indepdent year`, `population`, `life expectancy`, `gnp`, `gnp old`, `local name`, `government form`, `head of state`, `capital`, and an additional `code2` field.",
+		"countrylanguage": "The `countrylanguage` table records languages spoken in countries. It includes the `countrycode` linking to a country, the `language` name, a flag `is official` indicating if it is an official language, and the `percentage` of the population that speaks it."
+	},
+
+	"employee_hire_evaluation": {
+		"employee": "The `employee` table stores information about staff members. It includes an `employee id` as the identifier, the `name`, `age`, and the `city` where the employee resides.",
+		"shop": "The `shop` table contains details about retail locations. It includes a `shop id`, the `name` of the shop, its `location`, `district`, the `number products` available, and the `manager name`.",
+		"hiring": "The `hiring` table records employment relationships between employees and shops. It includes the `shop id`, `employee id`, the `start from` date, and a flag `is full time` indicating the employment type.",
+		"evaluation": "The `evaluation` table stores performance and reward information for employees. It includes the `employee id`, the `year awarded`, and the `bonus` received."
+	},
+
+	"network_1": {
+		"high schooler": "The `high schooler` table stores information about students. It includes an `id` as the identifier, the `name`, and the `grade` level of the student.",
+		"friend": "The `friend` table represents friendship relationships between students. It links a `student id` with a `friend id` to indicate who is friends with whom.",
+		"likes": "The `likes` table records students' interests or preferences for other students. It includes a `student id` and the `liked id`, showing which student likes which other student."
+	},
+
+	"poker_player": {
+		"poker player": "The `poker player` table stores performance details of individuals who play poker professionally. It includes a `poker player id`, links to the `people id`, and information on achievements such as `final table made`, `best finish`, `money rank`, and total `earnings`.",
+		"people": "The `people` table contains personal information about individuals. It includes a `people id` as the identifier, their `nationality`, `name`, `birth date`, and `height`."
+	},
+
+	"real_estate_properties": {
+		"reference feature types": "The `reference feature types` table defines categories of features that properties can have. It includes a `feature type code` as the identifier and a `feature type name` describing the category.",
+		"reference property types": "The `reference property types` table lists types of properties. It includes a `property type code` and a `property type description` explaining the type of property, such as apartment, house, field, shop, or other.",
+		"other available features": "The `other available features` table contains details of individual features that properties can have. It includes a `feature id`, the associated `feature type code`, the `feature name`, and a `feature description`.",
+		"properties": "The `properties` table stores detailed information about real estate listings. It includes a `property id`, the `property type code`, market dates (`date on market`, `date sold`), `property name`, `property address`, `room count`, pricing information (`vendor requested price`, `buyer offered price`, `agreed selling price`), multiple feature fields categorized by property type (e.g., `apt feature 1-3`, `hse feature 1-3`), and `other property details`.",
+		"other property features": "The `other property features` table links properties to additional features. It includes the `property id`, the associated `feature id`, and a `property feature description` providing extra details about the feature for that property."
+	},
+
+	"course_teach": {
+		"course": "The `course` table stores information about academic courses. It includes a `course id` as the identifier, the `staring date` indicating when the course begins, and the `course` name or title.",
+		"teacher": "The `teacher` table contains details about instructors. It includes a `teacher id`, the `name`, `age`, and `hometown` of the teacher.",
+		"course arrange": "The `course arrange` table records which teachers are assigned to which courses and the grade level they teach. It includes the `course id`, the `teacher id`, and the `grade` level."
+	},
+
+	"voter_1": {
+		"area code state": "The `area code state` table maps telephone area codes to their corresponding states. It includes an `area code` and the `state` it belongs to.",
+		"contestants": "The `contestants` table stores information about participants in a voting contest. It includes a `contestant number` as the identifier and the `contestant name`.",
+		"votes": "The `votes` table records individual votes cast in the contest. It includes a `vote id`, the `phone number` used to vote, the `state` of the voter, the `contestant number` voted for, and the `created` timestamp of the vote."
+	},
+
+	"wta_1": {
+		"players": "The `players` table stores information about tennis players. It includes a `player id` as the identifier, `first name`, `last name`, playing `hand`, `birth date`, and `country code` representing their nationality.",
+		"matches": "The `matches` table records individual tennis matches. It includes details about the match format (`best of`, `draw size`), match statistics (`minutes`, `score`, `round`, `surface`), tournament information (`tourney date`, `tourney id`, `tourney level`, `tourney name`, `year`), and detailed information for both the `winner` and `loser` such as `id`, `name`, `age`, `hand`, `ht` (height), `entry`, `rank`, `rank points`, `seed`, and `ioc` (country code).",
+		"rankings": "The `rankings` table stores ranking information for players. It includes the `ranking date`, the `ranking` position, the associated `player id`, `ranking points`, and the number of `tours` played."
+	},
+
+	"orchestra": {
+		"conductor": "The `conductor` table stores information about orchestra conductors. It includes a `conductor id` as the identifier, the `name`, `age`, `nationality`, and `year of work` indicating when they started their professional career.",
+		"orchestra": "The `orchestra` table contains details about orchestras. It includes an `orchestra id`, the `orchestra` name, the associated `conductor id`, the `record company` they work with, the `year of founded`, and their `major record format`.",
+		"performance": "The `performance` table records orchestral performances. It includes a `performance id`, the `orchestra id`, the `type` of performance, the `date`, `official ratings (millions)`, `weekly rank`, and `share` (likely audience share).",
+		"show": "The `show` table stores information about individual shows of a performance. It includes a `show id`, the associated `performance id`, a flag `if first show`, the `result` of the show, and `attendance` numbers."
+	},
+
+	"car_1": {
+		"continents": "The `continents` table stores information about continents. It includes a `cont id` as the identifier and the `continent` name.",
+		"countries": "The `countries` table contains information about countries. It includes a `country id`, the `country name`, and the `continent` to which the country belongs.",
+		"car makers": "The `car makers` table stores details about automobile manufacturers. It includes an `id`, the `maker` name, the `full name` of the company, and the `country` where it is based.",
+		"model list": "The `model list` table records car models produced by makers. It includes a `model id`, the associated `maker`, and the `model` name.",
+		"car names": "The `car names` table maps car makes to their models. It includes a `make id`, the `model` name, and the `make` name.",
+		"cars data": "The `cars data` table contains specifications for individual car models. It includes an `id`, `mpg` (miles per gallon), `cylinders`, `edispl` (engine displacement), `horsepower`, `weight`, `accelerate` (acceleration), and `year` of production."
+	},
+
+	"tvshow": {
+		"tv channel": "The `tv channel` table stores information about television channels. It includes an `id`, the `series name` they broadcast, `country`, `language`, `content` type, technical details such as `pixel aspect ratio par` and `high definition tv`, and distribution options like `pay per view ppv` and `package option`.",
+		"tv series": "The `tv series` table records details about TV shows. It includes an `id`, `episode` information, `air date`, performance metrics (`rating`, `share`, `18 49 rating share`, `viewers m`), `weekly rank`, and the `channel` on which the series airs.",
+		"cartoon": "The `cartoon` table stores information about animated shows. It includes an `id`, the `title`, creators (`directed by`, `written by`), `original air date`, `production code`, and the `channel` that broadcasts the cartoon."
+	}
+}
