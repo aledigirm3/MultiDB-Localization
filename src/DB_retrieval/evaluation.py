@@ -11,10 +11,10 @@ def DBs_extraction_eval(filename):
 
     correct_samples = 0
     for sample in data:
-        if sample['db_id'] in sample['result']:
+        if sample['db_id'] == sample['result']:
             correct_samples += 1
         else:
-            print(sample['question_id'])
+            print(sample['db_id'])
                 
 
     print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
@@ -23,6 +23,10 @@ def DBs_extraction_eval(filename):
 
 if __name__ == '__main__':
 
-    filename = 'SPIDERdev1_DB_extractor.json'
+    filename = 'BIRDdev_DB_extractor.json'
+    print(f"{CYAN}BIRD dev evaluation...{RESET}")
+    DBs_extraction_eval(filename)
 
+    filename = 'SPIDERdev1_DB_extractor.json'
+    print(f"{CYAN}SPIDER dev 1.0 evaluation...{RESET}")
     DBs_extraction_eval(filename)

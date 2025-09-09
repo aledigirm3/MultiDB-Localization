@@ -7,8 +7,8 @@ from embedder import Embedder
 import paths
 from ansi_colors import *
 
-# Extracts the 3 most relevant databases using embeddings similarity
-def extract_DBs(embedder: Embedder, dataset: str):
+# Extracts the most relevant databases using embeddings similarity
+def extract_DB(embedder: Embedder, dataset: str):
 	
 	if dataset == 'BIRDdev':
 
@@ -57,7 +57,7 @@ def extract_DBs(embedder: Embedder, dataset: str):
 			best_score_DB.append((score, desc[0]))
 
 		sorted_best_score_DB = sorted(best_score_DB, reverse=True)
-		best_dbs = [sorted_best_score_DB[0][1]]
+		best_db = sorted_best_score_DB[0][1]
 
 
 		if dataset == 'BIRDdev':
@@ -66,7 +66,7 @@ def extract_DBs(embedder: Embedder, dataset: str):
 				"db_id": sample['db_id'],
 				"question": sample['question'],
 				"SQL": sample['SQL'],
-				"result": best_dbs,
+				"result": best_db,
 				}
 
 			result_list.append(item)
@@ -76,7 +76,7 @@ def extract_DBs(embedder: Embedder, dataset: str):
 				"db_id": sample['db_id'],
 				"question": sample['question'],
 				"SQL": sample['query'],
-				"result": best_dbs,
+				"result": best_db,
 				}
 			i += 1
 			result_list.append(item)
@@ -92,8 +92,12 @@ def extract_DBs(embedder: Embedder, dataset: str):
 if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
+
 	dataset = "SPIDERdev1"
-	extract_DBs(embedder, dataset)
+	extract_DB(embedder, dataset)
+
+	dataset = "BIRDdev"
+	extract_DB(embedder, dataset)
 
 
 
