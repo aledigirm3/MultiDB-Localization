@@ -31,7 +31,7 @@
 
     {
         "name": "student_transcripts_tracking",
-        "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course name, course description, other details), departments (department name, department description, other details), degree programs (department id, degree summary name, degree summary description, other details), sections (course id, section name, section description, other details), semesters (semester name, semester description, other details), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id, other details), student enrolment courses, transcripts (transcript date, other details), and transcript contents (student course id, transcript id)."
+        "description": "The student_transcripts_tracking database stores information about addresses (line, city, zip postcode, state province county, country, other address details), courses, departments, degree programs (department id, degree summary name, degree summary description), sections (course id, section name, section description), semesters (semester name, semester description), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id), student enrolment courses, transcripts (transcript date), and transcript contents (student course id)."
     },
 
     {
@@ -41,7 +41,7 @@
 
     {
         "name": "cre_Doc_Template_Mgt",
-        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description, other details), and paragraphs (document id, paragraph text, other details)."
+        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description), and paragraphs (document id, paragraph text)."
     },
 
     {
