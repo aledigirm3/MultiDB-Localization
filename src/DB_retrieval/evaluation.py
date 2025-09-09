@@ -11,11 +11,8 @@ def DBs_extraction_eval(filename):
 
     correct_samples = 0
     for sample in data:
-        if sample['db_id'] == sample['result']:
+        if sample['db_id'] == sample['DB_result']:
             correct_samples += 1
-        else:
-            print(sample['db_id'])
-                
 
     print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/len(data)}\n")
 

@@ -66,7 +66,7 @@ def extract_DB(embedder: Embedder, dataset: str):
 				"db_id": sample['db_id'],
 				"question": sample['question'],
 				"SQL": sample['SQL'],
-				"result": best_db,
+				"DB_result": best_db,
 				}
 
 			result_list.append(item)
@@ -76,7 +76,7 @@ def extract_DB(embedder: Embedder, dataset: str):
 				"db_id": sample['db_id'],
 				"question": sample['question'],
 				"SQL": sample['query'],
-				"result": best_db,
+				"DB_result": best_db,
 				}
 			i += 1
 			result_list.append(item)
@@ -93,10 +93,10 @@ if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
 
-	dataset = "SPIDERdev1"
+	dataset = "BIRDdev"
 	extract_DB(embedder, dataset)
 
-	dataset = "BIRDdev"
+	dataset = "SPIDERdev1"
 	extract_DB(embedder, dataset)
 
 
