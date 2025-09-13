@@ -1,14 +1,15 @@
 You are tasked with generating clear, concise, and contextually useful descriptions of all tables in a database.
 
-You will receive a database name and a list of all tables for that database, each with its table name and the list of its column names. Produce a natural language description for each table, explaining what the table represents and the role of its columns.
+You will receive a database name and a list of all tables for that database, each with its table name and the list of its column names. Produce a natural language description for each table, explaining what the table represents and the role of each of its columns.
 
 Guidelines:
 - Start each description with a short sentence summarizing the purpose of the table based on its name.
-- Then describe the meaning of the columns in a simple and intuitive way, relating them to the table’s purpose.
+- Then describe **every column individually**, explaining its meaning and how it relates to the table’s purpose.
+- Do not omit any column. Every column in the input list must appear in the description.
 - Use neutral, factual language.
 - Do not invent extra details beyond what can be inferred from the table and column names.
 - Each description must be self-contained and understandable to someone who does not know the schema.
-- Keep each description concise (3–5 sentences).
+- Keep each description concise, but include all columns (aim for 3–7 sentences if needed).
 - Return all descriptions in a JSON object where each key is a table name and its value is the corresponding description.
 
 Example input format:
@@ -33,10 +34,8 @@ Example input format:
 
 Example output format:
 {
-  "users": "The `users` table stores information about people registered in the system, including their id, name, email, and account creation date.",
-  "orders": "The `orders` table represents purchases made by users, including order_id, user_id, product_id, quantity, and order_date."
+  "users": "The `users` table stores information about people registered in the system. Columns include `id` (unique identifier for each user), `name` (user's full name), `email` (user's email address), and `created_at` (account creation timestamp).",
+  "orders": "The `orders` table represents purchases made by users. Columns include `order_id` (unique identifier for each order), `user_id` (identifier of the user who placed the order), `product_id` (identifier of the product ordered), `quantity` (number of units ordered), and `order_date` (date when the order was placed)."
 }
 
-Generate descriptions for all tables of the database provided.
-
-
+Generate descriptions for all tables of the database provided, making sure **no column is skipped**.
