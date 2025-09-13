@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-env_path = "../.env"
+env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 #===============================================
 
@@ -14,7 +14,7 @@ client = Groq(
     api_key=api_key,
 )
 
-def query_groq(messages: list, model: str = "openai/gpt-oss-120b", temperature: float = 0.0, maxTokens: int = 100):
+def query_groq(messages: list, model: str = "openai/gpt-oss-120b", temperature: float = 0.1):
     """
     Function to query the GROQ API with a list of messages.
     
@@ -39,8 +39,6 @@ def query_groq(messages: list, model: str = "openai/gpt-oss-120b", temperature: 
         # Controls randomness: lowering results in less random completions.
         # As the temperature approaches zero, the model will become deterministic and repetitive.
         temperature=temperature,
-
-        max_tokens=maxTokens
     )
 
     return chat_completion.choices[0].message.content
