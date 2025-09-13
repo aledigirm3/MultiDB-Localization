@@ -17,12 +17,15 @@ def get_llm_response(query: str, tables: str) -> str:
         str: relevant tables (comma separated).
     """
 
-    system_prompt = """You are a strict schema-selector assistant. Your only job is: given a natural language query and a database description (table names + short descriptions), return EXACTLY and ONLY the comma-separated list of table names that are strictly necessary to answer the query. Nothing else.
+    system_prompt = """You are a schema-selector assistant. Your only job is: given a natural language query and a database description (table names + short descriptions and attributes), return EXACTLY and ONLY the comma-separated list of table names that are necessary to answer the query. Nothing else.
+
+- When analyzing the query identify the precise attributes the user asks for (explicit columns or implied attributes).
+- If the same attribute required to answer the query appears in multiple tables, include all tables that contain it when they are necessary for the query.
 
 OUTPUT RULES:
 1. Output must be a single line containing only table names separated by commas, with NO SPACES (example: customers,orders). Do NOT include any labels, punctuation, explanation, or code fences.
 2. Use only the table names exactly as they appear on the left-hand side of the database description lines (the canonical names). Do not invent, abbreviate, or change names.
-3. Return the **smallest** set of tables that together contain the information required to satisfy the query.
+3. Return the set of tables that together contain the information required to satisfy the query.
 4. If no table is needed to answer the query (e.g., query is about general facts not in the DB), return exactly: NONE
 5. Do NOT output any reasoning, internal chain-of-thought, or extra metadata. Any extra output will be treated as an error.
 
@@ -139,7 +142,7 @@ def extract_tables(dataset):
         # This way, even if the process fails or hits token limits, 
         # we always have a checkpoint with partial results saved.
         with open(result_file_path, "w", encoding="utf-8") as f:
-            json.dump(result_list, f, indent=2, ensure_ascii=False)
+            json.dump(result_list, f, indent=4, ensure_ascii=False)
 
 if __name__ == '__main__':
 
