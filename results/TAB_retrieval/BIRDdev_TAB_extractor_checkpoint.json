@@ -2061,5 +2061,218 @@
             "account",
             "transaction"
         ]
+    },
+    {
+        "question_id": 183,
+        "db_id": "financial",
+        "question": "How many accounts in Beroun were opened after 1996?",
+        "SQL": "SELECT COUNT(account_id) FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE STRFTIME('%Y', T1.date) > '1996' AND T2.A2 = 'Beroun'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "account",
+            "district"
+        ]
+    },
+    {
+        "question_id": 184,
+        "db_id": "financial",
+        "question": "How many female customers have a junior credit card?",
+        "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN disp AS T2 ON T1.client_id = T2.client_id INNER JOIN card AS T3 ON T2.disp_id = T3.disp_id WHERE T1.gender = 'F' AND T3.type = 'junior'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "card",
+            "disposition"
+        ]
+    },
+    {
+        "question_id": 185,
+        "db_id": "financial",
+        "question": "What proportion of customers who have accounts at the Prague branch are female?",
+        "SQL": "SELECT CAST(SUM(T2.gender = 'F') AS REAL) / COUNT(T2.client_id) * 100 FROM district AS T1 INNER JOIN client AS T2 ON T1.district_id = T2.district_id WHERE T1.A3 = 'Prague'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "account",
+            "disposition"
+        ]
+    },
+    {
+        "question_id": 186,
+        "db_id": "financial",
+        "question": "What percentage of male clients request for weekly statements to be issued?",
+        "SQL": "SELECT CAST(SUM(T1.gender = 'M') AS REAL) * 100 / COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T3 ON T1.district_id = T3.district_id INNER JOIN account AS T2 ON T2.district_id = T3.district_id INNER JOIN disp as T4 on T1.client_id = T4.client_id AND T2.account_id = T4.account_id WHERE T2.frequency = 'POPLATEK TYDNE'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "disposition",
+            "account"
+        ]
+    },
+    {
+        "question_id": 187,
+        "db_id": "financial",
+        "question": "How many clients who choose statement of weekly issuance are Owner?",
+        "SQL": "SELECT COUNT(T2.account_id) FROM account AS T1 INNER JOIN disp AS T2 ON T2.account_id = T1.account_id WHERE T1.frequency = 'POPLATEK TYDNE' AND T2.type = 'OWNER'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "account",
+            "disposition"
+        ]
+    },
+    {
+        "question_id": 188,
+        "db_id": "financial",
+        "question": "Among the accounts who have loan validity more than 24 months, list out the accounts that have the lowest approved amount and have account opening date before 1997.",
+        "SQL": "SELECT T1.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE T1.duration > 24 AND STRFTIME('%Y', T2.date) < '1997' ORDER BY T1.amount ASC LIMIT 1",
+        "DB_result": "financial",
+        "TAB_result": [
+            "account",
+            "loan"
+        ]
+    },
+    {
+        "question_id": 189,
+        "db_id": "financial",
+        "question": "Name the account numbers of female clients who are oldest and have lowest average salary?",
+        "SQL": "SELECT T3.account_id FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN account AS T3 ON T2.district_id = T3.district_id INNER JOIN disp AS T4 ON T1.client_id = T4.client_id AND T4.account_id = T3.account_id  WHERE T1.gender = 'F' ORDER BY T1.birth_date ASC, T2.A11 ASC LIMIT 1",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "disposition",
+            "account",
+            "district"
+        ]
+    },
+    {
+        "question_id": 190,
+        "db_id": "financial",
+        "question": "How many clients who were born in 1920 stay in east Bohemia?",
+        "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE STRFTIME('%Y', T1.birth_date) = '1920' AND T2.A3 = 'east Bohemia'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "district"
+        ]
+    },
+    {
+        "question_id": 191,
+        "db_id": "financial",
+        "question": "How many loan accounts are for pre-payment of duration of 24 months with weekly issuance of statement.",
+        "SQL": "SELECT COUNT(T2.account_id) FROM account AS T1 INNER JOIN loan AS T2 ON T1.account_id = T2.account_id WHERE T2.duration = 24 AND T1.frequency = 'POPLATEK TYDNE'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "loan",
+            "account",
+            "disposition"
+        ]
+    },
+    {
+        "question_id": 192,
+        "db_id": "financial",
+        "question": "What is the average amount of loan which are still on running contract with statement issuance after each transaction?",
+        "SQL": "SELECT AVG(T2.amount) FROM account AS T1 INNER JOIN loan AS T2 ON T1.account_id = T2.account_id WHERE T2.status IN ('C', 'D') AND T1.frequency = 'POPLATEK PO OBRATU'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "loan",
+            "account",
+            "transaction"
+        ]
+    },
+    {
+        "question_id": 193,
+        "db_id": "financial",
+        "question": "List all ID and district for clients that can only have the right to issue permanent orders or apply for loans.",
+        "SQL": "SELECT T3.client_id, T2.district_id, T2.A2 FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T3 ON T1.account_id = T3.account_id WHERE T3.type = 'OWNER'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "disposition",
+            "district",
+            "account",
+            "order",
+            "loan"
+        ]
+    },
+    {
+        "question_id": 194,
+        "db_id": "financial",
+        "question": "Provide the IDs and age of the client with high level credit card, which is eligible for loans.",
+        "SQL": "SELECT T1.client_id, STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T3.birth_date) FROM disp AS T1 INNER JOIN card AS T2 ON T2.disp_id = T1.disp_id INNER JOIN client AS T3 ON T1.client_id = T3.client_id WHERE T2.type = 'gold' AND T1.type = 'OWNER'",
+        "DB_result": "financial",
+        "TAB_result": [
+            "client",
+            "card",
+            "disposition",
+            "account",
+            "loan"
+        ]
+    },
+    {
+        "question_id": 195,
+        "db_id": "toxicology",
+        "question": "What is the most common bond type?",
+        "SQL": "SELECT T.bond_type FROM ( SELECT bond_type, COUNT(bond_id) FROM bond GROUP BY bond_type ORDER BY COUNT(bond_id) DESC LIMIT 1 ) AS T",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "bond"
+        ]
+    },
+    {
+        "question_id": 196,
+        "db_id": "toxicology",
+        "question": "In the non-carcinogenic molecules, how many contain chlorine atoms?",
+        "SQL": "SELECT COUNT(DISTINCT T1.molecule_id) FROM molecule AS T1 INNER JOIN atom AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.element = 'cl' AND T1.label = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 197,
+        "db_id": "toxicology",
+        "question": "Calculate the average number of oxygen atoms in single-bonded molecules.",
+        "SQL": "SELECT AVG(oxygen_count) FROM (SELECT T1.molecule_id, COUNT(T1.element) AS oxygen_count FROM atom AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id  WHERE T2.bond_type = '-' AND T1.element = 'o'  GROUP BY T1.molecule_id) AS oxygen_counts",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 198,
+        "db_id": "toxicology",
+        "question": "On average how many carcinogenic molecules are single bonded?",
+        "SQL": "SELECT AVG(single_bond_count) FROM (SELECT T3.molecule_id, COUNT(T1.bond_type) AS single_bond_count FROM bond AS T1  INNER JOIN atom AS T2 ON T1.molecule_id = T2.molecule_id INNER JOIN molecule AS T3 ON T3.molecule_id = T2.molecule_id WHERE T1.bond_type = '-' AND T3.label = '+' GROUP BY T3.molecule_id) AS subquery",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule",
+            "bond"
+        ]
+    },
+    {
+        "question_id": 199,
+        "db_id": "toxicology",
+        "question": "In the molecule containing sodium atoms, how many are non-carcinogenic?",
+        "SQL": "SELECT COUNT(DISTINCT T2.molecule_id) FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'na' AND T2.label = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "bond",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 200,
+        "db_id": "toxicology",
+        "question": "Find the triple-bonded molecules which are carcinogenic.",
+        "SQL": "SELECT DISTINCT T2.molecule_id FROM bond AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.bond_type = '#' AND T2.label = '+'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "bond",
+            "molecule"
+        ]
     }
 ]
