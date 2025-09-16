@@ -3530,5 +3530,604 @@
             "molecule",
             "atom"
         ]
+    },
+    {
+        "question_id": 313,
+        "db_id": "toxicology",
+        "question": "How many atoms belong to molecule id TR001?",
+        "SQL": "SELECT COUNT(T.atom_id) FROM atom AS T WHERE T.molecule_id = 'TR001'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom"
+        ]
+    },
+    {
+        "question_id": 314,
+        "db_id": "toxicology",
+        "question": "How many single bonds are there in the list?",
+        "SQL": "SELECT COUNT(T.bond_id) FROM bond AS T WHERE T.bond_type = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "bond"
+        ]
+    },
+    {
+        "question_id": 315,
+        "db_id": "toxicology",
+        "question": "Among the molecules which contain \"cl\" element, which of them are carcinogenic?",
+        "SQL": "SELECT DISTINCT T1.molecule_id FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'cl' AND T2.label = '+'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 316,
+        "db_id": "toxicology",
+        "question": "Among the molecules which contain \"c\" element, which of them are not carcinogenic?",
+        "SQL": "SELECT DISTINCT T1.molecule_id FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'c' AND T2.label = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 317,
+        "db_id": "toxicology",
+        "question": "Calculate the percentage of carcinogenic molecules which contain the Chlorine element.",
+        "SQL": "SELECT COUNT(CASE WHEN T2.label = '+' AND T1.element = 'cl' THEN T2.molecule_id ELSE NULL END) * 100 / COUNT(T2.molecule_id) FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 318,
+        "db_id": "toxicology",
+        "question": "What is the molecule id of bond id TR001_1_7?",
+        "SQL": "SELECT DISTINCT T1.molecule_id FROM atom AS T1 INNER JOIN connected AS T2 ON T1.atom_id = T2.atom_id WHERE T2.bond_id = 'TR001_1_7'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "bond"
+        ]
+    },
+    {
+        "question_id": 319,
+        "db_id": "toxicology",
+        "question": "How many elements are contained in bond_id TR001_3_4?",
+        "SQL": "SELECT COUNT(DISTINCT T1.element) FROM atom AS T1 INNER JOIN connected AS T2 ON T1.atom_id = T2.atom_id WHERE T2.bond_id = 'TR001_3_4'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "connected",
+            "atom"
+        ]
+    },
+    {
+        "question_id": 320,
+        "db_id": "toxicology",
+        "question": "What is the type of the bond which is presenting the connection between two atoms TR000_1 and TR000_2?",
+        "SQL": "SELECT T1.bond_type FROM bond AS T1 INNER JOIN connected AS T2 ON T1.bond_id = T2.bond_id WHERE T2.atom_id = 'TR000_1' AND T2.atom_id2 = 'TR000_2'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "connected",
+            "bond"
+        ]
+    },
+    {
+        "question_id": 321,
+        "db_id": "toxicology",
+        "question": "What is the molecule of atom id \"TR000_2\" and atom id 2 \"TR000_4\"?",
+        "SQL": "SELECT T1.molecule_id FROM bond AS T1 INNER JOIN connected AS T2 ON T1.bond_id = T2.bond_id WHERE T2.atom_id = 'TR000_2' AND T2.atom_id2 = 'TR000_4'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 322,
+        "db_id": "toxicology",
+        "question": "What is the element of toxicology for the atom with the ID of TR000_1?",
+        "SQL": "SELECT T.element FROM atom AS T WHERE T.atom_id = 'TR000_1'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom"
+        ]
+    },
+    {
+        "question_id": 323,
+        "db_id": "toxicology",
+        "question": "Is molecule TR000 is carcinogenic or not?",
+        "SQL": "SELECT label FROM molecule AS T WHERE T.molecule_id = 'TR000'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 324,
+        "db_id": "toxicology",
+        "question": "Find the percentage of atoms with single bond.",
+        "SQL": "SELECT CAST(COUNT(CASE WHEN T.bond_type = '-' THEN T.bond_id ELSE NULL END) AS REAL) * 100 / COUNT(T.bond_id) FROM bond t",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected"
+        ]
+    },
+    {
+        "question_id": 325,
+        "db_id": "toxicology",
+        "question": "How many carcinogenic molecules that consisted of Nitrogen?",
+        "SQL": "SELECT COUNT(DISTINCT T1.molecule_id) FROM molecule AS T1 INNER JOIN atom AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.element = 'n' AND T1.label = '+'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 326,
+        "db_id": "toxicology",
+        "question": "Which molecule consisted of Sulphur atom with double bond?",
+        "SQL": "SELECT DISTINCT T1.molecule_id FROM atom AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 's' AND T2.bond_type = '='",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 327,
+        "db_id": "toxicology",
+        "question": "Which non-carcinogenic molecules consisted more than 5 atoms?",
+        "SQL": "SELECT T.molecule_id FROM ( SELECT T1.molecule_id, COUNT(T2.atom_id) FROM molecule AS T1 INNER JOIN atom AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.label = '-' GROUP BY T1.molecule_id HAVING COUNT(T2.atom_id) > 5 ) t",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 328,
+        "db_id": "toxicology",
+        "question": "List all the elements with double bond, consisted in molecule TR024.",
+        "SQL": "SELECT T1.element FROM atom AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.molecule_id = 'TR024' AND T2.bond_type = '='",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 329,
+        "db_id": "toxicology",
+        "question": "Which carcinogenic molecule have the highest number of atoms consisted in it?",
+        "SQL": "SELECT T.molecule_id FROM ( SELECT T2.molecule_id, COUNT(T1.atom_id) FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.label = '+' GROUP BY T2.molecule_id ORDER BY COUNT(T1.atom_id) DESC LIMIT 1 ) t",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 330,
+        "db_id": "toxicology",
+        "question": "Calculate the percentage of carcinogenic molecules with triple bonded Hidrogen atoms.",
+        "SQL": "SELECT CAST(SUM(CASE WHEN T1.label = '+' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(DISTINCT T1.molecule_id) FROM molecule AS T1 INNER JOIN atom AS T2 ON T1.molecule_id = T2.molecule_id INNER JOIN bond AS T3 ON T1.molecule_id = T3.molecule_id WHERE T3.bond_type = '#' AND T2.element = 'h'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 331,
+        "db_id": "toxicology",
+        "question": "How many of the molecules are carcinogenic?",
+        "SQL": "SELECT COUNT(T.molecule_id) FROM molecule AS T WHERE T.label = '+'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 332,
+        "db_id": "toxicology",
+        "question": "Among the molecules between TR004 to TR010, how many of them has single bonds?",
+        "SQL": "SELECT COUNT(DISTINCT T.molecule_id) FROM bond AS T WHERE T.molecule_id BETWEEN 'TR004' AND 'TR010' AND T.bond_type = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule",
+            "bond"
+        ]
+    },
+    {
+        "question_id": 333,
+        "db_id": "toxicology",
+        "question": "In the molecule TR008, how many carbons are present?",
+        "SQL": "SELECT COUNT(T.atom_id) FROM atom AS T WHERE T.molecule_id = 'TR008' AND T.element = 'c'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 334,
+        "db_id": "toxicology",
+        "question": "What is the element with the atom ID of TR004_7 in molecule that is not carcinogenic?",
+        "SQL": "SELECT T1.element FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.atom_id = 'TR004_7' AND T2.label = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 335,
+        "db_id": "toxicology",
+        "question": "What is the total number of molecules with double bonded oxygen?",
+        "SQL": "SELECT COUNT(DISTINCT T1.molecule_id) FROM atom AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.bond_type = '=' AND T1.element = 'o'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 336,
+        "db_id": "toxicology",
+        "question": "in molecules with triple bonds, how many of them are not carcinogenic?",
+        "SQL": "SELECT COUNT(DISTINCT T1.molecule_id) FROM molecule AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.bond_type = '#' AND T1.label = '-'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "molecule",
+            "bond"
+        ]
+    },
+    {
+        "question_id": 337,
+        "db_id": "toxicology",
+        "question": "List the element and bond type included in the molecule with molecule ID of TR002.",
+        "SQL": "SELECT DISTINCT T1.element, T2.bond_type FROM atom AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.molecule_id = 'TR002'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond"
+        ]
+    },
+    {
+        "question_id": 338,
+        "db_id": "toxicology",
+        "question": "What is the atom ID of double bonded carbon in TR012 molecule?",
+        "SQL": "SELECT T1.atom_id FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id INNER JOIN bond AS T3 ON T2.molecule_id = T3.molecule_id WHERE T2.molecule_id = 'TR012' AND T3.bond_type = '=' AND T1.element = 'c'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 339,
+        "db_id": "toxicology",
+        "question": "List the atom ID of the carcinogenic molecule that contains oxygen?",
+        "SQL": "SELECT T1.atom_id FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'o' AND T2.label = '+'",
+        "DB_result": "toxicology",
+        "TAB_result": [
+            "atom",
+            "molecule"
+        ]
+    },
+    {
+        "question_id": 340,
+        "db_id": "card_games",
+        "question": "Which are the cards that have incredibly powerful foils.",
+        "SQL": "SELECT id FROM cards WHERE cardKingdomFoilId IS NOT NULL AND cardKingdomId IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 341,
+        "db_id": "card_games",
+        "question": "What are the borderless cards available without powerful foils?",
+        "SQL": "SELECT id FROM cards WHERE borderColor = 'borderless' AND (cardKingdomId IS NULL OR cardKingdomId IS NULL)",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 342,
+        "db_id": "card_games",
+        "question": "List the card names with value that cost more converted mana for the face.",
+        "SQL": "SELECT name FROM cards ORDER BY faceConvertedManaCost LIMIT 1",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 343,
+        "db_id": "card_games",
+        "question": "Name all cards with 2015 frame style ranking below 100 on EDHRec.",
+        "SQL": "SELECT id FROM cards WHERE edhrecRank < 100 AND frameVersion = 2015",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 344,
+        "db_id": "card_games",
+        "question": "List all the mythic rarity print cards banned in gladiator format.",
+        "SQL": "SELECT DISTINCT T1.id FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.format = 'gladiator' AND T2.status = 'Banned' AND T1.rarity = 'mythic'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 345,
+        "db_id": "card_games",
+        "question": "For artifact type of cards that do not have multiple faces on the same card, state its legalities status for vintage play format.",
+        "SQL": "SELECT DISTINCT T2.status FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T1.type = 'Artifact' AND T2.format = 'vintage' AND T1.side IS NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 346,
+        "db_id": "card_games",
+        "question": "List all the card id and artist with unknown power which are legal for commander play format.",
+        "SQL": "SELECT T1.id, T1.artist FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.status = 'Legal' AND T2.format = 'commander' AND (T1.power IS NULL OR T1.power = '*')",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 347,
+        "db_id": "card_games",
+        "question": "Find all cards illustrated by Stephen Daniel and describe the text of the ruling of these cards. State if these cards have missing or degraded properties and values.",
+        "SQL": "SELECT T1.id, T2.text, T1.hasContentWarning FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.artist = 'Stephen Daniele'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 348,
+        "db_id": "card_games",
+        "question": "Describe the information about rulings for card named 'Sublime Epiphany' with number 74s.",
+        "SQL": "SELECT T2.text FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Sublime Epiphany' AND T1.number = '74s'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 349,
+        "db_id": "card_games",
+        "question": "Name the card and artist with the most ruling information. Also state if the card is a promotional printing.",
+        "SQL": "SELECT T1.name, T1.artist, T1.isPromo FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.isPromo = 1 AND T1.artist = (SELECT artist FROM cards WHERE isPromo = 1 GROUP BY artist HAVING COUNT(DISTINCT uuid) = (SELECT MAX(count_uuid) FROM ( SELECT COUNT(DISTINCT uuid) AS count_uuid FROM cards WHERE isPromo = 1 GROUP BY artist ))) LIMIT 1",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 350,
+        "db_id": "card_games",
+        "question": "State the alternative languages available for card named Annul numbered 29.",
+        "SQL": "SELECT T2.language FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Annul' AND T1.number = 29",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 351,
+        "db_id": "card_games",
+        "question": "Name all the cards which have alternative language in Japanese.",
+        "SQL": "SELECT T1.name FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T1.uuid = T2.uuid WHERE T2.language = 'Japanese'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 352,
+        "db_id": "card_games",
+        "question": "Calculate the percentage of the cards availabe in Chinese Simplified.",
+        "SQL": "SELECT CAST(SUM(CASE WHEN T2.language = 'Chinese Simplified' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.id) FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T1.uuid = T2.uuid",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 353,
+        "db_id": "card_games",
+        "question": "List all the sets available in Italian translation. State the total number of cards per set.",
+        "SQL": "SELECT T1.name, T1.totalSetSize FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Italian'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 354,
+        "db_id": "card_games",
+        "question": "How many types of cards does the artist Aaron Boyd illustrated about card art?",
+        "SQL": "SELECT COUNT(type) FROM cards WHERE artist = 'Aaron Boyd'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 355,
+        "db_id": "card_games",
+        "question": "What is the keyword found on card 'Angel of Mercy'?",
+        "SQL": "SELECT DISTINCT keywords FROM cards WHERE name = 'Angel of Mercy'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 356,
+        "db_id": "card_games",
+        "question": "How many cards have infinite power?",
+        "SQL": "SELECT COUNT(*) FROM cards WHERE power = '*'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 357,
+        "db_id": "card_games",
+        "question": "What type of promotion is of card 'Duress'?",
+        "SQL": "SELECT promoTypes FROM cards WHERE name = 'Duress' AND promoTypes IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 358,
+        "db_id": "card_games",
+        "question": "What is the border color of card \"Ancestor's Chosen\"?",
+        "SQL": "SELECT DISTINCT borderColor FROM cards WHERE name = 'Ancestor''s Chosen'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 359,
+        "db_id": "card_games",
+        "question": "What is the type of the card \"Ancestor's Chosen\" as originally printed?",
+        "SQL": "SELECT originalType FROM cards WHERE name = 'Ancestor''s Chosen' AND originalType IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 360,
+        "db_id": "card_games",
+        "question": "cards are not directly linked to language but through table 'set'. you need to add set in covered table & rephrase your question\nWhat are the languages available for the set that card 'Angel of Mercy' is in?",
+        "SQL": "SELECT language FROM set_translations WHERE id IN ( SELECT id FROM cards WHERE name = 'Angel of Mercy' )",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 361,
+        "db_id": "card_games",
+        "question": "How many cards of legalities whose status is restricted have text boxes?",
+        "SQL": "SELECT COUNT(DISTINCT T1.id) FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.status = 'Restricted' AND T1.isTextless = 0",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 362,
+        "db_id": "card_games",
+        "question": "What is the description about the ruling of card \"Condemn\"?",
+        "SQL": "SELECT T2.text FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Condemn'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 363,
+        "db_id": "card_games",
+        "question": "How many cards of legalities whose status is restricted are found in a starter deck?",
+        "SQL": "SELECT COUNT(DISTINCT T1.id) FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.status = 'Restricted' AND T1.isStarter = 1",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 364,
+        "db_id": "card_games",
+        "question": "What is the status of card \"Cloudchaser Eagle\"?",
+        "SQL": "SELECT DISTINCT T2.status FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Cloudchaser Eagle'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 365,
+        "db_id": "card_games",
+        "question": "What is the type of card \"Benalish Knight\"?",
+        "SQL": "SELECT DISTINCT T1.type FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Benalish Knight'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 366,
+        "db_id": "card_games",
+        "question": "What is the rule of playing card \"Benalish Knight\"?",
+        "SQL": "SELECT T2.format FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T1.name = 'Benalish Knight'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 367,
+        "db_id": "card_games",
+        "question": "Please provide the names of the artists who illustrated the card art in Phyrexian.",
+        "SQL": "SELECT T1.artist FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T1.uuid = T2.uuid WHERE T2.language = 'Phyrexian'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
     }
 ]
