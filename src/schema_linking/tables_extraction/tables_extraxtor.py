@@ -24,11 +24,12 @@ def get_llm_response(query: str, tables: str) -> str:
 
 OUTPUT RULES:
 1. Output must be a single line containing only table names separated by commas, with NO SPACES (example: customers,orders). Do NOT include any labels, punctuation, explanation, or code fences.
-2. Use only the table names exactly as they appear on the left-hand side of the database description lines (the canonical names). Do not invent, abbreviate, or change names.
-3. Return the set of tables that together contain the information required to satisfy the query.
-4. If no table is needed to answer the query (e.g., query is about general facts not in the DB), return exactly: NONE
-5. Do NOT output any reasoning, internal chain-of-thought, or extra metadata. Any extra output will be treated as an error.
-6. **If you are uncertain whether a table is needed, include it** to avoid missing important information.
+2. If the name of a table, or a close variation of it (e.g., singular/plural form), is explicitly mentioned in the query, that table must always be included.
+3. Use only the table names exactly as they appear on the left-hand side of the database description lines (the canonical names). Do not invent, abbreviate, or change names.
+4. Return the set of tables that together contain the information required to satisfy the query.
+5. If no table is needed to answer the query (e.g., query is about general facts not in the DB), return exactly: NONE
+6. Do NOT output any reasoning, internal chain-of-thought, or extra metadata. Any extra output will be treated as an error.
+7. **If you are uncertain whether a table is needed, include it** to avoid missing important information.
 
 INPUT FORMAT (this exact structure will be provided):
 [QUERY]:
