@@ -4907,5 +4907,360 @@
             "cards",
             "foreign data"
         ]
+    },
+    {
+        "question_id": 441,
+        "db_id": "card_games",
+        "question": "State the set code of the set with release date of 07/13/2007?",
+        "SQL": "SELECT T2.setCode FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.releaseDate = '2007-07-13'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 442,
+        "db_id": "card_games",
+        "question": "Mention the base set size and set code of the set that was in block named \"Masques\" and \"Mirage\".",
+        "SQL": "SELECT DISTINCT T1.baseSetSize, T2.setCode FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block IN ('Masques', 'Mirage')",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 443,
+        "db_id": "card_games",
+        "question": "Give the code of sets have expansion type of 'expansion'?",
+        "SQL": "SELECT T2.setCode FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.type = 'expansion' GROUP BY T2.setCode",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 444,
+        "db_id": "card_games",
+        "question": "Name the foreign name of the card that has boros watermark? List out the type of this card.",
+        "SQL": "SELECT DISTINCT T1.name, T1.type FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.watermark = 'boros'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 445,
+        "db_id": "card_games",
+        "question": "What is the language and flavor text of the card that has colorpie watermark? List out the type of this card.",
+        "SQL": "SELECT DISTINCT T2.language, T2.flavorText FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.watermark = 'colorpie'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 446,
+        "db_id": "card_games",
+        "question": "What is percentage of the cards with a converted Mana Cost of 10 in set of Abyssal Horror?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN T1.convertedManaCost = 10 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.id), T1.name FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE T1.name = 'Abyssal Horror'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 447,
+        "db_id": "card_games",
+        "question": "Give the code of sets have expansion commander type?",
+        "SQL": "SELECT T2.setCode FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.type = 'commander'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "set translations",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 448,
+        "db_id": "card_games",
+        "question": "Name the foreign name of the card that has abzan watermark? List out the type of this card.",
+        "SQL": "SELECT DISTINCT T1.name, T1.type FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.watermark = 'abzan'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 449,
+        "db_id": "card_games",
+        "question": "What is the language of the card that has azorius watermark? List out the type of this card.",
+        "SQL": "SELECT DISTINCT T2.language, T1.type FROM cards AS T1 INNER JOIN foreign_data AS T2 ON T2.uuid = T1.uuid WHERE T1.watermark = 'azorius'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 450,
+        "db_id": "card_games",
+        "question": "Of all the cards that are designed by Aaron Miller, how many of them are incredibly powerful?",
+        "SQL": "SELECT SUM(CASE WHEN artist = 'Aaron Miller' AND cardKingdomFoilId IS NOT NULL AND cardKingdomId IS NOT NULL THEN 1 ELSE 0 END) FROM cards",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 451,
+        "db_id": "card_games",
+        "question": "How many cards available in paper have a positive starting maximum hand size?",
+        "SQL": "SELECT SUM(CASE WHEN availability = 'paper' AND hAND = '3' THEN 1 ELSE 0 END) FROM cards",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 452,
+        "db_id": "card_games",
+        "question": "Please list the names of the cards that have a text box.",
+        "SQL": "SELECT DISTINCT name FROM cards WHERE isTextless = 0",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets",
+            "ruling"
+        ]
+    },
+    {
+        "question_id": 453,
+        "db_id": "card_games",
+        "question": "What's the unconverted mana cost of the card \"Ancestor's Chosen\"?",
+        "SQL": "SELECT DISTINCT manaCost FROM cards WHERE name = 'Ancestor''s Chosen'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 454,
+        "db_id": "card_games",
+        "question": "Among the cards with a white border color, how many of them have unknown power?",
+        "SQL": "SELECT SUM(CASE WHEN power LIKE '%*%' OR power IS NULL THEN 1 ELSE 0 END) FROM cards WHERE borderColor = 'white'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 455,
+        "db_id": "card_games",
+        "question": "Which of the cards that are a promotional painting have multiple faces on the same card? Please list their names.",
+        "SQL": "SELECT DISTINCT name FROM cards WHERE isPromo = 1 AND side IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 456,
+        "db_id": "card_games",
+        "question": "What's the list of all types for the card \"Molimo, Maro-Sorcerer\"?",
+        "SQL": "SELECT DISTINCT subtypes, supertypes FROM cards WHERE name = 'Molimo, Maro-Sorcerer'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 457,
+        "db_id": "card_games",
+        "question": "Please list the websites where I can purchase the cards that have the promotional type of \"bundle\".",
+        "SQL": "SELECT DISTINCT purchaseUrls FROM cards WHERE promoTypes = 'bundle'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 458,
+        "db_id": "card_games",
+        "question": "How many artists have designed a card with a black border color and is available in both \"arena\" and \"mtgo\" printing type?",
+        "SQL": "SELECT COUNT(CASE WHEN availability LIKE '%arena,mtgo%' AND borderColor = 'black' THEN 1 ELSE NULL END) FROM cards",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 459,
+        "db_id": "card_games",
+        "question": "Which card costs more converted mana, \"Serra Angel\" or \"Shrine Keeper\"?",
+        "SQL": "SELECT name FROM cards WHERE name IN ('Serra Angel', 'Shrine Keeper') ORDER BY convertedManaCost DESC LIMIT 1",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 460,
+        "db_id": "card_games",
+        "question": "Which artist designed the card whose promotional name is \"Battra, Dark Destroyer\"?",
+        "SQL": "SELECT artist FROM cards WHERE flavorName = 'Battra, Dark Destroyer'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards"
+        ]
+    },
+    {
+        "question_id": 461,
+        "db_id": "card_games",
+        "question": "Please list the names of the top 3 cards with the highest converted mana cost and have a 2003 card frame style.",
+        "SQL": "SELECT name FROM cards WHERE frameVersion = 2003 ORDER BY convertedManaCost DESC LIMIT 3",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 462,
+        "db_id": "card_games",
+        "question": "What's the Italian name of the set of cards with \"Ancestor's Chosen\" is in?",
+        "SQL": "SELECT translation FROM set_translations WHERE setCode IN ( SELECT setCode FROM cards WHERE name = 'Ancestor''s Chosen' ) AND language = 'Italian'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 463,
+        "db_id": "card_games",
+        "question": "How many translations are there for the set of cards with \"Angel of Mercy\" in it?",
+        "SQL": "SELECT COUNT(DISTINCT translation) FROM set_translations WHERE setCode IN ( SELECT setCode FROM cards WHERE name = 'Angel of Mercy' ) AND translation IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 464,
+        "db_id": "card_games",
+        "question": "Please list the names of the cards in the set \"Hauptset Zehnte Edition\".",
+        "SQL": "SELECT DISTINCT T1.name FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T2.translation = 'Hauptset Zehnte Edition'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 465,
+        "db_id": "card_games",
+        "question": "For the set of cards with \"Ancestor's Chosen\" in it, is there a Korean version of it?",
+        "SQL": "SELECT IIF(SUM(CASE WHEN T2.language = 'Korean' AND T2.translation IS NOT NULL THEN 1 ELSE 0 END) > 0, 'YES', 'NO') FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Ancestor''s Chosen'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data"
+        ]
+    },
+    {
+        "question_id": 466,
+        "db_id": "card_games",
+        "question": "Among the cards in the set \"Hauptset Zehnte Edition\", how many of them are designed by Adam Rex?",
+        "SQL": "SELECT COUNT(T1.id) FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T2.translation = 'Hauptset Zehnte Edition' AND T1.artist = 'Adam Rex'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 467,
+        "db_id": "card_games",
+        "question": "How many cards are there in the base set of \"Hauptset Zehnte Edition\"?",
+        "SQL": "SELECT T1.baseSetSize FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Hauptset Zehnte Edition'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "sets"
+        ]
+    },
+    {
+        "question_id": 468,
+        "db_id": "card_games",
+        "question": "What is the Simplified Chinese translation of the name of the set \"Eighth Edition\"?",
+        "SQL": "SELECT T2.translation FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.name = 'Eighth Edition' AND T2.language = 'Chinese Simplified'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 469,
+        "db_id": "card_games",
+        "question": "Did the set of cards with \"Angel of Mercy\" appear on Magic: The Gathering Online?",
+        "SQL": "SELECT IIF(T2.mtgoCode IS NOT NULL, 'YES', 'NO') FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE T1.name = 'Angel of Mercy'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 470,
+        "db_id": "card_games",
+        "question": "When was the set of cards with \"Ancestor's Chosen\" released?",
+        "SQL": "SELECT DISTINCT T2.releaseDate FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE T1.name = 'Ancestor''s Chosen'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 471,
+        "db_id": "card_games",
+        "question": "What is the expansion type of the set \"Hauptset Zehnte Edition\"?",
+        "SQL": "SELECT T1.type FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Hauptset Zehnte Edition'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "foreign data",
+            "sets"
+        ]
+    },
+    {
+        "question_id": 472,
+        "db_id": "card_games",
+        "question": "Among the sets in the block \"Ice Age\", how many of them have an Italian translation?",
+        "SQL": "SELECT COUNT(DISTINCT T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block = 'Ice Age' AND T2.language = 'Italian' AND T2.translation IS NOT NULL",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "sets",
+            "set translations"
+        ]
     }
 ]
