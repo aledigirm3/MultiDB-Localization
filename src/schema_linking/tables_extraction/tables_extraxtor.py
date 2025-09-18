@@ -21,8 +21,7 @@ def get_llm_response(query: str, tables: str) -> str:
 
 - When analyzing the query identify the attributes the user asks for (explicit columns or implied attributes).
 - If an attribute required or explicitly mentioned in the query appears in multiple tables, include all of those tables, even if one table alone would be sufficient. Do not try to optimize or exclude. Always include every table that contains that attribute.
-- Include all tables that contain columns explicitly requested or referenced in the query.
-- **Also include any table that contains a variation of a column explicitly requested in the query, even if the column is not explicitly used in that table.**
+- **If a table is explicitly mentioned in the query, or a close variation of its name (including singular/plural forms, abbreviations, or similar naming), always include that table.**
 
 OUTPUT RULES:
 1. Output must be a single line containing only table names separated by commas, with NO SPACES (example: customers,orders). Do NOT include any labels, punctuation, explanation, or code fences.
@@ -94,7 +93,22 @@ customers: The `customers` table stores information about people registered in t
 orders: The `orders` table represents purchases made by users. Columns include: order_id, customer_id, order_date.
 
 EXPECTED OUTPUT (single-line):
-NONE"""
+NONE
+
+Example 5 (tables explicitly mentioned in the query or with close variations)
+[QUERY]:
+Give me the product code of the item released in January 2021.
+
+[DATABASE WITH TABLE DESCRIPTIONS]:
+database: inventory_db
+items: The `items` table stores information about products. Columns include: item_id, name, release_date, product_code.
+product: The `product` table contains general metadata about product categories. Columns include: id, category_name, description.
+product labels: The `product_labels` table stores internal labeling data for products. Columns include: id, product_code, label_type.
+suppliers: The `suppliers` table contains supplier details. Columns include: supplier_id, name, country.
+
+EXPECTED OUTPUT (single-line):
+items,product,product labels
+"""
 
     content = f"""Now receive the actual `[QUERY]` and `[DATABASE WITH TABLE DESCRIPTIONS]` and produce the single-line answer only.
     
