@@ -5884,5 +5884,1112 @@
             "cards",
             "ruling"
         ]
+    },
+    {
+        "question_id": 528,
+        "db_id": "card_games",
+        "question": "List the names of all the cards in the set Hour of Devastation and find the formats in which these cards are legal.",
+        "SQL": "SELECT DISTINCT T2.name , CASE WHEN T1.status = 'Legal' THEN T1.format ELSE NULL END FROM legalities AS T1 INNER JOIN cards AS T2 ON T2.uuid = T1.uuid WHERE T2.setCode IN ( SELECT code FROM sets WHERE name = 'Hour of Devastation' )",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "sets",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 529,
+        "db_id": "card_games",
+        "question": "Find and list the names of sets which doesn't have Japanese translation but have Korean translation.",
+        "SQL": "SELECT name FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Korean' AND language NOT LIKE '%Japanese%' )",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "sets",
+            "set translations"
+        ]
+    },
+    {
+        "question_id": 530,
+        "db_id": "card_games",
+        "question": "List all the frame styles and cards Allen Williams worked on and find any banned cards if there are any.",
+        "SQL": "SELECT DISTINCT T1.frameVersion, T1.name , IIF(T2.status = 'Banned', T1.name, 'NO') FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T1.artist = 'Allen Williams'",
+        "DB_result": "card_games",
+        "TAB_result": [
+            "cards",
+            "legalities"
+        ]
+    },
+    {
+        "question_id": 531,
+        "db_id": "codebase_community",
+        "question": "Which user has a higher reputation, Harlan or Jarrod Dixon?",
+        "SQL": "SELECT DisplayName FROM users WHERE DisplayName IN ('Harlan', 'Jarrod Dixon') AND Reputation = ( SELECT MAX(Reputation) FROM users WHERE DisplayName IN ('Harlan', 'Jarrod Dixon') )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 532,
+        "db_id": "codebase_community",
+        "question": "Please list the display names of all the users whose accounts were created in the year 2011.",
+        "SQL": "SELECT DisplayName FROM users WHERE STRFTIME('%Y', CreationDate) = '2011'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 533,
+        "db_id": "codebase_community",
+        "question": "How many users last accessed the website after 2014/9/1?",
+        "SQL": "SELECT COUNT(Id) FROM users WHERE date(LastAccessDate) > '2014-09-01'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users"
+        ]
+    },
+    {
+        "question_id": 534,
+        "db_id": "codebase_community",
+        "question": "What is the display name of the user who has the most number of views?",
+        "SQL": "SELECT DisplayName FROM users WHERE Views = ( SELECT MAX(Views) FROM users )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 535,
+        "db_id": "codebase_community",
+        "question": "Among the users who have more than 100 upvotes, how many of them have more then 1 downvotes?",
+        "SQL": "SELECT COUNT(Id) FROM users WHERE Upvotes > 100 AND Downvotes > 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users"
+        ]
+    },
+    {
+        "question_id": 536,
+        "db_id": "codebase_community",
+        "question": "How many users with more than 10 views created their account after the year 2013?",
+        "SQL": "SELECT COUNT(id) FROM users WHERE STRFTIME('%Y', CreationDate) > '2013' AND Views > 10",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users"
+        ]
+    },
+    {
+        "question_id": 537,
+        "db_id": "codebase_community",
+        "question": "How many posts does the user csgillespie own?",
+        "SQL": "SELECT COUNT(T1.id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 538,
+        "db_id": "codebase_community",
+        "question": "Please list the titles of the posts owned by the user csgillespie?",
+        "SQL": "SELECT T1.Title FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 539,
+        "db_id": "codebase_community",
+        "question": "Who is the owner of the post \"Eliciting priors from experts\"?",
+        "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Title = 'Eliciting priors from experts'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts"
+        ]
+    },
+    {
+        "question_id": 540,
+        "db_id": "codebase_community",
+        "question": "What is the title of the post that is owned by csgillespie and has the highest popularity?",
+        "SQL": "SELECT T1.Title FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie' ORDER BY T1.ViewCount DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 541,
+        "db_id": "codebase_community",
+        "question": "What is the display name of the user who is the owner of the most valuable post?",
+        "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id ORDER BY T1.FavoriteCount DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "posts",
+            "comments",
+            "post History"
+        ]
+    },
+    {
+        "question_id": 542,
+        "db_id": "codebase_community",
+        "question": "What is the total number of comments of all the posts owned by csgillespie?",
+        "SQL": "SELECT SUM(T1.CommentCount) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users",
+            "comments"
+        ]
+    },
+    {
+        "question_id": 543,
+        "db_id": "codebase_community",
+        "question": "For the post that got the most number of answers owned by csgillespie, how many answers did it get?",
+        "SQL": "SELECT MAX(T1.AnswerCount) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 544,
+        "db_id": "codebase_community",
+        "question": "What is the display name of the user who last edited the post \"Examples for teaching: Correlation does not mean causation\"?",
+        "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.LastEditorUserId = T2.Id WHERE T1.Title = 'Examples for teaching: Correlation does not mean causation'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "posts",
+            "comments",
+            "post History"
+        ]
+    },
+    {
+        "question_id": 545,
+        "db_id": "codebase_community",
+        "question": "Among the posts owned by csgillespie, how many of them are root posts?",
+        "SQL": "SELECT COUNT(T1.Id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie' AND T1.ParentId IS NULL",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 546,
+        "db_id": "codebase_community",
+        "question": "Please list the display names of all the users who owns a post that is well-finished.",
+        "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.ClosedDate IS NOT NULL",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 547,
+        "db_id": "codebase_community",
+        "question": "Among the posts owned by an elder user, how many of them have a score of over 19?",
+        "SQL": "SELECT COUNT(T1.Id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Score >= 20 AND T2.Age > 65",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users",
+            "comments"
+        ]
+    },
+    {
+        "question_id": 548,
+        "db_id": "codebase_community",
+        "question": "What is the location of the owner of the post \"Eliciting priors from experts\"?",
+        "SQL": "SELECT T2.Location FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Title = 'Eliciting priors from experts'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 549,
+        "db_id": "codebase_community",
+        "question": "From which post is the tag \"bayesian\" excerpted from? Please give the body of the post.",
+        "SQL": "SELECT T2.Body FROM tags AS T1 INNER JOIN posts AS T2 ON T2.Id = T1.ExcerptPostId WHERE T1.TagName = 'bayesian'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "tags",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 550,
+        "db_id": "codebase_community",
+        "question": "From which post is the most popular tag excerpted from? Please give the body of the post.",
+        "SQL": "SELECT Body FROM posts WHERE id = ( SELECT ExcerptPostId FROM tags ORDER BY Count DESC LIMIT 1 )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "tags",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 551,
+        "db_id": "codebase_community",
+        "question": "How many badges has the user csgillespie obtained?",
+        "SQL": "SELECT COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 552,
+        "db_id": "codebase_community",
+        "question": "Please list the names of the badges obtained by csgillespie.",
+        "SQL": "SELECT T1.`Name` FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 553,
+        "db_id": "codebase_community",
+        "question": "Among the badges obtained by csgillespie, how many of them were obtained in the year 2011?",
+        "SQL": "SELECT COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE STRFTIME('%Y', T1.Date) = '2011' AND T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 554,
+        "db_id": "codebase_community",
+        "question": "What is the display name of the user who has obtained the most number of badges?",
+        "SQL": "SELECT T2.DisplayName FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id GROUP BY T2.DisplayName ORDER BY COUNT(T1.Id) DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 555,
+        "db_id": "codebase_community",
+        "question": "What is the average score of the posts owned by the user csgillespie?",
+        "SQL": "SELECT AVG(T1.Score) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 556,
+        "db_id": "codebase_community",
+        "question": "What is the average number of badges obtained by a user with over 200 views?",
+        "SQL": "SELECT CAST(COUNT(T1.Id) AS REAL) / COUNT(DISTINCT T2.DisplayName) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.Views > 200",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 557,
+        "db_id": "codebase_community",
+        "question": "Among the posts with a score of over 5, what is the percentage of them being owned by an elder user?",
+        "SQL": "SELECT CAST(SUM(IIF(T2.Age > 65, 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Score > 5",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users",
+            "comments",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 558,
+        "db_id": "codebase_community",
+        "question": "How many votes did the user No.58 take on 2010/7/19?",
+        "SQL": "SELECT COUNT(Id) FROM votes WHERE UserId = 58 AND CreationDate = '2010-07-19'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 559,
+        "db_id": "codebase_community",
+        "question": "Indicate the creation date of the maximum number of votes.",
+        "SQL": "SELECT CreationDate FROM votes GROUP BY CreationDate ORDER BY COUNT(Id) DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 560,
+        "db_id": "codebase_community",
+        "question": "Give the number of \"Revival\" badges.",
+        "SQL": "SELECT COUNT(Id) FROM badges WHERE Name = 'Revival'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges"
+        ]
+    },
+    {
+        "question_id": 561,
+        "db_id": "codebase_community",
+        "question": "What is the title for the post which got the highest score comment?",
+        "SQL": "SELECT Title FROM posts WHERE Id = ( SELECT PostId FROM comments ORDER BY Score DESC LIMIT 1 )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 562,
+        "db_id": "codebase_community",
+        "question": "For the post which got 1910 view counts, how many comments does it get?",
+        "SQL": "SELECT COUNT(T1.Id) FROM posts AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.PostId WHERE T1.ViewCount = 1910",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts"
+        ]
+    },
+    {
+        "question_id": 563,
+        "db_id": "codebase_community",
+        "question": "User No.3025 gave a comment at 20:29:39 on 2014/4/23 to a post, how many favorite counts did that post get?",
+        "SQL": "SELECT T1.FavoriteCount FROM posts AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.PostId WHERE T2.CreationDate = '2014-04-23 20:29:39.0' AND T2.UserId = 3025",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "users",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 564,
+        "db_id": "codebase_community",
+        "question": "Give the only one comment text of the post with parent id 107829.",
+        "SQL": "SELECT T2.Text FROM posts AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.PostId WHERE T1.ParentId = 107829 AND T1.CommentCount = 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 565,
+        "db_id": "codebase_community",
+        "question": "User No.23853 gave a comment to a post at 9:08:18 on 2013/7/12, was that post well-finished?",
+        "SQL": "SELECT IIF(T2.ClosedDate IS NULL, 'NOT well-finished', 'well-finished') AS resylt FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T1.UserId = 23853 AND T1.CreationDate = '2013-07-12 09:08:18.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 566,
+        "db_id": "codebase_community",
+        "question": "For the owner user of post No. 65041, what is his/her reputation points?",
+        "SQL": "SELECT T1.Reputation FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T2.Id = 65041",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 567,
+        "db_id": "codebase_community",
+        "question": "For the user with the display name of \"Tiago Pasqualini\", how many posts did he/she own?",
+        "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.DisplayName = 'Tiago Pasqualini'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 568,
+        "db_id": "codebase_community",
+        "question": "Provide the display name of the user who made the vote No.6347.",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.UserId WHERE T2.Id = 6347",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "users"
+        ]
+    },
+    {
+        "question_id": 569,
+        "db_id": "codebase_community",
+        "question": "Give the number of votes for the post about data visualization.",
+        "SQL": "SELECT COUNT(T1.Id) FROM posts AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.PostId WHERE T1.Title LIKE '%data visualization%'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "votes",
+            "tags"
+        ]
+    },
+    {
+        "question_id": 570,
+        "db_id": "codebase_community",
+        "question": "For the user whose display name is \"DatEpicCoderGuyWhoPrograms\", what is his/her badge's name?",
+        "SQL": "SELECT T2.Name FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.DisplayName = 'DatEpicCoderGuyWhoPrograms'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users",
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 571,
+        "db_id": "codebase_community",
+        "question": "For the user No.24, how many times is the number of his/her posts compared to his/her votes?",
+        "SQL": "SELECT CAST(COUNT(T2.Id) AS REAL) / COUNT(DISTINCT T1.Id) FROM votes AS T1 INNER JOIN posts AS T2 ON T1.UserId = T2.OwnerUserId WHERE T1.UserId = 24",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "posts",
+            "votes",
+            "users"
+        ]
+    },
+    {
+        "question_id": 572,
+        "db_id": "codebase_community",
+        "question": "How many views did the post titled 'Integration of Weka and/or RapidMiner into Informatica PowerCenter/Developer' get?",
+        "SQL": "SELECT ViewCount FROM posts WHERE Title = 'Integration of Weka and/or RapidMiner into Informatica PowerCenter/Developer'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts"
+        ]
+    },
+    {
+        "question_id": 573,
+        "db_id": "codebase_community",
+        "question": "Write the contents of comments with a score of 17.",
+        "SQL": "SELECT Text FROM comments WHERE Score = 17",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "posts",
+            "post History"
+        ]
+    },
+    {
+        "question_id": 574,
+        "db_id": "codebase_community",
+        "question": "Which user has the website URL listed at 'http://stackoverflow.com'",
+        "SQL": "SELECT DisplayName FROM users WHERE WebsiteUrl = 'http://stackoverflow.com'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users"
+        ]
+    },
+    {
+        "question_id": 575,
+        "db_id": "codebase_community",
+        "question": "What is the badge name that user 'SilentGhost' obtained?",
+        "SQL": "SELECT T2.Name FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.DisplayName = 'SilentGhost'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 576,
+        "db_id": "codebase_community",
+        "question": "Name the user that commented 'thank you user93!'",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.UserId WHERE T2.Text = 'thank you user93!'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "users"
+        ]
+    },
+    {
+        "question_id": 577,
+        "db_id": "codebase_community",
+        "question": "Write all comments made by user 'A Lion.'",
+        "SQL": "SELECT T2.Text FROM users AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.UserId WHERE T1.DisplayName = 'A Lion'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "users"
+        ]
+    },
+    {
+        "question_id": 578,
+        "db_id": "codebase_community",
+        "question": "Which user made a post titled 'Understanding what Dassault iSight is doing?' and how much is the reputation of the user?",
+        "SQL": "SELECT T1.DisplayName, T1.Reputation FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T2.Title = 'Understanding what Dassault iSight is doing?'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 579,
+        "db_id": "codebase_community",
+        "question": "Write all comments made on the post titled 'How does gentle boosting differ from AdaBoost?'",
+        "SQL": "SELECT T1.Text FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.Title = 'How does gentle boosting differ from AdaBoost?'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 580,
+        "db_id": "codebase_community",
+        "question": "Name 10 users with the badge name 'Necromancer.'",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Necromancer' LIMIT 10",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 581,
+        "db_id": "codebase_community",
+        "question": "Who is the editor of the post titled 'Open source tools for visualizing multi-dimensional data?'",
+        "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Title = 'Open source tools for visualizing multi-dimensional data?'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "post History",
+            "users",
+            "comments"
+        ]
+    },
+    {
+        "question_id": 582,
+        "db_id": "codebase_community",
+        "question": "List the title of posts which were edited by Vebjorn Ljosa.",
+        "SQL": "SELECT T1.Title FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'Vebjorn Ljosa'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "post History",
+            "comments",
+            "users"
+        ]
+    },
+    {
+        "question_id": 583,
+        "db_id": "codebase_community",
+        "question": "What is the total score of the posts edited by Yevgeny and include the user's website URL.",
+        "SQL": "SELECT SUM(T1.Score), T2.WebsiteUrl FROM posts AS T1 INNER JOIN users AS T2 ON T1.LastEditorUserId = T2.Id WHERE T2.DisplayName = 'Yevgeny' GROUP BY T2.WebsiteUrl",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "post History",
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 584,
+        "db_id": "codebase_community",
+        "question": "Write all the comments left by users who edited the post titled 'Why square the difference instead of taking the absolute value in standard deviation?'",
+        "SQL": "SELECT T2.Comment FROM posts AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.PostId WHERE T1.Title = 'Why square the difference instead of taking the absolute value in standard deviation?'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 585,
+        "db_id": "codebase_community",
+        "question": "How much is the total bounty amount of the post titled about 'data'",
+        "SQL": "SELECT SUM(T2.BountyAmount) FROM posts AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.PostId WHERE T1.Title LIKE '%data%'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 586,
+        "db_id": "codebase_community",
+        "question": "Which user added a bounty amount of 50 to the post title mentioning variance?",
+        "SQL": "SELECT T3.DisplayName, T1.Title FROM posts AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.PostId INNER JOIN users AS T3 ON T3.Id = T2.UserId WHERE T2.BountyAmount = 50 AND T1.Title LIKE '%variance%'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "posts",
+            "users"
+        ]
+    },
+    {
+        "question_id": 587,
+        "db_id": "codebase_community",
+        "question": "Calculate the average view count of each post tagged as 'humor' and list the title and the comment of each post.",
+        "SQL": "SELECT AVG(T2.ViewCount), T2.Title, T1.Text FROM comments AS T1 INNER JOIN posts AS T2 ON T2.Id = T1.PostId  WHERE T2.Tags = '<humor>' GROUP BY T2.Title, T1.Text ",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "comments",
+            "tags",
+            "post History"
+        ]
+    },
+    {
+        "question_id": 588,
+        "db_id": "codebase_community",
+        "question": "Give the total number of comments posted by user ID 13.",
+        "SQL": "SELECT COUNT(Id) FROM comments WHERE UserId = 13",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 589,
+        "db_id": "codebase_community",
+        "question": "Which user ID has the highest reputation?",
+        "SQL": "SELECT Id FROM users WHERE Reputation = ( SELECT MAX(Reputation) FROM users )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "badges",
+            "comments",
+            "post History",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 590,
+        "db_id": "codebase_community",
+        "question": "Which user ID has the lowest view?",
+        "SQL": "SELECT Id FROM users WHERE Views = ( SELECT MIN(Views) FROM users )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users"
+        ]
+    },
+    {
+        "question_id": 591,
+        "db_id": "codebase_community",
+        "question": "How many users are awarded with supporter badge during year 2011?",
+        "SQL": "SELECT COUNT(Id) FROM badges WHERE STRFTIME('%Y', Date) = '2011' AND Name = 'Supporter'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 592,
+        "db_id": "codebase_community",
+        "question": "How many users are awarded with more than 5 badges?",
+        "SQL": "SELECT COUNT(UserId) FROM ( SELECT UserId, COUNT(Name) AS num FROM badges GROUP BY UserId ) T WHERE T.num > 5",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 593,
+        "db_id": "codebase_community",
+        "question": "How many users from New York have a teacher and supporter badge?",
+        "SQL": "SELECT COUNT(DISTINCT T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.Name IN ('Supporter', 'Teacher') AND T2.Location = 'New York'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 594,
+        "db_id": "codebase_community",
+        "question": "Which user created post ID 1 and what is the reputation of this user?",
+        "SQL": "SELECT T2.Id, T2.Reputation FROM comments AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.PostId = 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "users"
+        ]
+    },
+    {
+        "question_id": 595,
+        "db_id": "codebase_community",
+        "question": "Which user have only one post history per post and having at least 1000 views?",
+        "SQL": "SELECT T2.UserId FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T2.PostId = T3.Id WHERE T3.ViewCount >= 1000 GROUP BY T2.UserId HAVING COUNT(DISTINCT T2.PostHistoryTypeId) = 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "posts",
+            "post History"
+        ]
+    },
+    {
+        "question_id": 596,
+        "db_id": "codebase_community",
+        "question": "Which users have posted the most comments. List out the user's badge?",
+        "SQL": "SELECT Name FROM badges AS T1 INNER JOIN comments AS T2 ON T1.UserId = t2.UserId GROUP BY T2.UserId ORDER BY COUNT(T2.UserId) DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "users"
+        ]
+    },
+    {
+        "question_id": 597,
+        "db_id": "codebase_community",
+        "question": "How many users from India have the teacher badges?",
+        "SQL": "SELECT COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.Location = 'India' AND T1.Name = 'Teacher'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 598,
+        "db_id": "codebase_community",
+        "question": "What is the percentage difference of student badges given during 2010 and 2011?",
+        "SQL": "SELECT CAST(SUM(IIF(STRFTIME('%Y', Date) = '2010', 1, 0)) AS REAL) * 100 / COUNT(Id) - CAST(SUM(IIF(STRFTIME('%Y', Date) = '2011', 1, 0)) AS REAL) * 100 / COUNT(Id) FROM badges WHERE Name = 'Student'",
+        "DB_result": "california_schools",
+        "TAB_result": [
+            "badges"
+        ]
+    },
+    {
+        "question_id": 599,
+        "db_id": "codebase_community",
+        "question": "What are the post history type IDs for post ID 3720 and how many unique users have commented on the post?",
+        "SQL": "SELECT T1.PostHistoryTypeId, (SELECT COUNT(DISTINCT UserId) FROM comments WHERE PostId = 3720) AS NumberOfUsers FROM postHistory AS T1 WHERE T1.PostId = 3720",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 600,
+        "db_id": "codebase_community",
+        "question": "List out all post that are related to post ID 61217 and what is the popularity of this post?",
+        "SQL": "SELECT T1.ViewCount FROM posts AS T1 INNER JOIN postLinks AS T2 ON T1.Id = T2.PostId WHERE T2.PostId = 61217",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "post Links",
+            "posts",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 601,
+        "db_id": "codebase_community",
+        "question": "What is the score and the link type ID for post ID 395?",
+        "SQL": "SELECT T1.Score, T2.LinkTypeId FROM posts AS T1 INNER JOIN postLinks AS T2 ON T1.Id = T2.PostId WHERE T2.PostId = 395",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "comments",
+            "post History",
+            "post Links",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 602,
+        "db_id": "codebase_community",
+        "question": "List out all post ID with score more than 60 and list out all the user ID that created these post.",
+        "SQL": "SELECT PostId, UserId FROM postHistory WHERE PostId IN ( SELECT Id FROM posts WHERE Score > 60 )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "tags",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 603,
+        "db_id": "codebase_community",
+        "question": "What is the sum of favourite count gained by user ID 686 in 2011?",
+        "SQL": "SELECT SUM(DISTINCT FavoriteCount) FROM posts WHERE Id IN ( SELECT PostId FROM postHistory WHERE UserId = 686 AND STRFTIME('%Y', CreationDate) = '2011' )",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "posts",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 604,
+        "db_id": "codebase_community",
+        "question": "What is the average of the up votes and the average user age for users creating more than 10 posts?",
+        "SQL": "SELECT AVG(T1.UpVotes), AVG(T1.Age) FROM users AS T1 INNER JOIN ( SELECT OwnerUserId, COUNT(*) AS post_count FROM posts GROUP BY OwnerUserId HAVING post_count > 10) AS T2 ON T1.Id = T2.OwnerUserId",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 605,
+        "db_id": "codebase_community",
+        "question": "How many users obtained the \"Announcer\" badge?",
+        "SQL": "SELECT COUNT(id) FROM badges WHERE Name = 'Announcer'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 606,
+        "db_id": "codebase_community",
+        "question": "List out the name of badges that users obtained on 7/19/2010 7:39:08 PM.",
+        "SQL": "SELECT Name FROM badges WHERE Date = '2010-07-19 19:39:08.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges"
+        ]
+    },
+    {
+        "question_id": 607,
+        "db_id": "codebase_community",
+        "question": "How many positive comments are there on the list?",
+        "SQL": "SELECT COUNT(id) FROM comments WHERE score > 60",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 608,
+        "db_id": "codebase_community",
+        "question": "State the detailed content of the comment which was created on 7/19/2010 7:25:47 PM.",
+        "SQL": "SELECT Text FROM comments WHERE CreationDate = '2010-07-19 19:16:14.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 609,
+        "db_id": "codebase_community",
+        "question": "How many posts have a score of 10 on the list?",
+        "SQL": "SELECT COUNT(id) FROM posts WHERE Score = 10",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "posts",
+            "comments"
+        ]
+    },
+    {
+        "question_id": 610,
+        "db_id": "codebase_community",
+        "question": "What are the name of badge that users who have the highest reputation obtained?",
+        "SQL": "SELECT T2.name FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId ORDER BY T1.Reputation DESC LIMIT 1",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 611,
+        "db_id": "codebase_community",
+        "question": "Mention the reputation of users who had obtained the badge on 7/19/2010 7:39:08 PM.",
+        "SQL": "SELECT T1.Reputation FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Date = '2010-07-19 19:39:08.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 612,
+        "db_id": "codebase_community",
+        "question": "What is the name of badge that the user whose display name is \"Pierre\" obtained?",
+        "SQL": "SELECT T2.Name FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.DisplayName = 'Pierre'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users",
+            "comments",
+            "post History",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 613,
+        "db_id": "codebase_community",
+        "question": "List out the dates that users who are located in Rochester, NY obtained their badges?",
+        "SQL": "SELECT T2.Date FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Location = 'Rochester, NY'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 614,
+        "db_id": "codebase_community",
+        "question": "Among the users who obtained the \"Teacher\" badge, calculate their percentage of users",
+        "SQL": "SELECT CAST(COUNT(T1.Id) AS REAL) * 100 / (SELECT COUNT(Id) FROM users) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Teacher'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 615,
+        "db_id": "codebase_community",
+        "question": "Among the users who obtained the \"Organizer\" badges, calculate the percentage of users who are teenagers.",
+        "SQL": "SELECT CAST(SUM(IIF(T2.Age BETWEEN 13 AND 18, 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.`Name` = 'Organizer'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
+    },
+    {
+        "question_id": 616,
+        "db_id": "codebase_community",
+        "question": "What is the comment's rating score of the post which was created on 7/19/2010 7:19:56 PM",
+        "SQL": "SELECT T1.Score FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T1.CreationDate = '2010-07-19 19:19:56.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
+            "users",
+            "votes"
+        ]
+    },
+    {
+        "question_id": 617,
+        "db_id": "codebase_community",
+        "question": "What is the detailed content of the comment of the post which was created on 7/19/2010 7:37:33 PM?",
+        "SQL": "SELECT T1.Text FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T1.CreationDate = '2010-07-19 19:37:33.0'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "comments",
+            "posts"
+        ]
+    },
+    {
+        "question_id": 618,
+        "db_id": "codebase_community",
+        "question": "List out the age of users who located in Vienna, Austria obtained the badge?",
+        "SQL": "SELECT T1.Age FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Location = 'Vienna, Austria'",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "users",
+            "badges"
+        ]
+    },
+    {
+        "question_id": 619,
+        "db_id": "codebase_community",
+        "question": "How many adults who obtained the badge Supporter?",
+        "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Supporter' AND T1.Age BETWEEN 19 AND 65",
+        "DB_result": "codebase_community",
+        "TAB_result": [
+            "badges",
+            "users"
+        ]
     }
 ]
