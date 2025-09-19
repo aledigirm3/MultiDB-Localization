@@ -1,6 +1,7 @@
 import json
 import paths
-from typing import Dict
+import re
+from typing import Dict, List
 
 
 def get_databases(file_path: str) -> list:
@@ -193,6 +194,38 @@ def create_table_name_mapping(filename: str) -> Dict[str, Dict[str, str]]:
 
     return output_dict
 
+def get_sql_table_names(sql_query: str) -> List[str]:
+    """
+    Extracts a list of table names from any given SQL query.
+    Args:
+        sql_query: A string containing the SQL query.
+
+    Returns:
+        A list of unique table names found in the query. Returns an
+        empty list if no tables are found.
+    """
+    cte_pattern = re.compile(r"""
+    WITH\s+([\w`"]+)
+    \s+AS\s*\(
+""", re.IGNORECASE | re.VERBOSE)
+
+    ctes = set(m.group(1) for m in cte_pattern.finditer(sql_query))
+
+    table_pattern = re.compile(r"""
+        (?:FROM|JOIN)\s+
+        ([`"]?[a-zA-Z_][\w$]*[`"]?)
+    """, re.IGNORECASE | re.VERBOSE)
+
+    tables = table_pattern.findall(sql_query)
+
+    result = []
+    for t in tables:
+        if t not in ctes and t not in result:
+            result.append(t)
+
+    return result
+
+
 if __name__ == '__main__':
 
     "Used to call utility functions."
@@ -202,6 +235,7 @@ if __name__ == '__main__':
 
     #file_path = paths.DATASETS.BIRDdev.value + 'dev.json'
     #print_sql_queries(file_path)
+    #print(get_sql_table_names("SELECT product_name, order_date FROM marketing.orders WHERE status = 'shipped';"))
 
     #remove_unused_databases_spider1()
 
