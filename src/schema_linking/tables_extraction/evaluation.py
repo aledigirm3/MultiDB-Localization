@@ -65,14 +65,22 @@ def TAB_extraction_eval(dataset):
         if is_strict:
             strict_recall_samples += 1
 
+            # Compute reduction (1.0 means that tab_original_result = tab_needed)
             result_att = 0
+            len_att_table_needed = 0
             for t in tab_result:
-                result_att += len(database_schemas[db][t])
+                if t not in tab_needed:
+                    result_att += len(database_schemas[db][t])
+                else:
+                    len_att_table_needed += len(database_schemas[db][t])
             
             db_schema = database_schemas[db]
-            total_att = sum(len(columns) for columns in db_schema.values())
+            total_att = sum(len(columns) for columns in db_schema.values()) - len_att_table_needed
 
-            reduction = 1 - (result_att / total_att)
+            if result_att == 0:
+                reduction = 1
+            else:
+                reduction = 1 - (result_att / total_att)
             reductions.append(reduction)
 
     strict_recall = strict_recall_samples / samples
