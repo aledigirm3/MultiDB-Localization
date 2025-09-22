@@ -14,7 +14,7 @@ def TAB_extraction_eval(dataset):
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
     elif dataset == 'SPIDERdev1':
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'SPIDERdev1_TAB_extractor_checkpoint.json'
+        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'SPIDERdev1_TAB_extractor.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
     else:
@@ -43,17 +43,23 @@ def TAB_extraction_eval(dataset):
                 wrong_db.append(1)
             else:
                 wrong_db.append(0)
-        else:
-            continue
+                continue
 
         tab_original_result = [table_name_mapping[db][name] for name in tab_result]
         tab_needed = get_sql_table_names(sample['SQL'])
+        # To lower case
+        tab_original_result = [s.lower() for s in tab_original_result]
+        tab_needed = [s.lower() for s in tab_needed]
         is_strict = True
 
 
         for tab in tab_needed:
             if tab not in tab_original_result:
                 is_strict = False
+                print(sample['question_id'])
+                print(tab_needed)
+                print(tab_original_result)
+                print("\n\n")
                 break
         
         if is_strict:
@@ -70,12 +76,14 @@ def TAB_extraction_eval(dataset):
             reductions.append(reduction)
 
     strict_recall = strict_recall_samples / samples
+    table_strict_recall = strict_recall_samples / (samples - len(wrong_db))
     avg_reduction = sum(reductions) / len(reductions)
-    print(f"\n- {GREEN}STRICT RECALL:{RESET} {strict_recall}")
+    print(f"\n- {GREEN}STRICT RECALL (for table extraction only):{RESET} {table_strict_recall}")
+    print(f"- {GREEN}STRICT RECALL:{RESET} {strict_recall}")
     print(f"- {GREEN}REDUCTION avg:{RESET} {avg_reduction}")
     if len(wrong_db) != 0:
         accuracy_wrong_db = sum(wrong_db) / len(wrong_db)
-        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}")
+        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}\n")
     else:
         print(f"- {CYAN}no wrong DB detected!:{RESET}\n")
 
@@ -83,5 +91,5 @@ def TAB_extraction_eval(dataset):
 
 if __name__ == '__main__':
 
-    dataset = 'BIRDdev'
+    dataset = 'SPIDERdev1'
     TAB_extraction_eval(dataset)
