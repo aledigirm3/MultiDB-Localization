@@ -143,6 +143,17 @@ def extract_tables(dataset):
         os.makedirs(results_folder, exist_ok=True)
         result_file_path = os.path.join(results_folder, "BIRDdev_TAB_extractor.json")
 
+    elif dataset == 'SPIDERdev1':
+        with open('./SPIDERdev1_table_descriptions.json', "r", encoding="utf-8") as f:
+            table_descriptions = json.load(f)
+
+        with open('../../' + paths.RESULTS.DB_RETRIEVAL.value + 'SPIDERdev1_DB_extractor.json', "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
+        os.makedirs(results_folder, exist_ok=True)
+        result_file_path = os.path.join(results_folder, "SPIDERdev1_TAB_extractor.json")
+
     result_list = []
 
     for sample in data:
