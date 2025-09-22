@@ -149,6 +149,9 @@ def extract_tables(dataset):
 
         with open('../../' + paths.RESULTS.DB_RETRIEVAL.value + 'SPIDERdev1_DB_extractor.json', "r", encoding="utf-8") as f:
             data = json.load(f)
+    else:
+        print(f"{RED}INVALID DATASET!{RESET}")
+        sys.exit(1)
 
         results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
         os.makedirs(results_folder, exist_ok=True)
