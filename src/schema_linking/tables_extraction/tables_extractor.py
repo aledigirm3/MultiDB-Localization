@@ -149,13 +149,14 @@ def extract_tables(dataset):
 
         with open('../../' + paths.RESULTS.DB_RETRIEVAL.value + 'SPIDERdev1_DB_extractor.json', "r", encoding="utf-8") as f:
             data = json.load(f)
-    else:
-        print(f"{RED}INVALID DATASET!{RESET}")
-        sys.exit(1)
 
         results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
         os.makedirs(results_folder, exist_ok=True)
         result_file_path = os.path.join(results_folder, "SPIDERdev1_TAB_extractor.json")
+        
+    else:
+        print(f"{RED}INVALID DATASET!{RESET}")
+        sys.exit(1)
 
     result_list = []
 
@@ -190,5 +191,5 @@ def extract_tables(dataset):
 
 if __name__ == '__main__':
 
-    dataset = 'BIRDdev'
+    dataset = 'SPIDERdev1'
     extract_tables(dataset)
