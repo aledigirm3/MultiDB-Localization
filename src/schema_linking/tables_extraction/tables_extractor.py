@@ -162,7 +162,7 @@ def extract_tables(dataset):
 
     for sample in data:
         query = sample['question']
-        db = sample['db_id']
+        db = sample['DB_result']
 
         tables = f"database: {db}\n"
         for table, desc in table_descriptions[db].items():
