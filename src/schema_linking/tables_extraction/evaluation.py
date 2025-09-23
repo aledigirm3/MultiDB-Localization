@@ -43,6 +43,7 @@ def TAB_extraction_eval(dataset):
         if db != sample['DB_result']:
             if len(tab_result) == 1 and tab_result[0] == 'NONE':
                 wrong_db.append(1)
+                continue
             else:
                 wrong_db.append(0)
                 continue
