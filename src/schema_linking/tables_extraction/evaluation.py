@@ -10,10 +10,12 @@ import paths
 def TAB_extraction_eval(dataset):
 
     if dataset == 'BIRDdev':
+        print(f"\n{CYAN}BIRDdev TAB extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor_checkpoint.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
     elif dataset == 'SPIDERdev1':
+        print(f"\n{CYAN}SPIDERdev1 TAB extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'SPIDERdev1_TAB_extractor.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
