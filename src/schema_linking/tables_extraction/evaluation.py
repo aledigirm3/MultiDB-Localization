@@ -11,7 +11,7 @@ def TAB_extraction_eval(dataset):
 
     if dataset == 'BIRDdev':
         print(f"\n{CYAN}BIRDdev TAB extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor_checkpoint.json'
+        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
     elif dataset == 'SPIDERdev1':
@@ -47,6 +47,10 @@ def TAB_extraction_eval(dataset):
             else:
                 wrong_db.append(0)
                 continue
+        
+        # Correct DB but no table identified by llm
+        if len(tab_result) == 1 and tab_result[0] == 'NONE':
+            continue
 
         tab_original_result = [table_name_mapping[db][name] for name in tab_result]
         tab_needed = get_sql_table_names(sample['SQL'])
@@ -59,10 +63,6 @@ def TAB_extraction_eval(dataset):
         for tab in tab_needed:
             if tab not in tab_original_result:
                 is_strict = False
-                print(sample['question_id'])
-                print(tab_needed)
-                print(tab_original_result)
-                print("\n\n")
                 break
         
         if is_strict:
@@ -101,6 +101,9 @@ def TAB_extraction_eval(dataset):
 
 
 if __name__ == '__main__':
+
+    dataset = 'BIRDdev'
+    TAB_extraction_eval(dataset)
 
     dataset = 'SPIDERdev1'
     TAB_extraction_eval(dataset)
