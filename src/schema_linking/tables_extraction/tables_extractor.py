@@ -191,5 +191,8 @@ def extract_tables(dataset):
 
 if __name__ == '__main__':
 
+    dataset = 'BIRDdev'
+    extract_tables(dataset)
+
     dataset = 'SPIDERdev1'
     extract_tables(dataset)
