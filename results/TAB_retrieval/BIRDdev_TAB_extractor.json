@@ -17,7 +17,8 @@
         "SQL": "SELECT `Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)` FROM frpm WHERE `Educational Option Type` = 'Continuation School' AND `Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)` IS NOT NULL ORDER BY `Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)` ASC LIMIT 3",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals"
+            "free and reduced-price meals",
+            "schools"
         ]
     },
     {
@@ -141,7 +142,8 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
-            "sat scores"
+            "sat scores",
+            "schools"
         ]
     },
     {
@@ -173,7 +175,6 @@
         "SQL": "SELECT T1.District FROM schools AS T1 INNER JOIN satscores AS T2 ON T1.CDSCode = T2.cds WHERE T1.StatusType = 'Active' ORDER BY T2.AvgScrRead DESC LIMIT 1",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals",
             "sat scores",
             "schools"
         ]
@@ -185,7 +186,6 @@
         "SQL": "SELECT COUNT(T1.CDSCode) FROM schools AS T1 INNER JOIN satscores AS T2 ON T1.CDSCode = T2.cds WHERE T1.StatusType = 'Merged' AND T2.NumTstTakr < 100 AND T1.County = 'Lake'",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals",
             "sat scores",
             "schools"
         ]
@@ -210,6 +210,7 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "schools",
+            "free and reduced-price meals",
             "sat scores"
         ]
     },
@@ -231,7 +232,8 @@
         "SQL": "SELECT COUNT(T1.`School Name`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Amador' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals"
+            "free and reduced-price meals",
+            "schools"
         ]
     },
     {
@@ -252,6 +254,7 @@
         "SQL": "SELECT sname FROM satscores WHERE cname = 'Contra Costa' AND sname IS NOT NULL ORDER BY NumTstTakr DESC LIMIT 1",
         "DB_result": "california_schools",
         "TAB_result": [
+            "free and reduced-price meals",
             "sat scores",
             "schools"
         ]
@@ -286,6 +289,7 @@
         "SQL": "SELECT T1.sname, T2.`Charter Funding Type` FROM satscores AS T1 INNER JOIN frpm AS T2 ON T1.cds = T2.CDSCode WHERE T2.`District Name` LIKE 'Riverside%' GROUP BY T1.sname, T2.`Charter Funding Type` HAVING CAST(SUM(T1.AvgScrMath) AS REAL) / COUNT(T1.cds) > 400",
         "DB_result": "california_schools",
         "TAB_result": [
+            "free and reduced-price meals",
             "sat scores",
             "schools"
         ]
@@ -467,9 +471,8 @@
         "SQL": "SELECT School FROM (SELECT T2.School,T1.AvgScrRead, RANK() OVER (PARTITION BY T2.County ORDER BY T1.AvgScrRead DESC) AS rnk FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE T2.Virtual = 'F' ) ranked_schools WHERE rnk <= 5",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals",
-            "sat scores",
-            "schools"
+            "schools",
+            "sat scores"
         ]
     },
     {
@@ -549,7 +552,6 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
-            "sat scores",
             "schools"
         ]
     },
@@ -626,6 +628,8 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN County = 'Colusa' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN County = 'Humboldt' THEN 1 ELSE 0 END) FROM schools WHERE MailState = 'CA'",
         "DB_result": "california_schools",
         "TAB_result": [
+            "free and reduced-price meals",
+            "sat scores",
             "schools"
         ]
     },
@@ -677,8 +681,8 @@
         "SQL": "SELECT Website FROM schools WHERE County = 'San Joaquin' AND Virtual = 'P' AND Charter = 1",
         "DB_result": "california_schools",
         "TAB_result": [
-            "schools",
-            "free and reduced-price meals"
+            "free and reduced-price meals",
+            "schools"
         ]
     },
     {
@@ -744,8 +748,8 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
-            "schools",
-            "sat scores"
+            "sat scores",
+            "schools"
         ]
     },
     {
@@ -789,6 +793,7 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
+            "sat scores",
             "schools"
         ]
     },
@@ -899,7 +904,6 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
-            "sat scores",
             "schools"
         ]
     },
@@ -964,8 +968,8 @@
         "DB_result": "california_schools",
         "TAB_result": [
             "free and reduced-price meals",
-            "sat scores",
-            "schools"
+            "schools",
+            "sat scores"
         ]
     },
     {
@@ -999,8 +1003,9 @@
         "TAB_result": [
             "account",
             "district",
+            "transaction",
             "card",
-            "transaction"
+            "disposition"
         ]
     },
     {
@@ -1054,8 +1059,8 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "account",
             "disposition",
+            "account",
             "district"
         ]
     },
@@ -1066,12 +1071,9 @@
         "SQL": "SELECT T1.account_id  FROM account AS T1 INNER JOIN disp AS T2 ON T1.account_id = T2.account_id INNER JOIN client AS T3 ON T2.client_id = T3.client_id INNER JOIN district AS T4 on T4.district_id = T1.district_id WHERE T2.client_id = ( SELECT client_id FROM client ORDER BY birth_date DESC LIMIT 1) GROUP BY T4.A11, T1.account_id",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "loan",
-            "order",
-            "transaction",
-            "disposition",
             "client",
+            "disposition",
+            "account",
             "district"
         ]
     },
@@ -1083,8 +1085,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
+            "disposition",
             "account",
-            "disposition"
+            "card"
         ]
     },
     {
@@ -1094,11 +1097,11 @@
         "SQL": "SELECT T2.client_id FROM account AS T1 INNER JOIN disp AS T2 ON T1.account_id = T2.account_id WHERE T1.frequency = 'POPLATEK PO OBRATU' AND T2.type = 'DISPONENT'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "card",
             "client",
             "disposition",
-            "transaction"
+            "transaction",
+            "card",
+            "account"
         ]
     },
     {
@@ -1109,8 +1112,7 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "loan",
-            "transaction"
+            "loan"
         ]
     },
     {
@@ -1131,8 +1133,10 @@
         "SQL": "SELECT COUNT(T2.client_id) FROM district AS T1 INNER JOIN client AS T2 ON T1.district_id = T2.district_id WHERE T2.gender = 'F' AND STRFTIME('%Y', T2.birth_date) < '1950' AND T1.A2 = 'Sokolov'",
         "DB_result": "financial",
         "TAB_result": [
+            "client",
             "account",
-            "client"
+            "district",
+            "disposition"
         ]
     },
     {
@@ -1188,6 +1192,8 @@
         "TAB_result": [
             "loan",
             "account",
+            "transaction",
+            "client",
             "district"
         ]
     },
@@ -1200,6 +1206,7 @@
         "TAB_result": [
             "card",
             "disposition",
+            "account",
             "client",
             "transaction"
         ]
@@ -1212,9 +1219,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "disposition",
             "account",
-            "district"
+            "district",
+            "disposition"
         ]
     },
     {
@@ -1225,9 +1232,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "loan",
+            "account",
             "disposition",
             "client",
-            "account",
             "transaction"
         ]
     },
@@ -1238,8 +1245,8 @@
         "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'F' AND T2.A2 = 'Jesenik'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
             "client",
+            "account",
             "disposition"
         ]
     },
@@ -1252,7 +1259,8 @@
         "TAB_result": [
             "transaction",
             "disposition",
-            "client"
+            "client",
+            "account"
         ]
     },
     {
@@ -1291,7 +1299,9 @@
         "TAB_result": [
             "loan",
             "disposition",
-            "client"
+            "client",
+            "account",
+            "transaction"
         ]
     },
     {
@@ -1306,7 +1316,6 @@
             "disposition",
             "district",
             "loan",
-            "order",
             "transaction"
         ]
     },
@@ -1328,11 +1337,11 @@
         "SQL": "SELECT CAST((SUM(IIF(T3.date = '1998-12-27', T3.balance, 0)) - SUM(IIF(T3.date = '1993-03-22', T3.balance, 0))) AS REAL) * 100 / SUM(IIF(T3.date = '1993-03-22', T3.balance, 0)) FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id INNER JOIN trans AS T3 ON T3.account_id = T2.account_id WHERE T1.date = '1993-07-05'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
             "client",
-            "disposition",
             "loan",
-            "transaction"
+            "disposition",
+            "transaction",
+            "account"
         ]
     },
     {
@@ -1352,8 +1361,8 @@
         "SQL": "SELECT CAST(SUM(status = 'C') AS REAL) * 100 / COUNT(account_id) FROM loan WHERE amount < 100000",
         "DB_result": "financial",
         "TAB_result": [
-            "loan",
-            "account"
+            "account",
+            "loan"
         ]
     },
     {
@@ -1364,12 +1373,12 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "card",
             "disposition",
             "loan",
             "order",
             "transaction",
-            "district"
+            "district",
+            "card"
         ]
     },
     {
@@ -1379,9 +1388,9 @@
         "SQL": "SELECT T1.account_id, T1.frequency FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'east Bohemia' AND STRFTIME('%Y', T1.date) BETWEEN '1995' AND '2000'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
             "client",
             "disposition",
+            "account",
             "district"
         ]
     },
@@ -1393,12 +1402,7 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "client",
-            "district",
-            "disposition",
-            "loan",
-            "order",
-            "transaction"
+            "district"
         ]
     },
     {
@@ -1448,10 +1452,11 @@
         "DB_result": "financial",
         "TAB_result": [
             "loan",
-            "client",
-            "disposition",
             "account",
-            "district"
+            "disposition",
+            "client",
+            "district",
+            "transaction"
         ]
     },
     {
@@ -1462,7 +1467,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "district"
+            "district",
+            "loan",
+            "transaction",
+            "client"
         ]
     },
     {
@@ -1488,7 +1496,9 @@
         "TAB_result": [
             "client",
             "disposition",
-            "district"
+            "account",
+            "district",
+            "order"
         ]
     },
     {
@@ -1501,7 +1511,8 @@
             "transaction",
             "account",
             "district",
-            "card"
+            "card",
+            "disposition"
         ]
     },
     {
@@ -1512,10 +1523,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "account",
             "district",
+            "card",
             "disposition",
-            "card"
+            "account"
         ]
     },
     {
@@ -1537,7 +1548,6 @@
         "TAB_result": [
             "loan",
             "client",
-            "account",
             "disposition"
         ]
     },
@@ -1558,8 +1568,8 @@
         "SQL": "SELECT COUNT(T2.account_id) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id GROUP BY T1.A16 ORDER BY T1.A16 DESC LIMIT 1",
         "DB_result": "financial",
         "TAB_result": [
-            "district",
-            "account"
+            "account",
+            "district"
         ]
     },
     {
@@ -1572,8 +1582,6 @@
             "account",
             "card",
             "disposition",
-            "loan",
-            "order",
             "transaction"
         ]
     },
@@ -1584,8 +1592,8 @@
         "SQL": "SELECT COUNT(T1.account_id) FROM account AS T1 INNER JOIN loan AS T2 ON T1.account_id = T2.account_id WHERE T2.date BETWEEN '1995-01-01' AND '1997-12-31' AND T1.frequency = 'POPLATEK MESICNE' AND T2.amount >= 250000",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "loan"
+            "loan",
+            "account"
         ]
     },
     {
@@ -1598,10 +1606,7 @@
             "account",
             "client",
             "district",
-            "loan",
-            "disposition",
-            "order",
-            "transaction"
+            "loan"
         ]
     },
     {
@@ -1611,9 +1616,9 @@
         "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'M' AND T2.A15 = (SELECT T3.A15 FROM district AS T3 ORDER BY T3.A15 DESC LIMIT 1, 1)",
         "DB_result": "financial",
         "TAB_result": [
-            "district",
+            "account",
             "client",
-            "account"
+            "district"
         ]
     },
     {
@@ -1635,7 +1640,6 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "client",
             "district"
         ]
     },
@@ -1659,9 +1663,10 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "gas stations",
+            "transactions",
             "products",
-            "transactions"
+            "gas stations",
+            "year and month"
         ]
     },
     {
@@ -1681,11 +1686,11 @@
         "SQL": "SELECT AVG(T4.amount) FROM card AS T1 INNER JOIN disp AS T2 ON T1.disp_id = T2.disp_id INNER JOIN account AS T3 ON T2.account_id = T3.account_id INNER JOIN trans AS T4 ON T3.account_id = T4.account_id WHERE STRFTIME('%Y', T4.date) = '1998' AND T4.operation = 'VYBER KARTOU'",
         "DB_result": "financial",
         "TAB_result": [
+            "account",
+            "card",
             "client",
             "disposition",
-            "account",
-            "transaction",
-            "card"
+            "transaction"
         ]
     },
     {
@@ -1697,8 +1702,9 @@
         "TAB_result": [
             "client",
             "disposition",
+            "transaction",
             "card",
-            "transaction"
+            "account"
         ]
     },
     {
@@ -1709,10 +1715,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "account",
             "disposition",
             "card",
-            "loan"
+            "loan",
+            "account"
         ]
     },
     {
@@ -1722,9 +1728,9 @@
         "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'F' AND T2.A3 = 'south Bohemia'",
         "DB_result": "financial",
         "TAB_result": [
+            "account",
             "client",
             "disposition",
-            "account",
             "district"
         ]
     },
@@ -1749,10 +1755,10 @@
         "TAB_result": [
             "account",
             "card",
-            "client",
             "disposition",
             "loan",
-            "district"
+            "district",
+            "client"
         ]
     },
     {
@@ -1763,9 +1769,11 @@
         "DB_result": "financial",
         "TAB_result": [
             "account",
-            "client",
-            "district",
-            "transaction"
+            "disposition",
+            "loan",
+            "order",
+            "transaction",
+            "district"
         ]
     },
     {
@@ -1775,9 +1783,9 @@
         "SQL": "SELECT DISTINCT T1.A2 FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id INNER JOIN trans AS T3 ON T2.account_id = T3.account_id WHERE T3.type = 'VYDAJ'",
         "DB_result": "financial",
         "TAB_result": [
-            "transaction",
             "account",
-            "district"
+            "district",
+            "transaction"
         ]
     },
     {
@@ -1788,7 +1796,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "district",
-            "account"
+            "account",
+            "loan",
+            "transaction"
         ]
     },
     {
@@ -1798,8 +1808,7 @@
         "SQL": "SELECT COUNT(T1.card_id) FROM card AS T1 INNER JOIN disp AS T2 ON T1.disp_id = T2.disp_id WHERE T1.type = 'classic' AND T2.type = 'OWNER'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "legalities"
+            "cards"
         ]
     },
     {
@@ -1831,9 +1840,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "loan",
-            "account",
             "disposition",
-            "client"
+            "client",
+            "account"
         ]
     },
     {
@@ -1954,9 +1963,9 @@
         "SQL": "SELECT T2.client_id FROM card AS T1 INNER JOIN disp AS T2 ON T1.disp_id = T2.disp_id WHERE T1.type = 'junior' AND T1.issued >= '1997-01-01'",
         "DB_result": "financial",
         "TAB_result": [
+            "client",
             "card",
-            "disposition",
-            "client"
+            "disposition"
         ]
     },
     {
@@ -1981,7 +1990,8 @@
         "TAB_result": [
             "loan",
             "client",
-            "disposition"
+            "disposition",
+            "account"
         ]
     },
     {
@@ -1992,9 +2002,8 @@
         "DB_result": "financial",
         "TAB_result": [
             "card",
-            "disposition",
             "transaction",
-            "account"
+            "disposition"
         ]
     },
     {
@@ -2061,10 +2070,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "loan",
             "disposition",
-            "transaction",
-            "account"
+            "loan",
+            "account",
+            "transaction"
         ]
     },
     {
@@ -2074,10 +2083,12 @@
         "SQL": "SELECT T4.balance, T1.gender FROM client AS T1 INNER JOIN disp AS T2 ON T1.client_id = T2.client_id INNER JOIN account AS T3 ON T2.account_id =T3.account_id INNER JOIN trans AS T4 ON T3.account_id = T4.account_id WHERE T1.client_id = 4 AND T4.trans_id = 851",
         "DB_result": "financial",
         "TAB_result": [
+            "account",
             "client",
             "disposition",
-            "transaction",
-            "account"
+            "loan",
+            "order",
+            "transaction"
         ]
     },
     {
@@ -2088,7 +2099,8 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "transactions"
+            "transactions",
+            "year and month"
         ]
     },
     {
@@ -2124,8 +2136,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "loan",
-            "disposition"
+            "disposition",
+            "account",
+            "loan"
         ]
     },
     {
@@ -2136,9 +2149,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
+            "account",
             "disposition",
-            "transaction",
-            "order"
+            "transaction"
         ]
     },
     {
@@ -2150,7 +2163,8 @@
         "TAB_result": [
             "account",
             "client",
-            "district"
+            "district",
+            "loan"
         ]
     },
     {
@@ -2173,8 +2187,8 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "disposition",
-            "account"
+            "account",
+            "disposition"
         ]
     },
     {
@@ -2219,9 +2233,9 @@
         "SQL": "SELECT T3.account_id FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN account AS T3 ON T2.district_id = T3.district_id INNER JOIN disp AS T4 ON T1.client_id = T4.client_id AND T4.account_id = T3.account_id  WHERE T1.gender = 'F' ORDER BY T1.birth_date ASC, T2.A11 ASC LIMIT 1",
         "DB_result": "financial",
         "TAB_result": [
+            "account",
             "client",
             "disposition",
-            "account",
             "district"
         ]
     },
@@ -2255,7 +2269,8 @@
         "DB_result": "financial",
         "TAB_result": [
             "loan",
-            "transaction"
+            "transaction",
+            "account"
         ]
     },
     {
@@ -2266,6 +2281,7 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
+            "account",
             "district",
             "disposition",
             "loan",
@@ -2282,8 +2298,8 @@
             "client",
             "card",
             "disposition",
-            "loan",
-            "account"
+            "account",
+            "loan"
         ]
     },
     {
@@ -2316,7 +2332,6 @@
         "TAB_result": [
             "atom",
             "bond",
-            "connected",
             "molecule"
         ]
     },
@@ -2338,8 +2353,8 @@
         "SQL": "SELECT COUNT(DISTINCT T2.molecule_id) FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'na' AND T2.label = '-'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "molecule",
-            "atom"
+            "atom",
+            "molecule"
         ]
     },
     {
@@ -2403,7 +2418,6 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "bond",
             "molecule"
         ]
     },
@@ -2415,9 +2429,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "bond",
             "connected",
-            "molecule"
+            "bond"
         ]
     },
     {
@@ -2522,7 +2535,8 @@
         "TAB_result": [
             "atom",
             "bond",
-            "connected"
+            "connected",
+            "molecule"
         ]
     },
     {
@@ -2545,9 +2559,9 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "molecule",
             "connected",
-            "bond"
+            "bond",
+            "molecule"
         ]
     },
     {
@@ -2580,9 +2594,7 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "molecule",
-            "bond",
-            "connected"
+            "molecule"
         ]
     },
     {
@@ -2616,8 +2628,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "bond",
-            "connected"
+            "connected",
+            "bond"
         ]
     },
     {
@@ -2627,6 +2639,7 @@
         "SQL": "SELECT T.bond_id FROM connected AS T WHERE T.atom_id2 = 'TR000_2'",
         "DB_result": "toxicology",
         "TAB_result": [
+            "atom",
             "bond",
             "connected",
             "molecule"
@@ -2650,9 +2663,8 @@
         "SQL": "SELECT ROUND(CAST(COUNT(CASE WHEN T.bond_type = '=' THEN T.bond_id ELSE NULL END) AS REAL) * 100 / COUNT(T.bond_id),5) FROM bond AS T WHERE T.molecule_id = 'TR008'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "atom",
-            "bond",
-            "molecule"
+            "molecule",
+            "bond"
         ]
     },
     {
@@ -2683,8 +2695,8 @@
         "SQL": "SELECT DISTINCT T.bond_type FROM bond AS T WHERE T.molecule_id = 'TR000'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "molecule",
-            "bond"
+            "bond",
+            "molecule"
         ]
     },
     {
@@ -2717,8 +2729,9 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "bond",
+            "connected",
             "molecule",
-            "connected"
+            "atom"
         ]
     },
     {
@@ -2728,9 +2741,7 @@
         "SQL": "SELECT DISTINCT T2.bond_id FROM atom AS T1 INNER JOIN connected AS T2 ON T1.atom_id = T2.atom_id WHERE T1.molecule_id = 'TR006' ORDER BY T2.bond_id LIMIT 2",
         "DB_result": "toxicology",
         "TAB_result": [
-            "atom",
             "bond",
-            "connected",
             "molecule"
         ]
     },
@@ -2765,9 +2776,9 @@
         "SQL": "SELECT T1.bond_type, T2.atom_id, T2.atom_id2 FROM bond AS T1 INNER JOIN connected AS T2 ON T1.bond_id = T2.bond_id WHERE T2.bond_id = 'TR001_6_9'",
         "DB_result": "toxicology",
         "TAB_result": [
+            "atom",
             "bond",
-            "connected",
-            "atom"
+            "connected"
         ]
     },
     {
@@ -2925,8 +2936,8 @@
         "SQL": "SELECT T.molecule_id FROM ( SELECT T3.molecule_id, COUNT(T1.bond_type) FROM bond AS T1 INNER JOIN molecule AS T3 ON T1.molecule_id = T3.molecule_id WHERE T3.label = '+' AND T1.bond_type = '=' GROUP BY T3.molecule_id ORDER BY COUNT(T1.bond_type) DESC LIMIT 1 ) AS T",
         "DB_result": "toxicology",
         "TAB_result": [
-            "molecule",
-            "bond"
+            "bond",
+            "molecule"
         ]
     },
     {
@@ -2948,7 +2959,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "connected"
+            "connected",
+            "bond"
         ]
     },
     {
@@ -2982,7 +2994,7 @@
         "SQL": "SELECT ROUND(CAST(COUNT(CASE WHEN T2.label = '+' THEN T1.bond_id ELSE NULL END) AS REAL) * 100 / COUNT(T1.bond_id),5) FROM bond AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.bond_type = '-'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "NONE"
+            "bond"
         ]
     },
     {
@@ -3014,8 +3026,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "connected",
-            "bond"
+            "bond",
+            "connected"
         ]
     },
     {
@@ -3093,6 +3105,8 @@
         "SQL": "SELECT T.molecule_id FROM molecule AS T WHERE T.label = '-'",
         "DB_result": "toxicology",
         "TAB_result": [
+            "atom",
+            "bond",
             "molecule"
         ]
     },
@@ -3161,9 +3175,9 @@
         "SQL": "SELECT T2.bond_id, T2.atom_id2, T1.element AS flag_have_CaCl FROM atom AS T1 INNER JOIN connected AS T2 ON T2.atom_id = T1.atom_id WHERE T2.bond_id = 'TR001_1_8' AND (T1.element = 'c1' OR T1.element = 'c')",
         "DB_result": "toxicology",
         "TAB_result": [
-            "atom",
+            "bond",
             "connected",
-            "bond"
+            "atom"
         ]
     },
     {
@@ -3232,8 +3246,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "connected",
-            "bond"
+            "bond",
+            "connected"
         ]
     },
     {
@@ -3343,8 +3357,10 @@
         "SQL": "SELECT CAST(COUNT(CASE WHEN T.bond_type = '=' THEN T.bond_id ELSE NULL END) AS REAL) * 100 / COUNT(T.bond_id) FROM bond AS T WHERE T.molecule_id = 'TR047'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "molecule",
-            "bond"
+            "atom",
+            "bond",
+            "connected",
+            "molecule"
         ]
     },
     {
@@ -3397,6 +3413,7 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
+            "bond",
             "molecule"
         ]
     },
@@ -3519,8 +3536,8 @@
         "SQL": "SELECT COUNT(T1.bond_id), T2.label FROM bond AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.bond_type = '=' AND T2.molecule_id = 'TR006' GROUP BY T2.label",
         "DB_result": "toxicology",
         "TAB_result": [
-            "molecule",
-            "bond"
+            "bond",
+            "molecule"
         ]
     },
     {
@@ -3579,8 +3596,8 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "bond",
-            "connected"
+            "connected",
+            "bond"
         ]
     },
     {
@@ -3692,6 +3709,7 @@
         "TAB_result": [
             "atom",
             "bond",
+            "connected",
             "molecule"
         ]
     },
@@ -3748,9 +3766,6 @@
         "SQL": "SELECT label FROM molecule AS T WHERE T.molecule_id = 'TR000'",
         "DB_result": "toxicology",
         "TAB_result": [
-            "atom",
-            "bond",
-            "connected",
             "molecule"
         ]
     },
@@ -3798,8 +3813,6 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "bond",
-            "connected",
             "molecule"
         ]
     },
@@ -3880,8 +3893,7 @@
         "DB_result": "toxicology",
         "TAB_result": [
             "atom",
-            "molecule",
-            "connected"
+            "molecule"
         ]
     },
     {
@@ -3904,7 +3916,9 @@
         "SQL": "SELECT COUNT(DISTINCT T1.molecule_id) FROM molecule AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T2.bond_type = '#' AND T1.label = '-'",
         "DB_result": "toxicology",
         "TAB_result": [
+            "atom",
             "bond",
+            "connected",
             "molecule"
         ]
     },
@@ -4048,7 +4062,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "ruling"
         ]
     },
@@ -4071,8 +4084,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
-            "set translations"
+            "foreign data"
         ]
     },
     {
@@ -4105,8 +4117,7 @@
         "SQL": "SELECT COUNT(type) FROM cards WHERE artist = 'Aaron Boyd'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data"
+            "cards"
         ]
     },
     {
@@ -4168,8 +4179,7 @@
         "TAB_result": [
             "cards",
             "sets",
-            "set translations",
-            "foreign data"
+            "set translations"
         ]
     },
     {
@@ -4180,9 +4190,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
-            "legalities",
-            "ruling"
+            "legalities"
         ]
     },
     {
@@ -4193,7 +4201,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "ruling"
         ]
     },
@@ -4311,9 +4318,7 @@
         "SQL": "SELECT DISTINCT name FROM cards WHERE artist = 'Aaron Boyd'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
-            "sets"
+            "cards"
         ]
     },
     {
@@ -4333,12 +4338,7 @@
         "SQL": "SELECT id FROM cards WHERE convertedManaCost = 0",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
-            "legalities",
-            "sets",
-            "set translations",
-            "ruling"
+            "cards"
         ]
     },
     {
@@ -4437,10 +4437,9 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "legalities",
             "foreign data",
-            "ruling",
-            "set translations"
+            "legalities",
+            "ruling"
         ]
     },
     {
@@ -4451,7 +4450,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "ruling"
         ]
     },
@@ -4473,8 +4471,7 @@
         "SQL": "SELECT id, colors FROM cards WHERE id IN ( SELECT id FROM set_translations WHERE setCode = 'OGW' )",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "sets"
+            "cards"
         ]
     },
     {
@@ -4486,7 +4483,8 @@
         "TAB_result": [
             "cards",
             "foreign data",
-            "set translations"
+            "set translations",
+            "sets"
         ]
     },
     {
@@ -4497,6 +4495,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "ruling"
         ]
     },
@@ -4601,7 +4600,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data"
+            "foreign data",
+            "legalities"
         ]
     },
     {
@@ -4613,8 +4613,7 @@
         "TAB_result": [
             "cards",
             "foreign data",
-            "set translations",
-            "sets"
+            "set translations"
         ]
     },
     {
@@ -4635,7 +4634,12 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN isTextless = 0 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM cards WHERE isStorySpotlight = 1",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards"
+            "cards",
+            "foreign data",
+            "legalities",
+            "sets",
+            "set translations",
+            "ruling"
         ]
     },
     {
@@ -4657,7 +4661,9 @@
         "DB_result": "card_games",
         "TAB_result": [
             "sets",
-            "set translations"
+            "set translations",
+            "foreign data",
+            "cards"
         ]
     },
     {
@@ -4668,7 +4674,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "sets",
-            "set translations"
+            "set translations",
+            "foreign data"
         ]
     },
     {
@@ -4680,10 +4687,7 @@
         "TAB_result": [
             "cards",
             "foreign data",
-            "legalities",
-            "sets",
-            "set translations",
-            "ruling"
+            "legalities"
         ]
     },
     {
@@ -4704,7 +4708,9 @@
         "SQL": "SELECT T2.text FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE (T1.power IS NULL OR T1.power = '*') AND T2.text LIKE '%triggered ability%'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards"
+            "cards",
+            "foreign data",
+            "ruling"
         ]
     },
     {
@@ -4771,7 +4777,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "sets",
-            "set translations"
+            "set translations",
+            "cards"
         ]
     },
     {
@@ -4844,8 +4851,7 @@
         "SQL": "SELECT name FROM cards WHERE (power IS NULL OR power LIKE '%*%') AND promoTypes = 'arenaleague' ORDER BY name LIMIT 3",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "legalities"
+            "cards"
         ]
     },
     {
@@ -4896,8 +4902,6 @@
         "SQL": "SELECT name FROM sets WHERE mtgoCode IS NULL ORDER BY name LIMIT 3",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
             "sets"
         ]
     },
@@ -4922,7 +4926,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "sets",
             "set translations"
         ]
@@ -4935,6 +4938,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "sets",
+            "foreign data",
             "set translations"
         ]
     },
@@ -4993,7 +4997,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "sets",
-            "foreign data"
+            "foreign data",
+            "set translations"
         ]
     },
     {
@@ -5013,12 +5018,7 @@
         "SQL": "SELECT id FROM cards WHERE frameEffects = 'extendedart' GROUP BY id",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
-            "legalities",
-            "sets",
-            "set translations",
-            "ruling"
+            "cards"
         ]
     },
     {
@@ -5038,12 +5038,9 @@
         "SQL": "SELECT language FROM set_translations WHERE id = 174",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
-            "legalities",
             "sets",
             "set translations",
-            "ruling"
+            "foreign data"
         ]
     },
     {
@@ -5065,7 +5062,8 @@
         "SQL": "SELECT DISTINCT language FROM foreign_data WHERE name = 'A Pedra Fellwar'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "NONE"
+            "Player",
+            "Player Attributes"
         ]
     },
     {
@@ -5086,9 +5084,7 @@
         "SQL": "SELECT DISTINCT T1.baseSetSize, T2.setCode FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block IN ('Masques', 'Mirage')",
         "DB_result": "card_games",
         "TAB_result": [
-            "sets",
-            "cards",
-            "set translations"
+            "sets"
         ]
     },
     {
@@ -5099,6 +5095,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "sets",
             "set translations"
         ]
@@ -5144,6 +5141,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "sets",
             "set translations"
         ]
@@ -5290,7 +5288,8 @@
         "SQL": "SELECT name FROM cards WHERE frameVersion = 2003 ORDER BY convertedManaCost DESC LIMIT 3",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards"
+            "cards",
+            "foreign data"
         ]
     },
     {
@@ -5301,7 +5300,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "set translations"
+            "set translations",
+            "sets"
         ]
     },
     {
@@ -5312,9 +5312,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
-            "set translations",
-            "sets"
+            "set translations"
         ]
     },
     {
@@ -5325,6 +5323,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "sets"
         ]
     },
@@ -5357,6 +5356,7 @@
         "SQL": "SELECT T1.baseSetSize FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Hauptset Zehnte Edition'",
         "DB_result": "card_games",
         "TAB_result": [
+            "cards",
             "sets"
         ]
     },
@@ -5379,6 +5379,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "sets"
         ]
     },
@@ -5400,6 +5401,8 @@
         "SQL": "SELECT T1.type FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation = 'Hauptset Zehnte Edition'",
         "DB_result": "card_games",
         "TAB_result": [
+            "cards",
+            "foreign data",
             "sets"
         ]
     },
@@ -5432,8 +5435,9 @@
         "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation IS NOT NULL AND T1.baseSetSize < 100 AND T2.language = 'Italian'",
         "DB_result": "card_games",
         "TAB_result": [
-            "sets",
-            "set translations"
+            "cards",
+            "foreign data",
+            "sets"
         ]
     },
     {
@@ -5534,8 +5538,8 @@
         "TAB_result": [
             "cards",
             "foreign data",
-            "ruling",
-            "sets"
+            "sets",
+            "ruling"
         ]
     },
     {
@@ -5558,6 +5562,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
+            "sets",
             "ruling"
         ]
     },
@@ -5591,7 +5597,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "sets"
+            "sets",
+            "set translations"
         ]
     },
     {
@@ -5601,9 +5608,7 @@
         "SQL": "SELECT keyruneCode FROM sets WHERE code = 'PKHC'",
         "DB_result": "card_games",
         "TAB_result": [
-            "sets",
-            "cards",
-            "set translations"
+            "sets"
         ]
     },
     {
@@ -5613,7 +5618,6 @@
         "SQL": "SELECT mcmId FROM sets WHERE code = 'SS2'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
             "sets"
         ]
     },
@@ -5635,7 +5639,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "sets"
         ]
     },
@@ -5679,7 +5682,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "sets"
+            "sets",
+            "set translations"
         ]
     },
     {
@@ -5689,7 +5693,6 @@
         "SQL": "SELECT type FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE translation = 'Huitième édition' )",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
             "sets",
             "set translations"
         ]
@@ -5702,7 +5705,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
             "sets",
             "set translations"
         ]
@@ -5727,7 +5729,6 @@
         "TAB_result": [
             "cards",
             "sets",
-            "foreign data",
             "set translations"
         ]
     },
@@ -5739,8 +5740,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
-            "set translations",
             "sets"
         ]
     },
@@ -5796,6 +5795,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "sets",
+            "set translations",
             "foreign data"
         ]
     },
@@ -5807,6 +5808,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "sets",
+            "set translations",
             "foreign data"
         ]
     },
@@ -5868,6 +5871,7 @@
         "SQL": "SELECT id FROM sets WHERE type = 'commander' ORDER BY totalSetSize DESC LIMIT 1",
         "DB_result": "card_games",
         "TAB_result": [
+            "cards",
             "sets"
         ]
     },
@@ -5889,7 +5893,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "sets",
             "legalities"
         ]
     },
@@ -5912,7 +5915,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "legalities"
+            "legalities",
+            "foreign data"
         ]
     },
     {
@@ -5923,6 +5927,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "legalities"
         ]
     },
@@ -5968,8 +5973,6 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
-            "foreign data",
-            "sets",
             "legalities"
         ]
     },
@@ -5980,8 +5983,9 @@
         "SQL": "SELECT (CAST(SUM(T1.id) AS REAL) / COUNT(T1.id)) / 4, T2.language FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.id = T2.id WHERE T1.releaseDate BETWEEN '2012-01-01' AND '2015-12-31' GROUP BY T1.releaseDate ORDER BY COUNT(T2.language) DESC LIMIT 1",
         "DB_result": "card_games",
         "TAB_result": [
-            "sets",
+            "cards",
             "foreign data",
+            "sets",
             "set translations"
         ]
     },
@@ -6015,7 +6019,8 @@
         "SQL": "SELECT COUNT(id) FROM cards WHERE artist = 'Matthew D. Wilson' AND availability = 'paper'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards"
+            "cards",
+            "sets"
         ]
     },
     {
@@ -6038,6 +6043,8 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
+            "set translations",
             "sets",
             "legalities"
         ]
@@ -6086,11 +6093,11 @@
         "SQL": "SELECT DisplayName FROM users WHERE STRFTIME('%Y', CreationDate) = '2011'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users",
             "comments",
             "post History",
-            "posts",
             "post Links",
+            "posts",
+            "users",
             "votes"
         ]
     },
@@ -6124,7 +6131,8 @@
         "SQL": "SELECT COUNT(Id) FROM users WHERE Upvotes > 100 AND Downvotes > 1",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -6176,8 +6184,8 @@
         "SQL": "SELECT T1.Title FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie' ORDER BY T1.ViewCount DESC LIMIT 1",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts",
-            "users"
+            "users",
+            "posts"
         ]
     },
     {
@@ -6198,8 +6206,8 @@
         "SQL": "SELECT SUM(T1.CommentCount) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "comments",
             "posts",
+            "comments",
             "users"
         ]
     },
@@ -6221,7 +6229,11 @@
         "SQL": "SELECT T2.DisplayName FROM posts AS T1 INNER JOIN users AS T2 ON T1.LastEditorUserId = T2.Id WHERE T1.Title = 'Examples for teaching: Correlation does not mean causation'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
             "posts",
+            "votes",
             "users"
         ]
     },
@@ -6232,8 +6244,7 @@
         "SQL": "SELECT COUNT(T1.Id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'csgillespie' AND T1.ParentId IS NULL",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts",
-            "users"
+            "posts"
         ]
     },
     {
@@ -6301,7 +6312,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "users"
+            "users",
+            "comments",
+            "post History",
+            "votes"
         ]
     },
     {
@@ -6312,11 +6326,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "users",
-            "comments",
-            "post History",
-            "votes",
-            "posts"
+            "users"
         ]
     },
     {
@@ -6341,7 +6351,8 @@
             "users",
             "comments",
             "post History",
-            "posts"
+            "posts",
+            "votes"
         ]
     },
     {
@@ -6352,8 +6363,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
-            "users",
-            "comments"
+            "users"
         ]
     },
     {
@@ -6375,7 +6385,8 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
-            "users"
+            "users",
+            "comments"
         ]
     },
     {
@@ -6385,12 +6396,8 @@
         "SQL": "SELECT COUNT(Id) FROM votes WHERE UserId = 58 AND CreationDate = '2010-07-19'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges",
-            "comments",
-            "post History",
-            "post Links",
-            "posts",
-            "votes"
+            "votes",
+            "users"
         ]
     },
     {
@@ -6450,6 +6457,7 @@
             "badges",
             "comments",
             "post History",
+            "post Links",
             "votes",
             "posts"
         ]
@@ -6476,8 +6484,8 @@
             "badges",
             "comments",
             "post History",
-            "posts",
-            "votes"
+            "votes",
+            "posts"
         ]
     },
     {
@@ -6509,11 +6517,12 @@
         "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.UserId WHERE T2.Id = 6347",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "votes",
-            "users",
+            "badges",
             "comments",
             "post History",
-            "posts"
+            "posts",
+            "users",
+            "votes"
         ]
     },
     {
@@ -6610,7 +6619,8 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "users"
+            "users",
+            "post History"
         ]
     },
     {
@@ -6688,10 +6698,9 @@
         "SQL": "SELECT SUM(T1.Score), T2.WebsiteUrl FROM posts AS T1 INNER JOIN users AS T2 ON T1.LastEditorUserId = T2.Id WHERE T2.DisplayName = 'Yevgeny' GROUP BY T2.WebsiteUrl",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "post History",
             "posts",
-            "users",
-            "comments"
+            "post History",
+            "users"
         ]
     },
     {
@@ -6704,8 +6713,9 @@
             "badges",
             "comments",
             "post History",
+            "votes",
             "posts",
-            "votes"
+            "users"
         ]
     },
     {
@@ -6729,9 +6739,10 @@
             "badges",
             "comments",
             "post History",
+            "post Links",
+            "posts",
             "votes",
-            "users",
-            "posts"
+            "users"
         ]
     },
     {
@@ -6743,7 +6754,8 @@
         "TAB_result": [
             "posts",
             "tags",
-            "comments"
+            "comments",
+            "post History"
         ]
     },
     {
@@ -6777,7 +6789,12 @@
         "SQL": "SELECT Id FROM users WHERE Views = ( SELECT MIN(Views) FROM users )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "badges",
+            "comments",
+            "post History",
+            "votes",
+            "users",
+            "posts"
         ]
     },
     {
@@ -6788,6 +6805,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
+            "comments",
+            "post History",
+            "posts",
+            "votes",
             "users"
         ]
     },
@@ -6820,8 +6841,12 @@
         "SQL": "SELECT T2.Id, T2.Reputation FROM comments AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.PostId = 1",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
             "posts",
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -6892,8 +6917,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "post Links",
-            "posts",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -6920,6 +6944,7 @@
             "badges",
             "comments",
             "post History",
+            "post Links",
             "posts",
             "votes",
             "users"
@@ -6932,12 +6957,7 @@
         "SQL": "SELECT SUM(DISTINCT FavoriteCount) FROM posts WHERE Id IN ( SELECT PostId FROM postHistory WHERE UserId = 686 AND STRFTIME('%Y', CreationDate) = '2011' )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges",
-            "comments",
-            "post History",
-            "post Links",
-            "posts",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -6948,7 +6968,8 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "users",
-            "posts"
+            "posts",
+            "votes"
         ]
     },
     {
@@ -6961,7 +6982,8 @@
             "badges",
             "comments",
             "post History",
-            "votes"
+            "votes",
+            "users"
         ]
     },
     {
@@ -6971,7 +6993,8 @@
         "SQL": "SELECT Name FROM badges WHERE Date = '2010-07-19 19:39:08.0'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges"
+            "badges",
+            "users"
         ]
     },
     {
@@ -6981,8 +7004,7 @@
         "SQL": "SELECT COUNT(id) FROM comments WHERE score > 60",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "comments",
-            "posts"
+            "comments"
         ]
     },
     {
@@ -6992,12 +7014,13 @@
         "SQL": "SELECT Text FROM comments WHERE CreationDate = '2010-07-19 19:16:14.0'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
             "comments",
             "post History",
             "post Links",
             "posts",
-            "votes",
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -7041,7 +7064,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "users"
+            "users",
+            "comments",
+            "post History",
+            "posts"
         ]
     },
     {
@@ -7107,10 +7133,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "users",
-            "badges",
-            "comments",
-            "post History",
-            "votes"
+            "badges"
         ]
     },
     {
@@ -7154,10 +7177,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
+            "users",
             "comments",
             "post History",
-            "posts",
-            "users"
+            "posts"
         ]
     },
     {
@@ -7178,10 +7201,9 @@
         "SQL": "SELECT DisplayName FROM users WHERE Id = 30",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "users",
             "badges",
-            "comments",
-            "post History",
-            "users"
+            "tags"
         ]
     },
     {
@@ -7202,6 +7224,7 @@
         "SQL": "SELECT COUNT(id) FROM votes WHERE STRFTIME('%Y', CreationDate) = '2010'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
             "comments",
             "post History",
             "post Links",
@@ -7227,7 +7250,8 @@
         "SQL": "SELECT Id, DisplayName FROM users WHERE Views = ( SELECT MAX(Views) FROM users )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "users",
+            "posts"
         ]
     },
     {
@@ -7241,8 +7265,8 @@
             "post History",
             "post Links",
             "posts",
-            "users",
-            "votes"
+            "votes",
+            "users"
         ]
     },
     {
@@ -7252,9 +7276,10 @@
         "SQL": "SELECT T3.Tags FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T2.PostId = T3.Id WHERE T1.DisplayName = 'John Salvatier'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "tags",
             "users",
             "posts",
-            "tags"
+            "post History"
         ]
     },
     {
@@ -7265,6 +7290,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
+            "post History",
             "users"
         ]
     },
@@ -7287,6 +7313,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
+            "post History",
             "users"
         ]
     },
@@ -7298,6 +7325,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
+            "post History",
             "users"
         ]
     },
@@ -7309,8 +7337,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
-            "votes",
-            "users"
+            "post History",
+            "users",
+            "votes"
         ]
     },
     {
@@ -7320,9 +7349,9 @@
         "SQL": "SELECT COUNT(T3.Id) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId INNER JOIN comments AS T3 ON T2.Id = T3.PostId WHERE T1.DisplayName = 'Neil McGuigan' AND T3.Score < 60",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users",
+            "comments",
             "posts",
-            "comments"
+            "users"
         ]
     },
     {
@@ -7332,10 +7361,11 @@
         "SQL": "SELECT T3.Tags FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T3.Id = T2.PostId WHERE T1.DisplayName = 'Mark Meckes' AND T3.CommentCount = 0",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts",
             "users",
-            "tags",
-            "comments"
+            "posts",
+            "post History",
+            "comments",
+            "tags"
         ]
     },
     {
@@ -7367,7 +7397,9 @@
         "SQL": "SELECT SUM(IIF(T1.DisplayName = 'Mornington', T3.ViewCount, 0)) - SUM(IIF(T1.DisplayName = 'Amos', T3.ViewCount, 0)) AS diff FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T3.Id = T2.PostId",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts"
+            "posts",
+            "post History",
+            "users"
         ]
     },
     {
@@ -7380,6 +7412,7 @@
             "badges",
             "comments",
             "post History",
+            "posts",
             "votes",
             "users"
         ]
@@ -7395,8 +7428,8 @@
             "post History",
             "post Links",
             "posts",
-            "votes",
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -7408,8 +7441,7 @@
         "TAB_result": [
             "users",
             "comments",
-            "post History",
-            "posts"
+            "post History"
         ]
     },
     {
@@ -7432,8 +7464,8 @@
             "badges",
             "comments",
             "post History",
-            "votes",
-            "posts"
+            "posts",
+            "votes"
         ]
     },
     {
@@ -7445,7 +7477,8 @@
         "TAB_result": [
             "comments",
             "posts",
-            "users"
+            "users",
+            "post History"
         ]
     },
     {
@@ -7466,10 +7499,10 @@
         "SQL": "SELECT T1.DisplayName, T1.WebsiteUrl FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T2.FavoriteCount > 150",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "posts",
             "users",
             "comments",
-            "post History",
-            "posts"
+            "post History"
         ]
     },
     {
@@ -7501,8 +7534,8 @@
         "SQL": "SELECT T3.Title FROM postLinks AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id INNER JOIN posts AS T3 ON T1.RelatedPostId = T3.Id WHERE T2.Title = 'How to tell if something happened in a data set which monitors a value over time'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "post Links",
-            "posts"
+            "posts",
+            "post Links"
         ]
     },
     {
@@ -7513,12 +7546,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "comments",
+            "posts",
             "post History",
-            "post Links",
-            "votes",
-            "users",
-            "posts"
+            "users"
         ]
     },
     {
@@ -7528,8 +7558,7 @@
         "SQL": "SELECT DisplayName FROM users WHERE Id = ( SELECT OwnerUserId FROM posts ORDER BY ViewCount DESC LIMIT 1 )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts",
-            "users"
+            "posts"
         ]
     },
     {
@@ -7539,11 +7568,9 @@
         "SQL": "SELECT T3.DisplayName, T3.Location FROM tags AS T1 INNER JOIN posts AS T2 ON T1.ExcerptPostId = T2.Id INNER JOIN users AS T3 ON T3.Id = T2.OwnerUserId WHERE T1.TagName = 'hypothesis-testing'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users",
-            "comments",
-            "post History",
+            "tags",
             "posts",
-            "tags"
+            "users"
         ]
     },
     {
@@ -7553,8 +7580,8 @@
         "SQL": "SELECT T3.Title, T2.LinkTypeId FROM posts AS T1 INNER JOIN postLinks AS T2 ON T1.Id = T2.PostId INNER JOIN posts AS T3 ON T2.RelatedPostId = T3.Id WHERE T1.Title = 'What are principal component scores?'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "post Links",
-            "posts"
+            "posts",
+            "post Links"
         ]
     },
     {
@@ -7565,7 +7592,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
-            "users"
+            "users",
+            "comments",
+            "post History"
         ]
     },
     {
@@ -7589,7 +7618,9 @@
         "SQL": "SELECT Title FROM posts ORDER BY ViewCount DESC LIMIT 5",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts"
+            "posts",
+            "comments",
+            "votes"
         ]
     },
     {
@@ -7609,7 +7640,8 @@
         "SQL": "SELECT OwnerUserId FROM posts WHERE FavoriteCount = ( SELECT MAX(FavoriteCount) FROM posts )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "posts"
+            "posts",
+            "comments"
         ]
     },
     {
@@ -7619,7 +7651,11 @@
         "SQL": "SELECT Age FROM users WHERE Reputation = ( SELECT MAX(Reputation) FROM users )",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "users",
+            "posts",
+            "comments",
+            "votes",
+            "badges"
         ]
     },
     {
@@ -7655,8 +7691,8 @@
             "post History",
             "post Links",
             "posts",
-            "users",
-            "votes"
+            "votes",
+            "users"
         ]
     },
     {
@@ -7666,12 +7702,8 @@
         "SQL": "SELECT CAST(COUNT(T1.Id) AS REAL) / 12 FROM postLinks AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.AnswerCount <= 2 AND STRFTIME('%Y', T1.CreationDate) = '2010'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges",
-            "comments",
-            "post History",
             "post Links",
-            "posts",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -7686,6 +7718,8 @@
             "post History",
             "post Links",
             "posts",
+            "tags",
+            "users",
             "votes"
         ]
     },
@@ -7696,8 +7730,13 @@
         "SQL": "SELECT T1.Title FROM posts AS T1 INNER JOIN postLinks AS T2 ON T2.PostId = T1.Id ORDER BY T1.CreaionDate LIMIT 1",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
             "posts",
-            "post Links"
+            "votes",
+            "users"
         ]
     },
     {
@@ -7711,7 +7750,6 @@
             "users",
             "comments",
             "post History",
-            "votes",
             "posts"
         ]
     },
@@ -7722,12 +7760,13 @@
         "SQL": "SELECT T2.CreationDate FROM users AS T1 INNER JOIN votes AS T2 ON T1.Id = T2.UserId WHERE T1.DisplayName = 'chl' ORDER BY T2.CreationDate LIMIT 1",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users",
-            "votes",
+            "badges",
             "comments",
             "post History",
             "post Links",
-            "posts"
+            "posts",
+            "users",
+            "votes"
         ]
     },
     {
@@ -7738,11 +7777,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "users",
-            "comments",
-            "post History",
-            "post Links",
-            "posts",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -7777,9 +7812,13 @@
         "SQL": "SELECT AVG(PostId) FROM votes WHERE UserId IN ( SELECT Id FROM users WHERE Age = ( SELECT MAX(Age) FROM users ) )",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
+            "posts",
             "users",
-            "votes",
-            "posts"
+            "votes"
         ]
     },
     {
@@ -7825,8 +7864,12 @@
         "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE STRFTIME('%Y', T2.CreaionDate) = '2010' AND T1.DisplayName = 'Jay Stevens'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "users",
+            "comments",
+            "post History",
+            "post Links",
             "posts",
-            "users"
+            "votes"
         ]
     },
     {
@@ -7847,8 +7890,14 @@
         "SQL": "SELECT T1.Id, T2.Title FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId ORDER BY T2.Score DESC LIMIT 1",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
+            "post Links",
             "posts",
-            "comments"
+            "tags",
+            "users",
+            "votes"
         ]
     },
     {
@@ -7858,8 +7907,10 @@
         "SQL": "SELECT AVG(T2.Score) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.DisplayName = 'Stephen Turner'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "users",
             "posts",
-            "users"
+            "comments",
+            "post History"
         ]
     },
     {
@@ -7885,8 +7936,9 @@
             "post History",
             "post Links",
             "posts",
-            "votes",
-            "users"
+            "tags",
+            "users",
+            "votes"
         ]
     },
     {
@@ -7896,13 +7948,12 @@
         "SQL": "SELECT CAST(SUM(IIF(STRFTIME('%Y', T2.CreaionDate) = '2011' AND T1.Reputation > 1000, 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges",
             "comments",
             "post History",
             "post Links",
             "posts",
-            "users",
-            "votes"
+            "votes",
+            "users"
         ]
     },
     {
@@ -7922,9 +7973,12 @@
         "SQL": "SELECT T2.ViewCount, T3.DisplayName FROM postHistory AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id INNER JOIN users AS T3 ON T2.LastEditorUserId = T3.Id WHERE T1.Text = 'Computer Game Datasets'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "badges",
+            "comments",
+            "post History",
             "posts",
-            "users",
-            "post History"
+            "votes",
+            "users"
         ]
     },
     {
@@ -7956,7 +8010,8 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "posts",
-            "comments"
+            "comments",
+            "users"
         ]
     },
     {
@@ -7966,8 +8021,9 @@
         "SQL": "SELECT T2.DisplayName, T2.Location FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T1.Id = 183 ORDER BY T1.LastEditDate DESC LIMIT 1",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users",
             "posts",
+            "users",
+            "comments",
             "post History"
         ]
     },
@@ -7979,7 +8035,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "users"
+            "users",
+            "comments",
+            "post History",
+            "posts"
         ]
     },
     {
@@ -7989,7 +8048,8 @@
         "SQL": "SELECT COUNT(Id) FROM users WHERE Age BETWEEN 19 AND 65 AND UpVotes > 5000",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -8000,10 +8060,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
-            "users",
             "comments",
             "post History",
-            "posts"
+            "votes",
+            "users"
         ]
     },
     {
@@ -8014,10 +8074,10 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "users",
-            "posts",
             "comments",
-            "badges",
             "post History",
+            "post Links",
+            "posts",
             "votes"
         ]
     },
@@ -8041,6 +8101,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
+            "comments",
+            "post History",
+            "votes",
             "users"
         ]
     },
@@ -8063,9 +8126,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "users",
+            "posts",
             "comments",
-            "post History",
-            "posts"
+            "post History"
         ]
     },
     {
@@ -8075,8 +8138,9 @@
         "SQL": "SELECT CommentCount, AnswerCount FROM posts WHERE Title = 'Clustering 1D data'",
         "DB_result": "codebase_community",
         "TAB_result": [
+            "posts",
             "comments",
-            "posts"
+            "users"
         ]
     },
     {
@@ -8089,7 +8153,9 @@
             "users",
             "comments",
             "post History",
-            "posts"
+            "posts",
+            "post Links",
+            "votes"
         ]
     },
     {
@@ -8132,14 +8198,8 @@
         "SQL": "SELECT COUNT(id) FROM tags WHERE Count <= 20 AND Id < 15",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "badges",
-            "comments",
-            "post History",
-            "post Links",
-            "posts",
             "tags",
-            "users",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -8172,7 +8232,8 @@
         "TAB_result": [
             "comments",
             "posts",
-            "tags"
+            "tags",
+            "post History"
         ]
     },
     {
@@ -8193,12 +8254,8 @@
         "SQL": "SELECT T2.CreationDate, T2.Age FROM comments AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.text LIKE '%http://%'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "comments",
-            "post History",
-            "post Links",
-            "posts",
-            "votes",
-            "users"
+            "users",
+            "comments"
         ]
     },
     {
@@ -8219,8 +8276,8 @@
         "SQL": "SELECT COUNT(T1.id) FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.CommentCount = 1 AND T2.Score = 0",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "comments",
-            "posts"
+            "posts",
+            "comments"
         ]
     },
     {
@@ -8231,9 +8288,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "users",
-            "posts",
-            "tags"
+            "users"
         ]
     },
     {
@@ -8244,10 +8299,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "post History",
-            "post Links",
-            "posts",
-            "votes"
+            "posts"
         ]
     },
     {
@@ -8258,6 +8310,7 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
+            "post History",
             "users"
         ]
     },
@@ -8269,7 +8322,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "users"
+            "users",
+            "post History",
+            "posts"
         ]
     },
     {
@@ -8280,7 +8335,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "users"
+            "users",
+            "posts",
+            "votes"
         ]
     },
     {
@@ -8291,7 +8348,8 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "comments",
-            "users"
+            "users",
+            "votes"
         ]
     },
     {
@@ -8314,8 +8372,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "superpower",
-            "hero power"
+            "hero power",
+            "superpower"
         ]
     },
     {
@@ -8417,7 +8475,8 @@
         "SQL": "SELECT T2.publisher_name FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T1.superhero_name = 'Sauron'",
         "DB_result": "card_games",
         "TAB_result": [
-            "NONE"
+            "cards",
+            "sets"
         ]
     },
     {
@@ -8474,10 +8533,10 @@
         "SQL": "SELECT T2.publisher_name FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id INNER JOIN hero_attribute AS T3 ON T1.id = T3.hero_id INNER JOIN attribute AS T4 ON T3.attribute_id = T4.id WHERE T4.attribute_name = 'Speed' ORDER BY T3.attribute_value LIMIT 1",
         "DB_result": "superhero",
         "TAB_result": [
-            "publisher",
-            "superhero",
             "hero attribute",
-            "attribute"
+            "attribute",
+            "superhero",
+            "publisher"
         ]
     },
     {
@@ -8522,8 +8581,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "attribute",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -8533,7 +8592,8 @@
         "SQL": "SELECT T2.race FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T1.superhero_name = 'Copycat'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards"
+            "cards",
+            "foreign data"
         ]
     },
     {
@@ -8544,8 +8604,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "attribute",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -8567,8 +8627,8 @@
         "SQL": "SELECT COUNT(T1.id) FROM superhero AS T1 INNER JOIN hero_attribute AS T2 ON T1.id = T2.hero_id INNER JOIN attribute AS T3 ON T2.attribute_id = T3.id INNER JOIN gender AS T4 ON T1.gender_id = T4.id WHERE T3.attribute_name = 'Strength' AND T2.attribute_value = 100 AND T4.gender = 'Female'",
         "DB_result": "superhero",
         "TAB_result": [
-            "gender",
             "superhero",
+            "gender",
             "attribute",
             "hero attribute"
         ]
@@ -8637,6 +8697,7 @@
         "DB_result": "superhero",
         "TAB_result": [
             "hero attribute",
+            "attribute",
             "superhero"
         ]
     },
@@ -8715,7 +8776,8 @@
         "SQL": "SELECT DISTINCT T1.superhero_name FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T1.height_cm BETWEEN 170 AND 190 AND T2.colour = 'No Colour'",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero"
+            "superhero",
+            "colour"
         ]
     },
     {
@@ -8772,8 +8834,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "colour",
-            "race"
+            "race",
+            "colour"
         ]
     },
     {
@@ -8817,7 +8879,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "hero power",
-            "superpower"
+            "superpower",
+            "superhero"
         ]
     },
     {
@@ -8876,7 +8939,8 @@
         "SQL": "SELECT CAST(COUNT(*) AS REAL) / SUM(CASE WHEN T2.id = 1 THEN 1 ELSE 0 END) FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.skin_colour_id = T2.id",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero"
+            "superhero",
+            "colour"
         ]
     },
     {
@@ -8886,8 +8950,8 @@
         "SQL": "SELECT COUNT(T1.id) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'Dark Horse Comics'",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero",
-            "publisher"
+            "publisher",
+            "superhero"
         ]
     },
     {
@@ -8922,8 +8986,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "hero power",
-            "superpower"
+            "superpower",
+            "hero power"
         ]
     },
     {
@@ -8934,9 +8998,9 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
+            "colour",
             "gender",
-            "publisher",
-            "colour"
+            "publisher"
         ]
     },
     {
@@ -8960,10 +9024,9 @@
         "TAB_result": [
             "superhero",
             "publisher",
-            "alignment",
             "race",
-            "hero attribute",
-            "attribute"
+            "attribute",
+            "hero attribute"
         ]
     },
     {
@@ -9077,7 +9140,9 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "race"
+            "race",
+            "attribute",
+            "hero attribute"
         ]
     },
     {
@@ -9122,9 +9187,9 @@
         "SQL": "SELECT CAST(COUNT(CASE WHEN T2.publisher_name = 'Marvel Comics' THEN 1 ELSE NULL END) AS REAL) * 100 / COUNT(T1.id) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id INNER JOIN gender AS T3 ON T1.gender_id = T3.id WHERE T3.gender = 'Female'",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero",
             "gender",
-            "publisher"
+            "publisher",
+            "superhero"
         ]
     },
     {
@@ -9177,9 +9242,9 @@
         "SQL": "SELECT COUNT(*) FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id INNER JOIN gender AS T3 ON T3.id = T1.gender_id WHERE T1.race_id = 21 AND T1.gender_id = 1",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero",
             "race",
-            "gender"
+            "gender",
+            "superhero"
         ]
     },
     {
@@ -9190,8 +9255,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "attribute",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -9289,7 +9354,8 @@
         "SQL": "SELECT id FROM superpower WHERE power_name = 'Cryokinesis'",
         "DB_result": "superhero",
         "TAB_result": [
-            "superpower"
+            "superpower",
+            "hero power"
         ]
     },
     {
@@ -9366,7 +9432,8 @@
         "TAB_result": [
             "hero attribute",
             "superhero",
-            "race"
+            "race",
+            "attribute"
         ]
     },
     {
@@ -9402,7 +9469,8 @@
         "TAB_result": [
             "alignment",
             "superhero",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -9414,7 +9482,8 @@
         "TAB_result": [
             "superhero",
             "hero attribute",
-            "colour"
+            "colour",
+            "attribute"
         ]
     },
     {
@@ -9437,7 +9506,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -9532,8 +9602,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "hero power",
-            "superpower"
+            "superpower",
+            "hero power"
         ]
     },
     {
@@ -9543,10 +9613,10 @@
         "SQL": "SELECT T4.gender FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id INNER JOIN gender AS T4 ON T1.gender_id = T4.id WHERE T3.power_name = 'Phoenix Force'",
         "DB_result": "superhero",
         "TAB_result": [
-            "gender",
-            "superhero",
             "superpower",
-            "hero power"
+            "hero power",
+            "superhero",
+            "gender"
         ]
     },
     {
@@ -9581,9 +9651,7 @@
         "TAB_result": [
             "superhero",
             "hero attribute",
-            "attribute",
-            "superpower",
-            "hero power"
+            "attribute"
         ]
     },
     {
@@ -9683,7 +9751,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "hero attribute",
-            "superhero"
+            "superhero",
+            "attribute"
         ]
     },
     {
@@ -9715,7 +9784,8 @@
         "DB_result": "superhero",
         "TAB_result": [
             "superhero",
-            "hero attribute"
+            "hero attribute",
+            "attribute"
         ]
     },
     {
@@ -9747,9 +9817,11 @@
         "SQL": "SELECT T1.hero_id FROM hero_power AS T1 INNER JOIN superpower AS T2 ON T1.power_id = T2.id WHERE T2.power_name = 'Intelligence'",
         "DB_result": "superhero",
         "TAB_result": [
-            "superhero",
             "hero power",
-            "superpower"
+            "superpower",
+            "attribute",
+            "hero attribute",
+            "superhero"
         ]
     },
     {
@@ -9830,7 +9902,6 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "circuits",
-            "constructors",
             "races"
         ]
     },
@@ -9843,8 +9914,11 @@
         "TAB_result": [
             "circuits",
             "constructors",
-            "races",
-            "constructor results"
+            "constructor standings",
+            "driver standings",
+            "results",
+            "qualifying",
+            "lap times"
         ]
     },
     {
@@ -9854,8 +9928,8 @@
         "SQL": "SELECT COUNT(T3.raceId) FROM circuits AS T1 INNER JOIN races AS T3 ON T3.circuitID = T1.circuitId WHERE T1.country NOT IN ( 'Bahrain', 'China', 'Singapore', 'Japan', 'Korea', 'Turkey', 'UAE', 'Malaysia', 'Spain', 'Monaco', 'Azerbaijan', 'Austria', 'Belgium', 'France', 'Germany', 'Hungary', 'Italy', 'UK' ) AND T3.year = 2010",
         "DB_result": "formula_1",
         "TAB_result": [
-            "races",
-            "circuits"
+            "circuits",
+            "races"
         ]
     },
     {
@@ -9866,7 +9940,6 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "circuits",
-            "constructors",
             "races"
         ]
     },
@@ -9921,10 +9994,9 @@
         "SQL": "SELECT T2.nationality FROM constructorResults AS T1 INNER JOIN constructors AS T2 ON T2.constructorId = T1.constructorId WHERE T1.raceId = 24 AND T1.points = 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "constructor results",
             "constructors",
-            "races",
-            "circuits"
+            "constructor results",
+            "races"
         ]
     },
     {
@@ -9936,10 +10008,7 @@
         "TAB_result": [
             "drivers",
             "qualifying",
-            "results",
-            "lap times",
-            "pit stops",
-            "driver standings"
+            "races"
         ]
     },
     {
@@ -9950,9 +10019,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "qualifying",
-            "drivers",
-            "constructors",
-            "races"
+            "drivers"
         ]
     },
     {
@@ -9964,14 +10031,13 @@
         "TAB_result": [
             "drivers",
             "qualifying",
-            "races",
+            "results",
             "seasons",
+            "races",
             "constructor results",
             "constructor standings",
-            "driver standings",
             "lap times",
-            "pit stops",
-            "results"
+            "pit stops"
         ]
     },
     {
@@ -9981,10 +10047,11 @@
         "SQL": "SELECT COUNT(T3.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2007 AND T1.name = 'Bahrain Grand Prix' AND T2.time IS NULL",
         "DB_result": "formula_1",
         "TAB_result": [
+            "circuits",
             "races",
             "results",
-            "status",
-            "drivers"
+            "drivers",
+            "status"
         ]
     },
     {
@@ -9994,8 +10061,14 @@
         "SQL": "SELECT T2.url FROM races AS T1 INNER JOIN seasons AS T2 ON T2.year = T1.year WHERE T1.raceId = 901",
         "DB_result": "formula_1",
         "TAB_result": [
+            "seasons",
             "races",
-            "seasons"
+            "constructor results",
+            "constructor standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results"
         ]
     },
     {
@@ -10007,8 +10080,7 @@
         "TAB_result": [
             "races",
             "results",
-            "drivers",
-            "status"
+            "drivers"
         ]
     },
     {
@@ -10019,9 +10091,15 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
             "status",
-            "races"
+            "results",
+            "seasons",
+            "races",
+            "constructor results",
+            "constructor standings",
+            "lap times",
+            "pit stops",
+            "qualifying"
         ]
     },
     {
@@ -10032,8 +10110,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times",
-            "races"
+            "lap times"
         ]
     },
     {
@@ -10043,17 +10120,17 @@
         "SQL": "SELECT T1.nationality FROM drivers AS T1 INNER JOIN results AS T2 ON T2.driverId = T1.driverId WHERE T2.raceId = 933 AND T2.fastestLapTime IS NOT NULL ORDER BY T2.fastestLapSpeed DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
             "constructors",
+            "drivers",
             "results",
+            "seasons",
+            "races",
+            "constructor results",
+            "constructor standings",
             "lap times",
             "pit stops",
             "qualifying",
-            "driver standings",
-            "constructor results",
-            "constructor standings",
-            "races",
-            "seasons"
+            "driver standings"
         ]
     },
     {
@@ -10075,8 +10152,14 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "constructors",
+            "circuits",
+            "races",
+            "seasons",
+            "drivers",
             "constructor results",
-            "races"
+            "constructor standings",
+            "driver standings",
+            "results"
         ]
     },
     {
@@ -10088,7 +10171,14 @@
         "TAB_result": [
             "drivers",
             "qualifying",
-            "races"
+            "results",
+            "lap times",
+            "pit stops",
+            "driver standings",
+            "seasons",
+            "races",
+            "constructor results",
+            "constructor standings"
         ]
     },
     {
@@ -10098,16 +10188,8 @@
         "SQL": "SELECT DISTINCT T2.nationality FROM qualifying AS T1 INNER JOIN drivers AS T2 ON T2.driverId = T1.driverId WHERE T1.raceId = 347 AND T1.q2 LIKE '1:15%'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
             "qualifying",
-            "races",
-            "results",
-            "lap times",
-            "pit stops",
-            "constructor results",
-            "constructor standings",
-            "driver standings",
-            "seasons"
+            "drivers"
         ]
     },
     {
@@ -10117,16 +10199,15 @@
         "SQL": "SELECT T2.code FROM qualifying AS T1 INNER JOIN drivers AS T2 ON T2.driverId = T1.driverId WHERE T1.raceId = 45 AND T1.q3 LIKE '1:33%'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
-            "qualifying",
-            "races",
             "seasons",
+            "races",
             "constructor results",
             "constructor standings",
             "lap times",
             "pit stops",
+            "qualifying",
             "results",
-            "driver standings"
+            "drivers"
         ]
     },
     {
@@ -10148,15 +10229,13 @@
         "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2006 AND T1.name = 'San Marino Grand Prix' AND T2.position = 2",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "constructors",
-            "drivers",
             "races",
             "results",
-            "qualifying",
             "driver standings",
             "constructor standings",
-            "lap times"
+            "qualifying",
+            "lap times",
+            "drivers"
         ]
     },
     {
@@ -10166,8 +10245,14 @@
         "SQL": "SELECT T2.url FROM races AS T1 INNER JOIN seasons AS T2 ON T2.year = T1.year WHERE T1.raceId = 901",
         "DB_result": "formula_1",
         "TAB_result": [
+            "seasons",
             "races",
-            "seasons"
+            "constructor results",
+            "constructor standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results"
         ]
     },
     {
@@ -10177,10 +10262,10 @@
         "SQL": "SELECT COUNT(T2.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.date = '2015-11-29' AND T2.time IS NULL",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
+            "races",
             "results",
             "status",
-            "races"
+            "drivers"
         ]
     },
     {
@@ -10195,8 +10280,7 @@
             "lap times",
             "pit stops",
             "qualifying",
-            "driver standings",
-            "status"
+            "driver standings"
         ]
     },
     {
@@ -10207,7 +10291,15 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times"
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results",
+            "driver standings",
+            "races",
+            "constructor results",
+            "constructor standings",
+            "seasons"
         ]
     },
     {
@@ -10217,8 +10309,8 @@
         "SQL": "SELECT T1.nationality FROM drivers AS T1 INNER JOIN results AS T2 ON T2.driverId = T1.driverId ORDER BY T2.fastestLapSpeed DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
-            "results"
+            "results",
+            "drivers"
         ]
     },
     {
@@ -10230,7 +10322,14 @@
         "TAB_result": [
             "drivers",
             "results",
-            "races"
+            "seasons",
+            "races",
+            "constructor results",
+            "constructor standings",
+            "driver standings",
+            "lap times",
+            "pit stops",
+            "qualifying"
         ]
     },
     {
@@ -10253,6 +10352,7 @@
         "SQL": "SELECT year FROM races WHERE name = 'Singapore Grand Prix' ORDER BY year ASC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
+            "circuits",
             "races"
         ]
     },
@@ -10284,7 +10384,6 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "circuits",
-            "constructors",
             "races"
         ]
     },
@@ -10327,6 +10426,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "circuits",
+            "constructors",
+            "drivers",
             "races"
         ]
     },
@@ -10350,8 +10451,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "races",
             "results",
+            "races",
             "driver standings"
         ]
     },
@@ -10363,9 +10464,9 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
+            "driver standings",
             "constructor results",
             "constructor standings",
-            "driver standings",
             "results"
         ]
     },
@@ -10377,11 +10478,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "races",
             "results",
-            "constructor results",
-            "constructor standings",
-            "driver standings"
+            "races"
         ]
     },
     {
@@ -10392,15 +10490,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "driver standings",
-            "lap times",
-            "pit stops",
-            "qualifying",
-            "results",
-            "seasons",
             "races",
-            "constructor results",
-            "constructor standings"
+            "lap times"
         ]
     },
     {
@@ -10412,14 +10503,7 @@
         "TAB_result": [
             "drivers",
             "lap times",
-            "pit stops",
-            "qualifying",
-            "results",
-            "driver standings",
-            "races",
-            "constructor results",
-            "constructor standings",
-            "seasons"
+            "races"
         ]
     },
     {
@@ -10431,8 +10515,7 @@
         "TAB_result": [
             "drivers",
             "results",
-            "races",
-            "circuits"
+            "races"
         ]
     },
     {
@@ -10443,7 +10526,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "driver standings"
+            "driver standings",
+            "results"
         ]
     },
     {
@@ -10453,7 +10537,10 @@
         "SQL": "SELECT STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', dob), forename , surname FROM drivers WHERE nationality = 'Japanese' ORDER BY dob DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers"
+            "drivers",
+            "constructors",
+            "circuits",
+            "races"
         ]
     },
     {
@@ -10475,8 +10562,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "circuits",
-            "races",
-            "constructors"
+            "races"
         ]
     },
     {
@@ -10499,9 +10585,7 @@
         "TAB_result": [
             "drivers",
             "results",
-            "races",
-            "circuits",
-            "qualifying"
+            "races"
         ]
     },
     {
@@ -10512,9 +10596,9 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
+            "circuits",
             "races",
-            "circuits"
+            "results"
         ]
     },
     {
@@ -10537,6 +10621,7 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Player",
+            "Player Attributes",
             "Match"
         ]
     },
@@ -10570,9 +10655,9 @@
         "SQL": "SELECT T3.lap, T2.name, T2.year, T1.location FROM circuits AS T1 INNER JOIN races AS T2 ON T1.circuitId = T2.circuitId INNER JOIN lapTimes AS T3 ON T3.raceId = T2.raceId ORDER BY T3.lap DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
+            "circuits",
             "races",
-            "circuits"
+            "results"
         ]
     },
     {
@@ -10643,9 +10728,7 @@
         "SQL": "SELECT nationality FROM drivers WHERE dob IS NOT NULL ORDER BY dob ASC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
-            "constructors",
-            "circuits"
+            "drivers"
         ]
     },
     {
@@ -10801,14 +10884,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "races",
             "results",
-            "lap times",
-            "pit stops",
-            "qualifying",
-            "constructor results",
-            "constructor standings",
-            "driver standings"
+            "races"
         ]
     },
     {
@@ -10831,7 +10908,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "results",
-            "races"
+            "races",
+            "drivers"
         ]
     },
     {
@@ -10865,9 +10943,9 @@
         "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T2.grid = 4 AND T1.name = 'Australian Grand Prix' AND T1.year = 1989",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
             "drivers",
-            "races"
+            "races",
+            "results"
         ]
     },
     {
@@ -10877,10 +10955,14 @@
         "SQL": "SELECT COUNT(T2.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.name = 'Australian Grand Prix' AND T1.year = 2008 AND T2.time IS NOT NULL",
         "DB_result": "formula_1",
         "TAB_result": [
-            "races",
+            "drivers",
             "results",
             "status",
-            "drivers"
+            "races",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "driver standings"
         ]
     },
     {
@@ -10892,8 +10974,8 @@
         "TAB_result": [
             "drivers",
             "races",
-            "results",
-            "lap times"
+            "lap times",
+            "results"
         ]
     },
     {
@@ -10903,16 +10985,15 @@
         "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank = 2 AND T2.name = 'Chinese Grand Prix' AND T2.year = 2008",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "constructors",
+            "results",
             "races",
             "drivers",
-            "results",
-            "lap times",
-            "pit stops",
-            "qualifying",
             "driver standings",
-            "constructor standings"
+            "qualifying",
+            "constructor standings",
+            "pit stops",
+            "lap times",
+            "seasons"
         ]
     },
     {
@@ -10923,12 +11004,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
             "races",
-            "driver standings",
-            "lap times",
-            "pit stops",
-            "qualifying"
+            "results"
         ]
     },
     {
@@ -10939,8 +11016,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "races",
-            "results"
+            "results",
+            "races"
         ]
     },
     {
@@ -10950,9 +11027,9 @@
         "SQL": "SELECT COUNT(*) FROM ( SELECT T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.name = 'Chinese Grand Prix' AND T2.year = 2008 AND T1.time IS NOT NULL GROUP BY T1.driverId HAVING COUNT(T2.raceId) > 0 )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
             "races",
-            "results"
+            "results",
+            "drivers"
         ]
     },
     {
@@ -10964,9 +11041,7 @@
         "TAB_result": [
             "drivers",
             "results",
-            "driver standings",
-            "constructor results",
-            "constructor standings"
+            "races"
         ]
     },
     {
@@ -10977,7 +11052,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results"
+            "results",
+            "races"
         ]
     },
     {
@@ -11045,8 +11121,7 @@
             "constructors",
             "constructor results",
             "constructor standings",
-            "results",
-            "driver standings"
+            "results"
         ]
     },
     {
@@ -11059,6 +11134,7 @@
             "constructors",
             "constructor results",
             "constructor standings",
+            "driver standings",
             "results"
         ]
     },
@@ -11070,15 +11146,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "constructors",
-            "constructor results",
-            "constructor standings",
-            "driver standings",
-            "results",
-            "seasons",
-            "races",
-            "lap times",
-            "pit stops",
-            "qualifying"
+            "constructor results"
         ]
     },
     {
@@ -11090,9 +11158,7 @@
         "TAB_result": [
             "constructors",
             "constructor results",
-            "constructor standings",
-            "driver standings",
-            "results"
+            "races"
         ]
     },
     {
@@ -11104,7 +11170,6 @@
         "TAB_result": [
             "constructors",
             "constructor standings",
-            "driver standings",
             "results",
             "qualifying"
         ]
@@ -11129,8 +11194,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
             "races",
+            "results",
             "status"
         ]
     },
@@ -11142,10 +11207,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "driver standings",
-            "races",
-            "lap times",
-            "pit stops",
-            "results"
+            "results",
+            "races"
         ]
     },
     {
@@ -11179,8 +11242,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
-            "lap times"
+            "results"
         ]
     },
     {
@@ -11190,10 +11252,9 @@
         "SQL": "SELECT T1.fastestLap FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.year = 2009 AND T1.time LIKE '_:%:__.___'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
             "driver standings",
-            "races",
-            "lap times"
+            "results",
+            "races"
         ]
     },
     {
@@ -11215,10 +11276,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "results",
-            "races",
-            "lap times",
-            "pit stops",
-            "qualifying"
+            "races"
         ]
     },
     {
@@ -11262,7 +11320,14 @@
         "SQL": "SELECT raceId FROM races WHERE year = 2009",
         "DB_result": "formula_1",
         "TAB_result": [
-            "races"
+            "seasons",
+            "races",
+            "constructor results",
+            "constructor standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results"
         ]
     },
     {
@@ -11277,11 +11342,11 @@
             "races",
             "constructor results",
             "constructor standings",
+            "driver standings",
             "lap times",
             "pit stops",
             "qualifying",
-            "results",
-            "driver standings"
+            "results"
         ]
     },
     {
@@ -11322,8 +11387,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times",
-            "constructors"
+            "lap times"
         ]
     },
     {
@@ -11333,7 +11397,8 @@
         "SQL": "SELECT driverRef FROM drivers WHERE nationality = 'German' ORDER BY JULIANDAY(dob) ASC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers"
+            "drivers",
+            "constructors"
         ]
     },
     {
@@ -11344,8 +11409,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "results",
-            "lap times"
+            "lap times",
+            "results"
         ]
     },
     {
@@ -11378,9 +11443,9 @@
         "SQL": "SELECT T2.year FROM lapTimes AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId ORDER BY T1.time DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "races",
             "results",
-            "lap times"
+            "lap times",
+            "races"
         ]
     },
     {
@@ -11391,7 +11456,11 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times"
+            "driver standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results"
         ]
     },
     {
@@ -11437,7 +11506,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "qualifying"
+            "qualifying",
+            "races"
         ]
     },
     {
@@ -11472,8 +11542,9 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "constructors",
+            "constructor results",
             "constructor standings",
-            "constructor results"
+            "results"
         ]
     },
     {
@@ -11495,12 +11566,8 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times",
-            "results",
-            "pit stops",
-            "qualifying",
-            "driver standings",
-            "races"
+            "races",
+            "lap times"
         ]
     },
     {
@@ -11521,9 +11588,16 @@
         "SQL": "SELECT AVG(T1.fastestLapTime) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank < 11 AND T2.year = 2006 AND T2.name = 'United States Grand Prix'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
+            "drivers",
+            "seasons",
             "races",
-            "drivers"
+            "constructor results",
+            "constructor standings",
+            "driver standings",
+            "results",
+            "lap times",
+            "pit stops",
+            "qualifying"
         ]
     },
     {
@@ -11544,6 +11618,7 @@
         "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Canadian Grand Prix' AND T2.year = 2008 AND T1.time LIKE '_:%:__.___'",
         "DB_result": "formula_1",
         "TAB_result": [
+            "circuits",
             "races",
             "results",
             "drivers"
@@ -11556,9 +11631,10 @@
         "SQL": "SELECT T3.constructorRef, T3.url FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN constructors AS T3 on T1.constructorId = T3.constructorId WHERE T2.name = 'Singapore Grand Prix' AND T2.year = 2009 AND T1.time LIKE '_:%:__.___'",
         "DB_result": "formula_1",
         "TAB_result": [
+            "constructors",
             "races",
-            "results",
-            "constructors"
+            "constructor results",
+            "results"
         ]
     },
     {
@@ -11604,11 +11680,9 @@
         "TAB_result": [
             "constructors",
             "races",
-            "circuits",
             "constructor results",
-            "constructor standings",
-            "driver standings",
-            "results"
+            "results",
+            "circuits"
         ]
     },
     {
@@ -11620,7 +11694,10 @@
         "TAB_result": [
             "drivers",
             "races",
-            "results"
+            "results",
+            "constructor results",
+            "constructor standings",
+            "driver standings"
         ]
     },
     {
@@ -11630,7 +11707,14 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN year BETWEEN 2000 AND 2010 THEN 1 ELSE 0 END) AS REAL) / 10 FROM races WHERE date BETWEEN '2000-01-01' AND '2010-12-31'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "races"
+            "races",
+            "constructor results",
+            "constructor standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results",
+            "seasons"
         ]
     },
     {
@@ -11651,11 +11735,10 @@
         "SQL": "SELECT SUM(CASE WHEN points = 91 THEN wins ELSE 0 END) FROM driverStandings",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
             "driver standings",
-            "constructor standings",
+            "results",
             "constructor results",
-            "results"
+            "constructor standings"
         ]
     },
     {
@@ -11703,7 +11786,8 @@
             "drivers",
             "results",
             "races",
-            "constructors"
+            "constructors",
+            "circuits"
         ]
     },
     {
@@ -11737,8 +11821,8 @@
         "SQL": "SELECT duration FROM pitStops ORDER BY duration DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "drivers",
-            "pit stops"
+            "pit stops",
+            "drivers"
         ]
     },
     {
@@ -11749,8 +11833,10 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "lap times",
-            "races",
-            "circuits"
+            "results",
+            "pit stops",
+            "circuits",
+            "races"
         ]
     },
     {
@@ -11772,8 +11858,15 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
+            "seasons",
             "races",
-            "pit stops"
+            "constructor results",
+            "constructor standings",
+            "driver standings",
+            "lap times",
+            "pit stops",
+            "qualifying",
+            "results"
         ]
     },
     {
@@ -11796,7 +11889,10 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "drivers",
-            "lap times"
+            "lap times",
+            "results",
+            "pit stops",
+            "qualifying"
         ]
     },
     {
@@ -11817,10 +11913,11 @@
         "SQL": "SELECT T1.position FROM lapTimes AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId WHERE T2.forename = 'Lewis' AND T2.surname = 'Hamilton' ORDER BY T1.time ASC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
             "drivers",
             "lap times",
-            "races"
+            "races",
+            "circuits",
+            "results"
         ]
     },
     {
@@ -11845,8 +11942,7 @@
         "TAB_result": [
             "circuits",
             "races",
-            "lap times",
-            "results"
+            "lap times"
         ]
     },
     {
@@ -11885,7 +11981,7 @@
         "TAB_result": [
             "circuits",
             "lap times",
-            "races"
+            "results"
         ]
     },
     {
@@ -11898,7 +11994,8 @@
             "drivers",
             "pit stops",
             "lap times",
-            "results"
+            "results",
+            "races"
         ]
     },
     {
@@ -11908,11 +12005,15 @@
         "SQL": "SELECT CAST(SUM(T1.milliseconds) AS REAL) / COUNT(T1.lap) FROM lapTimes AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T3.country = 'Italy'",
         "DB_result": "formula_1",
         "TAB_result": [
-            "lap times",
-            "pit stops",
-            "results",
+            "circuits",
             "races",
-            "circuits"
+            "lap times",
+            "results",
+            "pit stops",
+            "qualifying",
+            "constructor results",
+            "constructor standings",
+            "seasons"
         ]
     },
     {
@@ -11943,7 +12044,8 @@
         "SQL": "SELECT preferred_foot FROM Player_Attributes WHERE potential IS NOT NULL ORDER BY potential ASC LIMIT 1",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -11953,7 +12055,8 @@
         "SQL": "SELECT COUNT(id) FROM Player_Attributes WHERE overall_rating BETWEEN 60 AND 65 AND defensive_work_rate = 'low'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -12019,8 +12122,8 @@
         "SQL": "SELECT t1.buildUpPlaySpeed FROM Team_Attributes AS t1 INNER JOIN Team AS t2 ON t1.team_api_id = t2.team_api_id ORDER BY t1.buildUpPlaySpeed ASC LIMIT 4",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Team",
-            "Team Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -12031,7 +12134,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Match",
-            "League"
+            "League",
+            "Country"
         ]
     },
     {
@@ -12053,8 +12157,7 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "League",
-            "Match",
-            "Country"
+            "Match"
         ]
     },
     {
@@ -12118,8 +12221,8 @@
         "SQL": "SELECT t1.name, SUM(t2.home_team_goal) + SUM(t2.away_team_goal) FROM League AS t1 INNER JOIN Match AS t2 ON t1.id = t2.league_id GROUP BY t1.name ORDER BY SUM(t2.home_team_goal) + SUM(t2.away_team_goal) ASC LIMIT 5",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "League",
-            "Match"
+            "Match",
+            "League"
         ]
     },
     {
@@ -12140,8 +12243,8 @@
         "SQL": "SELECT t1.player_name FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.height > 180 GROUP BY t1.id ORDER BY CAST(SUM(t2.heading_accuracy) AS REAL) / COUNT(t2.`player_fifa_api_id`) DESC LIMIT 10",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes",
-            "Player"
+            "Player",
+            "Player Attributes"
         ]
     },
     {
@@ -12163,7 +12266,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Match",
-            "League"
+            "League",
+            "Team"
         ]
     },
     {
@@ -12270,8 +12374,8 @@
         "SQL": "SELECT COUNT(DISTINCT t1.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.weight < 130 AND t2.preferred_foot = 'left'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes",
-            "Player"
+            "Player",
+            "Player Attributes"
         ]
     },
     {
@@ -12281,8 +12385,8 @@
         "SQL": "SELECT DISTINCT t1.team_short_name FROM Team AS t1 INNER JOIN Team_attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.chanceCreationPassingClass = 'Risky'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Team",
-            "Team Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -12326,7 +12430,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Match",
-            "Country"
+            "Country",
+            "Team"
         ]
     },
     {
@@ -12388,8 +12493,8 @@
         "SQL": "SELECT t2.potential FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.player_name = 'Aaron Doran'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player",
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -12509,8 +12614,8 @@
         "SQL": "SELECT t1.team_short_name FROM Team AS t1 INNER JOIN Match AS t2 ON t1.team_api_id = t2.home_team_api_id WHERE t2.home_team_goal = 10",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Match",
-            "Team"
+            "Team",
+            "Match"
         ]
     },
     {
@@ -12573,7 +12678,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Player Attributes",
-            "Player"
+            "Player",
+            "Team"
         ]
     },
     {
@@ -12616,8 +12722,9 @@
         "SQL": "SELECT COUNT(DISTINCT t1.player_name) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE STRFTIME('%Y',t1.birthday) < '1986' AND t2.defensive_work_rate = 'high'",
         "DB_result": "european_football_2",
         "TAB_result": [
+            "Player",
             "Player Attributes",
-            "Player"
+            "Team"
         ]
     },
     {
@@ -12893,8 +13000,8 @@
         "SQL": "SELECT t2.buildUpPlayDribblingClass FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t1.team_short_name = 'LEI' AND SUBSTR(t2.`date`, 1, 10) = '2015-09-10'",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Team Attributes",
-            "Team"
+            "Team",
+            "Team Attributes"
         ]
     },
     {
@@ -12980,7 +13087,8 @@
         "SQL": "SELECT player_api_id FROM Player ORDER BY weight DESC LIMIT 10",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player"
+            "Player",
+            "Player Attributes"
         ]
     },
     {
@@ -13001,7 +13109,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Player",
-            "Match"
+            "Match",
+            "Team"
         ]
     },
     {
@@ -13012,7 +13121,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Player",
-            "Match"
+            "Match",
+            "Team"
         ]
     },
     {
@@ -13022,8 +13132,9 @@
         "SQL": "SELECT SUM(t2.home_team_goal) FROM Player AS t1 INNER JOIN match AS t2 ON t1.player_api_id = t2.away_player_1 WHERE datetime(CURRENT_TIMESTAMP, 'localtime') - datetime(T1.birthday) < 31",
         "DB_result": "european_football_2",
         "TAB_result": [
+            "Match",
             "Player",
-            "Match"
+            "Team"
         ]
     },
     {
@@ -13055,8 +13166,9 @@
         "SQL": "SELECT DISTINCT t1.player_name FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t2.attacking_work_rate = 'high'",
         "DB_result": "european_football_2",
         "TAB_result": [
+            "Player",
             "Player Attributes",
-            "Player"
+            "Match"
         ]
     },
     {
@@ -13078,6 +13190,7 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Player",
+            "Player Attributes",
             "Country"
         ]
     },
@@ -13144,8 +13257,8 @@
         "SQL": "SELECT player_name FROM Player WHERE height > 180 ORDER BY player_name LIMIT 3",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player",
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -13165,7 +13278,8 @@
         "SQL": "SELECT SUM(CASE WHEN t1.id = 6 THEN t1.jumping ELSE 0 END) - SUM(CASE WHEN t1.id = 23 THEN t1.jumping ELSE 0 END) FROM Player_Attributes AS t1",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -13186,7 +13300,8 @@
         "SQL": "SELECT COUNT(t1.id) FROM Player_Attributes AS t1 WHERE t1.preferred_foot = 'left' AND t1.crossing = ( SELECT MAX(crossing) FROM Player_Attributes)",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -13196,7 +13311,8 @@
         "SQL": "SELECT CAST(COUNT(CASE WHEN strength > 80 AND stamina > 80 THEN id ELSE NULL END) AS REAL) * 100 / COUNT(id) FROM Player_Attributes t",
         "DB_result": "european_football_2",
         "TAB_result": [
-            "Player Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -13218,7 +13334,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Match",
-            "League"
+            "League",
+            "Team"
         ]
     },
     {
@@ -13251,7 +13368,8 @@
         "DB_result": "european_football_2",
         "TAB_result": [
             "Match",
-            "League"
+            "League",
+            "Country"
         ]
     },
     {
@@ -13263,7 +13381,8 @@
         "TAB_result": [
             "Match",
             "League",
-            "Country"
+            "Country",
+            "Team"
         ]
     },
     {
@@ -13369,9 +13488,9 @@
         "SQL": "SELECT T1.Diagnosis, T2.Date FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.ID = 30609",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Examination",
             "Patient",
-            "Laboratory",
-            "Examination"
+            "Laboratory"
         ]
     },
     {
@@ -13473,8 +13592,7 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Patient"
         ]
     },
     {
@@ -13527,8 +13645,8 @@
         "SQL": "SELECT CAST(COUNT(T1.ID) AS REAL) / 12 FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', T2.Date) = '1998' AND T1.SEX = 'M'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -13618,8 +13736,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -13641,9 +13759,8 @@
         "SQL": "SELECT CASE WHEN `T-CHO` < 250 THEN 'Normal' ELSE 'Abnormal' END FROM Laboratory WHERE ID = 2927464 AND Date = '1995-09-04'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -13753,6 +13870,7 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
+            "Patient",
             "Laboratory"
         ]
     },
@@ -13776,8 +13894,7 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Patient"
         ]
     },
     {
@@ -13787,7 +13904,8 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -13797,8 +13915,8 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN Diagnosis = 'BEHCET' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Patient WHERE STRFTIME('%Y', `First Date`) = '1981' AND SEX = 'M'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
-            "Patient"
+            "Patient",
+            "Examination"
         ]
     },
     {
@@ -13808,6 +13926,7 @@
         "SQL": "SELECT DISTINCT T1.ID FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Admission = '-' AND T2.`T-BIL` < 2.0 AND T2.Date LIKE '1991-10-%'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -13888,9 +14007,8 @@
         "SQL": "SELECT COUNT(ID) FROM Laboratory WHERE (ALB <= 6.0 OR ALB >= 8.5) AND STRFTIME('%Y', Date) = '1997'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -13969,7 +14087,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Laboratory",
-            "Patient"
+            "Patient",
+            "Examination"
         ]
     },
     {
@@ -13980,7 +14099,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Examination"
         ]
     },
     {
@@ -13990,8 +14110,8 @@
         "SQL": "SELECT DISTINCT T1.ID FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'M' AND T2.GPT >= 60",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14057,6 +14177,7 @@
         "SQL": "SELECT DISTINCT T1.ID, T1.SEX, T1.Birthday FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TP < 6.0",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -14112,8 +14233,9 @@
         "SQL": "SELECT AVG(T2.UA) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE (T2.UA < 6.5 AND T1.SEX = 'F') OR (T2.UA < 8.0 AND T1.SEX = 'M') AND T2.Date = ( SELECT MAX(Date) FROM Laboratory )",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
-            "Patient"
+            "Examination",
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14190,7 +14312,6 @@
         "SQL": "SELECT T1.ID, T2.`T-CHO` FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID ORDER BY T2.`T-CHO` DESC, T1.Birthday ASC LIMIT 1",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -14225,8 +14346,8 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TG >= 200 AND STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) > 50",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14315,6 +14436,7 @@
         "SQL": "SELECT DISTINCT T1.ID, T1.SEX FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.HGB < 10 AND T1.Admission = '-'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -14350,7 +14472,8 @@
         "SQL": "SELECT AVG(T2.HCT) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.HCT < 29 AND STRFTIME('%Y', T2.Date) = '1991'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory"
+            "Laboratory",
+            "Examination"
         ]
     },
     {
@@ -14417,7 +14540,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14485,7 +14609,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14541,8 +14666,8 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.CRE >= 1.5 AND STRFTIME('%Y', Date('now')) - STRFTIME('%Y', T1.Birthday) < 70",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14553,7 +14678,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14575,7 +14701,6 @@
         "SQL": "SELECT T1.ID FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.RF < 20 AND STRFTIME('%Y', DATE('now')) - STRFTIME('%Y', T1.Birthday) > 60",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -14588,7 +14713,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14599,7 +14725,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14610,7 +14737,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14655,7 +14783,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14677,8 +14806,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14688,9 +14817,9 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID INNER JOIN Examination AS T3 ON T3.ID = T2.ID WHERE (T2.SC170 = 'negative' OR T2.SC170 = '0') AND T1.SEX = 'F' AND T3.Symptoms IS NULL",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
+            "Examination",
             "Patient",
-            "Examination"
+            "Laboratory"
         ]
     },
     {
@@ -14700,8 +14829,8 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.SSA IN ('negative', '0') AND STRFTIME('%Y', T2.Date) < '2000'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14723,7 +14852,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14733,8 +14863,9 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.SSB = 'negative' OR '0' AND T1.Symptoms IS NOT NULL",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Laboratory",
             "Examination",
-            "Laboratory"
+            "Patient"
         ]
     },
     {
@@ -14767,6 +14898,7 @@
         "SQL": "SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.DNA < 8 AND T1.Description IS NULL",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Examination",
             "Patient",
             "Laboratory"
         ]
@@ -14778,9 +14910,8 @@
         "SQL": "SELECT COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.IGG > 900 AND T2.IGG <2000 AND  T1.Admission = '+'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14857,9 +14988,9 @@
         "SQL": "SELECT T1.`First Date` FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.LDH >= 500 ORDER BY T1.`First Date` DESC LIMIT 1",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
+            "Laboratory",
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Patient"
         ]
     },
     {
@@ -14880,8 +15011,8 @@
         "SQL": "SELECT COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.ALP < 300 AND T1.Admission = '-'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14916,8 +15047,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14951,7 +15082,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14962,8 +15094,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory",
-            "Patient"
+            "Patient",
+            "Laboratory"
         ]
     },
     {
@@ -14973,8 +15105,8 @@
         "SQL": "SELECT COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID INNER JOIN Examination AS T3 ON T1.ID = T3.ID WHERE T2.`T-BIL` >= 2 AND T3.`ANA Pattern` LIKE '%P%'",
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
-            "Examination",
             "Laboratory",
+            "Examination",
             "Patient"
         ]
     },
@@ -14986,7 +15118,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -14997,7 +15130,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15008,7 +15142,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15019,8 +15154,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15055,7 +15190,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15077,8 +15213,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Patient",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15159,7 +15295,8 @@
         "DB_result": "thrombosis_prediction",
         "TAB_result": [
             "Examination",
-            "Laboratory"
+            "Laboratory",
+            "Patient"
         ]
     },
     {
@@ -15180,8 +15317,8 @@
         "SQL": "SELECT COUNT(T1.member_id) FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.college = 'College of Engineering'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
-            "Major"
+            "Major",
+            "Member"
         ]
     },
     {
@@ -15214,9 +15351,9 @@
         "SQL": "SELECT T3.phone FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T1.event_name = 'Women''s Soccer'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
+            "Member",
             "Attendance",
-            "Member"
+            "Event"
         ]
     },
     {
@@ -15226,9 +15363,9 @@
         "SQL": "SELECT COUNT(T1.event_id) FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T1.event_name = 'Women''s Soccer' AND T3.t_shirt_size = 'Medium'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
+            "Member",
             "Attendance",
-            "Member"
+            "Event"
         ]
     },
     {
@@ -15261,9 +15398,9 @@
         "SQL": "SELECT T1.event_name FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.first_name = 'Maya' AND T3.last_name = 'Mclean'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
+            "Member",
             "Attendance",
-            "Member"
+            "Event"
         ]
     },
     {
@@ -15298,8 +15435,7 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Event",
-            "Attendance",
-            "Member"
+            "Attendance"
         ]
     },
     {
@@ -15387,7 +15523,9 @@
         "SQL": "SELECT T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Vice President'",
         "DB_result": "financial",
         "TAB_result": [
-            "NONE"
+            "loan",
+            "order",
+            "transaction"
         ]
     },
     {
@@ -15435,7 +15573,8 @@
             "Event",
             "Budget",
             "Expense",
-            "Member"
+            "Member",
+            "Attendance"
         ]
     },
     {
@@ -15456,8 +15595,8 @@
         "SQL": "SELECT SUM(T2.amount) FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event WHERE T1.event_name = 'October Speaker'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Budget",
             "Event",
+            "Budget",
             "Income"
         ]
     },
@@ -15468,9 +15607,9 @@
         "SQL": "SELECT T3.approved FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event INNER JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget WHERE T1.event_name = 'October Meeting' AND T1.event_date LIKE '2019-10-08%'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Expense",
+            "Event",
             "Budget",
-            "Event"
+            "Expense"
         ]
     },
     {
@@ -15480,11 +15619,10 @@
         "SQL": "SELECT AVG(T2.cost) FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.last_name = 'Allen' AND T1.first_name = 'Elijah' AND (SUBSTR(T2.expense_date, 6, 2) = '09' OR SUBSTR(T2.expense_date, 6, 2) = '10')",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
-            "Expense",
-            "Budget",
             "Event",
-            "Attendance"
+            "Budget",
+            "Expense",
+            "Member"
         ]
     },
     {
@@ -15506,7 +15644,8 @@
         "SQL": "SELECT location FROM event WHERE event_name = 'Spring Budget Review'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event"
+            "Event",
+            "Budget"
         ]
     },
     {
@@ -15517,6 +15656,7 @@
         "DB_result": "card_games",
         "TAB_result": [
             "cards",
+            "foreign data",
             "sets"
         ]
     },
@@ -15537,7 +15677,8 @@
         "SQL": "SELECT notes FROM income WHERE source = 'Fundraising' AND date_received = '2019-09-14'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event"
+            "Event",
+            "Income"
         ]
     },
     {
@@ -15599,7 +15740,7 @@
         "SQL": "SELECT T1.event_status FROM budget AS T1 INNER JOIN expense AS T2 ON T1.budget_id = T2.link_to_budget WHERE T2.expense_description = 'Post Cards, Posters' AND T2.expense_date = '2019-08-20'",
         "DB_result": "card_games",
         "TAB_result": [
-            "NONE"
+            "cards"
         ]
     },
     {
@@ -15631,7 +15772,7 @@
         "SQL": "SELECT T2.type FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.first_name = 'Christof' AND T1.last_name = 'Nielson'",
         "DB_result": "codebase_community",
         "TAB_result": [
-            "users"
+            "NONE"
         ]
     },
     {
@@ -15673,8 +15814,6 @@
         "SQL": "SELECT T2.date_received FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Connor' AND T1.last_name = 'Hilton' AND T2.source = 'Dues'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
-            "Expense",
             "Income",
             "Member"
         ]
@@ -15687,6 +15826,9 @@
         "DB_result": "codebase_community",
         "TAB_result": [
             "badges",
+            "comments",
+            "post History",
+            "posts",
             "votes",
             "users"
         ]
@@ -15698,8 +15840,8 @@
         "SQL": "SELECT CAST(SUM(CASE WHEN T2.event_name = 'Yearly Kickoff' THEN T1.amount ELSE 0 END) AS REAL) / SUM(CASE WHEN T2.event_name = 'October Meeting' THEN T1.amount ELSE 0 END) FROM budget AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T1.category = 'Advertisement' AND T2.type = 'Meeting'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
-            "Budget"
+            "Budget",
+            "Event"
         ]
     },
     {
@@ -15720,8 +15862,9 @@
         "SQL": "SELECT SUM(cost) FROM expense WHERE expense_description = 'Pizza'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
-            "Expense"
+            "Expense",
+            "Budget",
+            "Event"
         ]
     },
     {
@@ -15842,6 +15985,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
+            "disposition",
+            "account",
+            "loan",
             "transaction"
         ]
     },
@@ -15862,8 +16008,9 @@
         "SQL": "SELECT COUNT(T2.link_to_event) FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member WHERE T1.phone = '954-555-6240'",
         "DB_result": "student_club",
         "TAB_result": [
+            "Member",
             "Attendance",
-            "Member"
+            "Event"
         ]
     },
     {
@@ -15926,8 +16073,7 @@
         "SQL": "SELECT SUM(spent) FROM budget WHERE category = 'Food'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Budget",
-            "Expense"
+            "Budget"
         ]
     },
     {
@@ -15938,7 +16084,8 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Attendance",
-            "Member"
+            "Member",
+            "Event"
         ]
     },
     {
@@ -15975,9 +16122,9 @@
             "client",
             "disposition",
             "account",
-            "transaction",
             "loan",
-            "order"
+            "order",
+            "transaction"
         ]
     },
     {
@@ -16012,7 +16159,10 @@
         "TAB_result": [
             "Event",
             "Budget",
-            "Member"
+            "Member",
+            "Attendance",
+            "Expense",
+            "Income"
         ]
     },
     {
@@ -16047,7 +16197,8 @@
         "TAB_result": [
             "Event",
             "Budget",
-            "Expense"
+            "Expense",
+            "Attendance"
         ]
     },
     {
@@ -16112,7 +16263,8 @@
         "TAB_result": [
             "Member",
             "Attendance",
-            "Major"
+            "Major",
+            "Event"
         ]
     },
     {
@@ -16122,8 +16274,9 @@
         "SQL": "SELECT SUM(spent) / COUNT(spent) FROM budget WHERE category = 'Food' AND event_status = 'Closed'",
         "DB_result": "student_club",
         "TAB_result": [
+            "Event",
             "Budget",
-            "Event"
+            "Expense"
         ]
     },
     {
@@ -16164,9 +16317,9 @@
         "SQL": "SELECT T3.cost FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event INNER JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget WHERE T1.event_name = 'September Speaker' AND T3.expense_description = 'Posters'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
             "Expense",
-            "Budget"
+            "Budget",
+            "Event"
         ]
     },
     {
@@ -16188,7 +16341,8 @@
         "TAB_result": [
             "Event",
             "Budget",
-            "Expense"
+            "Expense",
+            "Attendance"
         ]
     },
     {
@@ -16340,7 +16494,8 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Event",
-            "Budget"
+            "Budget",
+            "Zip Code"
         ]
     },
     {
@@ -16384,7 +16539,8 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "disposition"
+            "disposition",
+            "card"
         ]
     },
     {
@@ -16394,8 +16550,7 @@
         "SQL": "SELECT DISTINCT T2.category FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event WHERE T1.location = 'MU 215'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
-            "Budget"
+            "Event"
         ]
     },
     {
@@ -16459,9 +16614,9 @@
         "SQL": "SELECT city, state FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN zip_code AS T3 ON T3.zip_code = T1.zip WHERE department = 'Electrical and Computer Engineering Department' AND position = 'Member'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
+            "Zip Code",
             "Major",
-            "Zip Code"
+            "Member"
         ]
     },
     {
@@ -16483,8 +16638,8 @@
         "SQL": "SELECT T1.last_name, T1.position FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T2.expense_date = '2019-09-10' AND T2.expense_description = 'Pizza'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Expense",
-            "Member"
+            "Member",
+            "Expense"
         ]
     },
     {
@@ -16507,7 +16662,8 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Member",
-            "Income"
+            "Income",
+            "Budget"
         ]
     },
     {
@@ -16537,10 +16693,7 @@
         "SQL": "SELECT DISTINCT event_name FROM event WHERE type = 'Game' AND date(SUBSTR(event_date, 1, 10)) BETWEEN '2019-03-15' AND '2020-03-20' AND status = 'Closed'",
         "DB_result": "card_games",
         "TAB_result": [
-            "cards",
-            "foreign data",
-            "sets",
-            "ruling"
+            "NONE"
         ]
     },
     {
@@ -16552,8 +16705,8 @@
         "TAB_result": [
             "Income",
             "Attendance",
-            "Event",
-            "Member"
+            "Member",
+            "Event"
         ]
     },
     {
@@ -16563,8 +16716,8 @@
         "SQL": "SELECT DISTINCT T1.link_to_member, T3.link_to_event FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member WHERE date(SUBSTR(T1.expense_date, 1, 10)) BETWEEN '2019-01-10' AND '2019-11-19' AND T1.approved = 'true'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
             "Expense",
+            "Member",
             "Attendance",
             "Event"
         ]
@@ -16598,8 +16751,8 @@
         "SQL": "SELECT DISTINCT T1.email FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE date(SUBSTR(T2.expense_date, 1, 10)) BETWEEN '2019-09-10' AND '2019-11-19' AND T2.cost > 20",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
-            "Expense"
+            "Expense",
+            "Member"
         ]
     },
     {
@@ -16630,8 +16783,7 @@
         "SQL": "SELECT event_id, location, status FROM event WHERE date(SUBSTR(event_date, 1, 10)) BETWEEN '2019-11-01' AND '2020-03-31'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Event",
-            "Budget"
+            "Event"
         ]
     },
     {
@@ -16694,8 +16846,8 @@
         "SQL": "SELECT DISTINCT T1.first_name, T1.last_name, T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN expense AS T3 ON T1.member_id = T3.link_to_member WHERE T3.cost > 100",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
             "Expense",
+            "Member",
             "Major"
         ]
     },
@@ -16720,10 +16872,10 @@
         "SQL": "SELECT T2.member_id FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id INNER JOIN budget AS T3 ON T1.link_to_budget = T3.budget_id INNER JOIN event AS T4 ON T3.link_to_event = T4.event_id GROUP BY T2.member_id HAVING COUNT(DISTINCT T4.event_id) > 1 ORDER BY SUM(T1.cost) DESC LIMIT 1",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
-            "Expense",
+            "Event",
             "Budget",
-            "Event"
+            "Expense",
+            "Member"
         ]
     },
     {
@@ -16734,7 +16886,9 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Expense",
-            "Member"
+            "Member",
+            "Budget",
+            "Income"
         ]
     },
     {
@@ -16745,8 +16899,8 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Event",
-            "Expense",
-            "Budget"
+            "Budget",
+            "Expense"
         ]
     },
     {
@@ -16757,8 +16911,8 @@
         "DB_result": "student_club",
         "TAB_result": [
             "Event",
-            "Expense",
-            "Budget"
+            "Budget",
+            "Expense"
         ]
     },
     {
@@ -16822,8 +16976,8 @@
         "SQL": "SELECT T2.first_name, T2.last_name, T1.cost FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T1.expense_description = 'Water, Veggie tray, supplies'",
         "DB_result": "student_club",
         "TAB_result": [
-            "Member",
-            "Expense"
+            "Expense",
+            "Member"
         ]
     },
     {
@@ -16865,8 +17019,9 @@
         "SQL": "SELECT DISTINCT T3.first_name, T3.last_name, T4.amount FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T3.member_id = T2.link_to_member INNER JOIN income AS T4 ON T4.link_to_member = T3.member_id WHERE T4.date_received = '2019-09-09'",
         "DB_result": "student_club",
         "TAB_result": [
+            "Income",
             "Member",
-            "Income"
+            "Budget"
         ]
     },
     {
@@ -16898,9 +17053,9 @@
         "SQL": "SELECT SUM(T1.spent), T2.event_name FROM budget AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T1.category = 'Speaker Gifts' GROUP BY T2.event_name",
         "DB_result": "student_club",
         "TAB_result": [
+            "Expense",
             "Budget",
-            "Event",
-            "Expense"
+            "Event"
         ]
     },
     {
@@ -16942,14 +17097,11 @@
         "SQL": "SELECT CAST(SUM(IIF(Currency = 'EUR', 1, 0)) AS FLOAT) / SUM(IIF(Currency = 'CZK', 1, 0)) AS ratio FROM customers",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "card",
             "client",
             "disposition",
-            "district",
-            "loan",
-            "order",
-            "transaction"
+            "account",
+            "transaction",
+            "order"
         ]
     },
     {
@@ -16959,8 +17111,7 @@
         "SQL": "SELECT T1.CustomerID FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Segment = 'LAM' AND SUBSTR(T2.Date, 1, 4) = '2012' GROUP BY T1.CustomerID ORDER BY SUM(T2.Consumption) ASC LIMIT 1",
         "DB_result": "california_schools",
         "TAB_result": [
-            "free and reduced-price meals",
-            "schools"
+            "free and reduced-price meals"
         ]
     },
     {
@@ -16970,14 +17121,10 @@
         "SQL": "SELECT AVG(T2.Consumption) / 12 FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE SUBSTR(T2.Date, 1, 4) = '2013' AND T1.Segment = 'SME'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "card",
             "client",
             "disposition",
-            "district",
-            "loan",
-            "order",
-            "transaction"
+            "transaction",
+            "order"
         ]
     },
     {
@@ -16988,8 +17135,9 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "transactions",
+            "gas stations",
             "products",
+            "transactions",
             "year and month"
         ]
     },
@@ -17001,10 +17149,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
+            "district",
             "disposition",
             "account",
-            "transaction",
-            "district"
+            "transaction"
         ]
     },
     {
@@ -17025,7 +17173,7 @@
         "SQL": "SELECT SUBSTRING(T2.Date, 1, 4) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Currency = 'EUR' GROUP BY SUBSTRING(T2.Date, 1, 4) ORDER BY SUM(T2.Consumption) DESC LIMIT 1",
         "DB_result": "financial",
         "TAB_result": [
-            "transaction"
+            "NONE"
         ]
     },
     {
@@ -17037,6 +17185,7 @@
         "TAB_result": [
             "customers",
             "gas stations",
+            "transactions",
             "year and month"
         ]
     },
@@ -17119,7 +17268,8 @@
         "TAB_result": [
             "client",
             "disposition",
-            "transaction"
+            "transaction",
+            "account"
         ]
     },
     {
@@ -17130,10 +17280,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "transaction",
-            "order",
             "account",
-            "disposition"
+            "disposition",
+            "transaction",
+            "order"
         ]
     },
     {
@@ -17167,7 +17317,8 @@
         "TAB_result": [
             "client",
             "disposition",
-            "transaction"
+            "transaction",
+            "account"
         ]
     },
     {
@@ -17178,9 +17329,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "disposition",
-            "account",
             "transaction",
+            "account",
+            "disposition",
             "district"
         ]
     },
@@ -17218,9 +17369,7 @@
             "client",
             "account",
             "disposition",
-            "transaction",
-            "order",
-            "loan"
+            "transaction"
         ]
     },
     {
@@ -17230,7 +17379,9 @@
         "SQL": "SELECT CAST(SUM(IIF(Segment = 'Premium', 1, 0)) AS FLOAT) * 100 / COUNT(GasStationID) FROM gasstations WHERE Country = 'SVK'",
         "DB_result": "debit_card_specializing",
         "TAB_result": [
-            "gas stations"
+            "gas stations",
+            "products",
+            "transactions"
         ]
     },
     {
@@ -17242,10 +17393,7 @@
         "TAB_result": [
             "client",
             "disposition",
-            "transaction",
-            "account",
-            "loan",
-            "order"
+            "transaction"
         ]
     },
     {
@@ -17311,7 +17459,8 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "gas stations",
-            "transactions"
+            "transactions",
+            "year and month"
         ]
     },
     {
@@ -17322,8 +17471,8 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "transactions",
-            "gas stations"
+            "gas stations",
+            "transactions"
         ]
     },
     {
@@ -17334,8 +17483,8 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "products",
-            "transactions"
+            "transactions",
+            "products"
         ]
     },
     {
@@ -17367,8 +17516,8 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "gas stations",
-            "transactions",
-            "products"
+            "products",
+            "transactions"
         ]
     },
     {
@@ -17400,8 +17549,8 @@
         "SQL": "SELECT COUNT(T1.TransactionID) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Country = 'CZE' AND STRFTIME('%Y', T1.Date) >= '2012'",
         "DB_result": "debit_card_specializing",
         "TAB_result": [
-            "transactions",
-            "gas stations"
+            "gas stations",
+            "transactions"
         ]
     },
     {
@@ -17411,8 +17560,8 @@
         "SQL": "SELECT AVG(T1.Price) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Country = 'CZE'",
         "DB_result": "debit_card_specializing",
         "TAB_result": [
-            "transactions",
-            "gas stations"
+            "gas stations",
+            "transactions"
         ]
     },
     {
@@ -17423,11 +17572,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "disposition",
-            "transaction",
             "account",
-            "loan",
-            "order"
+            "disposition",
+            "transaction"
         ]
     },
     {
@@ -17449,8 +17596,10 @@
         "SQL": "SELECT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date = '2012-08-25' ORDER BY T1.Time DESC LIMIT 1",
         "DB_result": "debit_card_specializing",
         "TAB_result": [
+            "customers",
             "gas stations",
-            "transactions"
+            "transactions",
+            "year and month"
         ]
     },
     {
@@ -17493,7 +17642,6 @@
         "DB_result": "debit_card_specializing",
         "TAB_result": [
             "customers",
-            "gas stations",
             "transactions",
             "year and month"
         ]
@@ -17505,9 +17653,8 @@
         "SQL": "SELECT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date = '2012-08-24' AND T1.Time = '12:42:00'",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "loan",
             "transaction",
+            "account",
             "district"
         ]
     },
@@ -17531,8 +17678,10 @@
         "TAB_result": [
             "client",
             "disposition",
-            "account",
-            "transaction"
+            "transaction",
+            "order",
+            "loan",
+            "account"
         ]
     },
     {
@@ -17576,7 +17725,12 @@
         "SQL": "SELECT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date = '2012-08-24' AND T1.Price = 548.4",
         "DB_result": "financial",
         "TAB_result": [
-            "NONE"
+            "transaction",
+            "order",
+            "account",
+            "disposition",
+            "client",
+            "district"
         ]
     },
     {
@@ -17589,6 +17743,8 @@
             "client",
             "disposition",
             "account",
+            "loan",
+            "order",
             "transaction"
         ]
     },
@@ -17600,9 +17756,9 @@
         "DB_result": "financial",
         "TAB_result": [
             "transaction",
+            "account",
             "disposition",
-            "client",
-            "account"
+            "client"
         ]
     },
     {
@@ -17623,10 +17779,7 @@
         "SQL": "SELECT CAST(SUM(IIF(Country = 'SVK' AND Segment = 'Premium', 1, 0)) AS FLOAT) * 100 / SUM(IIF(Country = 'SVK', 1, 0)) FROM gasstations",
         "DB_result": "financial",
         "TAB_result": [
-            "account",
-            "card",
-            "client",
-            "district"
+            "NONE"
         ]
     },
     {
@@ -17649,8 +17802,8 @@
         "SQL": "SELECT T2.Description FROM transactions_1k AS T1 INNER JOIN products AS T2 ON T1.ProductID = T2.ProductID ORDER BY T1.Amount DESC LIMIT 5",
         "DB_result": "debit_card_specializing",
         "TAB_result": [
-            "transactions",
-            "products"
+            "products",
+            "transactions"
         ]
     },
     {
@@ -17685,10 +17838,10 @@
         "DB_result": "financial",
         "TAB_result": [
             "client",
-            "account",
-            "disposition",
             "transaction",
-            "order"
+            "order",
+            "loan",
+            "account"
         ]
     }
 ]
