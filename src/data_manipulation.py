@@ -221,6 +221,7 @@ def get_sql_table_names(sql_query: str) -> List[str]:
     result = []
     for t in tables:
         if t not in ctes and t not in result:
+            t = t.replace("`", "").strip()
             result.append(t)
 
     return result
