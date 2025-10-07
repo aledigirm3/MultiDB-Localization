@@ -172,6 +172,16 @@ def extract_tables(dataset):
 
         # llm_response to list
         llm_response_list = [w.strip() for w in llm_response.split(',')]
+        list_to_lower = {w.lower() for w in llm_response_list}
+
+        for t in table_descriptions[db]:
+            if t.lower() in query.lower() or (t.lower() + "s") in query.lower():
+                if t.lower() not in list_to_lower:
+                    llm_response_list.append(t)
+        
+        if len(llm_response_list) > 1 and "NONE" in llm_response_list:
+            llm_response_list.remove("NONE")
+
 
         item = {
 				"question_id": sample['question_id'],
