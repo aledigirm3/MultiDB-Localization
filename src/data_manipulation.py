@@ -214,7 +214,7 @@ def get_sql_table_names(sql_query: str) -> List[str]:
     table_pattern = re.compile(r"""
         (?:FROM|JOIN)\s+
         ([`"]?[a-zA-Z_][\w$]*[`"]?)
-    """, re.IGNORECASE | re.VERBOSE)
+    """, re.VERBOSE)
 
     tables = table_pattern.findall(sql_query)
 
