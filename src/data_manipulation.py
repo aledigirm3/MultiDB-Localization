@@ -1,7 +1,7 @@
 import json
 import paths
-import re
 from typing import Dict, List
+import sqlglot
 
 
 def get_databases(file_path: str) -> list:
@@ -194,38 +194,6 @@ def create_table_name_mapping(filename: str) -> Dict[str, Dict[str, str]]:
 
     return output_dict
 
-def get_sql_table_names(sql_query: str) -> List[str]:
-    """
-    Extracts a list of table names from any given SQL query.
-    Args:
-        sql_query: A string containing the SQL query.
-
-    Returns:
-        A list of unique table names found in the query. Returns an
-        empty list if no tables are found.
-    """
-    cte_pattern = re.compile(r"""
-    WITH\s+([\w`"]+)
-    \s+AS\s*\(
-""", re.IGNORECASE | re.VERBOSE)
-
-    ctes = set(m.group(1) for m in cte_pattern.finditer(sql_query))
-
-    table_pattern = re.compile(r"""
-        (?:FROM|JOIN)\s+
-        ([`"]?[a-zA-Z_][\w$]*[`"]?)
-    """, re.VERBOSE)
-
-    tables = table_pattern.findall(sql_query)
-
-    result = []
-    for t in tables:
-        if t not in ctes and t not in result:
-            t = t.replace("`", "").strip()
-            result.append(t)
-
-    return result
-
 
 def create_db_schema_dictionary(file_path: str) -> Dict[str, Dict[str, List[str]]]:
     """
@@ -234,7 +202,7 @@ def create_db_schema_dictionary(file_path: str) -> Dict[str, Dict[str, List[str]
 
     The function reads a file containing a list of database schemas. For each
     database, it maps its tables to a list of their corresponding column names.
-    It uses the 'table_names_original' for table names and 'column_names_original'
+    It uses the 'table_names' for table names and 'column_names'
     for column mappings.
 
     The structure of the output dictionary is:
@@ -295,6 +263,84 @@ def create_db_schema_dictionary(file_path: str) -> Dict[str, Dict[str, List[str]
 
     return db_schemas
 
+def create_db_original_schema_dictionary(file_path: str) -> Dict[str, Dict[str, List[str]]]:
+    """
+    Parses a JSON file from the BIRD dataset to create a nested dictionary
+    representing database schemas.
+
+    The function reads a file containing a list of database schemas. For each
+    database, it maps its tables to a list of their corresponding column names.
+    It uses the 'table_names_original' for table names and 'column_names_original'
+    for column mappings.
+
+    The structure of the output dictionary is:
+    {
+        'db_id_1': {
+            'table_name_1': ['column_1', 'column_2', ...],
+            'table_name_2': ['column_A', 'column_B', ...],
+            ...
+        },
+        'db_id_2': { ... },
+        ...
+    }
+
+    Args:
+        file_path (str): The full path to the input JSON file (e.g., 'tables.json').
+
+    Returns:
+        Dict[str, Dict[str, List[str]]]: A dictionary where each key is a 'db_id'
+        and its value is another dictionary. This inner dictionary's keys are
+        table names, and its values are lists of column names for that table.
+        Returns an empty dictionary if the file cannot be found or is not valid JSON.
+    """
+    db_schemas = {}
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: The file at '{file_path}' was not found.")
+        return {}
+    except json.JSONDecodeError:
+        print(f"Error: The file at '{file_path}' is not a valid JSON file.")
+        return {}
+
+    for db_info in data:
+        db_id = db_info.get("db_id")
+        table_names = db_info.get("table_names_original")
+        columns = db_info.get("column_names_original")
+
+        if not all([db_id, table_names, columns]):
+            print(f"Warning: Skipping an entry due to missing 'db_id', "
+                  f"'table_names', or 'column_names' keys.")
+            continue
+
+        current_db_schema = {table: [] for table in table_names}
+
+        for table_index, column_name in columns:
+
+            if table_index >= 0:
+                if table_index < len(table_names):
+                    target_table = table_names[table_index]
+                    current_db_schema[target_table].append(column_name)
+                else:
+                    print(f"Warning: Found an invalid table_index '{table_index}'"
+                          f"for db_id '{db_id}'.")
+
+        db_schemas[db_id] = current_db_schema
+
+    return db_schemas
+
+# 利用sqlglot工具，从一个sql语句中，提取出其中涉及的所有表和列（但是无法确认表与列之间的严格对应关系）
+def extract_tables_and_columns(sql_query):
+    parsed_query = sqlglot.parse_one(sql_query, read="sqlite")
+    table_names = parsed_query.find_all(sqlglot.exp.Table)
+    column_names = parsed_query.find_all(sqlglot.exp.Column)
+    return {
+        'table': {_table.name for _table in table_names},
+        'column': {_column.alias_or_name for _column in column_names}
+    }
+
 if __name__ == '__main__':
 
     "Used to call utility functions."
@@ -312,9 +358,9 @@ if __name__ == '__main__':
     #dict = create_table_name_mapping(filename)
     #print(dict)
 
-    #file_name = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
-    #database_schemas = create_db_schema_dictionary(file_name)
-    #print(len(database_schemas['formula_1']['constructor results']))
+    # file_name = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
+    # database_schemas = create_db_original_schema_dictionary(file_name)
+    # print(database_schemas['formula_1'])
 
 
 
