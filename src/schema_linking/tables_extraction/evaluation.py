@@ -2,7 +2,7 @@ import os
 import sys
 import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from data_manipulation import create_table_name_mapping, get_sql_table_names, create_db_schema_dictionary
+from data_manipulation import create_table_name_mapping, create_db_schema_dictionary, create_db_original_schema_dictionary, extract_tables_and_columns
 from ansi_colors import *
 import paths
 
@@ -14,11 +14,13 @@ def TAB_extraction_eval(dataset):
         filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
+        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
     elif dataset == 'SPIDERdev1':
         print(f"\n{CYAN}SPIDERdev1 TAB extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'SPIDERdev1_TAB_extractor.json'
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
+        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
@@ -47,24 +49,27 @@ def TAB_extraction_eval(dataset):
             else:
                 wrong_db.append(0)
                 continue
-        
+
         # Correct DB but no table identified by llm
         if len(tab_result) == 1 and tab_result[0] == 'NONE':
             continue
 
         tab_original_result = [table_name_mapping[db][name] for name in tab_result]
-        tab_needed = get_sql_table_names(sample['SQL'])
+        tab_needed = extract_tables_and_columns(sample['SQL'])
         # To lower case
         tab_original_result = [s.lower() for s in tab_original_result]
-        tab_needed = [s.lower() for s in tab_needed]
+        tab_needed = [s.lower() for s in tab_needed['table']]
+        tables_original_db = [s.lower() for s in list(database_original_schemas[db].keys())]
         is_strict = True
 
 
         for tab in tab_needed:
+            if tab not in tables_original_db:
+                continue
             if tab not in tab_original_result:
                 is_strict = False
                 break
-        
+
         if is_strict:
             strict_recall_samples += 1
 
@@ -76,7 +81,7 @@ def TAB_extraction_eval(dataset):
                     result_att += len(database_schemas[db][t])
                 else:
                     len_att_table_needed += len(database_schemas[db][t])
-            
+
             db_schema = database_schemas[db]
             total_att = sum(len(columns) for columns in db_schema.values()) - len_att_table_needed
 
