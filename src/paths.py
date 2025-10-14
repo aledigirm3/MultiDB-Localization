@@ -7,3 +7,4 @@ class DATASETS(Enum):
 class RESULTS(Enum):
     DB_RETRIEVAL = '../results/DB_retrieval/'
     TAB_RETRIEVAL = '../results/TAB_retrieval/'
+    ATT_RETRIEVAL = '../results/ATT_retrieval/'
