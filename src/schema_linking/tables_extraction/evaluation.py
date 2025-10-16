@@ -32,6 +32,7 @@ def TAB_extraction_eval(dataset):
     samples = 0
     reductions = []
     wrong_db = []
+    errors_ids = []
 
     for sample in data:
 
@@ -67,6 +68,7 @@ def TAB_extraction_eval(dataset):
             if tab not in tables_original_db:
                 continue
             if tab not in tab_original_result:
+                errors_ids.append(sample['question_id'])
                 is_strict = False
                 break
 
@@ -74,21 +76,17 @@ def TAB_extraction_eval(dataset):
             strict_recall_samples += 1
 
             # Compute reduction (1.0 means that tab_original_result = tab_needed)
-            result_att = 0
-            len_att_table_needed = 0
+            result_tab = 0
             for t in tab_result:
                 if t not in tab_needed:
-                    result_att += len(database_schemas[db][t])
-                else:
-                    len_att_table_needed += len(database_schemas[db][t])
-
+                    result_tab += 1
             db_schema = database_schemas[db]
-            total_att = sum(len(columns) for columns in db_schema.values()) - len_att_table_needed
+            total_tab = len(db_schema) - len(tab_needed)
 
-            if result_att == 0:
+            if result_tab == 0 or total_tab == 0:
                 reduction = 1
             else:
-                reduction = 1 - (result_att / total_att)
+                reduction = 1 - (result_tab / total_tab)
             reductions.append(reduction)
 
     strict_recall = strict_recall_samples / samples
@@ -96,12 +94,14 @@ def TAB_extraction_eval(dataset):
     avg_reduction = sum(reductions) / len(reductions)
     print(f"\n- {GREEN}STRICT RECALL (for table extraction only):{RESET} {table_strict_recall}")
     print(f"- {GREEN}STRICT RECALL:{RESET} {strict_recall}")
-    print(f"- {GREEN}REDUCTION avg:{RESET} {avg_reduction}")
+    print(f"- {GREEN}TABLE REDUCTION avg:{RESET} {avg_reduction}")
     if len(wrong_db) != 0:
         accuracy_wrong_db = sum(wrong_db) / len(wrong_db)
         print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}\n")
     else:
         print(f"- {CYAN}no wrong DB detected!:{RESET}\n")
+    
+    return errors_ids
 
 
 
