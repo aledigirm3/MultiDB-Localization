@@ -2,6 +2,7 @@ import json
 import paths
 from typing import Dict, List
 import sqlglot
+from collections import defaultdict
 
 
 def get_databases(file_path: str) -> list:
@@ -341,6 +342,91 @@ def extract_tables_and_columns(sql_query):
         'column': {_column.alias_or_name for _column in column_names}
     }
 
+def create_attribute_mapping(file_path: str) -> dict:
+    """
+    Parses a JSON file containing database schemas to create a mapping from
+    normalized attribute names to their original names.
+
+    The function reads a list of database schemas, and for each schema, it maps
+    the 'normal' table and column names to the 'original' ones. The final
+    structure is a nested dictionary.
+
+    Args:
+        file_path (str): The path to the input JSON file.
+
+    Returns:
+        dict: A dictionary with the following structure:
+              {
+                  db_id: {
+                      table_name: {
+                          column_name: column_name_original
+                      }
+                  }
+              }
+              Returns an empty dictionary if the file cannot be read or is empty.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error reading the file: {e}")
+        return {}
+
+    # The main dictionary to store the final mapping.
+    # We use defaultdict to simplify the creation of nested dictionaries.
+    mapping = defaultdict(lambda: defaultdict(dict))
+
+    # Iterate over each database schema in the JSON data.
+    for db_schema in data:
+        db_id = db_schema['db_id']
+        
+        # Get the lists of normal and original names.
+        table_names_normal = db_schema['table_names']
+        column_names_normal = db_schema['column_names']
+        column_names_original = db_schema['column_names_original']
+
+        # Iterate through the columns to build the mapping.
+        # We use zip to pair up the normal and original column entries.
+        for normal_col_info, original_col_info in zip(column_names_normal, column_names_original):
+            table_index, col_name_normal = normal_col_info
+            _, col_name_original = original_col_info
+
+            # A table_index of -1 usually refers to a wildcard '*' and is not
+            # associated with a specific table, so we can skip it.
+            if table_index == -1:
+                continue
+
+            # Get the 'normal' table name using its index.
+            table_name_normal = table_names_normal[table_index]
+
+            # Populate the nested dictionary with the mapping.
+            # {db_id: {table_name: {column_name: column_name_original}}}
+            mapping[db_id][table_name_normal][col_name_normal] = col_name_original
+
+    # Convert defaultdict back to a regular dict for the final output.
+    # This is optional but can be cleaner for the user.
+    return json.loads(json.dumps(mapping))
+
+def lowercase_dict(d):
+    if isinstance(d, dict):
+        new_dict = {}
+        for k, v in d.items():
+            # Trasforma la chiave in minuscolo se è stringa
+            new_key = k.lower() if isinstance(k, str) else k
+            # Ricorsione per valori
+            new_dict[new_key] = lowercase_dict(v)
+        return new_dict
+    elif isinstance(d, list):
+        # Se è lista, applica ricorsione a ogni elemento
+        return [lowercase_dict(item) for item in d]
+    elif isinstance(d, str):
+        # Se è stringa, trasformala in minuscolo
+        return d.lower()
+    else:
+        # Se è altro tipo (int, float, etc.), lascialo invariato
+        return d
+
+
 if __name__ == '__main__':
 
     "Used to call utility functions."
@@ -361,6 +447,10 @@ if __name__ == '__main__':
     # file_name = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
     # database_schemas = create_db_original_schema_dictionary(file_name)
     # print(database_schemas['formula_1'])
+
+    # file_name = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
+    # dict = create_attribute_mapping(file_name)
+    # print(dict['debit_card_specializing']['year and month']['Customer ID'])
 
 
 
