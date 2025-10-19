@@ -201,8 +201,12 @@ def extract_tables(dataset):
 
 if __name__ == '__main__':
 
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     dataset = 'BIRDdev'
     extract_tables(dataset)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
     dataset = 'SPIDERdev1'
     extract_tables(dataset)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
