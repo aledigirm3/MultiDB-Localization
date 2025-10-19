@@ -2,7 +2,7 @@
 
 Enabling Natural Language Queries over Tabular Data with Large Language Models
 
-## Similarity Database Extraction
+# Similarity Database Extraction
 
 ### paraphrase-mpnet-base-v2
 
@@ -36,18 +36,46 @@ SPIDER dev 1.0
 | Top 1 | 0.854 | 0.910 |
 
 
-## LLM TABLE Extraction
+# LLM TABLEs Extraction
 
 ### BIRDdev TAB extraction evaluation
-
 - STRICT RECALL (for table extraction only): 0.9510682288077188
 - STRICT RECALL: 0.8996088657105606
 - TABLE REDUCTION avg: 0.4722909477800767
 - WRONG DB accuracy: 0.40963855421686746
 
 ### SPIDERdev1 TAB extraction evaluation
-
 - STRICT RECALL (for table extraction only): 1.0
 - STRICT RECALL: 0.9100580270793037
 - TABLE REDUCTION avg: 0.6807023092623523
+- WRONG DB accuracy: 0.3548387096774194
+  
+# LLM ATTRIBUTEs Extraction
+
+## REDUCTION oriented prompt
+
+### BIRDdev TAB extraction evaluation
+- STRICT RECALL (for table extraction only): 0.8290833907649897
+- STRICT RECALL: 0.7842242503259452
+- REDUCTION avg: 0.8618365965129604
+- WRONG DB accuracy: 0.4578313253012048
+
+### SPIDERdev1 TAB extraction evaluation
+- STRICT RECALL (for table extraction only): 0.9925611052072264
+- STRICT RECALL: 0.9032882011605415
+- REDUCTION avg: 0.8608036144886689
+- WRONG DB accuracy: 0.40860215053763443
+
+## STRICT RECALL oriented prompt
+
+### BIRDdev TAB extraction evaluation
+- STRICT RECALL (for table extraction only): 0.9131633356305996
+- STRICT RECALL: 0.863754889178618
+- REDUCTION avg: 0.7508313430661137
+- WRONG DB accuracy: 0.40963855421686746
+
+### SPIDERdev1 TAB extraction evaluation
+- STRICT RECALL (for table extraction only): 0.9925611052072264
+- STRICT RECALL: 0.9032882011605415
+- REDUCTION avg: 0.7318092622854886
 - WRONG DB accuracy: 0.3548387096774194
