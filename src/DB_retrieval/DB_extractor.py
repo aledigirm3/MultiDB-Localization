@@ -93,11 +93,15 @@ if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
 
+	print(f"\n{CYAN}Processing BIRDdev...{RESET}")
 	dataset = "BIRDdev"
 	extract_DB(embedder, dataset)
+	print(f"{GREEN}Extraction completed!{RESET}\n")
 
+	print(f"\n{CYAN}Processing SPIDERdev1.0dev...{RESET}")
 	dataset = "SPIDERdev1"
 	extract_DB(embedder, dataset)
+	print(f"{GREEN}Extraction completed!{RESET}\n")
 
 
 
