@@ -19,52 +19,52 @@ def get_llm_response(query: str, schema: str) -> str:
         str: Relevant attributes (comma separated).
     """
 
-    system_prompt = """You are a specialized attribute-selector assistant. Your only job is: given a natural language query and the schema of pre-selected relevant database tables, return EXACTLY and ONLY the comma-separated list of column names that are necessary to build the SQL query. Nothing else.
+    system_prompt = """You are a specialized attribute-selector assistant. Your only job is: given a natural language query and the schema of pre-selected relevant database tables, return the comma-separated list of fully-qualified column names (table.column) that are necessary to build the SQL query. Nothing else.
+    
+- Always output attributes in the exact format: table_name.column_name
+- **Use EXACT names from the provided schema**. Do not rename, modify, singularize, pluralize, or shorten any names.
+- Always include primary/foreign keys required to connect tables if multiple tables are involved.
+- **If a column's name, or a VARIATION (synonym, singular/plural), appears in the query, you MUST include that column from EVERY table where it exists**, but only if the table and column actually exist in the provided schema.
+- If you include a column, you MUST also include any other column whose name shares the same key terms or structural components (such as repeated words, numeric markers, or bracketed segments), even if the wording is not identical.
+- **Be permissive**: if uncertain whether an attribute might be needed, INCLUDE IT rather than risk excluding it.
+- **If a table is included in the provided schema, assume its attributes may be needed unless clearly irrelevant**. Exclude ONLY columns that are CLEARLY IRRELEVANT to the question.
 
-- Analyze the query to identify the specific information requested. Think about which columns will be needed for the `SELECT`, `WHERE`, `GROUP BY`, `ORDER BY`, and `JOIN` clauses.
-- To connect the provided tables, always include the primary and/or foreign keys needed for the join (e.g., if the query needs data from `orders` and `customers`, include `customers.customer_id` and `orders.customer_id`).
-- **If a column's name, or a close variation of it (synonym, singular/plural form), is explicitly mentioned in the query, you MUST include that column.**
+### OUTPUT FORMAT: 
+1. Single line, only values: table.column,table.column,...
+2. No spaces, no explanations, no comments. Any extra output will be treated as an error.
+3. If ABSOLUTELY NOTHING from the schema can answer the query, return exactly: NONE
 
-OUTPUT RULES:
-1. Output must be a single line containing only column names separated by commas, with NO SPACES (example: `name,email,order_date`).
-2. Use only the column names exactly as they appear in the provided schema. Do not invent, abbreviate, or change names.
-3. **If you are uncertain whether a column is needed, INCLUDE IT.** IT IS BETTER TO INCLUDE AN EXTRA COLUMN THAN TO OMIT A NECESSARY ONE.
-4. If you are **100% certain** that no column from the provided schema is useful to answer the query (because the question is completely unrelated), return exactly: `NONE`
-5. Do NOT output any reasoning, internal chain-of-thought, table names (e.g., `customers.name`), or any other text. Any extra output will be treated as an error.
+### INPUT FORMAT:
+[QUERY]: 
+<natural language question> 
 
-INPUT FORMAT (this exact structure will be provided):
-[QUERY]:
-<natural language question>
-
-[RELEVANT TABLES SCHEMA]:
+[RELEVANT TABLES SCHEMA]: 
 TABLE: <table_name_1>
 COLUMNS:
 - <column_1>
 - <column_2>
-...
 TABLE: <table_name_2>
 COLUMNS:
 - <column_3>
 ...
 
 EXAMPLES (generic):
-
 Example 1 (Selection and Filtering)
 [QUERY]:
 Show the names and emails of customers who live in Rome.
-
+    
 [RELEVANT TABLES SCHEMA]:
 TABLE: customers
 COLUMNS:
 - customer_id
-- first_name
+- first name
 - last_name
 - email
 - city
 - registration_date
 
-EXPECTED OUTPUT (single-line):
-first_name,last_name,email,city
+EXPECTED OUTPUT:
+customers.first name,customers.last_name,customers.email,customers.city
 
 ---
 
@@ -81,34 +81,34 @@ COLUMNS:
 TABLE: orders
 COLUMNS:
 - order_id
-- customer_id
+- customer id
 - order_date
 - amount
 
-EXPECTED OUTPUT (single-line):
-name,customer_id,order_id
+EXPECTED OUTPUT:
+customers.customer_id,customers.name,orders.customer id,orders.order_id
 
 ---
 
-Example 3
+Example 3 (Filtering by Attribute)
 [QUERY]:
 List the products released after 2022 and their price.
 
 [RELEVANT TABLES SCHEMA]:
 TABLE: products
 COLUMNS:
-- product_id
+- product_id 
 - product_name
 - price
-- release_date
+- release date
 - supplier_id
 
-EXPECTED OUTPUT (single-line):
-product_name,price,release_date
+EXPECTED OUTPUT:
+products.product name,products.price,products.release date
 
 ---
 
-Example 4 (Query is irrelevant to the schema)
+Example 4 (Irrelevant Query)
 [QUERY]:
 What is the speed of light?
 
@@ -120,11 +120,11 @@ COLUMNS:
 - email
 TABLE: orders
 COLUMNS:
-- order_id
-- customer_id
-- order_date
+- order id
+- customer id
+- order date
 
-EXPECTED OUTPUT (single-line):
+EXPECTED OUTPUT:
 NONE
 """
     
@@ -183,6 +183,16 @@ def extract_attributes(dataset):
 
         tables = sample['TAB_result']
         if 'NONE' in tables:
+            item = {
+				"question_id": sample['question_id'],
+				"db_id": sample['db_id'],
+				"question": sample['question'],
+				"SQL": sample['SQL'],
+				"DB_result": sample['DB_result'],
+                "TAB_result": sample['TAB_result'],
+                "ATT_result": sample['TAB_result']
+				}
+            result_list.append(item)
             continue
 
         schema_text = ""
@@ -220,5 +230,12 @@ def extract_attributes(dataset):
 
 if __name__ == '__main__':
 
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     dataset = 'BIRDdev'
     extract_attributes(dataset)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    dataset = 'SPIDERdev1'
+    extract_attributes(dataset)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
