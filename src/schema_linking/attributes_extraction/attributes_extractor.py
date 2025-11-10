@@ -6,9 +6,10 @@ from data_manipulation import create_db_schema_dictionary
 from llm import query_groq
 import paths
 from ansi_colors import *
+from prompts import REDUCTION_ORIENTED, SR_ORIENTED
 
 
-def get_llm_response(query: str, schema: str) -> str:
+def get_llm_response(query: str, schema: str, prompt_type: str) -> str:
     """
     Function to extract relevant attributes from a natural language query and a given schema subset.
     
@@ -19,114 +20,13 @@ def get_llm_response(query: str, schema: str) -> str:
         str: Relevant attributes (comma separated).
     """
 
-    system_prompt = """You are a specialized attribute-selector assistant. Your only job is: given a natural language query and the schema of pre-selected relevant database tables, return the comma-separated list of fully-qualified column names (table.column) that are necessary to build the SQL query. Nothing else.
-    
-- Always output attributes in the exact format: table_name.column_name
-- **Use EXACT names from the provided schema**. Do not rename, modify, singularize, pluralize, or shorten any names.
-- Always include primary/foreign keys required to connect tables if multiple tables are involved.
-- **If a column's name, or a VARIATION (synonym, singular/plural), appears in the query, you MUST include that column from EVERY table where it exists**, but only if the table and column actually exist in the provided schema.
-- If you include a column, you MUST also include any other column whose name shares the same key terms or structural components (such as repeated words, numeric markers, or bracketed segments), even if the wording is not identical.
-- **Be permissive**: if uncertain whether an attribute might be needed, INCLUDE IT rather than risk excluding it.
-- **If a table is included in the provided schema, assume its attributes may be needed unless clearly irrelevant**. Exclude ONLY columns that are CLEARLY IRRELEVANT to the question.
-
-### OUTPUT FORMAT: 
-1. Single line, only values: table.column,table.column,...
-2. No spaces, no explanations, no comments. Any extra output will be treated as an error.
-3. If ABSOLUTELY NOTHING from the schema can answer the query, return exactly: NONE
-
-### INPUT FORMAT:
-[QUERY]: 
-<natural language question> 
-
-[RELEVANT TABLES SCHEMA]: 
-TABLE: <table_name_1>
-COLUMNS:
-- <column_1>
-- <column_2>
-TABLE: <table_name_2>
-COLUMNS:
-- <column_3>
-...
-
-EXAMPLES (generic):
-Example 1 (Selection and Filtering)
-[QUERY]:
-Show the names and emails of customers who live in Rome.
-    
-[RELEVANT TABLES SCHEMA]:
-TABLE: customers
-COLUMNS:
-- customer_id
-- first name
-- last_name
-- email
-- city
-- registration_date
-
-EXPECTED OUTPUT:
-customers.first name,customers.last_name,customers.email,customers.city
-
----
-
-Example 2 (Join and Aggregation)
-[QUERY]:
-What is the total number of orders for each customer? Show the customer's name and the count.
-
-[RELEVANT TABLES SCHEMA]:
-TABLE: customers
-COLUMNS:
-- customer_id
-- name
-- email
-TABLE: orders
-COLUMNS:
-- order_id
-- customer id
-- order_date
-- amount
-
-EXPECTED OUTPUT:
-customers.customer_id,customers.name,orders.customer id,orders.order_id
-
----
-
-Example 3 (Filtering by Attribute)
-[QUERY]:
-List the products released after 2022 and their price.
-
-[RELEVANT TABLES SCHEMA]:
-TABLE: products
-COLUMNS:
-- product_id 
-- product_name
-- price
-- release date
-- supplier_id
-
-EXPECTED OUTPUT:
-products.product name,products.price,products.release date
-
----
-
-Example 4 (Irrelevant Query)
-[QUERY]:
-What is the speed of light?
-
-[RELEVANT TABLES SCHEMA]:
-TABLE: customers
-COLUMNS:
-- customer_id
-- name
-- email
-TABLE: orders
-COLUMNS:
-- order id
-- customer id
-- order date
-
-EXPECTED OUTPUT:
-NONE
-"""
+    if prompt_type == "r":
+        system_prompt = REDUCTION_ORIENTED
+    elif prompt_type == "sr":
+        system_prompt = SR_ORIENTED
+    else:
+        print(f"{RED}INVALID PROMPT TYPE (use 'r' or 'sr'){RESET}")
+        sys.exit(1)
     
     content = f"""Now, receive the actual `[QUERY]` and `[RELEVANT TABLES SCHEMA]` and produce the single-line answer only.
 
@@ -149,7 +49,7 @@ NONE
 
 
 
-def extract_attributes(dataset):
+def extract_attributes(dataset, prompt_type):
 
     if dataset == 'BIRDdev':
         with open('../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor.json', "r", encoding="utf-8") as f:
@@ -203,7 +103,7 @@ def extract_attributes(dataset):
             for col in columns:
                 schema_text += f"- {col}\n"
         
-        llm_response = get_llm_response(query, schema_text)
+        llm_response = get_llm_response(query, schema_text, prompt_type)
 
         # llm_response to list
         llm_response_list = [w.strip() for w in llm_response.split(',')]
@@ -230,12 +130,21 @@ def extract_attributes(dataset):
 
 if __name__ == '__main__':
 
+    prompt_type = ""
+    
+    if len(sys.argv) > 1:
+        prompt_type = sys.argv[1]
+        sys.exit(0)
+    else:
+        print(f"{RED}Please, select the prompt!{RESET}")
+        sys.exit(1)
+
     print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     dataset = 'BIRDdev'
-    extract_attributes(dataset)
+    extract_attributes(dataset, prompt_type)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
     dataset = 'SPIDERdev1'
-    extract_attributes(dataset)
+    extract_attributes(dataset, prompt_type)
     print(f"{GREEN}Extraction completed!{RESET}\n")
