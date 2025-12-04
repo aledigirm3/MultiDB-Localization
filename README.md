@@ -53,4 +53,4 @@ To perform the evaluation of the various pipeline steps you need to run the foll
   python src/schema_linking/attributes_extraction/evaluation.py
 ```
 
-### 📄 If you want to explore the project further, refer to the PDF available in the repository. 📄
+### 📄 If you want to explore the project further, refer to the PDF available in the repository.
