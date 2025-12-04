@@ -134,7 +134,6 @@ if __name__ == '__main__':
     
     if len(sys.argv) > 1:
         prompt_type = sys.argv[1]
-        sys.exit(0)
     else:
         print(f"{RED}Please, select the prompt!{RESET}")
         sys.exit(1)
