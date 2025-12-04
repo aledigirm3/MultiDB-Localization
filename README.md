@@ -1,81 +1,56 @@
-# NLQ-Tables
-
-Enabling Natural Language Queries over Tabular Data with Large Language Models
-
-# Similarity Database Extraction
-
-### paraphrase-mpnet-base-v2
-
-|       | T     | T + A |
-| ----- | ----- | ----- |
-| Top 1 | 0.888 | 0.901 |
-| Top 2 | 0.963 | 0.964 |
-| Top 3 | 0.980 | 0.980 |
-
-### all-MiniLM-L12-v2
-
-|       | T     | T + A |
-| ----- | ----- | ----- |
-| Top 1 | 0.903 | 0.902 |
-| Top 2 | 0.960 | 0.954 |
-| Top 3 | 0.983 | 0.970 |
-
-### BAAI/bge-large-en-v1.5
-
-BIRD dev
-|       | T     | T + A |      
-| ----- | ----- | ----- |               
-| Top 1 | 0.908 | 0.946 |         
-| Top 2 | 0.971 | 0.981 |
-| Top 3 | 0.984 | 0.990 |
-
-
-SPIDER dev 1.0
-|       | T     | T + A |
-| ----- | ----- | ----- |
-| Top 1 | 0.854 | 0.910 |
-
-
-# LLM TABLEs Extraction
-
-### BIRDdev TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 0.9510682288077188
-- STRICT RECALL: 0.8996088657105606
-- TABLE REDUCTION avg: 0.4722909477800767
-- WRONG DB accuracy: 0.40963855421686746
-
-### SPIDERdev1 TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 1.0
-- STRICT RECALL: 0.9100580270793037
-- TABLE REDUCTION avg: 0.6807023092623523
-- WRONG DB accuracy: 0.3548387096774194
+# Enhancing Text-to-SQL Pipelines via Semantic Database Retrieval and LLM-Based Schema Linking
+This work introduces a pipeline composed of two stages preceding the text-to-SQL task: Database Retrieval and Schema Linking.  
+The first stagerelies on sentence embeddings to select, given a natural language input, the semantically most relevant database (database retrieval).  
+The second stage performs a progressive filtering of the tables and attributes required for the query (schema linking), leveraging controlled use of LLMs and purpose-built prompts.  
+The proposed pipeline represents an effective step toward more scalable, interpretable and practically deployable text-to-SQL systems, particularly in
+real-world scenarios involving complex and heterogeneous databases.  
   
-# LLM ATTRIBUTEs Extraction
+**Benchmark used**: [*SPIDER dev 1.0*](https://yale-lily.github.io/spider), [*BIRD dev*](https://bird-bench.github.io/).
 
-## REDUCTION oriented prompt
+## Replicate the experiment
+Install Python 3.11.11. Execute the following command.
+```bash
+git clone https://github.com/aledigirm3/NLQ-Tables.git
+cd NLQ-Tables
+pip install -r requirements.txt
+```
 
-### BIRDdev TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 0.8290833907649897
-- STRICT RECALL: 0.7842242503259452
-- REDUCTION avg: 0.8618365965129604
-- WRONG DB accuracy: 0.4578313253012048
+Before executing the scripts, you must create a .env file in the root directory of the project. Use the structure provided in the .env.example file, replacing 'GROQ_API_KEY' with your personal key obtained from Groq.
+```env
+# Example .env file
+GROQ_API_KEY=your_groq_api_key_here
+```
+#### ⚠️ Important:
+To successfully run the experiment, you must have access to Groq's Developer Tier, which supports pay-per-token usage. Lower tiers or trial access may not be sufficient.
 
-### SPIDERdev1 TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 0.9925611052072264
-- STRICT RECALL: 0.9032882011605415
-- REDUCTION avg: 0.8608036144886689
-- WRONG DB accuracy: 0.40860215053763443
+Now run these scripts (in order as shown)
 
-## STRICT RECALL oriented prompt
+```bash
+  python src/DB_retrieval/DB_extractor.py
+```
+```bash
+  python src/schema_linking/tables_extraction/tables_extractor.py
+```
+For the last script you can choose between two different prompt types:
+- The first one oriented towards attribute **REDUCTION**
+    ```bash
+    python src/schema_linking/attributes_extraction/attributes_extractor.py r
+    ```
+- The second oriented towards **STRICT RECALL**
+    ```bash
+    python src/schema_linking/attributes_extraction/attributes_extractor.py sr
+    ```
+## Evaluation
+The results of these scripts will be found inside the `results` folder
+To perform the evaluation of the various pipeline steps you need to run the following scripts respectively:
+```bash
+  python src/DB_retrieval/evaluation.py
+```
+```bash
+  python src/schema_linking/tables_extraction/evaluation.py
+```
+```bash
+  python src/schema_linking/attributes_extraction/evaluation.py
+```
 
-### BIRDdev TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 0.9131633356305996
-- STRICT RECALL: 0.863754889178618
-- REDUCTION avg: 0.7508313430661137
-- WRONG DB accuracy: 0.40963855421686746
-
-### SPIDERdev1 TAB extraction evaluation
-- STRICT RECALL (for table extraction only): 0.9925611052072264
-- STRICT RECALL: 0.9032882011605415
-- REDUCTION avg: 0.7318092622854886
-- WRONG DB accuracy: 0.3548387096774194
+### 📄 If you want to explore the project further, refer to the PDF available in the repository. 📄
