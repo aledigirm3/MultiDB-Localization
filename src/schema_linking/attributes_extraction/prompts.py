@@ -27,10 +27,11 @@ COLUMNS:
 - <column_3>
 ...
 
-    EXAMPLES (generic):
-    Example 1 (Selection and Filtering)
-    [QUERY]:
-    Show the names and emails of customers who live in Rome.
+EXAMPLES (generic):
+
+Example 1 (Selection and Filtering)
+[QUERY]:
+Show the names and emails of customers who live in Rome.
     
 [RELEVANT TABLES SCHEMA]:
 TABLE: customers
@@ -145,7 +146,7 @@ COLUMNS:
 - <column_3>
 ...
 
-UPDATED EXAMPLES:
+EXAMPLES (generic):
 
 Example 1 (Very inclusive filtering)
 [QUERY]:
