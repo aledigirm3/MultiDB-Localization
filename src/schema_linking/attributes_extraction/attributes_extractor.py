@@ -118,7 +118,7 @@ def extract_attributes(dataset, prompt_type):
 				"SQL": sample['SQL'],
 				"DB_result": sample['DB_result'],
                 "TAB_result": sample['TAB_result'],
-                "ATT_result": llm_response_list
+                "ATT_result": list(set(llm_response_list))
 				}
         result_list.append(item)
 
