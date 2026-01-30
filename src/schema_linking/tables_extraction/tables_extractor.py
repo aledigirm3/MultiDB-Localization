@@ -182,6 +182,10 @@ def extract_tables(dataset):
         if len(llm_response_list) > 1 and "NONE" in llm_response_list:
             llm_response_list.remove("NONE")
 
+        llm_response_set = list(set(llm_response_list))
+
+        llm_response_clean = [tab for tab in llm_response_set if tab in table_descriptions[db]] # remove all invalid value
+
 
         item = {
 				"question_id": sample['question_id'],
@@ -189,7 +193,7 @@ def extract_tables(dataset):
 				"question": sample['question'],
 				"SQL": sample['SQL'],
 				"DB_result": sample['DB_result'],
-                "TAB_result": list(set(llm_response_list))
+                "TAB_result": llm_response_clean
 				}
         result_list.append(item)
 
