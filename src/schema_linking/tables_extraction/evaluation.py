@@ -54,8 +54,13 @@ def TAB_extraction_eval(dataset):
         # Correct DB but no table identified by llm
         if len(tab_result) == 1 and tab_result[0] == 'NONE':
             continue
+        
+        try:
+            tab_original_result = [table_name_mapping[db][name] for name in tab_result]
+        except Exception as e:
+            print(f"{RED}Error on {sample['question_id']}:{RESET} {e}")
+            continue
 
-        tab_original_result = [table_name_mapping[db][name] for name in tab_result]
         tab_needed = extract_tables_and_columns(sample['SQL'])
         # To lower case
         tab_original_result = [s.lower() for s in tab_original_result]
