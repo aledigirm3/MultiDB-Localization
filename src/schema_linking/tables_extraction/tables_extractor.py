@@ -189,7 +189,7 @@ def extract_tables(dataset):
 				"question": sample['question'],
 				"SQL": sample['SQL'],
 				"DB_result": sample['DB_result'],
-                "TAB_result": llm_response_list
+                "TAB_result": list(set(llm_response_list))
 				}
         result_list.append(item)
 
