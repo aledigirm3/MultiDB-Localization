@@ -121,7 +121,7 @@ def ATT_extraction_eval(dataset):
     strict_recall = strict_recall_samples / samples
     table_strict_recall = strict_recall_samples / (samples - len(wrong_db))
     avg_reduction = sum(reductions) / len(reductions)
-    print(f"- {GREEN}STRICT RECALL (for table extraction only):{RESET} {table_strict_recall}")
+    print(f"- {GREEN}STRICT RECALL (for schema linking only):{RESET} {table_strict_recall}")
     print(f"- {GREEN}STRICT RECALL:{RESET} {strict_recall}")
     print(f"- {GREEN}REDUCTION avg:{RESET} {avg_reduction}")
     if len(wrong_db) != 0:
