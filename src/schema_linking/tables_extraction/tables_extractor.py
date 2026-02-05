@@ -178,13 +178,17 @@ def extract_tables(dataset):
             if t.lower() in query.lower() or (t.lower() + "s") in query.lower():
                 if t.lower() not in list_to_lower:
                     llm_response_list.append(t)
-        
-        if len(llm_response_list) > 1 and "NONE" in llm_response_list:
-            llm_response_list.remove("NONE")
 
         llm_response_set = list(set(llm_response_list))
+        
+        if len(llm_response_set) > 1 and "NONE" in llm_response_set:
+            llm_response_set.remove("NONE")
 
-        llm_response_clean = [tab for tab in llm_response_set if tab in table_descriptions[db]] # remove all invalid value
+        if "NONE" not in llm_response_set:
+            llm_response_clean = [tab for tab in llm_response_set if tab in table_descriptions[db]] # remove all invalid value
+
+        if not llm_response_clean:
+            llm_response_clean = ["NONE"]
 
 
         item = {
