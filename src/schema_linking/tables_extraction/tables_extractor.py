@@ -184,8 +184,7 @@ def extract_tables(dataset):
         if len(llm_response_set) > 1 and "NONE" in llm_response_set:
             llm_response_set.remove("NONE")
 
-        if "NONE" not in llm_response_set:
-            llm_response_clean = [tab for tab in llm_response_set if tab in table_descriptions[db]] # remove all invalid value
+        llm_response_clean = [tab for tab in llm_response_set if tab in table_descriptions[db]] # remove all invalid value
 
         if not llm_response_clean:
             llm_response_clean = ["NONE"]
