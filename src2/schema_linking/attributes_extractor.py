@@ -127,10 +127,10 @@ if __name__ == '__main__':
         print(f"{RED}Please, select the prompt!{RESET}")
         sys.exit(1)
 
-    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    # dataset = 'BIRDdev'
-    # extract_table_and_attributes(dataset, prompt_type)
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    dataset = 'BIRDdev'
+    extract_table_and_attributes(dataset, prompt_type)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
     print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
     dataset = 'SPIDERdev1'
