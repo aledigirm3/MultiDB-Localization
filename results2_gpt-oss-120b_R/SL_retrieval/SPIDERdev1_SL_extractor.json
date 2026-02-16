@@ -1644,6 +1644,7 @@
         "DB_result": "car_1",
         "ATT_result": [
             "cars data.year",
+            "cars data.year",
             "car names.make id",
             "car makers.maker",
             "model list.maker",
@@ -1659,6 +1660,7 @@
         "SQL": "SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);",
         "DB_result": "car_1",
         "ATT_result": [
+            "cars data.year",
             "cars data.year",
             "car names.make id",
             "car makers.maker",
@@ -2458,6 +2460,7 @@
         "SQL": "SELECT DISTINCT T1.Year FROM CARS_DATA AS T1 WHERE T1.Weight  >  3000 AND T1.weight  <  4000;",
         "DB_result": "car_1",
         "ATT_result": [
+            "cars data.weight",
             "cars data.year",
             "cars data.weight"
         ]
@@ -2469,6 +2472,7 @@
         "SQL": "SELECT DISTINCT T1.Year FROM CARS_DATA AS T1 WHERE T1.Weight  >  3000 AND T1.weight  <  4000;",
         "DB_result": "car_1",
         "ATT_result": [
+            "cars data.weight",
             "cars data.year",
             "cars data.weight"
         ]
@@ -2798,6 +2802,7 @@
         "SQL": "SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';",
         "DB_result": "car_1",
         "ATT_result": [
+            "countries.country id",
             "model list.model",
             "car names.make id",
             "car names.model",
@@ -2821,6 +2826,7 @@
         "SQL": "SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';",
         "DB_result": "car_1",
         "ATT_result": [
+            "countries.country id",
             "car names.make id",
             "car makers.full name",
             "countries.country id",
@@ -7735,6 +7741,7 @@
         "DB_result": "battle_death",
         "ATT_result": [
             "battle.result",
+            "battle.result",
             "ship.location",
             "battle.name",
             "ship.lost in battle",
@@ -9069,6 +9076,7 @@
         "SQL": "SELECT Title FROM Cartoon ORDER BY title",
         "DB_result": "tvshow",
         "ATT_result": [
+            "cartoon.title",
             "cartoon.title"
         ]
     },
@@ -9079,6 +9087,7 @@
         "SQL": "SELECT Title FROM Cartoon ORDER BY title",
         "DB_result": "tvshow",
         "ATT_result": [
+            "cartoon.title",
             "cartoon.title"
         ]
     },
