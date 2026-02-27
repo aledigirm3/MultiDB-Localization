@@ -11,7 +11,7 @@ import paths
 
 def ATT_extraction_eval(dataset):
 
-    errors_ids = TAB_extraction_eval(dataset)
+    # errors_ids = TAB_extraction_eval(dataset)
 
     if dataset == 'BIRDdev':
         print(f"\n{CYAN}BIRDdev ATT extraction evaluation{RESET}")
@@ -32,6 +32,10 @@ def ATT_extraction_eval(dataset):
     samples = 0
     reductions = []
     wrong_db = []
+
+    recall = []
+    precision = []
+    em = 0
     
     for sample in data:
 
@@ -39,8 +43,9 @@ def ATT_extraction_eval(dataset):
         #    continue
         samples += 1
         q_id = sample['question_id']
-        if q_id in errors_ids:
-            continue
+
+        # if q_id in errors_ids:
+        #     continue
 
         db = sample['db_id']
         tab_result = sample['TAB_result']
@@ -54,6 +59,8 @@ def ATT_extraction_eval(dataset):
                 wrong_db.append(1)
                 continue
             else:
+                precision.append(0)
+                recall.append(0)
                 wrong_db.append(0)
                 continue
 
@@ -83,9 +90,18 @@ def ATT_extraction_eval(dataset):
             
         # To lower case
         attributes_original_db = [s.lower() for s in attributes_original_db]
-        #att_original_result = [s.lower() for s in att_original_result]
+        # att_original_result = [s.lower() for s in att_original_result] # lowercase_dict() already done for attributes_mapping_dict
         att_needed = [s.lower() for s in att_needed['column']]
         is_strict = True
+
+        needed = set(att_needed)
+        result = set(att_original_result)
+        p = len(needed & result) / len(result) if result else 0.0
+        precision.append(p)
+        r = len(needed & result) / len(needed) if needed else 0.0
+        recall.append(r)
+        if p == 1 and r == 1:
+            em += 1
 
         att_needed_to_check = list(att_needed)
         att_original_result_to_check = list(att_original_result)
@@ -121,14 +137,22 @@ def ATT_extraction_eval(dataset):
     strict_recall = strict_recall_samples / samples
     att_strict_recall = strict_recall_samples / (samples - len(wrong_db))
     avg_reduction = sum(reductions) / len(reductions)
+    mean_precision = sum(precision) / len(precision) if precision else 0.0
+    mean_recall = sum(recall) / len(recall) if recall else 0.0
+
     print(f"- {GREEN}STRICT RECALL (for schema linking only):{RESET} {att_strict_recall}")
     print(f"- {GREEN}STRICT RECALL:{RESET} {strict_recall}")
     print(f"- {GREEN}REDUCTION avg:{RESET} {avg_reduction}")
     if len(wrong_db) != 0:
         accuracy_wrong_db = sum(wrong_db) / len(wrong_db)
-        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}\n")
+        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}")
     else:
-        print(f"- {CYAN}no wrong DB detected!:{RESET}\n")
+        print(f"- {CYAN}no wrong DB detected!:{RESET}")
+
+    print(f"\n-----\n")
+    print(f"- {GREEN}Precision avg:{RESET} {mean_precision}")
+    print(f"- {GREEN}Recall avg:{RESET} {mean_recall}")
+    print(f"- {GREEN}EM:{RESET} {em/samples}\n")
 
 
 
