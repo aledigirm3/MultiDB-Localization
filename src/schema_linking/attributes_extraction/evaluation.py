@@ -94,7 +94,7 @@ def ATT_extraction_eval(dataset):
         att_needed = [s.lower() for s in att_needed['column']]
         is_strict = True
 
-        needed = set(att_needed)
+        needed = set([a for a in att_needed if a in attributes_original_db])
         result = set(att_original_result)
         p = len(needed & result) / len(result) if result else 0.0
         precision.append(p)
