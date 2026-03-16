@@ -7,6 +7,7 @@ from llm import query_groq
 import paths
 from ansi_colors import *
 from prompts import REDUCTION_ORIENTED, SR_ORIENTED
+import time
 
 
 def get_llm_response(query: str, schema: str, prompt_type: str) -> str:
@@ -137,13 +138,23 @@ if __name__ == '__main__':
     else:
         print(f"{RED}Please, select the prompt!{RESET}")
         sys.exit(1)
+    
+    start = time.perf_counter()
 
     print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     dataset = 'BIRDdev'
     extract_attributes(dataset, prompt_type)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    end = time.perf_counter()
+    print(f"BIRDdev time: {end - start:.2f}s")
+
+    start = time.perf_counter()
+
     print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
     dataset = 'SPIDERdev1'
     extract_attributes(dataset, prompt_type)
     print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    end = time.perf_counter()
+    print(f"SPIDERdev time: {end - start:.2f}s")

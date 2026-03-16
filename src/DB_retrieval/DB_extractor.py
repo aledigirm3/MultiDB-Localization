@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from embedder import Embedder
 import paths
 from ansi_colors import *
+import time
 
 # Extracts the most relevant databases using embeddings similarity
 def extract_DB(embedder: Embedder, dataset: str):
@@ -93,6 +94,8 @@ if __name__ == '__main__':
 
 	embedder = Embedder(model_name='BAAI/bge-large-en-v1.5', device_name='cuda')
 
+	start = time.perf_counter()
+
 	print(f"\n{CYAN}Processing BIRDdev...{RESET}")
 	dataset = "BIRDdev"
 	extract_DB(embedder, dataset)
@@ -102,6 +105,9 @@ if __name__ == '__main__':
 	dataset = "SPIDERdev1"
 	extract_DB(embedder, dataset)
 	print(f"{GREEN}Extraction completed!{RESET}\n")
+
+	end = time.perf_counter()
+	print(f"Time: {end - start:.2f}s")
 
 
 

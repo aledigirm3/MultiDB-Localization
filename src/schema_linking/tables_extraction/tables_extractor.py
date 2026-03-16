@@ -4,6 +4,7 @@ import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from llm import query_groq
 import paths
+import time
 from ansi_colors import *
 
 def get_llm_response(query: str, tables: str) -> str:
@@ -208,12 +209,22 @@ def extract_tables(dataset):
 
 if __name__ == '__main__':
 
+    start = time.perf_counter()
+
     print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     dataset = 'BIRDdev'
     extract_tables(dataset)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    end = time.perf_counter()
+    print(f"BIRDdev time: {end - start:.2f}s")
+
+    start = time.perf_counter()
+
     print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
     dataset = 'SPIDERdev1'
     extract_tables(dataset)
     print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    end = time.perf_counter()
+    print(f"SPIDERdev time: {end - start:.2f}s")
