@@ -1,3 +1,5 @@
+Voglio che mi modelli questo prompt:
+
 Generate concise descriptions of databases and their tables.
 Each description must explicitly mention both the database name and the table names it contains.
 The descriptions should be short but clear, suitable for use in semantic similarity tasks (e.g., comparing natural language queries with these descriptions using the all-MiniLM-L6-v2 model).
@@ -5,10 +7,113 @@ Avoid unnecessary verbosity; keep the descriptions factual and focused.
 You will receive the database information one at a time, with the database name and its list of tables. For each input, return a description that integrates both the database name and its tables naturally into a short sentence or two.
 
 Example Input:
-Database name: SchoolDB
-Tables: Students, Teachers, Courses
+{
+  "database_name": "flight",
+  "tables": {
+    "airlines": [
+      "airline id",
+      "airline name",
+      "abbreviation",
+      "country"
+    ],
+    "airports": [
+     "id"
+      "city",
+      "airport code",
+      "airport name",
+      "country",
+      "country abbrev"
+    ],
+    "flights": [
+     "id"
+      "airline",
+      "flight number",
+      "source airport",
+      "destination airport"
+    ]
+  }
+}
+Example Output:
+{
+        "name": "flight",
+        "description": "The flight database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country), and flights (airline, flight number, source airport, destination airport)."
+    }
+Now, wait for me to provide the database name and its tables (with attributes). 
+
+
+Piu precisamente  voglio che includa tra parentesi, di fianco il nome delle tabelle, solo gli attributi strettamente necessari semantimamente (dato che devo usarla per creare embedding e fare ranking), se ci sono attributi superflui (tipo id della tabella stessa) o cose ripetute non ha senso metterle.
+
+Fai un prompt ad hoc
+
+Ecco un prompt più adatto al tuo caso:
+
+Generate concise, semantically useful descriptions of databases and their tables for embedding-based semantic similarity and ranking tasks.
+
+You will receive one database at a time, including:
+- the database name
+- a list of tables
+- the attributes/columns for each table
+
+For each input, return a JSON object with:
+- "name": the database name
+- "description": a short factual description of the database
+
+Requirements:
+1. The description must explicitly mention the database name.
+2. The description must explicitly mention all table names contained in the database.
+3. Next to each table name, include in parentheses only the semantically meaningful attributes.
+4. Exclude attributes that add little or no semantic value, such as:
+   - generic primary keys like id, row id, table id
+   - internal identifiers that only reference the table itself
+   - duplicated or redundant fields
+   - purely technical columns with no semantic meaning
+5. Keep foreign-key-like attributes only when they help explain the relationship or meaning of the table.
+6. Keep descriptive attributes that are useful for matching natural language queries, such as names, types, categories, dates, locations, statuses, amounts, scores, descriptions, codes, roles, and relationships.
+7. Do not invent attributes or tables.
+8. Keep the output concise.
+9. Use clear, factual language suitable for semantic embeddings.
+10. Avoid unnecessary verbosity, database design commentary, or explanations of why attributes were excluded.
+
+Output format:
+{
+  "name": "<database_name>",
+  "description": "<short semantic description>"
+}
+
+Example Input:
+{
+  "database_name": "flight",
+  "tables": {
+    "airlines": [
+      "airline id",
+      "airline name",
+      "abbreviation",
+      "country"
+    ],
+    "airports": [
+      "id",
+      "city",
+      "airport code",
+      "airport name",
+      "country",
+      "country abbrev"
+    ],
+    "flights": [
+      "id",
+      "airline",
+      "flight number",
+      "source airport",
+      "destination airport"
+    ]
+  }
+}
 
 Example Output:
-"The SchoolDB database stores information about Students, Teachers, and Courses."
+{
+  "name": "flight",
+  "description": "The flight database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country), and flights (airline, flight number, source airport, destination airport)."
+}
 
-Now, wait for me to provide the first database name and its tables. 
+Now wait for the user to provide the database name and its tables with attributes. For each input, return only the JSON object.
+
+
