@@ -16,7 +16,7 @@
 
     {
         "name": "concert_singer",
-        "description": "The concert_singer database stores information about stadium (location, name, capacity), singer (name, country, song name, song release year, age, is male), concert (concert name, theme, stadium id, year), and singer in concert (concert id, singer id)."
+        "description": "The concert_singer database stores information about stadium (location, name, capacity, highest, lowest, average), singer (name, country, song name, song release year, age, is male), concert (concert name, theme, stadium id, year), and singer in concert (concert id, singer id)."
     },
 
     {
@@ -31,22 +31,22 @@
 
     {
         "name": "student_transcripts_tracking",
-        "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country), courses (course name, course description), departments (department name, department description), degree programs (department id, degree summary name, degree summary description), sections (course id, section name, section description), semesters (semester name, semester description), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, ssn, date first registered, date left), student enrolment (degree program id, semester id, student id), student enrolment courses (course id, student enrolment id), transcripts (transcript date), and transcript contents (student course id, transcript id)."
+        "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course name, course description, other details), departments (department name, department description, other details), degree programs (department id, degree summary name, degree summary description, other details), sections (course id, section name, section description, other details), semesters (semester name, semester description, other details), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, ssn, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id, other details), student enrolment courses (course id, student enrolment id), transcripts (transcript date, other details), and transcript contents (student course id, transcript id)."
     },
 
     {
         "name": "singer",
-        "description": "The singer database stores information about singer (name, birth year, net worth millions, citizenship) and song (title, singer id, sales, highest position)."
+        "description": "The singer database stores information about singer (name, birth year, net worth millions, citizenship), and song (title, singer id, sales, highest position)."
     },
 
     {
         "name": "cre_Doc_Template_Mgt",
-        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description), and paragraphs (document id, paragraph text)."
+        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description, other details), and paragraphs (document id, paragraph text, other details)."
     },
 
     {
         "name": "world_1",
-        "description": "The world_1 database stores information about city (name, country code, district, population), sqlite sequence (name, seq), country (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, local name, government form, head of state, capital, code2), and countrylanguage (countrycode, language, is official, percentage)."
+        "description": "The world_1 database stores information about city (name, country code, district, population), sqlite sequence (name, seq), country (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, gnp old, local name, government form, head of state, capital, code2), and countrylanguage (countrycode, language, is official, percentage)."
     },
 
     {
@@ -61,12 +61,12 @@
 
     {
         "name": "poker_player",
-        "description": "The poker_player database stores information about poker player (people id, final table made, best finish, money rank, earnings) and people (nationality, name, birth date, height)."
+        "description": "The poker_player database stores information about poker player (people id, final table made, best finish, money rank, earnings), and people (nationality, name, birth date, height)."
     },
 
     {
         "name": "real_estate_properties",
-        "description": "The real_estate_properties database stores information about reference feature types (feature type code, feature type name), reference property types (property type code, property type description), other available features (feature type code, feature name, feature description), properties (property type code, date on market, date sold, property name, property address, room count, vendor requested price, buyer offered price, agreed selling price), and other property features (property id, feature id, property feature description)."
+        "description": "The real_estate_properties database stores information about reference feature types (feature type code, feature type name), reference property types (property type code, property type description), other available features (feature type code, feature name, feature description), properties (property type code, date on market, date sold, property name, property address, room count, vendor requested price, buyer offered price, agreed selling price, apt feature 1, apt feature 2, apt feature 3, fld feature 1, fld feature 2, fld feature 3, hse feature 1, hse feature 2, hse feature 3, oth feature 1, oth feature 2, oth feature 3, shp feature 1, shp feature 2, shp feature 3, other property details), and other property features (property id, feature id, property feature description)."
     },
 
     {
@@ -81,12 +81,12 @@
 
     {
         "name": "wta_1",
-        "description": "The wta_1 database stores information about players (first name, last name, hand, birth date, country code), matches (tourney name, tourney date, tourney level, surface, round, score, minutes, winner name, winner rank, loser name, loser rank, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
+        "description": "The wta_1 database stores information about players (first name, last name, hand, birth date, country code), matches (best of, draw size, loser age, loser entry, loser hand, loser ht, loser id, loser ioc, loser name, loser rank, loser rank points, loser seed, match num, minutes, round, score, surface, tourney date, tourney id, tourney level, tourney name, winner age, winner entry, winner hand, winner ht, winner id, winner ioc, winner name, winner rank, winner rank points, winner seed, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
     },
 
     {
         "name": "orchestra",
-        "description": "The orchestra database stores information about conductor (name, age, nationality, year of work), orchestra (orchestra, conductor id, record company, year of founded, major record format), performance (orchestra id, type, date, official ratings, weekly rank, share), and show (performance id, if first show, result, attendance)."
+        "description": "The orchestra database stores information about conductor (name, age, nationality, year of work), orchestra (orchestra, conductor id, record company, year of founded, major record format), performance (orchestra id, type, date, official ratings (millions), weekly rank, share), and show (performance id, if first show, result, attendance)."
     },
 
     {
@@ -96,6 +96,6 @@
 
     {
         "name": "tvshow",
-        "description": "The tvshow database stores information about tv channel (series name, country, language, content, hight definition tv, pay per view ppv, package option), tv series (episode, air date, rating, share, viewers m, weekly rank, channel), and cartoon (title, directed by, written by, original air date, production code, channel)."
+        "description": "The tvshow database stores information about tv channel (series name, country, language, content, pixel aspect ratio par, hight definition tv, pay per view ppv, package option), tv series (episode, air date, rating, share, 18 49 rating share, viewers m, weekly rank, channel), and cartoon (title, directed by, written by, original air date, production code, channel)."
     }
 ]

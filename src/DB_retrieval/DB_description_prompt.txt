@@ -13,6 +13,7 @@ Requirements:
 1. The description must explicitly mention the database name.
 2. The description must explicitly mention all table names contained in the database.
 3. Next to each table name, include in parentheses only the semantically meaningful attributes.
+   - If attributes are highly similar or repetitive, summarize them as one generalized semantic attribute group instead of listing each one.
 4. Exclude attributes that add little or no semantic value, such as:
    - generic primary keys like id, row id, table id
    - internal identifiers that only reference the table itself
