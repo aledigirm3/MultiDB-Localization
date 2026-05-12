@@ -34,6 +34,10 @@ def TAB_extraction_eval(dataset):
     wrong_db = []
     errors_ids = []
 
+    recall = []
+    precision = []
+    em = 0
+
     for sample in data:
 
         #if sample['question_id'] < 800:
@@ -68,6 +72,14 @@ def TAB_extraction_eval(dataset):
         tables_original_db = [s.lower() for s in list(database_original_schemas[db].keys())]
         is_strict = True
 
+        needed = set([a for a in tab_needed if a in tables_original_db])
+        result = set(tab_original_result)
+        p = len(needed & result) / len(result) if result else 0.0
+        precision.append(p)
+        r = len(needed & result) / len(needed) if needed else 0.0
+        recall.append(r)
+        if p == 1 and r == 1:
+            em += 1
 
         for tab in tab_needed:
             if tab not in tables_original_db:
@@ -82,7 +94,7 @@ def TAB_extraction_eval(dataset):
 
             # Compute reduction (1.0 means that tab_original_result = tab_needed)
             result_tab = 0
-            for t in tab_result:
+            for t in tab_original_result:
                 if t not in tab_needed:
                     result_tab += 1
             db_schema = database_schemas[db]
@@ -97,14 +109,20 @@ def TAB_extraction_eval(dataset):
     strict_recall = strict_recall_samples / samples
     table_strict_recall = strict_recall_samples / (samples - len(wrong_db))
     avg_reduction = sum(reductions) / len(reductions)
-    print(f"- {GREEN}TABLE STRICT RECALL (for table extraction only):{RESET} {table_strict_recall}")
+    mean_precision = sum(precision) / len(precision) if precision else 0.0
+    mean_recall = sum(recall) / len(recall) if recall else 0.0
     print(f"- {GREEN}TABLE STRICT RECALL:{RESET} {strict_recall}")
+    print(f"- {GREEN}TABLE STRICT RECALL (for table extraction only):{RESET} {table_strict_recall}")
     print(f"- {GREEN}TABLE REDUCTION avg:{RESET} {avg_reduction}")
     if len(wrong_db) != 0:
         accuracy_wrong_db = sum(wrong_db) / len(wrong_db)
-        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}\n")
+        print(f"- {GREEN}WRONG DB accuracy:{RESET} {accuracy_wrong_db}")
     else:
-        print(f"- {CYAN}no wrong DB detected!:{RESET}\n")
+        print(f"- {CYAN}no wrong DB detected!:{RESET}")
+    print(f"-----")
+    print(f"- {GREEN}Precision avg:{RESET} {mean_precision}")
+    print(f"- {GREEN}Recall avg:{RESET} {mean_recall}")
+    print(f"- {GREEN}EM:{RESET} {em/samples}\n")
     
     return errors_ids
 
