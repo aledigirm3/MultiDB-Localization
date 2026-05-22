@@ -1,0 +1,2339 @@
+[
+  {
+    "table_id": "dog_kennels.breeds",
+    "db": "dog_kennels",
+    "table": "breeds",
+    "columns": [
+      "breed code",
+      "breed name"
+    ],
+    "joinable_tables": [
+      "dogs"
+    ],
+    "top_values": {},
+    "bm25_text": "dog kennel breed dog kennel breed breed code breed name dog"
+  },
+  {
+    "table_id": "dog_kennels.charges",
+    "db": "dog_kennels",
+    "table": "charges",
+    "columns": [
+      "charge id",
+      "charge type",
+      "charge amount"
+    ],
+    "joinable_tables": [],
+    "top_values": {},
+    "bm25_text": "dog kennel charg dog kennel charg charg id charg type charg amount"
+  },
+  {
+    "table_id": "dog_kennels.sizes",
+    "db": "dog_kennels",
+    "table": "sizes",
+    "columns": [
+      "size code",
+      "size description"
+    ],
+    "joinable_tables": [
+      "dogs"
+    ],
+    "top_values": {},
+    "bm25_text": "dog kennel size dog kennel size size code size descript dog"
+  },
+  {
+    "table_id": "dog_kennels.treatment types",
+    "db": "dog_kennels",
+    "table": "treatment types",
+    "columns": [
+      "treatment type code",
+      "treatment type description"
+    ],
+    "joinable_tables": [
+      "treatments"
+    ],
+    "top_values": {},
+    "bm25_text": "dog kennel treatment type dog kennel treatment type treatment type code treatment type descript treatment"
+  },
+  {
+    "table_id": "dog_kennels.owners",
+    "db": "dog_kennels",
+    "table": "owners",
+    "columns": [
+      "owner id",
+      "first name",
+      "last name",
+      "street",
+      "city",
+      "state",
+      "zip code",
+      "email address",
+      "home phone",
+      "cell number"
+    ],
+    "joinable_tables": [
+      "dogs"
+    ],
+    "top_values": {},
+    "bm25_text": "dog kennel owner dog kennel owner owner id first name last name street citi state zip code email address home phone cell number dog"
+  },
+  {
+    "table_id": "dog_kennels.dogs",
+    "db": "dog_kennels",
+    "table": "dogs",
+    "columns": [
+      "dog id",
+      "owner id",
+      "abandoned yes or no",
+      "breed code",
+      "size code",
+      "name",
+      "age",
+      "date of birth",
+      "gender",
+      "weight",
+      "date arrived",
+      "date adopted",
+      "date departed"
+    ],
+    "joinable_tables": [
+      "owners",
+      "sizes",
+      "breeds",
+      "treatments"
+    ],
+    "top_values": {
+      "abandoned yes or no": [
+        "0",
+        "1"
+      ],
+      "breed code": [
+        "BUL",
+        "ESK",
+        "HUS"
+      ],
+      "size code": [
+        "MED",
+        "LGE",
+        "SML"
+      ],
+      "gender": [
+        "0",
+        "1"
+      ]
+    },
+    "bm25_text": "dog kennel dog dog kennel dog dog id owner id abandon yes or no breed code size code name age date of birth gender weight date arriv date adopt date depart owner size breed treatment abandon yes or no breed code bul esk hus bul esk hus size code med lge sml med lge sml gender"
+  },
+  {
+    "table_id": "dog_kennels.professionals",
+    "db": "dog_kennels",
+    "table": "professionals",
+    "columns": [
+      "professional id",
+      "role code",
+      "first name",
+      "street",
+      "city",
+      "state",
+      "zip code",
+      "last name",
+      "email address",
+      "home phone",
+      "cell number"
+    ],
+    "joinable_tables": [
+      "treatments"
+    ],
+    "top_values": {
+      "role code": [
+        "Employee",
+        "Veterenarian"
+      ]
+    },
+    "bm25_text": "dog kennel profession dog kennel profession profession id role code first name street citi state zip code last name email address home phone cell number treatment role code employe veterenarian employe veterenarian"
+  },
+  {
+    "table_id": "dog_kennels.treatments",
+    "db": "dog_kennels",
+    "table": "treatments",
+    "columns": [
+      "treatment id",
+      "dog id",
+      "professional id",
+      "treatment type code",
+      "date of treatment",
+      "cost of treatment"
+    ],
+    "joinable_tables": [
+      "dogs",
+      "professionals",
+      "treatment types"
+    ],
+    "top_values": {
+      "treatment type code": [
+        "EXAM",
+        "VAC",
+        "WALK"
+      ]
+    },
+    "bm25_text": "dog kennel treatment dog kennel treatment treatment id dog id profession id treatment type code date of treatment cost of treatment dog profession treatment type treatment type code exam vac walk exam vac walk"
+  },
+  {
+    "table_id": "flight_2.airlines",
+    "db": "flight_2",
+    "table": "airlines",
+    "columns": [
+      "airline id",
+      "airline name",
+      "abbreviation",
+      "country"
+    ],
+    "joinable_tables": [],
+    "top_values": {
+      "country": [
+        "USA"
+      ]
+    },
+    "bm25_text": "flight airlin flight airlin airlin id airlin name abbrevi countri countri usa usa"
+  },
+  {
+    "table_id": "flight_2.airports",
+    "db": "flight_2",
+    "table": "airports",
+    "columns": [
+      "city",
+      "airport code",
+      "airport name",
+      "country",
+      "country abbrev"
+    ],
+    "joinable_tables": [
+      "flights"
+    ],
+    "top_values": {
+      "country": [
+        "United States "
+      ],
+      "country abbrev": [
+        "US",
+        "US "
+      ]
+    },
+    "bm25_text": "flight airport flight airport citi airport code airport name countri countri abbrev flight countri unit state unit state countri abbrev us us us us"
+  },
+  {
+    "table_id": "flight_2.flights",
+    "db": "flight_2",
+    "table": "flights",
+    "columns": [
+      "airline",
+      "flight number",
+      "source airport",
+      "destination airport"
+    ],
+    "joinable_tables": [
+      "airports"
+    ],
+    "top_values": {
+      "airline": [
+        1,
+        10,
+        11,
+        12,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "source airport": [
+        " AAF",
+        " AXG",
+        " AKI",
+        " ARB",
+        " ASY",
+        " CAK",
+        " CVO",
+        " ABQ",
+        " ALS",
+        " ANP"
+      ],
+      "destination airport": [
+        " AAF",
+        " AXG",
+        " AKI",
+        " ARB",
+        " ASY",
+        " CAK",
+        " CVO",
+        " ABQ",
+        " ALS",
+        " ANP"
+      ]
+    },
+    "bm25_text": "flight flight flight flight airlin flight number sourc airport destin airport airport sourc airport aaf axg aki arb asi cak cvo abq al anp aaf axg aki arb asi cak cvo abq al anp destin airport aaf axg aki arb asi cak cvo abq al anp aaf axg aki arb asi cak cvo abq al anp"
+  },
+  {
+    "table_id": "pets_1.student",
+    "db": "pets_1",
+    "table": "student",
+    "columns": [
+      "student id",
+      "last name",
+      "first name",
+      "age",
+      "sex",
+      "major",
+      "advisor",
+      "city code"
+    ],
+    "joinable_tables": [
+      "has pet"
+    ],
+    "top_values": {
+      "age": [
+        18,
+        20,
+        17,
+        19,
+        21,
+        22,
+        26,
+        16,
+        27
+      ],
+      "sex": [
+        "M",
+        "F"
+      ],
+      "major": [
+        600,
+        520,
+        550,
+        50,
+        540,
+        100
+      ]
+    },
+    "bm25_text": "pet student pet student student id last name first name age sex major advisor citi code has pet sex m f m f"
+  },
+  {
+    "table_id": "pets_1.has pet",
+    "db": "pets_1",
+    "table": "has pet",
+    "columns": [
+      "student id",
+      "pet id"
+    ],
+    "joinable_tables": [
+      "student",
+      "pets"
+    ],
+    "top_values": {},
+    "bm25_text": "pet has pet pet has pet student id pet id student pet"
+  },
+  {
+    "table_id": "pets_1.pets",
+    "db": "pets_1",
+    "table": "pets",
+    "columns": [
+      "pet id",
+      "pet type",
+      "pet age",
+      "weight"
+    ],
+    "joinable_tables": [
+      "has pet"
+    ],
+    "top_values": {},
+    "bm25_text": "pet pet pet pet pet id pet type pet age weight has pet"
+  },
+  {
+    "table_id": "concert_singer.stadium",
+    "db": "concert_singer",
+    "table": "stadium",
+    "columns": [
+      "stadium id",
+      "location",
+      "name",
+      "capacity",
+      "highest",
+      "lowest",
+      "average"
+    ],
+    "joinable_tables": [
+      "concert"
+    ],
+    "top_values": {},
+    "bm25_text": "concert singer stadium concert singer stadium stadium id locat name capac highest lowest averag concert"
+  },
+  {
+    "table_id": "concert_singer.singer",
+    "db": "concert_singer",
+    "table": "singer",
+    "columns": [
+      "singer id",
+      "name",
+      "country",
+      "song name",
+      "song release year",
+      "age",
+      "is male"
+    ],
+    "joinable_tables": [
+      "singer in concert"
+    ],
+    "top_values": {
+      "country": [
+        "France",
+        "Netherlands",
+        "United States"
+      ],
+      "is male": [
+        "T",
+        "F"
+      ]
+    },
+    "bm25_text": "concert singer singer concert singer singer singer id name countri song name song releas year age is male singer in concert countri franc netherland unit state franc netherland unit state is male t f t f"
+  },
+  {
+    "table_id": "concert_singer.concert",
+    "db": "concert_singer",
+    "table": "concert",
+    "columns": [
+      "concert id",
+      "concert name",
+      "theme",
+      "stadium id",
+      "year"
+    ],
+    "joinable_tables": [
+      "stadium",
+      "singer in concert"
+    ],
+    "top_values": {
+      "year": [
+        "2014",
+        "2015"
+      ]
+    },
+    "bm25_text": "concert singer concert concert singer concert concert id concert name theme stadium id year stadium singer in concert year"
+  },
+  {
+    "table_id": "concert_singer.singer in concert",
+    "db": "concert_singer",
+    "table": "singer in concert",
+    "columns": [
+      "concert id",
+      "singer id"
+    ],
+    "joinable_tables": [
+      "singer",
+      "concert"
+    ],
+    "top_values": {
+      "singer id": [
+        "3",
+        "2",
+        "5",
+        "6",
+        "4"
+      ]
+    },
+    "bm25_text": "concert singer singer in concert concert singer singer in concert concert id singer id singer concert singer id"
+  },
+  {
+    "table_id": "museum_visit.museum",
+    "db": "museum_visit",
+    "table": "museum",
+    "columns": [
+      "museum id",
+      "name",
+      "num of staff",
+      "open year"
+    ],
+    "joinable_tables": [
+      "visit"
+    ],
+    "top_values": {},
+    "bm25_text": "museum visit museum museum visit museum museum id name num of staff open year visit"
+  },
+  {
+    "table_id": "museum_visit.customer",
+    "db": "museum_visit",
+    "table": "customer",
+    "columns": [
+      "customer id",
+      "name",
+      "level of membership",
+      "age"
+    ],
+    "joinable_tables": [
+      "visit"
+    ],
+    "top_values": {},
+    "bm25_text": "museum visit custom museum visit custom custom id name level of membership age visit"
+  },
+  {
+    "table_id": "museum_visit.visit",
+    "db": "museum_visit",
+    "table": "visit",
+    "columns": [
+      "museum id",
+      "customer id",
+      "num of ticket",
+      "total spent"
+    ],
+    "joinable_tables": [
+      "customer",
+      "museum"
+    ],
+    "top_values": {
+      "customer id": [
+        "3",
+        "5",
+        "6"
+      ]
+    },
+    "bm25_text": "museum visit visit museum visit visit museum id custom id num of ticket total spent custom museum custom id"
+  },
+  {
+    "table_id": "battle_death.battle",
+    "db": "battle_death",
+    "table": "battle",
+    "columns": [
+      "id",
+      "name",
+      "date",
+      "bulgarian commander",
+      "latin commander",
+      "result"
+    ],
+    "joinable_tables": [
+      "ship"
+    ],
+    "top_values": {
+      "bulgarian commander": [
+        "Kaloyan",
+        "Boril",
+        "Ivan Asen II",
+        "Unknown"
+      ],
+      "result": [
+        "Bulgarian victory",
+        "Latin victory",
+        "Two Year Truce"
+      ]
+    },
+    "bm25_text": "battl death battl battl death battl id name date bulgarian command latin command result ship bulgarian command kaloyan boril ivan asen ii unknown kaloyan boril ivan asen ii unknown result bulgarian victori latin victori two year truce bulgarian victori latin victori two year truce"
+  },
+  {
+    "table_id": "battle_death.ship",
+    "db": "battle_death",
+    "table": "ship",
+    "columns": [
+      "lost in battle",
+      "id",
+      "name",
+      "tonnage",
+      "ship type",
+      "location",
+      "disposition of ship"
+    ],
+    "joinable_tables": [
+      "battle",
+      "death"
+    ],
+    "top_values": {
+      "tonnage": [
+        "t",
+        "225",
+        "391"
+      ],
+      "ship type": [
+        "Brig",
+        "18-gun Brig",
+        "8 gun Brig"
+      ],
+      "location": [
+        "English Channel",
+        "Mid-Atlantic",
+        "SW Approaches"
+      ]
+    },
+    "bm25_text": "battl death ship battl death ship lost in battl id name tonnag ship type locat disposit of ship battl death tonnag t t ship type brig gun brig gun brig brig gun brig gun brig locat english channel mid atlant sw approach english channel mid atlant sw approach"
+  },
+  {
+    "table_id": "battle_death.death",
+    "db": "battle_death",
+    "table": "death",
+    "columns": [
+      "caused by ship id",
+      "id",
+      "note",
+      "killed",
+      "injured"
+    ],
+    "joinable_tables": [
+      "ship"
+    ],
+    "top_values": {
+      "caused by ship id": [
+        3,
+        5,
+        1,
+        2,
+        4,
+        6
+      ],
+      "injured": [
+        0,
+        5,
+        9
+      ]
+    },
+    "bm25_text": "battl death death battl death death caus by ship id id note kill injur ship"
+  },
+  {
+    "table_id": "student_transcripts_tracking.addresses",
+    "db": "student_transcripts_tracking",
+    "table": "addresses",
+    "columns": [
+      "address id",
+      "line 1",
+      "line 2",
+      "line 3",
+      "city",
+      "zip postcode",
+      "state province county",
+      "country",
+      "other address details"
+    ],
+    "joinable_tables": [
+      "students"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track address student transcript track address address id line line line citi zip postcod state provinc counti countri other address detail student"
+  },
+  {
+    "table_id": "student_transcripts_tracking.courses",
+    "db": "student_transcripts_tracking",
+    "table": "courses",
+    "columns": [
+      "course id",
+      "course name",
+      "course description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "sections",
+      "student enrolment courses"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track cours student transcript track cours cours id cours name cours descript other detail section student enrol cours"
+  },
+  {
+    "table_id": "student_transcripts_tracking.departments",
+    "db": "student_transcripts_tracking",
+    "table": "departments",
+    "columns": [
+      "department id",
+      "department name",
+      "department description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "degree programs"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track depart student transcript track depart depart id depart name depart descript other detail degre program"
+  },
+  {
+    "table_id": "student_transcripts_tracking.degree programs",
+    "db": "student_transcripts_tracking",
+    "table": "degree programs",
+    "columns": [
+      "degree program id",
+      "department id",
+      "degree summary name",
+      "degree summary description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "departments",
+      "student enrolment"
+    ],
+    "top_values": {
+      "degree summary name": [
+        "Bachelor",
+        "Master",
+        "PHD"
+      ]
+    },
+    "bm25_text": "student transcript track degre program student transcript track degre program degre program id depart id degre summari name degre summari descript other detail depart student enrol degre summari name bachelor master phd bachelor master phd"
+  },
+  {
+    "table_id": "student_transcripts_tracking.sections",
+    "db": "student_transcripts_tracking",
+    "table": "sections",
+    "columns": [
+      "section id",
+      "course id",
+      "section name",
+      "section description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "courses"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track section student transcript track section section id cours id section name section descript other detail cours"
+  },
+  {
+    "table_id": "student_transcripts_tracking.semesters",
+    "db": "student_transcripts_tracking",
+    "table": "semesters",
+    "columns": [
+      "semester id",
+      "semester name",
+      "semester description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "student enrolment"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track semest student transcript track semest semest id semest name semest descript other detail student enrol"
+  },
+  {
+    "table_id": "student_transcripts_tracking.students",
+    "db": "student_transcripts_tracking",
+    "table": "students",
+    "columns": [
+      "student id",
+      "current address id",
+      "permanent address id",
+      "first name",
+      "middle name",
+      "last name",
+      "cell mobile number",
+      "email address",
+      "ssn",
+      "date first registered",
+      "date left",
+      "other student details"
+    ],
+    "joinable_tables": [
+      "addresses",
+      "student enrolment"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track student student transcript track student student id current address id perman address id first name middl name last name cell mobil number email address ssn date first regist date left other student detail address student enrol"
+  },
+  {
+    "table_id": "student_transcripts_tracking.student enrolment",
+    "db": "student_transcripts_tracking",
+    "table": "student enrolment",
+    "columns": [
+      "student enrolment id",
+      "degree program id",
+      "semester id",
+      "student id",
+      "other details"
+    ],
+    "joinable_tables": [
+      "students",
+      "semesters",
+      "degree programs",
+      "student enrolment courses"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track student enrol student transcript track student enrol student enrol id degre program id semest id student id other detail student semest degre program student enrol cours"
+  },
+  {
+    "table_id": "student_transcripts_tracking.student enrolment courses",
+    "db": "student_transcripts_tracking",
+    "table": "student enrolment courses",
+    "columns": [
+      "student course id",
+      "course id",
+      "student enrolment id"
+    ],
+    "joinable_tables": [
+      "student enrolment",
+      "courses",
+      "transcript contents"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track student enrol cours student transcript track student enrol cours student cours id cours id student enrol id student enrol cours transcript content"
+  },
+  {
+    "table_id": "student_transcripts_tracking.transcripts",
+    "db": "student_transcripts_tracking",
+    "table": "transcripts",
+    "columns": [
+      "transcript id",
+      "transcript date",
+      "other details"
+    ],
+    "joinable_tables": [
+      "transcript contents"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track transcript student transcript track transcript transcript id transcript date other detail transcript content"
+  },
+  {
+    "table_id": "student_transcripts_tracking.transcript contents",
+    "db": "student_transcripts_tracking",
+    "table": "transcript contents",
+    "columns": [
+      "student course id",
+      "transcript id"
+    ],
+    "joinable_tables": [
+      "transcripts",
+      "student enrolment courses"
+    ],
+    "top_values": {},
+    "bm25_text": "student transcript track transcript content student transcript track transcript content student cours id transcript id transcript student enrol cours"
+  },
+  {
+    "table_id": "singer.singer",
+    "db": "singer",
+    "table": "singer",
+    "columns": [
+      "singer id",
+      "name",
+      "birth year",
+      "net worth millions",
+      "citizenship"
+    ],
+    "joinable_tables": [
+      "song"
+    ],
+    "top_values": {},
+    "bm25_text": "singer singer singer singer singer id name birth year net worth million citizenship song"
+  },
+  {
+    "table_id": "singer.song",
+    "db": "singer",
+    "table": "song",
+    "columns": [
+      "song id",
+      "title",
+      "singer id",
+      "sales",
+      "highest position"
+    ],
+    "joinable_tables": [
+      "singer"
+    ],
+    "top_values": {
+      "highest position": [
+        1.0,
+        3.0
+      ]
+    },
+    "bm25_text": "singer song singer song song id titl singer id sale highest posit singer"
+  },
+  {
+    "table_id": "cre_Doc_Template_Mgt.reference template types",
+    "db": "cre_Doc_Template_Mgt",
+    "table": "reference template types",
+    "columns": [
+      "template type code",
+      "template type description"
+    ],
+    "joinable_tables": [
+      "templates"
+    ],
+    "top_values": {},
+    "bm25_text": "cre doc templat mgt refer templat type cre doc templat mgt refer templat type templat type code templat type descript templat"
+  },
+  {
+    "table_id": "cre_Doc_Template_Mgt.templates",
+    "db": "cre_Doc_Template_Mgt",
+    "table": "templates",
+    "columns": [
+      "template id",
+      "version number",
+      "template type code",
+      "date effective from",
+      "date effective to",
+      "template details"
+    ],
+    "joinable_tables": [
+      "reference template types",
+      "documents"
+    ],
+    "top_values": {
+      "version number": [
+        5,
+        2,
+        9,
+        6,
+        7,
+        8,
+        0,
+        1,
+        3,
+        4
+      ],
+      "template type code": [
+        "BK",
+        "PP",
+        "AD",
+        "PPT",
+        "CV"
+      ],
+      "template details": [
+        ""
+      ]
+    },
+    "bm25_text": "cre doc templat mgt templat cre doc templat mgt templat templat id version number templat type code date effect from date effect to templat detail refer templat type document templat type code bk pp ad ppt cv bk pp ad ppt cv"
+  },
+  {
+    "table_id": "cre_Doc_Template_Mgt.documents",
+    "db": "cre_Doc_Template_Mgt",
+    "table": "documents",
+    "columns": [
+      "document id",
+      "template id",
+      "document name",
+      "document description",
+      "other details"
+    ],
+    "joinable_tables": [
+      "templates",
+      "paragraphs"
+    ],
+    "top_values": {},
+    "bm25_text": "cre doc templat mgt document cre doc templat mgt document document id templat id document name document descript other detail templat paragraph"
+  },
+  {
+    "table_id": "cre_Doc_Template_Mgt.paragraphs",
+    "db": "cre_Doc_Template_Mgt",
+    "table": "paragraphs",
+    "columns": [
+      "paragraph id",
+      "document id",
+      "paragraph text",
+      "other details"
+    ],
+    "joinable_tables": [
+      "documents"
+    ],
+    "top_values": {},
+    "bm25_text": "cre doc templat mgt paragraph cre doc templat mgt paragraph paragraph id document id paragraph text other detail document"
+  },
+  {
+    "table_id": "world_1.city",
+    "db": "world_1",
+    "table": "city",
+    "columns": [
+      "id",
+      "name",
+      "country code",
+      "district",
+      "population"
+    ],
+    "joinable_tables": [
+      "country"
+    ],
+    "top_values": {
+      "country code": [
+        "CHN",
+        "IND",
+        "USA",
+        "BRA",
+        "JPN",
+        "RUS",
+        "MEX",
+        "PHL",
+        "DEU",
+        "IDN"
+      ],
+      "district": [
+        "England",
+        "São Paulo",
+        "California",
+        "Punjab",
+        "West Bengali",
+        "Uttar Pradesh",
+        "Nordrhein-Westfalen",
+        "Andhra Pradesh",
+        "Maharashtra",
+        "Shandong"
+      ]
+    },
+    "bm25_text": "world citi world citi id name countri code district popul countri countri code chn ind usa bra jpn rus mex phl deu idn chn ind usa bra jpn rus mex phl deu idn district england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong"
+  },
+  {
+    "table_id": "world_1.sqlite sequence",
+    "db": "world_1",
+    "table": "sqlite sequence",
+    "columns": [
+      "name",
+      "seq"
+    ],
+    "joinable_tables": [],
+    "top_values": {},
+    "bm25_text": "world sqlite sequenc world sqlite sequenc name seq"
+  },
+  {
+    "table_id": "world_1.country",
+    "db": "world_1",
+    "table": "country",
+    "columns": [
+      "code",
+      "name",
+      "continent",
+      "region",
+      "surface area",
+      "indepdent year",
+      "population",
+      "life expectancy",
+      "gnp",
+      "gnp old",
+      "local name",
+      "government form",
+      "head of state",
+      "capital",
+      "code2"
+    ],
+    "joinable_tables": [
+      "city",
+      "countrylanguage"
+    ],
+    "top_values": {
+      "continent": [
+        "Africa",
+        "Asia",
+        "Europe",
+        "North America",
+        "Oceania",
+        "South America",
+        "Antarctica"
+      ],
+      "region": [
+        "Caribbean",
+        "Eastern Africa",
+        "Middle East",
+        "Western Africa",
+        "Southern Europe",
+        "South America",
+        "Southern and Central Asia",
+        "Southeast Asia",
+        "Eastern Europe",
+        "Polynesia"
+      ],
+      "indepdent year": [
+        1960,
+        1991,
+        1962,
+        1975,
+        1918,
+        1948,
+        1966,
+        1968,
+        1971,
+        1810
+      ],
+      "government form": [
+        "Republic",
+        "Constitutional Monarchy",
+        "Federal Republic",
+        "Dependent Territory of the UK",
+        "Monarchy",
+        "Constitutional Monarchy, Federation",
+        "Nonmetropolitan Territory of France",
+        "Overseas Department of France",
+        "Territory of Australia",
+        "Nonmetropolitan Territory of New Zealand"
+      ]
+    },
+    "bm25_text": "world countri world countri code name contin region surfac area indepd year popul life expect gnp gnp old local name govern form head of state capit citi countrylanguag contin africa asia europ north america oceania south america antarctica africa asia europ north america oceania south america antarctica region caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia govern form republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand"
+  },
+  {
+    "table_id": "world_1.countrylanguage",
+    "db": "world_1",
+    "table": "countrylanguage",
+    "columns": [
+      "countrycode",
+      "language",
+      "is official",
+      "percentage"
+    ],
+    "joinable_tables": [
+      "country"
+    ],
+    "top_values": {
+      "countrycode": [
+        "CAN",
+        "CHN",
+        "IND",
+        "RUS",
+        "USA",
+        "TZA",
+        "ZAF",
+        "COD",
+        "IRN",
+        "KEN"
+      ],
+      "language": [
+        "English",
+        "Arabic",
+        "Spanish",
+        "French",
+        "Chinese",
+        "German",
+        "Russian",
+        "Italian",
+        "Creole English",
+        "Ful"
+      ],
+      "is official": [
+        "F",
+        "T"
+      ],
+      "percentage": [
+        0.0,
+        0.4,
+        0.2,
+        0.1,
+        0.5,
+        0.6,
+        0.3,
+        0.7,
+        1.4,
+        1.6
+      ]
+    },
+    "bm25_text": "world countrylanguag world countrylanguag countrycod languag is offici percentag countri countrycod can chn ind rus usa tza zaf cod irn ken can chn ind rus usa tza zaf cod irn ken languag english arab spanish french chines german russian italian creol english ful english arab spanish french chines german russian italian creol english ful is offici f t f t"
+  },
+  {
+    "table_id": "employee_hire_evaluation.employee",
+    "db": "employee_hire_evaluation",
+    "table": "employee",
+    "columns": [
+      "employee id",
+      "name",
+      "age",
+      "city"
+    ],
+    "joinable_tables": [
+      "hiring",
+      "evaluation"
+    ],
+    "top_values": {
+      "city": [
+        "Bath",
+        "Bristol",
+        "Wasps",
+        "Leicester",
+        "Sale"
+      ]
+    },
+    "bm25_text": "employe hire evalu employe employe hire evalu employe employe id name age citi hire evalu citi bath bristol wasp leicest sale bath bristol wasp leicest sale"
+  },
+  {
+    "table_id": "employee_hire_evaluation.shop",
+    "db": "employee_hire_evaluation",
+    "table": "shop",
+    "columns": [
+      "shop id",
+      "name",
+      "location",
+      "district",
+      "number products",
+      "manager name"
+    ],
+    "joinable_tables": [
+      "hiring"
+    ],
+    "top_values": {},
+    "bm25_text": "employe hire evalu shop employe hire evalu shop shop id name locat district number product manag name hire"
+  },
+  {
+    "table_id": "employee_hire_evaluation.hiring",
+    "db": "employee_hire_evaluation",
+    "table": "hiring",
+    "columns": [
+      "shop id",
+      "employee id",
+      "start from",
+      "is full time"
+    ],
+    "joinable_tables": [
+      "employee",
+      "shop"
+    ],
+    "top_values": {
+      "is full time": [
+        "T",
+        "F"
+      ]
+    },
+    "bm25_text": "employe hire evalu hire employe hire evalu hire shop id employe id start from is full time employe shop is full time t f t f"
+  },
+  {
+    "table_id": "employee_hire_evaluation.evaluation",
+    "db": "employee_hire_evaluation",
+    "table": "evaluation",
+    "columns": [
+      "employee id",
+      "year awarded",
+      "bonus"
+    ],
+    "joinable_tables": [
+      "employee"
+    ],
+    "top_values": {},
+    "bm25_text": "employe hire evalu evalu employe hire evalu evalu employe id year award bonus employe"
+  },
+  {
+    "table_id": "network_1.high schooler",
+    "db": "network_1",
+    "table": "high schooler",
+    "columns": [
+      "id",
+      "name",
+      "grade"
+    ],
+    "joinable_tables": [
+      "friend",
+      "likes"
+    ],
+    "top_values": {
+      "grade": [
+        10,
+        11,
+        12,
+        9
+      ]
+    },
+    "bm25_text": "network high schooler network high schooler id name grade friend like"
+  },
+  {
+    "table_id": "network_1.friend",
+    "db": "network_1",
+    "table": "friend",
+    "columns": [
+      "student id",
+      "friend id"
+    ],
+    "joinable_tables": [
+      "high schooler"
+    ],
+    "top_values": {},
+    "bm25_text": "network friend network friend student id friend id high schooler"
+  },
+  {
+    "table_id": "network_1.likes",
+    "db": "network_1",
+    "table": "likes",
+    "columns": [
+      "student id",
+      "liked id"
+    ],
+    "joinable_tables": [
+      "high schooler"
+    ],
+    "top_values": {},
+    "bm25_text": "network like network like student id like id high schooler"
+  },
+  {
+    "table_id": "poker_player.poker player",
+    "db": "poker_player",
+    "table": "poker player",
+    "columns": [
+      "poker player id",
+      "people id",
+      "final table made",
+      "best finish",
+      "money rank",
+      "earnings"
+    ],
+    "joinable_tables": [
+      "people"
+    ],
+    "top_values": {},
+    "bm25_text": "poker player poker player poker player poker player poker player id peopl id final tabl made best finish money rank earn peopl"
+  },
+  {
+    "table_id": "poker_player.people",
+    "db": "poker_player",
+    "table": "people",
+    "columns": [
+      "people id",
+      "nationality",
+      "name",
+      "birth date",
+      "height"
+    ],
+    "joinable_tables": [
+      "poker player"
+    ],
+    "top_values": {
+      "nationality": [
+        "Russia",
+        "Bulgaria"
+      ]
+    },
+    "bm25_text": "poker player peopl poker player peopl peopl id nation name birth date height poker player nation russia bulgaria russia bulgaria"
+  },
+  {
+    "table_id": "real_estate_properties.reference feature types",
+    "db": "real_estate_properties",
+    "table": "reference feature types",
+    "columns": [
+      "feature type code",
+      "feature type name"
+    ],
+    "joinable_tables": [
+      "other available features"
+    ],
+    "top_values": {},
+    "bm25_text": "real estat properti refer featur type real estat properti refer featur type featur type code featur type name other avail featur"
+  },
+  {
+    "table_id": "real_estate_properties.reference property types",
+    "db": "real_estate_properties",
+    "table": "reference property types",
+    "columns": [
+      "property type code",
+      "property type description"
+    ],
+    "joinable_tables": [
+      "properties"
+    ],
+    "top_values": {},
+    "bm25_text": "real estat properti refer properti type real estat properti refer properti type properti type code properti type descript properti"
+  },
+  {
+    "table_id": "real_estate_properties.other available features",
+    "db": "real_estate_properties",
+    "table": "other available features",
+    "columns": [
+      "feature id",
+      "feature type code",
+      "feature name",
+      "feature description"
+    ],
+    "joinable_tables": [
+      "reference feature types",
+      "other property features"
+    ],
+    "top_values": {},
+    "bm25_text": "real estat properti other avail featur real estat properti other avail featur featur id featur type code featur name featur descript refer featur type other properti featur"
+  },
+  {
+    "table_id": "real_estate_properties.properties",
+    "db": "real_estate_properties",
+    "table": "properties",
+    "columns": [
+      "property id",
+      "property type code",
+      "date on market",
+      "date sold",
+      "property name",
+      "property address",
+      "room count",
+      "vendor requested price",
+      "buyer offered price",
+      "agreed selling price",
+      "apt feature 1",
+      "apt feature 2",
+      "apt feature 3",
+      "fld feature 1",
+      "fld feature 2",
+      "fld feature 3",
+      "hse feature 1",
+      "hse feature 2",
+      "hse feature 3",
+      "oth feature 1",
+      "oth feature 2",
+      "oth feature 3",
+      "shp feature 1",
+      "shp feature 2",
+      "shp feature 3",
+      "other property details"
+    ],
+    "joinable_tables": [
+      "reference property types",
+      "other property features"
+    ],
+    "top_values": {
+      "property type code": [
+        "Apartment",
+        "Other",
+        "House",
+        "Shop",
+        "Field"
+      ]
+    },
+    "bm25_text": "real estat properti properti real estat properti properti properti id properti type code date on market date sold properti name properti address room count vendor request price buyer offer price agre sell price apt featur apt featur apt featur fld featur fld featur fld featur hse featur hse featur hse featur oth featur oth featur oth featur shp featur shp featur shp featur other properti detail refer properti type other properti featur properti type code apart other hous shop field apart other hous shop field"
+  },
+  {
+    "table_id": "real_estate_properties.other property features",
+    "db": "real_estate_properties",
+    "table": "other property features",
+    "columns": [
+      "property id",
+      "feature id",
+      "property feature description"
+    ],
+    "joinable_tables": [
+      "properties",
+      "other available features"
+    ],
+    "top_values": {
+      "feature id": [
+        3,
+        2,
+        4
+      ]
+    },
+    "bm25_text": "real estat properti other properti featur real estat properti other properti featur properti id featur id properti featur descript properti other avail featur"
+  },
+  {
+    "table_id": "course_teach.course",
+    "db": "course_teach",
+    "table": "course",
+    "columns": [
+      "course id",
+      "staring date",
+      "course"
+    ],
+    "joinable_tables": [
+      "course arrange"
+    ],
+    "top_values": {},
+    "bm25_text": "cours teach cours cours teach cours cours id stare date cours cours arrang"
+  },
+  {
+    "table_id": "course_teach.teacher",
+    "db": "course_teach",
+    "table": "teacher",
+    "columns": [
+      "teacher id",
+      "name",
+      "age",
+      "hometown"
+    ],
+    "joinable_tables": [
+      "course arrange"
+    ],
+    "top_values": {},
+    "bm25_text": "cours teach teacher cours teach teacher teacher id name age hometown cours arrang"
+  },
+  {
+    "table_id": "course_teach.course arrange",
+    "db": "course_teach",
+    "table": "course arrange",
+    "columns": [
+      "course id",
+      "teacher id",
+      "grade"
+    ],
+    "joinable_tables": [
+      "teacher",
+      "course"
+    ],
+    "top_values": {},
+    "bm25_text": "cours teach cours arrang cours teach cours arrang cours id teacher id grade teacher cours"
+  },
+  {
+    "table_id": "voter_1.area code state",
+    "db": "voter_1",
+    "table": "area code state",
+    "columns": [
+      "area code",
+      "state"
+    ],
+    "joinable_tables": [
+      "votes"
+    ],
+    "top_values": {
+      "state": [
+        "CA",
+        "TX",
+        "FL",
+        "IL",
+        "MI",
+        "NY",
+        "OH",
+        "PA",
+        "GA",
+        "MA"
+      ]
+    },
+    "bm25_text": "voter area code state voter area code state area code state vote state ca tx fl il mi ny oh pa ga ma ca tx fl il mi ny oh pa ga ma"
+  },
+  {
+    "table_id": "voter_1.contestants",
+    "db": "voter_1",
+    "table": "contestants",
+    "columns": [
+      "contestant number",
+      "contestant name"
+    ],
+    "joinable_tables": [
+      "votes"
+    ],
+    "top_values": {},
+    "bm25_text": "voter contest voter contest contest number contest name vote"
+  },
+  {
+    "table_id": "voter_1.votes",
+    "db": "voter_1",
+    "table": "votes",
+    "columns": [
+      "vote id",
+      "phone number",
+      "state",
+      "contestant number",
+      "created"
+    ],
+    "joinable_tables": [
+      "contestants",
+      "area code state"
+    ],
+    "top_values": {},
+    "bm25_text": "voter vote voter vote vote id phone number state contest number creat contest area code state"
+  },
+  {
+    "table_id": "wta_1.players",
+    "db": "wta_1",
+    "table": "players",
+    "columns": [
+      "player id",
+      "first name",
+      "last name",
+      "hand",
+      "birth date",
+      "country code"
+    ],
+    "joinable_tables": [
+      "matches",
+      "rankings"
+    ],
+    "top_values": {
+      "first name": [
+        "Anna",
+        "Maria",
+        "Laura",
+        "Alexandra",
+        "Andrea",
+        "Julia",
+        "Natalia",
+        "Elena",
+        "Anastasia",
+        "Stephanie"
+      ],
+      "hand": [
+        "U",
+        "R",
+        "",
+        "L"
+      ],
+      "birth date": [
+        "",
+        19970313,
+        19970424,
+        19970617,
+        19890506,
+        19920114,
+        19970303,
+        19850530,
+        19881126,
+        19920513
+      ],
+      "country code": [
+        "USA",
+        "ITA",
+        "ESP",
+        "GER",
+        "JPN",
+        "RUS",
+        "AUS",
+        "FRA",
+        "GBR",
+        "IND"
+      ]
+    },
+    "bm25_text": "wta player wta player player id first name last name hand birth date countri code match rank first name anna maria laura alexandra andrea julia natalia elena anastasia stephani anna maria laura alexandra andrea julia natalia elena anastasia stephani hand u r l u r l countri code usa ita esp ger jpn rus aus fra gbr ind usa ita esp ger jpn rus aus fra gbr ind"
+  },
+  {
+    "table_id": "wta_1.matches",
+    "db": "wta_1",
+    "table": "matches",
+    "columns": [
+      "best of",
+      "draw size",
+      "loser age",
+      "loser entry",
+      "loser hand",
+      "loser ht",
+      "loser id",
+      "loser ioc",
+      "loser name",
+      "loser rank",
+      "loser rank points",
+      "loser seed",
+      "match num",
+      "minutes",
+      "round",
+      "score",
+      "surface",
+      "tourney date",
+      "tourney id",
+      "tourney level",
+      "tourney name",
+      "winner age",
+      "winner entry",
+      "winner hand",
+      "winner ht",
+      "winner id",
+      "winner ioc",
+      "winner name",
+      "winner rank",
+      "winner rank points",
+      "winner seed",
+      "year"
+    ],
+    "joinable_tables": [
+      "players"
+    ],
+    "top_values": {
+      "best of": [
+        3
+      ],
+      "draw size": [
+        128,
+        64,
+        32,
+        8,
+        4,
+        12
+      ],
+      "loser entry": [
+        ""
+      ],
+      "loser hand": [
+        "R",
+        "L"
+      ],
+      "loser ht": [
+        174,
+        177,
+        184,
+        170,
+        173,
+        182,
+        168,
+        162,
+        183,
+        178
+      ],
+      "loser id": [
+        201320,
+        201493,
+        201662,
+        201474,
+        202494,
+        201594,
+        201521,
+        202469,
+        201499,
+        201619
+      ],
+      "loser ioc": [
+        "RUS",
+        "CZE",
+        "USA",
+        "ESP",
+        "GER",
+        "ROU",
+        "POL",
+        "UKR",
+        "ITA",
+        "FRA"
+      ],
+      "loser name": [
+        "Svetlana Kuznetsova",
+        "Angelique Kerber",
+        "Karolina Pliskova",
+        "Agnieszka Radwanska",
+        "Elina Svitolina",
+        "Simona Halep",
+        "Carla Suarez Navarro",
+        "Garbine Muguruza",
+        "Anastasia Pavlyuchenkova",
+        "Madison Keys"
+      ],
+      "loser rank": [
+        4,
+        1,
+        9,
+        3,
+        6,
+        7,
+        2,
+        5,
+        8,
+        12
+      ],
+      "loser seed": [
+        5,
+        6,
+        4,
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "match num": [
+        300,
+        298,
+        297,
+        299,
+        294,
+        295,
+        296,
+        291,
+        289,
+        286
+      ],
+      "minutes": [
+        77,
+        127,
+        70,
+        75,
+        96,
+        101,
+        103,
+        111,
+        131,
+        62
+      ],
+      "round": [
+        "QF",
+        "R16",
+        "SF",
+        "R32",
+        "F",
+        "RR",
+        "BR"
+      ],
+      "surface": [
+        "Hard",
+        "Clay",
+        "Grass"
+      ],
+      "tourney date": [
+        20170306,
+        20161024,
+        20131021,
+        20160627,
+        20160307,
+        20160523,
+        20160829,
+        20160321,
+        20160725,
+        20160815
+      ],
+      "tourney id": [
+        "2017-M006",
+        "2016-0808",
+        "2013-W-WT-TUR-01A-2013",
+        "2016-540",
+        "2016-520",
+        "2016-560",
+        "2016-M006",
+        "2016-M007",
+        "2016-0806",
+        "2016-1075"
+      ],
+      "tourney level": [
+        "I",
+        "G",
+        "P",
+        "W"
+      ],
+      "tourney name": [
+        "Indian Wells",
+        "Us Open",
+        "Miami",
+        "Wimbledon",
+        "Singapore",
+        "Cincinnati",
+        "Australian Open",
+        "WTA Championships",
+        "French Open",
+        "Montreal"
+      ],
+      "winner entry": [
+        ""
+      ],
+      "winner hand": [
+        "R",
+        "L"
+      ],
+      "winner ht": [
+        174,
+        173,
+        168,
+        184,
+        177,
+        178,
+        182,
+        183,
+        170,
+        175
+      ],
+      "winner id": [
+        201493,
+        201594,
+        201662,
+        201320,
+        201520,
+        202494,
+        200033,
+        201619,
+        202469,
+        201495
+      ],
+      "winner ioc": [
+        "USA",
+        "RUS",
+        "CZE",
+        "ROU",
+        "GER",
+        "ESP",
+        "UKR",
+        "SVK",
+        "POL",
+        "DEN"
+      ],
+      "winner name": [
+        "Angelique Kerber",
+        "Simona Halep",
+        "Karolina Pliskova",
+        "Elina Svitolina",
+        "Petra Kvitova",
+        "Svetlana Kuznetsova",
+        "Garbine Muguruza",
+        "Madison Keys",
+        "Serena Williams",
+        "Dominika Cibulkova"
+      ],
+      "winner rank": [
+        5,
+        1,
+        3,
+        16,
+        4,
+        6,
+        8,
+        2,
+        15,
+        11
+      ],
+      "winner seed": [
+        2,
+        1,
+        3,
+        7,
+        4,
+        5,
+        8,
+        6,
+        14,
+        13
+      ],
+      "year": [
+        2016,
+        2017,
+        2013
+      ]
+    },
+    "bm25_text": "wta match wta match best of draw size loser age loser entri loser hand loser ht loser id loser ioc loser name loser rank loser rank point loser seed match num minut round score surfac tourney date tourney id tourney level tourney name winner age winner entri winner hand winner ht winner id winner ioc winner name winner rank winner rank point winner seed year player loser hand r l r l loser ioc rus cze usa esp ger rou pol ukr ita fra rus cze usa esp ger rou pol ukr ita fra loser name svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key round qf sf f rr br qf sf f rr br surfac hard clay grass hard clay grass tourney id w wt tur w wt tur tourney level i g p w i g p w tourney name indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal winner hand r l r l winner ioc usa rus cze rou ger esp ukr svk pol den usa rus cze rou ger esp ukr svk pol den winner name angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova"
+  },
+  {
+    "table_id": "wta_1.rankings",
+    "db": "wta_1",
+    "table": "rankings",
+    "columns": [
+      "ranking date",
+      "ranking",
+      "player id",
+      "ranking points",
+      "tours"
+    ],
+    "joinable_tables": [
+      "players"
+    ],
+    "top_values": {
+      "ranking date": [
+        20160307,
+        20160118,
+        20160229,
+        20160215,
+        20160201,
+        20160222,
+        20160208,
+        20160411,
+        20160509,
+        20160418
+      ],
+      "ranking": [
+        27,
+        30,
+        28,
+        39,
+        31,
+        43,
+        58,
+        40,
+        29,
+        45
+      ],
+      "player id": [
+        200009,
+        200744,
+        200748,
+        200036,
+        201815,
+        200124,
+        201462,
+        201212,
+        201086,
+        200083
+      ],
+      "ranking points": [
+        3,
+        4,
+        6,
+        10,
+        7,
+        8,
+        5,
+        9,
+        12,
+        11
+      ],
+      "tours": [
+        3,
+        0,
+        4,
+        1,
+        5,
+        25,
+        6,
+        22,
+        2,
+        13
+      ]
+    },
+    "bm25_text": "wta rank wta rank rank date rank player id rank point tour player"
+  },
+  {
+    "table_id": "orchestra.conductor",
+    "db": "orchestra",
+    "table": "conductor",
+    "columns": [
+      "conductor id",
+      "name",
+      "age",
+      "nationality",
+      "year of work"
+    ],
+    "joinable_tables": [
+      "orchestra"
+    ],
+    "top_values": {
+      "nationality": [
+        "USA",
+        "UK",
+        "France"
+      ]
+    },
+    "bm25_text": "orchestra conductor orchestra conductor conductor id name age nation year of work orchestra nation usa uk franc usa uk franc"
+  },
+  {
+    "table_id": "orchestra.orchestra",
+    "db": "orchestra",
+    "table": "orchestra",
+    "columns": [
+      "orchestra id",
+      "orchestra",
+      "conductor id",
+      "record company",
+      "year of founded",
+      "major record format"
+    ],
+    "joinable_tables": [
+      "conductor",
+      "performance"
+    ],
+    "top_values": {
+      "major record format": [
+        "CD",
+        "CD / LP",
+        "DVD"
+      ]
+    },
+    "bm25_text": "orchestra orchestra orchestra orchestra orchestra id orchestra conductor id record compani year of found major record format conductor perform major record format cd cd lp dvd cd cd lp dvd"
+  },
+  {
+    "table_id": "orchestra.performance",
+    "db": "orchestra",
+    "table": "performance",
+    "columns": [
+      "performance id",
+      "orchestra id",
+      "type",
+      "date",
+      "official ratings (millions)",
+      "weekly rank",
+      "share"
+    ],
+    "joinable_tables": [
+      "orchestra",
+      "show"
+    ],
+    "top_values": {},
+    "bm25_text": "orchestra perform orchestra perform perform id orchestra id type date offici rate million week rank share orchestra show"
+  },
+  {
+    "table_id": "orchestra.show",
+    "db": "orchestra",
+    "table": "show",
+    "columns": [
+      "show id",
+      "performance id",
+      "if first show",
+      "result",
+      "attendance"
+    ],
+    "joinable_tables": [
+      "performance"
+    ],
+    "top_values": {
+      "result": [
+        "T",
+        "F"
+      ]
+    },
+    "bm25_text": "orchestra show orchestra show show id perform id if first show result attend perform result t f t f"
+  },
+  {
+    "table_id": "car_1.continents",
+    "db": "car_1",
+    "table": "continents",
+    "columns": [
+      "cont id",
+      "continent"
+    ],
+    "joinable_tables": [
+      "countries"
+    ],
+    "top_values": {},
+    "bm25_text": "car contin car contin cont id contin countri"
+  },
+  {
+    "table_id": "car_1.countries",
+    "db": "car_1",
+    "table": "countries",
+    "columns": [
+      "country id",
+      "country name",
+      "continent"
+    ],
+    "joinable_tables": [
+      "continents",
+      "car makers"
+    ],
+    "top_values": {
+      "continent": [
+        2,
+        1,
+        3,
+        4,
+        5
+      ]
+    },
+    "bm25_text": "car countri car countri countri id countri name contin contin car maker"
+  },
+  {
+    "table_id": "car_1.car makers",
+    "db": "car_1",
+    "table": "car makers",
+    "columns": [
+      "id",
+      "maker",
+      "full name",
+      "country"
+    ],
+    "joinable_tables": [
+      "countries",
+      "model list"
+    ],
+    "top_values": {
+      "country": [
+        "4",
+        "1",
+        "2",
+        "3",
+        "6",
+        "8",
+        "5",
+        "7"
+      ]
+    },
+    "bm25_text": "car car maker car car maker id maker full name countri countri model list countri"
+  },
+  {
+    "table_id": "car_1.model list",
+    "db": "car_1",
+    "table": "model list",
+    "columns": [
+      "model id",
+      "maker",
+      "model"
+    ],
+    "joinable_tables": [
+      "car makers",
+      "car names"
+    ],
+    "top_values": {},
+    "bm25_text": "car model list car model list model id maker model car maker car name"
+  },
+  {
+    "table_id": "car_1.car names",
+    "db": "car_1",
+    "table": "car names",
+    "columns": [
+      "make id",
+      "model",
+      "make"
+    ],
+    "joinable_tables": [
+      "model list",
+      "cars data"
+    ],
+    "top_values": {
+      "model": [
+        "ford",
+        "chevrolet",
+        "plymouth",
+        "amc",
+        "dodge",
+        "toyota",
+        "datsun",
+        "volkswagen",
+        "buick",
+        "pontiac"
+      ]
+    },
+    "bm25_text": "car car name car car name make id model make model list car data model ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac"
+  },
+  {
+    "table_id": "car_1.cars data",
+    "db": "car_1",
+    "table": "cars data",
+    "columns": [
+      "id",
+      "mpg",
+      "cylinders",
+      "edispl",
+      "horsepower",
+      "weight",
+      "accelerate",
+      "year"
+    ],
+    "joinable_tables": [
+      "car names"
+    ],
+    "top_values": {
+      "mpg": [
+        "13",
+        "14",
+        "18",
+        "15",
+        "26",
+        "16",
+        "19",
+        "24",
+        "25",
+        "22"
+      ],
+      "cylinders": [
+        4,
+        8,
+        6,
+        3,
+        5
+      ],
+      "edispl": [
+        97.0,
+        350.0,
+        98.0,
+        250.0,
+        318.0,
+        140.0,
+        225.0,
+        400.0,
+        121.0,
+        302.0
+      ],
+      "horsepower": [
+        "150",
+        "90",
+        "110",
+        "88",
+        "100",
+        "75",
+        "95",
+        "105",
+        "67",
+        "70"
+      ],
+      "accelerate": [
+        14.5,
+        15.5,
+        14.0,
+        16.0,
+        13.5,
+        15.0,
+        17.0,
+        16.5,
+        13.0,
+        19.0
+      ],
+      "year": [
+        1973,
+        1978,
+        1970,
+        1976,
+        1982,
+        1975,
+        1981,
+        1971,
+        1979,
+        1980
+      ]
+    },
+    "bm25_text": "car car data car car data id mpg cylind edispl horsepow weight acceler year car name mpg horsepow"
+  },
+  {
+    "table_id": "tvshow.tv channel",
+    "db": "tvshow",
+    "table": "tv channel",
+    "columns": [
+      "id",
+      "series name",
+      "country",
+      "language",
+      "content",
+      "pixel aspect ratio par",
+      "hight definition tv",
+      "pay per view ppv",
+      "package option"
+    ],
+    "joinable_tables": [
+      "tv series",
+      "cartoon"
+    ],
+    "top_values": {
+      "country": [
+        "Italy",
+        "United Kingdom",
+        "Poland"
+      ],
+      "language": [
+        "Italian",
+        "English"
+      ],
+      "content": [
+        "music"
+      ],
+      "pixel aspect ratio par": [
+        "16:9",
+        "4:3",
+        "4:3 / 16:9"
+      ],
+      "hight definition tv": [
+        "no",
+        "yes"
+      ],
+      "pay per view ppv": [
+        "no"
+      ],
+      "package option": [
+        "Sky Famiglia",
+        "no ( FTV )",
+        "Option",
+        "Sky Famiglia + Sky HD"
+      ]
+    },
+    "bm25_text": "tvshow tv channel tvshow tv channel id seri name countri languag content pixel aspect ratio par hight definit tv pay per view ppv packag option tv seri cartoon countri itali unit kingdom poland itali unit kingdom poland languag italian english italian english content music music pixel aspect ratio par hight definit tv no yes no yes pay per view ppv no no packag option sky famiglia no ftv option sky famiglia sky hd sky famiglia no ftv option sky famiglia sky hd"
+  },
+  {
+    "table_id": "tvshow.tv series",
+    "db": "tvshow",
+    "table": "tv series",
+    "columns": [
+      "id",
+      "episode",
+      "air date",
+      "rating",
+      "share",
+      "18 49 rating share",
+      "viewers m",
+      "weekly rank",
+      "channel"
+    ],
+    "joinable_tables": [
+      "tv channel"
+    ],
+    "top_values": {
+      "share": [
+        6.0,
+        7.0,
+        9.0,
+        5.0
+      ]
+    },
+    "bm25_text": "tvshow tv seri tvshow tv seri id episod air date rate share rate share viewer m week rank channel tv channel"
+  },
+  {
+    "table_id": "tvshow.cartoon",
+    "db": "tvshow",
+    "table": "cartoon",
+    "columns": [
+      "id",
+      "title",
+      "directed by",
+      "written by",
+      "original air date",
+      "production code",
+      "channel"
+    ],
+    "joinable_tables": [
+      "tv channel"
+    ],
+    "top_values": {
+      "directed by": [
+        "Ben Jones",
+        "Brandon Vietti",
+        "Michael Chang"
+      ]
+    },
+    "bm25_text": "tvshow cartoon tvshow cartoon id titl direct by written by origin air date product code channel tv channel direct by ben jone brandon vietti michael chang ben jone brandon vietti michael chang"
+  }
+]

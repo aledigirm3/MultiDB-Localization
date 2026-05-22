@@ -1,0 +1,7222 @@
+[
+  {
+    "table_id": "debit_card_specializing.customers",
+    "db": "debit_card_specializing",
+    "table": "customers",
+    "columns": [
+      "CustomerID",
+      "client segment",
+      "Currency"
+    ],
+    "joinable_tables": [
+      "year and month"
+    ],
+    "top_values": {
+      "client segment": [
+        "SME",
+        "LAM",
+        "KAM"
+      ],
+      "Currency": [
+        "CZK",
+        "EUR"
+      ]
+    },
+    "bm25_text": "debit card special custom debit card special custom customerid client segment currenc year and month client segment sme lam kam sme lam kam currenc czk eur czk eur"
+  },
+  {
+    "table_id": "debit_card_specializing.gas stations",
+    "db": "debit_card_specializing",
+    "table": "gas stations",
+    "columns": [
+      "Gas Station ID",
+      "Chain ID",
+      "Country",
+      "chain segment"
+    ],
+    "joinable_tables": [],
+    "top_values": {
+      "Chain ID": [
+        3,
+        2,
+        33,
+        1,
+        4,
+        6,
+        9,
+        51,
+        13,
+        16
+      ],
+      "Country": [
+        "CZE",
+        "SVK"
+      ],
+      "chain segment": [
+        "Other",
+        "Premium",
+        "Noname",
+        "Value for money",
+        "Discount"
+      ]
+    },
+    "bm25_text": "debit card special gas station debit card special gas station gas station id chain id countri chain segment countri cze svk cze svk chain segment other premium nonam valu for money discount other premium nonam valu for money discount"
+  },
+  {
+    "table_id": "debit_card_specializing.products",
+    "db": "debit_card_specializing",
+    "table": "products",
+    "columns": [
+      "Product ID",
+      "Description"
+    ],
+    "joinable_tables": [],
+    "top_values": {},
+    "bm25_text": "debit card special product debit card special product product id descript"
+  },
+  {
+    "table_id": "debit_card_specializing.transactions",
+    "db": "debit_card_specializing",
+    "table": "transactions",
+    "columns": [
+      "Transaction ID",
+      "Date",
+      "Time",
+      "Customer ID",
+      "Card ID",
+      "Gas Station ID",
+      "Product ID",
+      "Amount",
+      "Price"
+    ],
+    "joinable_tables": [],
+    "top_values": {
+      "Date": [
+        "2012-08-24",
+        "2012-08-25",
+        "2012-08-26",
+        "2012-08-23"
+      ],
+      "Gas Station ID": [
+        1155,
+        448,
+        48,
+        3621,
+        3748,
+        636,
+        345,
+        4431,
+        1107,
+        3319
+      ],
+      "Product ID": [
+        2,
+        5,
+        317,
+        15,
+        9,
+        11,
+        23,
+        20,
+        322,
+        12
+      ],
+      "Amount": [
+        0,
+        5,
+        25,
+        1,
+        4,
+        6,
+        27,
+        24,
+        22,
+        23
+      ]
+    },
+    "bm25_text": "debit card special transact debit card special transact transact id date time custom id card id gas station id product id amount price date"
+  },
+  {
+    "table_id": "debit_card_specializing.year and month",
+    "db": "debit_card_specializing",
+    "table": "year and month",
+    "columns": [
+      "Customer ID",
+      "Date",
+      "Consumption"
+    ],
+    "joinable_tables": [
+      "customers"
+    ],
+    "top_values": {
+      "Customer ID": [
+        12504,
+        12702,
+        12776,
+        14349,
+        14626,
+        15283,
+        15692,
+        1595,
+        1673,
+        19182
+      ],
+      "Date": [
+        "201305",
+        "201304",
+        "201306",
+        "201307",
+        "201303",
+        "201308",
+        "201309",
+        "201310",
+        "201311",
+        "201203"
+      ]
+    },
+    "bm25_text": "debit card special year and month debit card special year and month custom id date consumpt custom date"
+  },
+  {
+    "table_id": "financial.account",
+    "db": "financial",
+    "table": "account",
+    "columns": [
+      "account id",
+      "location of branch",
+      "frequency",
+      "date"
+    ],
+    "joinable_tables": [
+      "district",
+      "disposition",
+      "loan",
+      "order",
+      "transaction"
+    ],
+    "top_values": {
+      "location of branch": [
+        1,
+        70,
+        74,
+        54,
+        64,
+        72,
+        68,
+        5,
+        46,
+        36
+      ],
+      "frequency": [
+        "POPLATEK MESICNE",
+        "POPLATEK TYDNE",
+        "POPLATEK PO OBRATU"
+      ],
+      "date": [
+        "1993-02-08",
+        "1993-10-08",
+        "1996-06-25",
+        "1996-11-24",
+        "1993-02-27",
+        "1993-06-08",
+        "1996-07-08",
+        "1997-08-08",
+        "1993-01-08",
+        "1993-03-08"
+      ]
+    },
+    "bm25_text": "financi account financi account account id locat of branch frequenc date district disposit loan order transact frequenc poplatek mesicn poplatek tydn poplatek po obratu poplatek mesicn poplatek tydn poplatek po obratu date"
+  },
+  {
+    "table_id": "financial.card",
+    "db": "financial",
+    "table": "card",
+    "columns": [
+      "credit card id",
+      "disposition id",
+      "type",
+      "issued"
+    ],
+    "joinable_tables": [
+      "disposition"
+    ],
+    "top_values": {
+      "type": [
+        "classic",
+        "junior",
+        "gold"
+      ]
+    },
+    "bm25_text": "financi card financi card credit card id disposit id type issu disposit type classic junior gold classic junior gold"
+  },
+  {
+    "table_id": "financial.client",
+    "db": "financial",
+    "table": "client",
+    "columns": [
+      "client_id",
+      "gender",
+      "birth_date",
+      "location of branch"
+    ],
+    "joinable_tables": [
+      "district",
+      "disposition"
+    ],
+    "top_values": {
+      "gender": [
+        "M",
+        "F"
+      ],
+      "location of branch": [
+        1,
+        74,
+        70,
+        54,
+        64,
+        72,
+        68,
+        46,
+        52,
+        5
+      ]
+    },
+    "bm25_text": "financi client financi client client id gender birth date locat of branch district disposit gender m f m f"
+  },
+  {
+    "table_id": "financial.disposition",
+    "db": "financial",
+    "table": "disposition",
+    "columns": [
+      "disposition id",
+      "client_id",
+      "account_id",
+      "type"
+    ],
+    "joinable_tables": [
+      "card",
+      "client",
+      "account"
+    ],
+    "top_values": {
+      "type": [
+        "OWNER",
+        "DISPONENT"
+      ]
+    },
+    "bm25_text": "financi disposit financi disposit disposit id client id account id type card client account type owner dispon owner dispon"
+  },
+  {
+    "table_id": "financial.district",
+    "db": "financial",
+    "table": "district",
+    "columns": [
+      "location of branch",
+      "district_name",
+      "region",
+      "number of inhabitants",
+      "no. of municipalities with inhabitants < 499",
+      "no. of municipalities with inhabitants 500-1999",
+      "no. of municipalities with inhabitants 2000-9999",
+      "no. of municipalities with inhabitants > 10000",
+      "A9",
+      "ratio of urban inhabitants",
+      "average salary",
+      "unemployment rate 1995",
+      "unemployment rate 1996",
+      "no. of entrepreneurs per 1000 inhabitants",
+      "no. of committed crimes 1995",
+      "no. of committed crimes 1996"
+    ],
+    "joinable_tables": [
+      "account",
+      "client"
+    ],
+    "top_values": {
+      "region": [
+        "south Moravia",
+        "central Bohemia",
+        "east Bohemia",
+        "north Moravia",
+        "north Bohemia",
+        "west Bohemia",
+        "south Bohemia",
+        "Prague"
+      ],
+      "no. of municipalities with inhabitants 500-1999": [
+        "26",
+        "41",
+        "16",
+        "19",
+        "0",
+        "28",
+        "29",
+        "11",
+        "13",
+        "21"
+      ],
+      "no. of municipalities with inhabitants 2000-9999": [
+        "4",
+        "6",
+        "7",
+        "5",
+        "10",
+        "3",
+        "8",
+        "0",
+        "1",
+        "2"
+      ],
+      "no. of municipalities with inhabitants > 10000": [
+        1,
+        2,
+        3,
+        0,
+        4,
+        5
+      ],
+      "A9": [
+        6,
+        4,
+        7,
+        5,
+        10,
+        8,
+        9,
+        1,
+        11,
+        3
+      ]
+    },
+    "bm25_text": "financi district financi district locat of branch district name region number of inhabit no of municip with inhabit no of municip with inhabit no of municip with inhabit no of municip with inhabit ratio of urban inhabit averag salari unemploy rate unemploy rate no of entrepreneur per inhabit no of commit crime no of commit crime account client region south moravia central bohemia east bohemia north moravia north bohemia west bohemia south bohemia pragu south moravia central bohemia east bohemia north moravia north bohemia west bohemia south bohemia pragu no of municip with inhabit no of municip with inhabit"
+  },
+  {
+    "table_id": "financial.loan",
+    "db": "financial",
+    "table": "loan",
+    "columns": [
+      "loan_id",
+      "account_id",
+      "date",
+      "amount",
+      "duration",
+      "monthly payments",
+      "status"
+    ],
+    "joinable_tables": [
+      "account"
+    ],
+    "top_values": {
+      "duration": [
+        60,
+        24,
+        48,
+        12,
+        36
+      ],
+      "status": [
+        "C",
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    "bm25_text": "financi loan financi loan loan id account id date amount durat month payment status account status c a d b c a d b"
+  },
+  {
+    "table_id": "financial.order",
+    "db": "financial",
+    "table": "order",
+    "columns": [
+      "order_id",
+      "account_id",
+      "bank of the recipient",
+      "account of the recipient",
+      "debited amount",
+      "characterization of the payment"
+    ],
+    "joinable_tables": [
+      "account"
+    ],
+    "top_values": {
+      "bank of the recipient": [
+        "QR",
+        "YZ",
+        "AB",
+        "WX",
+        "ST",
+        "KL",
+        "UV",
+        "IJ",
+        "GH",
+        "OP"
+      ],
+      "characterization of the payment": [
+        "SIPO",
+        "",
+        "UVER",
+        "POJISTNE",
+        "LEASING"
+      ]
+    },
+    "bm25_text": "financi order financi order order id account id bank of the recipi account of the recipi debit amount character of the payment account bank of the recipi qr yz ab wx st kl uv ij gh op qr yz ab wx st kl uv ij gh op character of the payment sipo uver pojistn leas sipo uver pojistn leas"
+  },
+  {
+    "table_id": "financial.transaction",
+    "db": "financial",
+    "table": "transaction",
+    "columns": [
+      "transaction id",
+      "account_id",
+      "date of transaction",
+      "+/- transaction",
+      "mode of transaction",
+      "amount of money",
+      "balance after transaction",
+      "characterization of the transaction",
+      "bank of the partner",
+      "account of the partner"
+    ],
+    "joinable_tables": [
+      "account"
+    ],
+    "top_values": {
+      "account_id": [
+        8261,
+        3834,
+        96,
+        2932,
+        9307,
+        9265,
+        5215,
+        2762,
+        1801,
+        5952
+      ],
+      "date of transaction": [
+        "1998-06-30",
+        "1998-09-30",
+        "1998-07-31",
+        "1998-08-31",
+        "1998-10-31",
+        "1998-11-30",
+        "1998-05-31",
+        "1998-04-30",
+        "1998-03-31",
+        "1998-02-28"
+      ],
+      "+/- transaction": [
+        "VYDAJ",
+        "PRIJEM",
+        "VYBER"
+      ],
+      "mode of transaction": [
+        "VYBER",
+        "PREVOD NA UCET",
+        "VKLAD",
+        "PREVOD Z UCTU",
+        "VYBER KARTOU"
+      ],
+      "amount of money": [
+        15,
+        30,
+        100,
+        1200,
+        1800,
+        600,
+        2400,
+        800,
+        1500,
+        1600
+      ],
+      "balance after transaction": [
+        900,
+        1100,
+        600,
+        1000,
+        200,
+        700,
+        800,
+        400,
+        300,
+        500
+      ],
+      "characterization of the transaction": [
+        "UROK",
+        "SLUZBY",
+        "SIPO",
+        " ",
+        "DUCHOD",
+        "POJISTNE",
+        "UVER",
+        "SANKC. UROK"
+      ],
+      "bank of the partner": [
+        "QR",
+        "AB",
+        "ST",
+        "YZ",
+        "GH",
+        "EF",
+        "KL",
+        "UV",
+        "OP",
+        "IJ"
+      ],
+      "account of the partner": [
+        0,
+        66487163,
+        13943797,
+        95437645,
+        69415771,
+        29053187,
+        14132887,
+        15916598,
+        30300313,
+        34144538
+      ]
+    },
+    "bm25_text": "financi transact financi transact transact id account id date of transact transact mode of transact amount of money balanc after transact character of the transact bank of the partner account of the partner account date of transact transact vydaj prijem vyber vydaj prijem vyber mode of transact vyber prevod na ucet vklad prevod z uctu vyber kartou vyber prevod na ucet vklad prevod z uctu vyber kartou character of the transact urok sluzbi sipo duchod pojistn uver sankc urok urok sluzbi sipo duchod pojistn uver sankc urok bank of the partner qr ab st yz gh ef kl uv op ij qr ab st yz gh ef kl uv op ij"
+  },
+  {
+    "table_id": "formula_1.circuits",
+    "db": "formula_1",
+    "table": "circuits",
+    "columns": [
+      "circuit Id",
+      "circuit reference name",
+      "name",
+      "location",
+      "country",
+      "latitude",
+      "longitude",
+      "alt",
+      "url"
+    ],
+    "joinable_tables": [
+      "races"
+    ],
+    "top_values": {
+      "country": [
+        "USA",
+        "France",
+        "Spain",
+        "UK",
+        "Austria",
+        "Belgium",
+        "Canada",
+        "Germany",
+        "Italy",
+        "Japan"
+      ]
+    },
+    "bm25_text": "formula circuit formula circuit circuit id circuit refer name name locat countri latitud longitud alt url race countri usa franc spain uk austria belgium canada germani itali japan usa franc spain uk austria belgium canada germani itali japan"
+  },
+  {
+    "table_id": "formula_1.constructors",
+    "db": "formula_1",
+    "table": "constructors",
+    "columns": [
+      "constructor Id",
+      "Constructor Reference name",
+      "name",
+      "nationality",
+      "url"
+    ],
+    "joinable_tables": [
+      "constructor results",
+      "constructor standings",
+      "qualifying",
+      "results"
+    ],
+    "top_values": {
+      "nationality": [
+        "British",
+        "American",
+        "Italian",
+        "French",
+        "German",
+        "Japanese",
+        "Swiss",
+        "Dutch",
+        "South African",
+        "Canadian"
+      ]
+    },
+    "bm25_text": "formula constructor formula constructor constructor id constructor refer name name nation url constructor result constructor stand qualifi result nation british american italian french german japanes swiss dutch south african canadian british american italian french german japanes swiss dutch south african canadian"
+  },
+  {
+    "table_id": "formula_1.drivers",
+    "db": "formula_1",
+    "table": "drivers",
+    "columns": [
+      "driver ID",
+      "driver reference name",
+      "number",
+      "code",
+      "forename",
+      "surname",
+      "date of birth",
+      "nationality",
+      "url"
+    ],
+    "joinable_tables": [
+      "driver standings",
+      "lap times",
+      "pit stops",
+      "qualifying",
+      "results"
+    ],
+    "top_values": {
+      "nationality": [
+        "British",
+        "American",
+        "Italian",
+        "French",
+        "German",
+        "Brazilian",
+        "Argentine",
+        "Belgian",
+        "South African",
+        "Swiss"
+      ]
+    },
+    "bm25_text": "formula driver formula driver driver id driver refer name number code forenam surnam date of birth nation url driver stand lap time pit stop qualifi result nation british american italian french german brazilian argentin belgian south african swiss british american italian french german brazilian argentin belgian south african swiss"
+  },
+  {
+    "table_id": "formula_1.seasons",
+    "db": "formula_1",
+    "table": "seasons",
+    "columns": [
+      "race ID",
+      "url"
+    ],
+    "joinable_tables": [
+      "races"
+    ],
+    "top_values": {},
+    "bm25_text": "formula season formula season race id url race"
+  },
+  {
+    "table_id": "formula_1.races",
+    "db": "formula_1",
+    "table": "races",
+    "columns": [
+      "race ID",
+      "year",
+      "round",
+      "Circuit Id",
+      "name",
+      "date",
+      "time",
+      "url"
+    ],
+    "joinable_tables": [
+      "circuits",
+      "seasons",
+      "constructor results",
+      "constructor standings",
+      "driver standings",
+      "lap times",
+      "pit stops",
+      "qualifying",
+      "results"
+    ],
+    "top_values": {
+      "year": [
+        2016,
+        2012,
+        2017,
+        2005,
+        2010,
+        2011,
+        2013,
+        2014,
+        2015,
+        2004
+      ],
+      "round": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "Circuit Id": [
+        14,
+        6,
+        9,
+        13,
+        20,
+        7,
+        10,
+        18,
+        11,
+        39
+      ],
+      "name": [
+        "British Grand Prix",
+        "Italian Grand Prix",
+        "Monaco Grand Prix",
+        "Belgian Grand Prix",
+        "German Grand Prix",
+        "French Grand Prix",
+        "Canadian Grand Prix",
+        "Spanish Grand Prix",
+        "Brazilian Grand Prix",
+        "United States Grand Prix"
+      ],
+      "time": [
+        "12:00:00",
+        "14:00:00",
+        "06:00:00",
+        "07:00:00",
+        "13:00:00",
+        "16:00:00",
+        "05:00:00",
+        "15:00:00",
+        "19:00:00",
+        "17:00:00"
+      ]
+    },
+    "bm25_text": "formula race formula race race id year round circuit id name date time url circuit season constructor result constructor stand driver stand lap time pit stop qualifi result name british grand prix italian grand prix monaco grand prix belgian grand prix german grand prix french grand prix canadian grand prix spanish grand prix brazilian grand prix unit state grand prix british grand prix italian grand prix monaco grand prix belgian grand prix german grand prix french grand prix canadian grand prix spanish grand prix brazilian grand prix unit state grand prix time"
+  },
+  {
+    "table_id": "formula_1.constructor results",
+    "db": "formula_1",
+    "table": "constructor results",
+    "columns": [
+      "constructor Results Id",
+      "race Id",
+      "constructor Id",
+      "points",
+      "status"
+    ],
+    "joinable_tables": [
+      "constructors",
+      "races"
+    ],
+    "top_values": {
+      "race Id": [
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365
+      ],
+      "constructor Id": [
+        6,
+        1,
+        3,
+        25,
+        32,
+        15,
+        18,
+        4,
+        27,
+        34
+      ],
+      "points": [
+        0.0,
+        1.0,
+        2.0,
+        4.0,
+        3.0,
+        6.0,
+        9.0,
+        10.0,
+        8.0,
+        5.0
+      ],
+      "status": [
+        "D"
+      ]
+    },
+    "bm25_text": "formula constructor result formula constructor result constructor result id race id constructor id point status constructor race status d d"
+  },
+  {
+    "table_id": "formula_1.constructor standings",
+    "db": "formula_1",
+    "table": "constructor standings",
+    "columns": [
+      "constructor Standings Id",
+      "race id",
+      "constructor id",
+      "points",
+      "position",
+      "position text",
+      "wins"
+    ],
+    "joinable_tables": [
+      "constructors",
+      "races"
+    ],
+    "top_values": {
+      "race id": [
+        728,
+        559,
+        575,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362
+      ],
+      "constructor id": [
+        6,
+        1,
+        3,
+        25,
+        32,
+        15,
+        4,
+        18,
+        27,
+        34
+      ],
+      "points": [
+        0.0,
+        1.0,
+        3.0,
+        2.0,
+        6.0,
+        4.0,
+        5.0,
+        8.0,
+        10.0,
+        9.0
+      ],
+      "position": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "position text": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "wins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "bm25_text": "formula constructor stand formula constructor stand constructor stand id race id constructor id point posit posit text win constructor race posit text"
+  },
+  {
+    "table_id": "formula_1.driver standings",
+    "db": "formula_1",
+    "table": "driver standings",
+    "columns": [
+      "driver Standings Id",
+      "constructor Reference name",
+      "driverId",
+      "points",
+      "position",
+      "position text",
+      "wins"
+    ],
+    "joinable_tables": [
+      "drivers",
+      "races"
+    ],
+    "top_values": {
+      "constructor Reference name": [
+        816,
+        824,
+        815,
+        823,
+        814,
+        807,
+        822,
+        806,
+        805,
+        804
+      ],
+      "driverId": [
+        30,
+        18,
+        22,
+        4,
+        13,
+        8,
+        119,
+        15,
+        14,
+        21
+      ],
+      "points": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        6.0,
+        5.0,
+        9.0,
+        8.0,
+        10.0
+      ],
+      "position": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "position text": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "wins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "bm25_text": "formula driver stand formula driver stand driver stand id constructor refer name driverid point posit posit text win driver race posit text"
+  },
+  {
+    "table_id": "formula_1.lap times",
+    "db": "formula_1",
+    "table": "lap times",
+    "columns": [
+      "race ID",
+      "driver ID",
+      "lap",
+      "position",
+      "time",
+      "milliseconds"
+    ],
+    "joinable_tables": [
+      "drivers",
+      "races"
+    ],
+    "top_values": {
+      "race ID": [
+        354,
+        870,
+        846,
+        869,
+        59,
+        859,
+        866,
+        40,
+        958,
+        885
+      ],
+      "driver ID": [
+        18,
+        4,
+        13,
+        22,
+        8,
+        30,
+        15,
+        21,
+        1,
+        14
+      ],
+      "lap": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "position": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "time": [
+        "1:23.794",
+        "1:19.613",
+        "1:20.329",
+        "1:20.450",
+        "1:21.571",
+        "1:21.476",
+        "1:23.063",
+        "1:23.552",
+        "1:24.037",
+        "1:21.059"
+      ],
+      "milliseconds": [
+        83794,
+        79613,
+        80329,
+        80450,
+        81571,
+        81476,
+        83063,
+        83552,
+        84037,
+        81059
+      ]
+    },
+    "bm25_text": "formula lap time formula lap time race id driver id lap posit time millisecond driver race time"
+  },
+  {
+    "table_id": "formula_1.pit stops",
+    "db": "formula_1",
+    "table": "pit stops",
+    "columns": [
+      "race ID",
+      "driver ID",
+      "stop",
+      "lap",
+      "time",
+      "duration",
+      "milliseconds"
+    ],
+    "joinable_tables": [
+      "drivers",
+      "races"
+    ],
+    "top_values": {
+      "race ID": [
+        936,
+        851,
+        844,
+        970,
+        982,
+        884,
+        914,
+        845,
+        861,
+        956
+      ],
+      "driver ID": [
+        13,
+        1,
+        20,
+        4,
+        817,
+        815,
+        18,
+        3,
+        807,
+        8
+      ],
+      "stop": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lap": [
+        13,
+        11,
+        12,
+        28,
+        14,
+        1,
+        10,
+        16,
+        15,
+        17
+      ]
+    },
+    "bm25_text": "formula pit stop formula pit stop race id driver id stop lap time durat millisecond driver race"
+  },
+  {
+    "table_id": "formula_1.qualifying",
+    "db": "formula_1",
+    "table": "qualifying",
+    "columns": [
+      "qualify Id",
+      "race Id",
+      "driver Id",
+      "constructor id",
+      "number",
+      "position",
+      "qualifying 1",
+      "qualifying 2",
+      "qualifying 3"
+    ],
+    "joinable_tables": [
+      "constructors",
+      "drivers",
+      "races"
+    ],
+    "top_values": {
+      "race Id": [
+        259,
+        240,
+        241,
+        242,
+        243,
+        244,
+        257,
+        258,
+        261,
+        262
+      ],
+      "driver Id": [
+        4,
+        18,
+        13,
+        8,
+        22,
+        3,
+        1,
+        17,
+        20,
+        30
+      ],
+      "constructor id": [
+        6,
+        3,
+        1,
+        15,
+        9,
+        5,
+        4,
+        10,
+        131,
+        7
+      ],
+      "number": [
+        8,
+        3,
+        14,
+        7,
+        9,
+        6,
+        11,
+        5,
+        20,
+        12
+      ],
+      "position": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "bm25_text": "formula qualifi formula qualifi qualifi id race id driver id constructor id number posit qualifi qualifi qualifi constructor driver race"
+  },
+  {
+    "table_id": "formula_1.status",
+    "db": "formula_1",
+    "table": "status",
+    "columns": [
+      "status ID",
+      "status"
+    ],
+    "joinable_tables": [
+      "results"
+    ],
+    "top_values": {},
+    "bm25_text": "formula status formula status status id status result"
+  },
+  {
+    "table_id": "formula_1.results",
+    "db": "formula_1",
+    "table": "results",
+    "columns": [
+      "Result ID",
+      "race ID",
+      "driver ID",
+      "constructor Id",
+      "number",
+      "grid",
+      "position",
+      "position text",
+      "position order",
+      "points",
+      "laps",
+      "time",
+      "milliseconds",
+      "fastest lap",
+      "rank",
+      "fastest Lap Time",
+      "fastest Lap Speed",
+      "status Id"
+    ],
+    "joinable_tables": [
+      "status",
+      "constructors",
+      "drivers",
+      "races"
+    ],
+    "top_values": {
+      "race ID": [
+        800,
+        809,
+        357,
+        359,
+        360,
+        361,
+        362,
+        363,
+        365,
+        366
+      ],
+      "driver ID": [
+        22,
+        18,
+        30,
+        4,
+        8,
+        13,
+        119,
+        15,
+        14,
+        21
+      ],
+      "constructor Id": [
+        6,
+        1,
+        3,
+        25,
+        32,
+        15,
+        18,
+        34,
+        4,
+        27
+      ],
+      "number": [
+        6,
+        8,
+        12,
+        2,
+        4,
+        14,
+        3,
+        16,
+        5,
+        11
+      ],
+      "grid": [
+        0,
+        7,
+        1,
+        11,
+        10,
+        4,
+        5,
+        9,
+        3,
+        8
+      ],
+      "position": [
+        3,
+        4,
+        2,
+        5,
+        1,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "position text": [
+        "R",
+        "F",
+        "3",
+        "4",
+        "2",
+        "5",
+        "1",
+        "6",
+        "7",
+        "8"
+      ],
+      "position order": [
+        3,
+        4,
+        2,
+        11,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "points": [
+        0.0,
+        2.0,
+        4.0,
+        6.0,
+        1.0,
+        3.0,
+        10.0,
+        9.0,
+        8.0,
+        12.0
+      ],
+      "laps": [
+        0,
+        70,
+        53,
+        56,
+        52,
+        69,
+        57,
+        55,
+        44,
+        71
+      ],
+      "fastest lap": [
+        52,
+        50,
+        53,
+        51,
+        55,
+        49,
+        43,
+        44,
+        41,
+        48
+      ],
+      "rank": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        12,
+        13
+      ],
+      "status Id": [
+        1,
+        11,
+        5,
+        12,
+        81,
+        3,
+        6,
+        20,
+        4,
+        13
+      ]
+    },
+    "bm25_text": "formula result formula result result id race id driver id constructor id number grid posit posit text posit order point lap time millisecond fastest lap rank fastest lap time fastest lap speed status id status constructor driver race posit text r f r f"
+  },
+  {
+    "table_id": "california_schools.free and reduced-price meals",
+    "db": "california_schools",
+    "table": "free and reduced-price meals",
+    "columns": [
+      "CDSCode",
+      "Academic Year",
+      "County Code",
+      "District Code",
+      "School Code",
+      "County Name",
+      "District Name",
+      "School Name",
+      "District Type",
+      "School Type",
+      "Educational Option Type",
+      "NSLP Provision Status",
+      "Charter School (Y/N)",
+      "Charter School Number",
+      "Charter Funding Type",
+      "IRC",
+      "Low Grade",
+      "High Grade",
+      "Enrollment (K-12)",
+      "Free Meal Count (K-12)",
+      "Percent (%) Eligible Free (K-12)",
+      "FRPM Count (K-12)",
+      "Percent (%) Eligible FRPM (K-12)",
+      "Enrollment (Ages 5-17)",
+      "Free Meal Count (Ages 5-17)",
+      "Percent (%) Eligible Free (Ages 5-17)",
+      "FRPM Count (Ages 5-17)",
+      "Percent (%) Eligible FRPM (Ages 5-17)",
+      "2013-14 CALPADS Fall 1 Certification Status"
+    ],
+    "joinable_tables": [
+      "schools"
+    ],
+    "top_values": {
+      "Academic Year": [
+        "2014-2015"
+      ],
+      "County Code": [
+        "19",
+        "37",
+        "30",
+        "36",
+        "33",
+        "43",
+        "34",
+        "01",
+        "10",
+        "07"
+      ],
+      "District Code": [
+        64733,
+        68338,
+        61259,
+        68478,
+        62166,
+        67876,
+        64725,
+        67439,
+        67447,
+        67314
+      ],
+      "County Name": [
+        "Los Angeles",
+        "San Diego",
+        "Orange",
+        "San Bernardino",
+        "Riverside",
+        "Santa Clara",
+        "Sacramento",
+        "Alameda",
+        "Fresno",
+        "Contra Costa"
+      ],
+      "District Name": [
+        "Los Angeles Unified",
+        "San Diego Unified",
+        "Oakland Unified",
+        "San Francisco Unified",
+        "Fresno Unified",
+        "San Bernardino City Unified",
+        "Long Beach Unified",
+        "Sacramento City Unified",
+        "San Juan Unified",
+        "Elk Grove Unified"
+      ],
+      "District Type": [
+        "Unified School District",
+        "Elementary School District",
+        "High School District",
+        "County Office of Education (COE)",
+        "State Board of Education",
+        "Statewide Benefit Charter",
+        "Non-School Locations",
+        "State Special Schools"
+      ],
+      "School Type": [
+        "Elementary Schools (Public)",
+        "High Schools (Public)",
+        "Intermediate/Middle Schools (Public)",
+        "Continuation High Schools",
+        "Alternative Schools of Choice",
+        "K-12 Schools (Public)",
+        "Elemen Schools In 1 School Dist. (Public)",
+        "District Community Day Schools",
+        "Special Education Schools (Public)",
+        "County Community"
+      ],
+      "Educational Option Type": [
+        "Traditional",
+        "Continuation School",
+        "Alternative School of Choice",
+        "Community Day School",
+        "Special Education School",
+        "County Community School",
+        "Juvenile Court School",
+        "Opportunity School",
+        "District Special Education Consortia School",
+        "Youth Authority School"
+      ],
+      "NSLP Provision Status": [
+        "Provision 2",
+        "Breakfast Provision 2",
+        "CEP",
+        "Multiple Provision Types",
+        "Provision 1",
+        "Lunch Provision 2",
+        "Provision 3"
+      ],
+      "Charter School (Y/N)": [
+        0,
+        1
+      ],
+      "Charter Funding Type": [
+        "Directly funded",
+        "Locally funded",
+        "Not in CS funding model"
+      ],
+      "IRC": [
+        0,
+        1
+      ],
+      "Low Grade": [
+        "K",
+        "9",
+        "6",
+        "7",
+        "P",
+        "5",
+        "4",
+        "10",
+        "1",
+        "3"
+      ],
+      "High Grade": [
+        "12",
+        "5",
+        "8",
+        "6",
+        "3",
+        "4",
+        "2",
+        "Adult",
+        "7",
+        "1"
+      ],
+      "Enrollment (K-12)": [
+        4.0,
+        10.0,
+        1.0,
+        7.0,
+        2.0,
+        6.0,
+        9.0,
+        5.0,
+        546.0,
+        485.0
+      ],
+      "Free Meal Count (K-12)": [
+        1.0,
+        6.0,
+        8.0,
+        12.0,
+        4.0,
+        5.0,
+        9.0,
+        3.0,
+        7.0,
+        10.0
+      ],
+      "FRPM Count (K-12)": [
+        6.0,
+        1.0,
+        8.0,
+        5.0,
+        16.0,
+        4.0,
+        2.0,
+        3.0,
+        9.0,
+        11.0
+      ],
+      "Enrollment (Ages 5-17)": [
+        1.0,
+        4.0,
+        6.0,
+        9.0,
+        7.0,
+        2.0,
+        10.0,
+        12.0,
+        13.0,
+        432.0
+      ],
+      "Free Meal Count (Ages 5-17)": [
+        6.0,
+        1.0,
+        4.0,
+        5.0,
+        12.0,
+        9.0,
+        2.0,
+        8.0,
+        3.0,
+        11.0
+      ],
+      "FRPM Count (Ages 5-17)": [
+        6.0,
+        1.0,
+        5.0,
+        2.0,
+        4.0,
+        8.0,
+        3.0,
+        9.0,
+        11.0,
+        12.0
+      ],
+      "2013-14 CALPADS Fall 1 Certification Status": [
+        1
+      ]
+    },
+    "bm25_text": "california school free and reduc price meal california school free and reduc price meal cdscode academ year counti code district code school code counti name district name school name district type school type educ option type nslp provis status charter school y n charter school number charter fund type irc low grade high grade enrol k free meal count k percent elig free k frpm count k percent elig frpm k enrol age free meal count age percent elig free age frpm count age percent elig frpm age calpad fall certif status school academ year counti code counti name los angel san diego orang san bernardino riversid santa clara sacramento alameda fresno contra costa los angel san diego orang san bernardino riversid santa clara sacramento alameda fresno contra costa district name los angel unifi san diego unifi oakland unifi san francisco unifi fresno unifi san bernardino citi unifi long beach unifi sacramento citi unifi san juan unifi elk grove unifi los angel unifi san diego unifi oakland unifi san francisco unifi fresno unifi san bernardino citi unifi long beach unifi sacramento citi unifi san juan unifi elk grove unifi district type unifi school district elementari school district high school district counti offic of educ coe state board of educ statewid benefit charter non school locat state special school unifi school district elementari school district high school district counti offic of educ coe state board of educ statewid benefit charter non school locat state special school school type elementari school public high school public intermedi middl school public continu high school altern school of choic k school public elemen school in school dist public district communiti day school special educ school public counti communiti elementari school public high school public intermedi middl school public continu high school altern school of choic k school public elemen school in school dist public district communiti day school special educ school public counti communiti educ option type tradit continu school altern school of choic communiti day school special educ school counti communiti school juvenil court school opportun school district special educ consortia school youth author school tradit continu school altern school of choic communiti day school special educ school counti communiti school juvenil court school opportun school district special educ consortia school youth author school nslp provis status provis breakfast provis cep multipl provis type provis lunch provis provis provis breakfast provis cep multipl provis type provis lunch provis provis charter fund type direct fund local fund not in cs fund model direct fund local fund not in cs fund model low grade k p k p high grade adult adult"
+  },
+  {
+    "table_id": "california_schools.sat scores",
+    "db": "california_schools",
+    "table": "sat scores",
+    "columns": [
+      "cds",
+      "rtype",
+      "school name",
+      "district name",
+      "county name",
+      "enrollment (1st-12nd grade)",
+      "Number of Test Takers",
+      "average scores in Reading",
+      "average scores in Math",
+      "average scores in writing",
+      "Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500"
+    ],
+    "joinable_tables": [
+      "schools"
+    ],
+    "top_values": {
+      "rtype": [
+        "S",
+        "D"
+      ],
+      "district name": [
+        "Los Angeles Unified",
+        "San Diego Unified",
+        "Oakland Unified",
+        "San Francisco Unified",
+        "Kern High",
+        "East Side Union High",
+        "Fresno Unified",
+        "San Juan Unified",
+        "Sweetwater Union High",
+        "Sacramento City Unified"
+      ],
+      "county name": [
+        "Los Angeles",
+        "San Diego",
+        "San Bernardino",
+        "Riverside",
+        "Orange",
+        "Alameda",
+        "Fresno",
+        "Sacramento",
+        "Santa Clara",
+        "San Joaquin"
+      ],
+      "enrollment (1st-12nd grade)": [
+        16,
+        29,
+        30,
+        36,
+        55,
+        14,
+        18,
+        38,
+        11,
+        12
+      ],
+      "Number of Test Takers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        5,
+        10,
+        16
+      ],
+      "average scores in Reading": [
+        498,
+        451,
+        516,
+        523,
+        433,
+        443,
+        491,
+        499,
+        434,
+        478
+      ],
+      "average scores in Math": [
+        462,
+        451,
+        445,
+        505,
+        471,
+        506,
+        449,
+        529,
+        446,
+        448
+      ],
+      "average scores in writing": [
+        442,
+        489,
+        468,
+        425,
+        449,
+        432,
+        446,
+        474,
+        476,
+        487
+      ],
+      "Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500": [
+        11,
+        6,
+        15,
+        16,
+        3,
+        4,
+        8,
+        9,
+        2,
+        24
+      ]
+    },
+    "bm25_text": "california school sat score california school sat score cds rtype school name district name counti name enrol grade number of test taker averag score in read averag score in math averag score in write number of test taker whose total sat score are greater or equal to school rtype s d s d district name los angel unifi san diego unifi oakland unifi san francisco unifi kern high east side union high fresno unifi san juan unifi sweetwat union high sacramento citi unifi los angel unifi san diego unifi oakland unifi san francisco unifi kern high east side union high fresno unifi san juan unifi sweetwat union high sacramento citi unifi counti name los angel san diego san bernardino riversid orang alameda fresno sacramento santa clara san joaquin los angel san diego san bernardino riversid orang alameda fresno sacramento santa clara san joaquin"
+  },
+  {
+    "table_id": "california_schools.schools",
+    "db": "california_schools",
+    "table": "schools",
+    "columns": [
+      "CDSCode",
+      "National Center for Educational Statistics school district identification number",
+      "National Center for Educational Statistics school identification number",
+      "StatusType",
+      "County",
+      "District",
+      "School",
+      "Street",
+      "street address",
+      "City",
+      "Zip",
+      "State",
+      "Mail Street",
+      "mailing street address",
+      "mailing city",
+      "mailing zip",
+      "mailing state",
+      "Phone",
+      "extension",
+      "Website",
+      "OpenDate",
+      "ClosedDate",
+      "Charter",
+      "CharterNum",
+      "FundingType",
+      "District Ownership Code",
+      "The District Ownership Code Type",
+      "School Ownership Code",
+      "School Ownership Code Type",
+      "Education Option Code",
+      "Educational Option Name",
+      "Educational Instruction Level Code",
+      "Educational Instruction Level Name",
+      "grade span offered",
+      "grade span served.",
+      "Virtual",
+      "Magnet",
+      "Latitude",
+      "Longitude",
+      "administrator's first name 1",
+      "administrator's last name 1",
+      "administrator's email address 1",
+      "administrator's first name 2",
+      "administrator's last name 2",
+      "administrator's email address 2",
+      "administrator's first name 3",
+      "administrator's last name 3",
+      "administrator's email address 3",
+      "Last Update"
+    ],
+    "joinable_tables": [
+      "free and reduced-price meals",
+      "sat scores"
+    ],
+    "top_values": {
+      "National Center for Educational Statistics school district identification number": [
+        "0622710",
+        "0634320",
+        "0628050",
+        "0634410",
+        "0614550",
+        "0633840",
+        "0691078",
+        "0634620",
+        "0622500",
+        "0634170"
+      ],
+      "StatusType": [
+        "Active",
+        "Closed",
+        "Merged",
+        "Pending"
+      ],
+      "County": [
+        "Los Angeles",
+        "San Diego",
+        "Orange",
+        "San Bernardino",
+        "Santa Clara",
+        "Alameda",
+        "Riverside",
+        "Sacramento",
+        "Fresno",
+        "Contra Costa"
+      ],
+      "District": [
+        "Los Angeles Unified",
+        "San Diego Unified",
+        "Los Angeles County Special Ed",
+        "Oakland Unified",
+        "San Francisco Unified",
+        "Fresno Unified",
+        "Sacramento City Unified",
+        "Los Angeles County Office of Education",
+        "San Juan Unified",
+        "Long Beach Unified"
+      ],
+      "City": [
+        "Los Angeles",
+        "San Diego",
+        "San Jose",
+        "Sacramento",
+        "Fresno",
+        "Oakland",
+        "San Francisco",
+        "Bakersfield",
+        "Stockton",
+        "Riverside"
+      ],
+      "State": [
+        "CA"
+      ],
+      "mailing city": [
+        "Los Angeles",
+        "San Diego",
+        "San Jose",
+        "Sacramento",
+        "Oakland",
+        "Fresno",
+        "San Francisco",
+        "Bakersfield",
+        "Stockton",
+        "Riverside"
+      ],
+      "mailing state": [
+        "CA"
+      ],
+      "OpenDate": [
+        "1980-07-01",
+        "2005-09-06",
+        "2004-09-07",
+        "2003-09-02",
+        "2004-08-30",
+        "2006-09-05",
+        "2000-09-05",
+        "2007-08-20",
+        "2001-09-04",
+        "1993-09-01"
+      ],
+      "ClosedDate": [
+        "1989-06-30",
+        "1987-06-22",
+        "1986-11-04",
+        "2015-06-30",
+        "2016-06-30",
+        "2013-06-30",
+        "2010-06-30",
+        "1998-06-30",
+        "2011-06-30",
+        "1987-11-23"
+      ],
+      "Charter": [
+        0,
+        1
+      ],
+      "FundingType": [
+        "Directly funded",
+        "Locally funded",
+        "Not in CS funding model"
+      ],
+      "District Ownership Code": [
+        "54",
+        "52",
+        "00",
+        "56",
+        "98",
+        "02",
+        "34",
+        "58",
+        "03",
+        "99"
+      ],
+      "The District Ownership Code Type": [
+        "Unified School District",
+        "Elementary School District",
+        "County Office of Education (COE)",
+        "High School District",
+        "Regional Occupation Center/Program (ROC/P)",
+        "State Board of Education",
+        "Non-School Locations",
+        "Community College District",
+        "Statewide Benefit Charter",
+        "Administration Only"
+      ],
+      "School Ownership Code": [
+        "60",
+        "66",
+        "62",
+        "68",
+        "09",
+        "69",
+        "70",
+        "10",
+        "63",
+        "65"
+      ],
+      "School Ownership Code Type": [
+        "Elementary Schools (Public)",
+        "High Schools (Public)",
+        "Intermediate/Middle Schools (Public)",
+        "Continuation High Schools",
+        "Special Education Schools (Public)",
+        "District Community Day Schools",
+        "Adult Education Centers",
+        "Alternative Schools of Choice",
+        "County Community",
+        "K-12 Schools (Public)"
+      ],
+      "Education Option Code": [
+        "TRAD",
+        "CON",
+        "COMMDAY",
+        "ALTSOC",
+        "SPEC",
+        "COMM",
+        "JUV",
+        "OPP",
+        "ROP",
+        "YTH"
+      ],
+      "Educational Option Name": [
+        "Traditional",
+        "Continuation School",
+        "Community Day School",
+        "Alternative School of Choice",
+        "Special Education School",
+        "County Community School",
+        "Juvenile Court School",
+        "Opportunity School",
+        "ROP",
+        "Youth Authority School"
+      ],
+      "Educational Instruction Level Code": [
+        "ELEM",
+        "HS",
+        "UG",
+        "INTMIDJR",
+        "ELEMHIGH",
+        "A",
+        "PS"
+      ],
+      "Educational Instruction Level Name": [
+        "Elementary",
+        "High School",
+        "Ungraded",
+        "Intermediate/Middle/Junior High",
+        "Elementary-High Combination",
+        "Adult",
+        "Preschool"
+      ],
+      "grade span offered": [
+        "K-5",
+        "9-12",
+        "K-6",
+        "K-8",
+        "6-8",
+        "K-12",
+        "7-12",
+        "7-8",
+        "Adult",
+        "P"
+      ],
+      "grade span served.": [
+        "K-5",
+        "K-6",
+        "9-12",
+        "K-8",
+        "6-8",
+        "7-8",
+        "10-12",
+        "K-12",
+        "7-12",
+        "11-12"
+      ],
+      "Virtual": [
+        "N",
+        "P",
+        "F"
+      ],
+      "Magnet": [
+        0,
+        1
+      ],
+      "administrator's first name 1": [
+        "David",
+        "Michael",
+        "John",
+        "Jennifer",
+        "Lisa",
+        "Robert",
+        "Julie",
+        "Mark",
+        "Michelle",
+        "Susan"
+      ],
+      "Last Update": [
+        "2015-06-18",
+        "1999-06-24",
+        "2013-07-02",
+        "2009-01-30",
+        "2016-03-03",
+        "2015-06-23",
+        "2009-10-02",
+        "2016-07-19",
+        "2016-08-23",
+        "2016-07-01"
+      ]
+    },
+    "bm25_text": "california school school california school school cdscode nation center for educ statist school district identif number nation center for educ statist school identif number statustyp counti district school street street address citi zip state mail street mail street address mail citi mail zip mail state phone extens websit opend closedd charter charternum fundingtyp district ownership code the district ownership code type school ownership code school ownership code type educ option code educ option name educ instruct level code educ instruct level name grade span offer grade span serv virtual magnet latitud longitud administr s first name administr s last name administr s email address administr s first name administr s last name administr s email address administr s first name administr s last name administr s email address last updat free and reduc price meal sat score nation center for educ statist school district identif number statustyp activ close merg pend activ close merg pend counti los angel san diego orang san bernardino santa clara alameda riversid sacramento fresno contra costa los angel san diego orang san bernardino santa clara alameda riversid sacramento fresno contra costa district los angel unifi san diego unifi los angel counti special ed oakland unifi san francisco unifi fresno unifi sacramento citi unifi los angel counti offic of educ san juan unifi long beach unifi los angel unifi san diego unifi los angel counti special ed oakland unifi san francisco unifi fresno unifi sacramento citi unifi los angel counti offic of educ san juan unifi long beach unifi citi los angel san diego san jose sacramento fresno oakland san francisco bakersfield stockton riversid los angel san diego san jose sacramento fresno oakland san francisco bakersfield stockton riversid state ca ca mail citi los angel san diego san jose sacramento oakland fresno san francisco bakersfield stockton riversid los angel san diego san jose sacramento oakland fresno san francisco bakersfield stockton riversid mail state ca ca opend closedd fundingtyp direct fund local fund not in cs fund model direct fund local fund not in cs fund model district ownership code the district ownership code type unifi school district elementari school district counti offic of educ coe high school district region occup center program roc p state board of educ non school locat communiti colleg district statewid benefit charter administr onli unifi school district elementari school district counti offic of educ coe high school district region occup center program roc p state board of educ non school locat communiti colleg district statewid benefit charter administr onli school ownership code school ownership code type elementari school public high school public intermedi middl school public continu high school special educ school public district communiti day school adult educ center altern school of choic counti communiti k school public elementari school public high school public intermedi middl school public continu high school special educ school public district communiti day school adult educ center altern school of choic counti communiti k school public educ option code trad con commday altsoc spec comm juv opp rop yth trad con commday altsoc spec comm juv opp rop yth educ option name tradit continu school communiti day school altern school of choic special educ school counti communiti school juvenil court school opportun school rop youth author school tradit continu school communiti day school altern school of choic special educ school counti communiti school juvenil court school opportun school rop youth author school educ instruct level code elem hs ug intmidjr elemhigh a ps elem hs ug intmidjr elemhigh a ps educ instruct level name elementari high school ungrad intermedi middl junior high elementari high combin adult preschool elementari high school ungrad intermedi middl junior high elementari high combin adult preschool grade span offer k k k k adult p k k k k adult p grade span serv k k k k k k k k virtual n p f n p f administr s first name david michael john jennif lisa robert juli mark michell susan david michael john jennif lisa robert juli mark michell susan last updat"
+  },
+  {
+    "table_id": "card_games.cards",
+    "db": "card_games",
+    "table": "cards",
+    "columns": [
+      "unique id number identifying the cards",
+      "artist",
+      "ascii Name",
+      "availability",
+      "border Color",
+      "card Kingdom Foil Id",
+      "card Kingdom Id",
+      "color Identity",
+      "color Indicator",
+      "colors",
+      "converted Mana Cost",
+      "duel Deck",
+      "rec Rank in edh",
+      "face Converted Mana Cost",
+      "face Name",
+      "flavor Name",
+      "flavor Text",
+      "frame Effects",
+      "frame Version",
+      "hand",
+      "has Alternative Deck Limit",
+      "has Content Warning",
+      "has Foil",
+      "has Non Foil",
+      "is Alternative",
+      "is Full Art",
+      "is Online Only",
+      "is Oversized",
+      "is Promotion",
+      "is Reprint",
+      "is Reserved",
+      "is Starter",
+      "is Story Spotlight",
+      "is Text less",
+      "is Time shifted",
+      "keywords",
+      "layout",
+      "leadership Skills",
+      "life",
+      "loyalty",
+      "mana Cost",
+      "mcmId",
+      "mcmMetaId",
+      "mtgArenaId",
+      "mtgjsonV4Id",
+      "mtgoFoilId",
+      "mtgoId",
+      "multiverseId",
+      "name",
+      "number",
+      "originalReleaseDate",
+      "originalText",
+      "originalType",
+      "otherFaceIds",
+      "power",
+      "printings",
+      "promo Types",
+      "purchase Urls",
+      "rarity",
+      "scryfallId",
+      "scryfallIllustrationId",
+      "scryfallOracleId",
+      "Set Code",
+      "side",
+      "subtypes",
+      "super types",
+      "tcg player ProductId",
+      "text",
+      "toughness",
+      "type",
+      "types",
+      "uuid",
+      "variations",
+      "watermark"
+    ],
+    "joinable_tables": [
+      "foreign data",
+      "legalities",
+      "ruling"
+    ],
+    "top_values": {
+      "artist": [
+        "John Avon",
+        "Kev Walker",
+        "Dan Frazier",
+        "Mark Tedin",
+        "Greg Staples",
+        "Mark Poole",
+        "Anson Maddocks",
+        "Rob Alexander",
+        "Douglas Shuler",
+        "Pete Venters"
+      ],
+      "ascii Name": [
+        "El-Hajjaj",
+        "Ghazban Ogre",
+        "Junun Efreet",
+        "Dandan",
+        "Lim-Dul's High Guard",
+        "Jotun Grunt",
+        "Ifh-Biff Efreet",
+        "Khabal Ghoul",
+        "Lim-Dul's Vault",
+        "Chicken a la King"
+      ],
+      "availability": [
+        "mtgo,paper",
+        "paper",
+        "arena,mtgo,paper",
+        "mtgo",
+        "arena",
+        "arena,paper",
+        "arena,mtgo",
+        "shandalar",
+        "dreamcast"
+      ],
+      "border Color": [
+        "black",
+        "white",
+        "gold",
+        "silver",
+        "borderless"
+      ],
+      "color Identity": [
+        "G",
+        "B",
+        "R",
+        "U",
+        "W",
+        "G,W",
+        "G,R",
+        "B,R",
+        "B,U",
+        "U,W"
+      ],
+      "color Indicator": [
+        "R",
+        "G",
+        "U",
+        "B",
+        "W",
+        "G,R",
+        "B,R,U",
+        "B,G",
+        "G,R,W"
+      ],
+      "colors": [
+        "G",
+        "B",
+        "R",
+        "W",
+        "U",
+        "G,W",
+        "G,R",
+        "U,W",
+        "B,R",
+        "B,U"
+      ],
+      "converted Mana Cost": [
+        3.0,
+        2.0,
+        4.0,
+        0.0,
+        1.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "duel Deck": [
+        "a",
+        "b"
+      ],
+      "rec Rank in edh": [
+        808,
+        17,
+        5084,
+        47,
+        6228,
+        14,
+        138,
+        172,
+        8,
+        12
+      ],
+      "face Converted Mana Cost": [
+        2.0,
+        3.0,
+        0.0,
+        4.0,
+        1.0,
+        5.0,
+        6.0,
+        7.0
+      ],
+      "face Name": [
+        "Fire",
+        "Ice",
+        "Nezumi Graverobber",
+        "Nighteyes the Desecrator",
+        "Bonecrusher Giant",
+        "Brazen Borrower",
+        "Fae of Wishes",
+        "Granted",
+        "Needleverge Pathway",
+        "Petty Theft"
+      ],
+      "frame Effects": [
+        "legendary",
+        "extendedart",
+        "nyxtouched",
+        "sunmoondfc",
+        "showcase",
+        "devoid",
+        "tombstone",
+        "compasslanddfc",
+        "legendary,etched",
+        "legendary,extendedart"
+      ],
+      "frame Version": [
+        "2015",
+        "2003",
+        "1997",
+        "1993",
+        "future"
+      ],
+      "hand": [
+        "0",
+        "1",
+        "-1",
+        "-2",
+        "2",
+        "3",
+        "-3",
+        "-4"
+      ],
+      "has Alternative Deck Limit": [
+        0,
+        1
+      ],
+      "has Content Warning": [
+        0,
+        1
+      ],
+      "has Foil": [
+        1,
+        0
+      ],
+      "has Non Foil": [
+        1,
+        0
+      ],
+      "is Alternative": [
+        0,
+        1
+      ],
+      "is Full Art": [
+        0,
+        1
+      ],
+      "is Online Only": [
+        0,
+        1
+      ],
+      "is Oversized": [
+        0,
+        1
+      ],
+      "is Promotion": [
+        0,
+        1
+      ],
+      "is Reprint": [
+        1,
+        0
+      ],
+      "is Reserved": [
+        0,
+        1
+      ],
+      "is Starter": [
+        0,
+        1
+      ],
+      "is Story Spotlight": [
+        0,
+        1
+      ],
+      "is Text less": [
+        0,
+        1
+      ],
+      "is Time shifted": [
+        0,
+        1
+      ],
+      "keywords": [
+        "Flying",
+        "Enchant",
+        "Trample",
+        "Equip",
+        "Cycling",
+        "Scry",
+        "Defender",
+        "Mill",
+        "Haste",
+        "Flashback"
+      ],
+      "layout": [
+        "normal",
+        "transform",
+        "modal_dfc",
+        "adventure",
+        "split",
+        "planar",
+        "aftermath",
+        "vanguard",
+        "saga",
+        "flip"
+      ],
+      "leadership Skills": [
+        "{'brawl': False, 'commander': True, 'oathbreaker': False}",
+        "{'brawl': False, 'commander': False, 'oathbreaker': True}",
+        "{'brawl': True, 'commander': True, 'oathbreaker': False}",
+        "{'brawl': True, 'commander': False, 'oathbreaker': True}",
+        "{'brawl': False, 'commander': True, 'oathbreaker': True}"
+      ],
+      "life": [
+        "-2",
+        "-3",
+        "-5",
+        "-4",
+        "3",
+        "4",
+        "2",
+        "5",
+        "0",
+        "1"
+      ],
+      "loyalty": [
+        "5",
+        "4",
+        "3",
+        "6",
+        "7",
+        "2",
+        "X",
+        "*",
+        "0",
+        "1d4+1"
+      ],
+      "mana Cost": [
+        "{1}{W}",
+        "{1}{G}",
+        "{1}{U}",
+        "{2}{G}",
+        "{2}{R}",
+        "{1}{R}",
+        "{2}{U}",
+        "{2}{B}",
+        "{2}{W}",
+        "{1}{B}"
+      ],
+      "name": [
+        "Forest",
+        "Swamp",
+        "Island",
+        "Mountain",
+        "Plains",
+        "Disenchant",
+        "Counterspell",
+        "Giant Growth",
+        "Llanowar Elves",
+        "Serra Angel"
+      ],
+      "number": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "4",
+        "6",
+        "7",
+        "8",
+        "9",
+        "11"
+      ],
+      "originalReleaseDate": [
+        "2014/10/17",
+        "2013/1/11",
+        "2018/12/6",
+        "2017/5/31",
+        "2010/11/4",
+        "2017/6/17",
+        "2021/2/5",
+        "2015/12/29",
+        "2015/3/30",
+        "2003/12/31"
+      ],
+      "originalType": [
+        "Instant",
+        "Sorcery",
+        "Land",
+        "Enchantment",
+        "Artifact",
+        "Enchantment — Aura",
+        "Enchant Creature",
+        "Artifact — Equipment",
+        "Creature — Elemental",
+        "Creature — Human Wizard"
+      ],
+      "power": [
+        "2",
+        "1",
+        "3",
+        "4",
+        "5",
+        "0",
+        "6",
+        "*",
+        "7",
+        "8"
+      ],
+      "printings": [
+        "10E,2ED,2XM,3ED,4BB,4ED,5ED,6ED,7ED,8ED,9ED,AKH,AKR,ALA,ANA,ANB,ARC,ATH,AVR,BBD,BFZ,BRB,BTD,C13,C14,C15,C16,C17,C18,C19,CED,CEI,CHK,CM2,CMA,CMD,CMR,CST,DD1,DDD,DDE,DDG,DDH,DDJ,DDL,DDM,DDO,DDP,DDR,DDS,DDU,DKM,DOM,DPA,DTK,E01,ELD,EVG,FBB,FRF,G17,GK1,GK2,GN2",
+        "10E,2ED,2XM,3ED,4BB,4ED,5ED,6ED,7ED,8ED,9ED,AKH,AKR,ALA,ANA,ANB,ARC,ATH,AVR,BBD,BFZ,BRB,BTD,C13,C14,C15,C16,C17,C18,C19,CED,CEI,CHK,CM2,CMA,CMD,CST,DDC,DDD,DDE,DDH,DDJ,DDK,DDM,DDN,DDP,DDQ,DDR,DKM,DOM,DPA,DTK,DVD,E01,ELD,FBB,FRF,G17,GK1,GK2,GN2,GNT,GRN,GVL",
+        "10E,2ED,2XM,3ED,4BB,4ED,5ED,6ED,7ED,8ED,9ED,AKH,AKR,ALA,ANA,ANB,ARC,AVR,BBD,BFZ,BRB,BTD,C13,C14,C15,C16,C17,C18,C19,CED,CEI,CHK,CM2,CMA,CMD,CMR,CST,DD2,DDE,DDF,DDH,DDI,DDJ,DDM,DDN,DDO,DDQ,DDS,DDT,DDU,DOM,DPA,DTK,E01,ELD,FBB,FRF,G17,GK1,GK2,GN2,GNT,GRN,GS1",
+        "10E,2ED,2XM,3ED,4BB,4ED,5ED,6ED,7ED,8ED,9ED,AKH,AKR,ALA,ANA,ANB,ARC,ARN,ATH,AVR,BBD,BFZ,BRB,BTD,C13,C14,C15,C16,C17,C18,C19,CED,CEI,CHK,CM2,CMA,CMD,CMR,CST,DD1,DD2,DDE,DDG,DDH,DDI,DDJ,DDK,DDL,DDN,DDP,DDS,DDT,DDU,DKM,DOM,DPA,DTK,E01,ELD,EVG,FBB,FRF,G17,GK1",
+        "10E,2ED,2XM,3ED,4BB,4ED,5ED,6ED,7ED,8ED,9ED,AKH,AKR,ALA,ANA,ANB,ARC,ATH,AVR,BBD,BFZ,BRB,C13,C14,C15,C16,C17,C18,C19,CED,CEI,CHK,CM2,CMA,CMD,CMR,CST,DDC,DDE,DDF,DDG,DDH,DDI,DDK,DDL,DDN,DDO,DDP,DDQ,DOM,DTK,DVD,E01,ELD,FBB,FRF,G17,GK1,GK2,GN2,GNT,GRN,GS1,H09",
+        "KHM,PKHM",
+        "PZNR,ZNR",
+        "CMR",
+        "IKO,PIKO",
+        "2ED,3ED,4BB,4ED,CED,CEI,FBB,LEA,LEB,SUM"
+      ],
+      "promo Types": [
+        "mediainsert",
+        "setpromo,prerelease,datestamped",
+        "boosterfun",
+        "prerelease,datestamped",
+        "promostamped,promopack,planeswalkerstamped",
+        "promostamped,setpromo,promopack,planeswalkerstamped",
+        "tourney,fnm",
+        "setpromo,datestamped,prerelease",
+        "instore",
+        "judgegift"
+      ],
+      "rarity": [
+        "common",
+        "rare",
+        "uncommon",
+        "mythic"
+      ],
+      "scryfallIllustrationId": [
+        "c6230ffb-dd2c-4a2c-aeaf-13ba42c89472",
+        "78034c44-88d3-47ab-8cc5-2c211c5ded76",
+        "49e42a5f-3347-4aa4-a600-dad810304420",
+        "74980bb4-4270-404b-a441-1dd53bdb4682",
+        "0b60df74-f3ad-4573-9a88-7bf8858e4d6f",
+        "34813ab6-763a-4543-8283-e5daab546e48",
+        "ec6ed72d-2700-4d1e-860c-810a80262916",
+        "ec8b0d36-ccf0-455d-9243-d256b290aa02",
+        "b7995cf1-e994-48e2-b797-bc56a5b925a1",
+        "45a0e760-2c7f-473f-a50b-9bfe0726406d"
+      ],
+      "scryfallOracleId": [
+        "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "cc187110-1148-4090-bbb8-e205694a39f5",
+        "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "68954295-54e3-4303-a6bc-fc4547a4e3a3"
+      ],
+      "Set Code": [
+        "MB1",
+        "PRM",
+        "PSAL",
+        "CMR",
+        "10E",
+        "JMP",
+        "5ED",
+        "ELD",
+        "ZNR",
+        "KHM"
+      ],
+      "side": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "subtypes": [
+        "Aura",
+        "Human,Wizard",
+        "Elemental",
+        "Human,Soldier",
+        "Forest",
+        "Swamp",
+        "Island",
+        "Mountain",
+        "Spirit",
+        "Equipment"
+      ],
+      "super types": [
+        "Legendary",
+        "Basic",
+        "Snow",
+        "World",
+        "Basic,Snow",
+        "Host",
+        "Legendary,Snow",
+        "Ongoing"
+      ],
+      "text": [
+        "({T}: Add {G}.)",
+        "({T}: Add {B}.)",
+        "({T}: Add {U}.)",
+        "({T}: Add {R}.)",
+        "({T}: Add {W}.)",
+        "Flying",
+        "{T}: Add {G}.",
+        "Flying (This creature can't be blocked except by creatures with flying or reach.)",
+        "Flying, vigilance",
+        "Destroy target artifact or enchantment."
+      ],
+      "toughness": [
+        "2",
+        "1",
+        "3",
+        "4",
+        "5",
+        "6",
+        "0",
+        "7",
+        "*",
+        "8"
+      ],
+      "type": [
+        "Instant",
+        "Sorcery",
+        "Artifact",
+        "Enchantment",
+        "Land",
+        "Enchantment — Aura",
+        "Creature — Elemental",
+        "Creature — Human Wizard",
+        "Basic Land — Forest",
+        "Basic Land — Swamp"
+      ],
+      "types": [
+        "Creature",
+        "Instant",
+        "Land",
+        "Sorcery",
+        "Enchantment",
+        "Artifact",
+        "Artifact,Creature",
+        "Planeswalker",
+        "Enchantment,Creature",
+        "Plane"
+      ],
+      "watermark": [
+        "mirran",
+        "phyrexian",
+        "golgari",
+        "dimir",
+        "izzet",
+        "set",
+        "selesnya",
+        "boros",
+        "simic",
+        "wotc"
+      ]
+    },
+    "bm25_text": "card game card card game card uniqu id number identifi the card artist ascii name avail border color card kingdom foil id card kingdom id color ident color indic color convert mana cost duel deck rec rank in edh face convert mana cost face name flavor name flavor text frame effect frame version hand has altern deck limit has content warn has foil has non foil is altern is full art is onlin onli is overs is promot is reprint is reserv is starter is stori spotlight is text less is time shift keyword layout leadership skill life loyalti mana cost mcmid mcmmetaid mtgarenaid mtgofoilid mtgoid multiverseid name number originalreleased originaltext originaltyp otherfaceid power print promo type purchas url rariti scryfallid scryfallillustrationid scryfalloracleid set code side subtyp super type tcg player productid text tough type type uuid variat watermark foreign data legal rule artist john avon kev walker dan frazier mark tedin greg stapl mark pool anson maddock rob alexand dougla shuler pete venter john avon kev walker dan frazier mark tedin greg stapl mark pool anson maddock rob alexand dougla shuler pete venter ascii name el hajjaj ghazban ogr junun efreet dandan lim dul s high guard jotun grunt ifh biff efreet khabal ghoul lim dul s vault chicken a la king el hajjaj ghazban ogr junun efreet dandan lim dul s high guard jotun grunt ifh biff efreet khabal ghoul lim dul s vault chicken a la king avail mtgo paper paper arena mtgo paper mtgo arena arena paper arena mtgo shandalar dreamcast mtgo paper paper arena mtgo paper mtgo arena arena paper arena mtgo shandalar dreamcast border color black white gold silver borderless black white gold silver borderless color ident g b r u w g w g r b r b u u w g b r u w g w g r b r b u u w color indic r g u b w g r b r u b g g r w r g u b w g r b r u b g g r w color g b r w u g w g r u w b r b u g b r w u g w g r u w b r b u duel deck a b a b face name fire ice nezumi graverobb nightey the desecr bonecrush giant brazen borrow fae of wish grant needleverg pathway petti theft fire ice nezumi graverobb nightey the desecr bonecrush giant brazen borrow fae of wish grant needleverg pathway petti theft frame effect legendari extendedart nyxtouch sunmoondfc showcas devoid tombston compasslanddfc legendari etch legendari extendedart legendari extendedart nyxtouch sunmoondfc showcas devoid tombston compasslanddfc legendari etch legendari extendedart frame version futur futur hand keyword fli enchant trampl equip cycl scri defend mill hast flashback fli enchant trampl equip cycl scri defend mill hast flashback layout normal transform modal dfc adventur split planar aftermath vanguard saga flip normal transform modal dfc adventur split planar aftermath vanguard saga flip leadership skill brawl fals command true oathbreak fals brawl fals command fals oathbreak true brawl true command true oathbreak fals brawl true command fals oathbreak true brawl fals command true oathbreak true brawl fals command true oathbreak fals brawl fals command fals oathbreak true brawl true command true oathbreak fals brawl true command fals oathbreak true brawl fals command true oathbreak true life loyalti x x mana cost w g u g r r u b w b w g u g r r u b w b name forest swamp island mountain plain disench counterspel giant growth llanowar elv serra angel forest swamp island mountain plain disench counterspel giant growth llanowar elv serra angel number originalreleased originaltyp instant sorceri land enchant artifact enchant aura enchant creatur artifact equip creatur element creatur human wizard instant sorceri land enchant artifact enchant aura enchant creatur artifact equip creatur element creatur human wizard power print akh akr ala ana anb arc ath avr bbd bfz brb btd ced cei chk cma cmd cmr cst ddd dde ddg ddh ddj ddl ddm ddo ddp ddr dds ddu dkm dom dpa dtk eld evg fbb frf akh akr ala ana anb arc ath avr bbd bfz brb btd ced cei chk cma cmd cst ddc ddd dde ddh ddj ddk ddm ddn ddp ddq ddr dkm dom dpa dtk dvd eld fbb frf gnt grn gvl akh akr ala ana anb arc avr bbd bfz brb btd ced cei chk cma cmd cmr cst dde ddf ddh ddi ddj ddm ddn ddo ddq dds ddt ddu dom dpa dtk eld fbb frf gnt grn akh akr ala ana anb arc arn ath avr bbd bfz brb btd ced cei chk cma cmd cmr cst dde ddg ddh ddi ddj ddk ddl ddn ddp dds ddt ddu dkm dom dpa dtk eld evg fbb frf akh akr ala ana anb arc ath avr bbd bfz brb ced cei chk cma cmd cmr cst ddc dde ddf ddg ddh ddi ddk ddl ddn ddo ddp ddq dom dtk dvd eld fbb frf gnt grn khm pkhm pznr znr cmr iko piko ced cei fbb lea leb sum akh akr ala ana anb arc ath avr bbd bfz brb btd ced cei chk cma cmd cmr cst ddd dde ddg ddh ddj ddl ddm ddo ddp ddr dds ddu dkm dom dpa dtk eld evg fbb frf akh akr ala ana anb arc ath avr bbd bfz brb btd ced cei chk cma cmd cst ddc ddd dde ddh ddj ddk ddm ddn ddp ddq ddr dkm dom dpa dtk dvd eld fbb frf gnt grn gvl akh akr ala ana anb arc avr bbd bfz brb btd ced cei chk cma cmd cmr cst dde ddf ddh ddi ddj ddm ddn ddo ddq dds ddt ddu dom dpa dtk eld fbb frf gnt grn akh akr ala ana anb arc arn ath avr bbd bfz brb btd ced cei chk cma cmd cmr cst dde ddg ddh ddi ddj ddk ddl ddn ddp dds ddt ddu dkm dom dpa dtk eld evg fbb frf akh akr ala ana anb arc ath avr bbd bfz brb ced cei chk cma cmd cmr cst ddc dde ddf ddg ddh ddi ddk ddl ddn ddo ddp ddq dom dtk dvd eld fbb frf gnt grn khm pkhm pznr znr cmr iko piko ced cei fbb lea leb sum promo type mediainsert setpromo prereleas datestamp boosterfun prereleas datestamp promostamp promopack planeswalkerstamp promostamp setpromo promopack planeswalkerstamp tourney fnm setpromo datestamp prereleas instor judgegift mediainsert setpromo prereleas datestamp boosterfun prereleas datestamp promostamp promopack planeswalkerstamp promostamp setpromo promopack planeswalkerstamp tourney fnm setpromo datestamp prereleas instor judgegift rariti common rare uncommon mythic common rare uncommon mythic scryfallillustrationid aeaf aeaf scryfalloracleid set code prm psal cmr jmp eld znr khm prm psal cmr jmp eld znr khm side a b c d e a b c d e subtyp aura human wizard element human soldier forest swamp island mountain spirit equip aura human wizard element human soldier forest swamp island mountain spirit equip super type legendari basic snow world basic snow host legendari snow ongo legendari basic snow world basic snow host legendari snow ongo text t add g t add b t add u t add r t add w fli t add g fli this creatur can t be block except by creatur with fli or reach fli vigil destroy target artifact or enchant t add g t add b t add u t add r t add w fli t add g fli this creatur can t be block except by creatur with fli or reach fli vigil destroy target artifact or enchant tough type instant sorceri artifact enchant land enchant aura creatur element creatur human wizard basic land forest basic land swamp instant sorceri artifact enchant land enchant aura creatur element creatur human wizard basic land forest basic land swamp type creatur instant land sorceri enchant artifact artifact creatur planeswalk enchant creatur plane creatur instant land sorceri enchant artifact artifact creatur planeswalk enchant creatur plane watermark mirran phyrexian golgari dimir izzet set selesnya boro simic wotc mirran phyrexian golgari dimir izzet set selesnya boro simic wotc"
+  },
+  {
+    "table_id": "card_games.foreign data",
+    "db": "card_games",
+    "table": "foreign data",
+    "columns": [
+      "id",
+      "flavor Text",
+      "language",
+      "multiverseid",
+      "name",
+      "text",
+      "type",
+      "uuid"
+    ],
+    "joinable_tables": [
+      "cards"
+    ],
+    "top_values": {
+      "flavor Text": [
+        "",
+        "全ての種には繋がりがあり、互いを無限の彼方から呼び合う。",
+        "文明の手による介入がなければ、自然は必ずその必要に応じて自らを変容させる。",
+        "Alle Samen haben eine Verbindung zueinander, die durch die Unendlichkeit hindurch reicht.",
+        "Todas las semillas comparten un lazo, llamándose entre ellas a través del infinito.",
+        "Toutes les graines partagent un lien les reliant à travers l'infini.",
+        "Tutti i semi condividono un legame comune, chiamandosi l'un l'altro nello spazio infinito.",
+        "「有罪。」",
+        "C'est le maître incontesté des montagnes de Shiv.",
+        "Cuando se acerca la derrota y escasea el liderazgo, todos los ojos miran en una misma dirección."
+      ],
+      "language": [
+        "Japanese",
+        "French",
+        "German",
+        "Italian",
+        "Spanish",
+        "Portuguese (Brazil)",
+        "Chinese Simplified",
+        "Russian",
+        "Chinese Traditional",
+        "Korean"
+      ],
+      "type": [
+        "",
+        "Spontanzauber",
+        "Hexerei",
+        "インスタント",
+        "Éphémère",
+        "Istantaneo",
+        "Instantáneo",
+        "ソーサリー",
+        "Rituel",
+        "瞬间"
+      ],
+      "uuid": [
+        "0003caab-9ff5-5d1a-bc06-976dd0457f19",
+        "0004a4fb-92c6-59b2-bdbe-ceb584a9e401",
+        "0005d268-3fd0-5424-bc6b-573ecd713aa1",
+        "0005f481-f2d4-53fa-ba37-cfcf5a5f87f1",
+        "00066e04-5677-5ca4-8bd0-f7f7781c44a1",
+        "000ed184-57ec-5b1e-a900-5d770a945999",
+        "0019b544-ed73-5c43-80d0-0826d38d709c",
+        "00234fb5-1fea-5993-8303-ab1bd0bb2e9e",
+        "0034b3e0-5f1d-56fc-99f1-0b8f60a5ddf5",
+        "0036ecd2-b835-5d1d-959e-22d84187c3ba"
+      ]
+    },
+    "bm25_text": "card game foreign data card game foreign data id flavor text languag multiverseid name text type uuid card flavor text 全ての種には繋かりかあり 互いを無限の彼方から呼ひ合う 文明の手による介入かなけれは 自然は必すその必要に応して自らを変容させる all samen haben ein verbindung zueinand die durch die unendlichkeit hindurch reicht toda las semilla comparten un lazo llamandos entr ella a trave del infinito tout les grain partag un lien les reliant a traver l infini tutti i semi condividono un legam comun chiamandosi l un l altro nello spazio infinito 有罪 c est le maitr incontest des montagn de shiv cuando se acerca la derrota y escasea el liderazgo todo los ojo miran en una misma direccion 全ての種には繋かりかあり 互いを無限の彼方から呼ひ合う 文明の手による介入かなけれは 自然は必すその必要に応して自らを変容させる all samen haben ein verbindung zueinand die durch die unendlichkeit hindurch reicht toda las semilla comparten un lazo llamandos entr ella a trave del infinito tout les grain partag un lien les reliant a traver l infini tutti i semi condividono un legam comun chiamandosi l un l altro nello spazio infinito 有罪 c est le maitr incontest des montagn de shiv cuando se acerca la derrota y escasea el liderazgo todo los ojo miran en una misma direccion languag japanes french german italian spanish portugues brazil chines simplifi russian chines tradit korean japanes french german italian spanish portugues brazil chines simplifi russian chines tradit korean type spontanzaub hexerei インスタント ephemer istantaneo instantaneo ソーサリー rituel 瞬间 spontanzaub hexerei インスタント ephemer istantaneo instantaneo ソーサリー rituel 瞬间 uuid bdbe bdbe"
+  },
+  {
+    "table_id": "card_games.legalities",
+    "db": "card_games",
+    "table": "legalities",
+    "columns": [
+      "id",
+      "format",
+      "status",
+      "uuid"
+    ],
+    "joinable_tables": [
+      "cards"
+    ],
+    "top_values": {
+      "format": [
+        "commander",
+        "legacy",
+        "vintage",
+        "duel",
+        "modern",
+        "penny",
+        "pauper",
+        "pioneer",
+        "premodern",
+        "gladiator"
+      ],
+      "status": [
+        "Legal",
+        "Banned",
+        "Restricted"
+      ],
+      "uuid": [
+        "00c3841e-97a2-5b6c-8f8f-28dd3e399cdb",
+        "02104a60-7d28-5e0e-afdc-d77271d8829f",
+        "0350483c-f9ac-5692-8238-ff5e39c0c1ed",
+        "046f7759-47f4-5a8a-9627-ccb953da9394",
+        "0a103ae4-5746-5ddc-bee1-6db8046ac271",
+        "0a4200ff-d1b6-5667-bc25-3c3708066f90",
+        "0ab190e6-1a58-5739-a511-3c267ab4aba0",
+        "0b5c8bc8-b273-52cf-a8da-aaf678aa95a7",
+        "0c5dd930-00c3-5655-9fd0-c889f8a38eaa",
+        "0d1ce16c-0e95-595c-983b-1bd5320d5db4"
+      ]
+    },
+    "bm25_text": "card game legal card game legal id format status uuid card format command legaci vintag duel modern penni pauper pioneer premodern gladiat command legaci vintag duel modern penni pauper pioneer premodern gladiat status legal ban restrict legal ban restrict uuid afdc afdc"
+  },
+  {
+    "table_id": "card_games.sets",
+    "db": "card_games",
+    "table": "sets",
+    "columns": [
+      "id",
+      "base Set Size",
+      "block",
+      "booster",
+      "code",
+      "is Foil Only",
+      "is Foreign Only",
+      "is Non Foil Only",
+      "is Online Only",
+      "is Partial Preview",
+      "keyrune Code",
+      "magic card market id",
+      "magic card market ID Extras",
+      "magic card market name",
+      "magic the gathering online code",
+      "name",
+      "parent Code",
+      "release Date",
+      "tcg player Group Id",
+      "total Set Size",
+      "type"
+    ],
+    "joinable_tables": [
+      "set translations"
+    ],
+    "top_values": {
+      "base Set Size": [
+        5,
+        1,
+        2,
+        6,
+        12,
+        15,
+        9,
+        249,
+        8,
+        3
+      ],
+      "block": [
+        "Core Set",
+        "Commander",
+        "Judge Gift Cards",
+        "Friday Night Magic",
+        "Theros",
+        "Magic Player Rewards",
+        "Arena League",
+        "Khans of Tarkir",
+        "Guilds of Ravnica",
+        "Time Spiral"
+      ],
+      "is Foil Only": [
+        0,
+        1
+      ],
+      "is Foreign Only": [
+        0,
+        1
+      ],
+      "is Non Foil Only": [
+        0,
+        1
+      ],
+      "is Online Only": [
+        0,
+        1
+      ],
+      "is Partial Preview": [
+        0,
+        1
+      ],
+      "keyrune Code": [
+        "PMEI",
+        "DEFAULT",
+        "DCI",
+        "PARL",
+        "PMPS",
+        "ZNR",
+        "BNG",
+        "GRN",
+        "JOU",
+        "M15"
+      ],
+      "total Set Size": [
+        5,
+        1,
+        2,
+        6,
+        12,
+        15,
+        8,
+        9,
+        249,
+        3
+      ],
+      "type": [
+        "promo",
+        "expansion",
+        "memorabilia",
+        "box",
+        "duel_deck",
+        "core",
+        "masters",
+        "starter",
+        "commander",
+        "from_the_vault"
+      ]
+    },
+    "bm25_text": "card game set card game set id base set size block booster code is foil onli is foreign onli is non foil onli is onlin onli is partial preview keyrun code magic card market id magic card market id extra magic card market name magic the gather onlin code name parent code releas date tcg player group id total set size type set translat block core set command judg gift card friday night magic thero magic player reward arena leagu khan of tarkir guild of ravnica time spiral core set command judg gift card friday night magic thero magic player reward arena leagu khan of tarkir guild of ravnica time spiral keyrun code pmei default dci parl pmps znr bng grn jou pmei default dci parl pmps znr bng grn jou type promo expans memorabilia box duel deck core master starter command from the vault promo expans memorabilia box duel deck core master starter command from the vault"
+  },
+  {
+    "table_id": "card_games.set translations",
+    "db": "card_games",
+    "table": "set translations",
+    "columns": [
+      "id",
+      "language",
+      "set code",
+      "translation"
+    ],
+    "joinable_tables": [
+      "sets"
+    ],
+    "top_values": {
+      "language": [
+        "Chinese Simplified",
+        "Chinese Traditional",
+        "French",
+        "German",
+        "Italian",
+        "Japanese",
+        "Korean",
+        "Portuguese (Brazil)",
+        "Russian",
+        "Spanish"
+      ],
+      "set code": [
+        "10E",
+        "4ED",
+        "5DN",
+        "5ED",
+        "6ED",
+        "7ED",
+        "8ED",
+        "9ED",
+        "AER",
+        "AKH"
+      ]
+    },
+    "bm25_text": "card game set translat card game set translat id languag set code translat set languag chines simplifi chines tradit french german italian japanes korean portugues brazil russian spanish chines simplifi chines tradit french german italian japanes korean portugues brazil russian spanish set code aer akh aer akh"
+  },
+  {
+    "table_id": "card_games.ruling",
+    "db": "card_games",
+    "table": "ruling",
+    "columns": [
+      "id",
+      "date",
+      "text",
+      "uuid"
+    ],
+    "joinable_tables": [
+      "cards"
+    ],
+    "top_values": {
+      "date": [
+        "2004-10-04",
+        "2021-02-05",
+        "2019-10-04",
+        "2020-11-10",
+        "2009-10-01",
+        "2017-04-18",
+        "2013-04-15",
+        "2008-10-01",
+        "2017-02-09",
+        "2018-07-13"
+      ],
+      "text": [
+        "Cycling is an activated ability. Effects that interact with activated abilities (such as Stifle or Rings of Brighthearth) will interact with cycling. Effects that interact with spells (such as Remove Soul or Faerie Tauntings) will not.",
+        "If an effect copies an Adventure spell, that copy is exiled as it resolves. It ceases to exist as a state-based action; it’s not possible to cast the copy as a creature.",
+        "An adventurer card is a creature card in every zone except the stack, as well as while on the stack if not cast as an Adventure. Ignore its alternative characteristics in those cases. For example, while it’s in your graveyard, Giant Killer is a white crea",
+        "Casting a card as an Adventure isn’t casting it for an alternative cost. Effects that allow you to cast a spell for an alternative cost or without paying its mana cost may allow you to apply those to the Adventure.",
+        "If a spell is cast as an Adventure, its controller exiles it instead of putting it into its owner’s graveyard as it resolves. For as long as it remains exiled, that player may cast it as a creature spell. If an Adventure spell leaves the stack in any way ",
+        "If an adventurer card ends up in exile for any other reason than by exiling itself while resolving, it won’t give you permission to cast it as a creature spell.",
+        "If an effect instructs you to choose a card name, you may choose the alternative Adventure name. Consider only the alternative characteristics to determine whether that is an appropriate name to choose.",
+        "If an object becomes a copy of an object that has an Adventure, the copy also has an Adventure. If it changes zones, it will either cease to exist (if it’s a token) or cease to be a copy (if it’s a nontoken permanent), and so you won’t be able to cast it ",
+        "If you cast an adventurer card as an Adventure, use only its alternative characteristics to determine whether it’s legal to cast that spell. For example, if Giant Killer is exiled with the last ability of Vivien, Champion of the Wilds, you can’t cast it a",
+        "When casting a spell as an Adventure, use the alternative characteristics and ignore all of the card’s normal characteristics. The spell’s color, mana cost, converted mana cost, and so on are determined by only those alternative characteristics. If the sp"
+      ],
+      "uuid": [
+        "23a64ed6-aeda-5607-8cc9-35ae7ac6a0ce",
+        "8ae00a8c-0670-5a96-9cf4-49f375a903c2",
+        "a9290322-839e-5942-a907-bbe6349cb22c",
+        "f2ef8f0a-ea29-5750-9f86-f4ee22b1af7e",
+        "396c85de-22c4-5fd2-81df-6c3b97ea0cc8",
+        "665a13b2-4e44-5a61-94df-95cd808597a3",
+        "85e6e583-9e48-5c0c-a593-2d023eafa82c",
+        "8b7ef568-f1f0-560c-a8a8-03099f8768ff",
+        "ae460aa6-efa3-598e-8323-aff881dc1632",
+        "d9f7d211-82a0-5088-95f2-ec4fdb8b8462"
+      ]
+    },
+    "bm25_text": "card game rule card game rule id date text uuid card date text cycl is an activ abil effect that interact with activ abil such as stifl or ring of brighthearth will interact with cycl effect that interact with spell such as remov soul or faeri taunt will not if an effect copi an adventur spell that copi is exil as it resolv it ceas to exist as a state base action it s not possibl to cast the copi as a creatur an adventur card is a creatur card in everi zone except the stack as well as while on the stack if not cast as an adventur ignor it altern characterist in those case for exampl while it s in your graveyard giant killer is a white crea cast a card as an adventur isn t cast it for an altern cost effect that allow you to cast a spell for an altern cost or without pay it mana cost may allow you to appli those to the adventur if a spell is cast as an adventur it control exil it instead of put it into it owner s graveyard as it resolv for as long as it remain exil that player may cast it as a creatur spell if an adventur spell leav the stack in ani way if an adventur card end up in exil for ani other reason than by exil itself while resolv it won t give you permiss to cast it as a creatur spell if an effect instruct you to choos a card name you may choos the altern adventur name consid onli the altern characterist to determin whether that is an appropri name to choos if an object becom a copi of an object that has an adventur the copi also has an adventur if it chang zone it will either ceas to exist if it s a token or ceas to be a copi if it s a nontoken perman and so you won t be abl to cast it if you cast an adventur card as an adventur use onli it altern characterist to determin whether it s legal to cast that spell for exampl if giant killer is exil with the last abil of vivien champion of the wild you can t cast it a when cast a spell as an adventur use the altern characterist and ignor all of the card s normal characterist the spell s color mana cost convert mana cost and so on are determin by onli those altern characterist if the sp cycl is an activ abil effect that interact with activ abil such as stifl or ring of brighthearth will interact with cycl effect that interact with spell such as remov soul or faeri taunt will not if an effect copi an adventur spell that copi is exil as it resolv it ceas to exist as a state base action it s not possibl to cast the copi as a creatur an adventur card is a creatur card in everi zone except the stack as well as while on the stack if not cast as an adventur ignor it altern characterist in those case for exampl while it s in your graveyard giant killer is a white crea cast a card as an adventur isn t cast it for an altern cost effect that allow you to cast a spell for an altern cost or without pay it mana cost may allow you to appli those to the adventur if a spell is cast as an adventur it control exil it instead of put it into it owner s graveyard as it resolv for as long as it remain exil that player may cast it as a creatur spell if an adventur spell leav the stack in ani way if an adventur card end up in exil for ani other reason than by exil itself while resolv it won t give you permiss to cast it as a creatur spell if an effect instruct you to choos a card name you may choos the altern adventur name consid onli the altern characterist to determin whether that is an appropri name to choos if an object becom a copi of an object that has an adventur the copi also has an adventur if it chang zone it will either ceas to exist if it s a token or ceas to be a copi if it s a nontoken perman and so you won t be abl to cast it if you cast an adventur card as an adventur use onli it altern characterist to determin whether it s legal to cast that spell for exampl if giant killer is exil with the last abil of vivien champion of the wild you can t cast it a when cast a spell as an adventur use the altern characterist and ignor all of the card s normal characterist the spell s color mana cost convert mana cost and so on are determin by onli those altern characterist if the sp uuid aeda aeda"
+  },
+  {
+    "table_id": "european_football_2.Player Attributes",
+    "db": "european_football_2",
+    "table": "Player Attributes",
+    "columns": [
+      "id",
+      "player federation international football association api id",
+      "player api id",
+      "date",
+      "overall_rating",
+      "potential",
+      "preferred foot",
+      "attacking work rate",
+      "defensive_work_rate",
+      "crossing",
+      "finishing",
+      "heading accuracy",
+      "short passing",
+      "volleys",
+      "dribbling",
+      "curve",
+      "free kick accuracy",
+      "long passing",
+      "ball control",
+      "acceleration",
+      "sprint speed",
+      "agility",
+      "reactions",
+      "balance",
+      "shot power",
+      "jumping",
+      "stamina",
+      "strength",
+      "long shots",
+      "aggression",
+      "interceptions",
+      "positioning",
+      "vision",
+      "penalties",
+      "marking",
+      "standing tackle",
+      "sliding tackle",
+      "goalkeep diving",
+      "goalkeep handling",
+      "goalkeep kicking",
+      "goalkeep positioning",
+      "goalkeep reflexes"
+    ],
+    "joinable_tables": [
+      "Player"
+    ],
+    "top_values": {
+      "player federation international football association api id": [
+        184431,
+        178393,
+        193061,
+        155887,
+        173210,
+        184267,
+        168650,
+        41635,
+        179605,
+        183284
+      ],
+      "player api id": [
+        210278,
+        41269,
+        42116,
+        26472,
+        179795,
+        41890,
+        25772,
+        30453,
+        110189,
+        163838
+      ],
+      "date": [
+        "2007-02-22 00:00:00",
+        "2013-09-20 00:00:00",
+        "2011-08-30 00:00:00",
+        "2015-09-21 00:00:00",
+        "2012-08-31 00:00:00",
+        "2014-09-18 00:00:00",
+        "2013-02-15 00:00:00",
+        "2010-08-30 00:00:00",
+        "2012-02-22 00:00:00",
+        "2009-08-30 00:00:00"
+      ],
+      "overall_rating": [
+        68,
+        69,
+        67,
+        66,
+        70,
+        72,
+        71,
+        65,
+        73,
+        64
+      ],
+      "potential": [
+        75,
+        74,
+        76,
+        72,
+        73,
+        70,
+        78,
+        77,
+        71,
+        69
+      ],
+      "preferred foot": [
+        "right",
+        "left"
+      ],
+      "attacking work rate": [
+        "medium",
+        "high",
+        "low",
+        "None",
+        "norm",
+        "y",
+        "le",
+        "stoc"
+      ],
+      "defensive_work_rate": [
+        "medium",
+        "high",
+        "low",
+        "_0",
+        "o",
+        "1",
+        "ormal",
+        "2",
+        "3",
+        "5"
+      ],
+      "crossing": [
+        68,
+        62,
+        67,
+        60,
+        64,
+        25,
+        63,
+        65,
+        66,
+        61
+      ],
+      "finishing": [
+        25,
+        64,
+        66,
+        65,
+        62,
+        60,
+        68,
+        63,
+        67,
+        58
+      ],
+      "heading accuracy": [
+        68,
+        60,
+        64,
+        58,
+        62,
+        65,
+        67,
+        59,
+        66,
+        63
+      ],
+      "short passing": [
+        65,
+        64,
+        68,
+        66,
+        67,
+        62,
+        72,
+        74,
+        63,
+        69
+      ],
+      "volleys": [
+        25,
+        59,
+        58,
+        60,
+        64,
+        56,
+        63,
+        68,
+        57,
+        66
+      ],
+      "dribbling": [
+        68,
+        66,
+        64,
+        72,
+        67,
+        62,
+        65,
+        73,
+        69,
+        74
+      ],
+      "curve": [
+        25,
+        68,
+        60,
+        63,
+        66,
+        64,
+        58,
+        59,
+        67,
+        56
+      ],
+      "free kick accuracy": [
+        25,
+        60,
+        58,
+        54,
+        42,
+        52,
+        41,
+        46,
+        56,
+        48
+      ],
+      "long passing": [
+        64,
+        65,
+        62,
+        58,
+        60,
+        66,
+        68,
+        61,
+        67,
+        63
+      ],
+      "ball control": [
+        68,
+        74,
+        73,
+        66,
+        72,
+        67,
+        70,
+        64,
+        65,
+        71
+      ],
+      "acceleration": [
+        68,
+        69,
+        74,
+        67,
+        76,
+        75,
+        78,
+        77,
+        66,
+        72
+      ],
+      "sprint speed": [
+        68,
+        69,
+        76,
+        74,
+        75,
+        67,
+        78,
+        72,
+        73,
+        66
+      ],
+      "agility": [
+        72,
+        74,
+        73,
+        68,
+        70,
+        75,
+        65,
+        71,
+        76,
+        64
+      ],
+      "reactions": [
+        68,
+        66,
+        70,
+        67,
+        64,
+        69,
+        65,
+        72,
+        71,
+        74
+      ],
+      "balance": [
+        70,
+        72,
+        71,
+        74,
+        68,
+        73,
+        65,
+        75,
+        62,
+        60
+      ],
+      "shot power": [
+        68,
+        72,
+        74,
+        70,
+        71,
+        65,
+        67,
+        75,
+        69,
+        73
+      ],
+      "jumping": [
+        72,
+        70,
+        71,
+        73,
+        74,
+        64,
+        66,
+        68,
+        67,
+        62
+      ],
+      "stamina": [
+        68,
+        72,
+        70,
+        74,
+        69,
+        75,
+        73,
+        71,
+        67,
+        65
+      ],
+      "strength": [
+        68,
+        74,
+        72,
+        70,
+        75,
+        69,
+        67,
+        76,
+        73,
+        78
+      ],
+      "long shots": [
+        25,
+        64,
+        68,
+        60,
+        66,
+        63,
+        65,
+        62,
+        67,
+        58
+      ],
+      "aggression": [
+        68,
+        74,
+        72,
+        75,
+        70,
+        71,
+        73,
+        67,
+        69,
+        66
+      ],
+      "interceptions": [
+        25,
+        64,
+        68,
+        65,
+        72,
+        69,
+        66,
+        67,
+        63,
+        70
+      ],
+      "positioning": [
+        25,
+        68,
+        64,
+        66,
+        67,
+        65,
+        70,
+        62,
+        72,
+        69
+      ],
+      "vision": [
+        68,
+        64,
+        65,
+        58,
+        59,
+        62,
+        66,
+        70,
+        67,
+        60
+      ],
+      "penalties": [
+        58,
+        64,
+        60,
+        62,
+        68,
+        54,
+        59,
+        56,
+        66,
+        65
+      ],
+      "marking": [
+        25,
+        68,
+        64,
+        22,
+        65,
+        21,
+        67,
+        66,
+        62,
+        63
+      ],
+      "standing tackle": [
+        25,
+        68,
+        66,
+        65,
+        67,
+        72,
+        71,
+        69,
+        64,
+        74
+      ],
+      "sliding tackle": [
+        25,
+        68,
+        65,
+        64,
+        66,
+        67,
+        63,
+        62,
+        72,
+        70
+      ],
+      "goalkeep diving": [
+        8,
+        9,
+        7,
+        6,
+        11,
+        10,
+        12,
+        13,
+        14,
+        5
+      ],
+      "goalkeep handling": [
+        7,
+        11,
+        14,
+        8,
+        9,
+        10,
+        12,
+        13,
+        6,
+        15
+      ],
+      "goalkeep kicking": [
+        7,
+        12,
+        10,
+        9,
+        8,
+        11,
+        13,
+        6,
+        14,
+        15
+      ],
+      "goalkeep positioning": [
+        9,
+        7,
+        8,
+        14,
+        10,
+        13,
+        11,
+        6,
+        12,
+        15
+      ],
+      "goalkeep reflexes": [
+        8,
+        10,
+        14,
+        7,
+        9,
+        13,
+        12,
+        6,
+        11,
+        15
+      ]
+    },
+    "bm25_text": "european footbal player attribut european footbal player attribut id player feder intern footbal associ api id player api id date overal rate potenti prefer foot attack work rate defens work rate cross finish head accuraci short pass volley dribbl curv free kick accuraci long pass ball control acceler sprint speed agil reaction balanc shot power jump stamina strength long shot aggress intercept posit vision penalti mark stand tackl slide tackl goalkeep dive goalkeep handl goalkeep kick goalkeep posit goalkeep reflex player date prefer foot right left right left attack work rate medium high low none norm y le stoc medium high low none norm y le stoc defens work rate medium high low o ormal medium high low o ormal"
+  },
+  {
+    "table_id": "european_football_2.Player",
+    "db": "european_football_2",
+    "table": "Player",
+    "columns": [
+      "id",
+      "player api id",
+      "player name",
+      "player federation international football association api id",
+      "birthday",
+      "height",
+      "weight"
+    ],
+    "joinable_tables": [
+      "Player Attributes",
+      "Match"
+    ],
+    "top_values": {
+      "height": [
+        182.88,
+        177.8,
+        180.34,
+        187.96,
+        185.42,
+        175.26,
+        190.5,
+        172.72,
+        193.04,
+        170.18
+      ],
+      "weight": [
+        165,
+        176,
+        154,
+        172,
+        168,
+        159,
+        163,
+        161,
+        170,
+        174
+      ]
+    },
+    "bm25_text": "european footbal player european footbal player id player api id player name player feder intern footbal associ api id birthday height weight player attribut match"
+  },
+  {
+    "table_id": "european_football_2.League",
+    "db": "european_football_2",
+    "table": "League",
+    "columns": [
+      "id",
+      "country id",
+      "name"
+    ],
+    "joinable_tables": [
+      "Country"
+    ],
+    "top_values": {},
+    "bm25_text": "european footbal leagu european footbal leagu id countri id name countri"
+  },
+  {
+    "table_id": "european_football_2.Country",
+    "db": "european_football_2",
+    "table": "Country",
+    "columns": [
+      "id",
+      "name"
+    ],
+    "joinable_tables": [
+      "League"
+    ],
+    "top_values": {},
+    "bm25_text": "european footbal countri european footbal countri id name leagu"
+  },
+  {
+    "table_id": "european_football_2.Team",
+    "db": "european_football_2",
+    "table": "Team",
+    "columns": [
+      "id",
+      "team api id",
+      "team federation international football association api id",
+      "team long name",
+      "team short name"
+    ],
+    "joinable_tables": [
+      "Team Attributes",
+      "Match"
+    ],
+    "top_values": {},
+    "bm25_text": "european footbal team european footbal team id team api id team feder intern footbal associ api id team long name team short name team attribut match"
+  },
+  {
+    "table_id": "european_football_2.Team Attributes",
+    "db": "european_football_2",
+    "table": "Team Attributes",
+    "columns": [
+      "id",
+      "team federation international football association api id",
+      "team api id",
+      "date",
+      "build Up Play Speed",
+      "build Up Play Speed Class",
+      "build Up Play Dribbling",
+      "build Up Play Dribbling Class",
+      "build Up Play Passing",
+      "build Up Play Passing Class",
+      "build Up Play Positioning Class",
+      "chance Creation Passing",
+      "chance Creation Passing Class",
+      "chance Creation Crossing",
+      "chance Creation Crossing Class",
+      "chance Creation Shooting",
+      "chance Creation Shooting Class",
+      "chance Creation Positioning Class",
+      "defence Pressure",
+      "defence Pressure Class",
+      "defence Aggression",
+      "defence Aggression Class",
+      "defence Team Width",
+      "defence Team Width Class",
+      "defence Defender Line Class"
+    ],
+    "joinable_tables": [
+      "Team"
+    ],
+    "top_values": {
+      "team federation international football association api id": [
+        301,
+        1,
+        10,
+        100081,
+        10029,
+        10030,
+        100409,
+        100634,
+        100804,
+        100805
+      ],
+      "team api id": [
+        10000,
+        10003,
+        10167,
+        10172,
+        10179,
+        10189,
+        10192,
+        10194,
+        10199,
+        10205
+      ],
+      "date": [
+        "2015-09-10 00:00:00",
+        "2011-02-22 00:00:00",
+        "2014-09-19 00:00:00",
+        "2012-02-22 00:00:00",
+        "2013-09-20 00:00:00",
+        "2010-02-22 00:00:00"
+      ],
+      "build Up Play Speed": [
+        50,
+        30,
+        55,
+        45,
+        65,
+        70,
+        52,
+        60,
+        48,
+        53
+      ],
+      "build Up Play Speed Class": [
+        "Balanced",
+        "Fast",
+        "Slow"
+      ],
+      "build Up Play Dribbling": [
+        52,
+        48,
+        55,
+        49,
+        53,
+        50,
+        51,
+        40,
+        54,
+        46
+      ],
+      "build Up Play Dribbling Class": [
+        "Little",
+        "Normal",
+        "Lots"
+      ],
+      "build Up Play Passing": [
+        50,
+        30,
+        52,
+        55,
+        35,
+        48,
+        54,
+        40,
+        45,
+        53
+      ],
+      "build Up Play Passing Class": [
+        "Mixed",
+        "Short",
+        "Long"
+      ],
+      "build Up Play Positioning Class": [
+        "Organised",
+        "Free Form"
+      ],
+      "chance Creation Passing": [
+        50,
+        55,
+        52,
+        53,
+        48,
+        49,
+        45,
+        70,
+        65,
+        54
+      ],
+      "chance Creation Passing Class": [
+        "Normal",
+        "Risky",
+        "Safe"
+      ],
+      "chance Creation Crossing": [
+        50,
+        70,
+        52,
+        53,
+        65,
+        54,
+        60,
+        55,
+        40,
+        66
+      ],
+      "chance Creation Crossing Class": [
+        "Normal",
+        "Lots",
+        "Little"
+      ],
+      "chance Creation Shooting": [
+        50,
+        70,
+        52,
+        55,
+        60,
+        53,
+        65,
+        54,
+        48,
+        46
+      ],
+      "chance Creation Shooting Class": [
+        "Normal",
+        "Lots",
+        "Little"
+      ],
+      "chance Creation Positioning Class": [
+        "Organised",
+        "Free Form"
+      ],
+      "defence Pressure": [
+        45,
+        47,
+        30,
+        50,
+        43,
+        48,
+        35,
+        46,
+        49,
+        40
+      ],
+      "defence Pressure Class": [
+        "Medium",
+        "Deep",
+        "High"
+      ],
+      "defence Aggression": [
+        45,
+        47,
+        50,
+        70,
+        55,
+        44,
+        48,
+        30,
+        60,
+        43
+      ],
+      "defence Aggression Class": [
+        "Press",
+        "Double",
+        "Contain"
+      ],
+      "defence Team Width": [
+        50,
+        52,
+        53,
+        55,
+        65,
+        70,
+        49,
+        51,
+        54,
+        48
+      ],
+      "defence Team Width Class": [
+        "Normal",
+        "Wide",
+        "Narrow"
+      ],
+      "defence Defender Line Class": [
+        "Cover",
+        "Offside Trap"
+      ]
+    },
+    "bm25_text": "european footbal team attribut european footbal team attribut id team feder intern footbal associ api id team api id date build up play speed build up play speed class build up play dribbl build up play dribbl class build up play pass build up play pass class build up play posit class chanc creation pass chanc creation pass class chanc creation cross chanc creation cross class chanc creation shoot chanc creation shoot class chanc creation posit class defenc pressur defenc pressur class defenc aggress defenc aggress class defenc team width defenc team width class defenc defend line class team date build up play speed class balanc fast slow balanc fast slow build up play dribbl class littl normal lot littl normal lot build up play pass class mix short long mix short long build up play posit class organis free form organis free form chanc creation pass class normal riski safe normal riski safe chanc creation cross class normal lot littl normal lot littl chanc creation shoot class normal lot littl normal lot littl chanc creation posit class organis free form organis free form defenc pressur class medium deep high medium deep high defenc aggress class press doubl contain press doubl contain defenc team width class normal wide narrow normal wide narrow defenc defend line class cover offsid trap cover offsid trap"
+  },
+  {
+    "table_id": "european_football_2.Match",
+    "db": "european_football_2",
+    "table": "Match",
+    "columns": [
+      "id",
+      "country id",
+      "league id",
+      "season",
+      "stage",
+      "date",
+      "match api id",
+      "home team api id",
+      "away team api id",
+      "home team goal",
+      "away team goal",
+      "home_player_X1",
+      "home_player_X2",
+      "home_player_X3",
+      "home_player_X4",
+      "home_player_X5",
+      "home_player_X6",
+      "home_player_X7",
+      "home_player_X8",
+      "home_player_X9",
+      "home_player_X10",
+      "home_player_X11",
+      "away_player_X1",
+      "away_player_X2",
+      "away_player_X3",
+      "away_player_X4",
+      "away_player_X5",
+      "away_player_X6",
+      "away_player_X7",
+      "away_player_X8",
+      "away_player_X9",
+      "away_player_X10",
+      "away_player_X11",
+      "home_player_Y1",
+      "home_player_Y2",
+      "home_player_Y3",
+      "home_player_Y4",
+      "home_player_Y5",
+      "home_player_Y6",
+      "home_player_Y7",
+      "home_player_Y8",
+      "home_player_Y9",
+      "home_player_Y10",
+      "home_player_Y11",
+      "away_player_Y1",
+      "away_player_Y2",
+      "away_player_Y3",
+      "away_player_Y4",
+      "away_player_Y5",
+      "away_player_Y6",
+      "away_player_Y7",
+      "away_player_Y8",
+      "away_player_Y9",
+      "away_player_Y10",
+      "away_player_Y11",
+      "home_player_1",
+      "home_player_2",
+      "home_player_3",
+      "home_player_4",
+      "home_player_5",
+      "home_player_6",
+      "home_player_7",
+      "home_player_8",
+      "home_player_9",
+      "home_player_10",
+      "home_player_11",
+      "away_player_1",
+      "away_player_2",
+      "away_player_3",
+      "away_player_4",
+      "away_player_5",
+      "away_player_6",
+      "away_player_7",
+      "away_player_8",
+      "away_player_9",
+      "away_player_10",
+      "away_player_11",
+      "goal",
+      "shot on",
+      "shot off",
+      "foul commit",
+      "card",
+      "cross",
+      "corner",
+      "possession",
+      "B365H",
+      "B365D",
+      "B365A",
+      "BWH",
+      "BWD",
+      "BWA",
+      "IWH",
+      "IWD",
+      "IWA",
+      "LBH",
+      "LBD",
+      "LBA",
+      "PSH",
+      "PSD",
+      "PSA",
+      "WHH",
+      "WHD",
+      "WHA",
+      "SJH",
+      "SJD",
+      "SJA",
+      "VCH",
+      "VCD",
+      "VCA",
+      "GBH",
+      "GBD",
+      "GBA",
+      "BSH",
+      "BSD",
+      "BSA"
+    ],
+    "joinable_tables": [
+      "Player",
+      "Team"
+    ],
+    "top_values": {
+      "country id": [
+        1729,
+        21518,
+        4769,
+        10257,
+        13274,
+        7809,
+        17642,
+        15722,
+        19694,
+        1
+      ],
+      "league id": [
+        1729,
+        21518,
+        4769,
+        10257,
+        13274,
+        7809,
+        17642,
+        15722,
+        19694,
+        1
+      ],
+      "season": [
+        "2008/2009",
+        "2015/2016",
+        "2014/2015",
+        "2010/2011",
+        "2012/2013",
+        "2009/2010",
+        "2011/2012",
+        "2013/2014"
+      ],
+      "stage": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        12,
+        13
+      ],
+      "date": [
+        "2009-04-11 00:00:00",
+        "2015-04-04 00:00:00",
+        "2009-05-16 00:00:00",
+        "2013-03-30 00:00:00",
+        "2009-09-26 00:00:00",
+        "2010-04-03 00:00:00",
+        "2010-09-11 00:00:00",
+        "2011-09-24 00:00:00",
+        "2011-10-29 00:00:00",
+        "2008-09-13 00:00:00"
+      ],
+      "home team api id": [
+        10194,
+        10252,
+        10260,
+        10267,
+        8302,
+        8305,
+        8315,
+        8455,
+        8456,
+        8472
+      ],
+      "away team api id": [
+        9927,
+        10194,
+        10252,
+        10260,
+        10267,
+        8302,
+        8305,
+        8315,
+        8455,
+        8456
+      ],
+      "home team goal": [
+        1,
+        2,
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "away team goal": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "home_player_X1": [
+        1,
+        0,
+        2
+      ],
+      "home_player_X2": [
+        2,
+        3,
+        1,
+        4,
+        6,
+        8,
+        0,
+        5,
+        7
+      ],
+      "home_player_X3": [
+        4,
+        5,
+        6,
+        3,
+        8,
+        2,
+        7,
+        1
+      ],
+      "home_player_X4": [
+        6,
+        7,
+        8,
+        5,
+        2,
+        4,
+        3
+      ],
+      "home_player_X5": [
+        8,
+        1,
+        2,
+        7,
+        6,
+        4,
+        5,
+        3,
+        9
+      ],
+      "home_player_X6": [
+        4,
+        2,
+        3,
+        5,
+        1,
+        9,
+        6,
+        7,
+        8
+      ],
+      "home_player_X7": [
+        4,
+        6,
+        5,
+        3,
+        2,
+        7,
+        8,
+        9,
+        1
+      ],
+      "home_player_X8": [
+        6,
+        3,
+        7,
+        5,
+        8,
+        4,
+        2,
+        9,
+        1
+      ],
+      "home_player_X9": [
+        8,
+        5,
+        3,
+        7,
+        4,
+        9,
+        6,
+        2,
+        1
+      ],
+      "home_player_X10": [
+        4,
+        7,
+        5,
+        9,
+        6,
+        8,
+        3,
+        1,
+        2
+      ],
+      "home_player_X11": [
+        6,
+        5,
+        7,
+        4,
+        3,
+        1
+      ],
+      "away_player_X1": [
+        1,
+        2,
+        6
+      ],
+      "away_player_X2": [
+        2,
+        3,
+        1,
+        4,
+        6,
+        8,
+        5,
+        7
+      ],
+      "away_player_X3": [
+        4,
+        5,
+        3,
+        6,
+        8,
+        2,
+        7,
+        9
+      ],
+      "away_player_X4": [
+        6,
+        7,
+        5,
+        8,
+        2,
+        4,
+        3,
+        1
+      ],
+      "away_player_X5": [
+        8,
+        1,
+        2,
+        7,
+        6,
+        4,
+        3,
+        5,
+        9
+      ],
+      "away_player_X6": [
+        4,
+        2,
+        3,
+        5,
+        1,
+        9,
+        6,
+        7,
+        8
+      ],
+      "away_player_X7": [
+        4,
+        6,
+        5,
+        3,
+        2,
+        7,
+        8,
+        1,
+        9
+      ],
+      "away_player_X8": [
+        6,
+        3,
+        7,
+        5,
+        4,
+        8,
+        2,
+        9,
+        1
+      ],
+      "away_player_X9": [
+        5,
+        8,
+        3,
+        7,
+        6,
+        4,
+        9,
+        2,
+        1
+      ],
+      "away_player_X10": [
+        4,
+        7,
+        5,
+        9,
+        6,
+        8,
+        3,
+        2,
+        1
+      ],
+      "away_player_X11": [
+        5,
+        6,
+        7,
+        4,
+        3,
+        8
+      ],
+      "home_player_Y1": [
+        1,
+        0,
+        3
+      ],
+      "home_player_Y2": [
+        3,
+        0
+      ],
+      "home_player_Y3": [
+        3,
+        5
+      ],
+      "home_player_Y4": [
+        3,
+        5
+      ],
+      "home_player_Y5": [
+        3,
+        7,
+        5,
+        6,
+        8
+      ],
+      "home_player_Y6": [
+        7,
+        6,
+        5,
+        3,
+        8,
+        9
+      ],
+      "home_player_Y7": [
+        7,
+        6,
+        5,
+        8,
+        9,
+        3
+      ],
+      "home_player_Y8": [
+        7,
+        8,
+        6,
+        5,
+        9,
+        3,
+        10
+      ],
+      "home_player_Y9": [
+        7,
+        8,
+        10,
+        9,
+        6,
+        1
+      ],
+      "home_player_Y10": [
+        10,
+        8,
+        9,
+        7,
+        11,
+        6,
+        3
+      ],
+      "home_player_Y11": [
+        10,
+        11,
+        1,
+        3
+      ],
+      "away_player_Y1": [
+        1,
+        3
+      ],
+      "away_player_Y2": [
+        3
+      ],
+      "away_player_Y3": [
+        3,
+        7
+      ],
+      "away_player_Y4": [
+        3,
+        5,
+        7
+      ],
+      "away_player_Y5": [
+        3,
+        7,
+        5,
+        6,
+        9
+      ],
+      "away_player_Y6": [
+        7,
+        6,
+        5,
+        3,
+        8,
+        9,
+        10
+      ],
+      "away_player_Y7": [
+        7,
+        6,
+        8,
+        5,
+        3,
+        9,
+        10
+      ],
+      "away_player_Y8": [
+        7,
+        8,
+        6,
+        5,
+        9,
+        10,
+        3
+      ],
+      "away_player_Y9": [
+        7,
+        8,
+        10,
+        9,
+        6,
+        11,
+        5
+      ],
+      "away_player_Y10": [
+        10,
+        8,
+        7,
+        9,
+        11,
+        6
+      ],
+      "away_player_Y11": [
+        10,
+        11,
+        7,
+        8
+      ],
+      "home_player_1": [
+        31293,
+        41097,
+        26295,
+        31465,
+        42422,
+        33764,
+        31432,
+        26168,
+        42276,
+        27299
+      ],
+      "home_player_2": [
+        33025,
+        33988,
+        26111,
+        57071,
+        104482,
+        33843,
+        39841,
+        30509,
+        109651,
+        25990
+      ],
+      "home_player_3": [
+        35606,
+        32769,
+        38458,
+        23783,
+        77741,
+        71399,
+        40695,
+        24235,
+        22764,
+        18823
+      ],
+      "home_player_4": [
+        30627,
+        56678,
+        41884,
+        36388,
+        41707,
+        70812,
+        24216,
+        32844,
+        38432,
+        103266
+      ],
+      "home_player_5": [
+        24846,
+        32569,
+        35502,
+        41167,
+        38521,
+        94685,
+        28467,
+        38834,
+        33848,
+        31291
+      ],
+      "home_player_6": [
+        39854,
+        31037,
+        30966,
+        49939,
+        30895,
+        101192,
+        26664,
+        32575,
+        39978,
+        26538
+      ],
+      "home_player_7": [
+        154257,
+        30682,
+        24405,
+        37294,
+        30731,
+        33635,
+        23782,
+        30930,
+        30889,
+        42651
+      ],
+      "home_player_8": [
+        30955,
+        75192,
+        33991,
+        96619,
+        73999,
+        43319,
+        41890,
+        42479,
+        47575,
+        34447
+      ],
+      "home_player_9": [
+        36378,
+        38398,
+        31235,
+        41658,
+        24773,
+        31921,
+        37441,
+        40060,
+        30892,
+        32559
+      ],
+      "home_player_10": [
+        107417,
+        24383,
+        35724,
+        30981,
+        40636,
+        30893,
+        24448,
+        106474,
+        184138,
+        178812
+      ],
+      "home_player_11": [
+        27734,
+        33028,
+        93447,
+        26344,
+        37506,
+        75310,
+        38098,
+        46469,
+        31199,
+        36784
+      ],
+      "away_player_1": [
+        31293,
+        33764,
+        41097,
+        42422,
+        31465,
+        26295,
+        31432,
+        26168,
+        27299,
+        30660
+      ],
+      "away_player_2": [
+        33988,
+        26111,
+        33025,
+        57071,
+        39841,
+        104482,
+        213809,
+        13518,
+        33843,
+        109651
+      ],
+      "away_player_3": [
+        35606,
+        38458,
+        32769,
+        71399,
+        23783,
+        40695,
+        77741,
+        24235,
+        25921,
+        78908
+      ],
+      "away_player_4": [
+        30627,
+        41884,
+        36388,
+        41707,
+        24216,
+        103266,
+        56678,
+        38432,
+        70812,
+        26527
+      ],
+      "away_player_5": [
+        24846,
+        33848,
+        41167,
+        32569,
+        38521,
+        28467,
+        31291,
+        35502,
+        38834,
+        39763
+      ],
+      "away_player_6": [
+        39854,
+        31037,
+        32575,
+        49939,
+        101192,
+        26538,
+        17528,
+        26664,
+        37374,
+        42346
+      ],
+      "away_player_7": [
+        154257,
+        30731,
+        23782,
+        30682,
+        30889,
+        33635,
+        24405,
+        30930,
+        30275,
+        39334
+      ],
+      "away_player_8": [
+        75192,
+        30955,
+        33991,
+        73999,
+        41433,
+        38433,
+        39367,
+        96619,
+        41890,
+        26611
+      ],
+      "away_player_9": [
+        36378,
+        37441,
+        38398,
+        40060,
+        31921,
+        30975,
+        31235,
+        41658,
+        30892,
+        37459
+      ],
+      "away_player_10": [
+        35724,
+        107417,
+        30981,
+        95955,
+        24383,
+        184138,
+        40636,
+        30893,
+        24549,
+        30709
+      ],
+      "away_player_11": [
+        33028,
+        38098,
+        26344,
+        93447,
+        46469,
+        75310,
+        27734,
+        181276,
+        30830,
+        37506
+      ],
+      "B365H": [
+        2.1,
+        2.0,
+        2.5,
+        1.91,
+        2.2,
+        2.3,
+        2.4,
+        2.25,
+        1.44,
+        1.8
+      ],
+      "B365D": [
+        3.4,
+        3.3,
+        3.5,
+        3.6,
+        3.25,
+        3.2,
+        3.1,
+        3.75,
+        4.0,
+        3.0
+      ],
+      "B365A": [
+        4.0,
+        3.0,
+        3.4,
+        3.5,
+        3.6,
+        3.75,
+        5.0,
+        6.0,
+        5.5,
+        4.5
+      ],
+      "BWH": [
+        2.0,
+        2.1,
+        1.95,
+        2.05,
+        2.15,
+        2.3,
+        2.2,
+        2.25,
+        2.4,
+        1.75
+      ],
+      "BWD": [
+        3.3,
+        3.2,
+        3.4,
+        3.25,
+        3.5,
+        3.1,
+        3.6,
+        3.0,
+        4.0,
+        3.7
+      ],
+      "BWA": [
+        3.1,
+        3.0,
+        3.4,
+        5.0,
+        3.3,
+        3.2,
+        3.6,
+        3.5,
+        4.0,
+        2.8
+      ],
+      "IWH": [
+        2.0,
+        2.1,
+        2.2,
+        2.3,
+        1.9,
+        2.4,
+        1.8,
+        2.5,
+        2.6,
+        1.85
+      ],
+      "IWD": [
+        3.3,
+        3.2,
+        3.1,
+        3.4,
+        3.5,
+        3.0,
+        4.0,
+        3.6,
+        3.7,
+        3.9
+      ],
+      "IWA": [
+        3.3,
+        3.1,
+        2.6,
+        3.6,
+        3.2,
+        2.5,
+        2.9,
+        4.0,
+        2.4,
+        3.0
+      ],
+      "LBH": [
+        2.1,
+        2.0,
+        2.2,
+        2.5,
+        2.25,
+        1.8,
+        1.91,
+        2.4,
+        1.83,
+        2.38
+      ],
+      "LBD": [
+        3.2,
+        3.3,
+        3.4,
+        3.5,
+        3.25,
+        3.0,
+        3.75,
+        3.6,
+        3.1,
+        4.0
+      ],
+      "LBA": [
+        4.0,
+        3.0,
+        4.5,
+        5.0,
+        3.2,
+        3.75,
+        3.5,
+        2.5,
+        6.0,
+        7.0
+      ],
+      "PSH": [
+        1.93,
+        1.83,
+        1.85,
+        1.88,
+        1.79,
+        1.47,
+        2.1,
+        2.01,
+        1.65,
+        2.08
+      ],
+      "PSD": [
+        3.44,
+        3.35,
+        3.41,
+        3.42,
+        3.55,
+        3.47,
+        3.51,
+        3.5,
+        3.31,
+        3.39
+      ],
+      "PSA": [
+        2.19,
+        3.02,
+        3.06,
+        3.36,
+        3.86,
+        2.85,
+        2.88,
+        3.35,
+        3.41,
+        2.15
+      ],
+      "WHH": [
+        2.5,
+        2.0,
+        2.3,
+        2.1,
+        2.4,
+        1.91,
+        2.2,
+        2.25,
+        1.44,
+        1.8
+      ],
+      "WHD": [
+        3.2,
+        3.1,
+        3.3,
+        3.4,
+        3.5,
+        3.0,
+        3.25,
+        3.6,
+        4.0,
+        3.75
+      ],
+      "WHA": [
+        4.0,
+        5.0,
+        3.1,
+        6.0,
+        3.0,
+        2.8,
+        4.5,
+        3.2,
+        5.5,
+        3.6
+      ],
+      "SJH": [
+        2.1,
+        2.0,
+        2.5,
+        2.2,
+        2.25,
+        2.38,
+        1.73,
+        1.83,
+        2.3,
+        1.8
+      ],
+      "SJD": [
+        3.4,
+        3.25,
+        3.5,
+        3.2,
+        3.3,
+        3.6,
+        3.0,
+        4.0,
+        3.75,
+        4.33
+      ],
+      "SJA": [
+        4.0,
+        3.0,
+        3.6,
+        5.0,
+        3.4,
+        4.5,
+        3.75,
+        2.88,
+        2.5,
+        4.33
+      ],
+      "VCH": [
+        2.1,
+        2.0,
+        2.2,
+        2.3,
+        2.5,
+        2.25,
+        2.05,
+        2.4,
+        1.8,
+        2.15
+      ],
+      "VCD": [
+        3.4,
+        3.3,
+        3.5,
+        3.6,
+        3.25,
+        3.2,
+        4.0,
+        3.75,
+        3.8,
+        3.0
+      ],
+      "VCA": [
+        4.0,
+        3.0,
+        3.4,
+        3.6,
+        5.0,
+        3.5,
+        5.5,
+        6.5,
+        3.75,
+        7.0
+      ],
+      "GBH": [
+        2.1,
+        2.0,
+        2.2,
+        2.3,
+        2.4,
+        2.5,
+        1.9,
+        2.25,
+        1.95,
+        2.6
+      ],
+      "GBD": [
+        3.25,
+        3.2,
+        3.3,
+        3.4,
+        3.5,
+        3.1,
+        3.0,
+        3.75,
+        3.6,
+        4.0
+      ],
+      "GBA": [
+        4.0,
+        3.0,
+        3.75,
+        3.4,
+        5.0,
+        3.6,
+        3.1,
+        3.5,
+        4.5,
+        2.75
+      ],
+      "BSH": [
+        2.1,
+        2.0,
+        2.5,
+        1.91,
+        2.2,
+        2.3,
+        1.83,
+        2.25,
+        2.4,
+        1.44
+      ],
+      "BSD": [
+        3.25,
+        3.3,
+        3.4,
+        3.2,
+        3.1,
+        3.5,
+        3.6,
+        3.0,
+        3.75,
+        4.0
+      ],
+      "BSA": [
+        3.0,
+        2.88,
+        5.0,
+        4.0,
+        5.5,
+        3.4,
+        3.75,
+        3.5,
+        2.5,
+        3.1
+      ]
+    },
+    "bm25_text": "european footbal match european footbal match id countri id leagu id season stage date match api id home team api id away team api id home team goal away team goal home player home player home player home player home player home player home player home player home player home player home player away player away player away player away player away player away player away player away player away player away player away player home player home player home player home player home player home player home player home player home player home player home player away player away player away player away player away player away player away player away player away player away player away player home player home player home player home player home player home player home player home player home player home player home player away player away player away player away player away player away player away player away player away player away player away player goal shot on shot off foul commit card cross corner possess bwh bwd bwa iwh iwd iwa lbh lbd lba psh psd psa whh whd wha sjh sjd sja vch vcd vca gbh gbd gba bsh bsd bsa player team season date"
+  },
+  {
+    "table_id": "thrombosis_prediction.Examination",
+    "db": "thrombosis_prediction",
+    "table": "Examination",
+    "columns": [
+      "ID",
+      "Examination Date",
+      "anti-Cardiolipin antibody (IgG)",
+      "anti-Cardiolipin antibody (IgM)",
+      "anti-nucleus antibody",
+      "pattern observed in the sheet of ANA examination",
+      "anti-Cardiolipin antibody (IgA) concentration",
+      "Diagnosis",
+      "measure of degree of coagulation",
+      "measure of degree of coagulation",
+      "measure of degree of coagulation",
+      "Symptoms",
+      "Thrombosis"
+    ],
+    "joinable_tables": [
+      "Patient"
+    ],
+    "top_values": {
+      "anti-Cardiolipin antibody (IgG)": [
+        0.0,
+        0.8,
+        1.0,
+        0.9,
+        0.7,
+        1.1,
+        1.2,
+        1.4,
+        1.5,
+        1.3
+      ],
+      "anti-Cardiolipin antibody (IgM)": [
+        0.0,
+        1.8,
+        1.7,
+        2.0,
+        2.1,
+        1.9,
+        1.6,
+        2.3,
+        1.4,
+        1.2
+      ],
+      "anti-nucleus antibody": [
+        0,
+        16,
+        64,
+        4,
+        256,
+        1024,
+        4096,
+        4094
+      ],
+      "pattern observed in the sheet of ANA examination": [
+        "S",
+        "P",
+        "P,S",
+        "S,P",
+        "D,P",
+        "D,P,S",
+        "S,D",
+        "p",
+        "D",
+        "D,S"
+      ],
+      "anti-Cardiolipin antibody (IgA) concentration": [
+        0,
+        3,
+        2,
+        5,
+        7,
+        4,
+        6,
+        9,
+        8,
+        10
+      ],
+      "Diagnosis": [
+        "SLE",
+        "SjS",
+        "RA",
+        "SLE, SjS",
+        "MCTD",
+        "APS",
+        "PSS",
+        "Behcet",
+        "RA susp",
+        "RA, SjS"
+      ],
+      "measure of degree of coagulation": [
+        "-",
+        "+"
+      ],
+      "Symptoms": [
+        "CNS lupus",
+        "brain infarction",
+        "AMI",
+        "PH",
+        "thrombocytopenia",
+        "thrombophlebitis",
+        "Apo",
+        "DVT",
+        "AP",
+        "Abortion"
+      ],
+      "Thrombosis": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "bm25_text": "thrombosi predict examin thrombosi predict examin id examin date anti cardiolipin antibodi igg anti cardiolipin antibodi igm anti nucleus antibodi pattern observ in the sheet of ana examin anti cardiolipin antibodi iga concentr diagnosi measur of degre of coagul measur of degre of coagul measur of degre of coagul symptom thrombosi patient pattern observ in the sheet of ana examin s p p s s p d p d p s s d p d d s s p p s s p d p d p s s d p d d s diagnosi sle sjs ra sle sjs mctd ap pss behcet ra susp ra sjs sle sjs ra sle sjs mctd ap pss behcet ra susp ra sjs measur of degre of coagul symptom cns lupus brain infarct ami ph thrombocytopenia thrombophleb apo dvt ap abort cns lupus brain infarct ami ph thrombocytopenia thrombophleb apo dvt ap abort"
+  },
+  {
+    "table_id": "thrombosis_prediction.Patient",
+    "db": "thrombosis_prediction",
+    "table": "Patient",
+    "columns": [
+      "ID",
+      "SEX",
+      "Birthday",
+      "Description",
+      "First Date",
+      "Admission",
+      "Diagnosis"
+    ],
+    "joinable_tables": [
+      "Examination",
+      "Laboratory"
+    ],
+    "top_values": {
+      "SEX": [
+        "F",
+        "M",
+        ""
+      ],
+      "Description": [
+        "1996-12-03",
+        "1997-08-20",
+        "1991-08-13",
+        "1994-02-22",
+        "1997-07-28",
+        "1998-07-28",
+        "1994-02-08",
+        "1991-08-12",
+        "1997-03-27",
+        "1997-02-03"
+      ],
+      "Admission": [
+        "-",
+        "+",
+        "",
+        "+("
+      ],
+      "Diagnosis": [
+        "SLE",
+        "SJS",
+        "RA",
+        "BEHCET",
+        "PSS",
+        "MCTD",
+        "SLE, SJS",
+        "SJS susp",
+        "RA, SJS",
+        "RA susp"
+      ]
+    },
+    "bm25_text": "thrombosi predict patient thrombosi predict patient id sex birthday descript first date admiss diagnosi examin laboratori sex f m f m descript admiss diagnosi sle sjs ra behcet pss mctd sle sjs sjs susp ra sjs ra susp sle sjs ra behcet pss mctd sle sjs sjs susp ra sjs ra susp"
+  },
+  {
+    "table_id": "thrombosis_prediction.Laboratory",
+    "db": "thrombosis_prediction",
+    "table": "Laboratory",
+    "columns": [
+      "ID",
+      "Date",
+      "AST glutamic oxaloacetic transaminase",
+      "ALT glutamic pyruvic transaminase",
+      "lactate dehydrogenase",
+      "alkaliphophatase",
+      "total protein",
+      "albumin",
+      "uric acid",
+      "urea nitrogen",
+      "creatinine",
+      "total bilirubin",
+      "total cholesterol",
+      "triglyceride",
+      "creatinine phosphokinase",
+      "blood glucose",
+      "White blood cell",
+      "Red blood cell",
+      "Hemoglobin",
+      "Hematoclit",
+      "platelet",
+      "prothrombin time",
+      "activated partial prothrombin time",
+      "fibrinogen",
+      "PIC",
+      "TAT",
+      "TAT2",
+      "proteinuria",
+      "Ig G",
+      "Ig A",
+      "Ig M",
+      "C-reactive protein",
+      "Rhuematoid Factor",
+      "RAHA",
+      "complement 3",
+      "complement 4",
+      "anti-ribonuclear protein",
+      "anti-SM",
+      "anti-scl70",
+      "anti-SSA",
+      "anti-SSB",
+      "anti-centromere",
+      "anti-DNA",
+      "anti-DNA"
+    ],
+    "joinable_tables": [
+      "Patient"
+    ],
+    "top_values": {
+      "ID": [
+        2933261,
+        3182521,
+        444499,
+        2315140,
+        4884792,
+        2343945,
+        5122312,
+        4790235,
+        2370675,
+        2395148
+      ],
+      "Date": [
+        "1985-11-11",
+        "1985-09-09",
+        "1984-10-01",
+        "1985-05-13",
+        "1984-12-17",
+        "1985-04-22",
+        "1985-12-09",
+        "1981-05-11",
+        "1985-05-20",
+        "1984-01-09"
+      ],
+      "AST glutamic oxaloacetic transaminase": [
+        16,
+        18,
+        15,
+        17,
+        19,
+        20,
+        14,
+        21,
+        22,
+        23
+      ],
+      "ALT glutamic pyruvic transaminase": [
+        11,
+        13,
+        14,
+        16,
+        12,
+        10,
+        15,
+        17,
+        9,
+        18
+      ],
+      "lactate dehydrogenase": [
+        142,
+        143,
+        148,
+        145,
+        127,
+        140,
+        130,
+        144,
+        132,
+        133
+      ],
+      "alkaliphophatase": [
+        67,
+        80,
+        62,
+        66,
+        76,
+        68,
+        70,
+        63,
+        75,
+        57
+      ],
+      "total protein": [
+        7.1,
+        7.0,
+        7.2,
+        7.3,
+        6.9,
+        6.8,
+        7.4,
+        7.5,
+        6.7,
+        7.6
+      ],
+      "albumin": [
+        4.2,
+        4.3,
+        4.1,
+        4.0,
+        4.4,
+        3.9,
+        4.5,
+        4.6,
+        3.8,
+        4.7
+      ],
+      "uric acid": [
+        3.8,
+        3.9,
+        4.4,
+        3.7,
+        4.0,
+        4.1,
+        4.5,
+        4.2,
+        4.3,
+        4.6
+      ],
+      "urea nitrogen": [
+        12,
+        13,
+        14,
+        11,
+        15,
+        10,
+        16,
+        17,
+        9,
+        18
+      ],
+      "creatinine": [
+        0.6,
+        0.7,
+        0.5,
+        0.8,
+        0.9,
+        1.0,
+        0.4,
+        1.1,
+        1.2,
+        1.3
+      ],
+      "total bilirubin": [
+        0.4,
+        0.5,
+        0.3,
+        0.6,
+        0.7,
+        0.8,
+        0.2,
+        0.9,
+        1.0,
+        1.1
+      ],
+      "total cholesterol": [
+        185,
+        194,
+        170,
+        174,
+        169,
+        176,
+        180,
+        203,
+        212,
+        216
+      ],
+      "triglyceride": [
+        62,
+        70,
+        91,
+        89,
+        57,
+        66,
+        76,
+        85,
+        67,
+        83
+      ],
+      "creatinine phosphokinase": [
+        17,
+        16,
+        18,
+        13,
+        21,
+        12,
+        15,
+        11,
+        14,
+        24
+      ],
+      "blood glucose": [
+        101,
+        100,
+        92,
+        97,
+        90,
+        91,
+        95,
+        98,
+        103,
+        89
+      ],
+      "White blood cell": [
+        5.3,
+        6.5,
+        6.4,
+        5.5,
+        5.7,
+        6.3,
+        5.9,
+        6.2,
+        5.2,
+        6.8
+      ],
+      "Red blood cell": [
+        4.4,
+        4.2,
+        4.5,
+        4.3,
+        4.6,
+        4.1,
+        4.7,
+        4.0,
+        3.9,
+        4.8
+      ],
+      "Hemoglobin": [
+        12.8,
+        13.1,
+        13.0,
+        12.3,
+        12.5,
+        12.6,
+        13.3,
+        12.2,
+        12.7,
+        13.4
+      ],
+      "Hematoclit": [
+        39.1,
+        38.6,
+        37.7,
+        38.1,
+        37.2,
+        39.0,
+        39.7,
+        40.1,
+        38.4,
+        40.0
+      ],
+      "platelet": [
+        248,
+        271,
+        202,
+        240,
+        197,
+        258,
+        239,
+        242,
+        174,
+        257
+      ],
+      "prothrombin time": [
+        11.3,
+        11.4,
+        11.8,
+        11.9,
+        12.0,
+        11.6,
+        11.0,
+        11.1,
+        11.2,
+        11.7
+      ],
+      "proteinuria": [
+        "-",
+        "0",
+        "TR",
+        "30",
+        "1",
+        "2",
+        "3",
+        "100",
+        "300",
+        "-15"
+      ],
+      "Ig A": [
+        331,
+        300,
+        337,
+        243,
+        260,
+        328,
+        411,
+        200,
+        278,
+        319
+      ],
+      "Ig M": [
+        128,
+        132,
+        103,
+        81,
+        114,
+        85,
+        111,
+        124,
+        142,
+        106
+      ],
+      "C-reactive protein": [
+        "-",
+        "<0.3",
+        "<0.2",
+        "+",
+        "2+",
+        "<0.002",
+        "0.4",
+        "0.3",
+        "<0.1",
+        "3+"
+      ],
+      "Rhuematoid Factor": [
+        "-",
+        "+",
+        "2+",
+        "+-",
+        "7-"
+      ],
+      "RAHA": [
+        "<40",
+        "<20.5",
+        "<19.5",
+        "<20.0",
+        "<10",
+        "<21.3",
+        "40",
+        "<19.3",
+        "160",
+        "<20.8"
+      ],
+      "complement 3": [
+        72,
+        59,
+        52,
+        57,
+        55,
+        61,
+        67,
+        58,
+        64,
+        69
+      ],
+      "complement 4": [
+        21,
+        17,
+        24,
+        16,
+        19,
+        26,
+        22,
+        18,
+        23,
+        15
+      ],
+      "anti-ribonuclear protein": [
+        "0",
+        "negative",
+        "4",
+        "1",
+        "16",
+        "64",
+        "256",
+        "15"
+      ],
+      "anti-SM": [
+        "0",
+        "negative",
+        "1",
+        "2",
+        "8"
+      ],
+      "anti-scl70": [
+        "0",
+        "negative",
+        "4",
+        "1",
+        "16"
+      ],
+      "anti-SSA": [
+        "0",
+        "negative",
+        "16",
+        "64",
+        "1",
+        "4",
+        "256"
+      ],
+      "anti-SSB": [
+        "0",
+        "negative",
+        "32",
+        "1",
+        "2",
+        "8"
+      ],
+      "anti-centromere": [
+        "0",
+        "negative"
+      ]
+    },
+    "bm25_text": "thrombosi predict laboratori thrombosi predict laboratori id date ast glutam oxaloacet transaminas alt glutam pyruv transaminas lactat dehydrogenas alkaliphophatas total protein albumin uric acid urea nitrogen creatinin total bilirubin total cholesterol triglycerid creatinin phosphokinas blood glucos white blood cell red blood cell hemoglobin hematoclit platelet prothrombin time activ partial prothrombin time fibrinogen pic tat proteinuria ig g ig a ig m c reactiv protein rhuematoid factor raha complement complement anti ribonuclear protein anti sm anti anti ssa anti ssb anti centromer anti dna anti dna patient date proteinuria tr tr c reactiv protein rhuematoid factor raha anti ribonuclear protein negat negat anti sm negat negat anti negat negat anti ssa negat negat anti ssb negat negat anti centromer negat negat"
+  },
+  {
+    "table_id": "toxicology.atom",
+    "db": "toxicology",
+    "table": "atom",
+    "columns": [
+      "atom id",
+      "molecule id",
+      "element"
+    ],
+    "joinable_tables": [
+      "molecule",
+      "connected"
+    ],
+    "top_values": {
+      "molecule id": [
+        "TR338",
+        "TR496",
+        "TR060",
+        "TR059",
+        "TR397",
+        "TR430",
+        "TR193",
+        "TR405",
+        "TR426",
+        "TR131"
+      ],
+      "element": [
+        "h",
+        "c",
+        "o",
+        "n",
+        "cl",
+        "s",
+        "br",
+        "na",
+        "p",
+        "f"
+      ]
+    },
+    "bm25_text": "toxicolog atom toxicolog atom atom id molecul id element molecul connect molecul id element h c o n cl s br na p f h c o n cl s br na p f"
+  },
+  {
+    "table_id": "toxicology.bond",
+    "db": "toxicology",
+    "table": "bond",
+    "columns": [
+      "bond_id",
+      "molecule_id",
+      "bond_type"
+    ],
+    "joinable_tables": [
+      "molecule",
+      "connected"
+    ],
+    "top_values": {
+      "molecule_id": [
+        "TR338",
+        "TR496",
+        "TR059",
+        "TR060",
+        "TR193",
+        "TR397",
+        "TR405",
+        "TR131",
+        "TR430",
+        "TR426"
+      ],
+      "bond_type": [
+        "-",
+        "=",
+        "#"
+      ]
+    },
+    "bm25_text": "toxicolog bond toxicolog bond bond id molecul id bond type molecul connect molecul id bond type"
+  },
+  {
+    "table_id": "toxicology.connected",
+    "db": "toxicology",
+    "table": "connected",
+    "columns": [
+      "atom id",
+      "atom id 2",
+      "bond id"
+    ],
+    "joinable_tables": [
+      "bond",
+      "atom"
+    ],
+    "top_values": {
+      "atom id": [
+        "TR000_2",
+        "TR001_1",
+        "TR001_2",
+        "TR001_3",
+        "TR001_4",
+        "TR001_5",
+        "TR001_6",
+        "TR001_7",
+        "TR001_8",
+        "TR001_9"
+      ],
+      "atom id 2": [
+        "TR000_2",
+        "TR001_1",
+        "TR001_2",
+        "TR001_3",
+        "TR001_4",
+        "TR001_5",
+        "TR001_6",
+        "TR001_7",
+        "TR001_8",
+        "TR001_9"
+      ],
+      "bond id": [
+        "TR000_1_2",
+        "TR000_2_3",
+        "TR000_2_4",
+        "TR000_2_5",
+        "TR001_10_11",
+        "TR001_1_12",
+        "TR001_1_2",
+        "TR001_1_7",
+        "TR001_1_8",
+        "TR001_2_14"
+      ]
+    },
+    "bm25_text": "toxicolog connect toxicolog connect atom id atom id bond id bond atom atom id atom id bond id"
+  },
+  {
+    "table_id": "toxicology.molecule",
+    "db": "toxicology",
+    "table": "molecule",
+    "columns": [
+      "molecule id",
+      "label"
+    ],
+    "joinable_tables": [
+      "atom",
+      "bond"
+    ],
+    "top_values": {
+      "label": [
+        "-",
+        "+"
+      ]
+    },
+    "bm25_text": "toxicolog molecul toxicolog molecul molecul id label atom bond label"
+  },
+  {
+    "table_id": "student_club.Event",
+    "db": "student_club",
+    "table": "Event",
+    "columns": [
+      "event id",
+      "event name",
+      "event date",
+      "type",
+      "notes",
+      "location",
+      "status"
+    ],
+    "joinable_tables": [
+      "Attendance",
+      "Budget"
+    ],
+    "top_values": {
+      "type": [
+        "Meeting",
+        "Guest Speaker",
+        "Game",
+        "Community Service",
+        "Social",
+        "Budget",
+        "Election",
+        "Registration"
+      ],
+      "location": [
+        "MU 215",
+        "Campus Soccer/Lacrosse stadium",
+        "100 W. Main Street",
+        "900 E. Washington St.",
+        "Campus Football stadium",
+        "Conference Room BA 452",
+        "1308 106th Ave.",
+        "258 S. Maple St.",
+        "45 N. Smith St.",
+        "Campus Baseball Stadium"
+      ],
+      "status": [
+        "Closed",
+        "Open",
+        "Planning"
+      ]
+    },
+    "bm25_text": "student club event student club event event id event name event date type note locat status attend budget type meet guest speaker game communiti servic social budget elect registr meet guest speaker game communiti servic social budget elect registr locat mu campus soccer lacross stadium w main street e washington st campus footbal stadium confer room ba ave s mapl st n smith st campus basebal stadium mu campus soccer lacross stadium w main street e washington st campus footbal stadium confer room ba ave s mapl st n smith st campus basebal stadium status close open plan close open plan"
+  },
+  {
+    "table_id": "student_club.Major",
+    "db": "student_club",
+    "table": "Major",
+    "columns": [
+      "major id",
+      "major name",
+      "department",
+      "college"
+    ],
+    "joinable_tables": [
+      "Member"
+    ],
+    "top_values": {
+      "department": [
+        "School of Applied Sciences, Technology and Education",
+        "Languages, Philosophy and Communication Studies Department",
+        "Plants, Soils, and Climate Department",
+        "Sociology, Social Work and Anthropology Department",
+        "Wildland Resources Department",
+        "Applied Economics Department",
+        "Art and Design Department",
+        "Chemistry and Biochemistry Department",
+        "Environment and Society Department",
+        "Mathematics and Statistics Department"
+      ],
+      "college": [
+        "College of Agriculture and Applied Sciences",
+        "College of Humanities and Social Sciences",
+        "College of Education & Human Services",
+        "College of Science",
+        "College of Natural Resources",
+        "School of Business",
+        "College of Engineering",
+        "College of the Arts"
+      ]
+    },
+    "bm25_text": "student club major student club major major id major name depart colleg member depart school of appli scienc technolog and educ languag philosophi and communic studi depart plant soil and climat depart sociolog social work and anthropolog depart wildland resourc depart appli econom depart art and design depart chemistri and biochemistri depart environ and societi depart mathemat and statist depart school of appli scienc technolog and educ languag philosophi and communic studi depart plant soil and climat depart sociolog social work and anthropolog depart wildland resourc depart appli econom depart art and design depart chemistri and biochemistri depart environ and societi depart mathemat and statist depart colleg colleg of agricultur and appli scienc colleg of human and social scienc colleg of educ human servic colleg of scienc colleg of natur resourc school of busi colleg of engin colleg of the art colleg of agricultur and appli scienc colleg of human and social scienc colleg of educ human servic colleg of scienc colleg of natur resourc school of busi colleg of engin colleg of the art"
+  },
+  {
+    "table_id": "student_club.Zip Code",
+    "db": "student_club",
+    "table": "Zip Code",
+    "columns": [
+      "zip code",
+      "type",
+      "city",
+      "county",
+      "state",
+      "short state"
+    ],
+    "joinable_tables": [
+      "Member"
+    ],
+    "top_values": {
+      "type": [
+        "Standard",
+        "PO Box",
+        "Unique"
+      ],
+      "city": [
+        "Washington",
+        "Houston",
+        "New York",
+        "El Paso",
+        "Dallas",
+        "Atlanta",
+        "Springfield",
+        "Miami",
+        "Sacramento",
+        "Los Angeles"
+      ],
+      "county": [
+        "Los Angeles County",
+        "Jefferson County",
+        "Washington County",
+        "Montgomery County",
+        "Orange County",
+        "Franklin County",
+        "Jackson County",
+        "District of Columbia",
+        "Wayne County",
+        "Harris County"
+      ],
+      "state": [
+        "Texas",
+        "California",
+        "Pennsylvania",
+        "New York",
+        "Illinois",
+        "Florida",
+        "Ohio",
+        "Virginia",
+        "Missouri",
+        "Michigan"
+      ],
+      "short state": [
+        "TX",
+        "CA",
+        "PA",
+        "NY",
+        "IL",
+        "FL",
+        "OH",
+        "VA",
+        "MO",
+        "MI"
+      ]
+    },
+    "bm25_text": "student club zip code student club zip code zip code type citi counti state short state member type standard po box uniqu standard po box uniqu citi washington houston new york el paso dalla atlanta springfield miami sacramento los angel washington houston new york el paso dalla atlanta springfield miami sacramento los angel counti los angel counti jefferson counti washington counti montgomeri counti orang counti franklin counti jackson counti district of columbia wayn counti harri counti los angel counti jefferson counti washington counti montgomeri counti orang counti franklin counti jackson counti district of columbia wayn counti harri counti state texa california pennsylvania new york illinoi florida ohio virginia missouri michigan texa california pennsylvania new york illinoi florida ohio virginia missouri michigan short state tx ca pa ny il fl oh va mo mi tx ca pa ny il fl oh va mo mi"
+  },
+  {
+    "table_id": "student_club.Attendance",
+    "db": "student_club",
+    "table": "Attendance",
+    "columns": [
+      "link to event",
+      "link to member"
+    ],
+    "joinable_tables": [
+      "Member",
+      "Event"
+    ],
+    "top_values": {
+      "link to event": [
+        "recLKj8BbTNqxFbTb",
+        "recykdvf4LgsyA3wZ",
+        "recEVTik3MlqbvLFi",
+        "recI43CzsZ0Q625ma",
+        "reciRZdAqNIKuMC96",
+        "reczhS8wix6Kzbp9P",
+        "recmbOVHSyzXQZpQr",
+        "recggMW2eyCYceNcy",
+        "rec5XDvJLyxDsGZWc",
+        "rec2N69DMcrqN9PJC"
+      ],
+      "link to member": [
+        "recD078PnS3x2doBe",
+        "recro8T1MPMwRadVH",
+        "rec4BLdZHS2Blfp4v",
+        "recEFd8s6pkrTt4Pz",
+        "recTjHY5xXhvkCdVT",
+        "recZ4PkGERzl9ziHO",
+        "recP6DJPyi5donvXL",
+        "rec28ORZgcm1dtqBZ",
+        "rec75vvFxgYtHmqxY",
+        "recT92PyyZCGq1R68"
+      ]
+    },
+    "bm25_text": "student club attend student club attend link to event link to member member event link to event recmbovhsyzxqzpqr recmbovhsyzxqzpqr link to member"
+  },
+  {
+    "table_id": "student_club.Budget",
+    "db": "student_club",
+    "table": "Budget",
+    "columns": [
+      "budget id",
+      "category",
+      "spent",
+      "remaining",
+      "amount",
+      "event status",
+      "link to event"
+    ],
+    "joinable_tables": [
+      "Event",
+      "Expense"
+    ],
+    "top_values": {
+      "category": [
+        "Food",
+        "Advertisement",
+        "Parking",
+        "Speaker Gifts",
+        "Club T-Shirts"
+      ],
+      "spent": [
+        0.0,
+        20.2,
+        54.25,
+        6.0,
+        13.45,
+        67.81,
+        101.94,
+        121.14,
+        122.06,
+        122.33
+      ],
+      "remaining": [
+        150.0,
+        10.0,
+        20.0,
+        25.0,
+        55.0,
+        75.0,
+        -0.199999999999999,
+        0.75,
+        4.0,
+        11.55
+      ],
+      "amount": [
+        150,
+        10,
+        20,
+        25,
+        55,
+        75,
+        155,
+        300,
+        350
+      ],
+      "event status": [
+        "Open",
+        "Closed",
+        "Planning"
+      ],
+      "link to event": [
+        "rec2mJrCofveboaz6",
+        "recAlAwtBZ0Fqbr5K",
+        "recEVTik3MlqbvLFi",
+        "recHaMmaKyfktt5fW",
+        "recI43CzsZ0Q625ma",
+        "reciRZdAqNIKuMC96",
+        "recs4x1BYWAsU2SKg",
+        "rec0Si5cQ4rJRVzd6",
+        "recY3Yesu24bRK7tr",
+        "recerGvehRmgO0obW"
+      ]
+    },
+    "bm25_text": "student club budget student club budget budget id categori spent remain amount event status link to event event expens categori food advertis park speaker gift club t shirt food advertis park speaker gift club t shirt event status open close plan open close plan link to event"
+  },
+  {
+    "table_id": "student_club.Expense",
+    "db": "student_club",
+    "table": "Expense",
+    "columns": [
+      "expense id",
+      "expense description",
+      "expense date",
+      "cost",
+      "approved",
+      "link to member",
+      "link to budget"
+    ],
+    "joinable_tables": [
+      "Member",
+      "Budget"
+    ],
+    "top_values": {
+      "expense description": [
+        "Pizza",
+        "Posters",
+        "Water, chips, cookies",
+        "Parking",
+        "Water, Cookies",
+        "Travel Mug",
+        "Alumni Glass",
+        "Bakery - Donuts, muffins",
+        "Club shirts",
+        "Post Cards, Posters"
+      ],
+      "approved": [
+        "true"
+      ],
+      "link to member": [
+        "rec4BLdZHS2Blfp4v",
+        "recD078PnS3x2doBe",
+        "recro8T1MPMwRadVH"
+      ]
+    },
+    "bm25_text": "student club expens student club expens expens id expens descript expens date cost approv link to member link to budget member budget expens descript pizza poster water chip cooki park water cooki travel mug alumni glass bakeri donut muffin club shirt post card poster pizza poster water chip cooki park water cooki travel mug alumni glass bakeri donut muffin club shirt post card poster approv true true link to member"
+  },
+  {
+    "table_id": "student_club.Income",
+    "db": "student_club",
+    "table": "Income",
+    "columns": [
+      "income id",
+      "date received",
+      "amount",
+      "source",
+      "notes",
+      "link to member"
+    ],
+    "joinable_tables": [
+      "Member"
+    ],
+    "top_values": {
+      "amount": [
+        50,
+        1000,
+        200,
+        3000
+      ],
+      "source": [
+        "Dues",
+        "Fundraising",
+        "School Appropration",
+        "Sponsorship"
+      ]
+    },
+    "bm25_text": "student club incom student club incom incom id date receiv amount sourc note link to member member sourc due fundrais school appropr sponsorship due fundrais school appropr sponsorship"
+  },
+  {
+    "table_id": "student_club.Member",
+    "db": "student_club",
+    "table": "Member",
+    "columns": [
+      "member id",
+      "first name",
+      "last name",
+      "email",
+      "position",
+      "t_shirt_size",
+      "phone",
+      "zip",
+      "link to major"
+    ],
+    "joinable_tables": [
+      "Attendance",
+      "Expense",
+      "Income",
+      "Zip Code",
+      "Major"
+    ],
+    "top_values": {
+      "position": [
+        "Member",
+        "Inactive",
+        "President",
+        "Secretary",
+        "Treasurer",
+        "Vice President"
+      ],
+      "t_shirt_size": [
+        "Large",
+        "Medium",
+        "X-Large",
+        "Small"
+      ]
+    },
+    "bm25_text": "student club member student club member member id first name last name email posit t shirt size phone zip link to major attend expens incom zip code major posit member inact presid secretari treasur vice presid member inact presid secretari treasur vice presid t shirt size larg medium x larg small larg medium x larg small"
+  },
+  {
+    "table_id": "superhero.alignment",
+    "db": "superhero",
+    "table": "alignment",
+    "columns": [
+      "id",
+      "alignment"
+    ],
+    "joinable_tables": [
+      "superhero"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero align superhero align id align superhero"
+  },
+  {
+    "table_id": "superhero.attribute",
+    "db": "superhero",
+    "table": "attribute",
+    "columns": [
+      "id",
+      "attribute name"
+    ],
+    "joinable_tables": [
+      "hero attribute"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero attribut superhero attribut id attribut name hero attribut"
+  },
+  {
+    "table_id": "superhero.colour",
+    "db": "superhero",
+    "table": "colour",
+    "columns": [
+      "id",
+      "colour"
+    ],
+    "joinable_tables": [
+      "superhero"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero colour superhero colour id colour superhero"
+  },
+  {
+    "table_id": "superhero.gender",
+    "db": "superhero",
+    "table": "gender",
+    "columns": [
+      "id",
+      "gender"
+    ],
+    "joinable_tables": [
+      "superhero"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero gender superhero gender id gender superhero"
+  },
+  {
+    "table_id": "superhero.publisher",
+    "db": "superhero",
+    "table": "publisher",
+    "columns": [
+      "id",
+      "publisher_name"
+    ],
+    "joinable_tables": [
+      "superhero"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero publish superhero publish id publish name superhero"
+  },
+  {
+    "table_id": "superhero.race",
+    "db": "superhero",
+    "table": "race",
+    "columns": [
+      "id",
+      "race"
+    ],
+    "joinable_tables": [
+      "superhero"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero race superhero race id race superhero"
+  },
+  {
+    "table_id": "superhero.superhero",
+    "db": "superhero",
+    "table": "superhero",
+    "columns": [
+      "id",
+      "superhero name",
+      "full name",
+      "gender id",
+      "eye colour id",
+      "hair colour id",
+      "skin colour id",
+      "race id",
+      "publisher id",
+      "alignment id",
+      "height cm",
+      "weight kg"
+    ],
+    "joinable_tables": [
+      "colour",
+      "race",
+      "publisher",
+      "gender",
+      "alignment",
+      "hero attribute",
+      "hero power"
+    ],
+    "top_values": {
+      "gender id": [
+        1,
+        2,
+        3
+      ],
+      "eye colour id": [
+        7,
+        1,
+        9,
+        14,
+        23,
+        4,
+        33,
+        31,
+        13,
+        16
+      ],
+      "hair colour id": [
+        1,
+        4,
+        6,
+        9,
+        23,
+        31,
+        3,
+        14,
+        29,
+        13
+      ],
+      "skin colour id": [
+        1,
+        14,
+        23,
+        7,
+        31,
+        28,
+        13,
+        22,
+        12,
+        21
+      ],
+      "race id": [
+        1,
+        24,
+        42,
+        21,
+        13,
+        28,
+        5,
+        2,
+        52,
+        37
+      ],
+      "publisher id": [
+        13,
+        4,
+        15,
+        3,
+        1,
+        5,
+        10,
+        20,
+        7,
+        21
+      ],
+      "alignment id": [
+        1,
+        2,
+        3
+      ],
+      "height cm": [
+        0,
+        183,
+        188,
+        178,
+        180,
+        185,
+        175,
+        170,
+        168,
+        165
+      ],
+      "weight kg": [
+        0,
+        79,
+        54,
+        81,
+        90,
+        52,
+        59,
+        86,
+        101,
+        61
+      ]
+    },
+    "bm25_text": "superhero superhero superhero superhero id superhero name full name gender id eye colour id hair colour id skin colour id race id publish id align id height cm weight kg colour race publish gender align hero attribut hero power"
+  },
+  {
+    "table_id": "superhero.hero attribute",
+    "db": "superhero",
+    "table": "hero attribute",
+    "columns": [
+      "hero id",
+      "attribute id",
+      "attribute value"
+    ],
+    "joinable_tables": [
+      "superhero",
+      "attribute"
+    ],
+    "top_values": {
+      "hero id": [
+        1,
+        10,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        107,
+        108
+      ],
+      "attribute id": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "attribute value": [
+        35,
+        25,
+        85,
+        100,
+        50,
+        10,
+        15,
+        80,
+        30,
+        45
+      ]
+    },
+    "bm25_text": "superhero hero attribut superhero hero attribut hero id attribut id attribut valu superhero attribut"
+  },
+  {
+    "table_id": "superhero.superpower",
+    "db": "superhero",
+    "table": "superpower",
+    "columns": [
+      "id",
+      "power name"
+    ],
+    "joinable_tables": [
+      "hero power"
+    ],
+    "top_values": {},
+    "bm25_text": "superhero superpow superhero superpow id power name hero power"
+  },
+  {
+    "table_id": "superhero.hero power",
+    "db": "superhero",
+    "table": "hero power",
+    "columns": [
+      "hero id",
+      "power id"
+    ],
+    "joinable_tables": [
+      "superpower",
+      "superhero"
+    ],
+    "top_values": {
+      "hero id": [
+        637,
+        21,
+        424,
+        447,
+        441,
+        160,
+        161,
+        676,
+        279,
+        673
+      ],
+      "power id": [
+        18,
+        26,
+        6,
+        31,
+        1,
+        9,
+        2,
+        60,
+        17,
+        22
+      ]
+    },
+    "bm25_text": "superhero hero power superhero hero power hero id power id superpow superhero"
+  },
+  {
+    "table_id": "codebase_community.badges",
+    "db": "codebase_community",
+    "table": "badges",
+    "columns": [
+      "Id",
+      "User Id",
+      "Name",
+      "Date"
+    ],
+    "joinable_tables": [
+      "users"
+    ],
+    "top_values": {
+      "User Id": [
+        919,
+        805,
+        930,
+        7290,
+        183,
+        4856,
+        253,
+        159,
+        686,
+        2970
+      ],
+      "Name": [
+        "Student",
+        "Supporter",
+        "Editor",
+        "Scholar",
+        "Teacher",
+        "Popular Question",
+        "Autobiographer",
+        "Tumbleweed",
+        "Nice Answer",
+        "Yearling"
+      ]
+    },
+    "bm25_text": "codebas communiti badg codebas communiti badg id user id name date user name student support editor scholar teacher popular question autobiograph tumblewe nice answer yearl student support editor scholar teacher popular question autobiograph tumblewe nice answer yearl"
+  },
+  {
+    "table_id": "codebase_community.comments",
+    "db": "codebase_community",
+    "table": "comments",
+    "columns": [
+      "Id",
+      "Post Id",
+      "Score",
+      "Text",
+      "Creation Date",
+      "User Id",
+      "User Display Name"
+    ],
+    "joinable_tables": [
+      "users",
+      "posts"
+    ],
+    "top_values": {
+      "Post Id": [
+        31038,
+        2365,
+        92246,
+        6605,
+        73613,
+        30160,
+        86015,
+        88453,
+        103062,
+        62237
+      ],
+      "Score": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "User Id": [
+        919,
+        805,
+        7290,
+        686,
+        2970,
+        11032,
+        930,
+        22047,
+        3277,
+        4856
+      ],
+      "User Display Name": [
+        "user10525",
+        "user28",
+        "user25658",
+        "user13253",
+        "user5644",
+        "user14281",
+        "DBR",
+        "user14386",
+        "user8968",
+        "user16603"
+      ]
+    },
+    "bm25_text": "codebas communiti comment codebas communiti comment id post id score text creation date user id user display name user post user display name dbr dbr"
+  },
+  {
+    "table_id": "codebase_community.post History",
+    "db": "codebase_community",
+    "table": "post History",
+    "columns": [
+      "Id",
+      "Post History Type Id",
+      "Post Id",
+      "Revision GUID",
+      "Creation Date",
+      "User Id",
+      "Text",
+      "Comment",
+      "User Display Name"
+    ],
+    "joinable_tables": [
+      "users",
+      "posts"
+    ],
+    "top_values": {
+      "Post History Type Id": [
+        2,
+        5,
+        3,
+        1,
+        4,
+        6,
+        25,
+        24,
+        16,
+        10
+      ],
+      "Post Id": [
+        12670,
+        64147,
+        87242,
+        2917,
+        11887,
+        25632,
+        81932,
+        84044,
+        92773,
+        44888
+      ],
+      "User Id": [
+        7290,
+        919,
+        805,
+        88,
+        930,
+        -1,
+        183,
+        22047,
+        686,
+        32036
+      ],
+      "Comment": [
+        "",
+        "edited title",
+        "edited tags",
+        "edited body",
+        "added 1 characters in body",
+        "added 2 characters in body",
+        "edited tags; edited title",
+        "deleted 1 characters in body",
+        "added 4 characters in body",
+        "edited body; edited title"
+      ],
+      "User Display Name": [
+        "",
+        "user10525",
+        "user28",
+        "user25658",
+        "user5644",
+        "user13253",
+        "user14281",
+        "DBR",
+        "user8968",
+        "user16603"
+      ]
+    },
+    "bm25_text": "codebas communiti post histori codebas communiti post histori id post histori type id post id revis guid creation date user id text comment user display name user post comment edit titl edit tag edit bodi ad charact in bodi ad charact in bodi edit tag edit titl delet charact in bodi ad charact in bodi edit bodi edit titl edit titl edit tag edit bodi ad charact in bodi ad charact in bodi edit tag edit titl delet charact in bodi ad charact in bodi edit bodi edit titl user display name dbr dbr"
+  },
+  {
+    "table_id": "codebase_community.post Links",
+    "db": "codebase_community",
+    "table": "post Links",
+    "columns": [
+      "Id",
+      "Creation Date",
+      "Post Id",
+      "Related Post Id",
+      "Link Type Id"
+    ],
+    "joinable_tables": [
+      "posts"
+    ],
+    "top_values": {
+      "Related Post Id": [
+        2492,
+        20836,
+        20523,
+        4220,
+        12262,
+        2691,
+        14500,
+        31,
+        51718,
+        298
+      ],
+      "Link Type Id": [
+        1,
+        3
+      ]
+    },
+    "bm25_text": "codebas communiti post link codebas communiti post link id creation date post id relat post id link type id post"
+  },
+  {
+    "table_id": "codebase_community.posts",
+    "db": "codebase_community",
+    "table": "posts",
+    "columns": [
+      "Id",
+      "Post Type Id",
+      "Accepted Answer Id",
+      "Creation Date",
+      "Score",
+      "View Count",
+      "Body",
+      "Owner User Id",
+      "Last Activity Date",
+      "Title",
+      "Tags",
+      "Answer Count",
+      "Comment Count",
+      "Favorite Count",
+      "Last Editor User Id",
+      "Last Edit Date",
+      "Community Owned Date",
+      "ParentId",
+      "Closed Date",
+      "Owner Display Name",
+      "Last Editor Display Name"
+    ],
+    "joinable_tables": [
+      "comments",
+      "post History",
+      "post Links",
+      "users",
+      "tags",
+      "votes"
+    ],
+    "top_values": {
+      "Post Type Id": [
+        2,
+        1,
+        5,
+        4,
+        6,
+        3,
+        7
+      ],
+      "Score": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "View Count": [
+        31,
+        38,
+        27,
+        37,
+        24,
+        36,
+        30,
+        33,
+        25,
+        29
+      ],
+      "Owner User Id": [
+        805,
+        686,
+        919,
+        11032,
+        7290,
+        4505,
+        183,
+        930,
+        4253,
+        3382
+      ],
+      "Answer Count": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "Comment Count": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "Favorite Count": [
+        1,
+        2,
+        3,
+        0,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "Last Editor User Id": [
+        7290,
+        88,
+        805,
+        930,
+        919,
+        22047,
+        183,
+        32036,
+        17230,
+        2116
+      ],
+      "Last Editor Display Name": [
+        "user10525",
+        "user28",
+        "user5644",
+        "user25658",
+        "user7997",
+        "user13253",
+        "user35349",
+        "user9410",
+        "user14281",
+        "user14071"
+      ]
+    },
+    "bm25_text": "codebas communiti post codebas communiti post id post type id accept answer id creation date score view count bodi owner user id last activ date titl tag answer count comment count favorit count last editor user id last edit date communiti own date parentid close date owner display name last editor display name comment post histori post link user tag vote last editor display name"
+  },
+  {
+    "table_id": "codebase_community.tags",
+    "db": "codebase_community",
+    "table": "tags",
+    "columns": [
+      "Id",
+      "Tag Name",
+      "Count",
+      "Excerpt Post Id",
+      "Wiki Post Id"
+    ],
+    "joinable_tables": [
+      "posts"
+    ],
+    "top_values": {
+      "Count": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "bm25_text": "codebas communiti tag codebas communiti tag id tag name count excerpt post id wiki post id post"
+  },
+  {
+    "table_id": "codebase_community.users",
+    "db": "codebase_community",
+    "table": "users",
+    "columns": [
+      "Id",
+      "Reputation",
+      "Creation Date",
+      "Display Name",
+      "Last Access Date",
+      "Website Url",
+      "Location",
+      "About Me",
+      "Views",
+      "UpVotes",
+      "DownVotes",
+      "Account Id",
+      "Age",
+      "Profile Image Url"
+    ],
+    "joinable_tables": [
+      "badges",
+      "comments",
+      "post History",
+      "posts",
+      "votes"
+    ],
+    "top_values": {
+      "Reputation": [
+        1,
+        101,
+        6,
+        11,
+        16,
+        21,
+        13,
+        26,
+        8,
+        111
+      ],
+      "Location": [
+        "United States",
+        "London, United Kingdom",
+        "Germany",
+        "United Kingdom",
+        "India",
+        "San Francisco, CA",
+        "New York, United States",
+        "Seattle, WA",
+        "Bangalore, India",
+        "California"
+      ],
+      "Views": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "UpVotes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "DownVotes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "Age": [
+        28,
+        27,
+        29,
+        25,
+        26,
+        31,
+        24,
+        32,
+        30,
+        33
+      ]
+    },
+    "bm25_text": "codebas communiti user codebas communiti user id reput creation date display name last access date websit url locat about me view upvot downvot account id age profil imag url badg comment post histori post vote locat unit state london unit kingdom germani unit kingdom india san francisco ca new york unit state seattl wa bangalor india california unit state london unit kingdom germani unit kingdom india san francisco ca new york unit state seattl wa bangalor india california"
+  },
+  {
+    "table_id": "codebase_community.votes",
+    "db": "codebase_community",
+    "table": "votes",
+    "columns": [
+      "Id",
+      "Post Id",
+      "Vote Type Id",
+      "Creation Date",
+      "User Id",
+      "Bounty Amount"
+    ],
+    "joinable_tables": [
+      "users",
+      "posts"
+    ],
+    "top_values": {
+      "Post Id": [
+        7224,
+        726,
+        730,
+        22,
+        5,
+        2691,
+        423,
+        7,
+        4551,
+        3
+      ],
+      "Vote Type Id": [
+        2,
+        5,
+        1,
+        3,
+        16,
+        15,
+        8,
+        9,
+        11,
+        10
+      ],
+      "Creation Date": [
+        "2010-07-20",
+        "2010-07-27",
+        "2010-07-19",
+        "2010-07-21",
+        "2010-10-12",
+        "2010-11-05",
+        "2010-10-20",
+        "2011-04-06",
+        "2010-07-28",
+        "2010-10-21"
+      ],
+      "User Id": [
+        253,
+        3911,
+        71,
+        439,
+        251,
+        930,
+        22,
+        595,
+        2116,
+        442
+      ],
+      "Bounty Amount": [
+        50,
+        100,
+        25,
+        150,
+        0,
+        200
+      ]
+    },
+    "bm25_text": "codebas communiti vote codebas communiti vote id post id vote type id creation date user id bounti amount user post creation date"
+  }
+]
