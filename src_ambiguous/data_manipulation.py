@@ -469,7 +469,7 @@ def create_benchmark_doc(dataset_path):
     Returns:
         The path of the generated JSON file.
     """
-    max_top_values = 10
+    max_top_values = 50
     max_distinct_ratio = 0.50
 
     def resolve_dataset_dir(path_value):
@@ -769,23 +769,25 @@ def create_ambiguous_benchmark(
     distinct_ratio_threshold: float = 0.30,
 ):
     """
-    Creates a Spider/BIRD-like benchmark with two split SQLite clones for each
+    Creates a Spider/BIRD-like benchmark with three split SQLite clones for each
     database that has a suitable low-cardinality text column referenced by SQL.
 
     The selected column is chosen by counting SQL equality/IN predicates whose
     literal values match normalized database values and whose normalized length
-    is greater than 3 characters. For each duplicated DB, `<db_id>_1` keeps only
-    rows with the primary split value in the selected table, while `<db_id>_2`
-    keeps all remaining selected-table rows. Child rows that would reference
-    removed parent rows are removed recursively according to `dev_tables.json`
-    foreign keys. Sample assignment is intentionally strict: a sample must
-    explicitly reference the split column in its SQL with a value longer than 3
-    characters, then the SQL query is executed on the original DB and both
-    clones; the sample is kept only when exactly one clone preserves the original
-    query result.
+    is greater than 3 characters. A split column must have at least 3 distinct
+    usable normalized values. For each duplicated DB, `<db_id>_1` keeps rows
+    with the primary split value, `<db_id>_2` keeps rows with the secondary split
+    value, and `<db_id>_3` keeps all remaining selected-table rows. Child rows
+    that would reference removed parent rows are removed recursively according
+    to `dev_tables.json` foreign keys. Sample assignment is intentionally strict:
+    a sample must explicitly reference the split column in its SQL with a value
+    longer than 3 characters, then the SQL query is executed on the original DB
+    and all clones; the sample is kept only when exactly one clone preserves the
+    original query result.
     """
 
     min_split_value_chars = 4
+    min_split_distinct_values = 3
 
     def resolve_dataset_dir(path_value):
         raw_path = getattr(path_value, "value", path_value)
@@ -830,6 +832,31 @@ def create_ambiguous_benchmark(
             except UnicodeDecodeError:
                 return value.hex()
         return value
+
+    def normalized_db_value(raw_value):
+        return normalize_and_stem_text(json_safe_value(raw_value))
+
+    def build_clone_split_rules(split_info):
+        primary_value = split_info["primary_split_value"]
+        secondary_value = split_info["secondary_split_value"]
+
+        return {
+            1: {
+                "kind": "primary_value",
+                "keep_values": [primary_value],
+                "excluded_values": [],
+            },
+            2: {
+                "kind": "secondary_value",
+                "keep_values": [secondary_value],
+                "excluded_values": [],
+            },
+            3: {
+                "kind": "remaining_values",
+                "keep_values": [],
+                "excluded_values": [primary_value, secondary_value],
+            },
+        }
 
     def sql_field_name(sample):
         if "SQL" in sample:
@@ -1102,8 +1129,8 @@ def create_ambiguous_benchmark(
                         value for value in normalized_counts
                         if is_usable_split_value(value)
                     }
-                    if len(usable_normalized_values) <= 1:
-                        candidate_stats["short_value_filtered_candidates"] += 1
+                    if len(usable_normalized_values) < min_split_distinct_values:
+                        candidate_stats["insufficient_usable_value_candidates"] += 1
                         continue
 
                     key = candidate_key(table_name, column_name)
@@ -1128,8 +1155,8 @@ def create_ambiguous_benchmark(
         candidates, candidate_stats = get_candidate_columns(sqlite_path, db_schema)
 
         if not candidates:
-            if candidate_stats["short_value_filtered_candidates"]:
-                return None, "no_low_cardinality_text_candidate_with_two_long_values"
+            if candidate_stats["insufficient_usable_value_candidates"]:
+                return None, "no_low_cardinality_text_candidate_with_three_usable_values"
             return None, "no_low_cardinality_text_candidate"
 
         usage = {
@@ -1231,6 +1258,10 @@ def create_ambiguous_benchmark(
             return None, "selected_candidate_has_no_secondary_value"
 
         raw_values_by_normalized = selected_candidate["raw_values_by_normalized"]
+        remaining_values = [
+            value for value in db_ordered_values
+            if value not in {primary_value, secondary_value}
+        ]
 
         return {
             "candidate_key": best_key,
@@ -1241,6 +1272,8 @@ def create_ambiguous_benchmark(
             "raw_distinct_count": selected_candidate["raw_distinct_count"],
             "distinct_ratio": selected_candidate["distinct_ratio"],
             "min_split_value_chars": min_split_value_chars,
+            "min_split_distinct_values": min_split_distinct_values,
+            "usable_distinct_count": len(usable_values),
             "sql_sample_hits": selected_usage["sample_hits"],
             "sql_total_mentions": sum(sql_value_mentions.values()),
             "sql_value_mentions": dict(sql_value_mentions),
@@ -1248,6 +1281,15 @@ def create_ambiguous_benchmark(
             "primary_split_raw_values": raw_values_by_normalized[primary_value],
             "secondary_split_value": secondary_value,
             "secondary_split_raw_values": raw_values_by_normalized[secondary_value],
+            "remaining_split_value_count": len(remaining_values),
+            "remaining_split_values_preview": [
+                {
+                    "normalized_value": value,
+                    "frequency": db_value_counts[value],
+                    "raw_values": raw_values_by_normalized[value],
+                }
+                for value in remaining_values[:10]
+            ],
             "top_db_values": [
                 {
                     "normalized_value": value,
@@ -1319,11 +1361,10 @@ def create_ambiguous_benchmark(
         ).fetchall()
         return {rowid: value for rowid, value in rows}
 
-    def build_allowed_rowids(sqlite_path, db_schema, split_info, keep_primary_value):
+    def build_allowed_rowids(sqlite_path, db_schema, split_info, clone_rule):
         table_names = db_schema.get("table_names_original", [])
         selected_table = split_info["table_name"]
         selected_column = split_info["column_name"]
-        primary_value = split_info["primary_split_value"]
         value_cache = {}
 
         connection = sqlite3.connect(sqlite_path)
@@ -1341,18 +1382,23 @@ def create_ambiguous_benchmark(
                 selected_table,
                 selected_column,
             )
-            primary_rowids = {
-                rowid
-                for rowid, raw_value in selected_values.items()
-                if normalize_and_stem_text(json_safe_value(raw_value)) == primary_value
-            }
 
-            if keep_primary_value:
-                allowed_rowids[selected_table] = primary_rowids
+            keep_values = set(clone_rule["keep_values"])
+            excluded_values = set(clone_rule["excluded_values"])
+            if keep_values:
+                selected_rowids = {
+                    rowid
+                    for rowid, raw_value in selected_values.items()
+                    if normalized_db_value(raw_value) in keep_values
+                }
             else:
-                allowed_rowids[selected_table] = (
-                    all_rowids[selected_table] - primary_rowids
-                )
+                selected_rowids = {
+                    rowid
+                    for rowid in all_rowids[selected_table]
+                    if normalized_db_value(selected_values.get(rowid)) not in excluded_values
+                }
+
+            allowed_rowids[selected_table] = selected_rowids
 
             def cached_values(table_name, column_name):
                 cache_key = (table_name, column_name)
@@ -1401,7 +1447,7 @@ def create_ambiguous_benchmark(
             return allowed_rowids, {
                 table_name: len(rowids)
                 for table_name, rowids in all_rowids.items()
-            }, len(primary_rowids)
+            }, len(selected_rowids)
         finally:
             connection.close()
 
@@ -1452,14 +1498,14 @@ def create_ambiguous_benchmark(
 
         return table_counts, foreign_key_check_rows, foreign_key_check_error
 
-    def create_filtered_clone(source_sqlite_path, clone_sqlite_path, db_schema, split_info, keep_primary_value):
+    def create_filtered_clone(source_sqlite_path, clone_sqlite_path, db_schema, split_info, clone_rule):
         shutil.copy2(source_sqlite_path, clone_sqlite_path)
 
-        allowed_rowids, original_counts, primary_row_count = build_allowed_rowids(
+        allowed_rowids, original_counts, selected_table_row_count = build_allowed_rowids(
             source_sqlite_path,
             db_schema,
             split_info,
-            keep_primary_value,
+            clone_rule,
         )
         table_counts, foreign_key_check_rows, foreign_key_check_error = apply_allowed_rowids(
             clone_sqlite_path,
@@ -1469,7 +1515,10 @@ def create_ambiguous_benchmark(
         )
 
         return {
-            "primary_value_row_count": primary_row_count,
+            "split_kind": clone_rule["kind"],
+            "split_keep_values": clone_rule["keep_values"],
+            "split_excluded_values": clone_rule["excluded_values"],
+            "selected_table_row_count": selected_table_row_count,
             "table_counts": table_counts,
             "foreign_key_check": [
                 list(row)
@@ -1564,35 +1613,45 @@ def create_ambiguous_benchmark(
         sql_query = sample[sql_field_name(sample)]
         order_sensitive = query_is_order_sensitive(sql_query)
         original_result = execute_sql(source_sqlite_path, sql_query)
-        clone_1_result = execute_sql(clone_paths[1], sql_query)
-        clone_2_result = execute_sql(clone_paths[2], sql_query)
+        clone_results = {
+            clone_number: execute_sql(clone_path, sql_query)
+            for clone_number, clone_path in sorted(clone_paths.items())
+        }
 
         # A clone is valid for this sample only if it preserves the original answer.
         matches_original = {
-            1: results_match(original_result, clone_1_result, order_sensitive),
-            2: results_match(original_result, clone_2_result, order_sensitive),
+            clone_number: results_match(original_result, clone_result, order_sensitive)
+            for clone_number, clone_result in clone_results.items()
         }
+        matching_clones = [
+            clone_number
+            for clone_number, matches in matches_original.items()
+            if matches
+        ]
 
-        if matches_original[1] and not matches_original[2]:
-            return 1, "clone_1_matches_original", None
-        if matches_original[2] and not matches_original[1]:
-            return 2, "clone_2_matches_original", None
+        if len(matching_clones) == 1:
+            clone_number = matching_clones[0]
+            return clone_number, f"clone_{clone_number}_matches_original", None
 
         note = {
             "original_ok": original_result["ok"],
-            "clone_1_ok": clone_1_result["ok"],
-            "clone_2_ok": clone_2_result["ok"],
             "original_error": original_result["error"],
-            "clone_1_error": clone_1_result["error"],
-            "clone_2_error": clone_2_result["error"],
             "original_row_count": len(original_result["rows"]),
-            "clone_1_row_count": len(clone_1_result["rows"]),
-            "clone_2_row_count": len(clone_2_result["rows"]),
             "order_sensitive": order_sensitive,
+            "matching_clones": matching_clones,
+            "clones": {
+                str(clone_number): {
+                    "ok": clone_result["ok"],
+                    "error": clone_result["error"],
+                    "row_count": len(clone_result["rows"]),
+                    "matches_original": matches_original[clone_number],
+                }
+                for clone_number, clone_result in clone_results.items()
+            },
         }
 
-        if matches_original[1] and matches_original[2]:
-            return None, "skipped_both_clones_match_original", note
+        if matching_clones:
+            return None, "skipped_multiple_clones_match_original", note
 
         return None, "skipped_no_clone_matches_original", note
 
@@ -1635,23 +1694,27 @@ def create_ambiguous_benchmark(
         "output_dataset": str(output_dir),
         "distinct_ratio_threshold": distinct_ratio_threshold,
         "min_split_value_chars": min_split_value_chars,
+        "min_split_distinct_values": min_split_distinct_values,
         "selection_method": (
             "low-cardinality normalized text columns ranked by SQL equality/IN "
-            "literal matches whose normalized value length is greater than 3"
+            "literal matches whose normalized value length is greater than 3 "
+            "and whose usable distinct value count is at least 3"
         ),
         "split_policy": (
             "db_id_1 keeps selected-table rows whose normalized selected value "
-            "equals the primary split value; db_id_2 keeps all other selected-table "
-            "rows. Child rows referencing removed parent rows are removed recursively."
+            "equals the primary split value; db_id_2 keeps rows whose normalized "
+            "selected value equals the secondary split value; db_id_3 keeps all "
+            "remaining selected-table rows. Child rows referencing removed parent "
+            "rows are removed recursively."
         ),
         "sample_assignment_policy": (
             "Each sample must contain an explicit SQL equality/IN reference to "
             "the selected split column with a value present in that column and "
             "longer than 3 normalized characters. Then the SQL query is executed "
-            "on the original database and on both clones. A sample is written to "
+            "on the original database and on all clones. A sample is written to "
             "dev.json only when exactly one clone returns the same result as the "
             "original query. Samples without an explicit split reference, with "
-            "only short split values, where both clones match, or where neither "
+            "only short split values, where multiple clones match, or where no "
             "clone matches, are skipped."
         ),
         "databases": [],
@@ -1683,7 +1746,8 @@ def create_ambiguous_benchmark(
 
         clone_paths = {}
         clone_stats = {}
-        for clone_number, keep_primary_value in [(1, True), (2, False)]:
+        clone_split_rules = build_clone_split_rules(split_info)
+        for clone_number, clone_rule in clone_split_rules.items():
             clone_db_id = f"{db_id}_{clone_number}"
             clone_dir = output_databases_dir / clone_db_id
             clone_dir.mkdir(parents=True, exist_ok=False)
@@ -1694,7 +1758,7 @@ def create_ambiguous_benchmark(
                 clone_sqlite_path,
                 db_schema,
                 split_info,
-                keep_primary_value,
+                clone_rule,
             )
 
             cloned_schema = copy.deepcopy(db_schema)
@@ -1711,6 +1775,8 @@ def create_ambiguous_benchmark(
                 "raw_distinct_count": split_info["raw_distinct_count"],
                 "distinct_ratio": split_info["distinct_ratio"],
                 "min_split_value_chars": split_info["min_split_value_chars"],
+                "min_split_distinct_values": split_info["min_split_distinct_values"],
+                "usable_distinct_count": split_info["usable_distinct_count"],
                 "sql_sample_hits": split_info["sql_sample_hits"],
                 "sql_total_mentions": split_info["sql_total_mentions"],
                 "sql_value_mentions": split_info["sql_value_mentions"],
@@ -1718,6 +1784,10 @@ def create_ambiguous_benchmark(
                 "primary_split_raw_values": split_info["primary_split_raw_values"],
                 "secondary_split_value": split_info["secondary_split_value"],
                 "secondary_split_raw_values": split_info["secondary_split_raw_values"],
+                "remaining_split_value_count": split_info["remaining_split_value_count"],
+                "remaining_split_values_preview": split_info[
+                    "remaining_split_values_preview"
+                ],
                 "top_db_values": split_info["top_db_values"],
                 "parse_errors": split_info["parse_errors"],
                 "clones": {
@@ -1725,7 +1795,7 @@ def create_ambiguous_benchmark(
                         "sqlite_path": str(clone_paths[clone_number]),
                         **clone_stats[clone_number],
                     }
-                    for clone_number in [1, 2]
+                    for clone_number in clone_split_rules
                 },
                 "dev_assignment_counts": {},
                 "dev_skipped_counts": {},
