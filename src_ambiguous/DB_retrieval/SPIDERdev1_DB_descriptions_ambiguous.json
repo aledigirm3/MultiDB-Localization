@@ -7,6 +7,10 @@
         "name": "flight_2_2",
         "description": "The flight_2 database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country, country abbrev), and flights (airline, flight number, source airport, destination airport)."
     },
+    {
+        "name": "flight_2_3",
+        "description": "The flight_2 database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country, country abbrev), and flights (airline, flight number, source airport, destination airport)."
+    },
 
     {
         "name": "pets_1_1",
@@ -14,6 +18,10 @@
     },
     {
         "name": "pets_1_2",
+        "description": "The pets_1 database stores information about student (last name, first name, age, sex, major, advisor, city code), has pet (student id, pet id), and pets (pet type, pet age, weight)."
+    },
+    {
+        "name": "pets_1_3",
         "description": "The pets_1 database stores information about student (last name, first name, age, sex, major, advisor, city code), has pet (student id, pet id), and pets (pet type, pet age, weight)."
     },
 
@@ -25,6 +33,10 @@
         "name": "student_transcripts_tracking_2",
         "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course name, course description, other details), departments (department name, department description, other details), degree programs (department id, degree summary name, degree summary description, other details), sections (course id, section name, section description, other details), semesters (semester name, semester description, other details), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, ssn, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id, other details), student enrolment courses (course id, student enrolment id), transcripts (transcript date, other details), and transcript contents (student course id, transcript id)."
     },
+    {
+        "name": "student_transcripts_tracking_3",
+        "description": "The student_transcripts_tracking database stores information about addresses (line 1, line 2, line 3, city, zip postcode, state province county, country, other address details), courses (course name, course description, other details), departments (department name, department description, other details), degree programs (department id, degree summary name, degree summary description, other details), sections (course id, section name, section description, other details), semesters (semester name, semester description, other details), students (current address id, permanent address id, first name, middle name, last name, cell mobile number, email address, ssn, date first registered, date left, other student details), student enrolment (degree program id, semester id, student id, other details), student enrolment courses (course id, student enrolment id), transcripts (transcript date, other details), and transcript contents (student course id, transcript id)."
+    },
 
     {
         "name": "cre_Doc_Template_Mgt_1",
@@ -34,6 +46,10 @@
         "name": "cre_Doc_Template_Mgt_2",
         "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description, other details), and paragraphs (document id, paragraph text, other details)."
     },
+    {
+        "name": "cre_Doc_Template_Mgt_3",
+        "description": "The cre_Doc_Template_Mgt database stores information about reference template types (template type code, template type description), templates (version number, template type code, date effective from, date effective to, template details), documents (template id, document name, document description, other details), and paragraphs (document id, paragraph text, other details)."
+    },
 
     {
         "name": "world_1_1",
@@ -41,6 +57,10 @@
     },
     {
         "name": "world_1_2",
+        "description": "The world_1 database stores information about city (name, country code, district, population), sqlite sequence (name, seq), country (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, gnp old, local name, government form, head of state, capital, code2), and countrylanguage (countrycode, language, is official, percentage)."
+    },
+    {
+        "name": "world_1_3",
         "description": "The world_1 database stores information about city (name, country code, district, population), sqlite sequence (name, seq), country (code, name, continent, region, surface area, indepdent year, population, life expectancy, gnp, gnp old, local name, government form, head of state, capital, code2), and countrylanguage (countrycode, language, is official, percentage)."
     },
 
@@ -53,6 +73,10 @@
         "name": "wta_1_2",
         "description": "The wta_1 database stores information about players (first name, last name, hand, birth date, country code), matches (best of, draw size, loser age, loser entry, loser hand, loser ht, loser id, loser ioc, loser name, loser rank, loser rank points, loser seed, match num, minutes, round, score, surface, tourney date, tourney id, tourney level, tourney name, winner age, winner entry, winner hand, winner ht, winner id, winner ioc, winner name, winner rank, winner rank points, winner seed, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
     },
+    {
+        "name": "wta_1_3",
+        "description": "The wta_1 database stores information about players (first name, last name, hand, birth date, country code), matches (best of, draw size, loser age, loser entry, loser hand, loser ht, loser id, loser ioc, loser name, loser rank, loser rank points, loser seed, match num, minutes, round, score, surface, tourney date, tourney id, tourney level, tourney name, winner age, winner entry, winner hand, winner ht, winner id, winner ioc, winner name, winner rank, winner rank points, winner seed, year), and rankings (ranking date, ranking, player id, ranking points, tours)."
+    },
 
     {
         "name": "orchestra_1",
@@ -60,6 +84,10 @@
     },
     {
         "name": "orchestra_2",
+        "description": "The orchestra database stores information about conductor (name, age, nationality, year of work), orchestra (orchestra, conductor id, record company, year of founded, major record format), performance (orchestra id, type, date, official ratings (millions), weekly rank, share), and show (performance id, if first show, result, attendance)."
+    },
+    {
+        "name": "orchestra_3",
         "description": "The orchestra database stores information about conductor (name, age, nationality, year of work), orchestra (orchestra, conductor id, record company, year of founded, major record format), performance (orchestra id, type, date, official ratings (millions), weekly rank, share), and show (performance id, if first show, result, attendance)."
     },
 
@@ -71,6 +99,10 @@
         "name": "car_1_2",
         "description": "The car_1 database stores information about continents (continent), countries (country name, continent), car makers (maker, full name, country), model list (maker, model), car names (model, make), and cars data (mpg, cylinders, edispl, horsepower, weight, accelerate, year)."
     },
+    {
+        "name": "car_1_3",
+        "description": "The car_1 database stores information about continents (continent), countries (country name, continent), car makers (maker, full name, country), model list (maker, model), car names (model, make), and cars data (mpg, cylinders, edispl, horsepower, weight, accelerate, year)."
+    },
 
     {
         "name": "tvshow_1",
@@ -78,6 +110,10 @@
     },
     {
         "name": "tvshow_2",
+        "description": "The tvshow database stores information about tv channel (series name, country, language, content, pixel aspect ratio par, hight definition tv, pay per view ppv, package option), tv series (episode, air date, rating, share, 18 49 rating share, viewers m, weekly rank, channel), and cartoon (title, directed by, written by, original air date, production code, channel)."
+    },
+    {
+        "name": "tvshow_3",
         "description": "The tvshow database stores information about tv channel (series name, country, language, content, pixel aspect ratio par, hight definition tv, pay per view ppv, package option), tv series (episode, air date, rating, share, 18 49 rating share, viewers m, weekly rank, channel), and cartoon (title, directed by, written by, original air date, production code, channel)."
     }
 ]
