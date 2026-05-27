@@ -2,9 +2,9 @@ from enum import Enum
 
 class DATASETS(Enum):
     BIRDdev = "../datasets/BIRDdev/"
-    BIRDdev_ambiguos = "../datasets/BIRDdev-ambiguos/"
+    BIRDdev_ambiguous = "../datasets/BIRDdev-ambiguous/"
     SPIDERdev1 = "../datasets/SPIDERdev1.0/"
-    SPIDERdev1_ambiguos = "../datasets/SPIDERdev1.0-ambiguos/"
+    SPIDERdev1_ambiguous = "../datasets/SPIDERdev1.0-ambiguous/"
 
 class RESULTS(Enum):
     DB_RETRIEVAL = '../results/DB_retrieval/'

@@ -767,19 +767,25 @@ def create_ambiguous_benchmark(
     output_path=None,
     overwrite: bool = False,
     distinct_ratio_threshold: float = 0.30,
-    validate_sql_assignment: bool = False,
 ):
     """
     Creates a Spider/BIRD-like benchmark with two split SQLite clones for each
     database that has a suitable low-cardinality text column referenced by SQL.
 
     The selected column is chosen by counting SQL equality/IN predicates whose
-    literal values match normalized database values. For each duplicated DB,
-    `<db_id>_1` keeps only rows with the primary split value in the selected
-    table, while `<db_id>_2` keeps all remaining selected-table rows. Child rows
-    that would reference removed parent rows are removed recursively according
-    to `dev_tables.json` foreign keys.
+    literal values match normalized database values and whose normalized length
+    is greater than 3 characters. For each duplicated DB, `<db_id>_1` keeps only
+    rows with the primary split value in the selected table, while `<db_id>_2`
+    keeps all remaining selected-table rows. Child rows that would reference
+    removed parent rows are removed recursively according to `dev_tables.json`
+    foreign keys. Sample assignment is intentionally strict: a sample must
+    explicitly reference the split column in its SQL with a value longer than 3
+    characters, then the SQL query is executed on the original DB and both
+    clones; the sample is kept only when exactly one clone preserves the original
+    query result.
     """
+
+    min_split_value_chars = 4
 
     def resolve_dataset_dir(path_value):
         raw_path = getattr(path_value, "value", path_value)
@@ -810,6 +816,12 @@ def create_ambiguous_benchmark(
             normalize_identifier(table_name),
             normalize_identifier(column_name),
         )
+
+    def split_value_length(normalized_value):
+        return len(str(normalized_value).replace(" ", ""))
+
+    def is_usable_split_value(normalized_value):
+        return split_value_length(normalized_value) >= min_split_value_chars
 
     def json_safe_value(value):
         if isinstance(value, bytes):
@@ -1009,6 +1021,7 @@ def create_ambiguous_benchmark(
 
     def get_candidate_columns(sqlite_path, db_schema):
         candidates = {}
+        candidate_stats = Counter()
         table_names = db_schema.get("table_names_original", [])
         column_names = db_schema.get("column_names_original", [])
         columns_by_table_idx = defaultdict(list)
@@ -1084,6 +1097,15 @@ def create_ambiguous_benchmark(
                     if len(normalized_counts) <= 1:
                         continue
 
+                    candidate_stats["low_cardinality_text_candidates"] += 1
+                    usable_normalized_values = {
+                        value for value in normalized_counts
+                        if is_usable_split_value(value)
+                    }
+                    if len(usable_normalized_values) <= 1:
+                        candidate_stats["short_value_filtered_candidates"] += 1
+                        continue
+
                     key = candidate_key(table_name, column_name)
                     candidates[key] = {
                         "key": key,
@@ -1094,17 +1116,20 @@ def create_ambiguous_benchmark(
                         "raw_distinct_count": raw_distinct_count,
                         "distinct_ratio": distinct_ratio,
                         "normalized_value_counts": normalized_counts,
+                        "usable_normalized_values": usable_normalized_values,
                         "raw_values_by_normalized": raw_values_by_normalized,
                     }
         finally:
             connection.close()
 
-        return candidates
+        return candidates, candidate_stats
 
     def select_split_column(sqlite_path, db_schema, db_samples):
-        candidates = get_candidate_columns(sqlite_path, db_schema)
+        candidates, candidate_stats = get_candidate_columns(sqlite_path, db_schema)
 
         if not candidates:
+            if candidate_stats["short_value_filtered_candidates"]:
+                return None, "no_low_cardinality_text_candidate_with_two_long_values"
             return None, "no_low_cardinality_text_candidate"
 
         usage = {
@@ -1138,6 +1163,8 @@ def create_ambiguous_benchmark(
                     continue
                 if normalized_value not in candidates[ref_key]["normalized_value_counts"]:
                     continue
+                if normalized_value not in candidates[ref_key]["usable_normalized_values"]:
+                    continue
 
                 usage[ref_key]["value_mentions"][normalized_value] += 1
                 sample_hit_keys.add(ref_key)
@@ -1168,11 +1195,12 @@ def create_ambiguous_benchmark(
                 best_score = score
 
         if best_key is None:
-            return None, "no_candidate_referenced_by_sql_equality"
+            return None, "no_candidate_referenced_by_sql_equality_long_value"
 
         selected_candidate = candidates[best_key]
         selected_usage = usage[best_key]
         db_value_counts = selected_candidate["normalized_value_counts"]
+        usable_values = selected_candidate["usable_normalized_values"]
         sql_value_mentions = selected_usage["value_mentions"]
 
         sql_ordered_values = sorted(
@@ -1184,7 +1212,7 @@ def create_ambiguous_benchmark(
             ),
         )
         db_ordered_values = sorted(
-            db_value_counts,
+            usable_values,
             key=lambda value: (-db_value_counts[value], value),
         )
 
@@ -1208,9 +1236,11 @@ def create_ambiguous_benchmark(
             "candidate_key": best_key,
             "table_name": selected_candidate["table_name"],
             "column_name": selected_candidate["column_name"],
+            "normalized_value_set": set(usable_values),
             "row_count": selected_candidate["row_count"],
             "raw_distinct_count": selected_candidate["raw_distinct_count"],
             "distinct_ratio": selected_candidate["distinct_ratio"],
+            "min_split_value_chars": min_split_value_chars,
             "sql_sample_hits": selected_usage["sample_hits"],
             "sql_total_mentions": sum(sql_value_mentions.values()),
             "sql_value_mentions": dict(sql_value_mentions),
@@ -1470,85 +1500,108 @@ def create_ambiguous_benchmark(
         finally:
             connection.close()
 
-    def assign_sample_to_clone(sample, db_schema, split_info, source_sqlite_path, clone_paths):
+    def query_is_order_sensitive(sql_query):
+        try:
+            parsed_query = sqlglot.parse_one(sql_query, read="sqlite")
+        except Exception:
+            return True
+
+        return parsed_query.find(sqlglot.exp.Order) is not None
+
+    def result_signature(rows):
+        return Counter(
+            json.dumps(row, ensure_ascii=False, sort_keys=True, default=str)
+            for row in rows
+        )
+
+    def results_match(original_result, clone_result, order_sensitive):
+        if not original_result["ok"] or not clone_result["ok"]:
+            return False
+
+        original_rows = original_result["rows"]
+        clone_rows = clone_result["rows"]
+
+        if order_sensitive:
+            return clone_rows == original_rows
+
+        return result_signature(clone_rows) == result_signature(original_rows)
+
+    def sample_has_explicit_split_reference(sample, db_schema, split_info):
         sql_query = sample[sql_field_name(sample)]
         refs, parse_error = extract_sql_value_refs(sql_query, db_schema)
-        selected_values = [
-            ref["normalized_value"]
-            for ref in refs
-            if ref["key"] == split_info["candidate_key"]
-        ]
-        selected_values_set = set(selected_values)
-        primary_value = split_info["primary_split_value"]
 
-        if selected_values_set == {primary_value}:
-            return 1, "split_condition_primary_value", None
-        if selected_values_set and primary_value not in selected_values_set:
-            return 2, "split_condition_non_primary_value", None
-        if selected_values_set:
-            return 2, "mixed_split_condition_fallback_clone_2", None
-        if not validate_sql_assignment:
-            if parse_error:
-                return 2, "sql_parse_error_fallback_clone_2", parse_error
-            return 2, "no_split_condition_fallback_clone_2", None
+        if parse_error:
+            return (
+                False,
+                "skipped_sql_parse_error_for_split_reference",
+                {"error": parse_error},
+            )
 
+        split_key = split_info["candidate_key"]
+        valid_values = split_info["normalized_value_set"]
+        invalid_values = []
+
+        for ref in refs:
+            if ref["key"] != split_key:
+                continue
+
+            normalized_value = ref["normalized_value"]
+            if normalized_value in valid_values:
+                return True, None, None
+
+            invalid_values.append(normalized_value)
+
+        if invalid_values:
+            return (
+                False,
+                "skipped_split_reference_value_not_in_column",
+                {"normalized_values": invalid_values[:10]},
+            )
+
+        return False, "skipped_no_explicit_split_reference", None
+
+    def assign_sample_to_clone(sample, source_sqlite_path, clone_paths):
+        sql_query = sample[sql_field_name(sample)]
+        order_sensitive = query_is_order_sensitive(sql_query)
         original_result = execute_sql(source_sqlite_path, sql_query)
         clone_1_result = execute_sql(clone_paths[1], sql_query)
         clone_2_result = execute_sql(clone_paths[2], sql_query)
 
-        same_as_original = {
-            1: (
-                original_result["ok"]
-                and clone_1_result["ok"]
-                and clone_1_result["rows"] == original_result["rows"]
-            ),
-            2: (
-                original_result["ok"]
-                and clone_2_result["ok"]
-                and clone_2_result["rows"] == original_result["rows"]
-            ),
-        }
-        returns_rows = {
-            1: clone_1_result["ok"] and bool(clone_1_result["rows"]),
-            2: clone_2_result["ok"] and bool(clone_2_result["rows"]),
+        # A clone is valid for this sample only if it preserves the original answer.
+        matches_original = {
+            1: results_match(original_result, clone_1_result, order_sensitive),
+            2: results_match(original_result, clone_2_result, order_sensitive),
         }
 
-        if same_as_original[1] and not same_as_original[2]:
+        if matches_original[1] and not matches_original[2]:
             return 1, "clone_1_matches_original", None
-        if same_as_original[2] and not same_as_original[1]:
+        if matches_original[2] and not matches_original[1]:
             return 2, "clone_2_matches_original", None
 
-        if returns_rows[1] and not returns_rows[2]:
-            return 1, "only_clone_1_returns_rows", None
-        if returns_rows[2] and not returns_rows[1]:
-            return 2, "only_clone_2_returns_rows", None
+        note = {
+            "original_ok": original_result["ok"],
+            "clone_1_ok": clone_1_result["ok"],
+            "clone_2_ok": clone_2_result["ok"],
+            "original_error": original_result["error"],
+            "clone_1_error": clone_1_result["error"],
+            "clone_2_error": clone_2_result["error"],
+            "original_row_count": len(original_result["rows"]),
+            "clone_1_row_count": len(clone_1_result["rows"]),
+            "clone_2_row_count": len(clone_2_result["rows"]),
+            "order_sensitive": order_sensitive,
+        }
 
-        if selected_values_set:
-            if selected_values_set == {primary_value}:
-                return 1, "split_condition_primary_value", None
-            if primary_value not in selected_values_set:
-                return 2, "split_condition_non_primary_value", None
-            return 2, "mixed_split_condition_fallback_clone_2", None
+        if matches_original[1] and matches_original[2]:
+            return None, "skipped_both_clones_match_original", note
 
-        if clone_1_result["ok"] and not clone_2_result["ok"]:
-            return 1, "only_clone_1_executes", clone_2_result["error"]
-        if clone_2_result["ok"] and not clone_1_result["ok"]:
-            return 2, "only_clone_2_executes", clone_1_result["error"]
-
-        if same_as_original[1] and same_as_original[2]:
-            return 2, "both_match_original_fallback_clone_2", None
-
-        if parse_error:
-            return 2, "sql_parse_error_fallback_clone_2", parse_error
-
-        return 2, "ambiguous_fallback_clone_2", None
+        return None, "skipped_no_clone_matches_original", note
 
     dataset_dir = resolve_dataset_dir(dataset_path)
     tables_path = dataset_dir / "dev_tables.json"
     dev_path = dataset_dir / "dev.json"
 
     if output_path is None:
-        output_dir = dataset_dir.with_name(f"{dataset_dir.name}-ambiguos")
+        output_dir = dataset_dir.with_name(f"{dataset_dir.name}-ambiguous")
     else:
         output_dir = Path(output_path)
         if not output_dir.is_absolute():
@@ -1581,15 +1634,25 @@ def create_ambiguous_benchmark(
         "source_dataset": str(dataset_dir),
         "output_dataset": str(output_dir),
         "distinct_ratio_threshold": distinct_ratio_threshold,
-        "validate_sql_assignment": validate_sql_assignment,
+        "min_split_value_chars": min_split_value_chars,
         "selection_method": (
             "low-cardinality normalized text columns ranked by SQL equality/IN "
-            "literal matches"
+            "literal matches whose normalized value length is greater than 3"
         ),
         "split_policy": (
             "db_id_1 keeps selected-table rows whose normalized selected value "
             "equals the primary split value; db_id_2 keeps all other selected-table "
             "rows. Child rows referencing removed parent rows are removed recursively."
+        ),
+        "sample_assignment_policy": (
+            "Each sample must contain an explicit SQL equality/IN reference to "
+            "the selected split column with a value present in that column and "
+            "longer than 3 normalized characters. Then the SQL query is executed "
+            "on the original database and on both clones. A sample is written to "
+            "dev.json only when exactly one clone returns the same result as the "
+            "original query. Samples without an explicit split reference, with "
+            "only short split values, where both clones match, or where neither "
+            "clone matches, are skipped."
         ),
         "databases": [],
         "dev_json": {},
@@ -1647,6 +1710,7 @@ def create_ambiguous_benchmark(
                 "row_count": split_info["row_count"],
                 "raw_distinct_count": split_info["raw_distinct_count"],
                 "distinct_ratio": split_info["distinct_ratio"],
+                "min_split_value_chars": split_info["min_split_value_chars"],
                 "sql_sample_hits": split_info["sql_sample_hits"],
                 "sql_total_mentions": split_info["sql_total_mentions"],
                 "sql_value_mentions": split_info["sql_value_mentions"],
@@ -1664,6 +1728,7 @@ def create_ambiguous_benchmark(
                     for clone_number in [1, 2]
                 },
                 "dev_assignment_counts": {},
+                "dev_skipped_counts": {},
             }
         )
         metadata["databases"].append(db_metadata)
@@ -1677,6 +1742,7 @@ def create_ambiguous_benchmark(
 
     output_dev_samples = []
     assignment_counts = Counter()
+    skipped_assignment_counts = Counter()
     skipped_samples = []
     assignment_notes = []
 
@@ -1694,13 +1760,52 @@ def create_ambiguous_benchmark(
             continue
 
         db_info = created_databases[db_id]
+        has_split_reference, reference_skip_reason, reference_note = (
+            sample_has_explicit_split_reference(
+                sample,
+                db_info["schema"],
+                db_info["split_info"],
+            )
+        )
+        if not has_split_reference:
+            skipped_assignment_counts[reference_skip_reason] += 1
+            db_info["metadata"]["dev_skipped_counts"][reference_skip_reason] = (
+                db_info["metadata"]["dev_skipped_counts"].get(
+                    reference_skip_reason,
+                    0,
+                )
+                + 1
+            )
+            skipped_sample = {
+                "question_id": sample.get("question_id"),
+                "db_id": db_id,
+                "reason": reference_skip_reason,
+            }
+            if reference_note:
+                skipped_sample["note"] = reference_note
+            skipped_samples.append(skipped_sample)
+            continue
+
         clone_number, assignment_method, note = assign_sample_to_clone(
             sample,
-            db_info["schema"],
-            db_info["split_info"],
             db_info["source_sqlite_path"],
             db_info["clone_paths"],
         )
+
+        if clone_number is None:
+            skipped_assignment_counts[assignment_method] += 1
+            db_info["metadata"]["dev_skipped_counts"][assignment_method] = (
+                db_info["metadata"]["dev_skipped_counts"].get(assignment_method, 0) + 1
+            )
+            skipped_sample = {
+                "question_id": sample.get("question_id"),
+                "db_id": db_id,
+                "reason": assignment_method,
+            }
+            if note:
+                skipped_sample["note"] = note
+            skipped_samples.append(skipped_sample)
+            continue
 
         updated_sample = copy.deepcopy(sample)
         updated_sample["db_id"] = f"{db_id}_{clone_number}"
@@ -1726,6 +1831,7 @@ def create_ambiguous_benchmark(
         "samples_written": len(output_dev_samples),
         "samples_skipped": len(skipped_samples),
         "assignment_counts": dict(assignment_counts),
+        "skipped_assignment_counts": dict(skipped_assignment_counts),
         "skipped_samples": skipped_samples[:100],
         "assignment_notes": assignment_notes[:100],
     }
@@ -1771,9 +1877,24 @@ if __name__ == '__main__':
     # dict = create_attribute_mapping(file_name)
     # print(dict['debit_card_specializing']['year and month']['Customer ID'])
 
-    dataset_path = paths.DATASETS.SPIDERdev1_ambiguos.value
+
+
+
+
+# ===================== AMBIGUOUS ====================================================== #
+
+    # SPIDER
+    dataset_path = paths.DATASETS.SPIDERdev1.value
+    create_ambiguous_benchmark(dataset_path, overwrite=True)
+    dataset_path = paths.DATASETS.SPIDERdev1_ambiguous.value
     create_benchmark_doc(dataset_path)
     add_bm25_text_to_benchmark_doc(dataset_path)
 
+    # BIRD
+    dataset_path = paths.DATASETS.BIRDdev.value
+    create_ambiguous_benchmark(dataset_path, overwrite=True)
+    dataset_path = paths.DATASETS.BIRDdev_ambiguous.value
+    create_benchmark_doc(dataset_path)
+    add_bm25_text_to_benchmark_doc(dataset_path)
 
-
+# ====================================================================================== #

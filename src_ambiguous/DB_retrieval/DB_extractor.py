@@ -2,7 +2,7 @@ import json
 import os
 import sys
 import time
-from collections import Counter
+from collections import defaultdict
 from pathlib import Path
 
 from rank_bm25 import BM25Okapi
@@ -28,21 +28,21 @@ def get_dataset_paths(dataset: str):
         doc_filename = "bird_doc.json"
         description_filename = "BIRDdev_DB_descriptions.json"
         result_filename = "BIRDdev_DB_extractor.json"
-    elif dataset == "BIRDdev-ambiguos":
-        dataset_dir = (src_dir / paths.DATASETS.BIRDdev_ambiguos.value).resolve()
+    elif dataset == "BIRDdev-ambiguous":
+        dataset_dir = (src_dir / paths.DATASETS.BIRDdev_ambiguous.value).resolve()
         doc_filename = "bird_doc.json"
-        description_filename = "BIRDdev_DB_descriptions.json"
-        result_filename = "BIRDdev_DB_extractor.json"
+        description_filename = "BIRDdev_DB_descriptions_ambiguous.json"
+        result_filename = "BIRDdev_DB_extractor_ambiguous.json"
     elif dataset == "SPIDERdev1":
         dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1.value).resolve()
         doc_filename = "spider_doc.json"
         description_filename = "SPIDERdev1_DB_descriptions.json"
         result_filename = "SPIDERdev1_DB_extractor.json"
-    elif dataset == "SPIDERdev1-ambiguos":
-        dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1_ambiguos.value).resolve()
+    elif dataset == "SPIDERdev1-ambiguous":
+        dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1_ambiguous.value).resolve()
         doc_filename = "spider_doc.json"
-        description_filename = "SPIDERdev1_DB_descriptions.json"
-        result_filename = "SPIDERdev1_DB_extractor.json"
+        description_filename = "SPIDERdev1_DB_descriptions_ambiguous.json"
+        result_filename = "SPIDERdev1_DB_extractor_ambiguous.json"
     else:
         print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -76,18 +76,31 @@ def rank_tables(question: str, table_docs: list, bm25: BM25Okapi, top_k: int = 1
         reverse=True,
     )
 
-    return [table_docs[index] for index in ranked_indexes[:top_k]]
+    ranked_tables = []
+    for index in ranked_indexes[:top_k]:
+        ranked_table = dict(table_docs[index])
+        ranked_table["_bm25_score"] = float(scores[index])
+        ranked_tables.append(ranked_table)
+
+    return ranked_tables
 
 
 def get_bm25_top_dbs(ranked_tables: list):
-    db_counts = Counter(table_doc.get("db") for table_doc in ranked_tables)
-    if not db_counts:
+    db_scores = defaultdict(float)
+    for table_doc in ranked_tables:
+        db_name = table_doc.get("db")
+        if not db_name:
+            continue
+
+        db_scores[db_name] += table_doc.get("_bm25_score", 0.0)
+
+    if not db_scores:
         return []
 
-    max_count = max(db_counts.values())
+    max_score = max(db_scores.values())
     return [
-        db for db, count in db_counts.items()
-        if count == max_count
+        db for db, score in db_scores.items()
+        if score == max_score
     ]
 
 
@@ -159,11 +172,11 @@ def extract_DB(embedder: Embedder, dataset: str):
             embedder,
             top_k=3,
         )
-        ranked_tables = rank_tables(sample["question"], table_docs, bm25, top_k=7)
+        ranked_tables = rank_tables(sample["question"], table_docs, bm25, top_k=8)
         bm25_top_dbs = get_bm25_top_dbs(ranked_tables)
         db_result = choose_db_result(embedding_ranking, bm25_top_dbs)
 
-        if dataset == "BIRDdev" or dataset == "BIRDdev-ambiguos":
+        if dataset == "BIRDdev" or dataset == "BIRDdev-ambiguous":
             item = {
                 "question_id": sample["question_id"],
                 "db_id": sample["db_id"],
@@ -193,12 +206,20 @@ if __name__ == "__main__":
     start = time.perf_counter()
     embedder = Embedder(model_name="BAAI/bge-large-en-v1.5", device_name="cuda")
 
-    print(f"\n{CYAN}Processing BIRDdev-ambiguos...{RESET}")
-    extract_DB(embedder, "BIRDdev-ambiguos")
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    extract_DB(embedder, "BIRDdev")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1-ambiguos...{RESET}")
-    extract_DB(embedder, "SPIDERdev1-ambiguos")
+    print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
+    extract_DB(embedder, "SPIDERdev1")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
+    extract_DB(embedder, "BIRDdev-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
+    extract_DB(embedder, "SPIDERdev1-ambiguous")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
