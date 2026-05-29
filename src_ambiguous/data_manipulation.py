@@ -836,6 +836,9 @@ def create_ambiguous_benchmark(
     def normalized_db_value(raw_value):
         return normalize_and_stem_text(json_safe_value(raw_value))
 
+    def normalized_phrase_in_text(normalized_phrase, normalized_text):
+        return f" {normalized_phrase} " in f" {normalized_text} "
+
     def build_clone_split_rules(split_info):
         primary_value = split_info["primary_split_value"]
         secondary_value = split_info["secondary_split_value"]
@@ -1163,12 +1166,24 @@ def create_ambiguous_benchmark(
             key: {
                 "sample_hits": 0,
                 "value_mentions": Counter(),
+                "question_hits": 0,
+                "question_value_mentions": Counter(),
             }
             for key in candidates
         }
         parse_errors = []
 
         for sample in db_samples:
+            normalized_question = normalize_and_stem_text(sample.get("question", ""))
+            for key, candidate in candidates.items():
+                question_values = [
+                    value for value in candidate["usable_normalized_values"]
+                    if normalized_phrase_in_text(value, normalized_question)
+                ]
+                if question_values:
+                    usage[key]["question_hits"] += 1
+                    usage[key]["question_value_mentions"].update(question_values)
+
             sql_query = sample[sql_field_name(sample)]
             refs, parse_error = extract_sql_value_refs(sql_query, db_schema)
 
@@ -1205,6 +1220,8 @@ def create_ambiguous_benchmark(
             sample_hits = usage[key]["sample_hits"]
             total_mentions = sum(usage[key]["value_mentions"].values())
 
+            if not usage[key]["question_hits"]:
+                continue
             if not total_mentions:
                 continue
 
@@ -1222,6 +1239,11 @@ def create_ambiguous_benchmark(
                 best_score = score
 
         if best_key is None:
+            if any(
+                sum(candidate_usage["value_mentions"].values())
+                for candidate_usage in usage.values()
+            ):
+                return None, "no_candidate_with_value_mentioned_in_question"
             return None, "no_candidate_referenced_by_sql_equality_long_value"
 
         selected_candidate = candidates[best_key]
@@ -1277,6 +1299,10 @@ def create_ambiguous_benchmark(
             "sql_sample_hits": selected_usage["sample_hits"],
             "sql_total_mentions": sum(sql_value_mentions.values()),
             "sql_value_mentions": dict(sql_value_mentions),
+            "question_sample_hits": selected_usage["question_hits"],
+            "question_value_mentions": dict(
+                selected_usage["question_value_mentions"]
+            ),
             "primary_split_value": primary_value,
             "primary_split_raw_values": raw_values_by_normalized[primary_value],
             "secondary_split_value": secondary_value,
@@ -1698,7 +1724,9 @@ def create_ambiguous_benchmark(
         "selection_method": (
             "low-cardinality normalized text columns ranked by SQL equality/IN "
             "literal matches whose normalized value length is greater than 3 "
-            "and whose usable distinct value count is at least 3"
+            "and whose usable distinct value count is at least 3. A selected "
+            "column must also have at least one usable normalized value mentioned "
+            "in a normalized natural-language question for the same database"
         ),
         "split_policy": (
             "db_id_1 keeps selected-table rows whose normalized selected value "
@@ -1780,6 +1808,8 @@ def create_ambiguous_benchmark(
                 "sql_sample_hits": split_info["sql_sample_hits"],
                 "sql_total_mentions": split_info["sql_total_mentions"],
                 "sql_value_mentions": split_info["sql_value_mentions"],
+                "question_sample_hits": split_info["question_sample_hits"],
+                "question_value_mentions": split_info["question_value_mentions"],
                 "primary_split_value": split_info["primary_split_value"],
                 "primary_split_raw_values": split_info["primary_split_raw_values"],
                 "secondary_split_value": split_info["secondary_split_value"],
