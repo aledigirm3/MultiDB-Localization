@@ -11,7 +11,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "dog kennel breed dog kennel breed breed code breed name dog"
+    "bm25_text": "breed breed code breed name dog"
   },
   {
     "table_id": "dog_kennels.charges",
@@ -24,7 +24,7 @@
     ],
     "joinable_tables": [],
     "top_values": {},
-    "bm25_text": "dog kennel charg dog kennel charg charg id charg type charg amount"
+    "bm25_text": "charg charg id charg type charg amount"
   },
   {
     "table_id": "dog_kennels.sizes",
@@ -38,7 +38,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "dog kennel size dog kennel size size code size descript dog"
+    "bm25_text": "size size code size descript dog"
   },
   {
     "table_id": "dog_kennels.treatment types",
@@ -52,7 +52,7 @@
       "treatments"
     ],
     "top_values": {},
-    "bm25_text": "dog kennel treatment type dog kennel treatment type treatment type code treatment type descript treatment"
+    "bm25_text": "treatment type treatment type code treatment type descript treatment"
   },
   {
     "table_id": "dog_kennels.owners",
@@ -74,7 +74,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "dog kennel owner dog kennel owner owner id first name last name street citi state zip code email address home phone cell number dog"
+    "bm25_text": "owner owner id first name last name street citi state zip code email address home phone cell number dog"
   },
   {
     "table_id": "dog_kennels.dogs",
@@ -121,7 +121,7 @@
         "1"
       ]
     },
-    "bm25_text": "dog kennel dog dog kennel dog dog id owner id abandon yes or no breed code size code name age date of birth gender weight date arriv date adopt date depart owner size breed treatment abandon yes or no breed code bul esk hus bul esk hus size code med lge sml med lge sml gender"
+    "bm25_text": "dog dog id owner id abandon yes or no breed code size code name age date of birth gender weight date arriv date adopt date depart owner size breed treatment bul esk hus bul esk hus med lge sml med lge sml"
   },
   {
     "table_id": "dog_kennels.professionals",
@@ -149,7 +149,7 @@
         "Veterenarian"
       ]
     },
-    "bm25_text": "dog kennel profession dog kennel profession profession id role code first name street citi state zip code last name email address home phone cell number treatment role code employe veterenarian employe veterenarian"
+    "bm25_text": "profession profession id role code first name street citi state zip code last name email address home phone cell number treatment employe veterenarian employe veterenarian"
   },
   {
     "table_id": "dog_kennels.treatments",
@@ -175,7 +175,7 @@
         "WALK"
       ]
     },
-    "bm25_text": "dog kennel treatment dog kennel treatment treatment id dog id profession id treatment type code date of treatment cost of treatment dog profession treatment type treatment type code exam vac walk exam vac walk"
+    "bm25_text": "treatment treatment id dog id profession id treatment type code date of treatment cost of treatment dog profession treatment type exam vac walk exam vac walk"
   },
   {
     "table_id": "flight_2.airlines",
@@ -193,7 +193,7 @@
         "USA"
       ]
     },
-    "bm25_text": "flight airlin flight airlin airlin id airlin name abbrevi countri countri usa usa"
+    "bm25_text": "airlin airlin id airlin name abbrevi countri usa usa"
   },
   {
     "table_id": "flight_2.airports",
@@ -218,7 +218,7 @@
         "US "
       ]
     },
-    "bm25_text": "flight airport flight airport citi airport code airport name countri countri abbrev flight countri unit state unit state countri abbrev us us us us"
+    "bm25_text": "airport citi airport code airport name countri countri abbrev flight unit state unit state us us us us"
   },
   {
     "table_id": "flight_2.flights",
@@ -244,7 +244,9 @@
         4,
         5,
         6,
-        7
+        7,
+        8,
+        9
       ],
       "source airport": [
         " AAF",
@@ -256,7 +258,47 @@
         " CVO",
         " ABQ",
         " ALS",
-        " ANP"
+        " ANP",
+        " ANV",
+        " LTS",
+        " OTS",
+        " ABY",
+        " ALE",
+        " ANN",
+        " ANY",
+        " JLH",
+        " WKK",
+        " ADK",
+        " AET",
+        " AHF",
+        " AIV",
+        " AST",
+        " ATW",
+        " ADG",
+        " AFO",
+        " AKK",
+        " AMA",
+        " ARC",
+        " AYZ",
+        " DYS",
+        " MMI",
+        " QAW",
+        " AND",
+        " AOS",
+        " ARX",
+        " ATS",
+        " AXN",
+        " EDF",
+        " ABI",
+        " ADT",
+        " AHT",
+        " ALM",
+        " ANC",
+        " HMN",
+        " NAB",
+        " RLI",
+        " VJI",
+        " AED"
       ],
       "destination airport": [
         " AAF",
@@ -268,10 +310,50 @@
         " CVO",
         " ABQ",
         " ALS",
-        " ANP"
+        " ANP",
+        " ANV",
+        " LTS",
+        " OTS",
+        " ABY",
+        " ALE",
+        " ANN",
+        " ANY",
+        " JLH",
+        " WKK",
+        " ADK",
+        " AET",
+        " AHF",
+        " AIV",
+        " AST",
+        " ATW",
+        " ADG",
+        " AFO",
+        " AKK",
+        " AMA",
+        " ARC",
+        " AYZ",
+        " DYS",
+        " MMI",
+        " QAW",
+        " AND",
+        " AOS",
+        " ARX",
+        " ATS",
+        " AXN",
+        " EDF",
+        " ABI",
+        " ADT",
+        " AHT",
+        " ALM",
+        " ANC",
+        " HMN",
+        " NAB",
+        " RLI",
+        " VJI",
+        " AED"
       ]
     },
-    "bm25_text": "flight flight flight flight airlin flight number sourc airport destin airport airport sourc airport aaf axg aki arb asi cak cvo abq al anp aaf axg aki arb asi cak cvo abq al anp destin airport aaf axg aki arb asi cak cvo abq al anp aaf axg aki arb asi cak cvo abq al anp"
+    "bm25_text": "flight airlin flight number sourc airport destin airport airport aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a"
   },
   {
     "table_id": "pets_1.student",
@@ -315,7 +397,7 @@
         100
       ]
     },
-    "bm25_text": "pet student pet student student id last name first name age sex major advisor citi code has pet sex m f m f"
+    "bm25_text": "student student id last name first name age sex major advisor citi code has pet m f m f"
   },
   {
     "table_id": "pets_1.has pet",
@@ -330,7 +412,7 @@
       "pets"
     ],
     "top_values": {},
-    "bm25_text": "pet has pet pet has pet student id pet id student pet"
+    "bm25_text": "has pet student id pet id student pet"
   },
   {
     "table_id": "pets_1.pets",
@@ -346,7 +428,7 @@
       "has pet"
     ],
     "top_values": {},
-    "bm25_text": "pet pet pet pet pet id pet type pet age weight has pet"
+    "bm25_text": "pet pet id pet type pet age weight has pet"
   },
   {
     "table_id": "concert_singer.stadium",
@@ -365,7 +447,7 @@
       "concert"
     ],
     "top_values": {},
-    "bm25_text": "concert singer stadium concert singer stadium stadium id locat name capac highest lowest averag concert"
+    "bm25_text": "stadium stadium id locat name capac highest lowest averag concert"
   },
   {
     "table_id": "concert_singer.singer",
@@ -394,7 +476,7 @@
         "F"
       ]
     },
-    "bm25_text": "concert singer singer concert singer singer singer id name countri song name song releas year age is male singer in concert countri franc netherland unit state franc netherland unit state is male t f t f"
+    "bm25_text": "singer singer id name countri song name song releas year age is male singer in concert franc netherland unit state franc netherland unit state t f t f"
   },
   {
     "table_id": "concert_singer.concert",
@@ -417,7 +499,7 @@
         "2015"
       ]
     },
-    "bm25_text": "concert singer concert concert singer concert concert id concert name theme stadium id year stadium singer in concert year"
+    "bm25_text": "concert concert id concert name theme stadium id year stadium singer in concert"
   },
   {
     "table_id": "concert_singer.singer in concert",
@@ -440,7 +522,7 @@
         "4"
       ]
     },
-    "bm25_text": "concert singer singer in concert concert singer singer in concert concert id singer id singer concert singer id"
+    "bm25_text": "singer in concert concert id singer id singer concert"
   },
   {
     "table_id": "museum_visit.museum",
@@ -456,7 +538,7 @@
       "visit"
     ],
     "top_values": {},
-    "bm25_text": "museum visit museum museum visit museum museum id name num of staff open year visit"
+    "bm25_text": "museum museum id name num of staff open year visit"
   },
   {
     "table_id": "museum_visit.customer",
@@ -472,7 +554,7 @@
       "visit"
     ],
     "top_values": {},
-    "bm25_text": "museum visit custom museum visit custom custom id name level of membership age visit"
+    "bm25_text": "custom custom id name level of membership age visit"
   },
   {
     "table_id": "museum_visit.visit",
@@ -495,7 +577,7 @@
         "6"
       ]
     },
-    "bm25_text": "museum visit visit museum visit visit museum id custom id num of ticket total spent custom museum custom id"
+    "bm25_text": "visit museum id custom id num of ticket total spent custom museum"
   },
   {
     "table_id": "battle_death.battle",
@@ -525,7 +607,7 @@
         "Two Year Truce"
       ]
     },
-    "bm25_text": "battl death battl battl death battl id name date bulgarian command latin command result ship bulgarian command kaloyan boril ivan asen ii unknown kaloyan boril ivan asen ii unknown result bulgarian victori latin victori two year truce bulgarian victori latin victori two year truce"
+    "bm25_text": "battl id name date bulgarian command latin command result ship kaloyan boril ivan asen ii unknown kaloyan boril ivan asen ii unknown bulgarian victori latin victori two year truce bulgarian victori latin victori two year truce"
   },
   {
     "table_id": "battle_death.ship",
@@ -561,7 +643,7 @@
         "SW Approaches"
       ]
     },
-    "bm25_text": "battl death ship battl death ship lost in battl id name tonnag ship type locat disposit of ship battl death tonnag t t ship type brig gun brig gun brig brig gun brig gun brig locat english channel mid atlant sw approach english channel mid atlant sw approach"
+    "bm25_text": "ship lost in battl id name tonnag ship type locat disposit of ship battl death t t brig gun brig gun brig brig gun brig gun brig english channel mid atlant sw approach english channel mid atlant sw approach"
   },
   {
     "table_id": "battle_death.death",
@@ -592,7 +674,7 @@
         9
       ]
     },
-    "bm25_text": "battl death death battl death death caus by ship id id note kill injur ship"
+    "bm25_text": "death caus by ship id id note kill injur ship"
   },
   {
     "table_id": "student_transcripts_tracking.addresses",
@@ -613,7 +695,7 @@
       "students"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track address student transcript track address address id line line line citi zip postcod state provinc counti countri other address detail student"
+    "bm25_text": "address address id line line line citi zip postcod state provinc counti countri other address detail student"
   },
   {
     "table_id": "student_transcripts_tracking.courses",
@@ -630,7 +712,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track cours student transcript track cours cours id cours name cours descript other detail section student enrol cours"
+    "bm25_text": "cours cours id cours name cours descript other detail section student enrol cours"
   },
   {
     "table_id": "student_transcripts_tracking.departments",
@@ -646,7 +728,7 @@
       "degree programs"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track depart student transcript track depart depart id depart name depart descript other detail degre program"
+    "bm25_text": "depart depart id depart name depart descript other detail degre program"
   },
   {
     "table_id": "student_transcripts_tracking.degree programs",
@@ -670,7 +752,7 @@
         "PHD"
       ]
     },
-    "bm25_text": "student transcript track degre program student transcript track degre program degre program id depart id degre summari name degre summari descript other detail depart student enrol degre summari name bachelor master phd bachelor master phd"
+    "bm25_text": "degre program degre program id depart id degre summari name degre summari descript other detail depart student enrol bachelor master phd bachelor master phd"
   },
   {
     "table_id": "student_transcripts_tracking.sections",
@@ -687,7 +769,7 @@
       "courses"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track section student transcript track section section id cours id section name section descript other detail cours"
+    "bm25_text": "section section id cours id section name section descript other detail cours"
   },
   {
     "table_id": "student_transcripts_tracking.semesters",
@@ -703,7 +785,7 @@
       "student enrolment"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track semest student transcript track semest semest id semest name semest descript other detail student enrol"
+    "bm25_text": "semest semest id semest name semest descript other detail student enrol"
   },
   {
     "table_id": "student_transcripts_tracking.students",
@@ -728,7 +810,7 @@
       "student enrolment"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track student student transcript track student student id current address id perman address id first name middl name last name cell mobil number email address ssn date first regist date left other student detail address student enrol"
+    "bm25_text": "student student id current address id perman address id first name middl name last name cell mobil number email address ssn date first regist date left other student detail address student enrol"
   },
   {
     "table_id": "student_transcripts_tracking.student enrolment",
@@ -748,7 +830,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track student enrol student transcript track student enrol student enrol id degre program id semest id student id other detail student semest degre program student enrol cours"
+    "bm25_text": "student enrol student enrol id degre program id semest id student id other detail student semest degre program student enrol cours"
   },
   {
     "table_id": "student_transcripts_tracking.student enrolment courses",
@@ -765,7 +847,7 @@
       "transcript contents"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track student enrol cours student transcript track student enrol cours student cours id cours id student enrol id student enrol cours transcript content"
+    "bm25_text": "student enrol cours student cours id cours id student enrol id student enrol cours transcript content"
   },
   {
     "table_id": "student_transcripts_tracking.transcripts",
@@ -780,7 +862,7 @@
       "transcript contents"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track transcript student transcript track transcript transcript id transcript date other detail transcript content"
+    "bm25_text": "transcript transcript id transcript date other detail transcript content"
   },
   {
     "table_id": "student_transcripts_tracking.transcript contents",
@@ -795,7 +877,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "student transcript track transcript content student transcript track transcript content student cours id transcript id transcript student enrol cours"
+    "bm25_text": "transcript content student cours id transcript id transcript student enrol cours"
   },
   {
     "table_id": "singer.singer",
@@ -812,7 +894,7 @@
       "song"
     ],
     "top_values": {},
-    "bm25_text": "singer singer singer singer singer id name birth year net worth million citizenship song"
+    "bm25_text": "singer singer id name birth year net worth million citizenship song"
   },
   {
     "table_id": "singer.song",
@@ -834,7 +916,7 @@
         3.0
       ]
     },
-    "bm25_text": "singer song singer song song id titl singer id sale highest posit singer"
+    "bm25_text": "song song id titl singer id sale highest posit singer"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.reference template types",
@@ -848,7 +930,7 @@
       "templates"
     ],
     "top_values": {},
-    "bm25_text": "cre doc templat mgt refer templat type cre doc templat mgt refer templat type templat type code templat type descript templat"
+    "bm25_text": "refer templat type templat type code templat type descript templat"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.templates",
@@ -890,7 +972,7 @@
         ""
       ]
     },
-    "bm25_text": "cre doc templat mgt templat cre doc templat mgt templat templat id version number templat type code date effect from date effect to templat detail refer templat type document templat type code bk pp ad ppt cv bk pp ad ppt cv"
+    "bm25_text": "templat templat id version number templat type code date effect from date effect to templat detail refer templat type document bk pp ad ppt cv bk pp ad ppt cv"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.documents",
@@ -908,7 +990,7 @@
       "paragraphs"
     ],
     "top_values": {},
-    "bm25_text": "cre doc templat mgt document cre doc templat mgt document document id templat id document name document descript other detail templat paragraph"
+    "bm25_text": "document document id templat id document name document descript other detail templat paragraph"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.paragraphs",
@@ -924,7 +1006,7 @@
       "documents"
     ],
     "top_values": {},
-    "bm25_text": "cre doc templat mgt paragraph cre doc templat mgt paragraph paragraph id document id paragraph text other detail document"
+    "bm25_text": "paragraph paragraph id document id paragraph text other detail document"
   },
   {
     "table_id": "world_1.city",
@@ -951,7 +1033,47 @@
         "MEX",
         "PHL",
         "DEU",
-        "IDN"
+        "IDN",
+        "GBR",
+        "KOR",
+        "IRN",
+        "NGA",
+        "TUR",
+        "ESP",
+        "PAK",
+        "ITA",
+        "ARG",
+        "UKR",
+        "CAN",
+        "POL",
+        "ZAF",
+        "TWN",
+        "VEN",
+        "FRA",
+        "COL",
+        "EGY",
+        "CHL",
+        "ROM",
+        "NLD",
+        "BGD",
+        "SAU",
+        "MAR",
+        "PER",
+        "VNM",
+        "KAZ",
+        "COD",
+        "DZA",
+        "MYS",
+        "UZB",
+        "BLR",
+        "MMR",
+        "ECU",
+        "IRQ",
+        "SWE",
+        "AUS",
+        "CUB",
+        "ISR",
+        "PRK"
       ],
       "district": [
         "England",
@@ -963,10 +1085,50 @@
         "Nordrhein-Westfalen",
         "Andhra Pradesh",
         "Maharashtra",
-        "Shandong"
+        "Shandong",
+        "Buenos Aires",
+        "Southern Tagalog",
+        "Tamil Nadu",
+        "Minas Gerais",
+        "México",
+        "Ontario",
+        "Texas",
+        "Jiangsu",
+        "West Java",
+        "Central Luzon",
+        "Hubei",
+        "Osaka",
+        "Rio de Janeiro",
+        "Gauteng",
+        "Gujarat",
+        "Heilongjiang",
+        "Liaoning",
+        "Madhya Pradesh",
+        "Saitama",
+        "Sichuan",
+        "Guangdong",
+        "Jilin",
+        "Rio Grande do Sul",
+        "Chiba",
+        "Henan",
+        "Hunan",
+        "Kyonggi",
+        "Moskova",
+        "Oyo & Osun",
+        "Tokyo-to",
+        "–",
+        "Karnataka",
+        "Anhui",
+        "National Capital Reg",
+        "Veracruz",
+        "Zhejiang",
+        "Aichi",
+        "Bahia",
+        "Florida",
+        "Guanajuato"
       ]
     },
-    "bm25_text": "world citi world citi id name countri code district popul countri countri code chn ind usa bra jpn rus mex phl deu idn chn ind usa bra jpn rus mex phl deu idn district england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong"
+    "bm25_text": "citi id name countri code district popul countri chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato"
   },
   {
     "table_id": "world_1.sqlite sequence",
@@ -978,7 +1140,7 @@
     ],
     "joinable_tables": [],
     "top_values": {},
-    "bm25_text": "world sqlite sequenc world sqlite sequenc name seq"
+    "bm25_text": "sqlite sequenc name seq"
   },
   {
     "table_id": "world_1.country",
@@ -1025,7 +1187,22 @@
         "Southern and Central Asia",
         "Southeast Asia",
         "Eastern Europe",
-        "Polynesia"
+        "Polynesia",
+        "Central Africa",
+        "Western Europe",
+        "Central America",
+        "Eastern Asia",
+        "Micronesia",
+        "Nordic Countries",
+        "Northern Africa",
+        "Antarctica",
+        "Australia and New Zealand",
+        "Melanesia",
+        "North America",
+        "Southern Africa",
+        "Baltic Countries",
+        "British Islands",
+        "Micronesia/Caribbean"
       ],
       "indepdent year": [
         1960,
@@ -1037,7 +1214,47 @@
         1966,
         1968,
         1971,
-        1810
+        1810,
+        1821,
+        1945,
+        1956,
+        1961,
+        1964,
+        1965,
+        1978,
+        1979,
+        1990,
+        1993,
+        1811,
+        1822,
+        1830,
+        1838,
+        1861,
+        1867,
+        1910,
+        1921,
+        1932,
+        1941,
+        1946,
+        1947,
+        1951,
+        1953,
+        1957,
+        1970,
+        1974,
+        1980,
+        1981,
+        -1000,
+        -1523,
+        -660,
+        1066,
+        1143,
+        1278,
+        1350,
+        1492,
+        1499,
+        1581,
+        1769
       ],
       "government form": [
         "Republic",
@@ -1049,10 +1266,35 @@
         "Nonmetropolitan Territory of France",
         "Overseas Department of France",
         "Territory of Australia",
-        "Nonmetropolitan Territory of New Zealand"
+        "Nonmetropolitan Territory of New Zealand",
+        "Socialistic Republic",
+        "US Territory",
+        "Commonwealth of the US",
+        "Dependent Territory of Norway",
+        "Islamic Republic",
+        "Monarchy (Sultanate)",
+        "Nonmetropolitan Territory of The Netherlands",
+        "Part of Denmark",
+        "Special Administrative Region of China",
+        "Territorial Collectivity of France",
+        "Administrated by the UN",
+        "Autonomous Area",
+        "Co-administrated",
+        "Constitutional Monarchy (Emirate)",
+        "Dependent Territory of the US",
+        "Emirate Federation",
+        "Federation",
+        "Independent Church State",
+        "Islamic Emirate",
+        "Monarchy (Emirate)",
+        "Occupied by Marocco",
+        "Parlementary Monarchy",
+        "Parliamentary Coprincipality",
+        "People'sRepublic",
+        "Socialistic State"
       ]
     },
-    "bm25_text": "world countri world countri code name contin region surfac area indepd year popul life expect gnp gnp old local name govern form head of state capit citi countrylanguag contin africa asia europ north america oceania south america antarctica africa asia europ north america oceania south america antarctica region caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia govern form republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand"
+    "bm25_text": "countri code name contin region surfac area indepd year popul life expect gnp gnp old local name govern form head of state capit citi countrylanguag africa asia europ north america oceania south america antarctica africa asia europ north america oceania south america antarctica caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state"
   },
   {
     "table_id": "world_1.countrylanguage",
@@ -1078,7 +1320,47 @@
         "ZAF",
         "COD",
         "IRN",
-        "KEN"
+        "KEN",
+        "MOZ",
+        "NGA",
+        "PHL",
+        "SDN",
+        "UGA",
+        "AGO",
+        "IDN",
+        "VNM",
+        "AUS",
+        "AUT",
+        "CMR",
+        "CZE",
+        "ITA",
+        "LBR",
+        "MMR",
+        "NAM",
+        "PAK",
+        "SLE",
+        "TCD",
+        "TGO",
+        "BEN",
+        "BGD",
+        "DNK",
+        "ETH",
+        "GIN",
+        "KGZ",
+        "NPL",
+        "UKR",
+        "BEL",
+        "BFA",
+        "CAF",
+        "COG",
+        "DEU",
+        "ERI",
+        "FRA",
+        "FSM",
+        "GEO",
+        "GHA",
+        "GNB",
+        "HUN"
       ],
       "language": [
         "English",
@@ -1090,7 +1372,47 @@
         "Russian",
         "Italian",
         "Creole English",
-        "Ful"
+        "Ful",
+        "Portuguese",
+        "Turkish",
+        "Ukrainian",
+        "Polish",
+        "Creole French",
+        "Serbo-Croatian",
+        "Hindi",
+        "Hungarian",
+        "Romani",
+        "Belorussian",
+        "Kazakh",
+        "Korean",
+        "Malay",
+        "Malinke",
+        "Tamil",
+        "Uzbek",
+        "Armenian",
+        "Azerbaijani",
+        "Dutch",
+        "Greek",
+        "Romanian",
+        "Albaniana",
+        "Balochi",
+        "Danish",
+        "Japanese",
+        "Kurdish",
+        "Macedonian",
+        "Norwegian",
+        "Philippene Languages",
+        "Slovak",
+        "Slovene",
+        "Soninke",
+        "Swedish",
+        "Tatar",
+        "Vietnamese",
+        "Aimará",
+        "Berberi",
+        "Bulgariana",
+        "Canton Chinese",
+        "Crioulo"
       ],
       "is official": [
         "F",
@@ -1106,10 +1428,50 @@
         0.3,
         0.7,
         1.4,
-        1.6
+        1.6,
+        100.0,
+        1.3,
+        2.2,
+        0.8,
+        0.9,
+        1.7,
+        2.0,
+        2.3,
+        2.4,
+        3.8,
+        1.2,
+        1.8,
+        2.5,
+        3.2,
+        5.7,
+        1.1,
+        3.1,
+        4.3,
+        4.9,
+        1.9,
+        2.7,
+        2.8,
+        3.0,
+        3.4,
+        5.4,
+        7.8,
+        1.0,
+        1.5,
+        2.6,
+        2.9,
+        3.3,
+        3.7,
+        4.1,
+        4.8,
+        5.9,
+        6.4,
+        7.4,
+        7.5,
+        8.1,
+        8.7
       ]
     },
-    "bm25_text": "world countrylanguag world countrylanguag countrycod languag is offici percentag countri countrycod can chn ind rus usa tza zaf cod irn ken can chn ind rus usa tza zaf cod irn ken languag english arab spanish french chines german russian italian creol english ful english arab spanish french chines german russian italian creol english ful is offici f t f t"
+    "bm25_text": "countrylanguag countrycod languag is offici percentag countri can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo f t f t"
   },
   {
     "table_id": "employee_hire_evaluation.employee",
@@ -1134,7 +1496,7 @@
         "Sale"
       ]
     },
-    "bm25_text": "employe hire evalu employe employe hire evalu employe employe id name age citi hire evalu citi bath bristol wasp leicest sale bath bristol wasp leicest sale"
+    "bm25_text": "employe employe id name age citi hire evalu bath bristol wasp leicest sale bath bristol wasp leicest sale"
   },
   {
     "table_id": "employee_hire_evaluation.shop",
@@ -1152,7 +1514,7 @@
       "hiring"
     ],
     "top_values": {},
-    "bm25_text": "employe hire evalu shop employe hire evalu shop shop id name locat district number product manag name hire"
+    "bm25_text": "shop shop id name locat district number product manag name hire"
   },
   {
     "table_id": "employee_hire_evaluation.hiring",
@@ -1174,7 +1536,7 @@
         "F"
       ]
     },
-    "bm25_text": "employe hire evalu hire employe hire evalu hire shop id employe id start from is full time employe shop is full time t f t f"
+    "bm25_text": "hire shop id employe id start from is full time employe shop t f t f"
   },
   {
     "table_id": "employee_hire_evaluation.evaluation",
@@ -1189,7 +1551,7 @@
       "employee"
     ],
     "top_values": {},
-    "bm25_text": "employe hire evalu evalu employe hire evalu evalu employe id year award bonus employe"
+    "bm25_text": "evalu employe id year award bonus employe"
   },
   {
     "table_id": "network_1.high schooler",
@@ -1212,7 +1574,7 @@
         9
       ]
     },
-    "bm25_text": "network high schooler network high schooler id name grade friend like"
+    "bm25_text": "high schooler id name grade friend like"
   },
   {
     "table_id": "network_1.friend",
@@ -1226,7 +1588,7 @@
       "high schooler"
     ],
     "top_values": {},
-    "bm25_text": "network friend network friend student id friend id high schooler"
+    "bm25_text": "friend student id friend id high schooler"
   },
   {
     "table_id": "network_1.likes",
@@ -1240,7 +1602,7 @@
       "high schooler"
     ],
     "top_values": {},
-    "bm25_text": "network like network like student id like id high schooler"
+    "bm25_text": "like student id like id high schooler"
   },
   {
     "table_id": "poker_player.poker player",
@@ -1258,7 +1620,7 @@
       "people"
     ],
     "top_values": {},
-    "bm25_text": "poker player poker player poker player poker player poker player id peopl id final tabl made best finish money rank earn peopl"
+    "bm25_text": "poker player poker player id peopl id final tabl made best finish money rank earn peopl"
   },
   {
     "table_id": "poker_player.people",
@@ -1280,7 +1642,7 @@
         "Bulgaria"
       ]
     },
-    "bm25_text": "poker player peopl poker player peopl peopl id nation name birth date height poker player nation russia bulgaria russia bulgaria"
+    "bm25_text": "peopl peopl id nation name birth date height poker player russia bulgaria russia bulgaria"
   },
   {
     "table_id": "real_estate_properties.reference feature types",
@@ -1294,7 +1656,7 @@
       "other available features"
     ],
     "top_values": {},
-    "bm25_text": "real estat properti refer featur type real estat properti refer featur type featur type code featur type name other avail featur"
+    "bm25_text": "refer featur type featur type code featur type name other avail featur"
   },
   {
     "table_id": "real_estate_properties.reference property types",
@@ -1308,7 +1670,7 @@
       "properties"
     ],
     "top_values": {},
-    "bm25_text": "real estat properti refer properti type real estat properti refer properti type properti type code properti type descript properti"
+    "bm25_text": "refer properti type properti type code properti type descript properti"
   },
   {
     "table_id": "real_estate_properties.other available features",
@@ -1325,7 +1687,7 @@
       "other property features"
     ],
     "top_values": {},
-    "bm25_text": "real estat properti other avail featur real estat properti other avail featur featur id featur type code featur name featur descript refer featur type other properti featur"
+    "bm25_text": "other avail featur featur id featur type code featur name featur descript refer featur type other properti featur"
   },
   {
     "table_id": "real_estate_properties.properties",
@@ -1372,7 +1734,7 @@
         "Field"
       ]
     },
-    "bm25_text": "real estat properti properti real estat properti properti properti id properti type code date on market date sold properti name properti address room count vendor request price buyer offer price agre sell price apt featur apt featur apt featur fld featur fld featur fld featur hse featur hse featur hse featur oth featur oth featur oth featur shp featur shp featur shp featur other properti detail refer properti type other properti featur properti type code apart other hous shop field apart other hous shop field"
+    "bm25_text": "properti properti id properti type code date on market date sold properti name properti address room count vendor request price buyer offer price agre sell price apt featur apt featur apt featur fld featur fld featur fld featur hse featur hse featur hse featur oth featur oth featur oth featur shp featur shp featur shp featur other properti detail refer properti type other properti featur apart other hous shop field apart other hous shop field"
   },
   {
     "table_id": "real_estate_properties.other property features",
@@ -1394,7 +1756,7 @@
         4
       ]
     },
-    "bm25_text": "real estat properti other properti featur real estat properti other properti featur properti id featur id properti featur descript properti other avail featur"
+    "bm25_text": "other properti featur properti id featur id properti featur descript properti other avail featur"
   },
   {
     "table_id": "course_teach.course",
@@ -1409,7 +1771,7 @@
       "course arrange"
     ],
     "top_values": {},
-    "bm25_text": "cours teach cours cours teach cours cours id stare date cours cours arrang"
+    "bm25_text": "cours cours id stare date cours cours arrang"
   },
   {
     "table_id": "course_teach.teacher",
@@ -1425,7 +1787,7 @@
       "course arrange"
     ],
     "top_values": {},
-    "bm25_text": "cours teach teacher cours teach teacher teacher id name age hometown cours arrang"
+    "bm25_text": "teacher teacher id name age hometown cours arrang"
   },
   {
     "table_id": "course_teach.course arrange",
@@ -1441,7 +1803,7 @@
       "course"
     ],
     "top_values": {},
-    "bm25_text": "cours teach cours arrang cours teach cours arrang cours id teacher id grade teacher cours"
+    "bm25_text": "cours arrang cours id teacher id grade teacher cours"
   },
   {
     "table_id": "voter_1.area code state",
@@ -1465,10 +1827,50 @@
         "OH",
         "PA",
         "GA",
-        "MA"
+        "MA",
+        "NJ",
+        "MO",
+        "NC",
+        "VA",
+        "MN",
+        "IN",
+        "TN",
+        "WA",
+        "AZ",
+        "IA",
+        "LA",
+        "WI",
+        "AL",
+        "CO",
+        "CT",
+        "KS",
+        "KY",
+        "MD",
+        "MS",
+        "AR",
+        "NM",
+        "OK",
+        "OR",
+        "SC",
+        "UT",
+        "NE",
+        "NV",
+        "AK",
+        "DC",
+        "DE",
+        "HI",
+        "ID",
+        "ME",
+        "MT",
+        "ND",
+        "NH",
+        "RI",
+        "SD",
+        "VT",
+        "WV"
       ]
     },
-    "bm25_text": "voter area code state voter area code state area code state vote state ca tx fl il mi ny oh pa ga ma ca tx fl il mi ny oh pa ga ma"
+    "bm25_text": "area code state area code state vote ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv"
   },
   {
     "table_id": "voter_1.contestants",
@@ -1482,7 +1884,7 @@
       "votes"
     ],
     "top_values": {},
-    "bm25_text": "voter contest voter contest contest number contest name vote"
+    "bm25_text": "contest contest number contest name vote"
   },
   {
     "table_id": "voter_1.votes",
@@ -1500,7 +1902,7 @@
       "area code state"
     ],
     "top_values": {},
-    "bm25_text": "voter vote voter vote vote id phone number state contest number creat contest area code state"
+    "bm25_text": "vote vote id phone number state contest number creat contest area code state"
   },
   {
     "table_id": "wta_1.players",
@@ -1529,7 +1931,47 @@
         "Natalia",
         "Elena",
         "Anastasia",
-        "Stephanie"
+        "Stephanie",
+        "Martina",
+        "Ana",
+        "Nicole",
+        "Sara",
+        "Daniela",
+        "Marina",
+        "Patricia",
+        "Jennifer",
+        "Sarah",
+        "Caroline",
+        "Lisa",
+        "Sandra",
+        "Barbara",
+        "Claudia",
+        "Diana",
+        "Ekaterina",
+        "Jessica",
+        "Petra",
+        "Sofia",
+        "Kristina",
+        "Gabriela",
+        "Olga",
+        "Marta",
+        "Carolina",
+        "Julie",
+        "Amanda",
+        "Victoria",
+        "Eva",
+        "Nina",
+        "Aleksandra",
+        "Cristina",
+        "Michelle",
+        "Monica",
+        "Elizabeth",
+        "Irina",
+        "Francesca",
+        "Paula",
+        "Valentina",
+        "Lucia",
+        "Daria"
       ],
       "hand": [
         "U",
@@ -1547,7 +1989,47 @@
         19970303,
         19850530,
         19881126,
-        19920513
+        19920513,
+        19940429,
+        19940816,
+        19960212,
+        19970220,
+        19970506,
+        19980110,
+        19990515,
+        19840714,
+        19850108,
+        19870205,
+        19870301,
+        19880414,
+        19880428,
+        19880701,
+        19880918,
+        19890114,
+        19890323,
+        19890530,
+        19900115,
+        19900223,
+        19900423,
+        19910516,
+        19910531,
+        19910711,
+        19910801,
+        19920103,
+        19930914,
+        19931008,
+        19940401,
+        19941216,
+        19950101,
+        19950211,
+        19950218,
+        19950411,
+        19950630,
+        19960109,
+        19960412,
+        19960501,
+        19960628,
+        19960822
       ],
       "country code": [
         "USA",
@@ -1559,10 +2041,50 @@
         "AUS",
         "FRA",
         "GBR",
-        "IND"
+        "IND",
+        "ARG",
+        "BRA",
+        "CZE",
+        "ROU",
+        "MEX",
+        "CHN",
+        "NED",
+        "CAN",
+        "SWE",
+        "UKR",
+        "RSA",
+        "KOR",
+        "POL",
+        "BEL",
+        "SVK",
+        "SUI",
+        "COL",
+        "CRO",
+        "AUT",
+        "ISR",
+        "SRB",
+        "TUR",
+        "BUL",
+        "INA",
+        "THA",
+        "HUN",
+        "GRE",
+        "VEN",
+        "TPE",
+        "SLO",
+        "BLR",
+        "POR",
+        "UZB",
+        "CHI",
+        "EGY",
+        "NZL",
+        "FIN",
+        "KAZ",
+        "BOL",
+        "MAR"
       ]
     },
-    "bm25_text": "wta player wta player player id first name last name hand birth date countri code match rank first name anna maria laura alexandra andrea julia natalia elena anastasia stephani anna maria laura alexandra andrea julia natalia elena anastasia stephani hand u r l u r l countri code usa ita esp ger jpn rus aus fra gbr ind usa ita esp ger jpn rus aus fra gbr ind"
+    "bm25_text": "player player id first name last name hand birth date countri code match rank anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria u r l u r l usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar"
   },
   {
     "table_id": "wta_1.matches",
@@ -1634,7 +2156,21 @@
         168,
         162,
         183,
-        178
+        178,
+        185,
+        163,
+        164,
+        172,
+        180,
+        161,
+        176,
+        175,
+        179,
+        159,
+        157,
+        165,
+        169,
+        181
       ],
       "loser id": [
         201320,
@@ -1646,7 +2182,46 @@
         201521,
         202469,
         201499,
-        201619
+        201619,
+        201520,
+        201540,
+        200748,
+        201311,
+        201325,
+        201496,
+        201495,
+        200033,
+        201366,
+        201455,
+        201693,
+        201347,
+        201421,
+        201504,
+        201458,
+        201535,
+        202428,
+        201397,
+        201425,
+        201505,
+        201506,
+        201512,
+        201518,
+        201595,
+        201596,
+        201427,
+        201444,
+        201465,
+        201514,
+        201517,
+        201527,
+        201539,
+        201585,
+        201593,
+        201615,
+        201616,
+        201621,
+        202429,
+        202470
       ],
       "loser ioc": [
         "RUS",
@@ -1658,7 +2233,20 @@
         "POL",
         "UKR",
         "ITA",
-        "FRA"
+        "FRA",
+        "AUS",
+        "DEN",
+        "SRB",
+        "SVK",
+        "HUN",
+        "BEL",
+        "BLR",
+        "NED",
+        "CHN",
+        "JPN",
+        "SWE",
+        "SUI",
+        "TPE"
       ],
       "loser name": [
         "Svetlana Kuznetsova",
@@ -1670,7 +2258,46 @@
         "Carla Suarez Navarro",
         "Garbine Muguruza",
         "Anastasia Pavlyuchenkova",
-        "Madison Keys"
+        "Madison Keys",
+        "Kristina Mladenovic",
+        "Petra Kvitova",
+        "Caroline Wozniacki",
+        "Roberta Vinci",
+        "Samantha Stosur",
+        "Venus Williams",
+        "Dominika Cibulkova",
+        "Barbora Zahlavova Strycova",
+        "Elena Vesnina",
+        "Serena Williams",
+        "Timea Babos",
+        "Ana Ivanovic",
+        "Jelena Jankovic",
+        "Julia Goerges",
+        "Coco Vandeweghe",
+        "Kiki Bertens",
+        "Victoria Azarenka",
+        "Ekaterina Makarova",
+        "Johanna Larsson",
+        "Lucie Safarova",
+        "Misaki Doi",
+        "Monica Niculescu",
+        "Sara Errani",
+        "Shuai Peng",
+        "Yanina Wickmayer",
+        "Alize Cornet",
+        "Annika Beck",
+        "Camila Giorgi",
+        "Christina Mchale",
+        "Irina Camelia Begu",
+        "Kirsten Flipkens",
+        "Lauren Davis",
+        "Lesia Tsurenko",
+        "Magdalena Rybarikova",
+        "Mona Barthel",
+        "Sloane Stephens",
+        "Sorana Cirstea",
+        "Stefanie Voegele",
+        "Su Wei Hsieh"
       ],
       "loser rank": [
         4,
@@ -1682,7 +2309,47 @@
         2,
         5,
         8,
-        12
+        12,
+        17,
+        19,
+        20,
+        13,
+        10,
+        11,
+        16,
+        18,
+        14,
+        15,
+        23,
+        25,
+        32,
+        22,
+        26,
+        30,
+        34,
+        21,
+        24,
+        28,
+        45,
+        27,
+        33,
+        37,
+        44,
+        48,
+        56,
+        59,
+        112,
+        29,
+        31,
+        35,
+        36,
+        39,
+        40,
+        46,
+        47,
+        52,
+        60,
+        61
       ],
       "loser seed": [
         5,
@@ -1694,7 +2361,29 @@
         7,
         8,
         9,
-        10
+        10,
+        14,
+        12,
+        13,
+        16,
+        17,
+        15,
+        26,
+        11,
+        18,
+        19,
+        21,
+        22,
+        30,
+        20,
+        24,
+        31,
+        23,
+        25,
+        27,
+        28,
+        29,
+        32
       ],
       "match num": [
         300,
@@ -1706,7 +2395,47 @@
         296,
         291,
         289,
-        286
+        286,
+        288,
+        292,
+        287,
+        226,
+        293,
+        213,
+        220,
+        222,
+        290,
+        198,
+        212,
+        214,
+        215,
+        217,
+        224,
+        225,
+        197,
+        199,
+        202,
+        206,
+        209,
+        210,
+        218,
+        219,
+        221,
+        271,
+        282,
+        148,
+        152,
+        155,
+        156,
+        161,
+        163,
+        196,
+        201,
+        204,
+        207,
+        208,
+        211,
+        216
       ],
       "minutes": [
         77,
@@ -1718,7 +2447,47 @@
         103,
         111,
         131,
-        62
+        62,
+        68,
+        72,
+        78,
+        89,
+        95,
+        100,
+        115,
+        128,
+        136,
+        64,
+        67,
+        71,
+        74,
+        81,
+        82,
+        84,
+        85,
+        88,
+        90,
+        98,
+        99,
+        105,
+        119,
+        120,
+        137,
+        54,
+        60,
+        61,
+        63,
+        80,
+        94,
+        0,
+        102,
+        104,
+        107,
+        109,
+        110,
+        113,
+        114,
+        118
       ],
       "round": [
         "QF",
@@ -1744,7 +2513,47 @@
         20160829,
         20160321,
         20160725,
-        20160815
+        20160815,
+        20160926,
+        20170828,
+        20170731,
+        20160118,
+        20160808,
+        20170116,
+        20170320,
+        20170515,
+        20170529,
+        20170807,
+        20161003,
+        20161031,
+        20170220,
+        20170403,
+        20170626,
+        20170814,
+        20160222,
+        20160404,
+        20160425,
+        20170102,
+        20170703,
+        20160208,
+        20160418,
+        20160718,
+        20161010,
+        20161017,
+        20170508,
+        20170717,
+        20160104,
+        20160111,
+        20160613,
+        20160620,
+        20160822,
+        20170227,
+        20170522,
+        20170821,
+        20160509,
+        20160606,
+        20160801,
+        20161114
       ],
       "tourney id": [
         "2017-M006",
@@ -1756,7 +2565,47 @@
         "2016-M006",
         "2016-M007",
         "2016-0806",
-        "2016-1075"
+        "2016-1075",
+        "2016-M024",
+        "2017-560",
+        "2016-580",
+        "2016-O16",
+        "2017-0806",
+        "2017-520",
+        "2017-580",
+        "2017-M007",
+        "2017-M009",
+        "2016-1081",
+        "2016-M015",
+        "2017-M016",
+        "2017-M024",
+        "2016-1082",
+        "2017-0703",
+        "2017-1039",
+        "2017-540",
+        "2017-M020",
+        "2016-1051",
+        "2017-1097",
+        "2017-M021",
+        "2017-M035",
+        "2016-0528",
+        "2016-0602",
+        "2016-0710",
+        "2016-0804",
+        "2016-1003",
+        "2016-1052",
+        "2016-1067",
+        "2016-1087",
+        "2016-M004",
+        "2016-M014",
+        "2017-0406",
+        "2017-0602",
+        "2017-0718",
+        "2017-1079",
+        "2017-M004",
+        "2016-0300",
+        "2016-0703",
+        "2016-1048"
       ],
       "tourney level": [
         "I",
@@ -1774,7 +2623,47 @@
         "Australian Open",
         "WTA Championships",
         "French Open",
-        "Montreal"
+        "Montreal",
+        "Wuhan",
+        "Eastbourne",
+        "Rome",
+        "Olympics",
+        "Roland Garros",
+        "Toronto",
+        "Beijing",
+        "Brisbane",
+        "Stanford",
+        "Zhuhai",
+        "Acapulco",
+        "Monterrey",
+        "New Haven",
+        "Prague",
+        "Washington",
+        "Birmingham",
+        "Budapest",
+        "Charleston",
+        "Doha",
+        "Madrid",
+        "Stuttgart",
+        "Bucharest",
+        "Dubai",
+        "Kaohsiung",
+        "Katowice",
+        "Linz",
+        "Moscow",
+        "St. Petersburg",
+        "Strasbourg",
+        "'S-Hertogenbosch",
+        "Auckland",
+        "Bastad",
+        "Biel",
+        "Florianopolis",
+        "Gstaad",
+        "Hobart",
+        "Hong Kong",
+        "Istanbul",
+        "Limoges",
+        "Luxembourg"
       ],
       "winner entry": [
         ""
@@ -1793,7 +2682,18 @@
         182,
         183,
         170,
-        175
+        175,
+        161,
+        185,
+        172,
+        180,
+        162,
+        176,
+        181,
+        164,
+        163,
+        179,
+        159
       ],
       "winner id": [
         201493,
@@ -1805,7 +2705,35 @@
         200033,
         201619,
         202469,
-        201495
+        201495,
+        201474,
+        201496,
+        201499,
+        201458,
+        201521,
+        200748,
+        201325,
+        201455,
+        201505,
+        201535,
+        201540,
+        201593,
+        201419,
+        201585,
+        201311,
+        201425,
+        201427,
+        201504,
+        201506,
+        201518,
+        201615,
+        201693,
+        201347,
+        201366,
+        201595,
+        201596,
+        202428,
+        202429
       ],
       "winner ioc": [
         "USA",
@@ -1817,7 +2745,18 @@
         "UKR",
         "SVK",
         "POL",
-        "DEN"
+        "DEN",
+        "BLR",
+        "FRA",
+        "AUS",
+        "ITA",
+        "CHN",
+        "BEL",
+        "HUN",
+        "JPN",
+        "NED",
+        "SRB",
+        "SWE"
       ],
       "winner name": [
         "Angelique Kerber",
@@ -1829,7 +2768,35 @@
         "Garbine Muguruza",
         "Madison Keys",
         "Serena Williams",
-        "Dominika Cibulkova"
+        "Dominika Cibulkova",
+        "Agnieszka Radwanska",
+        "Anastasia Pavlyuchenkova",
+        "Caroline Wozniacki",
+        "Carla Suarez Navarro",
+        "Victoria Azarenka",
+        "Coco Vandeweghe",
+        "Ekaterina Makarova",
+        "Elena Vesnina",
+        "Samantha Stosur",
+        "Venus Williams",
+        "Kristina Mladenovic",
+        "Irina Camelia Begu",
+        "Na Li",
+        "Sloane Stephens",
+        "Alize Cornet",
+        "Julia Goerges",
+        "Lesia Tsurenko",
+        "Lucie Safarova",
+        "Roberta Vinci",
+        "Sara Errani",
+        "Timea Babos",
+        "Yanina Wickmayer",
+        "Barbora Zahlavova Strycova",
+        "Camila Giorgi",
+        "Jelena Jankovic",
+        "Johanna Larsson",
+        "Kiki Bertens",
+        "Misaki Doi"
       ],
       "winner rank": [
         5,
@@ -1841,7 +2808,43 @@
         8,
         2,
         15,
-        11
+        11,
+        12,
+        14,
+        9,
+        24,
+        10,
+        21,
+        13,
+        17,
+        19,
+        7,
+        25,
+        58,
+        20,
+        22,
+        30,
+        31,
+        33,
+        18,
+        23,
+        26,
+        27,
+        34,
+        35,
+        37,
+        40,
+        42,
+        43,
+        44,
+        45,
+        48,
+        50,
+        52,
+        53,
+        56,
+        61,
+        82
       ],
       "winner seed": [
         2,
@@ -1853,7 +2856,22 @@
         8,
         6,
         14,
-        13
+        13,
+        15,
+        10,
+        11,
+        12,
+        9,
+        21,
+        19,
+        24,
+        30,
+        16,
+        18,
+        20,
+        28,
+        22,
+        27
       ],
       "year": [
         2016,
@@ -1861,7 +2879,7 @@
         2013
       ]
     },
-    "bm25_text": "wta match wta match best of draw size loser age loser entri loser hand loser ht loser id loser ioc loser name loser rank loser rank point loser seed match num minut round score surfac tourney date tourney id tourney level tourney name winner age winner entri winner hand winner ht winner id winner ioc winner name winner rank winner rank point winner seed year player loser hand r l r l loser ioc rus cze usa esp ger rou pol ukr ita fra rus cze usa esp ger rou pol ukr ita fra loser name svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key round qf sf f rr br qf sf f rr br surfac hard clay grass hard clay grass tourney id w wt tur w wt tur tourney level i g p w i g p w tourney name indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal winner hand r l r l winner ioc usa rus cze rou ger esp ukr svk pol den usa rus cze rou ger esp ukr svk pol den winner name angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova"
+    "bm25_text": "match best of draw size loser age loser entri loser hand loser ht loser id loser ioc loser name loser rank loser rank point loser seed match num minut round score surfac tourney date tourney id tourney level tourney name winner age winner entri winner hand winner ht winner id winner ioc winner name winner rank winner rank point winner seed year player r l r l rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh qf sf f rr br qf sf f rr br hard clay grass hard clay grass w wt tur w wt tur i g p w i g p w indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg r l r l usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi"
   },
   {
     "table_id": "wta_1.rankings",
@@ -1888,7 +2906,47 @@
         20160208,
         20160411,
         20160509,
-        20160418
+        20160418,
+        20160425,
+        20160502,
+        20160523,
+        20151102,
+        20160606,
+        20160620,
+        20160815,
+        20151019,
+        20140224,
+        20151012,
+        20160627,
+        20151005,
+        20170529,
+        20131230,
+        20140210,
+        20131223,
+        20140203,
+        20170109,
+        20161128,
+        20161212,
+        20140106,
+        20161205,
+        20170102,
+        20140127,
+        20150831,
+        20161121,
+        20170116,
+        20140113,
+        20161107,
+        20161031,
+        20131216,
+        20160926,
+        20161114,
+        20160919,
+        20170522,
+        20170515,
+        20150921,
+        20170213,
+        20150824,
+        20170417
       ],
       "ranking": [
         27,
@@ -1900,7 +2958,47 @@
         58,
         40,
         29,
-        45
+        45,
+        26,
+        32,
+        59,
+        34,
+        41,
+        46,
+        9,
+        22,
+        57,
+        38,
+        44,
+        60,
+        50,
+        35,
+        42,
+        61,
+        25,
+        51,
+        19,
+        33,
+        48,
+        21,
+        37,
+        66,
+        192,
+        8,
+        99,
+        47,
+        55,
+        36,
+        49,
+        65,
+        76,
+        104,
+        6,
+        74,
+        132,
+        20,
+        15,
+        4
       ],
       "player id": [
         200009,
@@ -1912,7 +3010,47 @@
         201462,
         201212,
         201086,
-        200083
+        200083,
+        201452,
+        200729,
+        200020,
+        200033,
+        201293,
+        201370,
+        203288,
+        200773,
+        201355,
+        201305,
+        200765,
+        201311,
+        200107,
+        201344,
+        201286,
+        200069,
+        201410,
+        202349,
+        200043,
+        201308,
+        200697,
+        201290,
+        201429,
+        201334,
+        202302,
+        200011,
+        200554,
+        201287,
+        200754,
+        200764,
+        201390,
+        201383,
+        201291,
+        200002,
+        201211,
+        201377,
+        201708,
+        201325,
+        200617,
+        201591
       ],
       "ranking points": [
         3,
@@ -1924,7 +3062,47 @@
         5,
         9,
         12,
-        11
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        23,
+        21,
+        26,
+        25,
+        27,
+        28,
+        30,
+        29,
+        31,
+        32,
+        35,
+        34,
+        33,
+        37,
+        38,
+        36,
+        2,
+        39,
+        40,
+        41,
+        43,
+        42,
+        45,
+        46,
+        44,
+        50,
+        48,
+        49,
+        47,
+        53
       ],
       "tours": [
         3,
@@ -1936,10 +3114,42 @@
         6,
         22,
         2,
-        13
+        13,
+        7,
+        16,
+        8,
+        23,
+        21,
+        17,
+        24,
+        9,
+        14,
+        10,
+        11,
+        15,
+        27,
+        26,
+        20,
+        19,
+        18,
+        28,
+        12,
+        29,
+        30,
+        31,
+        33,
+        37,
+        32,
+        34,
+        35,
+        36,
+        38,
+        40,
+        39,
+        41
       ]
     },
-    "bm25_text": "wta rank wta rank rank date rank player id rank point tour player"
+    "bm25_text": "rank rank date rank player id rank point tour player"
   },
   {
     "table_id": "orchestra.conductor",
@@ -1962,7 +3172,7 @@
         "France"
       ]
     },
-    "bm25_text": "orchestra conductor orchestra conductor conductor id name age nation year of work orchestra nation usa uk franc usa uk franc"
+    "bm25_text": "conductor conductor id name age nation year of work orchestra usa uk franc usa uk franc"
   },
   {
     "table_id": "orchestra.orchestra",
@@ -1987,7 +3197,7 @@
         "DVD"
       ]
     },
-    "bm25_text": "orchestra orchestra orchestra orchestra orchestra id orchestra conductor id record compani year of found major record format conductor perform major record format cd cd lp dvd cd cd lp dvd"
+    "bm25_text": "orchestra orchestra id orchestra conductor id record compani year of found major record format conductor perform cd cd lp dvd cd cd lp dvd"
   },
   {
     "table_id": "orchestra.performance",
@@ -2007,7 +3217,7 @@
       "show"
     ],
     "top_values": {},
-    "bm25_text": "orchestra perform orchestra perform perform id orchestra id type date offici rate million week rank share orchestra show"
+    "bm25_text": "perform perform id orchestra id type date offici rate million week rank share orchestra show"
   },
   {
     "table_id": "orchestra.show",
@@ -2029,7 +3239,7 @@
         "F"
       ]
     },
-    "bm25_text": "orchestra show orchestra show show id perform id if first show result attend perform result t f t f"
+    "bm25_text": "show show id perform id if first show result attend perform t f t f"
   },
   {
     "table_id": "car_1.continents",
@@ -2043,7 +3253,7 @@
       "countries"
     ],
     "top_values": {},
-    "bm25_text": "car contin car contin cont id contin countri"
+    "bm25_text": "contin cont id contin countri"
   },
   {
     "table_id": "car_1.countries",
@@ -2067,7 +3277,7 @@
         5
       ]
     },
-    "bm25_text": "car countri car countri countri id countri name contin contin car maker"
+    "bm25_text": "countri countri id countri name contin contin car maker"
   },
   {
     "table_id": "car_1.car makers",
@@ -2095,7 +3305,7 @@
         "7"
       ]
     },
-    "bm25_text": "car car maker car car maker id maker full name countri countri model list countri"
+    "bm25_text": "car maker id maker full name countri countri model list"
   },
   {
     "table_id": "car_1.model list",
@@ -2111,7 +3321,7 @@
       "car names"
     ],
     "top_values": {},
-    "bm25_text": "car model list car model list model id maker model car maker car name"
+    "bm25_text": "model list model id maker model car maker car name"
   },
   {
     "table_id": "car_1.car names",
@@ -2137,10 +3347,33 @@
         "datsun",
         "volkswagen",
         "buick",
-        "pontiac"
+        "pontiac",
+        "honda",
+        "mazda",
+        "mercury",
+        "oldsmobile",
+        "fiat",
+        "peugeot",
+        "audi",
+        "chrysler",
+        "volvo",
+        "renault",
+        "saab",
+        "opel",
+        "subaru",
+        "bmw",
+        "cadillac",
+        "mercedes-benz",
+        " volkswagen",
+        "capri",
+        "citroen",
+        "hi",
+        "mercedes",
+        "nissan",
+        "triumph"
       ]
     },
-    "bm25_text": "car car name car car name make id model make model list car data model ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac"
+    "bm25_text": "car name make id model make model list car data ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph"
   },
   {
     "table_id": "car_1.cars data",
@@ -2170,7 +3403,47 @@
         "19",
         "24",
         "25",
-        "22"
+        "22",
+        "23",
+        "28",
+        "20",
+        "27",
+        "21",
+        "29",
+        "null",
+        "17",
+        "30",
+        "31",
+        "12",
+        "32",
+        "36",
+        "15.5",
+        "17.5",
+        "11",
+        "20.2",
+        "38",
+        "16.5",
+        "18.5",
+        "19.2",
+        "20.5",
+        "21.5",
+        "27.2",
+        "33",
+        "33.5",
+        "37",
+        "10",
+        "17.6",
+        "18.1",
+        "19.4",
+        "20.6",
+        "23.9",
+        "24.5",
+        "25.4",
+        "25.5",
+        "26.6",
+        "29.5",
+        "29.8",
+        "30.5"
       ],
       "cylinders": [
         4,
@@ -2189,7 +3462,47 @@
         225.0,
         400.0,
         121.0,
-        302.0
+        302.0,
+        91.0,
+        232.0,
+        151.0,
+        120.0,
+        351.0,
+        200.0,
+        231.0,
+        85.0,
+        90.0,
+        105.0,
+        122.0,
+        304.0,
+        119.0,
+        156.0,
+        79.0,
+        107.0,
+        108.0,
+        135.0,
+        258.0,
+        360.0,
+        89.0,
+        112.0,
+        116.0,
+        134.0,
+        305.0,
+        86.0,
+        113.0,
+        146.0,
+        168.0,
+        173.0,
+        198.0,
+        260.0,
+        307.0,
+        383.0,
+        429.0,
+        455.0,
+        70.0,
+        141.0,
+        163.0,
+        199.0
       ],
       "horsepower": [
         "150",
@@ -2201,7 +3514,47 @@
         "95",
         "105",
         "67",
-        "70"
+        "70",
+        "65",
+        "85",
+        "97",
+        "140",
+        "145",
+        "175",
+        "80",
+        "115",
+        "68",
+        "72",
+        "78",
+        "84",
+        "92",
+        "null",
+        "130",
+        "165",
+        "170",
+        "180",
+        "60",
+        "71",
+        "86",
+        "120",
+        "48",
+        "52",
+        "76",
+        "83",
+        "112",
+        "125",
+        "153",
+        "190",
+        "215",
+        "225",
+        "63",
+        "69",
+        "74",
+        "96",
+        "129",
+        "139",
+        "155",
+        "160"
       ],
       "accelerate": [
         14.5,
@@ -2213,7 +3566,47 @@
         17.0,
         16.5,
         13.0,
-        19.0
+        19.0,
+        12.0,
+        11.0,
+        16.4,
+        11.5,
+        12.5,
+        18.0,
+        14.9,
+        15.8,
+        13.2,
+        19.5,
+        14.4,
+        14.7,
+        15.4,
+        17.3,
+        17.5,
+        18.2,
+        18.5,
+        21.0,
+        10.0,
+        15.7,
+        16.2,
+        16.9,
+        17.6,
+        18.6,
+        12.8,
+        14.2,
+        14.8,
+        15.2,
+        15.3,
+        16.6,
+        16.7,
+        17.7,
+        19.2,
+        19.4,
+        20.5,
+        10.5,
+        11.4,
+        12.2,
+        12.6,
+        12.9
       ],
       "year": [
         1973,
@@ -2225,10 +3618,13 @@
         1981,
         1971,
         1979,
-        1980
+        1980,
+        1972,
+        1977,
+        1974
       ]
     },
-    "bm25_text": "car car data car car data id mpg cylind edispl horsepow weight acceler year car name mpg horsepow"
+    "bm25_text": "car data id mpg cylind edispl horsepow weight acceler year car name null null null null"
   },
   {
     "table_id": "tvshow.tv channel",
@@ -2281,7 +3677,7 @@
         "Sky Famiglia + Sky HD"
       ]
     },
-    "bm25_text": "tvshow tv channel tvshow tv channel id seri name countri languag content pixel aspect ratio par hight definit tv pay per view ppv packag option tv seri cartoon countri itali unit kingdom poland itali unit kingdom poland languag italian english italian english content music music pixel aspect ratio par hight definit tv no yes no yes pay per view ppv no no packag option sky famiglia no ftv option sky famiglia sky hd sky famiglia no ftv option sky famiglia sky hd"
+    "bm25_text": "tv channel id seri name countri languag content pixel aspect ratio par hight definit tv pay per view ppv packag option tv seri cartoon itali unit kingdom poland itali unit kingdom poland italian english italian english music music no yes no yes no no sky famiglia no ftv option sky famiglia sky hd sky famiglia no ftv option sky famiglia sky hd"
   },
   {
     "table_id": "tvshow.tv series",
@@ -2309,7 +3705,7 @@
         5.0
       ]
     },
-    "bm25_text": "tvshow tv seri tvshow tv seri id episod air date rate share rate share viewer m week rank channel tv channel"
+    "bm25_text": "tv seri id episod air date rate share rate share viewer m week rank channel tv channel"
   },
   {
     "table_id": "tvshow.cartoon",
@@ -2334,6 +3730,6 @@
         "Michael Chang"
       ]
     },
-    "bm25_text": "tvshow cartoon tvshow cartoon id titl direct by written by origin air date product code channel tv channel direct by ben jone brandon vietti michael chang ben jone brandon vietti michael chang"
+    "bm25_text": "cartoon id titl direct by written by origin air date product code channel tv channel ben jone brandon vietti michael chang ben jone brandon vietti michael chang"
   }
 ]

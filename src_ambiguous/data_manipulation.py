@@ -701,8 +701,6 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
     def build_bm25_text(table_doc):
         parts = []
 
-        add_text_part(parts, table_doc.get("table_id"))
-        add_text_part(parts, table_doc.get("db"))
         add_text_part(parts, table_doc.get("table"))
 
         for column_name in table_doc.get("columns", []):
@@ -713,7 +711,7 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
 
         top_values = table_doc.get("top_values", {})
         if isinstance(top_values, dict):
-            for column_name, values in top_values.items():
+            for values in top_values.values():
                 if not isinstance(values, list):
                     continue
 
@@ -723,7 +721,6 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
                 ]
 
                 if string_values:
-                    add_text_part(parts, column_name)
                     parts.extend(string_values)
                     parts.extend(string_values)
 
@@ -1978,8 +1975,14 @@ if __name__ == '__main__':
     # print(dict['debit_card_specializing']['year and month']['Customer ID'])
 
 
-
-
+# ===================== Doc & BM25 text ================================================ #
+    # dataset_path = paths.DATASETS.SPIDERdev1.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+    # dataset_path = paths.DATASETS.BIRDdev.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+# ====================================================================================== #
 
 # ===================== AMBIGUOUS ====================================================== #
 
