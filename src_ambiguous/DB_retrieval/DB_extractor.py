@@ -17,6 +17,7 @@ from data_manipulation import normalize_and_stem_text
 
 
 EMBEDDING_MARGIN_THRESHOLD = 0.02
+BM25_TABLES_PER_DB = 5
 
 
 def get_dataset_paths(dataset: str):
@@ -66,42 +67,51 @@ def build_bm25(table_docs: list):
     return BM25Okapi(tokenized_corpus)
 
 
-def rank_tables(question: str, table_docs: list, bm25: BM25Okapi, top_k: int = 11):
+def get_candidate_bm25_db_scores(
+    question: str,
+    table_docs: list,
+    bm25: BM25Okapi,
+    candidate_dbs: list,
+):
     query_tokens = normalize_and_stem_text(question).split()
     scores = bm25.get_scores(query_tokens)
+    candidate_db_set = set(candidate_dbs)
+    db_table_scores = defaultdict(list)
 
-    ranked_indexes = sorted(
-        range(len(table_docs)),
-        key=lambda index: (scores[index], table_docs[index].get("table_id", "")),
-        reverse=True,
-    )
-
-    ranked_tables = []
-    for index in ranked_indexes[:top_k]:
-        ranked_table = dict(table_docs[index])
-        ranked_table["_bm25_score"] = float(scores[index])
-        ranked_tables.append(ranked_table)
-
-    return ranked_tables
-
-
-def get_bm25_top_dbs(ranked_tables: list):
-    db_scores = defaultdict(float)
-    for table_doc in ranked_tables:
+    for index, table_doc in enumerate(table_docs):
         db_name = table_doc.get("db")
-        if not db_name:
+        if db_name not in candidate_db_set:
             continue
 
-        db_scores[db_name] += table_doc.get("_bm25_score", 0.0)
+        score = max(0.0, float(scores[index]))
+        db_table_scores[db_name].append(score)
 
-    if not db_scores:
-        return []
+    db_scores = {}
+    for db_name in candidate_dbs:
+        table_scores = sorted(db_table_scores.get(db_name, []), reverse=True)
+        db_scores[db_name] = sum(table_scores[:BM25_TABLES_PER_DB])
 
-    max_score = max(db_scores.values())
-    return [
-        db for db, score in db_scores.items()
+    return db_scores
+
+
+def get_best_bm25_db(embedding_top_dbs: list, bm25_db_scores: dict):
+    if not bm25_db_scores:
+        return embedding_top_dbs[0]
+
+    max_score = max(bm25_db_scores.values())
+    if max_score <= 0:
+        return embedding_top_dbs[0]
+
+    best_dbs = {
+        db for db, score in bm25_db_scores.items()
         if score == max_score
-    ]
+    }
+
+    for db_name in embedding_top_dbs:
+        if db_name in best_dbs:
+            return db_name
+
+    return embedding_top_dbs[0]
 
 
 def build_description_embeddings(embedder: Embedder, descriptions: list):
@@ -131,20 +141,24 @@ def rank_databases_with_embeddings(
     return sorted(best_score_db, reverse=True)[:top_k]
 
 
-def choose_db_result(embedding_ranking: list, bm25_top_dbs: list):
-    embedding_top_dbs = [db_name for _, db_name in embedding_ranking]
-    intersection = [
-        db for db in embedding_top_dbs
-        if db in bm25_top_dbs
-    ]
-
+def get_embedding_margin(embedding_ranking: list):
     if len(embedding_ranking) > 1:
-        margin = embedding_ranking[0][0] - embedding_ranking[1][0]
-    else:
-        margin = 0
+        return embedding_ranking[0][0] - embedding_ranking[1][0]
 
-    if intersection and margin <= EMBEDDING_MARGIN_THRESHOLD:
-        return intersection[0]
+    return 0
+
+
+def should_rerank_with_bm25(embedding_ranking: list):
+    return get_embedding_margin(embedding_ranking) <= EMBEDDING_MARGIN_THRESHOLD
+
+
+def choose_db_result(embedding_ranking: list, bm25_db_scores: dict):
+    embedding_top_dbs = [db_name for _, db_name in embedding_ranking]
+    if not embedding_top_dbs:
+        return None
+
+    if should_rerank_with_bm25(embedding_ranking):
+        return get_best_bm25_db(embedding_top_dbs, bm25_db_scores)
 
     return embedding_top_dbs[0]
 
@@ -172,9 +186,16 @@ def extract_DB(embedder: Embedder, dataset: str):
             embedder,
             top_k=3,
         )
-        ranked_tables = rank_tables(sample["question"], table_docs, bm25, top_k=8)
-        bm25_top_dbs = get_bm25_top_dbs(ranked_tables)
-        db_result = choose_db_result(embedding_ranking, bm25_top_dbs)
+        candidate_dbs = [db_name for _, db_name in embedding_ranking]
+        bm25_db_scores = {}
+        if should_rerank_with_bm25(embedding_ranking):
+            bm25_db_scores = get_candidate_bm25_db_scores(
+                sample["question"],
+                table_docs,
+                bm25,
+                candidate_dbs,
+            )
+        db_result = choose_db_result(embedding_ranking, bm25_db_scores)
 
         if dataset == "BIRDdev" or dataset == "BIRDdev-ambiguous":
             item = {
