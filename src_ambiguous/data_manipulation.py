@@ -530,6 +530,21 @@ def create_benchmark_doc(dataset_path):
         sqlite_files = list(db_dir.glob("*.sqlite")) if db_dir.exists() else []
         return sqlite_files[0] if sqlite_files else None
 
+    def get_table_schema_sql(connection, table_name):
+        try:
+            row = connection.execute(
+                """
+                SELECT sql
+                FROM sqlite_master
+                WHERE type = 'table' AND name = ?
+                """,
+                (table_name,),
+            ).fetchone()
+        except sqlite3.Error:
+            return ""
+
+        return row[0] if row and row[0] else ""
+
     def get_column_top_values(connection, table_name, column_name):
         quoted_table = quote_identifier(table_name)
         quoted_column = quote_identifier(column_name)
@@ -628,9 +643,11 @@ def create_benchmark_doc(dataset_path):
                     continue
 
                 original_table_name = table_names_original[table_idx]
+                schema_sql = ""
                 top_values = {}
 
                 if connection:
+                    schema_sql = get_table_schema_sql(connection, original_table_name)
                     for column_name, original_column_name in original_columns_by_table[table_idx]:
                         values = get_column_top_values(
                             connection,
@@ -646,6 +663,7 @@ def create_benchmark_doc(dataset_path):
                         "db": db_id,
                         "table": table_name,
                         "columns": columns_by_table[table_idx],
+                        "schema_sql": schema_sql,
                         "joinable_tables": joinables_by_table[table_idx],
                         "top_values": top_values,
                     }
