@@ -543,7 +543,7 @@ def create_benchmark_doc(dataset_path):
         except sqlite3.Error:
             return ""
 
-        return row[0] if row and row[0] else ""
+        return " ".join(row[0].split()) if row and row[0] else ""
 
     def get_column_top_values(connection, table_name, column_name):
         quoted_table = quote_identifier(table_name)

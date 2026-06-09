@@ -7,7 +7,7 @@
       "breed code",
       "breed name"
     ],
-    "schema_sql": "CREATE TABLE `Breeds` (\n`breed_code` VARCHAR(10) PRIMARY KEY ,\n`breed_name` VARCHAR(80)\n)",
+    "schema_sql": "CREATE TABLE `Breeds` ( `breed_code` VARCHAR(10) PRIMARY KEY , `breed_name` VARCHAR(80) )",
     "joinable_tables": [
       "dogs"
     ],
@@ -23,7 +23,7 @@
       "charge type",
       "charge amount"
     ],
-    "schema_sql": "CREATE TABLE `Charges` (\n`charge_id` INTEGER PRIMARY KEY ,\n`charge_type` VARCHAR(10),\n`charge_amount` DECIMAL(19,4)\n)",
+    "schema_sql": "CREATE TABLE `Charges` ( `charge_id` INTEGER PRIMARY KEY , `charge_type` VARCHAR(10), `charge_amount` DECIMAL(19,4) )",
     "joinable_tables": [],
     "top_values": {},
     "bm25_text": "charg charg id charg type charg amount"
@@ -36,7 +36,7 @@
       "size code",
       "size description"
     ],
-    "schema_sql": "CREATE TABLE `Sizes` (\n`size_code` VARCHAR(10) PRIMARY KEY ,\n`size_description` VARCHAR(80)\n)",
+    "schema_sql": "CREATE TABLE `Sizes` ( `size_code` VARCHAR(10) PRIMARY KEY , `size_description` VARCHAR(80) )",
     "joinable_tables": [
       "dogs"
     ],
@@ -51,7 +51,7 @@
       "treatment type code",
       "treatment type description"
     ],
-    "schema_sql": "CREATE TABLE `Treatment_Types` (\n`treatment_type_code` VARCHAR(10) PRIMARY KEY ,\n`treatment_type_description` VARCHAR(80)\n)",
+    "schema_sql": "CREATE TABLE `Treatment_Types` ( `treatment_type_code` VARCHAR(10) PRIMARY KEY , `treatment_type_description` VARCHAR(80) )",
     "joinable_tables": [
       "treatments"
     ],
@@ -74,7 +74,7 @@
       "home phone",
       "cell number"
     ],
-    "schema_sql": "CREATE TABLE `Owners` (\n`owner_id` INTEGER PRIMARY KEY ,\n`first_name` VARCHAR(50),\n`last_name` VARCHAR(50),\n`street` VARCHAR(50),\n`city` VARCHAR(50),\n`state` VARCHAR(20),\n`zip_code` VARCHAR(20),\n`email_address` VARCHAR(50),\n`home_phone` VARCHAR(20),\n`cell_number` VARCHAR(20)\n)",
+    "schema_sql": "CREATE TABLE `Owners` ( `owner_id` INTEGER PRIMARY KEY , `first_name` VARCHAR(50), `last_name` VARCHAR(50), `street` VARCHAR(50), `city` VARCHAR(50), `state` VARCHAR(20), `zip_code` VARCHAR(20), `email_address` VARCHAR(50), `home_phone` VARCHAR(20), `cell_number` VARCHAR(20) )",
     "joinable_tables": [
       "dogs"
     ],
@@ -100,7 +100,7 @@
       "date adopted",
       "date departed"
     ],
-    "schema_sql": "CREATE TABLE `Dogs` (\n`dog_id` INTEGER PRIMARY KEY ,\n`owner_id` INTEGER NOT NULL,\n`abandoned_yn` VARCHAR(1),\n`breed_code` VARCHAR(10) NOT NULL,\n`size_code` VARCHAR(10) NOT NULL,\n`name` VARCHAR(50),\n`age` VARCHAR(20),\n`date_of_birth` DATETIME,\n`gender` VARCHAR(1),\n`weight` VARCHAR(20),\n`date_arrived` DATETIME,\n`date_adopted` DATETIME,\n`date_departed` DATETIME,\nFOREIGN KEY (`breed_code` ) REFERENCES `Breeds`(`breed_code` ),\nFOREIGN KEY (`size_code` ) REFERENCES `Sizes`(`size_code` ),\nFOREIGN KEY (`owner_id` ) REFERENCES `Owners`(`owner_id` ),\nFOREIGN KEY (`owner_id` ) REFERENCES `Owners`(`owner_id` )\n)",
+    "schema_sql": "CREATE TABLE `Dogs` ( `dog_id` INTEGER PRIMARY KEY , `owner_id` INTEGER NOT NULL, `abandoned_yn` VARCHAR(1), `breed_code` VARCHAR(10) NOT NULL, `size_code` VARCHAR(10) NOT NULL, `name` VARCHAR(50), `age` VARCHAR(20), `date_of_birth` DATETIME, `gender` VARCHAR(1), `weight` VARCHAR(20), `date_arrived` DATETIME, `date_adopted` DATETIME, `date_departed` DATETIME, FOREIGN KEY (`breed_code` ) REFERENCES `Breeds`(`breed_code` ), FOREIGN KEY (`size_code` ) REFERENCES `Sizes`(`size_code` ), FOREIGN KEY (`owner_id` ) REFERENCES `Owners`(`owner_id` ), FOREIGN KEY (`owner_id` ) REFERENCES `Owners`(`owner_id` ) )",
     "joinable_tables": [
       "owners",
       "sizes",
@@ -146,7 +146,7 @@
       "home phone",
       "cell number"
     ],
-    "schema_sql": "CREATE TABLE `Professionals` (\n`professional_id` INTEGER PRIMARY KEY ,\n`role_code` VARCHAR(10) NOT NULL,\n`first_name` VARCHAR(50),\n`street` VARCHAR(50),\n`city` VARCHAR(50),\n`state` VARCHAR(20),\n`zip_code` VARCHAR(20),\n`last_name` VARCHAR(50),\n`email_address` VARCHAR(50),\n`home_phone` VARCHAR(20),\n`cell_number` VARCHAR(20)\n)",
+    "schema_sql": "CREATE TABLE `Professionals` ( `professional_id` INTEGER PRIMARY KEY , `role_code` VARCHAR(10) NOT NULL, `first_name` VARCHAR(50), `street` VARCHAR(50), `city` VARCHAR(50), `state` VARCHAR(20), `zip_code` VARCHAR(20), `last_name` VARCHAR(50), `email_address` VARCHAR(50), `home_phone` VARCHAR(20), `cell_number` VARCHAR(20) )",
     "joinable_tables": [
       "treatments"
     ],
@@ -170,7 +170,7 @@
       "date of treatment",
       "cost of treatment"
     ],
-    "schema_sql": "CREATE TABLE `Treatments` (\n`treatment_id` INTEGER PRIMARY KEY ,\n`dog_id` INTEGER NOT NULL,\n`professional_id` INTEGER NOT NULL,\n`treatment_type_code` VARCHAR(10) NOT NULL,\n`date_of_treatment` DATETIME,\n`cost_of_treatment` DECIMAL(19,4),\nFOREIGN KEY (`treatment_type_code` ) REFERENCES `Treatment_Types`(`treatment_type_code` ),\nFOREIGN KEY (`professional_id` ) REFERENCES `Professionals`(`professional_id` ),\nFOREIGN KEY (`dog_id` ) REFERENCES `Dogs`(`dog_id` )\n)",
+    "schema_sql": "CREATE TABLE `Treatments` ( `treatment_id` INTEGER PRIMARY KEY , `dog_id` INTEGER NOT NULL, `professional_id` INTEGER NOT NULL, `treatment_type_code` VARCHAR(10) NOT NULL, `date_of_treatment` DATETIME, `cost_of_treatment` DECIMAL(19,4), FOREIGN KEY (`treatment_type_code` ) REFERENCES `Treatment_Types`(`treatment_type_code` ), FOREIGN KEY (`professional_id` ) REFERENCES `Professionals`(`professional_id` ), FOREIGN KEY (`dog_id` ) REFERENCES `Dogs`(`dog_id` ) )",
     "joinable_tables": [
       "dogs",
       "professionals",
@@ -195,7 +195,7 @@
       "abbreviation",
       "country"
     ],
-    "schema_sql": "CREATE TABLE 'airlines' (\n\tuid INTEGER PRIMARY KEY, \n\tAirline TEXT, \n\tAbbreviation TEXT, \n\tCountry TEXT\n)",
+    "schema_sql": "CREATE TABLE 'airlines' ( uid INTEGER PRIMARY KEY, Airline TEXT, Abbreviation TEXT, Country TEXT )",
     "joinable_tables": [],
     "top_values": {
       "country": [
@@ -215,7 +215,7 @@
       "country",
       "country abbrev"
     ],
-    "schema_sql": "CREATE TABLE 'airports' (\n\tCity TEXT, \n\tAirportCode TEXT PRIMARY KEY, \n\tAirportName TEXT, \n\tCountry TEXT, \n\tCountryAbbrev TEXT\n)",
+    "schema_sql": "CREATE TABLE 'airports' ( City TEXT, AirportCode TEXT PRIMARY KEY, AirportName TEXT, Country TEXT, CountryAbbrev TEXT )",
     "joinable_tables": [
       "flights"
     ],
@@ -240,7 +240,7 @@
       "source airport",
       "destination airport"
     ],
-    "schema_sql": "CREATE TABLE 'flights' (\n\tAirline INTEGER, \n\tFlightNo INTEGER, \n\tSourceAirport TEXT, \n\tDestAirport TEXT, \n\tPRIMARY KEY(Airline, FlightNo),\n\tFOREIGN KEY (SourceAirport) REFERENCES airports(AirportCode),\n\tFOREIGN KEY (DestAirport) REFERENCES airports(AirportCode)\n)",
+    "schema_sql": "CREATE TABLE 'flights' ( Airline INTEGER, FlightNo INTEGER, SourceAirport TEXT, DestAirport TEXT, PRIMARY KEY(Airline, FlightNo), FOREIGN KEY (SourceAirport) REFERENCES airports(AirportCode), FOREIGN KEY (DestAirport) REFERENCES airports(AirportCode) )",
     "joinable_tables": [
       "airports"
     ],
@@ -380,7 +380,7 @@
       "advisor",
       "city code"
     ],
-    "schema_sql": "CREATE TABLE Student (\n       StuID    \tINTEGER PRIMARY KEY,\n       LName\t\tVARCHAR(12),\n       Fname\t\tVARCHAR(12),\n       Age\t\tINTEGER,\n       Sex\t\tVARCHAR(1),\n       Major\t\tINTEGER,\n       Advisor\t\tINTEGER,\n       city_code\tVARCHAR(3)\n)",
+    "schema_sql": "CREATE TABLE Student ( StuID INTEGER PRIMARY KEY, LName VARCHAR(12), Fname VARCHAR(12), Age INTEGER, Sex VARCHAR(1), Major INTEGER, Advisor INTEGER, city_code VARCHAR(3) )",
     "joinable_tables": [
       "has pet"
     ],
@@ -419,7 +419,7 @@
       "student id",
       "pet id"
     ],
-    "schema_sql": "CREATE TABLE Has_Pet (\n       StuID\t\tINTEGER,\n       PetID\t\tINTEGER,\n       FOREIGN KEY(PetID) REFERENCES Pets(PetID),\n       FOREIGN KEY(StuID) REFERENCES Student(StuID)\n)",
+    "schema_sql": "CREATE TABLE Has_Pet ( StuID INTEGER, PetID INTEGER, FOREIGN KEY(PetID) REFERENCES Pets(PetID), FOREIGN KEY(StuID) REFERENCES Student(StuID) )",
     "joinable_tables": [
       "student",
       "pets"
@@ -437,7 +437,7 @@
       "pet age",
       "weight"
     ],
-    "schema_sql": "CREATE TABLE Pets (\n       PetID\t\tINTEGER PRIMARY KEY,\n       PetType\t\tVARCHAR(20),\n       pet_age INTEGER,\n       weight REAL\n)",
+    "schema_sql": "CREATE TABLE Pets ( PetID INTEGER PRIMARY KEY, PetType VARCHAR(20), pet_age INTEGER, weight REAL )",
     "joinable_tables": [
       "has pet"
     ],
@@ -457,7 +457,7 @@
       "lowest",
       "average"
     ],
-    "schema_sql": "CREATE TABLE \"stadium\" (\n\"Stadium_ID\" int,\n\"Location\" text,\n\"Name\" text,\n\"Capacity\" int,\n\"Highest\" int,\n\"Lowest\" int,\n\"Average\" int,\nPRIMARY KEY (\"Stadium_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"stadium\" ( \"Stadium_ID\" int, \"Location\" text, \"Name\" text, \"Capacity\" int, \"Highest\" int, \"Lowest\" int, \"Average\" int, PRIMARY KEY (\"Stadium_ID\") )",
     "joinable_tables": [
       "concert"
     ],
@@ -477,7 +477,7 @@
       "age",
       "is male"
     ],
-    "schema_sql": "CREATE TABLE \"singer\" (\n\"Singer_ID\" int,\n\"Name\" text,\n\"Country\" text,\n\"Song_Name\" text,\n\"Song_release_year\" text,\n\"Age\" int,\n\"Is_male\" bool,\nPRIMARY KEY (\"Singer_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"singer\" ( \"Singer_ID\" int, \"Name\" text, \"Country\" text, \"Song_Name\" text, \"Song_release_year\" text, \"Age\" int, \"Is_male\" bool, PRIMARY KEY (\"Singer_ID\") )",
     "joinable_tables": [
       "singer in concert"
     ],
@@ -505,7 +505,7 @@
       "stadium id",
       "year"
     ],
-    "schema_sql": "CREATE TABLE \"concert\" (\n\"concert_ID\" int,\n\"concert_Name\" text,\n\"Theme\" text,\n\"Stadium_ID\" text,\n\"Year\" text,\nPRIMARY KEY (\"concert_ID\"),\nFOREIGN KEY (\"Stadium_ID\") REFERENCES \"stadium\"(\"Stadium_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"concert\" ( \"concert_ID\" int, \"concert_Name\" text, \"Theme\" text, \"Stadium_ID\" text, \"Year\" text, PRIMARY KEY (\"concert_ID\"), FOREIGN KEY (\"Stadium_ID\") REFERENCES \"stadium\"(\"Stadium_ID\") )",
     "joinable_tables": [
       "stadium",
       "singer in concert"
@@ -526,7 +526,7 @@
       "concert id",
       "singer id"
     ],
-    "schema_sql": "CREATE TABLE \"singer_in_concert\" (\n\"concert_ID\" int,\n\"Singer_ID\" text,\nPRIMARY KEY (\"concert_ID\",\"Singer_ID\"),\nFOREIGN KEY (\"concert_ID\") REFERENCES \"concert\"(\"concert_ID\"),\nFOREIGN KEY (\"Singer_ID\") REFERENCES \"singer\"(\"Singer_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"singer_in_concert\" ( \"concert_ID\" int, \"Singer_ID\" text, PRIMARY KEY (\"concert_ID\",\"Singer_ID\"), FOREIGN KEY (\"concert_ID\") REFERENCES \"concert\"(\"concert_ID\"), FOREIGN KEY (\"Singer_ID\") REFERENCES \"singer\"(\"Singer_ID\") )",
     "joinable_tables": [
       "singer",
       "concert"
@@ -552,7 +552,7 @@
       "num of staff",
       "open year"
     ],
-    "schema_sql": "CREATE TABLE \"museum\" (\n\"Museum_ID\" int,\n\"Name\" text,\n\"Num_of_Staff\" int,\n\"Open_Year\" text,\nPRIMARY KEY (\"Museum_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"museum\" ( \"Museum_ID\" int, \"Name\" text, \"Num_of_Staff\" int, \"Open_Year\" text, PRIMARY KEY (\"Museum_ID\") )",
     "joinable_tables": [
       "visit"
     ],
@@ -569,7 +569,7 @@
       "level of membership",
       "age"
     ],
-    "schema_sql": "CREATE TABLE \"visitor\" (\n\"ID\" int,\n\"Name\" text,\n\"Level_of_membership\" int,\n\"Age\" int,\nPRIMARY KEY (\"ID\")\n)",
+    "schema_sql": "CREATE TABLE \"visitor\" ( \"ID\" int, \"Name\" text, \"Level_of_membership\" int, \"Age\" int, PRIMARY KEY (\"ID\") )",
     "joinable_tables": [
       "visit"
     ],
@@ -586,7 +586,7 @@
       "num of ticket",
       "total spent"
     ],
-    "schema_sql": "CREATE TABLE \"visit\" (\n\"Museum_ID\" int,\n\"visitor_ID\" text,\n\"Num_of_Ticket\" int,\n\"Total_spent\" real,\nPRIMARY KEY (\"Museum_ID\",\"visitor_ID\"),\nFOREIGN KEY (\"Museum_ID\") REFERENCES `museum`(\"Museum_ID\"),\nFOREIGN KEY (\"visitor_ID\") REFERENCES `visitor`(\"ID\")\n)",
+    "schema_sql": "CREATE TABLE \"visit\" ( \"Museum_ID\" int, \"visitor_ID\" text, \"Num_of_Ticket\" int, \"Total_spent\" real, PRIMARY KEY (\"Museum_ID\",\"visitor_ID\"), FOREIGN KEY (\"Museum_ID\") REFERENCES `museum`(\"Museum_ID\"), FOREIGN KEY (\"visitor_ID\") REFERENCES `visitor`(\"ID\") )",
     "joinable_tables": [
       "customer",
       "museum"
@@ -612,7 +612,7 @@
       "latin commander",
       "result"
     ],
-    "schema_sql": "CREATE TABLE \"battle\" (\n\"id\" int,\n\"name\" text,\n\"date\" text,\n\"bulgarian_commander\" text,\n\"latin_commander\" text,\n\"result\" text,\nprimary key(\"id\")\n)",
+    "schema_sql": "CREATE TABLE \"battle\" ( \"id\" int, \"name\" text, \"date\" text, \"bulgarian_commander\" text, \"latin_commander\" text, \"result\" text, primary key(\"id\") )",
     "joinable_tables": [
       "ship"
     ],
@@ -644,7 +644,7 @@
       "location",
       "disposition of ship"
     ],
-    "schema_sql": "CREATE TABLE \"ship\" (\n\"lost_in_battle\" int,\n\"id\" int,\n\"name\" text,\n\"tonnage\" text,\n\"ship_type\" text,\n\"location\" text,\n\"disposition_of_ship\" text,\nprimary key(\"id\"),\nforeign key (`lost_in_battle`) references `battle`(\"id\") \n)",
+    "schema_sql": "CREATE TABLE \"ship\" ( \"lost_in_battle\" int, \"id\" int, \"name\" text, \"tonnage\" text, \"ship_type\" text, \"location\" text, \"disposition_of_ship\" text, primary key(\"id\"), foreign key (`lost_in_battle`) references `battle`(\"id\") )",
     "joinable_tables": [
       "battle",
       "death"
@@ -679,7 +679,7 @@
       "killed",
       "injured"
     ],
-    "schema_sql": "CREATE TABLE \"death\" (\n\"caused_by_ship_id\" int,\n\"id\" int,\n\"note\" text,\n\"killed\" int,\n\"injured\" int,\nprimary key(\"id\"),\nforeign key (\"caused_by_ship_id\") references `ship`(\"id\") \n)",
+    "schema_sql": "CREATE TABLE \"death\" ( \"caused_by_ship_id\" int, \"id\" int, \"note\" text, \"killed\" int, \"injured\" int, primary key(\"id\"), foreign key (\"caused_by_ship_id\") references `ship`(\"id\") )",
     "joinable_tables": [
       "ship"
     ],
@@ -715,7 +715,7 @@
       "country",
       "other address details"
     ],
-    "schema_sql": "CREATE TABLE `Addresses` (\n`address_id` INTEGER PRIMARY KEY,\n`line_1` VARCHAR(255),\n`line_2` VARCHAR(255),\n`line_3` VARCHAR(255),\n`city` VARCHAR(255),\n`zip_postcode` VARCHAR(20),\n`state_province_county` VARCHAR(255),\n`country` VARCHAR(255),\n`other_address_details` VARCHAR(255)\n)",
+    "schema_sql": "CREATE TABLE `Addresses` ( `address_id` INTEGER PRIMARY KEY, `line_1` VARCHAR(255), `line_2` VARCHAR(255), `line_3` VARCHAR(255), `city` VARCHAR(255), `zip_postcode` VARCHAR(20), `state_province_county` VARCHAR(255), `country` VARCHAR(255), `other_address_details` VARCHAR(255) )",
     "joinable_tables": [
       "students"
     ],
@@ -732,7 +732,7 @@
       "course description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Courses` (\n`course_id` INTEGER PRIMARY KEY,\n`course_name` VARCHAR(255),\n`course_description` VARCHAR(255),\n`other_details` VARCHAR(255)\n)",
+    "schema_sql": "CREATE TABLE `Courses` ( `course_id` INTEGER PRIMARY KEY, `course_name` VARCHAR(255), `course_description` VARCHAR(255), `other_details` VARCHAR(255) )",
     "joinable_tables": [
       "sections",
       "student enrolment courses"
@@ -750,7 +750,7 @@
       "department description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Departments` (\n`department_id` INTEGER PRIMARY KEY,\n`department_name` VARCHAR(255),\n`department_description` VARCHAR(255),\n`other_details` VARCHAR(255)\n)",
+    "schema_sql": "CREATE TABLE `Departments` ( `department_id` INTEGER PRIMARY KEY, `department_name` VARCHAR(255), `department_description` VARCHAR(255), `other_details` VARCHAR(255) )",
     "joinable_tables": [
       "degree programs"
     ],
@@ -768,7 +768,7 @@
       "degree summary description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Degree_Programs` (\n`degree_program_id` INTEGER PRIMARY KEY,\n`department_id` INTEGER NOT NULL,\n`degree_summary_name` VARCHAR(255),\n`degree_summary_description` VARCHAR(255),\n`other_details` VARCHAR(255),\nFOREIGN KEY (`department_id` ) REFERENCES `Departments`(`department_id` )\n)",
+    "schema_sql": "CREATE TABLE `Degree_Programs` ( `degree_program_id` INTEGER PRIMARY KEY, `department_id` INTEGER NOT NULL, `degree_summary_name` VARCHAR(255), `degree_summary_description` VARCHAR(255), `other_details` VARCHAR(255), FOREIGN KEY (`department_id` ) REFERENCES `Departments`(`department_id` ) )",
     "joinable_tables": [
       "departments",
       "student enrolment"
@@ -793,7 +793,7 @@
       "section description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Sections` (\n`section_id` INTEGER PRIMARY KEY,\n`course_id` INTEGER NOT NULL,\n`section_name` VARCHAR(255),\n`section_description` VARCHAR(255),\n`other_details` VARCHAR(255),\nFOREIGN KEY (`course_id` ) REFERENCES `Courses`(`course_id` )\n)",
+    "schema_sql": "CREATE TABLE `Sections` ( `section_id` INTEGER PRIMARY KEY, `course_id` INTEGER NOT NULL, `section_name` VARCHAR(255), `section_description` VARCHAR(255), `other_details` VARCHAR(255), FOREIGN KEY (`course_id` ) REFERENCES `Courses`(`course_id` ) )",
     "joinable_tables": [
       "courses"
     ],
@@ -810,7 +810,7 @@
       "semester description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Semesters` (\n`semester_id` INTEGER PRIMARY KEY,\n`semester_name` VARCHAR(255),\n`semester_description` VARCHAR(255),\n`other_details` VARCHAR(255)\n)",
+    "schema_sql": "CREATE TABLE `Semesters` ( `semester_id` INTEGER PRIMARY KEY, `semester_name` VARCHAR(255), `semester_description` VARCHAR(255), `other_details` VARCHAR(255) )",
     "joinable_tables": [
       "student enrolment"
     ],
@@ -835,7 +835,7 @@
       "date left",
       "other student details"
     ],
-    "schema_sql": "CREATE TABLE `Students` (\n`student_id` INTEGER PRIMARY KEY,\n`current_address_id` INTEGER NOT NULL,\n`permanent_address_id` INTEGER NOT NULL,\n`first_name` VARCHAR(80),\n`middle_name` VARCHAR(40),\n`last_name` VARCHAR(40),\n`cell_mobile_number` VARCHAR(40),\n`email_address` VARCHAR(40),\n`ssn` VARCHAR(40),\n`date_first_registered` DATETIME,\n`date_left` DATETIME,\n`other_student_details` VARCHAR(255),\nFOREIGN KEY (`current_address_id` ) REFERENCES `Addresses`(`address_id` ),\nFOREIGN KEY (`permanent_address_id` ) REFERENCES `Addresses`(`address_id` )\n)",
+    "schema_sql": "CREATE TABLE `Students` ( `student_id` INTEGER PRIMARY KEY, `current_address_id` INTEGER NOT NULL, `permanent_address_id` INTEGER NOT NULL, `first_name` VARCHAR(80), `middle_name` VARCHAR(40), `last_name` VARCHAR(40), `cell_mobile_number` VARCHAR(40), `email_address` VARCHAR(40), `ssn` VARCHAR(40), `date_first_registered` DATETIME, `date_left` DATETIME, `other_student_details` VARCHAR(255), FOREIGN KEY (`current_address_id` ) REFERENCES `Addresses`(`address_id` ), FOREIGN KEY (`permanent_address_id` ) REFERENCES `Addresses`(`address_id` ) )",
     "joinable_tables": [
       "addresses",
       "student enrolment"
@@ -854,7 +854,7 @@
       "student id",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Student_Enrolment` (\n`student_enrolment_id` INTEGER PRIMARY KEY,\n`degree_program_id` INTEGER NOT NULL,\n`semester_id` INTEGER NOT NULL,\n`student_id` INTEGER NOT NULL,\n`other_details` VARCHAR(255),\nFOREIGN KEY (`degree_program_id` ) REFERENCES `Degree_Programs`(`degree_program_id` ),\nFOREIGN KEY (`semester_id` ) REFERENCES `Semesters`(`semester_id` ),\nFOREIGN KEY (`student_id` ) REFERENCES `Students`(`student_id` )\n)",
+    "schema_sql": "CREATE TABLE `Student_Enrolment` ( `student_enrolment_id` INTEGER PRIMARY KEY, `degree_program_id` INTEGER NOT NULL, `semester_id` INTEGER NOT NULL, `student_id` INTEGER NOT NULL, `other_details` VARCHAR(255), FOREIGN KEY (`degree_program_id` ) REFERENCES `Degree_Programs`(`degree_program_id` ), FOREIGN KEY (`semester_id` ) REFERENCES `Semesters`(`semester_id` ), FOREIGN KEY (`student_id` ) REFERENCES `Students`(`student_id` ) )",
     "joinable_tables": [
       "students",
       "semesters",
@@ -873,7 +873,7 @@
       "course id",
       "student enrolment id"
     ],
-    "schema_sql": "CREATE TABLE `Student_Enrolment_Courses` (\n`student_course_id` INTEGER PRIMARY KEY,\n`course_id` INTEGER NOT NULL,\n`student_enrolment_id` INTEGER NOT NULL,\nFOREIGN KEY (`course_id` ) REFERENCES `Courses`(`course_id` ),\nFOREIGN KEY (`student_enrolment_id` ) REFERENCES `Student_Enrolment`(`student_enrolment_id` )\n)",
+    "schema_sql": "CREATE TABLE `Student_Enrolment_Courses` ( `student_course_id` INTEGER PRIMARY KEY, `course_id` INTEGER NOT NULL, `student_enrolment_id` INTEGER NOT NULL, FOREIGN KEY (`course_id` ) REFERENCES `Courses`(`course_id` ), FOREIGN KEY (`student_enrolment_id` ) REFERENCES `Student_Enrolment`(`student_enrolment_id` ) )",
     "joinable_tables": [
       "student enrolment",
       "courses",
@@ -891,7 +891,7 @@
       "transcript date",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE `Transcripts` (\n`transcript_id` INTEGER PRIMARY KEY,\n`transcript_date` DATETIME,\n`other_details` VARCHAR(255)\n)",
+    "schema_sql": "CREATE TABLE `Transcripts` ( `transcript_id` INTEGER PRIMARY KEY, `transcript_date` DATETIME, `other_details` VARCHAR(255) )",
     "joinable_tables": [
       "transcript contents"
     ],
@@ -906,7 +906,7 @@
       "student course id",
       "transcript id"
     ],
-    "schema_sql": "CREATE TABLE `Transcript_Contents` (\n`student_course_id` INTEGER NOT NULL,\n`transcript_id` INTEGER NOT NULL,\nFOREIGN KEY (`student_course_id` ) REFERENCES `Student_Enrolment_Courses`(`student_course_id` ),\nFOREIGN KEY (`transcript_id` ) REFERENCES `Transcripts`(`transcript_id` )\n)",
+    "schema_sql": "CREATE TABLE `Transcript_Contents` ( `student_course_id` INTEGER NOT NULL, `transcript_id` INTEGER NOT NULL, FOREIGN KEY (`student_course_id` ) REFERENCES `Student_Enrolment_Courses`(`student_course_id` ), FOREIGN KEY (`transcript_id` ) REFERENCES `Transcripts`(`transcript_id` ) )",
     "joinable_tables": [
       "transcripts",
       "student enrolment courses"
@@ -925,7 +925,7 @@
       "net worth millions",
       "citizenship"
     ],
-    "schema_sql": "CREATE TABLE \"singer\" (\n\"Singer_ID\" int,\n\"Name\" text,\n\"Birth_Year\" real,\n\"Net_Worth_Millions\" real,\n\"Citizenship\" text,\nPRIMARY KEY (\"Singer_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"singer\" ( \"Singer_ID\" int, \"Name\" text, \"Birth_Year\" real, \"Net_Worth_Millions\" real, \"Citizenship\" text, PRIMARY KEY (\"Singer_ID\") )",
     "joinable_tables": [
       "song"
     ],
@@ -943,7 +943,7 @@
       "sales",
       "highest position"
     ],
-    "schema_sql": "CREATE TABLE \"song\" (\n\"Song_ID\" int,\n\"Title\" text,\n\"Singer_ID\" int,\n\"Sales\" real,\n\"Highest_Position\" real,\nPRIMARY KEY (\"Song_ID\"),\nFOREIGN KEY (\"Singer_ID\") REFERENCES `singer`(\"Singer_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"song\" ( \"Song_ID\" int, \"Title\" text, \"Singer_ID\" int, \"Sales\" real, \"Highest_Position\" real, PRIMARY KEY (\"Song_ID\"), FOREIGN KEY (\"Singer_ID\") REFERENCES `singer`(\"Singer_ID\") )",
     "joinable_tables": [
       "singer"
     ],
@@ -963,7 +963,7 @@
       "template type code",
       "template type description"
     ],
-    "schema_sql": "CREATE TABLE Ref_Template_Types (\nTemplate_Type_Code CHAR(15) NOT NULL,\nTemplate_Type_Description VARCHAR(255) NOT NULL,\nPRIMARY KEY (Template_Type_Code)\n)",
+    "schema_sql": "CREATE TABLE Ref_Template_Types ( Template_Type_Code CHAR(15) NOT NULL, Template_Type_Description VARCHAR(255) NOT NULL, PRIMARY KEY (Template_Type_Code) )",
     "joinable_tables": [
       "templates"
     ],
@@ -982,7 +982,7 @@
       "date effective to",
       "template details"
     ],
-    "schema_sql": "CREATE TABLE Templates (\nTemplate_ID INTEGER NOT NULL,\nVersion_Number INTEGER NOT NULL,\nTemplate_Type_Code CHAR(15) NOT NULL,\nDate_Effective_From DATETIME,\nDate_Effective_To DATETIME,\nTemplate_Details VARCHAR(255) NOT NULL,\nPRIMARY KEY (Template_ID),\nFOREIGN KEY (Template_Type_Code) REFERENCES Ref_Template_Types (Template_Type_Code)\n)",
+    "schema_sql": "CREATE TABLE Templates ( Template_ID INTEGER NOT NULL, Version_Number INTEGER NOT NULL, Template_Type_Code CHAR(15) NOT NULL, Date_Effective_From DATETIME, Date_Effective_To DATETIME, Template_Details VARCHAR(255) NOT NULL, PRIMARY KEY (Template_ID), FOREIGN KEY (Template_Type_Code) REFERENCES Ref_Template_Types (Template_Type_Code) )",
     "joinable_tables": [
       "reference template types",
       "documents"
@@ -1024,7 +1024,7 @@
       "document description",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE Documents (\nDocument_ID INTEGER NOT NULL,\nTemplate_ID INTEGER,\nDocument_Name VARCHAR(255),\nDocument_Description VARCHAR(255),\nOther_Details VARCHAR(255),\nPRIMARY KEY (Document_ID),\nFOREIGN KEY (Template_ID) REFERENCES Templates (Template_ID)\n)",
+    "schema_sql": "CREATE TABLE Documents ( Document_ID INTEGER NOT NULL, Template_ID INTEGER, Document_Name VARCHAR(255), Document_Description VARCHAR(255), Other_Details VARCHAR(255), PRIMARY KEY (Document_ID), FOREIGN KEY (Template_ID) REFERENCES Templates (Template_ID) )",
     "joinable_tables": [
       "templates",
       "paragraphs"
@@ -1042,7 +1042,7 @@
       "paragraph text",
       "other details"
     ],
-    "schema_sql": "CREATE TABLE Paragraphs (\nParagraph_ID INTEGER NOT NULL,\nDocument_ID INTEGER NOT NULL,\nParagraph_Text VARCHAR(255),\nOther_Details VARCHAR(255),\nPRIMARY KEY (Paragraph_ID),\nFOREIGN KEY (Document_ID) REFERENCES Documents (Document_ID)\n)",
+    "schema_sql": "CREATE TABLE Paragraphs ( Paragraph_ID INTEGER NOT NULL, Document_ID INTEGER NOT NULL, Paragraph_Text VARCHAR(255), Other_Details VARCHAR(255), PRIMARY KEY (Paragraph_ID), FOREIGN KEY (Document_ID) REFERENCES Documents (Document_ID) )",
     "joinable_tables": [
       "documents"
     ],
@@ -1060,7 +1060,7 @@
       "district",
       "population"
     ],
-    "schema_sql": "CREATE TABLE `city` (\n  `ID` integer NOT NULL PRIMARY KEY AUTOINCREMENT\n,  `Name` char(35) NOT NULL DEFAULT ''\n,  `CountryCode` char(3) NOT NULL DEFAULT ''\n,  `District` char(20) NOT NULL DEFAULT ''\n,  `Population` integer NOT NULL DEFAULT '0'\n,  CONSTRAINT `city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`)\n)",
+    "schema_sql": "CREATE TABLE `city` ( `ID` integer NOT NULL PRIMARY KEY AUTOINCREMENT , `Name` char(35) NOT NULL DEFAULT '' , `CountryCode` char(3) NOT NULL DEFAULT '' , `District` char(20) NOT NULL DEFAULT '' , `Population` integer NOT NULL DEFAULT '0' , CONSTRAINT `city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`) )",
     "joinable_tables": [
       "country"
     ],
@@ -1206,7 +1206,7 @@
       "capital",
       "code2"
     ],
-    "schema_sql": "CREATE TABLE `country` (\n  `Code` char(3) NOT NULL DEFAULT ''\n,  `Name` char(52) NOT NULL DEFAULT ''\n,  `Continent` text  NOT NULL DEFAULT 'Asia'\n,  `Region` char(26) NOT NULL DEFAULT ''\n,  `SurfaceArea` float(10,2) NOT NULL DEFAULT '0.00'\n,  `IndepYear` integer DEFAULT NULL\n,  `Population` integer NOT NULL DEFAULT '0'\n,  `LifeExpectancy` float(3,1) DEFAULT NULL\n,  `GNP` float(10,2) DEFAULT NULL\n,  `GNPOld` float(10,2) DEFAULT NULL\n,  `LocalName` char(45) NOT NULL DEFAULT ''\n,  `GovernmentForm` char(45) NOT NULL DEFAULT ''\n,  `HeadOfState` char(60) DEFAULT NULL\n,  `Capital` integer DEFAULT NULL\n,  `Code2` char(2) NOT NULL DEFAULT ''\n,  PRIMARY KEY (`Code`)\n)",
+    "schema_sql": "CREATE TABLE `country` ( `Code` char(3) NOT NULL DEFAULT '' , `Name` char(52) NOT NULL DEFAULT '' , `Continent` text NOT NULL DEFAULT 'Asia' , `Region` char(26) NOT NULL DEFAULT '' , `SurfaceArea` float(10,2) NOT NULL DEFAULT '0.00' , `IndepYear` integer DEFAULT NULL , `Population` integer NOT NULL DEFAULT '0' , `LifeExpectancy` float(3,1) DEFAULT NULL , `GNP` float(10,2) DEFAULT NULL , `GNPOld` float(10,2) DEFAULT NULL , `LocalName` char(45) NOT NULL DEFAULT '' , `GovernmentForm` char(45) NOT NULL DEFAULT '' , `HeadOfState` char(60) DEFAULT NULL , `Capital` integer DEFAULT NULL , `Code2` char(2) NOT NULL DEFAULT '' , PRIMARY KEY (`Code`) )",
     "joinable_tables": [
       "city",
       "countrylanguage"
@@ -1350,7 +1350,7 @@
       "is official",
       "percentage"
     ],
-    "schema_sql": "CREATE TABLE `countrylanguage` (\n  `CountryCode` char(3) NOT NULL DEFAULT ''\n,  `Language` char(30) NOT NULL DEFAULT ''\n,  `IsOfficial` text  NOT NULL DEFAULT 'F'\n,  `Percentage` float(4,1) NOT NULL DEFAULT '0.0'\n,  PRIMARY KEY (`CountryCode`,`Language`)\n,  CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`)\n)",
+    "schema_sql": "CREATE TABLE `countrylanguage` ( `CountryCode` char(3) NOT NULL DEFAULT '' , `Language` char(30) NOT NULL DEFAULT '' , `IsOfficial` text NOT NULL DEFAULT 'F' , `Percentage` float(4,1) NOT NULL DEFAULT '0.0' , PRIMARY KEY (`CountryCode`,`Language`) , CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`) )",
     "joinable_tables": [
       "country"
     ],
@@ -1528,7 +1528,7 @@
       "age",
       "city"
     ],
-    "schema_sql": "CREATE TABLE \"employee\" (\n\"Employee_ID\" int,\n\"Name\" text,\n\"Age\" int,\n\"City\" text,\nPRIMARY KEY (\"Employee_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"employee\" ( \"Employee_ID\" int, \"Name\" text, \"Age\" int, \"City\" text, PRIMARY KEY (\"Employee_ID\") )",
     "joinable_tables": [
       "hiring",
       "evaluation"
@@ -1556,7 +1556,7 @@
       "number products",
       "manager name"
     ],
-    "schema_sql": "CREATE TABLE \"shop\" (\n\"Shop_ID\" int,\n\"Name\" text,\n\"Location\" text,\n\"District\" text,\n\"Number_products\" int,\n\"Manager_name\" text,\nPRIMARY KEY (\"Shop_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"shop\" ( \"Shop_ID\" int, \"Name\" text, \"Location\" text, \"District\" text, \"Number_products\" int, \"Manager_name\" text, PRIMARY KEY (\"Shop_ID\") )",
     "joinable_tables": [
       "hiring"
     ],
@@ -1573,7 +1573,7 @@
       "start from",
       "is full time"
     ],
-    "schema_sql": "CREATE TABLE \"hiring\" (\n\"Shop_ID\" int,\n\"Employee_ID\" int,\n\"Start_from\" text,\n\"Is_full_time\" bool,\nPRIMARY KEY (\"Employee_ID\"),\nFOREIGN KEY (`Shop_ID`) REFERENCES `shop`(`Shop_ID`),\nFOREIGN KEY (`Employee_ID`) REFERENCES `employee`(`Employee_ID`)\n)",
+    "schema_sql": "CREATE TABLE \"hiring\" ( \"Shop_ID\" int, \"Employee_ID\" int, \"Start_from\" text, \"Is_full_time\" bool, PRIMARY KEY (\"Employee_ID\"), FOREIGN KEY (`Shop_ID`) REFERENCES `shop`(`Shop_ID`), FOREIGN KEY (`Employee_ID`) REFERENCES `employee`(`Employee_ID`) )",
     "joinable_tables": [
       "employee",
       "shop"
@@ -1595,7 +1595,7 @@
       "year awarded",
       "bonus"
     ],
-    "schema_sql": "CREATE TABLE \"evaluation\" (\n\"Employee_ID\" text,\n\"Year_awarded\" text,\n\"Bonus\" real,\nPRIMARY KEY (\"Employee_ID\",\"Year_awarded\"),\nFOREIGN KEY (`Employee_ID`) REFERENCES `employee`(`Employee_ID`)\n)",
+    "schema_sql": "CREATE TABLE \"evaluation\" ( \"Employee_ID\" text, \"Year_awarded\" text, \"Bonus\" real, PRIMARY KEY (\"Employee_ID\",\"Year_awarded\"), FOREIGN KEY (`Employee_ID`) REFERENCES `employee`(`Employee_ID`) )",
     "joinable_tables": [
       "employee"
     ],
@@ -1611,7 +1611,7 @@
       "name",
       "grade"
     ],
-    "schema_sql": "CREATE TABLE Highschooler(\n\tID int primary key, \n\tname text, \n\tgrade int)",
+    "schema_sql": "CREATE TABLE Highschooler( ID int primary key, name text, grade int)",
     "joinable_tables": [
       "friend",
       "likes"
@@ -1634,7 +1634,7 @@
       "student id",
       "friend id"
     ],
-    "schema_sql": "CREATE TABLE Friend(\n\tstudent_id int, \n\tfriend_id int,\n\tprimary key (student_id,friend_id),\n\tforeign key(student_id) references Highschooler(ID),\n\tforeign key (friend_id) references Highschooler(ID)\n)",
+    "schema_sql": "CREATE TABLE Friend( student_id int, friend_id int, primary key (student_id,friend_id), foreign key(student_id) references Highschooler(ID), foreign key (friend_id) references Highschooler(ID) )",
     "joinable_tables": [
       "high schooler"
     ],
@@ -1649,7 +1649,7 @@
       "student id",
       "liked id"
     ],
-    "schema_sql": "CREATE TABLE Likes(\n\tstudent_id int, \n\tliked_id int,\n\tprimary key (student_id, liked_id),\n        foreign key (liked_id) references Highschooler(ID),\n        foreign key (student_id) references Highschooler(ID)\n)",
+    "schema_sql": "CREATE TABLE Likes( student_id int, liked_id int, primary key (student_id, liked_id), foreign key (liked_id) references Highschooler(ID), foreign key (student_id) references Highschooler(ID) )",
     "joinable_tables": [
       "high schooler"
     ],
@@ -1668,7 +1668,7 @@
       "money rank",
       "earnings"
     ],
-    "schema_sql": "CREATE TABLE \"poker_player\" (\n\"Poker_Player_ID\" int,\n\"People_ID\" int,\n\"Final_Table_Made\" real,\n\"Best_Finish\" real,\n\"Money_Rank\" real,\n\"Earnings\" real,\nPRIMARY KEY (\"Poker_Player_ID\"),\nFOREIGN KEY (\"People_ID\") REFERENCES `people`(\"People_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"poker_player\" ( \"Poker_Player_ID\" int, \"People_ID\" int, \"Final_Table_Made\" real, \"Best_Finish\" real, \"Money_Rank\" real, \"Earnings\" real, PRIMARY KEY (\"Poker_Player_ID\"), FOREIGN KEY (\"People_ID\") REFERENCES `people`(\"People_ID\") )",
     "joinable_tables": [
       "people"
     ],
@@ -1686,7 +1686,7 @@
       "birth date",
       "height"
     ],
-    "schema_sql": "CREATE TABLE \"people\" (\n\"People_ID\" int,\n\"Nationality\" text,\n\"Name\" text,\n\"Birth_Date\" text,\n\"Height\" real,\nPRIMARY KEY (\"People_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"people\" ( \"People_ID\" int, \"Nationality\" text, \"Name\" text, \"Birth_Date\" text, \"Height\" real, PRIMARY KEY (\"People_ID\") )",
     "joinable_tables": [
       "poker player"
     ],
@@ -1706,7 +1706,7 @@
       "feature type code",
       "feature type name"
     ],
-    "schema_sql": "CREATE TABLE `Ref_Feature_Types` (\n`feature_type_code` VARCHAR(20) PRIMARY KEY,\n`feature_type_name` VARCHAR(80)\n)",
+    "schema_sql": "CREATE TABLE `Ref_Feature_Types` ( `feature_type_code` VARCHAR(20) PRIMARY KEY, `feature_type_name` VARCHAR(80) )",
     "joinable_tables": [
       "other available features"
     ],
@@ -1721,7 +1721,7 @@
       "property type code",
       "property type description"
     ],
-    "schema_sql": "CREATE TABLE `Ref_Property_Types` (\n`property_type_code` VARCHAR(20) PRIMARY KEY,\n`property_type_description` VARCHAR(80)\n)",
+    "schema_sql": "CREATE TABLE `Ref_Property_Types` ( `property_type_code` VARCHAR(20) PRIMARY KEY, `property_type_description` VARCHAR(80) )",
     "joinable_tables": [
       "properties"
     ],
@@ -1738,7 +1738,7 @@
       "feature name",
       "feature description"
     ],
-    "schema_sql": "CREATE TABLE `Other_Available_Features` (\n`feature_id` INTEGER PRIMARY KEY,\n`feature_type_code` VARCHAR(20) NOT NULL,\n`feature_name` VARCHAR(80),\n`feature_description` VARCHAR(80),\nFOREIGN KEY (`feature_type_code` ) REFERENCES `Ref_Feature_Types`(`feature_type_code` )\n)",
+    "schema_sql": "CREATE TABLE `Other_Available_Features` ( `feature_id` INTEGER PRIMARY KEY, `feature_type_code` VARCHAR(20) NOT NULL, `feature_name` VARCHAR(80), `feature_description` VARCHAR(80), FOREIGN KEY (`feature_type_code` ) REFERENCES `Ref_Feature_Types`(`feature_type_code` ) )",
     "joinable_tables": [
       "reference feature types",
       "other property features"
@@ -1778,7 +1778,7 @@
       "shp feature 3",
       "other property details"
     ],
-    "schema_sql": "CREATE TABLE `Properties` (\n`property_id` INTEGER PRIMARY KEY,\n`property_type_code` VARCHAR(20) NOT NULL,\n`date_on_market` DATETIME,\n`date_sold` DATETIME,\n`property_name` VARCHAR(80),\n`property_address` VARCHAR(255),\n`room_count` INTEGER,\n`vendor_requested_price` DECIMAL(19,4),\n`buyer_offered_price` DECIMAL(19,4),\n`agreed_selling_price` DECIMAL(19,4),\n`apt_feature_1` VARCHAR(255),\n`apt_feature_2` VARCHAR(255),\n`apt_feature_3` VARCHAR(255),\n`fld_feature_1` VARCHAR(255),\n`fld_feature_2` VARCHAR(255),\n`fld_feature_3` VARCHAR(255),\n`hse_feature_1` VARCHAR(255),\n`hse_feature_2` VARCHAR(255),\n`hse_feature_3` VARCHAR(255),\n`oth_feature_1` VARCHAR(255),\n`oth_feature_2` VARCHAR(255),\n`oth_feature_3` VARCHAR(255),\n`shp_feature_1` VARCHAR(255),\n`shp_feature_2` VARCHAR(255),\n`shp_feature_3` VARCHAR(255),\n`other_property_details` VARCHAR(255),\nFOREIGN KEY (`property_type_code` ) REFERENCES `Ref_Property_Types`(`property_type_code` )\n)",
+    "schema_sql": "CREATE TABLE `Properties` ( `property_id` INTEGER PRIMARY KEY, `property_type_code` VARCHAR(20) NOT NULL, `date_on_market` DATETIME, `date_sold` DATETIME, `property_name` VARCHAR(80), `property_address` VARCHAR(255), `room_count` INTEGER, `vendor_requested_price` DECIMAL(19,4), `buyer_offered_price` DECIMAL(19,4), `agreed_selling_price` DECIMAL(19,4), `apt_feature_1` VARCHAR(255), `apt_feature_2` VARCHAR(255), `apt_feature_3` VARCHAR(255), `fld_feature_1` VARCHAR(255), `fld_feature_2` VARCHAR(255), `fld_feature_3` VARCHAR(255), `hse_feature_1` VARCHAR(255), `hse_feature_2` VARCHAR(255), `hse_feature_3` VARCHAR(255), `oth_feature_1` VARCHAR(255), `oth_feature_2` VARCHAR(255), `oth_feature_3` VARCHAR(255), `shp_feature_1` VARCHAR(255), `shp_feature_2` VARCHAR(255), `shp_feature_3` VARCHAR(255), `other_property_details` VARCHAR(255), FOREIGN KEY (`property_type_code` ) REFERENCES `Ref_Property_Types`(`property_type_code` ) )",
     "joinable_tables": [
       "reference property types",
       "other property features"
@@ -1803,7 +1803,7 @@
       "feature id",
       "property feature description"
     ],
-    "schema_sql": "CREATE TABLE `Other_Property_Features` (\n`property_id` INTEGER NOT NULL,\n`feature_id` INTEGER NOT NULL,\n`property_feature_description` VARCHAR(80),\nFOREIGN KEY (`feature_id` ) REFERENCES `Other_Available_Features`(`feature_id` ),\nFOREIGN KEY (`property_id` ) REFERENCES `Properties`(`property_id` )\n)",
+    "schema_sql": "CREATE TABLE `Other_Property_Features` ( `property_id` INTEGER NOT NULL, `feature_id` INTEGER NOT NULL, `property_feature_description` VARCHAR(80), FOREIGN KEY (`feature_id` ) REFERENCES `Other_Available_Features`(`feature_id` ), FOREIGN KEY (`property_id` ) REFERENCES `Properties`(`property_id` ) )",
     "joinable_tables": [
       "properties",
       "other available features"
@@ -1826,7 +1826,7 @@
       "staring date",
       "course"
     ],
-    "schema_sql": "CREATE TABLE \"course\" (\n\"Course_ID\" int,\n\"Staring_Date\" text,\n\"Course\" text,\nPRIMARY KEY (\"Course_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"course\" ( \"Course_ID\" int, \"Staring_Date\" text, \"Course\" text, PRIMARY KEY (\"Course_ID\") )",
     "joinable_tables": [
       "course arrange"
     ],
@@ -1843,7 +1843,7 @@
       "age",
       "hometown"
     ],
-    "schema_sql": "CREATE TABLE \"teacher\" (\n\"Teacher_ID\" int,\n\"Name\" text,\n\"Age\" text,\n\"Hometown\" text,\nPRIMARY KEY (\"Teacher_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"teacher\" ( \"Teacher_ID\" int, \"Name\" text, \"Age\" text, \"Hometown\" text, PRIMARY KEY (\"Teacher_ID\") )",
     "joinable_tables": [
       "course arrange"
     ],
@@ -1859,7 +1859,7 @@
       "teacher id",
       "grade"
     ],
-    "schema_sql": "CREATE TABLE \"course_arrange\" (\n\"Course_ID\" int,\n\"Teacher_ID\" int,\n\"Grade\" int,\nPRIMARY KEY (\"Course_ID\",\"Teacher_ID\",\"Grade\"),\nFOREIGN KEY (\"Course_ID\") REFERENCES `course`(\"Course_ID\"),\nFOREIGN KEY (\"Teacher_ID\") REFERENCES `teacher`(\"Teacher_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"course_arrange\" ( \"Course_ID\" int, \"Teacher_ID\" int, \"Grade\" int, PRIMARY KEY (\"Course_ID\",\"Teacher_ID\",\"Grade\"), FOREIGN KEY (\"Course_ID\") REFERENCES `course`(\"Course_ID\"), FOREIGN KEY (\"Teacher_ID\") REFERENCES `teacher`(\"Teacher_ID\") )",
     "joinable_tables": [
       "teacher",
       "course"
@@ -1875,7 +1875,7 @@
       "area code",
       "state"
     ],
-    "schema_sql": "CREATE TABLE `AREA_CODE_STATE` (\n  `area_code` integer NOT NULL\n,  `state` varchar(2) NOT NULL\n,  PRIMARY KEY (`area_code`)\n)",
+    "schema_sql": "CREATE TABLE `AREA_CODE_STATE` ( `area_code` integer NOT NULL , `state` varchar(2) NOT NULL , PRIMARY KEY (`area_code`) )",
     "joinable_tables": [
       "votes"
     ],
@@ -1943,7 +1943,7 @@
       "contestant number",
       "contestant name"
     ],
-    "schema_sql": "CREATE TABLE `CONTESTANTS` (\n  `contestant_number` integer\n,  `contestant_name` varchar(50) NOT NULL\n,  PRIMARY KEY (`contestant_number`)\n)",
+    "schema_sql": "CREATE TABLE `CONTESTANTS` ( `contestant_number` integer , `contestant_name` varchar(50) NOT NULL , PRIMARY KEY (`contestant_number`) )",
     "joinable_tables": [
       "votes"
     ],
@@ -1961,7 +1961,7 @@
       "contestant number",
       "created"
     ],
-    "schema_sql": "CREATE TABLE `VOTES` (\n  `vote_id` integer NOT NULL PRIMARY KEY\n,  `phone_number` integer NOT NULL\n,  `state` varchar(2) NOT NULL\n,  `contestant_number` integer NOT NULL\n,  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP\n, \tFOREIGN KEY (`state`) REFERENCES `AREA_CODE_STATE`(`state`)\n, \tFOREIGN KEY (`contestant_number`) REFERENCES `CONTESTANTS`(`contestant_number`)\n)",
+    "schema_sql": "CREATE TABLE `VOTES` ( `vote_id` integer NOT NULL PRIMARY KEY , `phone_number` integer NOT NULL , `state` varchar(2) NOT NULL , `contestant_number` integer NOT NULL , `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP , FOREIGN KEY (`state`) REFERENCES `AREA_CODE_STATE`(`state`) , FOREIGN KEY (`contestant_number`) REFERENCES `CONTESTANTS`(`contestant_number`) )",
     "joinable_tables": [
       "contestants",
       "area code state"
@@ -1981,7 +1981,7 @@
       "birth date",
       "country code"
     ],
-    "schema_sql": "CREATE TABLE players(\n    \"player_id\" INT PRIMARY KEY,\n    \"first_name\" TEXT,\n    \"last_name\" TEXT,\n    \"hand\" TEXT,\n    \"birth_date\" DATE,\n    \"country_code\" TEXT\n)",
+    "schema_sql": "CREATE TABLE players( \"player_id\" INT PRIMARY KEY, \"first_name\" TEXT, \"last_name\" TEXT, \"hand\" TEXT, \"birth_date\" DATE, \"country_code\" TEXT )",
     "joinable_tables": [
       "matches",
       "rankings"
@@ -2190,7 +2190,7 @@
       "winner seed",
       "year"
     ],
-    "schema_sql": "CREATE TABLE matches(\n  \"best_of\" INT,\n  \"draw_size\" INT,\n  \"loser_age\" FLOAT,\n  \"loser_entry\" TEXT,\n  \"loser_hand\" TEXT,\n  \"loser_ht\" INT,\n  \"loser_id\" INT,\n  \"loser_ioc\" TEXT,\n  \"loser_name\" TEXT,\n  \"loser_rank\" INT,\n  \"loser_rank_points\" INT,\n  \"loser_seed\" INT,\n  \"match_num\" INT,\n  \"minutes\" INT,\n  \"round\" TEXT,\n  \"score\" TEXT,\n  \"surface\" TEXT,\n  \"tourney_date\" DATE,\n  \"tourney_id\" TEXT,\n  \"tourney_level\" TEXT,\n  \"tourney_name\" TEXT,\n  \"winner_age\" FLOAT,\n  \"winner_entry\" TEXT,\n  \"winner_hand\" TEXT,\n  \"winner_ht\" INT,\n  \"winner_id\" INT,\n  \"winner_ioc\" TEXT,\n  \"winner_name\" TEXT,\n  \"winner_rank\" INT,\n  \"winner_rank_points\" INT,\n  \"winner_seed\" INT,\n  \"year\" INT,\n  FOREIGN KEY(loser_id) REFERENCES players(player_id),\n  FOREIGN KEY(winner_id) REFERENCES players(player_id)\n)",
+    "schema_sql": "CREATE TABLE matches( \"best_of\" INT, \"draw_size\" INT, \"loser_age\" FLOAT, \"loser_entry\" TEXT, \"loser_hand\" TEXT, \"loser_ht\" INT, \"loser_id\" INT, \"loser_ioc\" TEXT, \"loser_name\" TEXT, \"loser_rank\" INT, \"loser_rank_points\" INT, \"loser_seed\" INT, \"match_num\" INT, \"minutes\" INT, \"round\" TEXT, \"score\" TEXT, \"surface\" TEXT, \"tourney_date\" DATE, \"tourney_id\" TEXT, \"tourney_level\" TEXT, \"tourney_name\" TEXT, \"winner_age\" FLOAT, \"winner_entry\" TEXT, \"winner_hand\" TEXT, \"winner_ht\" INT, \"winner_id\" INT, \"winner_ioc\" TEXT, \"winner_name\" TEXT, \"winner_rank\" INT, \"winner_rank_points\" INT, \"winner_seed\" INT, \"year\" INT, FOREIGN KEY(loser_id) REFERENCES players(player_id), FOREIGN KEY(winner_id) REFERENCES players(player_id) )",
     "joinable_tables": [
       "players"
     ],
@@ -3230,7 +3230,7 @@
       "nationality",
       "year of work"
     ],
-    "schema_sql": "CREATE TABLE \"conductor\" (\n\"Conductor_ID\" int,\n\"Name\" text,\n\"Age\" int,\n\"Nationality\" text,\n\"Year_of_Work\" int,\nPRIMARY KEY (\"Conductor_ID\")\n)",
+    "schema_sql": "CREATE TABLE \"conductor\" ( \"Conductor_ID\" int, \"Name\" text, \"Age\" int, \"Nationality\" text, \"Year_of_Work\" int, PRIMARY KEY (\"Conductor_ID\") )",
     "joinable_tables": [
       "orchestra"
     ],
@@ -3255,7 +3255,7 @@
       "year of founded",
       "major record format"
     ],
-    "schema_sql": "CREATE TABLE \"orchestra\" (\n\"Orchestra_ID\" int,\n\"Orchestra\" text,\n\"Conductor_ID\" int,\n\"Record_Company\" text,\n\"Year_of_Founded\" real,\n\"Major_Record_Format\" text,\nPRIMARY KEY (\"Orchestra_ID\"),\nFOREIGN KEY (`Conductor_ID`) REFERENCES `conductor`(`Conductor_ID`)\n)",
+    "schema_sql": "CREATE TABLE \"orchestra\" ( \"Orchestra_ID\" int, \"Orchestra\" text, \"Conductor_ID\" int, \"Record_Company\" text, \"Year_of_Founded\" real, \"Major_Record_Format\" text, PRIMARY KEY (\"Orchestra_ID\"), FOREIGN KEY (`Conductor_ID`) REFERENCES `conductor`(`Conductor_ID`) )",
     "joinable_tables": [
       "conductor",
       "performance"
@@ -3282,7 +3282,7 @@
       "weekly rank",
       "share"
     ],
-    "schema_sql": "CREATE TABLE \"performance\" (\n\"Performance_ID\" int,\n\"Orchestra_ID\" int,\n\"Type\" text,\n\"Date\" text,\n\"Official_ratings_(millions)\" real,\n\"Weekly_rank\" text,\n\"Share\" text,\nPRIMARY KEY (\"Performance_ID\"),\nFOREIGN KEY (`Orchestra_ID`) REFERENCES `orchestra`(`Orchestra_ID`)\n)",
+    "schema_sql": "CREATE TABLE \"performance\" ( \"Performance_ID\" int, \"Orchestra_ID\" int, \"Type\" text, \"Date\" text, \"Official_ratings_(millions)\" real, \"Weekly_rank\" text, \"Share\" text, PRIMARY KEY (\"Performance_ID\"), FOREIGN KEY (`Orchestra_ID`) REFERENCES `orchestra`(`Orchestra_ID`) )",
     "joinable_tables": [
       "orchestra",
       "show"
@@ -3301,7 +3301,7 @@
       "result",
       "attendance"
     ],
-    "schema_sql": "CREATE TABLE \"show\" (\n\"Show_ID\" int,\n\"Performance_ID\" int,\n\"If_first_show\" bool,\n\"Result\" text,\n\"Attendance\" real,\nFOREIGN KEY (`Performance_ID`) REFERENCES `performance`(`Performance_ID`)\n)",
+    "schema_sql": "CREATE TABLE \"show\" ( \"Show_ID\" int, \"Performance_ID\" int, \"If_first_show\" bool, \"Result\" text, \"Attendance\" real, FOREIGN KEY (`Performance_ID`) REFERENCES `performance`(`Performance_ID`) )",
     "joinable_tables": [
       "performance"
     ],
@@ -3321,7 +3321,7 @@
       "cont id",
       "continent"
     ],
-    "schema_sql": "CREATE TABLE \"continents\" ( \n\t\"ContId\" INTEGER PRIMARY KEY, \n\t\"Continent\" TEXT \n)",
+    "schema_sql": "CREATE TABLE \"continents\" ( \"ContId\" INTEGER PRIMARY KEY, \"Continent\" TEXT )",
     "joinable_tables": [
       "countries"
     ],
@@ -3337,7 +3337,7 @@
       "country name",
       "continent"
     ],
-    "schema_sql": "CREATE TABLE \"countries\" (\n\t\"CountryId\" INTEGER PRIMARY KEY, \n\t\"CountryName\" TEXT, \n\t\"Continent\" INTEGER,\n\tFOREIGN KEY (Continent) REFERENCES continents(ContId)\n)",
+    "schema_sql": "CREATE TABLE \"countries\" ( \"CountryId\" INTEGER PRIMARY KEY, \"CountryName\" TEXT, \"Continent\" INTEGER, FOREIGN KEY (Continent) REFERENCES continents(ContId) )",
     "joinable_tables": [
       "continents",
       "car makers"
@@ -3363,7 +3363,7 @@
       "full name",
       "country"
     ],
-    "schema_sql": "CREATE TABLE \"car_makers\" ( \n\t\"Id\" INTEGER PRIMARY KEY, \n\t\"Maker\" TEXT, \n\t\"FullName\" TEXT, \n\t\"Country\" TEXT,\n\tFOREIGN KEY (Country) REFERENCES countries(CountryId)\n)",
+    "schema_sql": "CREATE TABLE \"car_makers\" ( \"Id\" INTEGER PRIMARY KEY, \"Maker\" TEXT, \"FullName\" TEXT, \"Country\" TEXT, FOREIGN KEY (Country) REFERENCES countries(CountryId) )",
     "joinable_tables": [
       "countries",
       "model list"
@@ -3391,7 +3391,7 @@
       "maker",
       "model"
     ],
-    "schema_sql": "CREATE TABLE \"model_list\" ( \n\t\"ModelId\" INTEGER PRIMARY KEY, \n\t\"Maker\" INTEGER, \n\t\"Model\" TEXT UNIQUE,\n\tFOREIGN KEY (Maker) REFERENCES car_makers (Id)\n\n)",
+    "schema_sql": "CREATE TABLE \"model_list\" ( \"ModelId\" INTEGER PRIMARY KEY, \"Maker\" INTEGER, \"Model\" TEXT UNIQUE, FOREIGN KEY (Maker) REFERENCES car_makers (Id) )",
     "joinable_tables": [
       "car makers",
       "car names"
@@ -3408,7 +3408,7 @@
       "model",
       "make"
     ],
-    "schema_sql": "CREATE TABLE \"car_names\" ( \n\t\"MakeId\" INTEGER PRIMARY KEY, \n\t\"Model\" TEXT, \n\t\"Make\" TEXT,\n\tFOREIGN KEY (Model) REFERENCES model_list (Model)\n)",
+    "schema_sql": "CREATE TABLE \"car_names\" ( \"MakeId\" INTEGER PRIMARY KEY, \"Model\" TEXT, \"Make\" TEXT, FOREIGN KEY (Model) REFERENCES model_list (Model) )",
     "joinable_tables": [
       "model list",
       "cars data"
@@ -3466,7 +3466,7 @@
       "accelerate",
       "year"
     ],
-    "schema_sql": "CREATE TABLE \"cars_data\" (\n\t\"Id\" INTEGER PRIMARY KEY, \n\t\"MPG\" TEXT, \n\t\"Cylinders\" INTEGER, \n\t\"Edispl\" REAL, \n\t\"Horsepower\" TEXT, \n\t\"Weight\" INTEGER, \n\t\"Accelerate\" REAL, \n\t\"Year\" INTEGER,\n\tFOREIGN KEY (Id) REFERENCES car_names (MakeId)\n)",
+    "schema_sql": "CREATE TABLE \"cars_data\" ( \"Id\" INTEGER PRIMARY KEY, \"MPG\" TEXT, \"Cylinders\" INTEGER, \"Edispl\" REAL, \"Horsepower\" TEXT, \"Weight\" INTEGER, \"Accelerate\" REAL, \"Year\" INTEGER, FOREIGN KEY (Id) REFERENCES car_names (MakeId) )",
     "joinable_tables": [
       "car names"
     ],
@@ -3719,7 +3719,7 @@
       "pay per view ppv",
       "package option"
     ],
-    "schema_sql": "CREATE TABLE \"TV_Channel\" (\n\"id\" text,\n\"series_name\" text,\n\"Country\" text,\n\"Language\" text,\n\"Content\" text,\n\"Pixel_aspect_ratio_PAR\" text,\n\"Hight_definition_TV\" text,\n\"Pay_per_view_PPV\" text,\n\"Package_Option\" text,\nPRIMARY KEY (\"id\")\n)",
+    "schema_sql": "CREATE TABLE \"TV_Channel\" ( \"id\" text, \"series_name\" text, \"Country\" text, \"Language\" text, \"Content\" text, \"Pixel_aspect_ratio_PAR\" text, \"Hight_definition_TV\" text, \"Pay_per_view_PPV\" text, \"Package_Option\" text, PRIMARY KEY (\"id\") )",
     "joinable_tables": [
       "tv series",
       "cartoon"
@@ -3773,7 +3773,7 @@
       "weekly rank",
       "channel"
     ],
-    "schema_sql": "CREATE TABLE \"TV_series\" (\n\"id\" real,\n\"Episode\" text,\n\"Air_Date\" text,\n\"Rating\" text,\n\"Share\" real,\n\"18_49_Rating_Share\" text,\n\"Viewers_m\" text,\n\"Weekly_Rank\" real,\n\"Channel\" text,\nPRIMARY KEY (\"id\"),\nFOREIGN KEY (`Channel`) REFERENCES `TV_Channel`(`id`)\n)",
+    "schema_sql": "CREATE TABLE \"TV_series\" ( \"id\" real, \"Episode\" text, \"Air_Date\" text, \"Rating\" text, \"Share\" real, \"18_49_Rating_Share\" text, \"Viewers_m\" text, \"Weekly_Rank\" real, \"Channel\" text, PRIMARY KEY (\"id\"), FOREIGN KEY (`Channel`) REFERENCES `TV_Channel`(`id`) )",
     "joinable_tables": [
       "tv channel"
     ],
@@ -3800,7 +3800,7 @@
       "production code",
       "channel"
     ],
-    "schema_sql": "CREATE TABLE \"Cartoon\" (\n\"id\" real,\n\"Title\" text,\n\"Directed_by\" text,\n\"Written_by\" text,\n\"Original_air_date\" text,\n\"Production_code\" real,\n\"Channel\" text,\nPRIMARY KEY (\"id\"),\nFOREIGN KEY (`Channel`) REFERENCES `TV_Channel`(`id`)\n)",
+    "schema_sql": "CREATE TABLE \"Cartoon\" ( \"id\" real, \"Title\" text, \"Directed_by\" text, \"Written_by\" text, \"Original_air_date\" text, \"Production_code\" real, \"Channel\" text, PRIMARY KEY (\"id\"), FOREIGN KEY (`Channel`) REFERENCES `TV_Channel`(`id`) )",
     "joinable_tables": [
       "tv channel"
     ],
