@@ -44,6 +44,11 @@ def get_dataset_paths(dataset: str):
         doc_filename = "spider_doc.json"
         description_filename = "SPIDERdev1_DB_descriptions_ambiguous.json"
         result_filename = "SPIDERdev1_DB_extractor_ambiguous.json"
+    elif dataset == "BIRD_SPIDER_dev":
+        dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev.value).resolve()
+        doc_filename = "bird_doc.json"
+        description_filename = "BIRD_SPIDER_dev_descriptions.json"
+        result_filename = "BIRD_SPIDER_dev_DB_extractor.json"
     else:
         print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -162,6 +167,16 @@ def choose_db_result(embedding_ranking: list, bm25_db_scores: dict):
 
     return embedding_top_dbs[0]
 
+def sample_sql(sample: dict) -> str:
+    if "SQL" in sample:
+        return sample["SQL"]
+
+    return sample["query"]
+
+
+def sample_question_id(sample: dict, fallback_question_id: int) -> int:
+    return sample.get("question_id", fallback_question_id)
+
 
 def extract_DB(embedder: Embedder, dataset: str):
     dataset_paths = get_dataset_paths(dataset)
@@ -197,22 +212,13 @@ def extract_DB(embedder: Embedder, dataset: str):
             )
         db_result = choose_db_result(embedding_ranking, bm25_db_scores)
 
-        if dataset == "BIRDdev" or dataset == "BIRDdev-ambiguous":
-            item = {
-                "question_id": sample["question_id"],
-                "db_id": sample["db_id"],
-                "question": sample["question"],
-                "SQL": sample["SQL"],
-                "DB_result": db_result,
-            }
-        else:
-            item = {
-                "question_id": question_id,
-                "db_id": sample["db_id"],
-                "question": sample["question"],
-                "SQL": sample["query"],
-                "DB_result": db_result,
-            }
+        item = {
+            "question_id": sample_question_id(sample, question_id),
+            "db_id": sample["db_id"],
+            "question": sample["question"],
+            "SQL": sample_sql(sample),
+            "DB_result": db_result,
+        }
 
         result_list.append(item)
 
@@ -241,6 +247,10 @@ if __name__ == "__main__":
 
     print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
     extract_DB(embedder, "SPIDERdev1-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
+    extract_DB(embedder, "BIRD_SPIDER_dev")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
