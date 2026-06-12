@@ -42,4 +42,7 @@ if __name__ == '__main__':
 
     filename = 'BIRD_SPIDER_dev_DB_extractor.json'
     print(f"{CYAN}BIRD SPIDER dev evaluation...{RESET}")
+
+    filename = 'BIRD_SPIDER_dev_DB_extractor_ambiguous.json'
+    print(f"{CYAN}BIRD SPIDER dev evaluation...{RESET}")
     DBs_extraction_eval(filename)

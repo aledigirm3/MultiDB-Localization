@@ -49,6 +49,11 @@ def get_dataset_paths(dataset: str):
         doc_filename = "bird_doc.json"
         description_filename = "BIRD_SPIDER_dev_descriptions.json"
         result_filename = "BIRD_SPIDER_dev_DB_extractor.json"
+    elif dataset == "BIRD_SPIDER_dev-ambiguous":
+        dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev_ambiguous.value).resolve()
+        doc_filename = "bird_doc.json"
+        description_filename = "BIRD_SPIDER_dev_descriptions_ambiguous.json"
+        result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
     else:
         print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -251,6 +256,10 @@ if __name__ == "__main__":
 
     print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
     extract_DB(embedder, "BIRD_SPIDER_dev")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
+    extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
