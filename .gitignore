@@ -212,4 +212,5 @@ dev_databases/
 BIRDdev-ambiguous/
 SPIDERdev1.0-ambiguous/
 BIRD_SPIDER_dev/
+BIRD_SPIDER_dev-ambiguous/
 agent.md
