@@ -12,7 +12,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "breed breed code breed name dog"
+    "bm25_text": "breed breed code breed name dog char4:bree char4:reed char4:bree char4:reed char4:code char4:bree char4:reed char4:name"
   },
   {
     "table_id": "dog_kennels.charges",
@@ -26,7 +26,7 @@
     "schema_sql": "CREATE TABLE `Charges` ( `charge_id` INTEGER PRIMARY KEY , `charge_type` VARCHAR(10), `charge_amount` DECIMAL(19,4) )",
     "joinable_tables": [],
     "top_values": {},
-    "bm25_text": "charg charg id charg type charg amount"
+    "bm25_text": "charg charg id charg type charg amount char4:char char4:harg char4:char char4:harg char4:char char4:harg char4:type char4:char char4:harg char4:amou char4:moun char4:ount"
   },
   {
     "table_id": "dog_kennels.sizes",
@@ -41,7 +41,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "size size code size descript dog"
+    "bm25_text": "size size code size descript dog char4:size char4:size char4:code char4:size char4:desc char4:escr char4:scri char4:crip char4:ript"
   },
   {
     "table_id": "dog_kennels.treatment types",
@@ -56,7 +56,7 @@
       "treatments"
     ],
     "top_values": {},
-    "bm25_text": "treatment type treatment type code treatment type descript treatment"
+    "bm25_text": "treatment type treatment type code treatment type descript treatment char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:type char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:type char4:code char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:type char4:desc char4:escr char4:scri char4:crip char4:ript char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment"
   },
   {
     "table_id": "dog_kennels.owners",
@@ -79,7 +79,7 @@
       "dogs"
     ],
     "top_values": {},
-    "bm25_text": "owner owner id first name last name street citi state zip code email address home phone cell number dog"
+    "bm25_text": "owner owner id first name last name street citi state zip code email address home phone cell number dog char4:owne char4:wner char4:owne char4:wner char4:firs char4:irst char4:name char4:last char4:name char4:stre char4:tree char4:reet char4:citi char4:stat char4:tate char4:code char4:emai char4:mail char4:addr char4:ddre char4:dres char4:ress char4:home char4:phon char4:hone char4:cell char4:numb char4:umbe char4:mber"
   },
   {
     "table_id": "dog_kennels.dogs",
@@ -127,7 +127,7 @@
         "1"
       ]
     },
-    "bm25_text": "dog dog id owner id abandon yes or no breed code size code name age date of birth gender weight date arriv date adopt date depart owner size breed treatment bul esk hus bul esk hus med lge sml med lge sml"
+    "bm25_text": "dog dog id owner id abandon yes or no breed code size code name age date of birth gender weight date arriv date adopt date depart owner size breed treatment bul esk hus bul esk hus med lge sml med lge sml char4:owne char4:wner char4:aban char4:band char4:ando char4:ndon char4:bree char4:reed char4:code char4:size char4:code char4:name char4:date char4:birt char4:irth char4:gend char4:ende char4:nder char4:weig char4:eigh char4:ight char4:date char4:arri char4:rriv char4:date char4:adop char4:dopt char4:date char4:depa char4:epar char4:part char4:owne char4:wner char4:size char4:bree char4:reed char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment"
   },
   {
     "table_id": "dog_kennels.professionals",
@@ -156,7 +156,7 @@
         "Veterenarian"
       ]
     },
-    "bm25_text": "profession profession id role code first name street citi state zip code last name email address home phone cell number treatment employe veterenarian employe veterenarian"
+    "bm25_text": "profession profession id role code first name street citi state zip code last name email address home phone cell number treatment employe veterenarian employe veterenarian char4:prof char4:rofe char4:ofes char4:fess char4:essi char4:ssio char4:sion char4:prof char4:rofe char4:ofes char4:fess char4:essi char4:ssio char4:sion char4:role char4:code char4:firs char4:irst char4:name char4:stre char4:tree char4:reet char4:citi char4:stat char4:tate char4:code char4:last char4:name char4:emai char4:mail char4:addr char4:ddre char4:dres char4:ress char4:home char4:phon char4:hone char4:cell char4:numb char4:umbe char4:mber char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:empl char4:mplo char4:ploy char4:loye char4:vete char4:eter char4:tere char4:eren char4:rena char4:enar char4:nari char4:aria char4:rian char4:empl char4:mplo char4:ploy char4:loye char4:vete char4:eter char4:tere char4:eren char4:rena char4:enar char4:nari char4:aria char4:rian"
   },
   {
     "table_id": "dog_kennels.treatments",
@@ -183,7 +183,7 @@
         "WALK"
       ]
     },
-    "bm25_text": "treatment treatment id dog id profession id treatment type code date of treatment cost of treatment dog profession treatment type exam vac walk exam vac walk"
+    "bm25_text": "treatment treatment id dog id profession id treatment type code date of treatment cost of treatment dog profession treatment type exam vac walk exam vac walk char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:prof char4:rofe char4:ofes char4:fess char4:essi char4:ssio char4:sion char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:type char4:code char4:date char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:cost char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:prof char4:rofe char4:ofes char4:fess char4:essi char4:ssio char4:sion char4:trea char4:reat char4:eatm char4:atme char4:tmen char4:ment char4:type char4:exam char4:walk char4:exam char4:walk"
   },
   {
     "table_id": "flight_2.airlines",
@@ -202,7 +202,7 @@
         "USA"
       ]
     },
-    "bm25_text": "airlin airlin id airlin name abbrevi countri usa usa"
+    "bm25_text": "airlin airlin id airlin name abbrevi countri usa usa char4:airl char4:irli char4:rlin char4:airl char4:irli char4:rlin char4:airl char4:irli char4:rlin char4:name char4:abbr char4:bbre char4:brev char4:revi char4:coun char4:ount char4:untr char4:ntri"
   },
   {
     "table_id": "flight_2.airports",
@@ -228,7 +228,7 @@
         "US "
       ]
     },
-    "bm25_text": "airport citi airport code airport name countri countri abbrev flight unit state unit state us us us us"
+    "bm25_text": "airport citi airport code airport name countri countri abbrev flight unit state unit state us us us us char4:airp char4:irpo char4:rpor char4:port char4:citi char4:airp char4:irpo char4:rpor char4:port char4:code char4:airp char4:irpo char4:rpor char4:port char4:name char4:coun char4:ount char4:untr char4:ntri char4:coun char4:ount char4:untr char4:ntri char4:abbr char4:bbre char4:brev char4:flig char4:ligh char4:ight char4:unit char4:stat char4:tate char4:unit char4:stat char4:tate"
   },
   {
     "table_id": "flight_2.flights",
@@ -364,7 +364,7 @@
         " AED"
       ]
     },
-    "bm25_text": "flight airlin flight number sourc airport destin airport airport aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a"
+    "bm25_text": "flight airlin flight number sourc airport destin airport airport aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a aaf axg aki arb asi cak cvo abq al anp anv lts ot abi ale ann ani jlh wkk adk aet ahf aiv ast atw adg afo akk ama arc ayz dys mmi qaw and ao arx at axn edf abi adt aht alm anc hmn nab rli vji a char4:flig char4:ligh char4:ight char4:airl char4:irli char4:rlin char4:flig char4:ligh char4:ight char4:numb char4:umbe char4:mber char4:sour char4:ourc char4:airp char4:irpo char4:rpor char4:port char4:dest char4:esti char4:stin char4:airp char4:irpo char4:rpor char4:port char4:airp char4:irpo char4:rpor char4:port"
   },
   {
     "table_id": "pets_1.student",
@@ -409,7 +409,7 @@
         100
       ]
     },
-    "bm25_text": "student student id last name first name age sex major advisor citi code has pet m f m f"
+    "bm25_text": "student student id last name first name age sex major advisor citi code has pet m f m f char4:stud char4:tude char4:uden char4:dent char4:stud char4:tude char4:uden char4:dent char4:last char4:name char4:firs char4:irst char4:name char4:majo char4:ajor char4:advi char4:dvis char4:viso char4:isor char4:citi char4:code"
   },
   {
     "table_id": "pets_1.has pet",
@@ -425,7 +425,7 @@
       "pets"
     ],
     "top_values": {},
-    "bm25_text": "has pet student id pet id student pet"
+    "bm25_text": "has pet student id pet id student pet char4:stud char4:tude char4:uden char4:dent char4:stud char4:tude char4:uden char4:dent"
   },
   {
     "table_id": "pets_1.pets",
@@ -442,7 +442,7 @@
       "has pet"
     ],
     "top_values": {},
-    "bm25_text": "pet pet id pet type pet age weight has pet"
+    "bm25_text": "pet pet id pet type pet age weight has pet char4:type char4:weig char4:eigh char4:ight"
   },
   {
     "table_id": "concert_singer.stadium",
@@ -462,7 +462,7 @@
       "concert"
     ],
     "top_values": {},
-    "bm25_text": "stadium stadium id locat name capac highest lowest averag concert"
+    "bm25_text": "stadium stadium id locat name capac highest lowest averag concert char4:stad char4:tadi char4:adiu char4:dium char4:stad char4:tadi char4:adiu char4:dium char4:loca char4:ocat char4:name char4:capa char4:apac char4:high char4:ighe char4:ghes char4:hest char4:lowe char4:owes char4:west char4:aver char4:vera char4:erag char4:conc char4:once char4:ncer char4:cert"
   },
   {
     "table_id": "concert_singer.singer",
@@ -492,7 +492,7 @@
         "F"
       ]
     },
-    "bm25_text": "singer singer id name countri song name song releas year age is male singer in concert franc netherland unit state franc netherland unit state t f t f"
+    "bm25_text": "singer singer id name countri song name song releas year age is male singer in concert franc netherland unit state franc netherland unit state t f t f char4:sing char4:inge char4:nger char4:sing char4:inge char4:nger char4:name char4:coun char4:ount char4:untr char4:ntri char4:song char4:name char4:song char4:rele char4:elea char4:leas char4:year char4:male char4:sing char4:inge char4:nger char4:conc char4:once char4:ncer char4:cert char4:fran char4:ranc char4:neth char4:ethe char4:ther char4:herl char4:erla char4:rlan char4:land char4:unit char4:stat char4:tate char4:fran char4:ranc char4:neth char4:ethe char4:ther char4:herl char4:erla char4:rlan char4:land char4:unit char4:stat char4:tate"
   },
   {
     "table_id": "concert_singer.concert",
@@ -516,7 +516,7 @@
         "2015"
       ]
     },
-    "bm25_text": "concert concert id concert name theme stadium id year stadium singer in concert"
+    "bm25_text": "concert concert id concert name theme stadium id year stadium singer in concert char4:conc char4:once char4:ncer char4:cert char4:conc char4:once char4:ncer char4:cert char4:conc char4:once char4:ncer char4:cert char4:name char4:them char4:heme char4:stad char4:tadi char4:adiu char4:dium char4:year char4:stad char4:tadi char4:adiu char4:dium char4:sing char4:inge char4:nger char4:conc char4:once char4:ncer char4:cert"
   },
   {
     "table_id": "concert_singer.singer in concert",
@@ -540,7 +540,7 @@
         "4"
       ]
     },
-    "bm25_text": "singer in concert concert id singer id singer concert"
+    "bm25_text": "singer in concert concert id singer id singer concert char4:sing char4:inge char4:nger char4:conc char4:once char4:ncer char4:cert char4:conc char4:once char4:ncer char4:cert char4:sing char4:inge char4:nger char4:sing char4:inge char4:nger char4:conc char4:once char4:ncer char4:cert"
   },
   {
     "table_id": "museum_visit.museum",
@@ -557,7 +557,7 @@
       "visit"
     ],
     "top_values": {},
-    "bm25_text": "museum museum id name num of staff open year visit"
+    "bm25_text": "museum museum id name num of staff open year visit char4:muse char4:useu char4:seum char4:muse char4:useu char4:seum char4:name char4:staf char4:taff char4:open char4:year char4:visi char4:isit"
   },
   {
     "table_id": "museum_visit.customer",
@@ -574,7 +574,7 @@
       "visit"
     ],
     "top_values": {},
-    "bm25_text": "custom custom id name level of membership age visit"
+    "bm25_text": "custom custom id name level of membership age visit char4:cust char4:usto char4:stom char4:cust char4:usto char4:stom char4:name char4:leve char4:evel char4:memb char4:embe char4:mber char4:bers char4:ersh char4:rshi char4:ship char4:visi char4:isit"
   },
   {
     "table_id": "museum_visit.visit",
@@ -598,7 +598,7 @@
         "6"
       ]
     },
-    "bm25_text": "visit museum id custom id num of ticket total spent custom museum"
+    "bm25_text": "visit museum id custom id num of ticket total spent custom museum char4:visi char4:isit char4:muse char4:useu char4:seum char4:cust char4:usto char4:stom char4:tick char4:icke char4:cket char4:tota char4:otal char4:spen char4:pent char4:cust char4:usto char4:stom char4:muse char4:useu char4:seum"
   },
   {
     "table_id": "battle_death.battle",
@@ -629,7 +629,7 @@
         "Two Year Truce"
       ]
     },
-    "bm25_text": "battl id name date bulgarian command latin command result ship kaloyan boril ivan asen ii unknown kaloyan boril ivan asen ii unknown bulgarian victori latin victori two year truce bulgarian victori latin victori two year truce"
+    "bm25_text": "battl id name date bulgarian command latin command result ship kaloyan boril ivan asen ii unknown kaloyan boril ivan asen ii unknown bulgarian victori latin victori two year truce bulgarian victori latin victori two year truce char4:batt char4:attl char4:name char4:date char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:rian char4:comm char4:omma char4:mman char4:mand char4:lati char4:atin char4:comm char4:omma char4:mman char4:mand char4:resu char4:esul char4:sult char4:ship char4:kalo char4:aloy char4:loya char4:oyan char4:bori char4:oril char4:ivan char4:asen char4:unkn char4:nkno char4:know char4:nown char4:kalo char4:aloy char4:loya char4:oyan char4:bori char4:oril char4:ivan char4:asen char4:unkn char4:nkno char4:know char4:nown char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:rian char4:vict char4:icto char4:ctor char4:tori char4:lati char4:atin char4:vict char4:icto char4:ctor char4:tori char4:year char4:truc char4:ruce char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:rian char4:vict char4:icto char4:ctor char4:tori char4:lati char4:atin char4:vict char4:icto char4:ctor char4:tori char4:year char4:truc char4:ruce"
   },
   {
     "table_id": "battle_death.ship",
@@ -666,7 +666,7 @@
         "SW Approaches"
       ]
     },
-    "bm25_text": "ship lost in battl id name tonnag ship type locat disposit of ship battl death t t brig gun brig gun brig brig gun brig gun brig english channel mid atlant sw approach english channel mid atlant sw approach"
+    "bm25_text": "ship lost in battl id name tonnag ship type locat disposit of ship battl death t t brig gun brig gun brig brig gun brig gun brig english channel mid atlant sw approach english channel mid atlant sw approach char4:ship char4:lost char4:batt char4:attl char4:name char4:tonn char4:onna char4:nnag char4:ship char4:type char4:loca char4:ocat char4:disp char4:ispo char4:spos char4:posi char4:osit char4:ship char4:batt char4:attl char4:deat char4:eath char4:brig char4:brig char4:brig char4:brig char4:brig char4:brig char4:engl char4:ngli char4:glis char4:lish char4:chan char4:hann char4:anne char4:nnel char4:atla char4:tlan char4:lant char4:appr char4:ppro char4:proa char4:roac char4:oach char4:engl char4:ngli char4:glis char4:lish char4:chan char4:hann char4:anne char4:nnel char4:atla char4:tlan char4:lant char4:appr char4:ppro char4:proa char4:roac char4:oach"
   },
   {
     "table_id": "battle_death.death",
@@ -698,7 +698,7 @@
         9
       ]
     },
-    "bm25_text": "death caus by ship id id note kill injur ship"
+    "bm25_text": "death caus by ship id id note kill injur ship char4:deat char4:eath char4:caus char4:ship char4:note char4:kill char4:inju char4:njur char4:ship"
   },
   {
     "table_id": "student_transcripts_tracking.addresses",
@@ -720,7 +720,7 @@
       "students"
     ],
     "top_values": {},
-    "bm25_text": "address address id line line line citi zip postcod state provinc counti countri other address detail student"
+    "bm25_text": "address address id line line line citi zip postcod state provinc counti countri other address detail student char4:addr char4:ddre char4:dres char4:ress char4:addr char4:ddre char4:dres char4:ress char4:line char4:line char4:line char4:citi char4:post char4:ostc char4:stco char4:tcod char4:stat char4:tate char4:prov char4:rovi char4:ovin char4:vinc char4:coun char4:ount char4:unti char4:coun char4:ount char4:untr char4:ntri char4:othe char4:ther char4:addr char4:ddre char4:dres char4:ress char4:deta char4:etai char4:tail char4:stud char4:tude char4:uden char4:dent"
   },
   {
     "table_id": "student_transcripts_tracking.courses",
@@ -738,7 +738,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "cours cours id cours name cours descript other detail section student enrol cours"
+    "bm25_text": "cours cours id cours name cours descript other detail section student enrol cours char4:cour char4:ours char4:cour char4:ours char4:cour char4:ours char4:name char4:cour char4:ours char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:sect char4:ecti char4:ctio char4:tion char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:cour char4:ours"
   },
   {
     "table_id": "student_transcripts_tracking.departments",
@@ -755,7 +755,7 @@
       "degree programs"
     ],
     "top_values": {},
-    "bm25_text": "depart depart id depart name depart descript other detail degre program"
+    "bm25_text": "depart depart id depart name depart descript other detail degre program char4:depa char4:epar char4:part char4:depa char4:epar char4:part char4:depa char4:epar char4:part char4:name char4:depa char4:epar char4:part char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:degr char4:egre char4:prog char4:rogr char4:ogra char4:gram"
   },
   {
     "table_id": "student_transcripts_tracking.degree programs",
@@ -780,7 +780,7 @@
         "PHD"
       ]
     },
-    "bm25_text": "degre program degre program id depart id degre summari name degre summari descript other detail depart student enrol bachelor master phd bachelor master phd"
+    "bm25_text": "degre program degre program id depart id degre summari name degre summari descript other detail depart student enrol bachelor master phd bachelor master phd char4:degr char4:egre char4:prog char4:rogr char4:ogra char4:gram char4:degr char4:egre char4:prog char4:rogr char4:ogra char4:gram char4:depa char4:epar char4:part char4:degr char4:egre char4:summ char4:umma char4:mmar char4:mari char4:name char4:degr char4:egre char4:summ char4:umma char4:mmar char4:mari char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:depa char4:epar char4:part char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:bach char4:ache char4:chel char4:helo char4:elor char4:mast char4:aste char4:ster char4:bach char4:ache char4:chel char4:helo char4:elor char4:mast char4:aste char4:ster"
   },
   {
     "table_id": "student_transcripts_tracking.sections",
@@ -798,7 +798,7 @@
       "courses"
     ],
     "top_values": {},
-    "bm25_text": "section section id cours id section name section descript other detail cours"
+    "bm25_text": "section section id cours id section name section descript other detail cours char4:sect char4:ecti char4:ctio char4:tion char4:sect char4:ecti char4:ctio char4:tion char4:cour char4:ours char4:sect char4:ecti char4:ctio char4:tion char4:name char4:sect char4:ecti char4:ctio char4:tion char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:cour char4:ours"
   },
   {
     "table_id": "student_transcripts_tracking.semesters",
@@ -815,7 +815,7 @@
       "student enrolment"
     ],
     "top_values": {},
-    "bm25_text": "semest semest id semest name semest descript other detail student enrol"
+    "bm25_text": "semest semest id semest name semest descript other detail student enrol char4:seme char4:emes char4:mest char4:seme char4:emes char4:mest char4:seme char4:emes char4:mest char4:name char4:seme char4:emes char4:mest char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol"
   },
   {
     "table_id": "student_transcripts_tracking.students",
@@ -841,7 +841,7 @@
       "student enrolment"
     ],
     "top_values": {},
-    "bm25_text": "student student id current address id perman address id first name middl name last name cell mobil number email address ssn date first regist date left other student detail address student enrol"
+    "bm25_text": "student student id current address id perman address id first name middl name last name cell mobil number email address ssn date first regist date left other student detail address student enrol char4:stud char4:tude char4:uden char4:dent char4:stud char4:tude char4:uden char4:dent char4:curr char4:urre char4:rren char4:rent char4:addr char4:ddre char4:dres char4:ress char4:perm char4:erma char4:rman char4:addr char4:ddre char4:dres char4:ress char4:firs char4:irst char4:name char4:midd char4:iddl char4:name char4:last char4:name char4:cell char4:mobi char4:obil char4:numb char4:umbe char4:mber char4:emai char4:mail char4:addr char4:ddre char4:dres char4:ress char4:date char4:firs char4:irst char4:regi char4:egis char4:gist char4:date char4:left char4:othe char4:ther char4:stud char4:tude char4:uden char4:dent char4:deta char4:etai char4:tail char4:addr char4:ddre char4:dres char4:ress char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol"
   },
   {
     "table_id": "student_transcripts_tracking.student enrolment",
@@ -862,7 +862,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "student enrol student enrol id degre program id semest id student id other detail student semest degre program student enrol cours"
+    "bm25_text": "student enrol student enrol id degre program id semest id student id other detail student semest degre program student enrol cours char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:degr char4:egre char4:prog char4:rogr char4:ogra char4:gram char4:seme char4:emes char4:mest char4:stud char4:tude char4:uden char4:dent char4:othe char4:ther char4:deta char4:etai char4:tail char4:stud char4:tude char4:uden char4:dent char4:seme char4:emes char4:mest char4:degr char4:egre char4:prog char4:rogr char4:ogra char4:gram char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:cour char4:ours"
   },
   {
     "table_id": "student_transcripts_tracking.student enrolment courses",
@@ -880,7 +880,7 @@
       "transcript contents"
     ],
     "top_values": {},
-    "bm25_text": "student enrol cours student cours id cours id student enrol id student enrol cours transcript content"
+    "bm25_text": "student enrol cours student cours id cours id student enrol id student enrol cours transcript content char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:cour char4:ours char4:stud char4:tude char4:uden char4:dent char4:cour char4:ours char4:cour char4:ours char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:cour char4:ours char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:cont char4:onte char4:nten char4:tent"
   },
   {
     "table_id": "student_transcripts_tracking.transcripts",
@@ -896,7 +896,7 @@
       "transcript contents"
     ],
     "top_values": {},
-    "bm25_text": "transcript transcript id transcript date other detail transcript content"
+    "bm25_text": "transcript transcript id transcript date other detail transcript content char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:date char4:othe char4:ther char4:deta char4:etai char4:tail char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:cont char4:onte char4:nten char4:tent"
   },
   {
     "table_id": "student_transcripts_tracking.transcript contents",
@@ -912,7 +912,7 @@
       "student enrolment courses"
     ],
     "top_values": {},
-    "bm25_text": "transcript content student cours id transcript id transcript student enrol cours"
+    "bm25_text": "transcript content student cours id transcript id transcript student enrol cours char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:cont char4:onte char4:nten char4:tent char4:stud char4:tude char4:uden char4:dent char4:cour char4:ours char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:tran char4:rans char4:ansc char4:nscr char4:scri char4:crip char4:ript char4:stud char4:tude char4:uden char4:dent char4:enro char4:nrol char4:cour char4:ours"
   },
   {
     "table_id": "singer.singer",
@@ -930,7 +930,7 @@
       "song"
     ],
     "top_values": {},
-    "bm25_text": "singer singer id name birth year net worth million citizenship song"
+    "bm25_text": "singer singer id name birth year net worth million citizenship song char4:sing char4:inge char4:nger char4:sing char4:inge char4:nger char4:name char4:birt char4:irth char4:year char4:wort char4:orth char4:mill char4:illi char4:llio char4:lion char4:citi char4:itiz char4:tize char4:izen char4:zens char4:ensh char4:nshi char4:ship char4:song"
   },
   {
     "table_id": "singer.song",
@@ -953,7 +953,7 @@
         3.0
       ]
     },
-    "bm25_text": "song song id titl singer id sale highest posit singer"
+    "bm25_text": "song song id titl singer id sale highest posit singer char4:song char4:song char4:titl char4:sing char4:inge char4:nger char4:sale char4:high char4:ighe char4:ghes char4:hest char4:posi char4:osit char4:sing char4:inge char4:nger"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.reference template types",
@@ -968,7 +968,7 @@
       "templates"
     ],
     "top_values": {},
-    "bm25_text": "refer templat type templat type code templat type descript templat"
+    "bm25_text": "refer templat type templat type code templat type descript templat char4:refe char4:efer char4:temp char4:empl char4:mpla char4:plat char4:type char4:temp char4:empl char4:mpla char4:plat char4:type char4:code char4:temp char4:empl char4:mpla char4:plat char4:type char4:desc char4:escr char4:scri char4:crip char4:ript char4:temp char4:empl char4:mpla char4:plat"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.templates",
@@ -1011,7 +1011,7 @@
         ""
       ]
     },
-    "bm25_text": "templat templat id version number templat type code date effect from date effect to templat detail refer templat type document bk pp ad ppt cv bk pp ad ppt cv"
+    "bm25_text": "templat templat id version number templat type code date effect from date effect to templat detail refer templat type document bk pp ad ppt cv bk pp ad ppt cv char4:temp char4:empl char4:mpla char4:plat char4:temp char4:empl char4:mpla char4:plat char4:vers char4:ersi char4:rsio char4:sion char4:numb char4:umbe char4:mber char4:temp char4:empl char4:mpla char4:plat char4:type char4:code char4:date char4:effe char4:ffec char4:fect char4:from char4:date char4:effe char4:ffec char4:fect char4:temp char4:empl char4:mpla char4:plat char4:deta char4:etai char4:tail char4:refe char4:efer char4:temp char4:empl char4:mpla char4:plat char4:type char4:docu char4:ocum char4:cume char4:umen char4:ment"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.documents",
@@ -1030,7 +1030,7 @@
       "paragraphs"
     ],
     "top_values": {},
-    "bm25_text": "document document id templat id document name document descript other detail templat paragraph"
+    "bm25_text": "document document id templat id document name document descript other detail templat paragraph char4:docu char4:ocum char4:cume char4:umen char4:ment char4:docu char4:ocum char4:cume char4:umen char4:ment char4:temp char4:empl char4:mpla char4:plat char4:docu char4:ocum char4:cume char4:umen char4:ment char4:name char4:docu char4:ocum char4:cume char4:umen char4:ment char4:desc char4:escr char4:scri char4:crip char4:ript char4:othe char4:ther char4:deta char4:etai char4:tail char4:temp char4:empl char4:mpla char4:plat char4:para char4:arag char4:ragr char4:agra char4:grap char4:raph"
   },
   {
     "table_id": "cre_Doc_Template_Mgt.paragraphs",
@@ -1047,7 +1047,7 @@
       "documents"
     ],
     "top_values": {},
-    "bm25_text": "paragraph paragraph id document id paragraph text other detail document"
+    "bm25_text": "paragraph paragraph id document id paragraph text other detail document char4:para char4:arag char4:ragr char4:agra char4:grap char4:raph char4:para char4:arag char4:ragr char4:agra char4:grap char4:raph char4:docu char4:ocum char4:cume char4:umen char4:ment char4:para char4:arag char4:ragr char4:agra char4:grap char4:raph char4:text char4:othe char4:ther char4:deta char4:etai char4:tail char4:docu char4:ocum char4:cume char4:umen char4:ment"
   },
   {
     "table_id": "world_1.city",
@@ -1170,7 +1170,7 @@
         "Guanajuato"
       ]
     },
-    "bm25_text": "citi id name countri code district popul countri chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato"
+    "bm25_text": "citi id name countri code district popul countri chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk chn ind usa bra jpn rus mex phl deu idn gbr kor irn nga tur esp pak ita arg ukr can pol zaf twn ven fra col egi chl rom nld bgd sau mar per vnm kaz cod dza mys uzb blr mmr ecu irq swe aus cub isr prk england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato england sao paulo california punjab west bengali uttar pradesh nordrhein westfalen andhra pradesh maharashtra shandong bueno air southern tagalog tamil nadu mina gerai mexico ontario texa jiangsu west java central luzon hubei osaka rio de janeiro gauteng gujarat heilongjiang liaon madhya pradesh saitama sichuan guangdong jilin rio grand do sul chiba henan hunan kyonggi moskova oyo osun tokyo to karnataka anhui nation capit reg veracruz zhejiang aichi bahia florida guanajuato char4:citi char4:name char4:coun char4:ount char4:untr char4:ntri char4:code char4:dist char4:istr char4:stri char4:tric char4:rict char4:popu char4:opul char4:coun char4:ount char4:untr char4:ntri char4:engl char4:ngla char4:glan char4:land char4:paul char4:aulo char4:cali char4:alif char4:lifo char4:ifor char4:forn char4:orni char4:rnia char4:punj char4:unja char4:njab char4:west char4:beng char4:enga char4:ngal char4:gali char4:utta char4:ttar char4:prad char4:rade char4:ades char4:desh char4:nord char4:ordr char4:rdrh char4:drhe char4:rhei char4:hein char4:west char4:estf char4:stfa char4:tfal char4:fale char4:alen char4:andh char4:ndhr char4:dhra char4:prad char4:rade char4:ades char4:desh char4:maha char4:ahar char4:hara char4:aras char4:rash char4:asht char4:shtr char4:htra char4:shan char4:hand char4:ando char4:ndon char4:dong char4:buen char4:ueno char4:sout char4:outh char4:uthe char4:ther char4:hern char4:taga char4:agal char4:galo char4:alog char4:tami char4:amil char4:nadu char4:mina char4:gera char4:erai char4:mexi char4:exic char4:xico char4:onta char4:ntar char4:tari char4:ario char4:texa char4:jian char4:iang char4:angs char4:ngsu char4:west char4:java char4:cent char4:entr char4:ntra char4:tral char4:luzo char4:uzon char4:hube char4:ubei char4:osak char4:saka char4:jane char4:anei char4:neir char4:eiro char4:gaut char4:aute char4:uten char4:teng char4:guja char4:ujar char4:jara char4:arat char4:heil char4:eilo char4:ilon char4:long char4:ongj char4:ngji char4:gjia char4:jian char4:iang char4:liao char4:iaon char4:madh char4:adhy char4:dhya char4:prad char4:rade char4:ades char4:desh char4:sait char4:aita char4:itam char4:tama char4:sich char4:ichu char4:chua char4:huan char4:guan char4:uang char4:angd char4:ngdo char4:gdon char4:dong char4:jili char4:ilin char4:gran char4:rand char4:chib char4:hiba char4:hena char4:enan char4:huna char4:unan char4:kyon char4:yong char4:ongg char4:nggi char4:mosk char4:osko char4:skov char4:kova char4:osun char4:toky char4:okyo char4:karn char4:arna char4:rnat char4:nata char4:atak char4:taka char4:anhu char4:nhui char4:nati char4:atio char4:tion char4:capi char4:apit char4:vera char4:erac char4:racr char4:acru char4:cruz char4:zhej char4:heji char4:ejia char4:jian char4:iang char4:aich char4:ichi char4:bahi char4:ahia char4:flor char4:lori char4:orid char4:rida char4:guan char4:uana char4:anaj char4:naju char4:ajua char4:juat char4:uato char4:engl char4:ngla char4:glan char4:land char4:paul char4:aulo char4:cali char4:alif char4:lifo char4:ifor char4:forn char4:orni char4:rnia char4:punj char4:unja char4:njab char4:west char4:beng char4:enga char4:ngal char4:gali char4:utta char4:ttar char4:prad char4:rade char4:ades char4:desh char4:nord char4:ordr char4:rdrh char4:drhe char4:rhei char4:hein char4:west char4:estf char4:stfa char4:tfal char4:fale char4:alen char4:andh char4:ndhr char4:dhra char4:prad char4:rade char4:ades char4:desh char4:maha char4:ahar char4:hara char4:aras char4:rash char4:asht char4:shtr char4:htra char4:shan char4:hand char4:ando char4:ndon char4:dong char4:buen char4:ueno char4:sout char4:outh char4:uthe char4:ther char4:hern char4:taga char4:agal char4:galo char4:alog char4:tami char4:amil char4:nadu char4:mina char4:gera char4:erai char4:mexi char4:exic char4:xico char4:onta char4:ntar char4:tari char4:ario char4:texa char4:jian char4:iang char4:angs char4:ngsu char4:west char4:java char4:cent char4:entr char4:ntra char4:tral char4:luzo char4:uzon char4:hube char4:ubei char4:osak char4:saka char4:jane char4:anei char4:neir char4:eiro char4:gaut char4:aute char4:uten char4:teng char4:guja char4:ujar char4:jara char4:arat char4:heil char4:eilo char4:ilon char4:long char4:ongj char4:ngji char4:gjia char4:jian char4:iang char4:liao char4:iaon char4:madh char4:adhy char4:dhya char4:prad char4:rade char4:ades char4:desh char4:sait char4:aita char4:itam char4:tama char4:sich char4:ichu char4:chua char4:huan char4:guan char4:uang char4:angd char4:ngdo char4:gdon char4:dong char4:jili char4:ilin char4:gran char4:rand char4:chib char4:hiba char4:hena char4:enan char4:huna char4:unan char4:kyon char4:yong char4:ongg char4:nggi char4:mosk char4:osko char4:skov char4:kova char4:osun char4:toky char4:okyo char4:karn char4:arna char4:rnat char4:nata char4:atak char4:taka char4:anhu char4:nhui char4:nati char4:atio char4:tion char4:capi char4:apit char4:vera char4:erac char4:racr char4:acru char4:cruz char4:zhej char4:heji char4:ejia char4:jian char4:iang char4:aich char4:ichi char4:bahi char4:ahia char4:flor char4:lori char4:orid char4:rida char4:guan char4:uana char4:anaj char4:naju char4:ajua char4:juat char4:uato"
   },
   {
     "table_id": "world_1.sqlite sequence",
@@ -1183,7 +1183,7 @@
     "schema_sql": "CREATE TABLE sqlite_sequence(name,seq)",
     "joinable_tables": [],
     "top_values": {},
-    "bm25_text": "sqlite sequenc name seq"
+    "bm25_text": "sqlite sequenc name seq char4:sqli char4:qlit char4:lite char4:sequ char4:eque char4:quen char4:uenc char4:name"
   },
   {
     "table_id": "world_1.country",
@@ -1338,7 +1338,7 @@
         "Socialistic State"
       ]
     },
-    "bm25_text": "countri code name contin region surfac area indepd year popul life expect gnp gnp old local name govern form head of state capit citi countrylanguag africa asia europ north america oceania south america antarctica africa asia europ north america oceania south america antarctica caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state"
+    "bm25_text": "countri code name contin region surfac area indepd year popul life expect gnp gnp old local name govern form head of state capit citi countrylanguag africa asia europ north america oceania south america antarctica africa asia europ north america oceania south america antarctica caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean caribbean eastern africa middl east western africa southern europ south america southern and central asia southeast asia eastern europ polynesia central africa western europ central america eastern asia micronesia nordic countri northern africa antarctica australia and new zealand melanesia north america southern africa baltic countri british island micronesia caribbean republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state republ constitut monarchi feder republ depend territori of the uk monarchi constitut monarchi feder nonmetropolitan territori of franc oversea depart of franc territori of australia nonmetropolitan territori of new zealand socialist republ us territori commonwealth of the us depend territori of norway islam republ monarchi sultan nonmetropolitan territori of the netherland part of denmark special administr region of china territori collect of franc administr by the un autonom area co administr constitut monarchi emir depend territori of the us emir feder feder independ church state islam emir monarchi emir occupi by marocco parlementari monarchi parliamentari coprincip peopl srepubl socialist state char4:coun char4:ount char4:untr char4:ntri char4:code char4:name char4:cont char4:onti char4:ntin char4:regi char4:egio char4:gion char4:surf char4:urfa char4:rfac char4:area char4:inde char4:ndep char4:depd char4:year char4:popu char4:opul char4:life char4:expe char4:xpec char4:pect char4:loca char4:ocal char4:name char4:gove char4:over char4:vern char4:form char4:head char4:stat char4:tate char4:capi char4:apit char4:citi char4:coun char4:ount char4:untr char4:ntry char4:tryl char4:ryla char4:ylan char4:lang char4:angu char4:ngua char4:guag char4:afri char4:fric char4:rica char4:asia char4:euro char4:urop char4:nort char4:orth char4:amer char4:meri char4:eric char4:rica char4:ocea char4:cean char4:eani char4:ania char4:sout char4:outh char4:amer char4:meri char4:eric char4:rica char4:anta char4:ntar char4:tarc char4:arct char4:rcti char4:ctic char4:tica char4:afri char4:fric char4:rica char4:asia char4:euro char4:urop char4:nort char4:orth char4:amer char4:meri char4:eric char4:rica char4:ocea char4:cean char4:eani char4:ania char4:sout char4:outh char4:amer char4:meri char4:eric char4:rica char4:anta char4:ntar char4:tarc char4:arct char4:rcti char4:ctic char4:tica char4:cari char4:arib char4:ribb char4:ibbe char4:bbea char4:bean char4:east char4:aste char4:ster char4:tern char4:afri char4:fric char4:rica char4:midd char4:iddl char4:east char4:west char4:este char4:ster char4:tern char4:afri char4:fric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:euro char4:urop char4:sout char4:outh char4:amer char4:meri char4:eric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:cent char4:entr char4:ntra char4:tral char4:asia char4:sout char4:outh char4:uthe char4:thea char4:heas char4:east char4:asia char4:east char4:aste char4:ster char4:tern char4:euro char4:urop char4:poly char4:olyn char4:lyne char4:ynes char4:nesi char4:esia char4:cent char4:entr char4:ntra char4:tral char4:afri char4:fric char4:rica char4:west char4:este char4:ster char4:tern char4:euro char4:urop char4:cent char4:entr char4:ntra char4:tral char4:amer char4:meri char4:eric char4:rica char4:east char4:aste char4:ster char4:tern char4:asia char4:micr char4:icro char4:cron char4:rone char4:ones char4:nesi char4:esia char4:nord char4:ordi char4:rdic char4:coun char4:ount char4:untr char4:ntri char4:nort char4:orth char4:rthe char4:ther char4:hern char4:afri char4:fric char4:rica char4:anta char4:ntar char4:tarc char4:arct char4:rcti char4:ctic char4:tica char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:zeal char4:eala char4:alan char4:land char4:mela char4:elan char4:lane char4:anes char4:nesi char4:esia char4:nort char4:orth char4:amer char4:meri char4:eric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:afri char4:fric char4:rica char4:balt char4:alti char4:ltic char4:coun char4:ount char4:untr char4:ntri char4:brit char4:riti char4:itis char4:tish char4:isla char4:slan char4:land char4:micr char4:icro char4:cron char4:rone char4:ones char4:nesi char4:esia char4:cari char4:arib char4:ribb char4:ibbe char4:bbea char4:bean char4:cari char4:arib char4:ribb char4:ibbe char4:bbea char4:bean char4:east char4:aste char4:ster char4:tern char4:afri char4:fric char4:rica char4:midd char4:iddl char4:east char4:west char4:este char4:ster char4:tern char4:afri char4:fric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:euro char4:urop char4:sout char4:outh char4:amer char4:meri char4:eric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:cent char4:entr char4:ntra char4:tral char4:asia char4:sout char4:outh char4:uthe char4:thea char4:heas char4:east char4:asia char4:east char4:aste char4:ster char4:tern char4:euro char4:urop char4:poly char4:olyn char4:lyne char4:ynes char4:nesi char4:esia char4:cent char4:entr char4:ntra char4:tral char4:afri char4:fric char4:rica char4:west char4:este char4:ster char4:tern char4:euro char4:urop char4:cent char4:entr char4:ntra char4:tral char4:amer char4:meri char4:eric char4:rica char4:east char4:aste char4:ster char4:tern char4:asia char4:micr char4:icro char4:cron char4:rone char4:ones char4:nesi char4:esia char4:nord char4:ordi char4:rdic char4:coun char4:ount char4:untr char4:ntri char4:nort char4:orth char4:rthe char4:ther char4:hern char4:afri char4:fric char4:rica char4:anta char4:ntar char4:tarc char4:arct char4:rcti char4:ctic char4:tica char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:zeal char4:eala char4:alan char4:land char4:mela char4:elan char4:lane char4:anes char4:nesi char4:esia char4:nort char4:orth char4:amer char4:meri char4:eric char4:rica char4:sout char4:outh char4:uthe char4:ther char4:hern char4:afri char4:fric char4:rica char4:balt char4:alti char4:ltic char4:coun char4:ount char4:untr char4:ntri char4:brit char4:riti char4:itis char4:tish char4:isla char4:slan char4:land char4:micr char4:icro char4:cron char4:rone char4:ones char4:nesi char4:esia char4:cari char4:arib char4:ribb char4:ibbe char4:bbea char4:bean char4:repu char4:epub char4:publ char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:fede char4:eder char4:repu char4:epub char4:publ char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:mona char4:onar char4:narc char4:arch char4:rchi char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:fede char4:eder char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:fran char4:ranc char4:over char4:vers char4:erse char4:rsea char4:depa char4:epar char4:part char4:fran char4:ranc char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:zeal char4:eala char4:alan char4:land char4:soci char4:ocia char4:cial char4:iali char4:alis char4:list char4:repu char4:epub char4:publ char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:comm char4:ommo char4:mmon char4:monw char4:onwe char4:nwea char4:weal char4:ealt char4:alth char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:norw char4:orwa char4:rway char4:isla char4:slam char4:repu char4:epub char4:publ char4:mona char4:onar char4:narc char4:arch char4:rchi char4:sult char4:ulta char4:ltan char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:neth char4:ethe char4:ther char4:herl char4:erla char4:rlan char4:land char4:part char4:denm char4:enma char4:nmar char4:mark char4:spec char4:peci char4:ecia char4:cial char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:regi char4:egio char4:gion char4:chin char4:hina char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:coll char4:olle char4:llec char4:lect char4:fran char4:ranc char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:auto char4:uton char4:tono char4:onom char4:area char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:emir char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:emir char4:fede char4:eder char4:fede char4:eder char4:inde char4:ndep char4:depe char4:epen char4:pend char4:chur char4:hurc char4:urch char4:stat char4:tate char4:isla char4:slam char4:emir char4:mona char4:onar char4:narc char4:arch char4:rchi char4:emir char4:occu char4:ccup char4:cupi char4:maro char4:aroc char4:rocc char4:occo char4:parl char4:arle char4:rlem char4:leme char4:emen char4:ment char4:enta char4:ntar char4:tari char4:mona char4:onar char4:narc char4:arch char4:rchi char4:parl char4:arli char4:rlia char4:liam char4:iame char4:amen char4:ment char4:enta char4:ntar char4:tari char4:copr char4:opri char4:prin char4:rinc char4:inci char4:ncip char4:peop char4:eopl char4:srep char4:repu char4:epub char4:publ char4:soci char4:ocia char4:cial char4:iali char4:alis char4:list char4:stat char4:tate char4:repu char4:epub char4:publ char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:fede char4:eder char4:repu char4:epub char4:publ char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:mona char4:onar char4:narc char4:arch char4:rchi char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:fede char4:eder char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:fran char4:ranc char4:over char4:vers char4:erse char4:rsea char4:depa char4:epar char4:part char4:fran char4:ranc char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:zeal char4:eala char4:alan char4:land char4:soci char4:ocia char4:cial char4:iali char4:alis char4:list char4:repu char4:epub char4:publ char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:comm char4:ommo char4:mmon char4:monw char4:onwe char4:nwea char4:weal char4:ealt char4:alth char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:norw char4:orwa char4:rway char4:isla char4:slam char4:repu char4:epub char4:publ char4:mona char4:onar char4:narc char4:arch char4:rchi char4:sult char4:ulta char4:ltan char4:nonm char4:onme char4:nmet char4:metr char4:etro char4:trop char4:ropo char4:opol char4:poli char4:olit char4:lita char4:itan char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:neth char4:ethe char4:ther char4:herl char4:erla char4:rlan char4:land char4:part char4:denm char4:enma char4:nmar char4:mark char4:spec char4:peci char4:ecia char4:cial char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:regi char4:egio char4:gion char4:chin char4:hina char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:coll char4:olle char4:llec char4:lect char4:fran char4:ranc char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:auto char4:uton char4:tono char4:onom char4:area char4:admi char4:dmin char4:mini char4:inis char4:nist char4:istr char4:cons char4:onst char4:nsti char4:stit char4:titu char4:itut char4:mona char4:onar char4:narc char4:arch char4:rchi char4:emir char4:depe char4:epen char4:pend char4:terr char4:erri char4:rrit char4:rito char4:itor char4:tori char4:emir char4:fede char4:eder char4:fede char4:eder char4:inde char4:ndep char4:depe char4:epen char4:pend char4:chur char4:hurc char4:urch char4:stat char4:tate char4:isla char4:slam char4:emir char4:mona char4:onar char4:narc char4:arch char4:rchi char4:emir char4:occu char4:ccup char4:cupi char4:maro char4:aroc char4:rocc char4:occo char4:parl char4:arle char4:rlem char4:leme char4:emen char4:ment char4:enta char4:ntar char4:tari char4:mona char4:onar char4:narc char4:arch char4:rchi char4:parl char4:arli char4:rlia char4:liam char4:iame char4:amen char4:ment char4:enta char4:ntar char4:tari char4:copr char4:opri char4:prin char4:rinc char4:inci char4:ncip char4:peop char4:eopl char4:srep char4:repu char4:epub char4:publ char4:soci char4:ocia char4:cial char4:iali char4:alis char4:list char4:stat char4:tate"
   },
   {
     "table_id": "world_1.countrylanguage",
@@ -1516,7 +1516,7 @@
         8.7
       ]
     },
-    "bm25_text": "countrylanguag countrycod languag is offici percentag countri can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo f t f t"
+    "bm25_text": "countrylanguag countrycod languag is offici percentag countri can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun can chn ind rus usa tza zaf cod irn ken moz nga phl sdn uga ago idn vnm aus aut cmr cze ita lbr mmr nam pak sle tcd tgo ben bgd dnk eth gin kgz npl ukr bel bfa caf cog deu eri fra fsm geo gha gnb hun english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo english arab spanish french chines german russian italian creol english ful portugues turkish ukrainian polish creol french serbo croatian hindi hungarian romani belorussian kazakh korean malay malink tamil uzbek armenian azerbaijani dutch greek romanian albaniana balochi danish japanes kurdish macedonian norwegian philippen languag slovak sloven sonink swedish tatar vietnames aimara berberi bulgariana canton chines crioulo f t f t char4:coun char4:ount char4:untr char4:ntry char4:tryl char4:ryla char4:ylan char4:lang char4:angu char4:ngua char4:guag char4:coun char4:ount char4:untr char4:ntry char4:tryc char4:ryco char4:ycod char4:lang char4:angu char4:ngua char4:guag char4:offi char4:ffic char4:fici char4:perc char4:erce char4:rcen char4:cent char4:enta char4:ntag char4:coun char4:ount char4:untr char4:ntri char4:engl char4:ngli char4:glis char4:lish char4:arab char4:span char4:pani char4:anis char4:nish char4:fren char4:renc char4:ench char4:chin char4:hine char4:ines char4:germ char4:erma char4:rman char4:russ char4:ussi char4:ssia char4:sian char4:ital char4:tali char4:alia char4:lian char4:creo char4:reol char4:engl char4:ngli char4:glis char4:lish char4:port char4:ortu char4:rtug char4:tugu char4:ugue char4:gues char4:turk char4:urki char4:rkis char4:kish char4:ukra char4:krai char4:rain char4:aini char4:inia char4:nian char4:poli char4:olis char4:lish char4:creo char4:reol char4:fren char4:renc char4:ench char4:serb char4:erbo char4:croa char4:roat char4:oati char4:atia char4:tian char4:hind char4:indi char4:hung char4:unga char4:ngar char4:gari char4:aria char4:rian char4:roma char4:oman char4:mani char4:belo char4:elor char4:loru char4:orus char4:russ char4:ussi char4:ssia char4:sian char4:kaza char4:azak char4:zakh char4:kore char4:orea char4:rean char4:mala char4:alay char4:mali char4:alin char4:link char4:tami char4:amil char4:uzbe char4:zbek char4:arme char4:rmen char4:meni char4:enia char4:nian char4:azer char4:zerb char4:erba char4:rbai char4:baij char4:aija char4:ijan char4:jani char4:dutc char4:utch char4:gree char4:reek char4:roma char4:oman char4:mani char4:ania char4:nian char4:alba char4:lban char4:bani char4:ania char4:nian char4:iana char4:balo char4:aloc char4:loch char4:ochi char4:dani char4:anis char4:nish char4:japa char4:apan char4:pane char4:anes char4:kurd char4:urdi char4:rdis char4:dish char4:mace char4:aced char4:cedo char4:edon char4:doni char4:onia char4:nian char4:norw char4:orwe char4:rweg char4:wegi char4:egia char4:gian char4:phil char4:hili char4:ilip char4:lipp char4:ippe char4:ppen char4:lang char4:angu char4:ngua char4:guag char4:slov char4:lova char4:ovak char4:slov char4:love char4:oven char4:soni char4:onin char4:nink char4:swed char4:wedi char4:edis char4:dish char4:tata char4:atar char4:viet char4:ietn char4:etna char4:tnam char4:name char4:ames char4:aima char4:imar char4:mara char4:berb char4:erbe char4:rber char4:beri char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:rian char4:iana char4:cant char4:anto char4:nton char4:chin char4:hine char4:ines char4:crio char4:riou char4:ioul char4:oulo char4:engl char4:ngli char4:glis char4:lish char4:arab char4:span char4:pani char4:anis char4:nish char4:fren char4:renc char4:ench char4:chin char4:hine char4:ines char4:germ char4:erma char4:rman char4:russ char4:ussi char4:ssia char4:sian char4:ital char4:tali char4:alia char4:lian char4:creo char4:reol char4:engl char4:ngli char4:glis char4:lish char4:port char4:ortu char4:rtug char4:tugu char4:ugue char4:gues char4:turk char4:urki char4:rkis char4:kish char4:ukra char4:krai char4:rain char4:aini char4:inia char4:nian char4:poli char4:olis char4:lish char4:creo char4:reol char4:fren char4:renc char4:ench char4:serb char4:erbo char4:croa char4:roat char4:oati char4:atia char4:tian char4:hind char4:indi char4:hung char4:unga char4:ngar char4:gari char4:aria char4:rian char4:roma char4:oman char4:mani char4:belo char4:elor char4:loru char4:orus char4:russ char4:ussi char4:ssia char4:sian char4:kaza char4:azak char4:zakh char4:kore char4:orea char4:rean char4:mala char4:alay char4:mali char4:alin char4:link char4:tami char4:amil char4:uzbe char4:zbek char4:arme char4:rmen char4:meni char4:enia char4:nian char4:azer char4:zerb char4:erba char4:rbai char4:baij char4:aija char4:ijan char4:jani char4:dutc char4:utch char4:gree char4:reek char4:roma char4:oman char4:mani char4:ania char4:nian char4:alba char4:lban char4:bani char4:ania char4:nian char4:iana char4:balo char4:aloc char4:loch char4:ochi char4:dani char4:anis char4:nish char4:japa char4:apan char4:pane char4:anes char4:kurd char4:urdi char4:rdis char4:dish char4:mace char4:aced char4:cedo char4:edon char4:doni char4:onia char4:nian char4:norw char4:orwe char4:rweg char4:wegi char4:egia char4:gian char4:phil char4:hili char4:ilip char4:lipp char4:ippe char4:ppen char4:lang char4:angu char4:ngua char4:guag char4:slov char4:lova char4:ovak char4:slov char4:love char4:oven char4:soni char4:onin char4:nink char4:swed char4:wedi char4:edis char4:dish char4:tata char4:atar char4:viet char4:ietn char4:etna char4:tnam char4:name char4:ames char4:aima char4:imar char4:mara char4:berb char4:erbe char4:rber char4:beri char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:rian char4:iana char4:cant char4:anto char4:nton char4:chin char4:hine char4:ines char4:crio char4:riou char4:ioul char4:oulo"
   },
   {
     "table_id": "employee_hire_evaluation.employee",
@@ -1542,7 +1542,7 @@
         "Sale"
       ]
     },
-    "bm25_text": "employe employe id name age citi hire evalu bath bristol wasp leicest sale bath bristol wasp leicest sale"
+    "bm25_text": "employe employe id name age citi hire evalu bath bristol wasp leicest sale bath bristol wasp leicest sale char4:empl char4:mplo char4:ploy char4:loye char4:empl char4:mplo char4:ploy char4:loye char4:name char4:citi char4:hire char4:eval char4:valu char4:bath char4:bris char4:rist char4:isto char4:stol char4:wasp char4:leic char4:eice char4:ices char4:cest char4:sale char4:bath char4:bris char4:rist char4:isto char4:stol char4:wasp char4:leic char4:eice char4:ices char4:cest char4:sale"
   },
   {
     "table_id": "employee_hire_evaluation.shop",
@@ -1561,7 +1561,7 @@
       "hiring"
     ],
     "top_values": {},
-    "bm25_text": "shop shop id name locat district number product manag name hire"
+    "bm25_text": "shop shop id name locat district number product manag name hire char4:shop char4:shop char4:name char4:loca char4:ocat char4:dist char4:istr char4:stri char4:tric char4:rict char4:numb char4:umbe char4:mber char4:prod char4:rodu char4:oduc char4:duct char4:mana char4:anag char4:name char4:hire"
   },
   {
     "table_id": "employee_hire_evaluation.hiring",
@@ -1584,7 +1584,7 @@
         "F"
       ]
     },
-    "bm25_text": "hire shop id employe id start from is full time employe shop t f t f"
+    "bm25_text": "hire shop id employe id start from is full time employe shop t f t f char4:hire char4:shop char4:empl char4:mplo char4:ploy char4:loye char4:star char4:tart char4:from char4:full char4:time char4:empl char4:mplo char4:ploy char4:loye char4:shop"
   },
   {
     "table_id": "employee_hire_evaluation.evaluation",
@@ -1600,7 +1600,7 @@
       "employee"
     ],
     "top_values": {},
-    "bm25_text": "evalu employe id year award bonus employe"
+    "bm25_text": "evalu employe id year award bonus employe char4:eval char4:valu char4:empl char4:mplo char4:ploy char4:loye char4:year char4:awar char4:ward char4:bonu char4:onus char4:empl char4:mplo char4:ploy char4:loye"
   },
   {
     "table_id": "network_1.high schooler",
@@ -1624,7 +1624,7 @@
         9
       ]
     },
-    "bm25_text": "high schooler id name grade friend like"
+    "bm25_text": "high schooler id name grade friend like char4:high char4:scho char4:choo char4:hool char4:oole char4:oler char4:name char4:grad char4:rade char4:frie char4:rien char4:iend char4:like"
   },
   {
     "table_id": "network_1.friend",
@@ -1639,7 +1639,7 @@
       "high schooler"
     ],
     "top_values": {},
-    "bm25_text": "friend student id friend id high schooler"
+    "bm25_text": "friend student id friend id high schooler char4:frie char4:rien char4:iend char4:stud char4:tude char4:uden char4:dent char4:frie char4:rien char4:iend char4:high char4:scho char4:choo char4:hool char4:oole char4:oler"
   },
   {
     "table_id": "network_1.likes",
@@ -1654,7 +1654,7 @@
       "high schooler"
     ],
     "top_values": {},
-    "bm25_text": "like student id like id high schooler"
+    "bm25_text": "like student id like id high schooler char4:like char4:stud char4:tude char4:uden char4:dent char4:like char4:high char4:scho char4:choo char4:hool char4:oole char4:oler"
   },
   {
     "table_id": "poker_player.poker player",
@@ -1673,7 +1673,7 @@
       "people"
     ],
     "top_values": {},
-    "bm25_text": "poker player poker player id peopl id final tabl made best finish money rank earn peopl"
+    "bm25_text": "poker player poker player id peopl id final tabl made best finish money rank earn peopl char4:poke char4:oker char4:play char4:laye char4:ayer char4:poke char4:oker char4:play char4:laye char4:ayer char4:peop char4:eopl char4:fina char4:inal char4:tabl char4:made char4:best char4:fini char4:inis char4:nish char4:mone char4:oney char4:rank char4:earn char4:peop char4:eopl"
   },
   {
     "table_id": "poker_player.people",
@@ -1696,7 +1696,7 @@
         "Bulgaria"
       ]
     },
-    "bm25_text": "peopl peopl id nation name birth date height poker player russia bulgaria russia bulgaria"
+    "bm25_text": "peopl peopl id nation name birth date height poker player russia bulgaria russia bulgaria char4:peop char4:eopl char4:peop char4:eopl char4:nati char4:atio char4:tion char4:name char4:birt char4:irth char4:date char4:heig char4:eigh char4:ight char4:poke char4:oker char4:play char4:laye char4:ayer char4:russ char4:ussi char4:ssia char4:bulg char4:ulga char4:lgar char4:gari char4:aria char4:russ char4:ussi char4:ssia char4:bulg char4:ulga char4:lgar char4:gari char4:aria"
   },
   {
     "table_id": "real_estate_properties.reference feature types",
@@ -1711,7 +1711,7 @@
       "other available features"
     ],
     "top_values": {},
-    "bm25_text": "refer featur type featur type code featur type name other avail featur"
+    "bm25_text": "refer featur type featur type code featur type name other avail featur char4:refe char4:efer char4:feat char4:eatu char4:atur char4:type char4:feat char4:eatu char4:atur char4:type char4:code char4:feat char4:eatu char4:atur char4:type char4:name char4:othe char4:ther char4:avai char4:vail char4:feat char4:eatu char4:atur"
   },
   {
     "table_id": "real_estate_properties.reference property types",
@@ -1726,7 +1726,7 @@
       "properties"
     ],
     "top_values": {},
-    "bm25_text": "refer properti type properti type code properti type descript properti"
+    "bm25_text": "refer properti type properti type code properti type descript properti char4:refe char4:efer char4:prop char4:rope char4:oper char4:pert char4:erti char4:type char4:prop char4:rope char4:oper char4:pert char4:erti char4:type char4:code char4:prop char4:rope char4:oper char4:pert char4:erti char4:type char4:desc char4:escr char4:scri char4:crip char4:ript char4:prop char4:rope char4:oper char4:pert char4:erti"
   },
   {
     "table_id": "real_estate_properties.other available features",
@@ -1744,7 +1744,7 @@
       "other property features"
     ],
     "top_values": {},
-    "bm25_text": "other avail featur featur id featur type code featur name featur descript refer featur type other properti featur"
+    "bm25_text": "other avail featur featur id featur type code featur name featur descript refer featur type other properti featur char4:othe char4:ther char4:avai char4:vail char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:type char4:code char4:feat char4:eatu char4:atur char4:name char4:feat char4:eatu char4:atur char4:desc char4:escr char4:scri char4:crip char4:ript char4:refe char4:efer char4:feat char4:eatu char4:atur char4:type char4:othe char4:ther char4:prop char4:rope char4:oper char4:pert char4:erti char4:feat char4:eatu char4:atur"
   },
   {
     "table_id": "real_estate_properties.properties",
@@ -1792,7 +1792,7 @@
         "Field"
       ]
     },
-    "bm25_text": "properti properti id properti type code date on market date sold properti name properti address room count vendor request price buyer offer price agre sell price apt featur apt featur apt featur fld featur fld featur fld featur hse featur hse featur hse featur oth featur oth featur oth featur shp featur shp featur shp featur other properti detail refer properti type other properti featur apart other hous shop field apart other hous shop field"
+    "bm25_text": "properti properti id properti type code date on market date sold properti name properti address room count vendor request price buyer offer price agre sell price apt featur apt featur apt featur fld featur fld featur fld featur hse featur hse featur hse featur oth featur oth featur oth featur shp featur shp featur shp featur other properti detail refer properti type other properti featur apart other hous shop field apart other hous shop field char4:prop char4:rope char4:oper char4:pert char4:erti char4:prop char4:rope char4:oper char4:pert char4:erti char4:prop char4:rope char4:oper char4:pert char4:erti char4:type char4:code char4:date char4:mark char4:arke char4:rket char4:date char4:sold char4:prop char4:rope char4:oper char4:pert char4:erti char4:name char4:prop char4:rope char4:oper char4:pert char4:erti char4:addr char4:ddre char4:dres char4:ress char4:room char4:coun char4:ount char4:vend char4:endo char4:ndor char4:requ char4:eque char4:ques char4:uest char4:pric char4:rice char4:buye char4:uyer char4:offe char4:ffer char4:pric char4:rice char4:agre char4:sell char4:pric char4:rice char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:feat char4:eatu char4:atur char4:othe char4:ther char4:prop char4:rope char4:oper char4:pert char4:erti char4:deta char4:etai char4:tail char4:refe char4:efer char4:prop char4:rope char4:oper char4:pert char4:erti char4:type char4:othe char4:ther char4:prop char4:rope char4:oper char4:pert char4:erti char4:feat char4:eatu char4:atur char4:apar char4:part char4:othe char4:ther char4:hous char4:shop char4:fiel char4:ield char4:apar char4:part char4:othe char4:ther char4:hous char4:shop char4:fiel char4:ield"
   },
   {
     "table_id": "real_estate_properties.other property features",
@@ -1815,7 +1815,7 @@
         4
       ]
     },
-    "bm25_text": "other properti featur properti id featur id properti featur descript properti other avail featur"
+    "bm25_text": "other properti featur properti id featur id properti featur descript properti other avail featur char4:othe char4:ther char4:prop char4:rope char4:oper char4:pert char4:erti char4:feat char4:eatu char4:atur char4:prop char4:rope char4:oper char4:pert char4:erti char4:feat char4:eatu char4:atur char4:prop char4:rope char4:oper char4:pert char4:erti char4:feat char4:eatu char4:atur char4:desc char4:escr char4:scri char4:crip char4:ript char4:prop char4:rope char4:oper char4:pert char4:erti char4:othe char4:ther char4:avai char4:vail char4:feat char4:eatu char4:atur"
   },
   {
     "table_id": "course_teach.course",
@@ -1831,7 +1831,7 @@
       "course arrange"
     ],
     "top_values": {},
-    "bm25_text": "cours cours id stare date cours cours arrang"
+    "bm25_text": "cours cours id stare date cours cours arrang char4:cour char4:ours char4:cour char4:ours char4:star char4:tare char4:date char4:cour char4:ours char4:cour char4:ours char4:arra char4:rran char4:rang"
   },
   {
     "table_id": "course_teach.teacher",
@@ -1848,7 +1848,7 @@
       "course arrange"
     ],
     "top_values": {},
-    "bm25_text": "teacher teacher id name age hometown cours arrang"
+    "bm25_text": "teacher teacher id name age hometown cours arrang char4:teac char4:each char4:ache char4:cher char4:teac char4:each char4:ache char4:cher char4:name char4:home char4:omet char4:meto char4:etow char4:town char4:cour char4:ours char4:arra char4:rran char4:rang"
   },
   {
     "table_id": "course_teach.course arrange",
@@ -1865,7 +1865,7 @@
       "course"
     ],
     "top_values": {},
-    "bm25_text": "cours arrang cours id teacher id grade teacher cours"
+    "bm25_text": "cours arrang cours id teacher id grade teacher cours char4:cour char4:ours char4:arra char4:rran char4:rang char4:cour char4:ours char4:teac char4:each char4:ache char4:cher char4:grad char4:rade char4:teac char4:each char4:ache char4:cher char4:cour char4:ours"
   },
   {
     "table_id": "voter_1.area code state",
@@ -1933,7 +1933,7 @@
         "WV"
       ]
     },
-    "bm25_text": "area code state area code state vote ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv"
+    "bm25_text": "area code state area code state vote ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv ca tx fl il mi ny oh pa ga ma nj mo nc va mn in tn wa az ia la wi al co ct ks ky md ms ar nm ok or sc ut ne nv ak dc de hi id me mt nd nh ri sd vt wv char4:area char4:code char4:stat char4:tate char4:area char4:code char4:stat char4:tate char4:vote"
   },
   {
     "table_id": "voter_1.contestants",
@@ -1948,7 +1948,7 @@
       "votes"
     ],
     "top_values": {},
-    "bm25_text": "contest contest number contest name vote"
+    "bm25_text": "contest contest number contest name vote char4:cont char4:onte char4:ntes char4:test char4:cont char4:onte char4:ntes char4:test char4:numb char4:umbe char4:mber char4:cont char4:onte char4:ntes char4:test char4:name char4:vote"
   },
   {
     "table_id": "voter_1.votes",
@@ -1967,7 +1967,7 @@
       "area code state"
     ],
     "top_values": {},
-    "bm25_text": "vote vote id phone number state contest number creat contest area code state"
+    "bm25_text": "vote vote id phone number state contest number creat contest area code state char4:vote char4:vote char4:phon char4:hone char4:numb char4:umbe char4:mber char4:stat char4:tate char4:cont char4:onte char4:ntes char4:test char4:numb char4:umbe char4:mber char4:crea char4:reat char4:cont char4:onte char4:ntes char4:test char4:area char4:code char4:stat char4:tate"
   },
   {
     "table_id": "wta_1.players",
@@ -2150,7 +2150,7 @@
         "MAR"
       ]
     },
-    "bm25_text": "player player id first name last name hand birth date countri code match rank anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria u r l u r l usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar"
+    "bm25_text": "player player id first name last name hand birth date countri code match rank anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria anna maria laura alexandra andrea julia natalia elena anastasia stephani martina ana nicol sara daniela marina patricia jennif sarah carolin lisa sandra barbara claudia diana ekaterina jessica petra sofia kristina gabriela olga marta carolina juli amanda victoria eva nina aleksandra cristina michell monica elizabeth irina francesca paula valentina lucia daria u r l u r l usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar usa ita esp ger jpn rus aus fra gbr ind arg bra cze rou mex chn ned can swe ukr rsa kor pol bel svk sui col cro aut isr srb tur bul ina tha hun gre ven tpe slo blr por uzb chi egi nzl fin kaz bol mar char4:play char4:laye char4:ayer char4:play char4:laye char4:ayer char4:firs char4:irst char4:name char4:last char4:name char4:hand char4:birt char4:irth char4:date char4:coun char4:ount char4:untr char4:ntri char4:code char4:matc char4:atch char4:rank char4:anna char4:mari char4:aria char4:laur char4:aura char4:alex char4:lexa char4:exan char4:xand char4:andr char4:ndra char4:andr char4:ndre char4:drea char4:juli char4:ulia char4:nata char4:atal char4:tali char4:alia char4:elen char4:lena char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:step char4:teph char4:epha char4:phan char4:hani char4:mart char4:arti char4:rtin char4:tina char4:nico char4:icol char4:sara char4:dani char4:anie char4:niel char4:iela char4:mari char4:arin char4:rina char4:patr char4:atri char4:tric char4:rici char4:icia char4:jenn char4:enni char4:nnif char4:sara char4:arah char4:caro char4:arol char4:roli char4:olin char4:lisa char4:sand char4:andr char4:ndra char4:barb char4:arba char4:rbar char4:bara char4:clau char4:laud char4:audi char4:udia char4:dian char4:iana char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:jess char4:essi char4:ssic char4:sica char4:petr char4:etra char4:sofi char4:ofia char4:kris char4:rist char4:isti char4:stin char4:tina char4:gabr char4:abri char4:brie char4:riel char4:iela char4:olga char4:mart char4:arta char4:caro char4:arol char4:roli char4:olin char4:lina char4:juli char4:aman char4:mand char4:anda char4:vict char4:icto char4:ctor char4:tori char4:oria char4:nina char4:alek char4:leks char4:eksa char4:ksan char4:sand char4:andr char4:ndra char4:cris char4:rist char4:isti char4:stin char4:tina char4:mich char4:iche char4:chel char4:hell char4:moni char4:onic char4:nica char4:eliz char4:liza char4:izab char4:zabe char4:abet char4:beth char4:irin char4:rina char4:fran char4:ranc char4:ance char4:nces char4:cesc char4:esca char4:paul char4:aula char4:vale char4:alen char4:lent char4:enti char4:ntin char4:tina char4:luci char4:ucia char4:dari char4:aria char4:anna char4:mari char4:aria char4:laur char4:aura char4:alex char4:lexa char4:exan char4:xand char4:andr char4:ndra char4:andr char4:ndre char4:drea char4:juli char4:ulia char4:nata char4:atal char4:tali char4:alia char4:elen char4:lena char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:step char4:teph char4:epha char4:phan char4:hani char4:mart char4:arti char4:rtin char4:tina char4:nico char4:icol char4:sara char4:dani char4:anie char4:niel char4:iela char4:mari char4:arin char4:rina char4:patr char4:atri char4:tric char4:rici char4:icia char4:jenn char4:enni char4:nnif char4:sara char4:arah char4:caro char4:arol char4:roli char4:olin char4:lisa char4:sand char4:andr char4:ndra char4:barb char4:arba char4:rbar char4:bara char4:clau char4:laud char4:audi char4:udia char4:dian char4:iana char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:jess char4:essi char4:ssic char4:sica char4:petr char4:etra char4:sofi char4:ofia char4:kris char4:rist char4:isti char4:stin char4:tina char4:gabr char4:abri char4:brie char4:riel char4:iela char4:olga char4:mart char4:arta char4:caro char4:arol char4:roli char4:olin char4:lina char4:juli char4:aman char4:mand char4:anda char4:vict char4:icto char4:ctor char4:tori char4:oria char4:nina char4:alek char4:leks char4:eksa char4:ksan char4:sand char4:andr char4:ndra char4:cris char4:rist char4:isti char4:stin char4:tina char4:mich char4:iche char4:chel char4:hell char4:moni char4:onic char4:nica char4:eliz char4:liza char4:izab char4:zabe char4:abet char4:beth char4:irin char4:rina char4:fran char4:ranc char4:ance char4:nces char4:cesc char4:esca char4:paul char4:aula char4:vale char4:alen char4:lent char4:enti char4:ntin char4:tina char4:luci char4:ucia char4:dari char4:aria"
   },
   {
     "table_id": "wta_1.matches",
@@ -2946,7 +2946,7 @@
         2013
       ]
     },
-    "bm25_text": "match best of draw size loser age loser entri loser hand loser ht loser id loser ioc loser name loser rank loser rank point loser seed match num minut round score surfac tourney date tourney id tourney level tourney name winner age winner entri winner hand winner ht winner id winner ioc winner name winner rank winner rank point winner seed year player r l r l rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh qf sf f rr br qf sf f rr br hard clay grass hard clay grass w wt tur w wt tur i g p w i g p w indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg r l r l usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi"
+    "bm25_text": "match best of draw size loser age loser entri loser hand loser ht loser id loser ioc loser name loser rank loser rank point loser seed match num minut round score surfac tourney date tourney id tourney level tourney name winner age winner entri winner hand winner ht winner id winner ioc winner name winner rank winner rank point winner seed year player r l r l rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe rus cze usa esp ger rou pol ukr ita fra aus den srb svk hun bel blr ned chn jpn swe sui tpe svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh svetlana kuznetsova angeliqu kerber karolina pliskova agnieszka radwanska elina svitolina simona halep carla suarez navarro garbin muguruza anastasia pavlyuchenkova madison key kristina mladenov petra kvitova carolin wozniacki roberta vinci samantha stosur venus william dominika cibulkova barbora zahlavova strycova elena vesnina serena william timea babo ana ivanov jelena jankov julia goerg coco vandewegh kiki berten victoria azarenka ekaterina makarova johanna larsson luci safarova misaki doi monica niculescu sara errani shuai peng yanina wickmay aliz cornet annika beck camila giorgi christina mchale irina camelia begu kirsten flipken lauren davi lesia tsurenko magdalena rybarikova mona barthel sloan stephen sorana cirstea stefani voegel su wei hsieh qf sf f rr br qf sf f rr br hard clay grass hard clay grass w wt tur w wt tur i g p w i g p w indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg indian well us open miami wimbledon singapor cincinnati australian open wta championship french open montreal wuhan eastbourn rome olymp roland garro toronto beij brisban stanford zhuhai acapulco monterrey new haven pragu washington birmingham budapest charleston doha madrid stuttgart bucharest dubai kaohsiung katowic linz moscow st petersburg strasbourg s hertogenbosch auckland bastad biel florianopoli gstaad hobart hong kong istanbul limog luxembourg r l r l usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe usa rus cze rou ger esp ukr svk pol den blr fra aus ita chn bel hun jpn ned srb swe angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi angeliqu kerber simona halep karolina pliskova elina svitolina petra kvitova svetlana kuznetsova garbin muguruza madison key serena william dominika cibulkova agnieszka radwanska anastasia pavlyuchenkova carolin wozniacki carla suarez navarro victoria azarenka coco vandewegh ekaterina makarova elena vesnina samantha stosur venus william kristina mladenov irina camelia begu na li sloan stephen aliz cornet julia goerg lesia tsurenko luci safarova roberta vinci sara errani timea babo yanina wickmay barbora zahlavova strycova camila giorgi jelena jankov johanna larsson kiki berten misaki doi char4:matc char4:atch char4:best char4:draw char4:size char4:lose char4:oser char4:lose char4:oser char4:entr char4:ntri char4:lose char4:oser char4:hand char4:lose char4:oser char4:lose char4:oser char4:lose char4:oser char4:lose char4:oser char4:name char4:lose char4:oser char4:rank char4:lose char4:oser char4:rank char4:poin char4:oint char4:lose char4:oser char4:seed char4:matc char4:atch char4:minu char4:inut char4:roun char4:ound char4:scor char4:core char4:surf char4:urfa char4:rfac char4:tour char4:ourn char4:urne char4:rney char4:date char4:tour char4:ourn char4:urne char4:rney char4:tour char4:ourn char4:urne char4:rney char4:leve char4:evel char4:tour char4:ourn char4:urne char4:rney char4:name char4:winn char4:inne char4:nner char4:winn char4:inne char4:nner char4:entr char4:ntri char4:winn char4:inne char4:nner char4:hand char4:winn char4:inne char4:nner char4:winn char4:inne char4:nner char4:winn char4:inne char4:nner char4:winn char4:inne char4:nner char4:name char4:winn char4:inne char4:nner char4:rank char4:winn char4:inne char4:nner char4:rank char4:poin char4:oint char4:winn char4:inne char4:nner char4:seed char4:year char4:play char4:laye char4:ayer char4:svet char4:vetl char4:etla char4:tlan char4:lana char4:kuzn char4:uzne char4:znet char4:nets char4:etso char4:tsov char4:sova char4:ange char4:ngel char4:geli char4:eliq char4:liqu char4:kerb char4:erbe char4:rber char4:karo char4:arol char4:roli char4:olin char4:lina char4:plis char4:lisk char4:isko char4:skov char4:kova char4:agni char4:gnie char4:nies char4:iesz char4:eszk char4:szka char4:radw char4:adwa char4:dwan char4:wans char4:ansk char4:nska char4:elin char4:lina char4:svit char4:vito char4:itol char4:toli char4:olin char4:lina char4:simo char4:imon char4:mona char4:hale char4:alep char4:carl char4:arla char4:suar char4:uare char4:arez char4:nava char4:avar char4:varr char4:arro char4:garb char4:arbi char4:rbin char4:mugu char4:ugur char4:guru char4:uruz char4:ruza char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:pavl char4:avly char4:vlyu char4:lyuc char4:yuch char4:uche char4:chen char4:henk char4:enko char4:nkov char4:kova char4:madi char4:adis char4:diso char4:ison char4:kris char4:rist char4:isti char4:stin char4:tina char4:mlad char4:lade char4:aden char4:deno char4:enov char4:petr char4:etra char4:kvit char4:vito char4:itov char4:tova char4:caro char4:arol char4:roli char4:olin char4:wozn char4:ozni char4:znia char4:niac char4:iack char4:acki char4:robe char4:ober char4:bert char4:erta char4:vinc char4:inci char4:sama char4:aman char4:mant char4:anth char4:ntha char4:stos char4:tosu char4:osur char4:venu char4:enus char4:will char4:illi char4:llia char4:liam char4:domi char4:omin char4:mini char4:inik char4:nika char4:cibu char4:ibul char4:bulk char4:ulko char4:lkov char4:kova char4:barb char4:arbo char4:rbor char4:bora char4:zahl char4:ahla char4:hlav char4:lavo char4:avov char4:vova char4:stry char4:tryc char4:ryco char4:ycov char4:cova char4:elen char4:lena char4:vesn char4:esni char4:snin char4:nina char4:sere char4:eren char4:rena char4:will char4:illi char4:llia char4:liam char4:time char4:imea char4:babo char4:ivan char4:vano char4:anov char4:jele char4:elen char4:lena char4:jank char4:anko char4:nkov char4:juli char4:ulia char4:goer char4:oerg char4:coco char4:vand char4:ande char4:ndew char4:dewe char4:eweg char4:wegh char4:kiki char4:bert char4:erte char4:rten char4:vict char4:icto char4:ctor char4:tori char4:oria char4:azar char4:zare char4:aren char4:renk char4:enka char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:maka char4:akar char4:karo char4:arov char4:rova char4:joha char4:ohan char4:hann char4:anna char4:lars char4:arss char4:rsso char4:sson char4:luci char4:safa char4:afar char4:faro char4:arov char4:rova char4:misa char4:isak char4:saki char4:moni char4:onic char4:nica char4:nicu char4:icul char4:cule char4:ules char4:lesc char4:escu char4:sara char4:erra char4:rran char4:rani char4:shua char4:huai char4:peng char4:yani char4:anin char4:nina char4:wick char4:ickm char4:ckma char4:kmay char4:aliz char4:corn char4:orne char4:rnet char4:anni char4:nnik char4:nika char4:beck char4:cami char4:amil char4:mila char4:gior char4:iorg char4:orgi char4:chri char4:hris char4:rist char4:isti char4:stin char4:tina char4:mcha char4:chal char4:hale char4:irin char4:rina char4:came char4:amel char4:meli char4:elia char4:begu char4:kirs char4:irst char4:rste char4:sten char4:flip char4:lipk char4:ipke char4:pken char4:laur char4:aure char4:uren char4:davi char4:lesi char4:esia char4:tsur char4:sure char4:uren char4:renk char4:enko char4:magd char4:agda char4:gdal char4:dale char4:alen char4:lena char4:ryba char4:ybar char4:bari char4:arik char4:riko char4:ikov char4:kova char4:mona char4:bart char4:arth char4:rthe char4:thel char4:sloa char4:loan char4:step char4:teph char4:ephe char4:phen char4:sora char4:oran char4:rana char4:cirs char4:irst char4:rste char4:stea char4:stef char4:tefa char4:efan char4:fani char4:voeg char4:oege char4:egel char4:hsie char4:sieh char4:svet char4:vetl char4:etla char4:tlan char4:lana char4:kuzn char4:uzne char4:znet char4:nets char4:etso char4:tsov char4:sova char4:ange char4:ngel char4:geli char4:eliq char4:liqu char4:kerb char4:erbe char4:rber char4:karo char4:arol char4:roli char4:olin char4:lina char4:plis char4:lisk char4:isko char4:skov char4:kova char4:agni char4:gnie char4:nies char4:iesz char4:eszk char4:szka char4:radw char4:adwa char4:dwan char4:wans char4:ansk char4:nska char4:elin char4:lina char4:svit char4:vito char4:itol char4:toli char4:olin char4:lina char4:simo char4:imon char4:mona char4:hale char4:alep char4:carl char4:arla char4:suar char4:uare char4:arez char4:nava char4:avar char4:varr char4:arro char4:garb char4:arbi char4:rbin char4:mugu char4:ugur char4:guru char4:uruz char4:ruza char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:pavl char4:avly char4:vlyu char4:lyuc char4:yuch char4:uche char4:chen char4:henk char4:enko char4:nkov char4:kova char4:madi char4:adis char4:diso char4:ison char4:kris char4:rist char4:isti char4:stin char4:tina char4:mlad char4:lade char4:aden char4:deno char4:enov char4:petr char4:etra char4:kvit char4:vito char4:itov char4:tova char4:caro char4:arol char4:roli char4:olin char4:wozn char4:ozni char4:znia char4:niac char4:iack char4:acki char4:robe char4:ober char4:bert char4:erta char4:vinc char4:inci char4:sama char4:aman char4:mant char4:anth char4:ntha char4:stos char4:tosu char4:osur char4:venu char4:enus char4:will char4:illi char4:llia char4:liam char4:domi char4:omin char4:mini char4:inik char4:nika char4:cibu char4:ibul char4:bulk char4:ulko char4:lkov char4:kova char4:barb char4:arbo char4:rbor char4:bora char4:zahl char4:ahla char4:hlav char4:lavo char4:avov char4:vova char4:stry char4:tryc char4:ryco char4:ycov char4:cova char4:elen char4:lena char4:vesn char4:esni char4:snin char4:nina char4:sere char4:eren char4:rena char4:will char4:illi char4:llia char4:liam char4:time char4:imea char4:babo char4:ivan char4:vano char4:anov char4:jele char4:elen char4:lena char4:jank char4:anko char4:nkov char4:juli char4:ulia char4:goer char4:oerg char4:coco char4:vand char4:ande char4:ndew char4:dewe char4:eweg char4:wegh char4:kiki char4:bert char4:erte char4:rten char4:vict char4:icto char4:ctor char4:tori char4:oria char4:azar char4:zare char4:aren char4:renk char4:enka char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:maka char4:akar char4:karo char4:arov char4:rova char4:joha char4:ohan char4:hann char4:anna char4:lars char4:arss char4:rsso char4:sson char4:luci char4:safa char4:afar char4:faro char4:arov char4:rova char4:misa char4:isak char4:saki char4:moni char4:onic char4:nica char4:nicu char4:icul char4:cule char4:ules char4:lesc char4:escu char4:sara char4:erra char4:rran char4:rani char4:shua char4:huai char4:peng char4:yani char4:anin char4:nina char4:wick char4:ickm char4:ckma char4:kmay char4:aliz char4:corn char4:orne char4:rnet char4:anni char4:nnik char4:nika char4:beck char4:cami char4:amil char4:mila char4:gior char4:iorg char4:orgi char4:chri char4:hris char4:rist char4:isti char4:stin char4:tina char4:mcha char4:chal char4:hale char4:irin char4:rina char4:came char4:amel char4:meli char4:elia char4:begu char4:kirs char4:irst char4:rste char4:sten char4:flip char4:lipk char4:ipke char4:pken char4:laur char4:aure char4:uren char4:davi char4:lesi char4:esia char4:tsur char4:sure char4:uren char4:renk char4:enko char4:magd char4:agda char4:gdal char4:dale char4:alen char4:lena char4:ryba char4:ybar char4:bari char4:arik char4:riko char4:ikov char4:kova char4:mona char4:bart char4:arth char4:rthe char4:thel char4:sloa char4:loan char4:step char4:teph char4:ephe char4:phen char4:sora char4:oran char4:rana char4:cirs char4:irst char4:rste char4:stea char4:stef char4:tefa char4:efan char4:fani char4:voeg char4:oege char4:egel char4:hsie char4:sieh char4:hard char4:clay char4:gras char4:rass char4:hard char4:clay char4:gras char4:rass char4:indi char4:ndia char4:dian char4:well char4:open char4:miam char4:iami char4:wimb char4:imbl char4:mble char4:bled char4:ledo char4:edon char4:sing char4:inga char4:ngap char4:gapo char4:apor char4:cinc char4:inci char4:ncin char4:cinn char4:inna char4:nnat char4:nati char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:lian char4:open char4:cham char4:hamp char4:ampi char4:mpio char4:pion char4:ions char4:onsh char4:nshi char4:ship char4:fren char4:renc char4:ench char4:open char4:mont char4:ontr char4:ntre char4:trea char4:real char4:wuha char4:uhan char4:east char4:astb char4:stbo char4:tbou char4:bour char4:ourn char4:rome char4:olym char4:lymp char4:rola char4:olan char4:land char4:garr char4:arro char4:toro char4:oron char4:ront char4:onto char4:beij char4:bris char4:risb char4:isba char4:sban char4:stan char4:tanf char4:anfo char4:nfor char4:ford char4:zhuh char4:huha char4:uhai char4:acap char4:capu char4:apul char4:pulc char4:ulco char4:mont char4:onte char4:nter char4:terr char4:erre char4:rrey char4:have char4:aven char4:prag char4:ragu char4:wash char4:ashi char4:shin char4:hing char4:ingt char4:ngto char4:gton char4:birm char4:irmi char4:rmin char4:ming char4:ingh char4:ngha char4:gham char4:buda char4:udap char4:dape char4:apes char4:pest char4:char char4:harl char4:arle char4:rles char4:lest char4:esto char4:ston char4:doha char4:madr char4:adri char4:drid char4:stut char4:tutt char4:uttg char4:ttga char4:tgar char4:gart char4:buch char4:ucha char4:char char4:hare char4:ares char4:rest char4:duba char4:ubai char4:kaoh char4:aohs char4:ohsi char4:hsiu char4:siun char4:iung char4:kato char4:atow char4:towi char4:owic char4:linz char4:mosc char4:osco char4:scow char4:pete char4:eter char4:ters char4:ersb char4:rsbu char4:sbur char4:burg char4:stra char4:tras char4:rasb char4:asbo char4:sbou char4:bour char4:ourg char4:hert char4:erto char4:rtog char4:toge char4:ogen char4:genb char4:enbo char4:nbos char4:bosc char4:osch char4:auck char4:uckl char4:ckla char4:klan char4:land char4:bast char4:asta char4:stad char4:biel char4:flor char4:lori char4:oria char4:rian char4:iano char4:anop char4:nopo char4:opol char4:poli char4:gsta char4:staa char4:taad char4:hoba char4:obar char4:bart char4:hong char4:kong char4:ista char4:stan char4:tanb char4:anbu char4:nbul char4:limo char4:imog char4:luxe char4:uxem char4:xemb char4:embo char4:mbou char4:bour char4:ourg char4:indi char4:ndia char4:dian char4:well char4:open char4:miam char4:iami char4:wimb char4:imbl char4:mble char4:bled char4:ledo char4:edon char4:sing char4:inga char4:ngap char4:gapo char4:apor char4:cinc char4:inci char4:ncin char4:cinn char4:inna char4:nnat char4:nati char4:aust char4:ustr char4:stra char4:tral char4:rali char4:alia char4:lian char4:open char4:cham char4:hamp char4:ampi char4:mpio char4:pion char4:ions char4:onsh char4:nshi char4:ship char4:fren char4:renc char4:ench char4:open char4:mont char4:ontr char4:ntre char4:trea char4:real char4:wuha char4:uhan char4:east char4:astb char4:stbo char4:tbou char4:bour char4:ourn char4:rome char4:olym char4:lymp char4:rola char4:olan char4:land char4:garr char4:arro char4:toro char4:oron char4:ront char4:onto char4:beij char4:bris char4:risb char4:isba char4:sban char4:stan char4:tanf char4:anfo char4:nfor char4:ford char4:zhuh char4:huha char4:uhai char4:acap char4:capu char4:apul char4:pulc char4:ulco char4:mont char4:onte char4:nter char4:terr char4:erre char4:rrey char4:have char4:aven char4:prag char4:ragu char4:wash char4:ashi char4:shin char4:hing char4:ingt char4:ngto char4:gton char4:birm char4:irmi char4:rmin char4:ming char4:ingh char4:ngha char4:gham char4:buda char4:udap char4:dape char4:apes char4:pest char4:char char4:harl char4:arle char4:rles char4:lest char4:esto char4:ston char4:doha char4:madr char4:adri char4:drid char4:stut char4:tutt char4:uttg char4:ttga char4:tgar char4:gart char4:buch char4:ucha char4:char char4:hare char4:ares char4:rest char4:duba char4:ubai char4:kaoh char4:aohs char4:ohsi char4:hsiu char4:siun char4:iung char4:kato char4:atow char4:towi char4:owic char4:linz char4:mosc char4:osco char4:scow char4:pete char4:eter char4:ters char4:ersb char4:rsbu char4:sbur char4:burg char4:stra char4:tras char4:rasb char4:asbo char4:sbou char4:bour char4:ourg char4:hert char4:erto char4:rtog char4:toge char4:ogen char4:genb char4:enbo char4:nbos char4:bosc char4:osch char4:auck char4:uckl char4:ckla char4:klan char4:land char4:bast char4:asta char4:stad char4:biel char4:flor char4:lori char4:oria char4:rian char4:iano char4:anop char4:nopo char4:opol char4:poli char4:gsta char4:staa char4:taad char4:hoba char4:obar char4:bart char4:hong char4:kong char4:ista char4:stan char4:tanb char4:anbu char4:nbul char4:limo char4:imog char4:luxe char4:uxem char4:xemb char4:embo char4:mbou char4:bour char4:ourg char4:ange char4:ngel char4:geli char4:eliq char4:liqu char4:kerb char4:erbe char4:rber char4:simo char4:imon char4:mona char4:hale char4:alep char4:karo char4:arol char4:roli char4:olin char4:lina char4:plis char4:lisk char4:isko char4:skov char4:kova char4:elin char4:lina char4:svit char4:vito char4:itol char4:toli char4:olin char4:lina char4:petr char4:etra char4:kvit char4:vito char4:itov char4:tova char4:svet char4:vetl char4:etla char4:tlan char4:lana char4:kuzn char4:uzne char4:znet char4:nets char4:etso char4:tsov char4:sova char4:garb char4:arbi char4:rbin char4:mugu char4:ugur char4:guru char4:uruz char4:ruza char4:madi char4:adis char4:diso char4:ison char4:sere char4:eren char4:rena char4:will char4:illi char4:llia char4:liam char4:domi char4:omin char4:mini char4:inik char4:nika char4:cibu char4:ibul char4:bulk char4:ulko char4:lkov char4:kova char4:agni char4:gnie char4:nies char4:iesz char4:eszk char4:szka char4:radw char4:adwa char4:dwan char4:wans char4:ansk char4:nska char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:pavl char4:avly char4:vlyu char4:lyuc char4:yuch char4:uche char4:chen char4:henk char4:enko char4:nkov char4:kova char4:caro char4:arol char4:roli char4:olin char4:wozn char4:ozni char4:znia char4:niac char4:iack char4:acki char4:carl char4:arla char4:suar char4:uare char4:arez char4:nava char4:avar char4:varr char4:arro char4:vict char4:icto char4:ctor char4:tori char4:oria char4:azar char4:zare char4:aren char4:renk char4:enka char4:coco char4:vand char4:ande char4:ndew char4:dewe char4:eweg char4:wegh char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:maka char4:akar char4:karo char4:arov char4:rova char4:elen char4:lena char4:vesn char4:esni char4:snin char4:nina char4:sama char4:aman char4:mant char4:anth char4:ntha char4:stos char4:tosu char4:osur char4:venu char4:enus char4:will char4:illi char4:llia char4:liam char4:kris char4:rist char4:isti char4:stin char4:tina char4:mlad char4:lade char4:aden char4:deno char4:enov char4:irin char4:rina char4:came char4:amel char4:meli char4:elia char4:begu char4:sloa char4:loan char4:step char4:teph char4:ephe char4:phen char4:aliz char4:corn char4:orne char4:rnet char4:juli char4:ulia char4:goer char4:oerg char4:lesi char4:esia char4:tsur char4:sure char4:uren char4:renk char4:enko char4:luci char4:safa char4:afar char4:faro char4:arov char4:rova char4:robe char4:ober char4:bert char4:erta char4:vinc char4:inci char4:sara char4:erra char4:rran char4:rani char4:time char4:imea char4:babo char4:yani char4:anin char4:nina char4:wick char4:ickm char4:ckma char4:kmay char4:barb char4:arbo char4:rbor char4:bora char4:zahl char4:ahla char4:hlav char4:lavo char4:avov char4:vova char4:stry char4:tryc char4:ryco char4:ycov char4:cova char4:cami char4:amil char4:mila char4:gior char4:iorg char4:orgi char4:jele char4:elen char4:lena char4:jank char4:anko char4:nkov char4:joha char4:ohan char4:hann char4:anna char4:lars char4:arss char4:rsso char4:sson char4:kiki char4:bert char4:erte char4:rten char4:misa char4:isak char4:saki char4:ange char4:ngel char4:geli char4:eliq char4:liqu char4:kerb char4:erbe char4:rber char4:simo char4:imon char4:mona char4:hale char4:alep char4:karo char4:arol char4:roli char4:olin char4:lina char4:plis char4:lisk char4:isko char4:skov char4:kova char4:elin char4:lina char4:svit char4:vito char4:itol char4:toli char4:olin char4:lina char4:petr char4:etra char4:kvit char4:vito char4:itov char4:tova char4:svet char4:vetl char4:etla char4:tlan char4:lana char4:kuzn char4:uzne char4:znet char4:nets char4:etso char4:tsov char4:sova char4:garb char4:arbi char4:rbin char4:mugu char4:ugur char4:guru char4:uruz char4:ruza char4:madi char4:adis char4:diso char4:ison char4:sere char4:eren char4:rena char4:will char4:illi char4:llia char4:liam char4:domi char4:omin char4:mini char4:inik char4:nika char4:cibu char4:ibul char4:bulk char4:ulko char4:lkov char4:kova char4:agni char4:gnie char4:nies char4:iesz char4:eszk char4:szka char4:radw char4:adwa char4:dwan char4:wans char4:ansk char4:nska char4:anas char4:nast char4:asta char4:stas char4:tasi char4:asia char4:pavl char4:avly char4:vlyu char4:lyuc char4:yuch char4:uche char4:chen char4:henk char4:enko char4:nkov char4:kova char4:caro char4:arol char4:roli char4:olin char4:wozn char4:ozni char4:znia char4:niac char4:iack char4:acki char4:carl char4:arla char4:suar char4:uare char4:arez char4:nava char4:avar char4:varr char4:arro char4:vict char4:icto char4:ctor char4:tori char4:oria char4:azar char4:zare char4:aren char4:renk char4:enka char4:coco char4:vand char4:ande char4:ndew char4:dewe char4:eweg char4:wegh char4:ekat char4:kate char4:ater char4:teri char4:erin char4:rina char4:maka char4:akar char4:karo char4:arov char4:rova char4:elen char4:lena char4:vesn char4:esni char4:snin char4:nina char4:sama char4:aman char4:mant char4:anth char4:ntha char4:stos char4:tosu char4:osur char4:venu char4:enus char4:will char4:illi char4:llia char4:liam char4:kris char4:rist char4:isti char4:stin char4:tina char4:mlad char4:lade char4:aden char4:deno char4:enov char4:irin char4:rina char4:came char4:amel char4:meli char4:elia char4:begu char4:sloa char4:loan char4:step char4:teph char4:ephe char4:phen char4:aliz char4:corn char4:orne char4:rnet char4:juli char4:ulia char4:goer char4:oerg char4:lesi char4:esia char4:tsur char4:sure char4:uren char4:renk char4:enko char4:luci char4:safa char4:afar char4:faro char4:arov char4:rova char4:robe char4:ober char4:bert char4:erta char4:vinc char4:inci char4:sara char4:erra char4:rran char4:rani char4:time char4:imea char4:babo char4:yani char4:anin char4:nina char4:wick char4:ickm char4:ckma char4:kmay char4:barb char4:arbo char4:rbor char4:bora char4:zahl char4:ahla char4:hlav char4:lavo char4:avov char4:vova char4:stry char4:tryc char4:ryco char4:ycov char4:cova char4:cami char4:amil char4:mila char4:gior char4:iorg char4:orgi char4:jele char4:elen char4:lena char4:jank char4:anko char4:nkov char4:joha char4:ohan char4:hann char4:anna char4:lars char4:arss char4:rsso char4:sson char4:kiki char4:bert char4:erte char4:rten char4:misa char4:isak char4:saki"
   },
   {
     "table_id": "wta_1.rankings",
@@ -3217,7 +3217,7 @@
         41
       ]
     },
-    "bm25_text": "rank rank date rank player id rank point tour player"
+    "bm25_text": "rank rank date rank player id rank point tour player char4:rank char4:rank char4:date char4:rank char4:play char4:laye char4:ayer char4:rank char4:poin char4:oint char4:tour char4:play char4:laye char4:ayer"
   },
   {
     "table_id": "orchestra.conductor",
@@ -3241,7 +3241,7 @@
         "France"
       ]
     },
-    "bm25_text": "conductor conductor id name age nation year of work orchestra usa uk franc usa uk franc"
+    "bm25_text": "conductor conductor id name age nation year of work orchestra usa uk franc usa uk franc char4:cond char4:ondu char4:nduc char4:duct char4:ucto char4:ctor char4:cond char4:ondu char4:nduc char4:duct char4:ucto char4:ctor char4:name char4:nati char4:atio char4:tion char4:year char4:work char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:fran char4:ranc char4:fran char4:ranc"
   },
   {
     "table_id": "orchestra.orchestra",
@@ -3267,7 +3267,7 @@
         "DVD"
       ]
     },
-    "bm25_text": "orchestra orchestra id orchestra conductor id record compani year of found major record format conductor perform cd cd lp dvd cd cd lp dvd"
+    "bm25_text": "orchestra orchestra id orchestra conductor id record compani year of found major record format conductor perform cd cd lp dvd cd cd lp dvd char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:cond char4:ondu char4:nduc char4:duct char4:ucto char4:ctor char4:reco char4:ecor char4:cord char4:comp char4:ompa char4:mpan char4:pani char4:year char4:foun char4:ound char4:majo char4:ajor char4:reco char4:ecor char4:cord char4:form char4:orma char4:rmat char4:cond char4:ondu char4:nduc char4:duct char4:ucto char4:ctor char4:perf char4:erfo char4:rfor char4:form"
   },
   {
     "table_id": "orchestra.performance",
@@ -3288,7 +3288,7 @@
       "show"
     ],
     "top_values": {},
-    "bm25_text": "perform perform id orchestra id type date offici rate million week rank share orchestra show"
+    "bm25_text": "perform perform id orchestra id type date offici rate million week rank share orchestra show char4:perf char4:erfo char4:rfor char4:form char4:perf char4:erfo char4:rfor char4:form char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:type char4:date char4:offi char4:ffic char4:fici char4:rate char4:mill char4:illi char4:llio char4:lion char4:week char4:rank char4:shar char4:hare char4:orch char4:rche char4:ches char4:hest char4:estr char4:stra char4:show"
   },
   {
     "table_id": "orchestra.show",
@@ -3311,7 +3311,7 @@
         "F"
       ]
     },
-    "bm25_text": "show show id perform id if first show result attend perform t f t f"
+    "bm25_text": "show show id perform id if first show result attend perform t f t f char4:show char4:show char4:perf char4:erfo char4:rfor char4:form char4:firs char4:irst char4:show char4:resu char4:esul char4:sult char4:atte char4:tten char4:tend char4:perf char4:erfo char4:rfor char4:form"
   },
   {
     "table_id": "car_1.continents",
@@ -3326,7 +3326,7 @@
       "countries"
     ],
     "top_values": {},
-    "bm25_text": "contin cont id contin countri"
+    "bm25_text": "contin cont id contin countri char4:cont char4:onti char4:ntin char4:cont char4:cont char4:onti char4:ntin char4:coun char4:ount char4:untr char4:ntri"
   },
   {
     "table_id": "car_1.countries",
@@ -3351,7 +3351,7 @@
         5
       ]
     },
-    "bm25_text": "countri countri id countri name contin contin car maker"
+    "bm25_text": "countri countri id countri name contin contin car maker char4:coun char4:ount char4:untr char4:ntri char4:coun char4:ount char4:untr char4:ntri char4:coun char4:ount char4:untr char4:ntri char4:name char4:cont char4:onti char4:ntin char4:cont char4:onti char4:ntin char4:make char4:aker"
   },
   {
     "table_id": "car_1.car makers",
@@ -3380,7 +3380,7 @@
         "7"
       ]
     },
-    "bm25_text": "car maker id maker full name countri countri model list"
+    "bm25_text": "car maker id maker full name countri countri model list char4:make char4:aker char4:make char4:aker char4:full char4:name char4:coun char4:ount char4:untr char4:ntri char4:coun char4:ount char4:untr char4:ntri char4:mode char4:odel char4:list"
   },
   {
     "table_id": "car_1.model list",
@@ -3397,7 +3397,7 @@
       "car names"
     ],
     "top_values": {},
-    "bm25_text": "model list model id maker model car maker car name"
+    "bm25_text": "model list model id maker model car maker car name char4:mode char4:odel char4:list char4:mode char4:odel char4:make char4:aker char4:mode char4:odel char4:make char4:aker char4:name"
   },
   {
     "table_id": "car_1.car names",
@@ -3450,7 +3450,7 @@
         "triumph"
       ]
     },
-    "bm25_text": "car name make id model make model list car data ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph"
+    "bm25_text": "car name make id model make model list car data ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph ford chevrolet plymouth amc dodg toyota datsun volkswagen buick pontiac honda mazda mercuri oldsmobil fiat peugeot audi chrysler volvo renault saab opel subaru bmw cadillac merced benz volkswagen capri citroen hi merced nissan triumph char4:name char4:make char4:mode char4:odel char4:make char4:mode char4:odel char4:list char4:data char4:ford char4:chev char4:hevr char4:evro char4:vrol char4:role char4:olet char4:plym char4:lymo char4:ymou char4:mout char4:outh char4:dodg char4:toyo char4:oyot char4:yota char4:dats char4:atsu char4:tsun char4:volk char4:olks char4:lksw char4:kswa char4:swag char4:wage char4:agen char4:buic char4:uick char4:pont char4:onti char4:ntia char4:tiac char4:hond char4:onda char4:mazd char4:azda char4:merc char4:ercu char4:rcur char4:curi char4:olds char4:ldsm char4:dsmo char4:smob char4:mobi char4:obil char4:fiat char4:peug char4:euge char4:ugeo char4:geot char4:audi char4:chry char4:hrys char4:rysl char4:ysle char4:sler char4:volv char4:olvo char4:rena char4:enau char4:naul char4:ault char4:saab char4:opel char4:suba char4:ubar char4:baru char4:cadi char4:adil char4:dill char4:illa char4:llac char4:merc char4:erce char4:rced char4:benz char4:volk char4:olks char4:lksw char4:kswa char4:swag char4:wage char4:agen char4:capr char4:apri char4:citr char4:itro char4:troe char4:roen char4:merc char4:erce char4:rced char4:niss char4:issa char4:ssan char4:triu char4:rium char4:iump char4:umph char4:ford char4:chev char4:hevr char4:evro char4:vrol char4:role char4:olet char4:plym char4:lymo char4:ymou char4:mout char4:outh char4:dodg char4:toyo char4:oyot char4:yota char4:dats char4:atsu char4:tsun char4:volk char4:olks char4:lksw char4:kswa char4:swag char4:wage char4:agen char4:buic char4:uick char4:pont char4:onti char4:ntia char4:tiac char4:hond char4:onda char4:mazd char4:azda char4:merc char4:ercu char4:rcur char4:curi char4:olds char4:ldsm char4:dsmo char4:smob char4:mobi char4:obil char4:fiat char4:peug char4:euge char4:ugeo char4:geot char4:audi char4:chry char4:hrys char4:rysl char4:ysle char4:sler char4:volv char4:olvo char4:rena char4:enau char4:naul char4:ault char4:saab char4:opel char4:suba char4:ubar char4:baru char4:cadi char4:adil char4:dill char4:illa char4:llac char4:merc char4:erce char4:rced char4:benz char4:volk char4:olks char4:lksw char4:kswa char4:swag char4:wage char4:agen char4:capr char4:apri char4:citr char4:itro char4:troe char4:roen char4:merc char4:erce char4:rced char4:niss char4:issa char4:ssan char4:triu char4:rium char4:iump char4:umph"
   },
   {
     "table_id": "car_1.cars data",
@@ -3702,7 +3702,7 @@
         1974
       ]
     },
-    "bm25_text": "car data id mpg cylind edispl horsepow weight acceler year car name null null null null"
+    "bm25_text": "car data id mpg cylind edispl horsepow weight acceler year car name null null null null char4:data char4:cyli char4:ylin char4:lind char4:edis char4:disp char4:ispl char4:hors char4:orse char4:rsep char4:sepo char4:epow char4:weig char4:eigh char4:ight char4:acce char4:ccel char4:cele char4:eler char4:year char4:name char4:null char4:null char4:null char4:null"
   },
   {
     "table_id": "tvshow.tv channel",
@@ -3756,7 +3756,7 @@
         "Sky Famiglia + Sky HD"
       ]
     },
-    "bm25_text": "tv channel id seri name countri languag content pixel aspect ratio par hight definit tv pay per view ppv packag option tv seri cartoon itali unit kingdom poland itali unit kingdom poland italian english italian english music music no yes no yes no no sky famiglia no ftv option sky famiglia sky hd sky famiglia no ftv option sky famiglia sky hd"
+    "bm25_text": "tv channel id seri name countri languag content pixel aspect ratio par hight definit tv pay per view ppv packag option tv seri cartoon itali unit kingdom poland itali unit kingdom poland italian english italian english music music no yes no yes no no sky famiglia no ftv option sky famiglia sky hd sky famiglia no ftv option sky famiglia sky hd char4:chan char4:hann char4:anne char4:nnel char4:seri char4:name char4:coun char4:ount char4:untr char4:ntri char4:lang char4:angu char4:ngua char4:guag char4:cont char4:onte char4:nten char4:tent char4:pixe char4:ixel char4:aspe char4:spec char4:pect char4:rati char4:atio char4:high char4:ight char4:defi char4:efin char4:fini char4:init char4:view char4:pack char4:acka char4:ckag char4:opti char4:ptio char4:tion char4:seri char4:cart char4:arto char4:rtoo char4:toon char4:ital char4:tali char4:unit char4:king char4:ingd char4:ngdo char4:gdom char4:pola char4:olan char4:land char4:ital char4:tali char4:unit char4:king char4:ingd char4:ngdo char4:gdom char4:pola char4:olan char4:land char4:ital char4:tali char4:alia char4:lian char4:engl char4:ngli char4:glis char4:lish char4:ital char4:tali char4:alia char4:lian char4:engl char4:ngli char4:glis char4:lish char4:musi char4:usic char4:musi char4:usic char4:fami char4:amig char4:migl char4:igli char4:glia char4:opti char4:ptio char4:tion char4:fami char4:amig char4:migl char4:igli char4:glia char4:fami char4:amig char4:migl char4:igli char4:glia char4:opti char4:ptio char4:tion char4:fami char4:amig char4:migl char4:igli char4:glia"
   },
   {
     "table_id": "tvshow.tv series",
@@ -3785,7 +3785,7 @@
         5.0
       ]
     },
-    "bm25_text": "tv seri id episod air date rate share rate share viewer m week rank channel tv channel"
+    "bm25_text": "tv seri id episod air date rate share rate share viewer m week rank channel tv channel char4:seri char4:epis char4:piso char4:isod char4:date char4:rate char4:shar char4:hare char4:rate char4:shar char4:hare char4:view char4:iewe char4:ewer char4:week char4:rank char4:chan char4:hann char4:anne char4:nnel char4:chan char4:hann char4:anne char4:nnel"
   },
   {
     "table_id": "tvshow.cartoon",
@@ -3811,6 +3811,6 @@
         "Michael Chang"
       ]
     },
-    "bm25_text": "cartoon id titl direct by written by origin air date product code channel tv channel ben jone brandon vietti michael chang ben jone brandon vietti michael chang"
+    "bm25_text": "cartoon id titl direct by written by origin air date product code channel tv channel ben jone brandon vietti michael chang ben jone brandon vietti michael chang char4:cart char4:arto char4:rtoo char4:toon char4:titl char4:dire char4:irec char4:rect char4:writ char4:ritt char4:itte char4:tten char4:orig char4:rigi char4:igin char4:date char4:prod char4:rodu char4:oduc char4:duct char4:code char4:chan char4:hann char4:anne char4:nnel char4:chan char4:hann char4:anne char4:nnel char4:jone char4:bran char4:rand char4:ando char4:ndon char4:viet char4:iett char4:etti char4:mich char4:icha char4:chae char4:hael char4:chan char4:hang char4:jone char4:bran char4:rand char4:ando char4:ndon char4:viet char4:iett char4:etti char4:mich char4:icha char4:chae char4:hael char4:chan char4:hang"
   }
 ]

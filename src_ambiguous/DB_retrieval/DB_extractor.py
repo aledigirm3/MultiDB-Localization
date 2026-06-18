@@ -13,7 +13,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from embedder import Embedder
 import paths
 from ansi_colors import *
-from data_manipulation import normalize_and_stem_text
+from data_manipulation import add_char4_tokens, normalize_and_stem_text
 
 
 EMBEDDING_MARGIN_THRESHOLD = 0.02
@@ -83,7 +83,7 @@ def get_candidate_bm25_db_scores(
     bm25: BM25Okapi,
     candidate_dbs: list,
 ):
-    query_tokens = normalize_and_stem_text(question).split()
+    query_tokens = add_char4_tokens(normalize_and_stem_text(question)).split()
     scores = bm25.get_scores(query_tokens)
     candidate_db_set = set(candidate_dbs)
     db_table_scores = defaultdict(list)

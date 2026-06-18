@@ -458,6 +458,21 @@ def normalize_and_stem_text(text: str) -> str:
     return " ".join(stemmer.stem(token) for token in tokens)
 
 
+def add_char4_tokens(text: str) -> str:
+    tokens = text.split()
+    char4_tokens = []
+
+    for token in tokens:
+        if len(token) < 4:
+            continue
+        char4_tokens.extend(
+            f"char4:{token[index:index + 4]}"
+            for index in range(len(token) - 3)
+        )
+
+    return " ".join(tokens + char4_tokens)
+
+
 def create_benchmark_doc(dataset_path):
     """
     Creates a benchmark documentation JSON file from a Spider/BIRD-like dataset.
@@ -742,7 +757,7 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
                     parts.extend(string_values)
                     parts.extend(string_values)
 
-        return normalize_and_stem_text(" ".join(parts))
+        return add_char4_tokens(normalize_and_stem_text(" ".join(parts)))
 
     dataset_dir = resolve_dataset_dir(dataset_path)
     benchmark_name = benchmark_name_from_path(dataset_dir)
