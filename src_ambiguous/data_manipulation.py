@@ -2000,13 +2000,18 @@ if __name__ == '__main__':
     # dict = create_attribute_mapping(file_name)
     # print(dict['debit_card_specializing']['year and month']['Customer ID'])
     
-    file_name = paths.DATASETS.SPIDERdev1.value + "dev_tables.json"
-    print_DB_table_att(file_name)
+    # file_name = paths.DATASETS.SPIDERdev1.value + "dev_tables.json"
+    # print_DB_table_att(file_name)
 # ===================== Doc & BM25 text ================================================ #
     # dataset_path = paths.DATASETS.SPIDERdev1.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
+
     # dataset_path = paths.DATASETS.BIRDdev.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # dataset_path = paths.DATASETS.BIRDtrain.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 # ====================================================================================== #
