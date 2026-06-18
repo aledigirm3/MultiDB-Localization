@@ -54,6 +54,11 @@ def get_dataset_paths(dataset: str):
         doc_filename = "bird_doc.json"
         description_filename = "BIRD_SPIDER_dev_descriptions_ambiguous.json"
         result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
+    elif dataset == "BIRDtrain":
+        dataset_dir = (src_dir / paths.DATASETS.BIRDtrain.value).resolve()
+        doc_filename = "bird_doc.json"
+        description_filename = "BIRDtrain_DB_descriptions.json"
+        result_filename = "BIRDtrain_DB_extractor.json"
     else:
         print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -238,28 +243,32 @@ if __name__ == "__main__":
     start = time.perf_counter()
     embedder = Embedder(model_name="BAAI/bge-large-en-v1.5", device_name="cuda")
 
-    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    extract_DB(embedder, "BIRDdev")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    # extract_DB(embedder, "BIRDdev")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
-    extract_DB(embedder, "SPIDERdev1")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
+    # extract_DB(embedder, "SPIDERdev1")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
-    extract_DB(embedder, "BIRDdev-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
+    # extract_DB(embedder, "BIRDdev-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
-    extract_DB(embedder, "SPIDERdev1-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
+    # extract_DB(embedder, "SPIDERdev1-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
-    extract_DB(embedder, "BIRD_SPIDER_dev")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
+    # extract_DB(embedder, "BIRD_SPIDER_dev")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
-    extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
+    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
+    # extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BIRDtrain...{RESET}")
+    extract_DB(embedder, "BIRDtrain")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
