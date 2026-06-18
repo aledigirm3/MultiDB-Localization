@@ -77,45 +77,38 @@ def print_DB_tables_dict(file_path: str) -> str:
             
             print(f"Tables: {tables_string}\n")
 
+def get_DB_table_att(file_path: str) -> list:
+    """Formats database schemas as database/table/attribute dictionaries."""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+
+    formatted_schemas = []
+    for db_schema in data:
+        output_structure = {
+            "database_name": db_schema["db_id"],
+            "tables": {}
+        }
+
+        table_names = db_schema["table_names"]
+        for table_name in table_names:
+            output_structure["tables"][table_name] = []
+
+        for table_index, column_name in db_schema["column_names"][1:]:
+            corresponding_table = table_names[table_index]
+            output_structure["tables"][corresponding_table].append(column_name)
+
+        formatted_schemas.append(output_structure)
+
+    return formatted_schemas
+
+
 def print_DB_table_att(file_path):
-    """Formats and prints database schemas from a list of dictionaries.
-
-    This function iterates through a list of database schema objects. For each
-    schema, it restructures the data to map column names directly to their
-    corresponding table names and then prints the simplified structure to the
-    console as a formatted JSON string.
-
-    Args:
-        data: A list of dictionaries, where each dictionary represents a
-              database schema. Each dictionary must contain 'db_id',
-              'table_names', and 'column_names' keys.
-    """
+    """Prints database schemas in database/table/attribute format."""
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-            
-            for db_schema in data:
+        for output_structure in get_DB_table_att(file_path):
+            print(json.dumps(output_structure, indent=2))
+            print("-" * 40)
 
-                output_structure = {
-                    "database_name": db_schema["db_id"],
-                    "tables": {}
-                }
-
-                table_names = db_schema["table_names"]
-                for table_name in table_names:
-                    output_structure["tables"][table_name] = []
-
-                for column_info in db_schema["column_names"][1:]:
-                    table_index = column_info[0]
-                    column_name = column_info[1]
-
-                    corresponding_table = table_names[table_index]
-
-                    output_structure["tables"][corresponding_table].append(column_name)
-
-                print(json.dumps(output_structure, indent=2))
-                print("-" * 40)
-            
     except FileNotFoundError:
         print(f"Error: The file was not found at path '{file_path}'")
     except json.JSONDecodeError:
@@ -2006,8 +1999,9 @@ if __name__ == '__main__':
     # file_name = paths.DATASETS.BIRDdev.value + 'dev_tables.json'
     # dict = create_attribute_mapping(file_name)
     # print(dict['debit_card_specializing']['year and month']['Customer ID'])
-
-
+    
+    file_name = paths.DATASETS.SPIDERdev1.value + "dev_tables.json"
+    print_DB_table_att(file_name)
 # ===================== Doc & BM25 text ================================================ #
     # dataset_path = paths.DATASETS.SPIDERdev1.value
     # create_benchmark_doc(dataset_path)
@@ -2019,18 +2013,18 @@ if __name__ == '__main__':
 
 # ===================== AMBIGUOUS ====================================================== #
 
-    # SPIDER
-    dataset_path = paths.DATASETS.SPIDERdev1.value
-    create_ambiguous_benchmark(dataset_path, overwrite=True)
-    dataset_path = paths.DATASETS.SPIDERdev1_ambiguous.value
-    create_benchmark_doc(dataset_path)
-    add_bm25_text_to_benchmark_doc(dataset_path)
+    # # SPIDER
+    # dataset_path = paths.DATASETS.SPIDERdev1.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.SPIDERdev1_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
 
-    # BIRD
-    dataset_path = paths.DATASETS.BIRDdev.value
-    create_ambiguous_benchmark(dataset_path, overwrite=True)
-    dataset_path = paths.DATASETS.BIRDdev_ambiguous.value
-    create_benchmark_doc(dataset_path)
-    add_bm25_text_to_benchmark_doc(dataset_path)
+    # # BIRD
+    # dataset_path = paths.DATASETS.BIRDdev.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.BIRDdev_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
 
 # ====================================================================================== #
