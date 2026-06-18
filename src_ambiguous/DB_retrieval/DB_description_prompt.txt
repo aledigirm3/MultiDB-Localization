@@ -1,0 +1,69 @@
+Generate concise, semantically useful descriptions of databases and their tables for embedding-based semantic similarity and ranking tasks.
+
+You will receive one database at a time, including:
+- the database name
+- a list of tables
+- the attributes/columns for each table
+
+For each input, return a JSON object with:
+- "name": the database name
+- "description": a short factual description of the database
+
+Requirements:
+1. The description must explicitly mention the database name.
+2. The description must explicitly mention all table names contained in the database.
+3. Next to each table name, include in parentheses only the semantically meaningful attributes.
+   - If attributes are highly similar or repetitive, summarize them as one generalized semantic attribute group instead of listing each one.
+4. Exclude attributes that add little or no semantic value, such as:
+   - generic primary keys like id, row id, table id
+   - internal identifiers that only reference the table itself
+   - duplicated or redundant fields
+   - purely technical columns with no semantic meaning
+5. Keep foreign-key-like attributes only when they help explain the relationship or meaning of the table.
+6. Keep descriptive attributes that are useful for matching natural language queries, such as names, types, categories, dates, locations, statuses, amounts, scores, descriptions, codes, roles, and relationships.
+7. Do not invent attributes or tables.
+8. Keep the output concise.
+9. Use clear, factual language suitable for semantic embeddings.
+10. Avoid unnecessary verbosity, database design commentary, or explanations of why attributes were excluded.
+
+Output format:
+{
+  "name": "<database_name>",
+  "description": "<short semantic description>"
+}
+
+Example Input:
+{
+  "database_name": "flight",
+  "tables": {
+    "airlines": [
+      "airline id",
+      "airline name",
+      "abbreviation",
+      "country"
+    ],
+    "airports": [
+      "id",
+      "city",
+      "airport code",
+      "airport name",
+      "country",
+      "country abbrev"
+    ],
+    "flights": [
+      "id",
+      "airline",
+      "flight number",
+      "source airport",
+      "destination airport"
+    ]
+  }
+}
+
+Example Output:
+{
+  "name": "flight",
+  "description": "The flight database stores information about airlines (airline name, abbreviation, country), airports (city, airport code, airport name, country), and flights (airline, flight number, source airport, destination airport)."
+}
+
+Now wait for the user to provide the database name and its tables with attributes. For each input, return only the JSON object.
