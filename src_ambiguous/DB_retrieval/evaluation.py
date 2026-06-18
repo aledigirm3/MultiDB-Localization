@@ -6,8 +6,14 @@ from ansi_colors import *
 import paths
 
 def DBs_extraction_eval(filename):
-    with open('../' + paths.RESULTS.DB_RETRIEVAL.value + filename, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    file_path = '../' + paths.RESULTS.DB_RETRIEVAL.value + filename
+
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"{RED}File not found: {file_path}. Skipping evaluation.{RESET}\n")
+        return
 
     correct_samples = 0
     skip = 0
@@ -45,4 +51,8 @@ if __name__ == '__main__':
 
     filename = 'BIRD_SPIDER_dev_DB_extractor_ambiguous.json'
     print(f"{CYAN}BIRD SPIDER dev AMBIGUOUS evaluation...{RESET}")
+    DBs_extraction_eval(filename)
+
+    filename = 'BIRDtrain_DB_extractor.json'
+    print(f"{CYAN}BIRD train  evaluation...{RESET}")
     DBs_extraction_eval(filename)
