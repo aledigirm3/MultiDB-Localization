@@ -16,15 +16,14 @@ def DBs_extraction_eval(filename):
         return
 
     correct_samples = 0
-    skip = 0
     for sample in data:
         if sample['DB_result'] == "ERROR":
-            skip += 1
             continue
         if sample['db_id'] == sample['DB_result']:
             correct_samples += 1
 
-    print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/(len(data)-skip)}\n")
+    print(f"\n{GREEN}Accuracy:{RESET} {correct_samples/(len(data))}\n")
+    return (correct_samples/(len(data)))
 
         
 
