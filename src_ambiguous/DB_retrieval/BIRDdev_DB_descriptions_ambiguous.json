@@ -93,19 +93,6 @@
     },
 
     {
-        "name": "toxicology_1",
-        "description": "The toxicology database stores molecular toxicology data about atom (molecule id, element), bond (molecule id, bond_type), connected (atom id, atom id 2, bond id), and molecule (label)."
-    },
-    {
-        "name": "toxicology_2",
-        "description": "The toxicology database stores molecular toxicology data about atom (molecule id, element), bond (molecule id, bond_type), connected (atom id, atom id 2, bond id), and molecule (label)."
-    },
-    {
-        "name": "toxicology_3",
-        "description": "The toxicology database stores molecular toxicology data about atom (molecule id, element), bond (molecule id, bond_type), connected (atom id, atom id 2, bond id), and molecule (label)."
-    },
-
-    {
         "name": "student_club_1",
         "description": "The student_club database stores student organization data about Event (event name, event date, type, notes, location, status), Major (major name, department, college), Zip Code (zip code, type, city, county, state), Attendance (link to event, link to member), Budget (category, spent, remaining, amount, event status, link to event), Expense (expense description, expense date, cost, approved, link to member, link to budget), Income (date received, amount, source, notes, link to member), and Member (first name, last name, email, position, t_shirt_size, phone, zip, link to major)."
     },
