@@ -1,4 +1,5 @@
 import json
+import math
 import os
 import sys
 import time
@@ -7,6 +8,7 @@ from pathlib import Path
 
 from rank_bm25 import BM25Okapi
 from sentence_transformers import util
+import torch
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -16,8 +18,22 @@ from ansi_colors import *
 from data_manipulation import add_char4_tokens, normalize_and_stem_text
 
 
-EMBEDDING_MARGIN_THRESHOLD = 0.02
-BM25_TABLES_PER_DB = 5
+# Retrieval hyperparameters
+EMBEDDING_MODEL_NAME = "BAAI/bge-large-en-v1.5"
+EMBEDDING_DEVICE_NAME = "cuda"
+QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
+
+MAX_VALUES_PER_COLUMN = 3
+TABLE_EMBEDDING_TABLES_PER_DB = 1
+
+BM25_K1 = 1.8
+BM25_B = 1.0
+BM25_TABLES_PER_DB = 2
+BM25_USE_CHAR4 = True
+
+DESCRIPTION_WEIGHT = 0.25
+TABLE_WEIGHT = 0.50
+BM25_WEIGHT = 0.25
 
 
 def get_dataset_paths(dataset: str):
@@ -60,8 +76,7 @@ def get_dataset_paths(dataset: str):
         description_filename = "BIRDtrain_DB_descriptions.json"
         result_filename = "BIRDtrain_DB_extractor.json"
     else:
-        print(f"{RED} DATASET NOT FOUND, check the name{RESET}")
-        sys.exit(1)
+        raise ValueError(f"Dataset not found: {dataset}")
 
     results_folder = (src_dir / paths.RESULTS.DB_RETRIEVAL.value).resolve()
 
@@ -75,107 +90,177 @@ def get_dataset_paths(dataset: str):
 
 
 def build_bm25(table_docs: list):
-    tokenized_corpus = [
-        table_doc.get("bm25_text", "").split()
-        for table_doc in table_docs
-    ]
-    return BM25Okapi(tokenized_corpus)
+    tokenized_corpus = []
+    for table_doc in table_docs:
+        tokens = table_doc.get("bm25_text", "").split()
+        if not BM25_USE_CHAR4:
+            tokens = [
+                token
+                for token in tokens
+                if not token.startswith("char4:")
+            ]
+        tokenized_corpus.append(tokens)
+
+    return BM25Okapi(tokenized_corpus, k1=BM25_K1, b=BM25_B)
 
 
-def get_candidate_bm25_db_scores(
+def get_bm25_db_scores(
     question: str,
     table_docs: list,
     bm25: BM25Okapi,
-    candidate_dbs: list,
+    database_names: list,
 ):
-    query_tokens = add_char4_tokens(normalize_and_stem_text(question)).split()
+    normalized_question = normalize_and_stem_text(question)
+    query_tokens = (
+        add_char4_tokens(normalized_question).split()
+        if BM25_USE_CHAR4
+        else normalized_question.split()
+    )
     scores = bm25.get_scores(query_tokens)
-    candidate_db_set = set(candidate_dbs)
     db_table_scores = defaultdict(list)
 
     for index, table_doc in enumerate(table_docs):
         db_name = table_doc.get("db")
-        if db_name not in candidate_db_set:
-            continue
-
-        score = max(0.0, float(scores[index]))
+        score = float(scores[index])
+        if not math.isfinite(score):
+            raise ValueError(
+                f"BM25 produced a non-finite score for table index {index}."
+            )
+        score = max(0.0, score)
         db_table_scores[db_name].append(score)
 
     db_scores = {}
-    for db_name in candidate_dbs:
+    for db_name in database_names:
         table_scores = sorted(db_table_scores.get(db_name, []), reverse=True)
-        db_scores[db_name] = sum(table_scores[:BM25_TABLES_PER_DB])
+        best_scores = table_scores[:BM25_TABLES_PER_DB]
+        db_scores[db_name] = (
+            sum(best_scores) / len(best_scores)
+            if best_scores
+            else 0.0
+        )
 
     return db_scores
 
 
-def get_best_bm25_db(embedding_top_dbs: list, bm25_db_scores: dict):
-    if not bm25_db_scores:
-        return embedding_top_dbs[0]
+def build_description_embeddings(embedder: Embedder, descriptions: list):
+    description_texts = [
+        description["description"]
+        for description in descriptions
+    ]
+    return embedder.get_sentences_embeddings(description_texts)
 
-    max_score = max(bm25_db_scores.values())
-    if max_score <= 0:
-        return embedding_top_dbs[0]
 
-    best_dbs = {
-        db for db, score in bm25_db_scores.items()
-        if score == max_score
+def build_table_text(table_doc: dict) -> str:
+    table_text = (
+        f"Table {table_doc['table']}. "
+        f"Columns: {', '.join(table_doc.get('columns', []))}."
+    )
+
+    joinable_tables = table_doc.get("joinable_tables", [])
+    if joinable_tables:
+        table_text += f" Related tables: {', '.join(joinable_tables)}."
+
+    value_parts = []
+    for column, values in table_doc.get("top_values", {}).items():
+        if not isinstance(values, list):
+            values = [values]
+
+        selected_values = [
+            str(value)
+            for value in values[:MAX_VALUES_PER_COLUMN]
+            if value is not None
+        ]
+        if selected_values:
+            value_parts.append(f"{column}: {', '.join(selected_values)}")
+
+    if value_parts:
+        table_text += f" Example values: {'; '.join(value_parts)}."
+
+    return table_text
+
+
+def build_table_embeddings(embedder: Embedder, table_docs: list):
+    table_texts = [
+        build_table_text(table_doc)
+        for table_doc in table_docs
+    ]
+    return embedder.get_sentences_embeddings(table_texts)
+
+
+def build_table_indices_by_db(table_docs: list) -> dict:
+    table_indices_by_db = defaultdict(list)
+    for index, table_doc in enumerate(table_docs):
+        table_indices_by_db[table_doc["db"]].append(index)
+    return table_indices_by_db
+
+
+def aggregate_table_embedding_scores(
+    table_similarity_matrix,
+    table_indices_by_db: dict,
+    database_names: list,
+):
+    aggregated_scores = table_similarity_matrix.new_empty(
+        (table_similarity_matrix.shape[0], len(database_names))
+    )
+
+    for db_index, db_name in enumerate(database_names):
+        table_indices = table_indices_by_db[db_name]
+
+        table_count = min(
+            TABLE_EMBEDDING_TABLES_PER_DB,
+            len(table_indices),
+        )
+        best_scores = table_similarity_matrix[:, table_indices].topk(
+            table_count,
+            dim=1,
+        ).values
+        aggregated_scores[:, db_index] = best_scores.mean(dim=1)
+
+    return aggregated_scores
+
+
+def min_max_normalize(scores: dict) -> dict:
+    minimum = min(scores.values())
+    maximum = max(scores.values())
+
+    if maximum == minimum:
+        return {name: 0.0 for name in scores}
+
+    return {
+        name: (score - minimum) / (maximum - minimum)
+        for name, score in scores.items()
     }
 
-    for db_name in embedding_top_dbs:
-        if db_name in best_dbs:
-            return db_name
 
-    return embedding_top_dbs[0]
+def normalize_bm25_scores(scores: dict) -> dict:
+    maximum = max(scores.values())
+    if maximum <= 0:
+        return {name: 0.0 for name in scores}
 
-
-def build_description_embeddings(embedder: Embedder, descriptions: list):
-    desc_embeddings = []
-    for description in descriptions:
-        desc_embedding = embedder.get_sentence_embedding(
-            "passage: " + description["description"]
-        )
-        desc_embeddings.append((description["name"], desc_embedding))
-
-    return desc_embeddings
+    return {
+        name: score / maximum
+        for name, score in scores.items()
+    }
 
 
-def rank_databases_with_embeddings(
-    question: str,
-    desc_embeddings: list,
-    embedder: Embedder,
-    top_k: int = 3,
-):
-    query_embedding = embedder.get_sentence_embedding("query: " + question)
-    best_score_db = []
+def validate_hyperparameters():
+    if MAX_VALUES_PER_COLUMN < 0:
+        raise ValueError("MAX_VALUES_PER_COLUMN must be at least 0.")
+    if TABLE_EMBEDDING_TABLES_PER_DB < 1:
+        raise ValueError("TABLE_EMBEDDING_TABLES_PER_DB must be at least 1.")
+    if BM25_TABLES_PER_DB < 1:
+        raise ValueError("BM25_TABLES_PER_DB must be at least 1.")
+    if BM25_K1 <= 0:
+        raise ValueError("BM25_K1 must be greater than 0.")
+    if not 0 <= BM25_B <= 1:
+        raise ValueError("BM25_B must be between 0 and 1.")
 
-    for db_name, desc_embedding in desc_embeddings:
-        score = util.cos_sim(query_embedding, desc_embedding).item()
-        best_score_db.append((score, db_name))
+    weights = [DESCRIPTION_WEIGHT, TABLE_WEIGHT, BM25_WEIGHT]
+    if any(weight < 0 for weight in weights):
+        raise ValueError("Retrieval weights cannot be negative.")
+    if not math.isclose(sum(weights), 1.0):
+        raise ValueError("Retrieval weights must sum to 1.0.")
 
-    return sorted(best_score_db, reverse=True)[:top_k]
-
-
-def get_embedding_margin(embedding_ranking: list):
-    if len(embedding_ranking) > 1:
-        return embedding_ranking[0][0] - embedding_ranking[1][0]
-
-    return 0
-
-
-def should_rerank_with_bm25(embedding_ranking: list):
-    return get_embedding_margin(embedding_ranking) <= EMBEDDING_MARGIN_THRESHOLD
-
-
-def choose_db_result(embedding_ranking: list, bm25_db_scores: dict):
-    embedding_top_dbs = [db_name for _, db_name in embedding_ranking]
-    if not embedding_top_dbs:
-        return None
-
-    if should_rerank_with_bm25(embedding_ranking):
-        return get_best_bm25_db(embedding_top_dbs, bm25_db_scores)
-
-    return embedding_top_dbs[0]
 
 def sample_sql(sample: dict) -> str:
     if "SQL" in sample:
@@ -189,6 +274,7 @@ def sample_question_id(sample: dict, fallback_question_id: int) -> int:
 
 
 def extract_DB(embedder: Embedder, dataset: str):
+    validate_hyperparameters()
     dataset_paths = get_dataset_paths(dataset)
 
     with open(dataset_paths["doc_path"], "r", encoding="utf-8") as f:
@@ -200,27 +286,84 @@ def extract_DB(embedder: Embedder, dataset: str):
     with open(dataset_paths["questions_path"], "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    if not data:
+        os.makedirs(dataset_paths["results_folder"], exist_ok=True)
+        with open(dataset_paths["result_file_path"], "w", encoding="utf-8") as f:
+            json.dump([], f, ensure_ascii=False, indent=4)
+        return
+
+    if not table_docs:
+        raise ValueError("The table document file is empty.")
+    if not descriptions:
+        raise ValueError("The database description file is empty.")
+
+    database_names = [
+        description["name"]
+        for description in descriptions
+    ]
+
     bm25 = build_bm25(table_docs)
-    desc_embeddings = build_description_embeddings(embedder, descriptions)
+    description_embeddings = build_description_embeddings(embedder, descriptions)
+    table_embeddings = build_table_embeddings(embedder, table_docs)
+    table_indices_by_db = build_table_indices_by_db(table_docs)
+
+    query_embeddings = embedder.get_sentences_embeddings([
+        QUERY_INSTRUCTION + sample["question"]
+        for sample in data
+    ])
+    description_similarity_matrix = util.cos_sim(
+        query_embeddings,
+        description_embeddings,
+    ).cpu()
+    table_similarity_matrix = util.cos_sim(
+        query_embeddings,
+        table_embeddings,
+    ).cpu()
+    if not torch.isfinite(description_similarity_matrix).all():
+        raise ValueError("Description similarities contain non-finite values.")
+    if not torch.isfinite(table_similarity_matrix).all():
+        raise ValueError("Table similarities contain non-finite values.")
+
+    table_db_score_matrix = aggregate_table_embedding_scores(
+        table_similarity_matrix,
+        table_indices_by_db,
+        database_names,
+    )
+
     result_list = []
 
     for question_id, sample in enumerate(data):
-        embedding_ranking = rank_databases_with_embeddings(
+        description_scores = dict(zip(
+            database_names,
+            description_similarity_matrix[question_id].tolist(),
+        ))
+        table_scores = dict(zip(
+            database_names,
+            table_db_score_matrix[question_id].tolist(),
+        ))
+        bm25_scores = get_bm25_db_scores(
             sample["question"],
-            desc_embeddings,
-            embedder,
-            top_k=3,
+            table_docs,
+            bm25,
+            database_names,
         )
-        candidate_dbs = [db_name for _, db_name in embedding_ranking]
-        bm25_db_scores = {}
-        if should_rerank_with_bm25(embedding_ranking):
-            bm25_db_scores = get_candidate_bm25_db_scores(
-                sample["question"],
-                table_docs,
-                bm25,
-                candidate_dbs,
+
+        normalized_description_scores = min_max_normalize(description_scores)
+        normalized_table_scores = min_max_normalize(table_scores)
+        normalized_bm25_scores = normalize_bm25_scores(bm25_scores)
+
+        final_scores = {
+            db_name: (
+                DESCRIPTION_WEIGHT * normalized_description_scores[db_name]
+                + TABLE_WEIGHT * normalized_table_scores[db_name]
+                + BM25_WEIGHT * normalized_bm25_scores[db_name]
             )
-        db_result = choose_db_result(embedding_ranking, bm25_db_scores)
+            for db_name in database_names
+        }
+        db_result = min(
+            database_names,
+            key=lambda db_name: (-final_scores[db_name], db_name),
+        )
 
         item = {
             "question_id": sample_question_id(sample, question_id),
@@ -241,7 +384,10 @@ def extract_DB(embedder: Embedder, dataset: str):
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    embedder = Embedder(model_name="BAAI/bge-large-en-v1.5", device_name="cuda")
+    embedder = Embedder(
+        model_name=EMBEDDING_MODEL_NAME,
+        device_name=EMBEDDING_DEVICE_NAME,
+    )
 
     # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
     # extract_DB(embedder, "BIRDdev")
