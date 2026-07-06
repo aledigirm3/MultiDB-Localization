@@ -23,10 +23,10 @@ EMBEDDING_MODEL_NAME = "BAAI/bge-large-en-v1.5"
 EMBEDDING_DEVICE_NAME = "cuda"
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 
-MAX_VALUES_PER_COLUMN = 3
+MAX_VALUES_PER_COLUMN = 5
 TABLE_EMBEDDING_TABLES_PER_DB = 1
 
-BM25_K1 = 1.8
+BM25_K1 = 1.3
 BM25_B = 1.0
 BM25_TABLES_PER_DB = 2
 BM25_USE_CHAR4 = True
@@ -389,29 +389,29 @@ if __name__ == "__main__":
         device_name=EMBEDDING_DEVICE_NAME,
     )
 
-    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    # extract_DB(embedder, "BIRDdev")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    extract_DB(embedder, "BIRDdev")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
-    # extract_DB(embedder, "SPIDERdev1")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
+    extract_DB(embedder, "SPIDERdev1")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
-    # extract_DB(embedder, "BIRDdev-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
+    extract_DB(embedder, "BIRDdev-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
-    # extract_DB(embedder, "SPIDERdev1-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
+    extract_DB(embedder, "SPIDERdev1-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
-    # extract_DB(embedder, "BIRD_SPIDER_dev")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
+    extract_DB(embedder, "BIRD_SPIDER_dev")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
-    # extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
+    extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
     print(f"\n{CYAN}Processing BIRDtrain...{RESET}")
     extract_DB(embedder, "BIRDtrain")
