@@ -63,18 +63,23 @@ def get_dataset_paths(dataset: str):
     elif dataset == "BIRD_SPIDER_dev":
         dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev.value).resolve()
         doc_filename = "bird_doc.json"
-        description_filename = "BIRD_SPIDER_dev_descriptions.json"
+        description_filename = "BIRD_SPIDER_dev_DB_descriptions.json"
         result_filename = "BIRD_SPIDER_dev_DB_extractor.json"
     elif dataset == "BIRD_SPIDER_dev-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev_ambiguous.value).resolve()
         doc_filename = "bird_doc.json"
-        description_filename = "BIRD_SPIDER_dev_descriptions_ambiguous.json"
+        description_filename = "BIRD_SPIDER_dev_DB_descriptions_ambiguous.json"
         result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
     elif dataset == "BIRDtrain":
         dataset_dir = (src_dir / paths.DATASETS.BIRDtrain.value).resolve()
         doc_filename = "bird_doc.json"
         description_filename = "BIRDtrain_DB_descriptions.json"
         result_filename = "BIRDtrain_DB_extractor.json"
+    elif dataset == "BIRDtrain-ambiguous":
+        dataset_dir = (src_dir / paths.DATASETS.BIRDtrain_ambiguous.value).resolve()
+        doc_filename = "doc.json"
+        description_filename = "BIRDtrain_DB_descriptions_ambiguous.json"
+        result_filename = "BIRDtrain_DB_extractor_ambiguous.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -389,32 +394,36 @@ if __name__ == "__main__":
         device_name=EMBEDDING_DEVICE_NAME,
     )
 
-    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    extract_DB(embedder, "BIRDdev")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    # extract_DB(embedder, "BIRDdev")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
-    extract_DB(embedder, "SPIDERdev1")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
+    # extract_DB(embedder, "SPIDERdev1")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
-    extract_DB(embedder, "BIRDdev-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
+    # extract_DB(embedder, "BIRDdev-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
-    extract_DB(embedder, "SPIDERdev1-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
+    # extract_DB(embedder, "SPIDERdev1-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
-    extract_DB(embedder, "BIRD_SPIDER_dev")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
+    # extract_DB(embedder, "BIRD_SPIDER_dev")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
-    extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
+    # extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRDtrain...{RESET}")
-    extract_DB(embedder, "BIRDtrain")
+    # print(f"\n{CYAN}Processing BIRDtrain...{RESET}")
+    # extract_DB(embedder, "BIRDtrain")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BIRDtrain-ambiguous...{RESET}")
+    extract_DB(embedder, "BIRDtrain-ambiguous")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
