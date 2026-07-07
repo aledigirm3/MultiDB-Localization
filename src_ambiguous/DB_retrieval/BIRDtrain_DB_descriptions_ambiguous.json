@@ -1,0 +1,662 @@
+[
+    {
+        "name": "european_football_1_1",
+        "description": "The european_football_1_1 database stores information about divisions (division, name, country) and matchs (division, date, home team, away team, home goals, away goals, result, season)."
+    },
+    {
+        "name": "european_football_1_2",
+        "description": "The european_football_1_2 database stores information about divisions (division, name, country) and matchs (division, date, home team, away team, home goals, away goals, result, season)."
+    },
+    {
+        "name": "european_football_1_3",
+        "description": "The european_football_1_3 database stores information about divisions (division, name, country) and matchs (division, date, home team, away team, home goals, away goals, result, season)."
+    },
+    {
+        "name": "craftbeer_1",
+        "description": "The craftbeer_1 database stores information about breweries (name, city, state) and beers (brewery, name, style, alcohol by volume, bitterness, ounces)."
+    },
+    {
+        "name": "craftbeer_2",
+        "description": "The craftbeer_2 database stores breweries (name, city, state) and beers (brewery reference, name, style, alcohol by volume, International Bitterness Units, ounces)."
+    },
+    {
+        "name": "craftbeer_3",
+        "description": "The craftbeer_3 database stores information about breweries (name, city, state) and beers (brewery id, alcohol by volume, International Bitterness Units, name, style, ounces)."
+    },
+    {
+        "name": "restaurant_1",
+        "description": "The restaurant_1 database includes geographic (city, country, region), generalinfo (restaurant name, food type, city, review), and location (street number, street name, city)."
+    },
+    {
+        "name": "restaurant_2",
+        "description": "The restaurant_2 database includes geographic (city, country, region), generalinfo (restaurant name, food type, review, city), and location (street number, street name, city) tables."
+    },
+    {
+        "name": "restaurant_3",
+        "description": "The restaurant_3 database contains geographic information (city, country, region), general restaurant info (label, food type, city, review), and location details (street number, street name, city)."
+    },
+    {
+        "name": "movie_1",
+        "description": "The movie_1 database contains information about actors (name, date of birth, birth city, birth country, height, biography, gender, ethnicity, net worth), movies (title, MPAA rating, budget, gross, release date, genre, runtime, rating, rating count, summary), and characters (character name, credit order, pay, screentime)."
+    },
+    {
+        "name": "movie_2",
+        "description": "The movie_2 database stores data about actors (name, date of birth, birth city, birth country, height, biography, gender, ethnicity, net worth), movies (title, MPAA rating, budget, gross, release date, genre, runtime, rating, rating count, summary), and characters (movie id, actor id, character name, credit order, pay, screentime)."
+    },
+    {
+        "name": "movie_3",
+        "description": "The movie_3 database stores information about actors (name, birth details, height, biography, gender, ethnicity, net worth), movies (title, MPAA rating, budget, gross, release date, genre, runtime, rating, rating count, summary), and characters (movie id, actor id, character name, credit order, pay, screentime)."
+    },
+    {
+        "name": "app_store_1",
+        "description": "The app_store_1 database contains Google Play Store app metadata (App, Category, Rating, Reviews, Size, Installs, Type, Price, Content Rating, Genres) and user review data (App, Translated Review, Sentiment, Sentiment Polarity, Sentiment Subjectivity)."
+    },
+    {
+        "name": "app_store_2",
+        "description": "The app_store_2 database contains Google Play Store app metadata (App, Category, Rating, Reviews, Size, Installs, Type, Price, Content Rating, Genres) and user review data (App, Translated_Review, Sentiment, Sentiment Polarity, Sentiment Subjectivity)."
+    },
+    {
+        "name": "app_store_3",
+        "description": "The app_store_3 database stores Google Play Store app information (App, Category, Rating, Reviews, Size, Installs, Type, Price, Content Rating, Genres) and user reviews with sentiment analysis (App, Translated_Review, Sentiment, Sentiment Polarity, Sentiment Subjectivity)."
+    },
+    {
+        "name": "sales_1",
+        "description": "The sales_1 database stores information about Customers (customer name), Employees (employee name), Products (product name, price), and Sales (salesperson, customer, product, quantity)."
+    },
+    {
+        "name": "sales_2",
+        "description": "The sales_2 database stores information about Customers (customer name), Employees (employee name), Products (product name, price), and Sales (salesperson, customer, product, quantity)."
+    },
+    {
+        "name": "sales_3",
+        "description": "The sales_3 database stores information about Customers (customer name), Employees (employee name), Products (product name, price), and Sales (salesperson, customer, product, quantity)."
+    },
+    {
+        "name": "software_company_1",
+        "description": "The software_company_1 database stores demographic information (geographic ID, inhabitants, income) in Demog, customer details (sex, marital status, geographic ID, education level, occupation, age) in Customers, mailing interactions (reference ID, reference date, response) in Mailings1_2 and mailings3, and sales events (reference ID, event date, amount) in Sales."
+    },
+    {
+        "name": "software_company_2",
+        "description": "The software_company_2 database stores demographic information (geographic ID, inhabitants, income) in Demog, customer details (sex, marital status, geographic ID, education level, occupation, age) in Customers, mailing interactions (reference ID, reference date, response) in mailings3, similar mailing interactions (reference ID, reference date, response) in Mailings1_2, and sales transactions (reference ID, event date, amount) in Sales."
+    },
+    {
+        "name": "software_company_3",
+        "description": "The software_company_3 database stores demographic statistics (geographic ID, inhabitants, income), customer attributes (sex, marital status, geographic ID, education level, occupation, age), mailing outcomes from two tables mailings3 (reference date, response) and Mailings1_2 (reference date, response), and sales events (event date, amount)."
+    },
+    {
+        "name": "authors_1",
+        "description": "The authors_1 database stores Author (name, affiliation), Conference (short name, full name, homepage), Journal (short name, full name, homepage), Paper (title, year, conference, journal, keyword), and PaperAuthor (paper id, author id, name, affiliation)."
+    },
+    {
+        "name": "authors_2",
+        "description": "The authors_2 database stores authors (name, affiliation), conferences (short name, full name, homepage), journals (short name, full name, homepage), papers (title, year, keyword, conference, journal), and paper‑author links (paper id, author name, affiliation)."
+    },
+    {
+        "name": "authors_3",
+        "description": "The authors_3 database stores information about authors (name, affiliation), conferences (short name, full name, homepage), journals (short name, full name, homepage), papers (title, year, keyword, conference, journal), and paper‑author links (name, affiliation, paper, author)."
+    },
+    {
+        "name": "movies_4_1",
+        "description": "The movies_4_1 database stores data about countries (ISO code, name), departments (name), genders (gender), genres (name), keywords (name), languages (code, name), language roles (role), persons (person name), movies (title, budget, homepage, overview, popularity, release date, revenue, runtime, status, tagline, vote average, vote count), movie‑genre links (genre), movie‑language links (language, role), movie crew (person, department, job), production companies (company name), production countries (country), movie cast (character name, gender, cast order), movie keywords (keyword), and movie‑company associations (company)."
+    },
+    {
+        "name": "movies_4_2",
+        "description": "The movies_4_2 database stores data about countries (ISO code, name), departments (name), genders (gender), genres (name), keywords (name), languages (code, name), language roles (role), movies (title, budget, homepage, overview, popularity, release date, revenue, runtime, status, tagline, vote average, vote count), movie‑genre links (genre), movie‑language links (language, role), movie crew (person, department, job), production companies (company name), production countries (country), movie cast (person, character name, gender, cast order), movie‑keyword links (keyword), and movie‑company links (company)."
+    },
+    {
+        "name": "movies_4_3",
+        "description": "The movies_4_3 database stores data about countries (ISO code, name), departments (name), genders (gender), genres (name), keywords (name), languages (code, name), language roles (role), movies (title, budget, homepage, overview, popularity, release date, revenue, runtime, status, tagline, vote average, vote count), movie‑genre links (genre), movie‑language links (language, role), movie crew (person, department, job), production companies (company name), production countries (country), movie cast (person, character name, gender, cast order), movie keywords (keyword), and movie‑company associations (company)."
+    },
+    {
+        "name": "social_media_1",
+        "description": "The social_media_1 database contains location (Country, State, City), user (Gender), and twitter (Weekday, Hour, Day, language, is reshare, Reach, retweet count, Likes, Klout, Sentiment, text, location id, user id)."
+    },
+    {
+        "name": "social_media_2",
+        "description": "The social_media_2 database stores location data (Country, State, City), user demographics (Gender), and Twitter activity (Weekday, Hour, Day, language, is reshare, Reach, retweet count, Likes, Klout, Sentiment, text)."
+    },
+    {
+        "name": "social_media_3",
+        "description": "The social_media_3 database stores location data (Country, State, City), user demographics (Gender), and Twitter activity (Weekday, Hour, Day, language, is reshare, Reach, retweet count, Likes, Klout, Sentiment, text)."
+    },
+    {
+        "name": "human_resources_1",
+        "description": "The human_resources_1 database stores location data (city, address, state, zip code, office phone), position data (position title, education required, minimum salary, maximum salary), and employee data (social security number, first name, last name, hire date, salary, gender, performance, position id, location id)."
+    },
+    {
+        "name": "human_resources_2",
+        "description": "The human_resources_2 database stores information about locations (city, address, state, zip code, office phone), positions (title, education required, minimum salary, maximum salary), and employees (social security number, first name, last name, hire date, salary, gender, performance, position id, location id)."
+    },
+    {
+        "name": "human_resources_3",
+        "description": "The human_resources_3 database includes location (city, address, state, zip code, office phone), position (title, education required, minimum salary, maximum salary), and employee (social security number, first name, last name, hire date, salary, gender, performance, position id, location id)."
+    },
+    {
+        "name": "regional_sales_1",
+        "description": "The regional_sales_1 database contains information about Customers (customer names), Products (product name), Regions (state code, state name, region), Sales Team (sales team name, region), Store Locations (city, county, state, store type, latitude/longitude, area code, population, household and median income, land and water area, time zone), and Sales Orders (order number, sales channel, warehouse code, dates, currency, quantity, discount, unit price, unit cost, linked sales team, customer, store, product)."
+    },
+    {
+        "name": "regional_sales_2",
+        "description": "The regional_sales_2 database contains Customers (customer names), Products (product name), Regions (state code, state, region), Sales Team (sales team, region), Store Locations (city name, county, state, type, latitude, longitude, population, household income, median income, land area, water area, time zone), and Sales Orders (order number, sales channel, warehouse code, procured date, order date, ship date, delivery date, currency code, order quantity, discount applied, unit price, unit cost, sales team, customer, store, product)."
+    },
+    {
+        "name": "regional_sales_3",
+        "description": "The regional_sales_3 database stores information about Customers (customer names), Products (product name), Regions (state code, state, region), Sales Team (sales team, region), Store Locations (city, county, state, type, latitude, longitude, area code, population, household income, median income, land area, water area, time zone), and Sales Orders (order number, sales channel, warehouse code, procured date, order date, ship date, delivery date, currency code, order quantity, discount applied, unit price, unit cost, sales team, customer, store, product)."
+    },
+    {
+        "name": "computer_student_1",
+        "description": "The computer_student_1 database contains courses (course level), persons (professor, student, position, phase, years in program), advising relationships (advisor, advisee), and teaching assignments (course, instructor)."
+    },
+    {
+        "name": "computer_student_2",
+        "description": "The computer_student_2 database stores information about courses (course level), persons (professor, student, position, phase, years in program), advisedBy (), and taughtBy ()."
+    },
+    {
+        "name": "computer_student_3",
+        "description": "The computer_student_3 database stores information about courses (course level), persons (professor/student role, position, academic phase, years in program), advisedBy relationships (advisee, advisor), and taughtBy relationships (course, instructor)."
+    },
+    {
+        "name": "works_cycles_1",
+        "description": "The works_cycles_1 database stores data about CountryRegion (region code, name), Culture (culture ID, name), Currency (currency code, name), CountryRegionCurrency (region code, currency code), Person (person type, name style, title, first/middle/last name, suffix, email promotion, additional contact info, demographics), BusinessEntityContact (person ID, contact type), EmailAddress (email address), Employee (national ID, login ID, organization node, job title, birth date, marital status, gender, hire date, salaried flag, vacation hours, sick leave hours, current flag), Password (password hash, salt), PersonCreditCard (credit card ID), ProductCategory (name), ProductDescription (description), ProductModel (name, catalog description, instructions), ProductModelProductDescriptionCulture (culture ID), ProductPhoto (thumbnail photo, large photo), ProductSubcategory (name), SalesReason (name, reason type), SalesTerritory (name, country region code, group, sales YTD, sales last year, cost YTD, cost last year), SalesPerson (territory ID, sales quota, bonus, commission percentage, sales YTD, sales last year), SalesPersonQuotaHistory (quota date, sales quota), SalesTerritoryHistory (start date, end date), ScrapReason (name), Shift (name, start time, end time), ShipMethod (name, base, rate), SpecialOffer (description, discount percentage, type, category, start/end date, min/max quantity), BusinessEntityAddress (address ID, address type ID), SalesTaxRate (state province ID, tax type, tax rate, name), Store (name, sales person ID, demographics), SalesOrderHeaderSalesReason (sales reason ID), TransactionHistoryArchive (product ID, reference order ID, transaction date, type, quantity, actual cost), UnitMeasure (name), ProductCostHistory (start/end date, standard cost), ProductDocument (document node), ProductInventory (location ID, shelf, bin, quantity), ProductProductPhoto (photo ID, primary flag), ProductReview (reviewer name, review date, email address, rating, comments), ShoppingCartItem (shopping cart ID, quantity, product ID, date created), SpecialOfferProduct (special offer ID, product ID), SalesOrderDetail (carrier tracking number, order quantity, product ID, special offer ID, unit price, discount, line total), TransactionHistory (product ID, reference order ID, transaction date, type, quantity, actual cost), Vendor (account number, name, credit rating, preferred status, active flag, purchasing web service URL), ProductVendor (average lead time, standard price, last receipt cost, last receipt date, min/max order quantity, on‑order quantity, unit measure code), PurchaseOrderHeader (revision number, status, employee ID, vendor ID, ship method ID, order date, ship date, subtotal, tax amount, freight, total due), PurchaseOrderDetail (due date, order quantity, product ID, unit price, line total, received/rejected/stocked quantity), WorkOrder (product ID, order quantity, stocked quantity, scrapped quantity, start/end/due dates, scrap reason ID), WorkOrderRouting (operation sequence, location ID, scheduled/actual start/end dates, actual resource hours, planned/actual cost), Customer (person ID, store ID, territory ID, account number), ProductListPriceHistory (start/end date, list price), Address (address lines, city, state/province ID, postal code, spatial location), AddressType (name), BillOfMaterials (product assembly ID, component ID, start/end date, unit measure code, level, quantity per assembly), BusinessEntity (none), ContactType (name), CurrencyRate (date, from/to currency code, average rate, end‑of‑day rate), Department (name, group name), EmployeeDepartmentHistory (department ID, shift ID, start/end date), EmployeePayHistory (rate change date, rate, pay frequency), JobCandidate (resume), Location (name, cost rate, availability), PhoneNumberType (name), Product (name, product number, make flag, finished goods flag, color, safety stock level, reorder point, standard cost, list price, size, size unit, weight unit, weight, days to manufacture, product line, class, style, subcategory ID, model ID, sell start/end date, discontinued date), Document (title, owner, file name, extension, revision, change number, status, summary, content), StateProvince (code, name, territory ID), CreditCard (card type, number, expiration month, expiration year), SalesOrderHeader (revision number, order date, due date, ship date, status, online order flag, sales order number, purchase order number, account number, customer ID, salesperson ID, territory ID, billing/shipping address IDs, ship method ID, credit card ID, approval code, currency rate ID, subtotal, tax amount, freight, total due, comment)"
+    },
+    {
+        "name": "works_cycles_2",
+        "description": "The works_cycles_2 database stores data about geographic entities (CountryRegion: code, name; Culture: ID, name; Currency: code, name; CountryRegionCurrency: country code, currency code), people and contacts (Person: name components, title, email promotion, demographics; BusinessEntityContact: contact type; EmailAddress: email address; Employee: job title, birth date, hire date, gender, marital status, vacation/sick hours; Password: hash, salt; PersonCreditCard: credit card ID), organizational structure (Department: name, group; Shift: name, start/end time; EmployeeDepartmentHistory: department ID, shift ID, dates; EmployeePayHistory: rate, frequency; JobCandidate: resume), locations and addresses (Address: lines, city, state/province ID, postal code, spatial location; AddressType: name; StateProvince: code, name, territory ID; Location: name, cost rate, availability), sales and marketing (SalesTerritory: name, country code, group, YTD sales/cost; SalesPerson: territory ID, quota, bonus, commission, YTD sales; SalesReason: name, type; SalesTerritoryHistory: dates; SalesOrderHeader: order dates, status, customer, salesperson, totals, ship method, credit card; SalesOrderDetail: product ID, quantity, unit price, discount, line total; SalesOrderHeaderSalesReason: sales reason ID; SalesTaxRate: state/province ID, tax type, rate, name; ShipMethod: name, base, rate; Store: name, salesperson ID, demographics; Customer: person ID, store ID, territory ID, account number; SpecialOffer: description, discount, type, category, start/end dates, quantity range; SpecialOfferProduct: link to product), products and catalog (ProductCategory: name; ProductSubcategory: name; Product: name, number, color, size, weight, cost, list price, flags, dates, subcategory/model IDs; ProductModel: name, catalog description, instructions; ProductDescription: description; ProductModelProductDescriptionCulture: culture ID; ProductPhoto: thumbnail, large photo; ProductDocument: document node; ProductReview: reviewer name, rating, comments; ProductInventory: location ID, shelf, bin, quantity; ProductCostHistory: start/end dates, standard cost; ProductListPriceHistory: start/end dates, list price; ProductVendor: vendor ID, average lead time, standard price, order quantities, unit measure; ProductProductPhoto: primary flag; ProductDocument: document node), purchasing (Vendor: account number, name, credit rating, status, web service URL; PurchaseOrderHeader: order dates, status, employee ID, vendor ID, ship method, totals; PurchaseOrderDetail: due date, quantity, unit price, line total, receipt quantities; CurrencyRate: from/to currency codes, dates, rates), manufacturing and work orders (BillOfMaterials: assembly ID, component ID, quantities, unit measure, level; WorkOrder: product ID, quantities, dates, scrap reason; WorkOrderRouting: operation sequence, location ID, scheduled/actual dates, resource hours, costs; UnitMeasure: code, name; Location: name, cost rate, availability), contacts and communication (ContactType: name; PhoneNumberType: name), documents (Document: title, owner, file name, extension, status, summary), and miscellaneous reference data (ScrapReason: name; Shift: name, start/end time; SalesReason: name, type; SalesTerritory: name, group; SalesPersonQuotaHistory: quota date, quota; SalesTerritoryHistory: start/end dates)."
+    },
+    {
+        "name": "works_cycles_3",
+        "description": "The works_cycles_3 database stores data about geographic entities (CountryRegion: region code, name; Culture: culture ID, name; Currency: currency code, name; CountryRegionCurrency: region code, currency code), people and contacts (Person: type, name style, title, first/middle/last name, suffix, email promotion, additional contact info, demographics; BusinessEntityContact: contact type; EmailAddress: email address; Employee: national ID number, login ID, organization level, job title, birth date, marital status, gender, hire date, salaried flag, vacation hours, sick leave hours, current flag; Password: password hash, password salt; PersonCreditCard: credit card ID), organizational units (Department: name, group name; EmployeeDepartmentHistory: department ID, shift ID, start/end dates; EmployeePayHistory: rate change date, rate, pay frequency; JobCandidate: resume; Location: name, cost rate, availability; PhoneNumberType: name; ContactType: name; BusinessEntity: ), addresses (Address: address line 1, address line 2, city, state/province, postal code, spatial location; AddressType: name; BusinessEntityAddress: address type), products and catalog (Product: name, product number, make flag, finished goods flag, color, safety stock level, reorder point, standard cost, list price, size, weight, days to manufacture, product line, class, style, subcategory, model, sell start/end dates; ProductCategory: name; ProductSubcategory: name; ProductModel: name, catalog description, instructions; ProductDescription: description; ProductModelProductDescriptionCulture: culture ID; ProductPhoto: thumbnail photo, large photo; ProductProductPhoto: primary flag; ProductDocument: document node; ProductInventory: location ID, shelf, bin, quantity; ProductCostHistory: start/end date, standard cost; ProductListPriceHistory: start/end date, list price; ProductReview: reviewer name, review date, email address, rating, comments; ProductVendor: average lead time, standard price, last receipt cost, last receipt date, min/max order quantity, unit measure; BillOfMaterials: product assembly ID, component ID, start/end date, unit measure code, quantity per assembly; UnitMeasure: name; Product: ), sales and marketing (SalesReason: name, reason type; SalesTerritory: name, country region code, group, sales year‑to‑date, sales last year, cost year‑to‑date, cost last year; SalesPerson: territory ID, sales quota, bonus, commission percentage, sales year‑to‑date, sales last year; SalesPersonQuotaHistory: quota date, sales quota; SalesTerritoryHistory: start/end dates; SpecialOffer: description, discount percentage, type, category, start/end dates, min/max quantity; SpecialOfferProduct: special offer ID; SalesOrderHeader: order date, due date, ship date, status, online flag, order numbers, customer ID, salesperson ID, territory ID, billing/shipping address IDs, ship method, credit card, currency rate, subtotal, tax amount, freight, total due, comment; SalesOrderDetail: carrier tracking number, order quantity, product ID, special offer ID, unit price, discount, line total; SalesOrderHeaderSalesReason: sales reason ID; TransactionHistory: transaction date, type, quantity, actual cost; TransactionHistoryArchive: same fields as TransactionHistory; SalesTaxRate: state/province ID, tax type, tax rate, name; ShipMethod: name, base rate, per‑unit rate; Shift: name, start time, end time; Store: name, salesperson ID, demographics; Customer: person ID, store ID, territory ID, account number; ShoppingCartItem: cart ID, product ID, quantity, date created), procurement (Vendor: account number, name, credit rating, preferred status, active flag, purchasing web service URL; PurchaseOrderHeader: revision number, status, employee ID, vendor ID, ship method ID, order date, ship date, subtotal, tax amount, freight, total due; PurchaseOrderDetail: due date, order quantity, product ID, unit price, line total, received/rejected/stocked quantities; CurrencyRate: date, from currency code, to currency code, average rate, end‑of‑day rate), production (WorkOrder: product ID, order quantity, stocked quantity, scrapped quantity, start/end/due dates, scrap reason ID; WorkOrderRouting: operation sequence, location ID, scheduled start/end dates, actual start/end dates, actual resource hours, planned cost, actual cost; ScrapReason: name), documents (Document: title, owner, folder flag, file name, extension, revision, status, summary; StateProvince: code, name, country region code, territory ID; CreditCard: card type, number, expiration month, expiration year)."
+    },
+    {
+        "name": "food_inspection_2_1",
+        "description": "The food_inspection_2_1 database contains employee (first name, last name, address, city, state, zip, phone, title, salary, supervisor), establishment (doing business as name, alias name, facility type, risk level, address, city, state, zip, latitude, longitude, ward), inspection (inspection date, inspection type, results, inspector, establishment, followup reference), inspection_point (description, category, code, fine, point level), and violation (fine, inspector comment)."
+    },
+    {
+        "name": "food_inspection_2_2",
+        "description": "The food_inspection_2_2 database stores employee (first name, last name, address, city, state, zip, phone, title, salary, supervisor), establishment (doing business as name, also known as name, facility type, risk level, address, city, state, zip, latitude, longitude, ward), inspection (inspection date, inspection type, results, employee id, license number, followup to), inspection_point (description, category, code, fine, point level), and violation (inspection id, point id, fine, inspector comment)."
+    },
+    {
+        "name": "food_inspection_2_3",
+        "description": "The food_inspection_2_3 database contains employee (first name, last name, address, city, state, zip, phone, title, salary, supervisor), establishment (license number, doing business as name, facility type, risk level, address, city, state, zip, latitude, longitude, ward), inspection (inspection date, inspection type, results, employee, license number, followup to), inspection_point (description, category, code, fine, point level), and violation (fine, inspector comment)."
+    },
+    {
+        "name": "bike_share_1_1",
+        "description": "The bike_share_1_1 database contains station (name, latitude, longitude, dock count, city, installation date), status (station id, bikes_available, docks_available, time), trip (duration, start date, start station name/id, end date, end station name/id, bike id, subscription type, zip code), and weather (date, max/mean/min temperature, max/mean/min dew point, humidity levels, sea level pressure, visibility, wind speed/gust/direction, precipitation, cloud cover, events, zip code)."
+    },
+    {
+        "name": "bike_share_1_2",
+        "description": "The bike_share_1_2 database contains station information (name, latitude, longitude, dock count, city, installation date), status updates (station id, bikes available, docks available, timestamp), trip records (duration, start date, start station, end date, end station, bike id, subscription type, zip code), and weather observations (date, temperature range, dew point range, humidity range, sea level pressure range, visibility range, wind speed, gust speed, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "bike_share_1_3",
+        "description": "The bike_share_1_3 database contains station information (name, location, dock count, city, installation date), status updates (station reference, bikes available, docks available, timestamp), trip records (duration, start time, start station, end time, end station, bike id, subscription type, zip code), and weather observations (date, temperature range, dew point range, humidity range, sea level pressure range, visibility range, wind speed range, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "law_episode_1",
+        "description": "The law_episode_1 database stores data about episodes (series, season, episode number, title, summary, air date, rating, votes), keywords (keyword), persons (name, birth date, birth place, nickname, height), awards (organization, year, award category, award, series, role, result), credits (category, role, credited), and votes (stars, votes, percent)."
+    },
+    {
+        "name": "law_episode_2",
+        "description": "The law_episode_2 database stores information about episodes (series, season, episode number, title, summary, air date, rating, votes), keywords (keyword), persons (name, birth date, birth name, birth place, height, nickname), awards (organization, year, category, award name, series, episode, person, role, result), credits (category, role, credited), and votes (stars, votes, percent)."
+    },
+    {
+        "name": "law_episode_3",
+        "description": "The law_episode_3 database stores information about episodes (series, season, episode number, title, summary, air date, rating, votes), keywords (keyword), persons (name, birth date, birth place, height, nickname), awards (organization, year, award category, award, series, role, result), credits (category, role, credited), and votes (stars, votes, percent)."
+    },
+    {
+        "name": "legislator_1",
+        "description": "The legislator_1 database stores information about current legislators (personal identifiers, full name, birth date, gender, religion), current terms (office address, chamber, district, state, party, title, term start and end dates, contact details), historical legislators (personal identifiers, full name, birth date, gender, religion), historical terms (office address, chamber, district, state, party, title, term start and end dates, contact details), and social media (social platform usernames and IDs)."
+    },
+    {
+        "name": "legislator_2",
+        "description": "The legislator_2 database stores data about current legislators (personal names, gender, birthday, religion, suffix, external identifiers), current legislative terms (chamber, district, state, class, title, type, start/end dates, party, caucus, address, office, phone, fax, contact_form, RSS URL, url), historical legislators (personal names, gender, birthday, religion, suffix, external identifiers), historical legislative terms (chamber, district, state, class, title, type, start/end dates, party, address, office, phone, fax, contact_form, RSS URL, url), and social-media profiles (platform usernames/ids for Facebook, Instagram, Twitter, YouTube and linking identifiers)."
+    },
+    {
+        "name": "legislator_3",
+        "description": "The legislator_3 database stores information about current legislators (first name, middle name, last name, nickname, official full name, birthday, gender, religion, suffix), current terms (address, chamber, district, state, party, start date, end date, title, office, phone, fax, contact form, URL), historical legislators (first name, middle name, last name, nickname, official full name, birthday, gender, religion, suffix), historical terms (address, chamber, district, state, party, start date, end date, title, office, phone, fax, contact form, URL), and social-media accounts (Facebook, Instagram, Twitter, YouTube)."
+    },
+    {
+        "name": "world_1",
+        "description": "The world_1 database stores data about cities (name, country code, district, population), countries (code, name, continent, region, surface area, independence year, population, life expectancy, gross national product, local name, government form, head of state, capital, code2), and country languages (country code, language, official status, percentage)."
+    },
+    {
+        "name": "world_2",
+        "description": "The world_2 database contains information about cities (Name, Country Code, District, Population), countries (Code, Name, Continent, Region, Surface Area, Independence Year, Population, Life Expectancy, Gross National Product, Local Name, Government Form, Head Of State, Capital), and country languages (Country Code, Language, Is Official, Percentage)."
+    },
+    {
+        "name": "world_3",
+        "description": "The world_3 database stores data about City (name, country code, district, population), Country (name, continent, region, surface area, independence year, population, life expectancy, gross national product, local name, government form, head of state, capital), and CountryLanguage (country code, language, official status, usage percentage)."
+    },
+    {
+        "name": "cookbook_1",
+        "description": "The cookbook_1 database stores ingredients (category, name), recipes (title, subtitle, servings, yield unit, preparation time, cooking time, standing time, source, introduction, directions), nutrition facts (protein, carbohydrate, total fat, saturated fat, cholesterol, sodium, iron, vitamin C, vitamin A, fiber, calories), and quantities linking recipes to ingredients (recipe, ingredient, minimum/maximum quantity, unit, preparation method, optional)."
+    },
+    {
+        "name": "cookbook_2",
+        "description": "The cookbook_2 database stores ingredients (category, name, plural), recipes (title, subtitle, servings, yield unit, preparation minute, cooked minute, stand minute, source, introduction, directions), nutrition facts (protein, carbohydrates, alcohol, total fat, saturated fat, cholesterol, sodium, iron, vitamin C, vitamin A, fiber, calories), and quantities linking recipes to ingredients (recipe id, ingredient id, minimum quantity, maximum quantity, unit, preparation, optional)."
+    },
+    {
+        "name": "cookbook_3",
+        "description": "The cookbook_3 database stores ingredient data (category, name, plural), recipes (title, subtitle, servings, yield unit, preparation time, cooking time, standing time, source, introduction, directions), nutrition facts per recipe (protein, carbohydrates, alcohol, total fat, saturated fat, cholesterol, sodium, iron, vitamin C, vitamin A, fiber, calorie percentages, calories), and ingredient quantities for each recipe (recipe, ingredient, minimum and maximum quantity, unit, preparation, optional)."
+    },
+    {
+        "name": "shipping_1",
+        "description": "The shipping_1 database stores information about cities (city name, state, population, area), customers (customer name, annual revenue, customer type, address, city, state, zip, phone), drivers (first name, last name, address, city, state, zip code, phone), trucks (make, model year), and shipments (weight, ship date, customer, truck, driver, destination city)."
+    },
+    {
+        "name": "shipping_2",
+        "description": "The shipping_2 database contains city (city name, state, population, area), customer (customer name, annual revenue, customer type, address, phone), driver (driver name, address, phone), truck (make, model year), and shipment (weight, ship date, customer, truck, driver, city)."
+    },
+    {
+        "name": "shipping_3",
+        "description": "The shipping_3 database stores information about cities (city name, state, population, area), customers (customer name, annual revenue, customer type, address, city, state, zip, phone), drivers (first name, last name, address, city, state, zip code, phone), trucks (make, model year), and shipments (weight, ship date, customer, truck, driver, city)."
+    },
+    {
+        "name": "food_inspection_1",
+        "description": "The food_inspection_1 database stores information about businesses (name, address, city, postal code, latitude, longitude, phone number, tax code, business certificate, application date, owner name, owner address, owner city, owner state, owner zip), inspections (business id, score, date, type), and violations (business id, date, violation type id, risk category, description)."
+    },
+    {
+        "name": "food_inspection_2",
+        "description": "The food_inspection_2 database stores data about businesses (name, location, phone number, tax code, business certificate, application date, owner info), inspections (score, date, type), and violations (date, violation type, risk category, description)."
+    },
+    {
+        "name": "food_inspection_3",
+        "description": "The food_inspection_3 database stores information about businesses (name, location, contact, ownership, regulatory details), inspections (score, date, type), and violations (date, violation type, risk category, description)."
+    },
+    {
+        "name": "movie_platform_1",
+        "description": "The movie_platform_1 database contains lists (title, movie count, creation and update timestamps, followers, URL, description, cover image), movies (title, release year, language, popularity, image, director name and URL), ratings_users (user trial/subscriber status, avatar and cover images, payment eligibility, rating activity date), lists_users (user trial/subscriber status, avatar and cover images, payment eligibility, list association creation and update timestamps), and ratings (rating score, timestamp, critic name, critic likes/comments, rating URL, linked user and movie)."
+    },
+    {
+        "name": "movie_platform_2",
+        "description": "The movie_platform_2 database contains lists (title, movie count, update/creation timestamps, followers, URL, comments, description, cover and sample images), movies (title, release year, language, popularity, image URL, director name and URL), ratings_users (user subscription/trial status, avatar and cover images, payment eligibility, rating date), lists_users (user subscription/trial status, avatar and cover images, payment eligibility, list interaction timestamps), and ratings (rating score, timestamp, critic name, likes, comments, associated movie and user identifiers, plus user subscription/trial details)."
+    },
+    {
+        "name": "movie_platform_3",
+        "description": "The movie_platform_3 database contains lists (title, movie count, creation and update timestamps, followers, URL, comments, description, cover and sample images), movies (title, release year, language, popularity, image URL, director name and URL), ratings_users (rating date, trial/subscriber status, avatar and cover images, payment eligibility), lists_users (list association timestamps, trial/subscriber status, avatar and cover images, payment eligibility), and ratings (score, timestamp, critic flag, critic likes/comments, associated user trial/subscriber status and payment eligibility)."
+    },
+    {
+        "name": "shakespeare_1",
+        "description": "The shakespeare_1 database contains chapters (act, scene, description, work), characters (character name, abbreviation, description), paragraphs (paragraph number, plain text, character, chapter), and works (title, genre type, character)."
+    },
+    {
+        "name": "shakespeare_2",
+        "description": "The shakespeare_2 database stores information about chapters (Act, Scene, Description, work), characters (char name, abbreviation, Description), paragraphs (paragraph number, Plain Text, character, chapter), and works (Title, Long Title, character, genre type)."
+    },
+    {
+        "name": "shakespeare_3",
+        "description": "The shakespeare_3 database stores information about chapters (Act, Scene, Description, work id), characters (char name, abbreviation, Description), paragraphs (paragraph number, Plain Text, character id, chapter id), and works (Title, Long Title, character id, genre type)."
+    },
+    {
+        "name": "car_retails_1",
+        "description": "The car_retails_1 database contains offices (city, address, state, country, postal code, territory, phone), employees (first name, last name, email, job title, manager, office location), customers (customer name, contact first name, contact last name, phone, address, city, state, country, postal code, sales representative, credit limit), orders (order date, required date, shipped date, status, comments, customer), payments (payment date, amount, check number), productlines (product line, text description, html description, image), products (product name, product line, product scale, product vendor, product description, quantity in stock, buy price, MSRP), and orderdetails (quantity ordered, price for each, order line number)."
+    },
+    {
+        "name": "car_retails_2",
+        "description": "The car_retails_2 database contains offices (city, phone, address, state, country, territory), employees (last name, first name, email, job title, reports to), customers (customer name, contact first name, contact last name, phone, address, city, state, country, sales representative, credit limit), orders (order date, required date, shipped date, status, comments), payments (payment date, amount, check number), productlines (product line, text description, html description, image), products (product name, product line, product scale, product vendor, product description, quantity in stock, buy price, MSRP), and orderdetails (quantity ordered, price for each)."
+    },
+    {
+        "name": "car_retails_3",
+        "description": "The car_retails_3 database contains offices (city, phone, address, state, country, postal code, territory), employees (first name, last name, email, job title, manager, office location), customers (customer name, contact name, phone, address, city, state, postal code, country, sales representative, credit limit), orders (order date, required date, shipped date, status, comments, customer), payments (payment date, amount, check number), productlines (description, image), products (product name, product line, scale, vendor, description, stock quantity, buy price, MSRP), and orderdetails (quantity ordered, unit price, line number)."
+    },
+    {
+        "name": "mental_health_survey_1",
+        "description": "The mental_health_survey_1 database contains surveys (description), questions (question text), and answers (answer text, survey ID, user ID, question ID)."
+    },
+    {
+        "name": "mental_health_survey_2",
+        "description": "The mental_health_survey_2 database stores questions (question text), surveys (description), and answers (answer text, survey ID, user ID, question ID)."
+    },
+    {
+        "name": "mental_health_survey_3",
+        "description": "The mental_health_survey_3 database stores information about surveys (description), questions (question text), and answers (answer text, survey ID, user ID, question ID)."
+    },
+    {
+        "name": "hockey_1",
+        "description": "The hockey_1 database stores hockey data across several tables: AwardsMisc (player/coach name, award, year, league, note), HOF (induction year, name, category), Teams (season year, league, team IDs, franchise/conference/division, rank, playoff status, games, wins, losses, ties, overtime losses, points, shootout wins/losses, goals for/against, full team name, penalty minutes, power‑play and penalty‑kill statistics), Coaches (coach ID, season, team and league IDs, stint, games, wins, losses, ties, postseason games/wins/losses/ties), AwardsCoaches (coach ID, award, year, league, note), Master (player and coach IDs, Hall‑of‑Fame ID, first/last names, nickname, height, weight, shooting hand, career start/end seasons in NHL/WHA, position, birth and death dates/places), AwardsPlayers (player ID, award, year, league, note, position), CombinedShutouts (date, team IDs, regular/postseason flag, goalie IDs), Goalies (player ID, season, stint, team and league IDs, games, minutes, wins, losses, ties/OT losses, empty‑net goals, shutouts, goals against, shots against, postseason equivalents), GoaliesSC (player ID, season, team and league IDs, games, minutes, wins, losses, ties, shutouts, goals against), GoaliesShootout (player ID, season, stint, team ID, wins, losses, shots against, goals against), Scoring (player ID, season, stint, team and league IDs, position, games, goals, assists, points, penalty minutes, plus/minus, power‑play and shorthanded goals/assists, game‑winning/tying goals, shots on goal, postseason equivalents), ScoringSC (player ID, season, team and league IDs, position, games, goals, assists, points, penalty minutes), ScoringShootout (player ID, season, stint, team ID, shots, goals, game‑deciding goals), ScoringSup (player ID, season, power‑play assists, shorthanded assists), SeriesPost (year, round, series, winning and losing team and league IDs, wins, losses, ties, goals for/against, note), TeamSplits (season, league, team ID, home/road/monthly win‑loss‑tie‑OT records), TeamVsTeam (season, league, team ID, opponent ID, wins, losses, ties, overtime losses), TeamsHalf (season, league, team ID, half‑season, rank, games, wins, losses, ties, goals for/against), TeamsPost (season, league, team ID, games, wins, losses, ties, goals for/against, penalty minutes, bench minors, power‑play goals/chances, shorthanded goals against, power‑play goals against, penalty‑kill chances, shorthanded goals for), TeamsSC (season, league, team ID, games, wins, losses, ties, goals for/against, penalty minutes), and abbrev (type, code, full name)."
+    },
+    {
+        "name": "hockey_2",
+        "description": "The hockey_2 database stores information about awards (AwardsMisc: name, award, year, league, note), Hall of Fame inductees (HOF: year, name, category), teams (Teams: year, full team name, rank, games, wins, losses, ties, overtime losses, points, goals for, goals against, penalty minutes, power play goals/chances, shorthanded goals for/against, penalty kill chances), half‑season team performance (TeamsHalf: half, rank, games, wins, losses, ties, goals for, goals against), postseason team performance (TeamsPost: games, wins, losses, ties, goals for, goals against, penalty minutes, power play goals/chances, shorthanded goals for/against, penalty kill chances), shootout team stats (TeamsSC: games, wins, losses, ties, goals for, goals against, penalty minutes), team win‑loss splits (TeamSplits: home/road/monthly wins, losses, ties, overtime losses), head‑to‑head results (TeamVsTeam: opponent, wins, losses, ties, overtime losses), playoff series outcomes (SeriesPost: round, winner team, loser team, wins, losses, ties, goals for winner/loser, note), coaches (Coaches: coach ID, year, team, league, stint, games, wins, losses, ties, postseason games/wins/losses/ties), coach awards (AwardsCoaches: coach ID, award, year, league, note), player master data (Master: first name, last name, nickname, height, weight, shooting side, birth/death dates and locations, career seasons), player awards (AwardsPlayers: player ID, award, year, league, note, position), combined shutout games (CombinedShutouts: date, team, opposite team, regular/postseason, goalie IDs), goaltending stats (Goalies: year, team, league, games, minutes, wins, losses, ties/overtime losses, shutouts, goals against, shots against, postseason equivalents; GoaliesSC: shootout games, minutes, wins, losses, ties, shutouts, goals against; GoaliesShootout: stint, wins, losses, shots against, goals against), player scoring (Scoring: year, team, league, position, games, goals, assists, points, penalty minutes, plus/minus, power play goals/assists, shorthanded goals/assists, game‑winning/tie goals, shots on goal, postseason equivalents; ScoringSC: shootout games, goals, assists, points, penalty minutes; ScoringShootout: shots, goals, game‑deciding goals; ScoringSup: power play assists, shorthanded assists), and abbreviations (abbrev: type, code, fullname)."
+    },
+    {
+        "name": "hockey_3",
+        "description": "The hockey_3 database stores data about AwardsMisc (name, award, year, league, note), HOF (year, name, category), Teams (year, league, team, franchise, conference, division, rank, playoff, games, wins, losses, ties, overtime losses, points, shootout wins, shootout losses, goals for, goals against, full team name, penalty minutes, bench minors, power play goals, power play chances, shorthanded goals for, shorthanded goals against, penalty kill chances), Coaches (year, team, league, stint, notes, games, wins, losses, ties, post‑season games, post‑season wins, post‑season losses, post‑season ties), AwardsCoaches (award, year, league, note), Master (first name, last name, nickname, height, weight, shooting side, first/last NHL season, first/last WHA season, position, birth date, birth country/state/city, death date, death country/state/city), AwardsPlayers (award, year, league, note, position), CombinedShutouts (date, team, opponent team, regular/postseason, goalies), Goalies (year, team, league, games, minutes, wins, losses, ties/overtime losses, shutouts, goals against, shots against, empty net goals, postseason games, postseason minutes, postseason wins, postseason losses, postseason ties, postseason shutouts, postseason goals against, postseason shots against), GoaliesSC (year, team, league, games, minutes, wins, losses, ties, shutouts, goals against), GoaliesShootout (year, team, stint, wins, losses, shots against, goals against), Scoring (year, team, league, position, games, goals, assists, points, penalty minutes, plus/minus, power play goals, power play assists, shorthanded goals, shorthanded assists, game‑winning goals, game‑tying goals, shots on goal, postseason games, postseason goals, postseason assists, postseason points, postseason penalty minutes, postseason plus/minus, postseason power play goals, postseason power play assists, postseason shorthanded goals, postseason shorthanded assists, postseason game‑winning goals, postseason shots on goal), ScoringSC (year, team, league, position, games, goals, assists, points, penalty minutes), ScoringShootout (year, stint, team, shots, goals, game deciding goals), ScoringSup (year, power play assists, shorthanded assists), SeriesPost (year, round, series, winner team, winner league, loser team, loser league, wins, losses, ties, goals for winner, goals for loser, note), TeamSplits (year, league, team, home/road/monthly win‑loss‑tie‑OT records), TeamVsTeam (year, league, team, opponent, wins, losses, ties, overtime losses), TeamsHalf (year, league, team, half, rank, games, wins, losses, ties, goals for, goals against), TeamsPost (year, league, team, games, wins, losses, ties, goals for, goals against, penalty minutes, bench minors, power play goals, power play chances, shorthanded goals for, shorthanded goals against, penalty kill chances), TeamsSC (year, league, team, games, wins, losses, ties, goals for, goals against, penalty minutes), abbrev (type, code, fullname)."
+    },
+    {
+        "name": "music_platform_2_1",
+        "description": "The music_platform_2_1 database stores information about runs (run at, reviews added), podcasts (title, iTunes id, iTunes URL), reviews (title, content, rating, created at), and categories (category)."
+    },
+    {
+        "name": "music_platform_2_2",
+        "description": "The music_platform_2_2 database contains runs (run timestamp, reviews added count), podcasts (title), reviews (title, content, rating, author, created date), and categories (category)."
+    },
+    {
+        "name": "music_platform_2_3",
+        "description": "The music_platform_2_3 database stores information about runs (run at, reviews added), podcasts (itunes id, slug, itunes url, title), reviews (title, content, rating, author id, created at), and categories (category)."
+    },
+    {
+        "name": "address_1",
+        "description": "The address_1 database contains CBSA (CBSA code, name, type), state (abbreviation, name), congress (representative first name, last name, party, state, district, chamber, land area), zip_data (zip code, city, state, type, organization, time zone, latitude, longitude, elevation, population, households, average house value, average income, demographic breakdowns, age statistics, mailboxes, businesses, payroll, land area, water area, housing units, benefit recipients), alias (zip code, alias), area_code (zip code, area code), avoid (zip code, bad alias), country (zip code, country, state), and zip_congress (zip code, congressional district)."
+    },
+    {
+        "name": "address_2",
+        "description": "The address_2 database contains CBSA (cbsa name, cbsa type), state (abbreviation, name), congress (first name, last name, party, state, House, District, land area), zip_data (zip code, city, state, type, organization, time zone, latitude, longitude, elevation, population and demographic statistics, housing and income data, mail delivery counts, business and payroll figures, land and water area, social benefit counts), alias (zip code, alias), area_code (zip code, area code), avoid (zip code, bad alias flag), country (zip code, country, state), and zip_congress (zip code, district)."
+    },
+    {
+        "name": "address_3",
+        "description": "The address_3 database contains CBSA (cbsa name, cbsa type), state (abbreviation, name), congress (representative first name, last name, party, state, district, land area), zip_data (zip code, city, state, time zone, latitude, longitude, elevation, population, households, average house value, average income per household, persons per household, race and ethnicity breakdown, gender breakdown, median age, payroll, employees, land and water area, mailboxes, businesses, benefit payments), alias (zip code, alias), area_code (zip code, area code), avoid (zip code, bad alias flag), country (zip code, country, state), zip_congress (zip code, congressional district)."
+    },
+    {
+        "name": "menu_1",
+        "description": "The menu_1 database stores information about dishes (name, description, menus appeared, times appeared, first appeared, last appeared, price range), menus (name, sponsor, event, venue/place, physical description, occasion, notes, call number, keywords, language, date, location, location type, currency, currency symbol, status, page count, dish count), menu pages (menu reference, page number, image reference, full height, full width), and menu items (menu page reference, dish reference, price, high price, x position, y position, created at, updated at)."
+    },
+    {
+        "name": "menu_2",
+        "description": "The menu_2 database stores information about dishes (name, description, appearance stats, price range), menus (name, sponsor, event, venue/place, physical description, occasion, notes, keywords, language, date, location, currency, status, page count, dish count), menu pages (menu reference, page number, image reference, dimensions), and menu items (menu page reference, price range, dish reference)."
+    },
+    {
+        "name": "menu_3",
+        "description": "The menu_3 database stores information about dishes (name, description, appearance dates, price range, appearance count), menus (name, sponsor, event, venue, occasion, keywords, language, date, location, currency, status, page count, dish count), menu pages (menu reference, page number, image, dimensions), and menu items (menu page reference, price, dish reference, timestamps, position)."
+    },
+    {
+        "name": "professional_basketball_1",
+        "description": "The professional_basketball_1 database stores information about awards_players (award, year, league, position), coaches (year, team, league, stint, wins/losses, postseason wins/losses), draft (draft year, round, overall rank, league, team, player name, source), player_allstar (season, conference, league, games, minutes, points, rebounds, assists, steals, blocks, turnovers, fouls, shooting stats), players (name, position, career span, height, weight, college, high school, birth details, race), teams (year, league, team name, conference/division, rank, playoff status, offensive/defensive points, home/away record, overall record, arena), awards_coaches (award, year, league), players_teams (year, stint, team, league, games, starts, minutes, points, rebounds, assists, steals, blocks, turnovers, fouls, shooting stats, postseason stats), and series_post (year, round, series, winner team/league, loser team/league, wins, losses)."
+    },
+    {
+        "name": "professional_basketball_2",
+        "description": "The professional_basketball_2 database stores data about awards_players (award, year, league, position), coaches (year, team, league, stint, wins, losses, postseason wins, postseason losses), draft (draft year, round, league, overall rank, team, player name, source college), player_allstar (season, conference, league, games played, minutes, points, rebounds, assists, steals, blocks, turnovers, personal fouls, field goal attempts/made, free throw attempts/made, three‑point attempts/made), players (first name, last name, nickname, position, career start/end season, height, weight, college, birth date/city/state/country, high school, race), teams (year, league, team name, rank, conference rank, playoff status, offensive points, defensive points, home/away wins and losses, overall wins/losses, arena), awards_coaches (award, year, league), players_teams (season, stint, team, league, games played, games started, minutes, points, rebounds, assists, steals, blocks, turnovers, personal fouls, shooting stats, postseason equivalents), and series_post (year, round, series, winning team, losing team, wins, losses)."
+    },
+    {
+        "name": "professional_basketball_3",
+        "description": "The professional_basketball_3 database contains information about awards_players (award, year, league, position, note), coaches (year, team, league, stint, wins, losses, postseason wins, postseason losses), draft (draft year, round, overall rank, league, team, player name, source), player_allstar (season, conference, league, games, minutes, points, rebounds, assists, steals, blocks, turnovers, fouls, shooting attempts, shooting made), players (first name, middle name, last name, nickname, position, first season, last season, height, weight, college, high school, birth date, birth city, birth state, birth country, death date, race), teams (year, league, franchise, conference, division, rank, playoff status, team name, offensive points, defensive points, home wins, home losses, away wins, away losses, overall wins, overall losses, games, arena), awards_coaches (year, award, league, note), players_teams (year, stint, team, league, games, starts, minutes, points, rebounds, assists, steals, blocks, turnovers, fouls, shooting attempts, shooting made, postseason games, postseason starts, postseason minutes, postseason points, postseason rebounds, postseason assists, postseason steals, postseason blocks, postseason turnovers, postseason fouls, postseason shooting attempts, postseason shooting made, note), and series_post (year, round, series, winner team, winner league, loser team, loser league, wins, losses)."
+    },
+    {
+        "name": "synthea_1",
+        "description": "The synthea_1 database stores synthetic health records, including all_prevalences (item, population type, occurrences, population count, prevalence rate), patients (birth date, death date, social security number, driver license, passport, name components, marital status, race, ethnicity, gender, birth place, address), encounters (date, patient, code, description, reason code, reason description), allergies (start, stop, patient, encounter, code, description), careplans (start, stop, patient, encounter, code, description, reason code, reason description), conditions (start, stop, patient, encounter, code, description), immunizations (date, patient, encounter, code, description), medications (start, stop, patient, encounter, code, description, reason code, reason description), observations (date, patient, encounter, code, description, value, units), procedures (date, patient, encounter, code, description, reason code, reason description), and claims (patient, billable period, organization, encounter, diagnosis, total amount)."
+    },
+    {
+        "name": "synthea_2",
+        "description": "The synthea_2 database stores synthetic health records across several tables: all_prevalences (item, population type, occurrences, population count, prevalence rate), patients (birth date, death date, social security number, driver license, passport, name components, marital status, race, ethnicity, gender, birth place, address), encounters (date, patient, code, description, reason code, reason description), allergies (start date, stop date, patient, encounter, code, description), careplans (start date, stop date, patient, encounter, code, description, reason code, reason description), conditions (start date, stop date, patient, encounter, code, description), immunizations (date, patient, encounter, code, description), medications (start date, stop date, patient, encounter, code, description, reason code, reason description), observations (date, patient, encounter, code, description, value, units), procedures (date, patient, encounter, code, description, reason code, reason description), and claims (patient, billable period, organization, encounter, diagnosis, total amount)."
+    },
+    {
+        "name": "synthea_3",
+        "description": "The synthea_3 database stores all_prevalences (item, population type, occurrences, population count, prevalence rate), patients (birth date, death date, social security number, driver license, passport, name components, marital status, race, ethnicity, gender, birth place, address), encounters (date, patient, encounter code, description, reason code, reason description), allergies (start, stop, patient, encounter, allergy code, description), careplans (start, stop, patient, encounter, careplan code, description, reason code, reason description), conditions (start, stop, patient, encounter, condition code, description), immunizations (date, patient, encounter, immunization code, description), medications (start, stop, patient, encounter, medication code, description, reason code, reason description), observations (date, patient, encounter, observation code, description, value, units), procedures (date, patient, encounter, procedure code, description, reason code, reason description), and claims (patient, billable period, organization, encounter, diagnosis, total amount)."
+    },
+    {
+        "name": "genes_1",
+        "description": "The genes_1 database includes Classification (localization), Genes (essential, class, complex, phenotype, motif, chromosome, function, localization), and Interactions (gene id 1, gene id 2, interaction type, expression correlation score)."
+    },
+    {
+        "name": "genes_2",
+        "description": "The genes_2 database stores classification (localization), genes (essential, class, complex, phenotype, motif, chromosome, function, localization), and interactions (type, expression correlation score)."
+    },
+    {
+        "name": "genes_3",
+        "description": "The genes_3 database stores gene classifications (localization), gene attributes (essential, class, complex, phenotype, motif, chromosome, function, localization), and gene interactions (type, expression correlation score)."
+    },
+    {
+        "name": "retails_1",
+        "description": "The retails_1 database contains customer (market segment, nation, name, address, phone, account balance, comment), lineitem (shipping dates, price details, quantity, return flag, status, ship mode, part, supplier, line number, instructions, comment), nation (name, region, comment), orders (order date, customer, priority, ship priority, clerk, status, total price, comment), part (type, size, brand, name, container, manufacturer, retail price, comment), partsupp (part, supplier, cost, available quantity, comment), region (name, comment), and supplier (nation, name, address, phone, account balance, comment)."
+    },
+    {
+        "name": "retails_2",
+        "description": "The retails_2 database contains customer (market segment, nation, name, address, phone, account balance, comment), nation (name, region), region (name), supplier (name, nation, address, phone, account balance, comment), part (name, type, size, brand, container, manufacturer, retail price, comment), partsupp (part, supplier, cost, available quantity, comment), orders (date, customer, priority, ship priority, clerk, status, total price, comment), and lineitem (order, part, supplier, ship date, quantity, discount, extended price, tax, return flag, line status, ship mode, commit date, receipt date, ship instruction, comment)."
+    },
+    {
+        "name": "retails_3",
+        "description": "The retails_3 database stores information about customers (market segment, nation, name, address, phone, account balance, comment), line items (shipping dates & mode, pricing details, quantity, return flag, line status, comment), nations (nation name, region, comment), orders (order date, priority, ship priority, clerk, status, total price, comment), parts (type, size, brand, name, container, manufacturer, retail price, comment), part supplies (cost, available quantity, comment), regions (region name, comment), and suppliers (nation, name, address, phone, account balance, comment)."
+    },
+    {
+        "name": "talkingdata_1",
+        "description": "The talkingdata_1 database contains app_all, app_events (is_installed, is_active), app_events_relevant (is_installed, is_active), app_labels (label), events (timestamp, longitude, latitude), events_relevant (timestamp, longitude, latitude), gender_age (gender, age, group), gender_age_test, gender_age_train (gender, age, group), label_categories (category), phone_brand_device_model2 (phone brand, device model), and sample_submission (prediction categories)."
+    },
+    {
+        "name": "talkingdata_2",
+        "description": "The talkingdata_2 database stores app and event data (app_events: is installed, is active; app_events_relevant: is installed, is active), app‑label relationships (app_labels: label id), raw events (events: timestamp, longitude, latitude; events_relevant: timestamp, longitude, latitude), user demographics (gender_age: gender, age, group; gender_age_train: gender, age, group; gender_age_test: none), label taxonomy (label_categories: category), device information (phone_brand_device_model2: phone brand, device model), and submission target columns (sample_submission: F23-, F24-26, F27-28, F29-32, F33-42, F43+, M22-, M23-26, M27-28, M29-31, M32-38, M39+). The app_all table contains only app identifiers."
+    },
+    {
+        "name": "talkingdata_3",
+        "description": "The talkingdata_3 database stores data about apps and user behavior: app_all, app_events (is installed, is active), app_events_relevant (is installed, is active), app_labels (label id), events (timestamp, longitude, latitude), events_relevant (timestamp, longitude, latitude), gender_age (gender, age, group), gender_age_train (gender, age, group), label_categories (category), phone_brand_device_model2 (phone brand, device model), and sample_submission (prediction columns)."
+    },
+    {
+        "name": "beer_factory_1",
+        "description": "The beer_factory_1 database stores information about customers (first name, last name, street address, city, state, zip code, email, phone number, first purchase date, email subscription, gender), geolocation (latitude, longitude), location (location name, street address, city, state, zip code), rootbeerbrand (brand name, first brewed year, brewery name, city, state, country, description, ingredient types, caffeine/alcohol status, packaging options, website/social links, wholesale cost, retail price), rootbeer (brand reference, container type, location reference, purchase date), rootbeerreview (star rating, review date, review text), and transaction (credit card number, transaction date, credit card type, location reference, root beer reference, purchase price, customer reference)."
+    },
+    {
+        "name": "beer_factory_2",
+        "description": "The beer_factory_2 database contains customers (first name, last name, street address, city, state, zip code, email, phone number, first purchase date, email subscription, gender), geolocation (latitude, longitude), location (location name, street address, city, state, zip code), rootbeerbrand (brand name, first brewed year, brewery name, city, state, country, description, ingredients, properties, packaging options, online links, wholesale cost, retail price), rootbeer (brand reference, container type, location, purchase date), rootbeerreview (star rating, review date, review text), and transaction (credit card number, transaction date, credit card type, location, root beer, purchase price, customer reference)."
+    },
+    {
+        "name": "beer_factory_3",
+        "description": "The beer_factory_3 database stores information about customers (first name, last name, street address, city, state, zip code, email, phone number, first purchase date, email subscription, gender), geolocation (latitude, longitude), location (location name, street address, city, state, zip code), rootbeerbrand (brand name, first brewed year, brewery name, city, state, country, description, ingredients, caffeine/alcohol status, packaging options, website and social media, wholesale cost, current retail price), rootbeer (brand reference, container type, purchase date), rootbeerreview (star rating, review date, review text), and transaction (transaction date, credit card type, purchase price)."
+    },
+    {
+        "name": "chicago_crime_1",
+        "description": "The chicago_crime_1 database stores community areas (community area number, name, side, population), districts (district number, name, address, zip code, commander, contact details), FBI codes (code number, title, description, crime against), IUCR codes (iucr number, primary and secondary descriptions, index code), neighborhoods (name, community area number), wards (ward number, alderman name, office address, zip, email, phone, fax, city hall office details, population), and crime incidents (report number, case number, date, block, UCR number, location description, arrest flag, domestic flag, beat, district number, ward number, community area number, FBI code number, latitude, longitude)."
+    },
+    {
+        "name": "chicago_crime_2",
+        "description": "The chicago_crime_2 database stores community area data (community area name, side, population), police district details (district name, address, zip code, commander, email, phone, fax, tty, twitter), FBI crime codes (title, description, crime against), IUCR codes (primary description, secondary description, index code), neighborhoods (neighborhood name, community area number), ward information (alderman first name, alderman last name, name suffix, ward office address, ward office zip, ward email, ward office phone, ward office fax, city hall office room, city hall office phone, city hall office fax, population), and crime incidents (date, block, location description, arrest, domestic, beat, district number, ward number, community area number, FBI code number, latitude, longitude)."
+    },
+    {
+        "name": "chicago_crime_3",
+        "description": "The chicago_crime_3 database stores data on community areas (area number, name, side, population), districts (district number, name, address, zip code, commander, contact info), FBI codes (code number, title, description, crime against), IUCR codes (IUCR number, primary and secondary descriptions, index code), neighborhoods (neighborhood name, area number), wards (ward number, alderman name, office address, contact info, population), and crimes (report number, case number, date, block, location description, arrest flag, domestic flag, beat, district number, ward number, community area number, FBI code number, latitude, longitude)."
+    },
+    {
+        "name": "mondial_geo_1",
+        "description": "The mondial_geo_1 database stores information about borders (bordering countries, length), city (name, country, province, population, coordinates), continent (name, area), country (name, code, capital, province, area, population), desert (name, area, coordinates), economy (country, GDP, agriculture share, service share, industry share, inflation), encompasses (country, continent, coverage percentage), ethnicGroup (name, percentage in country), geo_desert (desert, country, province), geo_estuary (river, country, province), geo_island (island, country, province), geo_lake (lake, country, province), geo_mountain (mountain, country, province), geo_river (river, country, province), geo_sea (sea, country, province), geo_source (river source, country, province), island (name, group, area, height, type, coordinates), islandIn (island in sea, lake, or river), isMember (country, organization, membership type), lake (name, area, depth, altitude, type, outflow river, coordinates), language (name, percentage in country), located (city, province, country, river, lake, sea), locatedOn (city, province, country, island), mergeswith (sea1, sea2), mountain (name, range, height, type, coordinates), mountainonisland (mountain, island), organization (abbreviation, name, city, country, province, established), politics (country, independence status, dependency, government type), population (country, population growth, infant mortality), province (name, country, population, area, capital), religion (name, percentage in country), river (name, connected lake/sea, length, source coordinates, source altitude, estuary coordinates, mountain range), sea (name, depth), and target (country, target)."
+    },
+    {
+        "name": "mondial_geo_2",
+        "description": "The mond ial_geo_2 database stores information about borders (Country1, Country2, Length), city (Name, Country, Province, Population, coordinates), continent (Name, Area), country (Name, Code, Capital, Province, Area, Population), desert (Name, Area, coordinates), economy (Country, GDP, Agriculture, Service, Industry, Inflation), encompasses (Country, Continent, Percentage), ethnicGroup (Country, Name, Percentage), geo_desert (Desert, Country, Province), geo_estuary (River, Country, Province), geo_island (Island, Country, Province), geo_lake (Lake, Country, Province), geo_mountain (Mountain, Country, Province), geo_river (River, Country, Province), geo_sea (Sea, Country, Province), geo_source (River, Country, Province), island (Name, Islands, Area, Height, Type, coordinates), islandIn (Island, Sea, Lake, River), isMember (Country, Organization, Type), lake (Name, Area, Depth, Altitude, Type, River, coordinates), language (Country, Name, Percentage), located (City, Province, Country, River, Lake, Sea), locatedOn (City, Province, Country, Island), mergeswith (Sea1, Sea2), mountain (Name, Range, Height, Type, coordinates), mountainonisland (Mountain, Island), organization (Abbreviation, Name, City, Country, Province, Established), politics (Country, Independence, Dependent, Government), population (Country, population growth, infant mortality), province (Name, Country, Population, Area, Capital), religion (Country, Name, Percentage), river (Name, Lake, Sea, Length, source coordinates, source altitude, estuary coordinates, Mountains), sea (Name, Depth), and target (Country, Target)."
+    },
+    {
+        "name": "mondial_geo_3",
+        "description": "The mondial_geo_3 database stores information about borders (neighboring countries, border length), city (name, country, province, population, coordinates), continent (name, area), country (name, code, capital, province, area, population), desert (name, area, coordinates), economy (country, GDP, agriculture, service, industry, inflation), encompasses (country, continent, coverage percentage), ethnicGroup (country, group name, percentage), geo_desert (desert, country, province), geo_estuary (river, country, province), geo_island (island, country, province), geo_lake (lake, country, province), geo_mountain (mountain, country, province), geo_river (river, country, province), geo_sea (sea, country, province), geo_source (river source location), island (name, group, area, height, type, coordinates), islandIn (island within sea, lake, or river), isMember (country membership in organization), lake (name, area, depth, altitude, type, river, coordinates), language (country language share), located (city location relative to province, country, river, lake, sea), locatedOn (city on island), mergeswith (sea merging), mountain (name, height, type, coordinates), mountainonisland (mountain on island), organization (abbreviation, name, city, country, province, established), politics (country independence, dependency, government type), population (country population growth, infant mortality), province (name, country, population, area, capital), religion (country religion share), river (name, length, source and estuary coordinates, related lake/sea, mountains), sea (name, depth), target (country target)."
+    },
+    {
+        "name": "student_loan_1",
+        "description": "The student_loan_1 database stores records about individuals and loan‑related conditions: bool (name), person (name), disabled (name), enlist (name, organization), filed_for_bankruptcy (name), longest_absense_from_school (name, month), male (name), no_payment_due (name, bool), unemployed (name), and enrolled (name, school, month)."
+    },
+    {
+        "name": "student_loan_2",
+        "description": "The student_loan_2 database records individuals and their loan‑related status categories, including bool (name), person (name), disabled (name), enlist (name, organization), filed_for_bankruptcy (name), longest_absense_from_school (name, month), male (name), no_payment_due (name, bool), unemployed (name), and enrolled (name, school, month)."
+    },
+    {
+        "name": "student_loan_3",
+        "description": "The student_loan_3 database records individuals and loan‑related conditions: bool (name), person (name), disabled (name), enlist (name, organization), filed_for_bankruptcy (name), longest_absense_from_school (name, month), male (name), no_payment_due (name, bool), unemployed (name), enrolled (name, school, month)."
+    },
+    {
+        "name": "retail_world_1",
+        "description": "The retail_world_1 database stores information about categories (category name, description), customers (customer name, contact name, address, city, postal code, country), employees (first name, last name, birth date, notes), shippers (shipper name, phone), suppliers (supplier name, contact name, address, city, postal code, country, phone), products (product name, supplier, category, unit, price), orders (customer, employee, order date, shipper), and order details (order, product, quantity)."
+    },
+    {
+        "name": "retail_world_2",
+        "description": "The retail_world_2 database contains categories (category name, description), customers (customer name, contact name, address, city, postal code, country), employees (first name, last name, birth date, photo, notes), shippers (shipper name, phone), suppliers (supplier name, contact name, address, city, postal code, country, phone), products (product name, supplier, category, unit, price), orders (customer, employee, order date, shipper), and order details (order, product, quantity)."
+    },
+    {
+        "name": "retail_world_3",
+        "description": "The retail_world_3 database contains categories (category name, description), customers (customer name, contact name, address, city, postal code, country), employees (first name, last name, birth date, notes), shippers (shipper name, phone), suppliers (supplier name, contact name, address, city, postal code, country, phone), products (product name, unit, price, supplier ID, category ID), orders (order date, customer ID, employee ID, shipper ID), and order details (order ID, product ID, quantity)."
+    },
+    {
+        "name": "music_tracker_1",
+        "description": "The music_tracker_1 database stores information about torrents (group name, total snatched count, artist, release year, release type) and tags (tag)."
+    },
+    {
+        "name": "music_tracker_2",
+        "description": "The music_tracker_2 database stores information about torrents (group name, total snatched count, artist, release year, release type) and tags (tag)."
+    },
+    {
+        "name": "music_tracker_3",
+        "description": "The music_tracker_3 database stores information about torrents (group name, total snatched count, artist, release year, release type) and tags (tag)."
+    },
+    {
+        "name": "disney_1",
+        "description": "The disney_1 database contains information about characters (movie title, release date, hero, villain, song), director (director name), movies_total_gross (movie title, release date, genre, rating, gross), revenue (year, segment revenue, total), and voice-actors (character, voice actor, movie)."
+    },
+    {
+        "name": "disney_2",
+        "description": "The disney_2 database contains information about characters (movie title, release date, hero, villain, song), director (director name), movies_total_gross (movie title, release date, genre, MPAA rating, total gross, inflation-adjusted gross), revenue (year, segment revenues, total), and voice-actors (character, voice actor, movie)."
+    },
+    {
+        "name": "disney_3",
+        "description": "The disney_3 database contains information about characters (movie title, release date, hero, villain, song), director (director name), movies_total_gross (movie title, release date, genre, MPAA rating, total and inflation‑adjusted gross), revenue (year, segment revenues, total), and voice-actors (character, voice‑actor, movie)."
+    },
+    {
+        "name": "college_completion_1",
+        "description": "The college_completion_1 database includes institution_details (city, state, level, control, historically Black college, flagship, latitude, longitude, student count, awards, expected awards, graduation 100 and 150 values, graduation percentiles, median SAT, financial aid, endowment, faculty, voluntary system of accountability metrics, nicknames), institution_grads (year, gender, race, cohort, graduation 100 and 150 values, graduation 100 and 150 rates), state_sector_grads (state name, state abbreviation, year, gender, race, cohort, graduation 100 and 150 values, graduation 100 and 150 rates, graduation cohort count), and state_sector_details (state name, level, control, schools count, awards, expected awards, state appropriations, appropriation rank, graduation rate rank, awards rank)."
+    },
+    {
+        "name": "college_completion_2",
+        "description": "The college_completion_2 database includes institution_details (city, state, latitude, longitude, level, control, HBCU flag, flagship status, student count, awards per value, expected award value, median SAT, aid amount, endowment, graduation 100‑day & 150‑day rates, pell grant amount, retention rate, full‑time faculty, voluntary system of accountability metrics, nicknames, cohort size), institution_grads (year, gender, race, cohort, graduation 100‑day & 150‑day counts and rates), state_sector_grads (state name, abbreviation, control, level, year, gender, race, cohort, graduation 100‑day & 150‑day counts and rates, graduation cohort count), and state_sector_details (state name, level, control, schools count, counted percentage, awards per state & national values, expected award state & national values, state appropriation value, appropriation rank, graduation rate rank, awards rank)."
+    },
+    {
+        "name": "college_completion_3",
+        "description": "The college_completion_3 database contains institution_details (institution name, city, state, coordinates, control, level, student count, awards, expected awards, SAT median, financial aid, endowment, graduation 100% and 150% rates, Pell grant, faculty, accountability metrics, sector and Carnegie classification, nicknames, cohort size), institution_grads (year, gender, race, cohort, graduation 100% and 150% rates), state_sector_grads (state, year, gender, race, cohort, graduation 100% and 150% rates, cohort count), and state_sector_details (state, level, control, schools count, awards, expected awards, state appropriations, and related rankings)."
+    },
+    {
+        "name": "ice_hockey_draft_1",
+        "description": "The ice_hockey_draft_1 database stores height_info (height in cm, height in inch), weight_info (weight in kg, weight in lbs), PlayerInfo (player name, birthdate, birthplace, nation, height, weight, position, shoots, draft year, draft round, overall rating, scouting ranking, 7‑year game plays, 7‑year time on ice, games played >0), and SeasonStatus (season, team, league, game type, games played, goals, assists, points, penalty minutes, plus/minus)."
+    },
+    {
+        "name": "ice_hockey_draft_2",
+        "description": "The ice_hockey_draft_2 database contains height_info (height in cm, height in inch), weight_info (weight in kg, weight in lbs), PlayerInfo (player name, birthdate, birthplace, nation, height, weight, position, shoots, draft year, draft round, overall rating, scouting ranking, 7‑year total games, 7‑year total ice time), and SeasonStatus (season, team, league, game type, games played, goals, assists, points, penalty minutes, plus/minus)."
+    },
+    {
+        "name": "ice_hockey_draft_3",
+        "description": "The ice_hockey_draft_3 database contains height_info (height in cm, height in inch), weight_info (weight in kg, weight in lbs), PlayerInfo (player name, birthdate, birthplace, nation, height, weight, position, shoots, draft year, draft round, overall rating, scouting ranking, 7‑year game plays, 7‑year ice time), and SeasonStatus (season, team, league, game type, game plays, goals, assists, points, penalty minutes, plus/minus)."
+    },
+    {
+        "name": "world_development_indicators_1",
+        "description": "The world_development_indicators_1 database contains country metadata (country code, short and long names, region, income group, lending category, currency unit, latest census/survey references), series definitions (series code, topic, indicator name, short/long definitions, unit of measure, periodicity, source, development relevance), country notes (country code, series code, description), footnotes (country code, series code, year, description), indicator observations (country code, series code, indicator name/code, year, value), and series notes (series code, year, description)."
+    },
+    {
+        "name": "world_development_indicators_2",
+        "description": "The world_development_indicators_2 database contains Country (country code, short name, long name, region, income group, currency unit, lending category), Series (series code, topic, indicator name, short/long definitions, unit of measure, periodicity, base period, source, development relevance, license type), CountryNotes (country code, series code, description), FootNotes (country code, series code, year, description), Indicators (country code, series code, indicator name, indicator code, year, value), and SeriesNotes (series code, year, description)."
+    },
+    {
+        "name": "world_development_indicators_3",
+        "description": "The world_development_indicators_3 database includes Country (short name, long name, region, income group, currency unit, statistical system details, latest census and survey years), Series (topic, indicator name, short/long definition, unit of measure, periodicity, base period, aggregation method, source, license type), CountryNotes (description of country‑series), FootNotes (yearly description for country‑series), Indicators (indicator name/code, year, value for each country and series), and SeriesNotes (yearly description for each series)."
+    },
+    {
+        "name": "retail_complains_1",
+        "description": "The retail_complains_1 database stores information about states (StateCode, State, Region), callcenterlogs (Date received, Complaint ID, priority, type, outcome, server timing), client (sex, birth date, age, social, first, middle, last, phone, email, address_1, address_2, city, state, zipcode, district id), district (city, state_abbrev, division), events (Date received, Product, Sub-product, Issue, Sub-issue, Consumer complaint narrative, Tags, Tags Consumer consent provided?, Submitted via, Date sent to company, Company response to consumer, Timely response?, Consumer disputed?, Complaint ID, Client ID), and reviews (Date, Stars, Reviews, Product, district_id)."
+    },
+    {
+        "name": "retail_complains_2",
+        "description": "The retail_complains_2 database contains state (StateCode, State, Region), callcenterlogs (date received, complaint ID, client reference, phone, priority, type, outcome, server time), client (sex, birth date, age, name, phone, email, city, state, zipcode), district (city, state abbreviation, division), events (date received, product, sub-product, issue, sub-issue, complaint narrative, tags, consent flag, submission channel, date sent to company, company response, timely response, consumer disputed), and reviews (date, stars, review text, product)."
+    },
+    {
+        "name": "retail_complains_3",
+        "description": "The retail_complains_3 database contains state (state code, state name, region), callcenterlogs (date received, complaint ID, client, phone, priority, type, outcome, server start, server exit, server time), client (sex, birth day, birth month, birth year, age, social identifier, first name, middle name, last name, phone, email, address line 1, address line 2, city, state, zipcode, district ID), district (city, state abbreviation, division), events (date received, product, sub‑product, issue, sub‑issue, consumer complaint narrative, tags, consent flag, submitted via, date sent to company, company response, timely response flag, consumer disputed flag, complaint ID, client ID), and reviews (date, stars, review text, product, district ID)."
+    },
+    {
+        "name": "trains_1",
+        "description": "The trains_1 database contains trains (direction) and cars (train id, position, shape, length, sides, roof, wheels, load shape, load number)."
+    },
+    {
+        "name": "trains_2",
+        "description": "The trains_2 database stores information about cars (train association, position in train, physical characteristics, load specifications) and trains (direction)."
+    },
+    {
+        "name": "trains_3",
+        "description": "The trains_3 database contains information about cars (train reference, position, physical characteristics, load details) and trains (direction)."
+    },
+    {
+        "name": "public_review_platform_1",
+        "description": "The public_review_platform_1 database stores data about attributes (attribute name), categories (category name), compliments (compliment type), days (day of week), years (actual year), business attributes (attribute value), business categories (category id), business hours (day of week, opening time, closing time), checkins (hourly check‑in counts), elite members (year), reviews (stars, vote counts, length), tips (likes, length), user compliments (number of compliments), businesses (active status, city, state, stars, review count), and users (yelping since year, average stars, vote counts, review count, fans)."
+    },
+    {
+        "name": "public_review_platform_2",
+        "description": "The public_review_platform_2 database stores data about Attributes (attribute name), Categories (category name), Compliments (compliment type), Days (day of week), Years (actual year), Business_Attributes (attribute id, attribute value), Business_Categories (category id), Business_Hours (day id, opening time, closing time), Checkins (hourly check‑in counts), Elite (year id), Reviews (review stars, vote counts for funny/useful/cool, review length), Tips (likes, tip length), Users_Compliments (compliment id, number of compliments), Business (active status, city, state, stars, review count), and Users (yelping since year, average stars, vote counts for funny/useful/cool, review count, fans)."
+    },
+    {
+        "name": "public_review_platform_3",
+        "description": "The public_review_platform_3 database stores data about attributes (attribute name), categories (category name), compliments (compliment type), days (day of week), years (actual year), business attributes (attribute value), business categories (business id, category id), business hours (day id, opening time, closing time), checkins (business id, day id, hourly check-in counts), elite members (user id, year), reviews (business id, user id, stars, vote counts, review length), tips (business id, user id, likes, tip length), user compliments (compliment id, user id, number of compliments), businesses (business id, active status, city, state, stars, review count), and users (user id, yelping since year, average stars, vote counts, review count, fans)."
+    },
+    {
+        "name": "donor_1",
+        "description": "The donor_1 database stores essays (teacher acctid, title, short description, need statement, essay), projects (school city, school state, school zip, school latitude, school longitude, school charter, school magnet, school year round, primary focus subject, primary focus area, secondary focus subject, secondary focus area, resource type, poverty level, grade level, total price including optional support, students reached, date posted), donations (donor accid, donor city, donor state, donor zip, donation timestamp, donation total, donation optional support, payment method, promo match flag, honoree flag, donation message), and resources (vendor name, project resource type, item name, unit price, quantity)."
+    },
+    {
+        "name": "donor_2",
+        "description": "The donor_2 database contains essays (title, short description, need statement, essay, teacher acctid), projects (school city, state, zip, latitude, longitude, metro, district, charter status, magnet status, year‑round, special program flags, teacher credentials, primary focus subject, primary focus area, secondary focus subject, secondary focus area, resource type, poverty level, grade level, fulfillment labor materials, total price excluding optional support, total price including optional support, students reached, eligibility matches, date posted), donations (donor city, state, zip, teacher account flag, donation timestamp, donation total, optional support amount, dollar amount, payment method, payment credits, gift‑card usage, promo match, giving‑page source, honoree flag, donation message), and resources (vendor name, project resource type, item name, unit price, quantity)."
+    },
+    {
+        "name": "donor_3",
+        "description": "The donor_3 database stores essays (title, short description, need statement, essay), projects (school location, school type, teacher credentials, primary/secondary focus subjects, resource type, poverty level, grade level, funding amounts, students reached, eligibility flags, date posted), donations (donor location, donation timestamp, donation amount, optional support, payment method, promo match, honoree, message), and resources (vendor name, resource type, item name, unit price, quantity)."
+    },
+    {
+        "name": "coinmarketcap_1",
+        "description": "The coinmarketcap_1 database stores information about Coins (name, symbol, status, category, description, subreddit, tags, website, platform, dates added/launched) and Historical market data (date, coin, rank, market capitalization, price, volume, percent changes, supplies, market pairs)."
+    },
+    {
+        "name": "coinmarketcap_2",
+        "description": "The coinmarketcap_2 database stores data about Coins (name, symbol, status, category, description, subreddit, tags, website, platform, date added, launch date) and Historical (date, rank, market capitalization, price (open, high, low, close), volume 24h, percent change 1h/24h/7d, circulating/total/max supply, number of market pairs)."
+    },
+    {
+        "name": "coinmarketcap_3",
+        "description": "The coinmarketcap_3 database contains information about Coins (name, symbol, status, category, description, subreddit, website, platform, tags, date added, launch date) and Historical market data (date, rank, market capitalization, price, volume, percent changes, supplies, market pairs)."
+    },
+    {
+        "name": "simpson_episodes_1",
+        "description": "The simpson_episodes_1 database contains Episode (season, episode number, series number, title, summary, air date, rating, votes), Person (name, birth date, birth place, height, nickname), Award (organization, year, award category, award, person, role, episode/season, song, result), Character_Award (character), Credit (category, person, role, credited), Keyword (keyword), and Vote (stars, votes, percent)."
+    },
+    {
+        "name": "simpson_episodes_2",
+        "description": "The simpson_episodes_2 database contains episode details (season, episode number, series number, title, summary, air date, rating, votes), person information (name, birth date, birth place, height, nickname), awards (organization, year, category, award name, person, role, season, song, result), character awards (character, award), credits (category, person, role, credited), keywords (keyword), and vote statistics (stars, votes, percent)."
+    },
+    {
+        "name": "simpson_episodes_3",
+        "description": "The simpson_episodes_3 database contains Episode (season, episode number, title, summary, air date, rating, votes), Person (name, birth date, birth place, height, nickname), Award (organization, year, award_category, award, person, role, episode reference, season, song, result), Character_Award (character), Credit (category, person, role, credited), Keyword (keyword), and Vote (stars, votes, percent)."
+    },
+    {
+        "name": "movie_3_1",
+        "description": "The movie_3_1 database stores film_text (title, description), actor (first name, last name), address (address, address 2, district, postal code, phone), category (name), city (city), country (country name), customer (first name, last name, email, active status, create date), film (title, description, release year, language, original language, rental duration, rental rate, length, replacement cost, rating, special features), film_actor (actor, film), film_category (film, category), inventory (film, store), language (name), payment (amount, payment date), rental (rental date, return date), staff (first name, last name, email, active status, username), and store (manager staff, address)."
+    },
+    {
+        "name": "movie_3_2",
+        "description": "The movie_3_2 database contains film_text (title, description), actor (first name, last name), address (address, address 2, district, postal code, phone), category (name), city (city), country (country name), customer (first name, last name, email, active status, create date), film (title, description, release year, language, original language, rental duration, rental rate, length, replacement cost, rating, special features), film_actor (actor, film), film_category (film, category), inventory (film, store), language (name), payment (amount, payment date), rental (rental date, return date), staff (first name, last name, email, active status, username), and store (manager staff, address)."
+    },
+    {
+        "name": "movie_3_3",
+        "description": "The movie_3_3 database contains film_text (title, description), actor (first name, last name), address (address, address line 2, district, postal code, phone), category (name), city (city), country (country name), customer (first name, last name, email, active status, create date), film (title, description, release year, language, original language, rental duration, rental rate, length, replacement cost, rating, special features), film_actor (actor id, film id), film_category (film id, category id), inventory (film id, store id), language (name), payment (amount, payment date), rental (rental date, return date), staff (first name, last name, email, active status, username), and store (manager staff id)."
+    },
+    {
+        "name": "shooting_1",
+        "description": "The shooting_1 database contains Incidents (case number, date, location, subject statuses, subject weapon, subject count, officers), officers (case number, race, gender, full name), and subjects (case number, race, gender, full name)."
+    },
+    {
+        "name": "shooting_2",
+        "description": "The shooting_2 database stores incidents (date, location, subject statuses, subject weapon, subject count, officers), officers (race, gender, name), and subjects (race, gender, name)."
+    },
+    {
+        "name": "shooting_3",
+        "description": "The shooting_3 database records shooting incidents (case number, date, location, subject statuses, subject weapon, subject count, officers, subjects), officer details (case number, race, gender, name), and subject details (case number, race, gender, name)."
+    },
+    {
+        "name": "superstore_1",
+        "description": "The superstore_1 database stores customer profiles in people (customer name, segment, country, city, state, postal code, region), product details in product (product name, category, sub‑category, region), and regional transaction data in central_superstore (order id, order date, ship date, ship mode, customer id, region, product id, sales, quantity, discount, profit), east_superstore (order id, order date, ship date, ship mode, customer id, region, product id, sales, quantity, discount, profit), south_superstore (order id, order date, ship date, ship mode, customer id, region, product id, sales, quantity, discount, profit), west_superstore (order id, order date, ship date, ship mode, customer id, region, product id, sales, quantity, discount, profit)."
+    },
+    {
+        "name": "superstore_2",
+        "description": "The superstore_2 database contains people (Customer Name, Segment, Country, City, State, Postal Code, Region), product (Product Name, Category, Sub-Category, Region), and regional sales tables central_superstore, east_superstore, south_superstore, west_superstore (order date, ship date, ship mode, customer id, Region, product id, Sales, Quantity, Discount, Profit)."
+    },
+    {
+        "name": "superstore_3",
+        "description": "The superstore_3 database contains people (Customer Name, Segment, Country, City, State, Postal Code, Region), product (Product Name, Category, Sub-Category, Region), and four regional sales tables—central_superstore (order id, order date, ship date, ship mode, customer id, product id, Region, Sales, Quantity, Discount, Profit), east_superstore (order id, order date, ship date, ship mode, customer id, product id, Region, Sales, Quantity, Discount, Profit), south_superstore (order id, order date, ship date, ship mode, customer id, product id, Region, Sales, Quantity, Discount, Profit), west_superstore (order id, order date, ship date, ship mode, customer id, product id, Region, Sales, Quantity, Discount, Profit)."
+    },
+    {
+        "name": "movielens_1",
+        "description": "The movielens_1 database contains users (age, gender, occupation), directors (quality, average revenue), actors (gender, quality), movies (year, is English, country, runningtime), movies2actors (cast number), movies2directors (genre), and u2base (rating)."
+    },
+    {
+        "name": "movielens_2",
+        "description": "The movielens_2 database contains users (age, gender, occupation), directors (quality, average revenue), actors (gender, quality), movies (year, is English, country, runningtime), movies2actors (movie id, actor id, cast number), movies2directors (movie id, director id, genre), and u2base (user id, movie id, rating)."
+    },
+    {
+        "name": "movielens_3",
+        "description": "The movielens_3 database contains users (age, gender, occupation), directors (quality, average revenue), actors (gender, quality), movies (year, language, country, running time), movies2actors (cast number), movies2directors (genre), and u2base (rating)."
+    }
+]
