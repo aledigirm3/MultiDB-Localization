@@ -497,14 +497,6 @@ def create_benchmark_doc(dataset_path):
 
         return dataset_dir
 
-    def benchmark_name_from_path(dataset_dir):
-        folder_name = dataset_dir.name.lower()
-        if "bird" in folder_name:
-            return "bird"
-        if "spider" in folder_name:
-            return "spider"
-        return folder_name
-
     def quote_identifier(identifier):
         return '"' + str(identifier).replace('"', '""') + '"'
 
@@ -596,8 +588,7 @@ def create_benchmark_doc(dataset_path):
     with open(tables_path, "r", encoding="utf-8") as f:
         schemas = json.load(f)
 
-    benchmark_name = benchmark_name_from_path(dataset_dir)
-    output_path = dataset_dir / f"{benchmark_name}_doc.json"
+    output_path = dataset_dir / "doc.json"
     benchmark_doc = []
 
     for db_schema in schemas:
@@ -712,14 +703,6 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
 
         return dataset_dir
 
-    def benchmark_name_from_path(dataset_dir):
-        folder_name = dataset_dir.name.lower()
-        if "bird" in folder_name:
-            return "bird"
-        if "spider" in folder_name:
-            return "spider"
-        return folder_name
-
     def add_text_part(parts, value):
         if isinstance(value, str) and value.strip():
             parts.append(value)
@@ -753,8 +736,7 @@ def add_bm25_text_to_benchmark_doc(dataset_path):
         return add_char4_tokens(normalize_and_stem_text(" ".join(parts)))
 
     dataset_dir = resolve_dataset_dir(dataset_path)
-    benchmark_name = benchmark_name_from_path(dataset_dir)
-    doc_path = dataset_dir / f"{benchmark_name}_doc.json"
+    doc_path = dataset_dir / "doc.json"
 
     with open(doc_path, "r", encoding="utf-8") as f:
         benchmark_doc = json.load(f)
@@ -2031,5 +2013,12 @@ if __name__ == '__main__':
     # dataset_path = paths.DATASETS.BIRDdev_ambiguous.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # BIRDtrain
+    dataset_path = paths.DATASETS.BIRDtrain.value
+    create_ambiguous_benchmark(dataset_path, overwrite=True)
+    dataset_path = paths.DATASETS.BIRDtrain_ambiguous.value
+    create_benchmark_doc(dataset_path)
+    add_bm25_text_to_benchmark_doc(dataset_path)
 
 # ====================================================================================== #
