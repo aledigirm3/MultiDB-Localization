@@ -1,0 +1,17 @@
+{
+    "accuracy": 0.785850657615613,
+    "hyperparameters": {
+        "QUERY_INSTRUCTION": "Represent this sentence for searching relevant passages: ",
+        "MAX_VALUES_PER_COLUMN": 5,
+        "TABLE_EMBEDDING_TABLES_PER_DB": 1,
+        "BM25_K1": 1.3,
+        "BM25_B": 1.0,
+        "BM25_TABLES_PER_DB": 2,
+        "BM25_USE_CHAR4": true,
+        "DESCRIPTION_WEIGHT": 0.25,
+        "TABLE_WEIGHT": 0.5,
+        "BM25_WEIGHT": 0.25
+    },
+    "configurations": 13970880,
+    "Total time": "28815.13s"
+}
