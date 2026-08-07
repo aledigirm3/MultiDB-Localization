@@ -1996,6 +1996,10 @@ if __name__ == '__main__':
     # dataset_path = paths.DATASETS.BIRDtrain.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # dataset_path = paths.DATASETS.BEAVER.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
 # ====================================================================================== #
 
 # ===================== AMBIGUOUS ====================================================== #
@@ -2015,10 +2019,10 @@ if __name__ == '__main__':
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
     # BIRDtrain
-    dataset_path = paths.DATASETS.BIRDtrain.value
-    create_ambiguous_benchmark(dataset_path, overwrite=True)
-    dataset_path = paths.DATASETS.BIRDtrain_ambiguous.value
-    create_benchmark_doc(dataset_path)
-    add_bm25_text_to_benchmark_doc(dataset_path)
+    # dataset_path = paths.DATASETS.BIRDtrain.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.BIRDtrain_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
 
 # ====================================================================================== #
