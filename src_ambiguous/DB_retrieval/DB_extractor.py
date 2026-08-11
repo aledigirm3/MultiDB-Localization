@@ -80,6 +80,11 @@ def get_dataset_paths(dataset: str):
         doc_filename = "doc.json"
         description_filename = "BIRDtrain_DB_descriptions_ambiguous.json"
         result_filename = "BIRDtrain_DB_extractor_ambiguous.json"
+    elif dataset == "BEAVER":
+            dataset_dir = (src_dir / paths.DATASETS.BEAVER.value).resolve()
+            doc_filename = "doc.json"
+            description_filename = "BEAVER_DB_descriptions.json"
+            result_filename = "BEAVER_DB_extractor.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -422,8 +427,12 @@ if __name__ == "__main__":
     # extract_DB(embedder, "BIRDtrain")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BIRDtrain-ambiguous...{RESET}")
-    extract_DB(embedder, "BIRDtrain-ambiguous")
+    # print(f"\n{CYAN}Processing BIRDtrain-ambiguous...{RESET}")
+    # extract_DB(embedder, "BIRDtrain-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing BEAVER...{RESET}")
+    extract_DB(embedder, "BEAVER")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
