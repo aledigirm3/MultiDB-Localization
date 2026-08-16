@@ -62,6 +62,10 @@ def get_dataset_paths(dataset: str) -> Dict[str, Path]:
         dataset_dir = paths.DATASETS.BIRD_SPIDER_dev_ambiguous.value
         doc_filename = "bird_doc.json"
         result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
+    elif dataset == "BEAVER":
+        dataset_dir = paths.DATASETS.BEAVER.value
+        doc_filename = "doc.json"
+        result_filename = "BEAVER_DB_extractor.json"
     else:
         print(f"{RED}DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -256,6 +260,10 @@ if __name__ == "__main__":
     # extract_DB("BIRD_SPIDER_dev-ambiguous")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    print(f"\n{CYAN}Processing BEAVER...{RESET}")
+    extract_DB("BEAVER")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")
 
@@ -307,6 +315,15 @@ if __name__ == "__main__":
 # Extraction completed!
 
 # Time: 9053.09s + 11573.60s + 1746.31s
+
+# Processing BEAVER...
+# [Bedrock token saturation] model=openai.gpt-oss-120b-1:0 input=122017 output=2048 total=124065 max_output=2048 stopReason=max_tokens
+# JSON file saved at ../results/DB_retrieval//BEAVER_DB_extractor.json
+# Extraction completed!
+#(w if cleaned_values:
+            #cleaned_top_values[column_name] = cleaned_values[:9])
+
+# Time: 23431.30s
 
 # BIRD dev evaluation...
 
