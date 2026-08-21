@@ -64,6 +64,8 @@ def ATT_extraction_eval(dataset):
 
         # Correct DB but no table identified by llm
         if len(att_result) == 1 and att_result[0] == 'NONE':
+            precision.append(0)
+            recall.append(0)
             continue
 
         att_needed = extract_tables_and_columns(sample['SQL'])
