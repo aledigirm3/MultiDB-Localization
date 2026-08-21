@@ -59,8 +59,6 @@ def ATT_extraction_eval(dataset):
                 wrong_db.append(1)
                 continue
             else:
-                precision.append(0)
-                recall.append(0)
                 wrong_db.append(0)
                 continue
 
