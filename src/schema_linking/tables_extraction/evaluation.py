@@ -57,6 +57,8 @@ def TAB_extraction_eval(dataset):
 
         # Correct DB but no table identified by llm
         if len(tab_result) == 1 and tab_result[0] == 'NONE':
+            precision.append(0)
+            recall.append(0)
             continue
         
         try:
