@@ -2,7 +2,7 @@ import os
 import sys
 import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from llm import query_groq
+from llm import query_bedrock
 import paths
 import time
 from ansi_colors import *
@@ -119,7 +119,7 @@ items,product,product labels
 [DATABASE WITH TABLE DESCRIPTIONS]:
 {tables}"""
     
-    return query_groq(messages=[
+    return query_bedrock(messages=[
         {
             "role": "system",
             "content": system_prompt
@@ -228,3 +228,14 @@ if __name__ == '__main__':
 
     end = time.perf_counter()
     print(f"SPIDERdev time: {end - start:.2f}s")
+
+
+# Processing BIRDdev...
+# Extraction completed!
+
+# BIRDdev time: 4308.60s
+
+# Processing SPIDERdev1.0...
+# Extraction completed!
+
+# SPIDERdev time: 2072.59s

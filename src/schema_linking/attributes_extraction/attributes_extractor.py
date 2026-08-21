@@ -3,7 +3,7 @@ import sys
 import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from data_manipulation import create_db_schema_dictionary
-from llm import query_groq
+from llm import query_bedrock
 import paths
 from ansi_colors import *
 from prompts import REDUCTION_ORIENTED, SR_ORIENTED
@@ -37,7 +37,7 @@ def get_llm_response(query: str, schema: str, prompt_type: str) -> str:
 [RELEVANT TABLES SCHEMA]:
 {schema}"""
     
-    return query_groq(messages=[
+    return query_bedrock(messages=[
         {
             "role": "system",
             "content": system_prompt
@@ -79,6 +79,8 @@ def extract_attributes(dataset, prompt_type):
     result_list = []
 
     for sample in data:
+        if sample['question_id'] not in [1101, 702, 518]:
+            continue
         query = sample['question']
         db = sample['DB_result']
 
@@ -151,10 +153,18 @@ if __name__ == '__main__':
 
     start = time.perf_counter()
 
-    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    dataset = 'SPIDERdev1'
-    extract_attributes(dataset, prompt_type)
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    # dataset = 'SPIDERdev1'
+    # extract_attributes(dataset, prompt_type)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
     print(f"SPIDERdev time: {end - start:.2f}s")
+
+# Processing BIRDdev...
+# Extraction completed!
+
+# BIRDdev time: 8166.66s
+
+# Processing SPIDERdev1.0...
+# Extraction completed!
