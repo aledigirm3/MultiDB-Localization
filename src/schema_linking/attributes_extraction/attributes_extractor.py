@@ -79,8 +79,7 @@ def extract_attributes(dataset, prompt_type):
     result_list = []
 
     for sample in data:
-        if sample['question_id'] not in [1101, 702, 518]:
-            continue
+
         query = sample['question']
         db = sample['DB_result']
 
@@ -153,10 +152,10 @@ if __name__ == '__main__':
 
     start = time.perf_counter()
 
-    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    # dataset = 'SPIDERdev1'
-    # extract_attributes(dataset, prompt_type)
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    dataset = 'SPIDERdev1'
+    extract_attributes(dataset, prompt_type)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
     print(f"SPIDERdev time: {end - start:.2f}s")
@@ -168,3 +167,5 @@ if __name__ == '__main__':
 
 # Processing SPIDERdev1.0...
 # Extraction completed!
+
+# SPIDERdev time: 4152.36s
