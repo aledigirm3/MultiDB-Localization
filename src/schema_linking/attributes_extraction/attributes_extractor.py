@@ -58,7 +58,7 @@ def extract_attributes(dataset, prompt_type):
 
         results_folder = '../../' + paths.RESULTS.ATT_RETRIEVAL.value
         os.makedirs(results_folder, exist_ok=True)
-        result_file_path = os.path.join(results_folder, "BIRDdev_ATT_extractor.json")
+        result_file_path = os.path.join(results_folder, prompt_type + "_BIRDdev_ATT_extractor.json")
 
         db_schema_dictionary = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
 
@@ -150,15 +150,15 @@ if __name__ == '__main__':
     end = time.perf_counter()
     print(f"BIRDdev time: {end - start:.2f}s")
 
-    start = time.perf_counter()
+    # start = time.perf_counter()
 
-    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    dataset = 'SPIDERdev1'
-    extract_attributes(dataset, prompt_type)
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    # dataset = 'SPIDERdev1'
+    # extract_attributes(dataset, prompt_type)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    end = time.perf_counter()
-    print(f"SPIDERdev time: {end - start:.2f}s")
+    # end = time.perf_counter()
+    # print(f"SPIDERdev time: {end - start:.2f}s")
 
 # Processing BIRDdev...
 # Extraction completed!
