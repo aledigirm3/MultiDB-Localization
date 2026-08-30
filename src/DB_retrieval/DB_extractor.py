@@ -42,53 +42,37 @@ def get_dataset_paths(dataset: str):
 
     if dataset == "BIRDdev":
         dataset_dir = (src_dir / paths.DATASETS.BIRDdev.value).resolve()
-        doc_filename = "bird_doc.json"
         description_filename = "BIRDdev_DB_descriptions.json"
         result_filename = "BIRDdev_DB_extractor.json"
     elif dataset == "BIRDdev-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.BIRDdev_ambiguous.value).resolve()
-        doc_filename = "bird_doc.json"
         description_filename = "BIRDdev_DB_descriptions_ambiguous.json"
         result_filename = "BIRDdev_DB_extractor_ambiguous.json"
     elif dataset == "SPIDERdev1":
         dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1.value).resolve()
-        doc_filename = "spider_doc.json"
         description_filename = "SPIDERdev1_DB_descriptions.json"
         result_filename = "SPIDERdev1_DB_extractor.json"
     elif dataset == "SPIDERdev1-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1_ambiguous.value).resolve()
-        doc_filename = "spider_doc.json"
         description_filename = "SPIDERdev1_DB_descriptions_ambiguous.json"
         result_filename = "SPIDERdev1_DB_extractor_ambiguous.json"
-    elif dataset == "BIRD_SPIDER_dev":
-        dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev.value).resolve()
-        doc_filename = "bird_doc.json"
-        description_filename = "BIRD_SPIDER_dev_DB_descriptions.json"
-        result_filename = "BIRD_SPIDER_dev_DB_extractor.json"
-    elif dataset == "BIRD_SPIDER_dev-ambiguous":
-        dataset_dir = (src_dir / paths.DATASETS.BIRD_SPIDER_dev_ambiguous.value).resolve()
-        doc_filename = "bird_doc.json"
-        description_filename = "BIRD_SPIDER_dev_DB_descriptions_ambiguous.json"
-        result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
     elif dataset == "BIRDtrain":
         dataset_dir = (src_dir / paths.DATASETS.BIRDtrain.value).resolve()
-        doc_filename = "bird_doc.json"
         description_filename = "BIRDtrain_DB_descriptions.json"
         result_filename = "BIRDtrain_DB_extractor.json"
     elif dataset == "BIRDtrain-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.BIRDtrain_ambiguous.value).resolve()
-        doc_filename = "doc.json"
         description_filename = "BIRDtrain_DB_descriptions_ambiguous.json"
         result_filename = "BIRDtrain_DB_extractor_ambiguous.json"
     elif dataset == "BEAVER":
             dataset_dir = (src_dir / paths.DATASETS.BEAVER.value).resolve()
-            doc_filename = "doc.json"
             description_filename = "BEAVER_DB_descriptions.json"
             result_filename = "BEAVER_DB_extractor.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
     results_folder = (src_dir / paths.RESULTS.DB_RETRIEVAL.value).resolve()
+    doc_filename = "doc.json"
 
     return {
         "questions_path": dataset_dir / "dev.json",
