@@ -101,7 +101,12 @@ def log_token_usage(response: dict, model_id: str, max_tokens: int):
         flush=True,
     )
 
-def query_bedrock(messages: list, model_id: str = "openai.gpt-oss-120b-1:0", temperature: float = 0.1):
+def query_bedrock(
+    messages: list,
+    model_id: str = "openai.gpt-oss-120b-1:0",
+    temperature: float = 0.1,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
+):
     """
     Function to query AWS Bedrock with a list of OpenAI/Groq-style messages.
     
@@ -113,6 +118,7 @@ def query_bedrock(messages: list, model_id: str = "openai.gpt-oss-120b-1:0", tem
             ]
         model_id (str): The model to use for the completion.
         temperature (float): The temperature to use for the completion.
+        max_tokens (int): The maximum number of output tokens.
         
     Returns:
         str: The completion from the model.
@@ -124,7 +130,7 @@ def query_bedrock(messages: list, model_id: str = "openai.gpt-oss-120b-1:0", tem
         "modelId": model_id,
         "messages": bedrock_messages,
         "inferenceConfig": {
-            "maxTokens": DEFAULT_MAX_TOKENS,
+            "maxTokens": max_tokens,
             "temperature": temperature,
         },
     }
@@ -133,6 +139,6 @@ def query_bedrock(messages: list, model_id: str = "openai.gpt-oss-120b-1:0", tem
         request["system"] = system
 
     response = client.converse(**request)
-    log_token_usage(response, model_id, DEFAULT_MAX_TOKENS)
+    log_token_usage(response, model_id, max_tokens)
 
     return extract_text_from_response(response)
