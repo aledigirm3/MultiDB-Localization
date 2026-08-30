@@ -8,6 +8,8 @@ import shutil
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 import sqlglot
+from sqlglot.optimizer.qualify import qualify
+from sqlglot.optimizer.scope import Scope, traverse_scope
 from collections import Counter, defaultdict
 from nltk.stem import SnowballStemmer
 
@@ -342,6 +344,42 @@ def extract_tables_and_columns(sql_query):
         'table': {_table.name for _table in table_names},
         'column': {_column.alias_or_name for _column in column_names}
     }
+
+def extract_qualified_columns(
+    sql_query: str,
+    db_schema: Dict[str, Dict[str, str]],
+) -> Set[Tuple[str, str]]:
+    """Extract lowercase (table, column) pairs resolved against a SQLGlot schema."""
+    parsed_query = qualify(
+        sqlglot.parse_one(sql_query, read="sqlite"),
+        dialect="sqlite",
+        schema=db_schema,
+        validate_qualify_columns=False,
+        identify=False,
+    )
+    qualified_columns = set()
+    known_columns = {column for columns in db_schema.values() for column in columns}
+
+    for scope in traverse_scope(parsed_query):
+        for column in scope.columns:
+            source_scope = scope
+            source = source_scope.sources.get(column.table)
+
+            # Correlated subqueries can reference a table from a parent scope.
+            while source is None and source_scope.parent is not None:
+                source_scope = source_scope.parent
+                source = source_scope.sources.get(column.table)
+
+            if isinstance(source, sqlglot.exp.Table):
+                attribute = (source.name.lower(), column.name.lower())
+                if attribute[1] in db_schema.get(attribute[0], {}):
+                    qualified_columns.add(attribute)
+                elif attribute[1] in known_columns:
+                    raise ValueError(f"Unable to resolve column '{column.sql()}' against its source table")
+            elif not isinstance(source, Scope) and column.name.lower() in known_columns:
+                raise ValueError(f"Unable to resolve column '{column.sql()}' against the database schema")
+
+    return qualified_columns
 
 def create_attribute_mapping(file_path: str) -> dict:
     """

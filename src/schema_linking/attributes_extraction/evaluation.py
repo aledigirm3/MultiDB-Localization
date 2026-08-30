@@ -4,7 +4,13 @@ import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
 from tables_extraction.evaluation import TAB_extraction_eval
-from data_manipulation import extract_tables_and_columns, create_attribute_mapping, lowercase_dict
+from data_manipulation import (
+    create_attribute_mapping,
+    create_db_original_schema_dictionary,
+    create_table_name_mapping,
+    extract_qualified_columns,
+    lowercase_dict,
+)
 from ansi_colors import *
 import paths
 
@@ -16,14 +22,22 @@ def ATT_extraction_eval(dataset):
     if dataset == 'BIRDdev':
         print(f"\n{CYAN}BIRDdev ATT extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'BIRDdev_ATT_extractor.json'
-        attributes_mapping_dict = lowercase_dict(create_attribute_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json'))
+        schema_filename = '../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json'
     elif dataset == 'SPIDERdev1':
         print(f"\n{CYAN}SPIDERdev1 ATT extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'SPIDERdev1_ATT_extractor.json'
-        attributes_mapping_dict = lowercase_dict(create_attribute_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'))
+        schema_filename = '../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
+
+    attributes_mapping_dict = lowercase_dict(create_attribute_mapping(schema_filename))
+    table_name_mapping_dict = lowercase_dict(create_table_name_mapping(schema_filename))
+    database_original_schemas = lowercase_dict(create_db_original_schema_dictionary(schema_filename))
+    sqlglot_schemas = {
+        db_id: {table: {column: "UNKNOWN" for column in columns} for table, columns in schema.items()}
+        for db_id, schema in database_original_schemas.items()
+    }
 
     with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -62,13 +76,13 @@ def ATT_extraction_eval(dataset):
                 wrong_db.append(0)
                 continue
 
-        # Correct DB but no table identified by llm
+        # Correct DB but no attributes identified by llm
         if len(att_result) == 1 and att_result[0] == 'NONE':
             precision.append(0)
             recall.append(0)
             continue
 
-        att_needed = extract_tables_and_columns(sample['SQL'])
+        att_needed = extract_qualified_columns(sample['SQL'], sqlglot_schemas[db.lower()])
         att_original_result = []
         for res in att_result:
             try:
@@ -77,24 +91,20 @@ def ATT_extraction_eval(dataset):
                 #print(f"{RED}SPLIT error at:{RESET} {q_id}, {RED}Invalid format:{RESET} {res}")
                 continue
             try:
-                att_original_result.append(attributes_mapping_dict[db.lower()][table.lower()][column.lower()])
+                att_original_result.append((
+                    table_name_mapping_dict[db.lower()][table.lower()],
+                    attributes_mapping_dict[db.lower()][table.lower()][column.lower()],
+                ))
             except KeyError:
                 #print(f"{RED}KEY error at:{RESET} {q_id}, {RED}Result:{RESET} {res}")
                 continue
 
-
-        attributes_original_db = []
-        db_data = attributes_mapping_dict[db.lower()]
-        for column_dict in db_data.values():
-            attributes_original_db.extend(column_dict.values())
-            
-        # To lower case
-        attributes_original_db = [s.lower() for s in attributes_original_db]
-        # att_original_result = [s.lower() for s in att_original_result] # lowercase_dict() already done for attributes_mapping_dict
-        att_needed = [s.lower() for s in att_needed['column']]
-        is_strict = True
-
-        needed = set([a for a in att_needed if a in attributes_original_db])
+        attributes_original_db = {
+            (table, column)
+            for table, columns in database_original_schemas[db.lower()].items()
+            for column in columns
+        }
+        needed = set(att_needed)
         result = set(att_original_result)
         p = len(needed & result) / len(result) if result else 0.0
         precision.append(p)
@@ -103,30 +113,19 @@ def ATT_extraction_eval(dataset):
         if p == 1 and r == 1:
             em += 1
 
-        att_needed_to_check = list(att_needed)
-        att_original_result_to_check = list(att_original_result)
-        for att in att_needed:
-            if len(att_needed_to_check) == 0:
-                break
-            if att not in attributes_original_db:
-                continue
-            if att not in att_original_result_to_check:
-                # print(q_id)
-                # print(att_needed)
-                # print(att_original_result)
-                # print('-'*50)
-                is_strict = False
-                break
-            else:
-                att_needed_to_check.remove(att)
-                att_original_result_to_check.remove(att)
+        is_strict = needed.issubset(result)
+        if not is_strict:
+            print(q_id)
+            print(sorted(needed))
+            print(sorted(result))
+            print('-'*50)
 
         if is_strict:
             strict_recall_samples += 1
 
             # Compute reduction (1.0 means that att_original_result = att_needed)
-            result_att = len(att_original_result) - len(att_needed)
-            total_att = len(attributes_original_db) - len(att_needed)
+            result_att = len(result - needed)
+            total_att = len(attributes_original_db - needed)
 
             if result_att <= 0:
                 reduction = 1
