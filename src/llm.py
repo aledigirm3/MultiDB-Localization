@@ -11,7 +11,7 @@ load_dotenv(dotenv_path=env_path)
 #===============================================
 
 DEFAULT_REGION = "eu-central-1"
-DEFAULT_MAX_TOKENS = 8200
+DEFAULT_MAX_TOKENS = 12000
 
 
 def get_bedrock_client():
