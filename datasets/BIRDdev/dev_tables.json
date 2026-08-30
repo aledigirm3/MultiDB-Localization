@@ -6014,15 +6014,15 @@
             ],
             [
                 0,
-                "measure of degree of coagulation"
+                "measure of degree of coagulation KCT"
             ],
             [
                 0,
-                "measure of degree of coagulation"
+                "measure of degree of coagulation RVVT"
             ],
             [
                 0,
-                "measure of degree of coagulation"
+                "measure of degree of coagulation LAC"
             ],
             [
                 0,
@@ -6230,11 +6230,11 @@
             ],
             [
                 2,
-                "anti-DNA"
+                "anti-DNA DNA"
             ],
             [
                 2,
-                "anti-DNA"
+                "anti-DNA DNA-II"
             ]
         ],
         "column_types": [
