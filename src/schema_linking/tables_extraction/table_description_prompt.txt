@@ -1,17 +1,25 @@
-You are tasked with generating clear, concise, and contextually useful descriptions of all tables in a database.
+You are tasked with generating clear, concise, and contextually useful descriptions of all tables in one database.
 
-You will receive a database name and a list of all tables for that database, each with its table name and the list of its column names. Produce a natural language description for each table, consisting of:
+You will receive a JSON object containing a database name and all its tables, each with the complete list of column names. Return one valid JSON object with this exact structure:
 
-1. A short sentence summarizing the purpose of the table based on its name.
-2. A list of all its columns included in the table, without skipping any, but without describing each column individually.
+{
+  "<database_name>": {
+    "<table_name>": "<table description>",
+    "<table_name>": "<table description>"
+  }
+}
 
-Guidelines:
-- Start with a short sentence summarizing the purpose of the table.
-- Then include **all column names**, formatted inline, ensuring no column is omitted.
+Requirements:
+- The outer object must contain exactly the database name received in the input, without changing it.
+- The inner object must contain every table received in the input, using each table name exactly as provided.
+- Do not add, rename, or omit any database or table.
+- Each table description must start with a short sentence summarizing the purpose of the table based on its name.
+- Then include all column names inline, without skipping any, but without describing each column individually.
 - Use neutral, factual language.
 - Do not invent extra details beyond what can be inferred from the table name and column names.
 - Each description must be self-contained and understandable to someone who does not know the schema.
 - Keep each description concise.
+- Return only the JSON object, without Markdown fences or additional text.
 
 Example input format:
 {
@@ -35,8 +43,10 @@ Example input format:
 
 Example output format:
 {
-  "users": "The `users` table stores information about people registered in the system. Columns include: id, name, email, created_at.",
-  "orders": "The `orders` table represents purchases made by users. Columns include: order_id, user_id, product_id, quantity, order_date."
+  "sales_db": {
+    "users": "The `users` table stores information about people registered in the system. Columns include: id, name, email, created_at.",
+    "orders": "The `orders` table represents purchases made by users. Columns include: order_id, user_id, product_id, quantity, order_date."
+  }
 }
 
-Generate descriptions for all tables of the database provided, making sure **no column is skipped**.
+Generate descriptions for all tables of the database provided, making sure no column is skipped.
