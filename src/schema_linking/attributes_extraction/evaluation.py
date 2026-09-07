@@ -114,11 +114,11 @@ def ATT_extraction_eval(dataset):
             em += 1
 
         is_strict = needed.issubset(result)
-        if not is_strict:
-            print(q_id)
-            print(sorted(needed))
-            print(sorted(result))
-            print('-'*50)
+        # if not is_strict:
+        #     print(q_id)
+        #     print(sorted(needed))
+        #     print(sorted(result))
+        #     print('-'*50)
 
         if is_strict:
             strict_recall_samples += 1
