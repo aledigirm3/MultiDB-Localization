@@ -15,7 +15,7 @@ import DB_extractor as db_retrieval
 from embedder import Embedder
 
 
-DATASET = "BIRDtrain-ambiguous"
+DATASET = "BIRDtrain"
 OUTPUT_PATH = SCRIPT_DIR / "DB_retrieval_best_hyperparameters.json"
 PROGRESS_EVERY = 1000
 
