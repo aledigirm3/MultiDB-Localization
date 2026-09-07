@@ -154,6 +154,17 @@ def extract_tables(dataset):
         results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
         os.makedirs(results_folder, exist_ok=True)
         result_file_path = os.path.join(results_folder, "SPIDERdev1_TAB_extractor.json")
+
+    elif dataset == 'BEAVER':
+        with open('./BEAVER_table_descriptions.json', "r", encoding="utf-8") as f:
+            table_descriptions = json.load(f)
+
+        with open('../../' + paths.RESULTS.DB_RETRIEVAL.value + 'BEAVER_DB_extractor.json', "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
+        os.makedirs(results_folder, exist_ok=True)
+        result_file_path = os.path.join(results_folder, "BEAVER_TAB_extractor.json")
         
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
@@ -162,6 +173,10 @@ def extract_tables(dataset):
     result_list = []
 
     for sample in data:
+
+        # if sample['question_id'] not in [6157,6331,6468,6724]:
+        #     continue
+
         query = sample['question']
         db = sample['DB_result']
 
@@ -219,6 +234,7 @@ if __name__ == '__main__':
     end = time.perf_counter()
     print(f"BIRDdev time: {end - start:.2f}s")
 
+
     start = time.perf_counter()
 
     print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
@@ -230,6 +246,17 @@ if __name__ == '__main__':
     print(f"SPIDERdev time: {end - start:.2f}s")
 
 
+    # start = time.perf_counter()
+    
+    # print(f"\n{CYAN}Processing BEAVER...{RESET}")
+    # dataset = 'BEAVER'
+    # extract_tables(dataset)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    # end = time.perf_counter()
+    # print(f"BEAVER time: {end - start:.2f}s")
+
+
 # Processing BIRDdev...
 # Extraction completed!
 
@@ -239,3 +266,8 @@ if __name__ == '__main__':
 # Extraction completed!
 
 # SPIDERdev time: 2072.59s
+
+# Processing BEAVER...
+# Extraction completed!
+
+# BEAVER time: 54898.43s

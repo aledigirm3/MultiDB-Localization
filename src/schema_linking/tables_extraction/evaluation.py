@@ -21,6 +21,12 @@ def TAB_extraction_eval(dataset):
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
         database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
+    elif dataset == 'BEAVER':
+        print(f"\n{CYAN}BEAVER TAB extraction evaluation{RESET}")
+        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BEAVER_TAB_extractor.json'
+        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
+        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
+        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
@@ -83,9 +89,7 @@ def TAB_extraction_eval(dataset):
         if p == 1 and r == 1:
             em += 1
 
-        for tab in tab_needed:
-            if tab not in tables_original_db:
-                continue
+        for tab in needed:
             if tab not in tab_original_result:
                 errors_ids.append(sample['question_id'])
                 is_strict = False
@@ -94,13 +98,13 @@ def TAB_extraction_eval(dataset):
         if is_strict:
             strict_recall_samples += 1
 
-            # Compute reduction (1.0 means that tab_original_result = tab_needed)
+            # Compute reduction (1.0 means that tab_original_result = needed)
             result_tab = 0
             for t in tab_original_result:
-                if t not in tab_needed:
+                if t not in needed:
                     result_tab += 1
             db_schema = database_schemas[db]
-            total_tab = len(db_schema) - len(tab_needed)
+            total_tab = len(db_schema) - len(needed)
 
             if result_tab == 0 or total_tab == 0:
                 reduction = 1
@@ -137,3 +141,6 @@ if __name__ == '__main__':
 
     dataset = 'SPIDERdev1'
     TAB_extraction_eval(dataset)
+
+    # dataset = 'BEAVER'
+    # TAB_extraction_eval(dataset)
