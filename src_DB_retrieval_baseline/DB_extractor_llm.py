@@ -252,13 +252,6 @@ if __name__ == "__main__":
     # extract_DB("SPIDERdev1-ambiguous")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
-    # extract_DB("BIRD_SPIDER_dev")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
-    # extract_DB("BIRD_SPIDER_dev-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
     print(f"\n{CYAN}Processing BEAVER...{RESET}")
     extract_DB("BEAVER")
