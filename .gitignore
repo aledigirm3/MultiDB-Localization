@@ -215,4 +215,5 @@ BIRD_SPIDER_dev/
 BIRD_SPIDER_dev-ambiguous/
 BIRDtrain/
 BIRDtrain-ambiguous/
+SPIDERtrain-ambiguous/
 agent.md
