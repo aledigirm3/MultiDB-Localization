@@ -2092,4 +2092,18 @@ if __name__ == '__main__':
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
+    # ARCHER
+    # dataset_path = paths.DATASETS.ARCHER.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.ARCHER_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # SPIDERtrain
+    # dataset_path = paths.DATASETS.SPIDERtrain.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.SPIDERtrain_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
 # ====================================================================================== #
