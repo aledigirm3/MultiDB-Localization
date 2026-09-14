@@ -71,6 +71,16 @@ def extract_attributes(dataset, prompt_type):
         result_file_path = os.path.join(results_folder, "SPIDERdev1_ATT_extractor.json")
 
         db_schema_dictionary = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
+
+    elif dataset == 'ARCHER':
+        with open('../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'ARCHER_TAB_extractor.json', "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        results_folder = '../../' + paths.RESULTS.ATT_RETRIEVAL.value
+        os.makedirs(results_folder, exist_ok=True)
+        result_file_path = os.path.join(results_folder, "ARCHER_ATT_extractor.json")
+
+        db_schema_dictionary = create_db_schema_dictionary('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
         
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
@@ -140,32 +150,46 @@ if __name__ == '__main__':
         print(f"{RED}Please, select the prompt!{RESET}")
         sys.exit(1)
     
+    # start = time.perf_counter()
+
+    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    # dataset = 'BIRDdev'
+    # extract_attributes(dataset, prompt_type)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    # end = time.perf_counter()
+    # print(f"BIRDdev time: {end - start:.2f}s")
+
+
+    # start = time.perf_counter()
+
+    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    # dataset = 'SPIDERdev1'
+    # extract_attributes(dataset, prompt_type)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    # end = time.perf_counter()
+    # print(f"SPIDERdev time: {end - start:.2f}s")
+
+
     start = time.perf_counter()
 
-    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    dataset = 'BIRDdev'
+    print(f"\n{CYAN}Processing ARCHER...{RESET}")
+    dataset = 'ARCHER'
     extract_attributes(dataset, prompt_type)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
-    print(f"BIRDdev time: {end - start:.2f}s")
-
-    start = time.perf_counter()
-
-    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    dataset = 'SPIDERdev1'
-    extract_attributes(dataset, prompt_type)
-    print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    end = time.perf_counter()
-    print(f"SPIDERdev time: {end - start:.2f}s")
+    print(f"ARCHER time: {end - start:.2f}s")
 
 # Processing BIRDdev...
 # Extraction completed!
-
 # BIRDdev time: 8166.66s
 
 # Processing SPIDERdev1.0...
 # Extraction completed!
-
 # SPIDERdev time: 4152.36s
+
+# Processing ARCHER...
+# Extraction completed!
+# ARCHER time: 2904.24s

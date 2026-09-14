@@ -2038,6 +2038,10 @@ if __name__ == '__main__':
     # dataset_path = paths.DATASETS.BEAVER.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # dataset_path = paths.DATASETS.ARCHER.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
 # ====================================================================================== #
 
 # ===================== AMBIGUOUS ====================================================== #

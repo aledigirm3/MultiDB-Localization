@@ -27,6 +27,10 @@ def ATT_extraction_eval(dataset):
         print(f"\n{CYAN}SPIDERdev1 ATT extraction evaluation{RESET}")
         filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'SPIDERdev1_ATT_extractor.json'
         schema_filename = '../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+    elif dataset == 'ARCHER':
+        print(f"\n{CYAN}ARCHER ATT extraction evaluation{RESET}")
+        filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'ARCHER_ATT_extractor.json'
+        schema_filename = '../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json'
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
@@ -157,10 +161,14 @@ def ATT_extraction_eval(dataset):
 
 if __name__ == '__main__':
 
-    print(f"===================={BLUE}BIRDdev end-to-end pipeline EVALUATION{RESET}=====================")
-    dataset = 'BIRDdev'
-    ATT_extraction_eval(dataset)
+    # print(f"===================={BLUE}BIRDdev end-to-end pipeline EVALUATION{RESET}=====================")
+    # dataset = 'BIRDdev'
+    # ATT_extraction_eval(dataset)
+
+    # print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
+    # dataset = 'SPIDERdev1'
+    # ATT_extraction_eval(dataset)
 
     print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
-    dataset = 'SPIDERdev1'
+    dataset = 'ARCHER'
     ATT_extraction_eval(dataset)

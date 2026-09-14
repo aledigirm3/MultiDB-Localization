@@ -27,6 +27,12 @@ def TAB_extraction_eval(dataset):
         table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
         database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
         database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
+    elif dataset == 'ARCHER':
+        print(f"\n{CYAN}ARCHER TAB extraction evaluation{RESET}")
+        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'ARCHER_TAB_extractor.json'
+        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
+        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
+        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
@@ -136,11 +142,14 @@ def TAB_extraction_eval(dataset):
 
 if __name__ == '__main__':
 
-    dataset = 'BIRDdev'
-    TAB_extraction_eval(dataset)
+    # dataset = 'BIRDdev'
+    # TAB_extraction_eval(dataset)
 
-    dataset = 'SPIDERdev1'
-    TAB_extraction_eval(dataset)
+    # dataset = 'SPIDERdev1'
+    # TAB_extraction_eval(dataset)
 
     # dataset = 'BEAVER'
     # TAB_extraction_eval(dataset)
+
+    dataset = 'ARCHER'
+    TAB_extraction_eval(dataset)

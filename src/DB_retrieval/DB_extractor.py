@@ -68,6 +68,10 @@ def get_dataset_paths(dataset: str):
             dataset_dir = (src_dir / paths.DATASETS.BEAVER.value).resolve()
             description_filename = "BEAVER_DB_descriptions.json"
             result_filename = "BEAVER_DB_extractor.json"
+    elif dataset == "ARCHER":
+            dataset_dir = (src_dir / paths.DATASETS.ARCHER.value).resolve()
+            description_filename = "ARCHER_DB_descriptions.json"
+            result_filename = "ARCHER_DB_extractor.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -383,15 +387,13 @@ if __name__ == "__main__":
         device_name=EMBEDDING_DEVICE_NAME,
     )
 
-    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    extract_DB(embedder, "BIRDdev")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    # extract_DB(embedder, "BIRDdev")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
-    extract_DB(embedder, "SPIDERdev1")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    # Time: 12.84s
+    # print(f"\n{CYAN}Processing SPIDERdev1...{RESET}")
+    # extract_DB(embedder, "SPIDERdev1")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
 
     # print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
     # extract_DB(embedder, "BIRDdev-ambiguous")
@@ -399,14 +401,6 @@ if __name__ == "__main__":
 
     # print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
     # extract_DB(embedder, "SPIDERdev1-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
-    
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev...{RESET}")
-    # extract_DB(embedder, "BIRD_SPIDER_dev")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    # print(f"\n{CYAN}Processing BIRD_SPIDER_dev-ambiguous...{RESET}")
-    # extract_DB(embedder, "BIRD_SPIDER_dev-ambiguous")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
     # print(f"\n{CYAN}Processing BIRDtrain...{RESET}")
@@ -420,6 +414,11 @@ if __name__ == "__main__":
     # print(f"\n{CYAN}Processing BEAVER...{RESET}")
     # extract_DB(embedder, "BEAVER")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing ARCHER...{RESET}")
+    extract_DB(embedder, "ARCHER")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # Time: 6.17s
 
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")

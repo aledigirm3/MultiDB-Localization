@@ -8,6 +8,7 @@ class DATASETS(Enum):
     BIRDtrain = "../datasets/BIRDtrain/"
     BIRDtrain_ambiguous = "../datasets/BIRDtrain-ambiguous/"
     BEAVER = "../datasets/BEAVER/"
+    ARCHER = '../datasets/ARCHER/'
 
 class RESULTS(Enum):
     DB_RETRIEVAL = '../results/DB_retrieval/'

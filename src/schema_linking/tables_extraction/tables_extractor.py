@@ -155,6 +155,17 @@ def extract_tables(dataset):
         os.makedirs(results_folder, exist_ok=True)
         result_file_path = os.path.join(results_folder, "SPIDERdev1_TAB_extractor.json")
 
+    elif dataset == 'ARCHER':
+        with open('./ARCHER_table_descriptions.json', "r", encoding="utf-8") as f:
+            table_descriptions = json.load(f)
+
+        with open('../../' + paths.RESULTS.DB_RETRIEVAL.value + 'ARCHER_DB_extractor.json', "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        results_folder = '../../' + paths.RESULTS.TAB_RETRIEVAL.value
+        os.makedirs(results_folder, exist_ok=True)
+        result_file_path = os.path.join(results_folder, "ARCHER_TAB_extractor.json")
+
     elif dataset == 'BEAVER':
         with open('./BEAVER_table_descriptions.json', "r", encoding="utf-8") as f:
             table_descriptions = json.load(f)
@@ -224,26 +235,37 @@ def extract_tables(dataset):
 
 if __name__ == '__main__':
 
+    # start = time.perf_counter()
+
+    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    # dataset = 'BIRDdev'
+    # extract_tables(dataset)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    # end = time.perf_counter()
+    # print(f"BIRDdev time: {end - start:.2f}s")
+
+
+    # start = time.perf_counter()
+
+    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    # dataset = 'SPIDERdev1'
+    # extract_tables(dataset)
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    # end = time.perf_counter()
+    # print(f"SPIDERdev time: {end - start:.2f}s")
+
+
     start = time.perf_counter()
 
-    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    dataset = 'BIRDdev'
+    print(f"\n{CYAN}Processing ARCHER...{RESET}")
+    dataset = 'ARCHER'
     extract_tables(dataset)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
-    print(f"BIRDdev time: {end - start:.2f}s")
-
-
-    start = time.perf_counter()
-
-    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    dataset = 'SPIDERdev1'
-    extract_tables(dataset)
-    print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    end = time.perf_counter()
-    print(f"SPIDERdev time: {end - start:.2f}s")
+    print(f"ARCHER time: {end - start:.2f}s")
 
 
     # start = time.perf_counter()
@@ -271,3 +293,8 @@ if __name__ == '__main__':
 # Extraction completed!
 
 # BEAVER time: 54898.43s
+
+# Processing ARCHER...
+# Extraction completed!
+
+# ARCHER time: 1552.98s

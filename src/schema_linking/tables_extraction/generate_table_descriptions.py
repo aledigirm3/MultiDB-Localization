@@ -16,8 +16,8 @@ import paths
 
 
 PROMPT_PATH = SCRIPT_DIR / "table_description_prompt.txt"
-SCHEMA_FILE = (SRC_DIR / paths.DATASETS.BEAVER.value / "dev_tables.json").resolve()
-OUTPUT_FILE = SCRIPT_DIR / "BEAVER_table_descriptions.json"
+SCHEMA_FILE = (SRC_DIR / paths.DATASETS.ARCHER.value / "dev_tables.json").resolve()
+OUTPUT_FILE = SCRIPT_DIR / "ARCHER_table_descriptions.json"
 DEFAULT_MAX_ATTEMPTS = 3
 MAX_OUTPUT_TOKENS = 40000
 

@@ -1,0 +1,42 @@
+[
+    {
+        "name": "bike_1",
+        "description": "The bike_1 database stores information about stations (name, location, dock count, city, installation date), status updates (station, bikes available, docks available, time), trips (duration, start time, start station, end time, end station, bike id, subscription type, zip code), and weather observations (date, temperature, dew point, humidity, sea level pressure, visibility, wind speed, gust speed, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "concert_singer",
+        "description": "The concert_singer database stores information about stadiums (Location, Name, Capacity, attendance statistics), singers (Name, Country, Song Name, Song release year, Age, gender), concerts (concert name, Theme, Stadium, Year), and singer_in_concert links (concert ID, Singer ID)."
+    },
+    {
+        "name": "customers_and_products_contacts",
+        "description": "The customers_and_products_contacts database stores information about Addresses (line, city, zip/postcode, state/province, country), Products (type code, name, price), Customers (number, name, address, phone, email, payment method), Contacts (customer reference, gender, first name, last name, phone), Customer_Address_History (date from, date to), Customer_Orders (order date, status code), and Order_Items (quantity)."
+    },
+    {
+        "name": "driving_school",
+        "description": "The driving_school database stores information about Addresses (street address, city, zip/postcode, state/province, country), Staff (name, birth date, employment dates, address reference), Vehicles (vehicle details), Customers (name, birth date, status, enrollment date, outstanding amount, contact information, address reference), Customer_Payments (payment datetime, payment method, amount), and Lessons (customer, staff, vehicle, status, date, time, price)."
+    },
+    {
+        "name": "formula_1",
+        "description": "The formula_1 database contains circuits (name, location, country, coordinates, altitude), races (year, round, circuit, name, date, time), drivers (number, code, forename, surname, date of birth, nationality), status (status description), seasons (year), constructors (name, nationality), constructorStandings (race, constructor, points, position, wins), results (race, driver, constructor, car number, grid start, finishing position, points, laps, race time, fastest lap, fastest lap speed, status), driverStandings (race, driver, points, position, wins), constructorResults (race, constructor, points, status), qualifying (race, driver, constructor, car number, qualifying position, sector times q1‑q3), pitStops (race, driver, stop number, lap, time, duration), and lapTimes (race, driver, lap, position, lap time)."
+    },
+    {
+        "name": "hospital_1",
+        "description": "The hospital_1 database stores information about Physician (Name, Position), Department (Name, Head), Affiliated_With (Physician, Department, PrimaryAffiliation), Procedures (Code, Name, Cost), Trained_In (Physician, Treatment, CertificationDate, CertificationExpires), Patient (Name, Address, Phone, InsuranceID, PCP), Nurse (Name, Position, Registered), Appointment (Patient, PrepNurse, Physician, Start, End, ExaminationRoom), Medication (Name, Brand, Description), Prescribes (Physician, Patient, Medication, Date, Dose), Block (BlockFloor, BlockCode), Room (RoomType, Unavailable), On_Call (Nurse, OnCallStart, OnCallEnd), Stay (Patient, StayStart, StayEnd), Undergoes (Patient, Procedures, DateUndergoes, Physician, AssistingNurse)."
+    },
+    {
+        "name": "riding_club",
+        "description": "The riding_club database stores information about players (player name, sponsor name, gender, residence, occupation, votes, rank), clubs (club name, region, start year), coaches (coach name, gender, club affiliation, rank), player_coach (starting year), and match_result (rank, gold, big silver, small silver, bronze, points)."
+    },
+    {
+        "name": "soccer_1",
+        "description": "The soccer_1 database stores information about Player_Attributes (date, overall rating, potential, preferred foot, attacking and defensive work rates, detailed skill ratings such as crossing, finishing, heading accuracy, passing, dribbling, shooting, defending, and goalkeeping), Player (player name, birthday, height, weight), League (name, associated country), Country (name), Team (team long name, team short name), and Team_Attributes (date, tactical style ratings for build‑up play speed/dribbling/passing/positioning, chance creation passing/crossing/shooting/positioning, and defence pressure/aggression/team width/defender line)."
+    },
+    {
+        "name": "wine_1",
+        "description": "The wine_1 database stores grapes (grape variety, color), appellations (appellation name, county, state, area, AVA status), and wine (grape variety, winery, appellation, state, wine name, vintage year, price, score, case count, drinking window)."
+    },
+    {
+        "name": "world_1",
+        "description": "The world_1 database stores information about cities (Name, CountryCode, District, Population), countries (Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GovernmentForm, HeadOfState, Capital), and country languages (CountryCode, Language, IsOfficial, Percentage)."
+    }
+]
