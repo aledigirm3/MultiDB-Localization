@@ -138,6 +138,35 @@ def print_sql_queries(file_path):
         print(f"Error: The file '{file_path}' is not a valid JSON.")
 
 
+def print_ambiguous_distribution(dataset_path):
+    """Print sample distribution and distinct base/clone DB counts from dev.json.
+
+    Count only DBs with samples. Reject invalid suffixes; empty data reports zeros.
+    """
+    dataset_path = Path(dataset_path)
+    with open(dataset_path / 'dev.json', 'r', encoding='utf-8') as file:
+        samples = json.load(file)
+    if not isinstance(samples, list):
+        raise ValueError('dev.json must contain a list of samples.')
+
+    counts = Counter()
+    db_ids = set()
+    for index, sample in enumerate(samples, start=1):
+        db_id = sample.get('db_id') if isinstance(sample, dict) else None
+        if not isinstance(db_id, str) or not re.fullmatch(r'.+_[123]', db_id):
+            raise ValueError(f'Invalid ambiguous db_id at sample {index}: {db_id!r}')
+        counts[db_id[-1]] += 1
+        db_ids.add(db_id)
+
+    total = len(samples)
+    print(f'{dataset_path.name}: {total} samples')
+    print(f'Original DBs (in dev.json): {len({db_id.rsplit("_", 1)[0] for db_id in db_ids})}')
+    print(f'Split DBs (in dev.json): {len(db_ids)}')
+    for split in ('1', '2', '3'):
+        percentage = 100 * counts[split] / total if total else 0.0
+        print(f'_{split}: {counts[split]} samples ({percentage:.2f}%)')
+
+
 def remove_unused_databases(questions_path, tables_path):
     """Keep only schemas and SQLite folders for DBs referenced in questions_path.
 
