@@ -1,0 +1,562 @@
+[
+    {
+        "name": "perpetrator",
+        "description": "The perpetrator database contains perpetrator records (date, year, location, country, killed, injured, people id) and people profiles (name, height, weight, home town)."
+    },
+    {
+        "name": "college_2",
+        "description": "The college_2 database stores information about classroom (building, room number, capacity), department (department name, building, budget), course (course id, title, department name, credits), instructor (name, department name, salary), section (course id, section id, semester, year, building, room number, time slot id), teaches (course id, section id, semester, year), student (name, department name, total credits), takes classes (course id, section id, semester, year, grade), advisor (student id, instructor id), time slot (day, start hour, start minute, end hour, end minute), and prerequisite (course id, prerequisite id)."
+    },
+    {
+        "name": "flight_company",
+        "description": "The flight_company database stores information about airports (city, country, IATA code, ICAO code, name), operating companies (name, type, principal activities, incorporation details, equity shareholding), and flights (vehicle flight number, date, pilot, velocity, altitude, associated airport, operating company)."
+    },
+    {
+        "name": "icfp_1",
+        "description": "The icfp_1 database contains institutions (name, country), authors (first name, last name), papers (title), and authorship count (author, institution, paper, author count)."
+    },
+    {
+        "name": "body_builder",
+        "description": "The body_builder database stores personal details in the people table (name, height, weight, birth date, birth place) and performance results in the body builder table (snatch, clean jerk, total)."
+    },
+    {
+        "name": "storm_record",
+        "description": "The storm_record database stores information about storms (name, active dates, max speed, damage (millions USD), death count), regions (region code, region name), and affected region links (region id, storm id, number of cities affected)."
+    },
+    {
+        "name": "pilot_record",
+        "description": "The pilot_record database stores aircraft details (order year, manufacturer, model, fleet series, propulsion type), pilot information (pilot name, rank, age, nationality, position, join year, team), and pilot records linking pilots to aircraft on specific dates (pilot, aircraft, date)."
+    },
+    {
+        "name": "race_track",
+        "description": "The race_track database stores information about races (name, class, date, track) and tracks (name, location, seating capacity, year opened)."
+    },
+    {
+        "name": "department_store",
+        "description": "The department_store database stores addresses (address details), staff (gender, name), suppliers (name, phone), department store chain (chain name), customers (payment method code, customer code, name, address, phone, email), products (type code, name, price), supplier addresses (supplier, address, date from, date to), customer addresses (customer, address, date from, date to), customer orders (customer, status code, order date), department stores (chain, name, address, phone, email), departments (store, name), order items (order, product), product suppliers (product, supplier, date supplied from, date supplied to, total amount purchased, total value purchased), and staff department assignments (staff, department, date assigned from, job title code, date assigned to)."
+    },
+    {
+        "name": "music_4",
+        "description": "The music_4 database contains information about artists (artist name, age, famous title, famous release date), volumes (volume issue, issue date, weeks on top, song, artist reference), and music festivals (festival name, ceremony date, category, volume, result)."
+    },
+    {
+        "name": "insurance_fnol",
+        "description": "The insurance_fnol database stores information about customers (customer name), services (service name), available policies (policy type code, customer phone), customers policies (date opened, date closed), first notification of loss (customer, policy, service), claims (effective date), and settlements (effective date, settlement amount)."
+    },
+    {
+        "name": "cinema",
+        "description": "The cinema database stores information about films (rank in series, number in season, title, directed by, original air date), cinemas (name, opening year, capacity, location), and schedules (cinema id, film id, date, show times per day, price)."
+    },
+    {
+        "name": "decoration_competition",
+        "description": "The decoration_competition database stores data about colleges (name, leader name, location), members (name, country, college), and competition rounds (member, decoration theme, rank)."
+    },
+    {
+        "name": "phone_market",
+        "description": "The phone_market database stores information about phones (name, memory, carrier, price), markets (district, employee count, shop count, ranking), and phone‑market inventory (phone, market, stock quantity)."
+    },
+    {
+        "name": "store_product",
+        "description": "The store_product database stores information about products (product name, dimensions, dpi, color pages per minute, max page size, interface), stores (store name, type, area size, number of product categories, ranking), districts (district name, headquartered city, city population, city area), store‑product relationships (store id, product id), and store‑district relationships (store id, district id)."
+    },
+    {
+        "name": "assets_maintenance",
+        "description": "The assets_maintenance database stores information about third party companies (type, name, address), maintenance contracts (company, start date, end date), parts (name, chargeable amount), skills (code, description), staff (name, gender), assets (contract, supplier, make, model, acquired date, disposed date), asset parts (asset, part), maintenance engineers (first name, last name, company), engineer skills (engineer, skill), fault log (asset, staff, datetime, description), engineer visits (staff, engineer, fault, status, start datetime, end datetime), part faults (part, short name, description), fault log parts (part fault, status), and skills required to fix (part fault, skill)."
+    },
+    {
+        "name": "student_assessment",
+        "description": "The student_assessment database stores information about addresses (street lines, city, postal code, region, country), people (first, middle, last name, mobile number, email, login name), students (student details), courses (course name, description), people addresses (date from, date to), student course registrations (registration date), student course attendance (attendance date), candidates (candidate details), and candidate assessments (qualification, assessment date, outcome code)."
+    },
+    {
+        "name": "music_1",
+        "description": "The music_1 database contains genre (genre name, rating, most popular in), artist (artist name, country, gender, preferred genre), files (song id, artist name, file size, duration, formats), and song (song name, artist name, country, genre, rating, languages, release date, resolution)."
+    },
+    {
+        "name": "company_employee",
+        "description": "The company_employee database stores information about people (age, name, nationality, graduation college), companies (name, headquarters, industry, financial metrics: sales, profits, assets, market value), and employment records (company id, people id, year working)."
+    },
+    {
+        "name": "farm",
+        "description": "The farm database contains city (official name, status, area, population, census ranking), farm (year, livestock counts), farm competition (year, theme, host city, hosts), and competition record (rank, competition, farm)."
+    },
+    {
+        "name": "solvency_ii",
+        "description": "The solvency_ii database stores information about addresses (address details), locations (other details), products (product type code, product name, product price), parties (party details), assets (other details), channels (other details), finances (other details), events (event type code, address, channel, finance, location), products in events (event, product), parties in events (event, role code), agreements (event), and assets in events (event)."
+    },
+    {
+        "name": "city_record",
+        "description": "The city_record database contains city information (city name, hanzi, pinyin, regional population, gdp), match records (date, venue, score, result, competition), temperature data (monthly temperatures), and hosting city details (year, host city)."
+    },
+    {
+        "name": "swimming",
+        "description": "The swimming database stores information about swimmers (name, nationality, performance times for distances 100‑700 m), stadiums (name, capacity, city, country, opening year), events (name, year, stadium), and records (result, swimmer, event)."
+    },
+    {
+        "name": "election",
+        "description": "The election database contains county data (county name, population, zip code), party information (year, party, governor, lieutenant governor, comptroller, attorney general, US Senate), and election details (counties represented, district, delegate, party, first elected, committee)."
+    },
+    {
+        "name": "manufactory_1",
+        "description": "The manufactory_1 database stores information about manufacturers (code, name, headquarter, founder, revenue) and products (code, name, price, manufacturer)."
+    },
+    {
+        "name": "debate",
+        "description": "The debate database contains information about people (district, name, party, age), debates (date, venue, audience size), and debate participants (debate id, affirmative, negative, affirmative win)."
+    },
+    {
+        "name": "network_2",
+        "description": "The network_2 database stores information about persons (name, age, city, gender, job) and person friendships (name, friend, year)."
+    },
+    {
+        "name": "local_govt_in_alabama",
+        "description": "The local_govt_in_alabama database stores information about services (service type code), participants (participant type code, participant details), events (service id, event details), and participants in events (event id, participant id)."
+    },
+    {
+        "name": "climbing",
+        "description": "The climbing database stores data about mountains (name, height, prominence, range, country) and climbers (name, country, time, points, mountain id)."
+    },
+    {
+        "name": "e_learning",
+        "description": "The e_learning database stores information about course authors and tutors (role, login name, full name, gender, address), students (registration date, latest logon date, login name, full name), subjects (subject name), courses (author, subject, course name, description), student course enrolment (student, course, enrolment date, completion date), and student tests taken (test date, result)."
+    },
+    {
+        "name": "scientist_1",
+        "description": "The scientist_1 database stores information about scientists (name), projects (name, hours), and assigned to (scientist, project)."
+    },
+    {
+        "name": "ship_1",
+        "description": "The ship_1 database stores information about captains (name, age, class, rank, ship id) and ships (name, type, built year, class, flag)."
+    },
+    {
+        "name": "entertainment_awards",
+        "description": "The entertainment_awards database contains festival detail (festival name, chair name, location, year, audience size), artwork (type, name), and nomination (artwork, festival, result)."
+    },
+    {
+        "name": "allergy_1",
+        "description": "The allergy_1 database contains allergy type (allergy name, allergy type), has allergy (student, allergy), and student (first name, last name, age, sex, major, advisor, city code)."
+    },
+    {
+        "name": "products_for_hire",
+        "description": "The products_for_hire database stores information about discount coupons (date issued, coupon amount), customers (first name, last name, gender, good/bad status, date became customer, date last hire), bookings (status, damaged flag, start date, end date, hired count, payable amount, discount amount, outstanding amount, refund amount), products for hire (product type, daily hire cost, product name, product description), payments (payment type, full payment flag, payment date, amount due, amount paid, booking reference, customer reference), products booked (return status, late return flag, booked count, booked amount), and view product availability (status date, availability flag)."
+    },
+    {
+        "name": "candidate_poll",
+        "description": "The candidate_poll database stores information about candidates (people id, poll source, date, support/consider/oppose/unsure rates) and people (name, sex, date of birth, height, weight)."
+    },
+    {
+        "name": "chinook_1",
+        "description": "The chinook_1 database stores information about albums (title, artist), artists (name), customers (first name, last name, company, address, city, state, country, postal code, phone, fax, email, support representative), employees (first name, last name, title, reports to, birth date, hire date, address, city, state, country, postal code, phone, fax, email), genres (name), invoices (invoice date, billing address, billing city, billing state, billing country, billing postal code, total), invoice lines (track, unit price, quantity), media types (name), playlists (name), playlist tracks (playlist, track), and tracks (name, album, media type, genre, composer, duration, size, unit price)."
+    },
+    {
+        "name": "flight_4",
+        "description": "The flight_4 database contains routes (source airport, destination airport, airline, code share), airports (name, city, country, coordinates, elevation, IATA/ICAO codes), and airlines (name, IATA/ICAO codes, call sign, country, active status)."
+    },
+    {
+        "name": "dorm_1",
+        "description": "The dorm_1 database contains student (last name, first name, age, sex, major, advisor, city code), dorm (dorm name, student capacity, gender), dorm amenity (amenity name), has amenity (dorm, amenity), and lives in (student, dorm, room number)."
+    },
+    {
+        "name": "journal_committee",
+        "description": "The journal_committee database stores information about journal (date, theme, sales), editor (name, age), and journal committee (editor id, journal id, work type)."
+    },
+    {
+        "name": "flight_1",
+        "description": "The flight_1 database stores information about flight (flight number, origin, destination, distance, departure date, arrival date, price, airline), aircraft (airline, name, distance), employee (name, salary), and certificate (employee, airline)."
+    },
+    {
+        "name": "medicine_enzyme_interaction",
+        "description": "The medicine_enzyme_interaction database stores information about medicines (name, trade name, fda approved), enzymes (name, location, product, chromosome, omim, porphyria), and medicine enzyme interaction (medicine id, enzyme id, interaction type)."
+    },
+    {
+        "name": "local_govt_and_lot",
+        "description": "The local_govt_and_lot database stores information about customers (customer details), properties (property type code, property address), residents (date moved in, date moved out), organizations (parent organization relationship, organization details), services (service type code, service details), resident services (resident id, service id, date moved in, property id, date requested, date provided), things (type of thing code, service type code, service details), customer events (date moved in, property id, resident id, thing id), customer event notes (service type code, resident id, property id, date moved in), timed status of things (date and date, status of thing code), and timed locations of things (date and time, location code)."
+    },
+    {
+        "name": "station_weather",
+        "description": "The station_weather database stores information about trains (train number, name, origin, destination, time, interval), stations (network name, services, local authority), routes linking trains to stations (train, station), and weekly weather observations per station (station, day of week, high/low temperature, precipitation, wind speed)."
+    },
+    {
+        "name": "shop_membership",
+        "description": "The shop_membership database stores information about member (card number, name, hometown, level), branch (name, open year, address, city, membership amount), membership register branch (member, branch, register year), and purchase (member, branch, year, total pounds)."
+    },
+    {
+        "name": "driving_school",
+        "description": "The driving_school database stores information about addresses (street address, city, postal code, state/province, country), staff (first/middle/last name, nickname, birth date, employment start and end dates, address reference), vehicles (vehicle details), customers (first/last name, birth date, status, signup date, outstanding amount, email, phone), customer payments (payment datetime, payment method, amount), and lessons (lesson date, lesson time, status, price, linked customer, staff, and vehicle)."
+    },
+    {
+        "name": "music_2",
+        "description": "The music_2 database stores information about songs (title), albums (title, year, label, type), band members (first name, last name), instruments (instrument), performances (stage position), track lists (position), and vocals (type)."
+    },
+    {
+        "name": "sports_competition",
+        "description": "The sports_competition database stores information about clubs (name, region, start year), club rank (rank, gold, silver, bronze, total, club), player (name, position, appearances, tries, goals, points, club), competition (year, competition type, country), and competition result (competition, club 1, club 2, score)."
+    },
+    {
+        "name": "railway",
+        "description": "The railway database contains information about railways (name, builder, built year, wheel count, location), trains (train number, name, origin, destination, associated railway), managers (name, country, start year, age, level), and railway‑manager assignments (railway, manager, from year)."
+    },
+    {
+        "name": "inn_1",
+        "description": "The inn_1 database stores information about rooms (room name, bed count, bed type, max occupancy, base price, decor) and reservations (reservation code, room, check‑in date, check‑out date, rate, guest name, adult count, child count)."
+    },
+    {
+        "name": "browser_web",
+        "description": "The browser_web database stores information about web client accelerators (name, operating system, client, connection), browsers (name, market share), and accelerator‑compatible browser mappings (compatible since year)."
+    },
+    {
+        "name": "baseball_1",
+        "description": "The baseball_1 database stores information about all star (year, game number, team, league, games played, starting position), appearances (year, team, league, games overall, games started, games by position), manager award (award, year, league, tie, notes), player award (award, year, league, tie, notes), manager award vote (award, year, league, player, points won, points max, first‑place votes), player award vote (award, year, league, player, points won, points max, first‑place votes), batting (year, team, league, games, at‑bats, runs, hits, doubles, triples, home runs, RBIs, stolen bases, caught stealing, walks, strikeouts, intentional walks, hit by pitch, sacrifice hits, sacrifice flies, grounded into double play), batting postseason (year, round, team, league, same batting statistics), player college (college, year), fielding (year, team, league, position, games, games started, innings outs, putouts, assists, errors, double plays, passed balls, wild pitches, stolen bases, caught stealing, zone rating), fielding outfield (year, team, games left field, games center field, games right field), fielding postseason (year, round, team, league, position, games, games started, innings outs, putouts, assists, errors, double plays, triple plays, passed balls, stolen bases, caught stealing), hall of fame (year, voted by, ballots, votes needed, votes received, inducted, category), home game (year, league, team, park, span first, span last, games, openings, attendance), manager (year, team, league, in‑season flag, games managed, wins, losses, rank, player‑manager flag), manager half (year, team, league, half, games, wins, losses, rank), player (birth date, birth location, death date, death location, first name, last name, given name, weight, height, bats, throws, debut, final game, retro id, bbref id), park (name, alias, city, state, country), pitching (year, team, league, wins, losses, games, games started, complete games, shutouts, saves, innings outs, hits allowed, earned runs, home runs allowed, walks, strikeouts, batting average against, ERA, intentional walks, wild pitches, hit by pitch, balks, batters faced, groundouts/flyouts, runs, sacrifice hits, sacrifice flies, grounded into double play), pitching postseason (year, round, team, league, same pitching statistics), salary (year, team, league, player, salary), college (name, city, state, country), postseason (year, round, winning team, winning league, losing team, losing league, wins, losses, ties), team (year, league, team, franchise, division, rank, games, home games, wins, losses, division wins, wild‑card wins, league wins, World Series wins, runs, at‑bats, hits, doubles, triples, home runs, walks, strikeouts, stolen bases, caught stealing, hit by pitch, sacrifice flies, runs allowed, earned runs, ERA, complete games, shutouts, saves, innings outs, hits allowed, home runs allowed, batting average against, attendance, name, park), team franchise (franchise name, active status, NA association), and team half (year, league, team, half, division, division wins, rank, games, wins, losses)."
+    },
+    {
+        "name": "architecture",
+        "description": "The architecture database contains architects (name, nationality, gender), bridges (architect, name, location, length), and mills (architect, name, location, type, built year, notes)."
+    },
+    {
+        "name": "csu_1",
+        "description": "The csu_1 database contains information about campuses (campus, location, county, year), csu fees (campus, year, campus fee), degrees (campus, year, degrees awarded), discipline enrollments (campus, discipline, year, undergraduate enrollment, graduate enrollment), enrollments (campus, year, total enrollment, FTE), and faculty (campus, year, faculty count)."
+    },
+    {
+        "name": "tracking_orders",
+        "description": "The tracking_orders database stores information about customers (customer name, details), invoices (invoice number, invoice date, details), orders (order status, order date, details), products (product name, details), order items (order item status, details), shipments (shipment tracking number, shipment date, details, invoice number), and shipment items (shipment id, order item id)."
+    },
+    {
+        "name": "insurance_policies",
+        "description": "The insurance_policies database stores information about customers (customer details), customer policies (policy type, start date, end date), claims (date made, date settled, amount claimed, amount settled), settlements (date made, date settled, amount claimed, amount settled), and payments (payment method, payment date, payment amount)."
+    },
+    {
+        "name": "gas_company",
+        "description": "The gas_company database contains information about company (name, rank, headquarters, main industry, financial figures), gas station (open year, location, management), and station company (station, company, yearly rank)."
+    },
+    {
+        "name": "e_government",
+        "description": "The e_government database stores addresses (street address, city, postcode, state/province, country), services (type code, name, description), forms (type code, associated service, number, name, description), individuals (first name, middle name, last name, phone, email, address), organizations (formation date, name, UK VAT number), parties (payment method code, phone, email), organization contact individuals (contact start date, contact end date), party addresses (address type code, address start date, address end date), party forms (completion start date, status code, completion date), and party services (customer id, service datetime, booking made date)."
+    },
+    {
+        "name": "school_bus",
+        "description": "The school_bus database stores information about driver (name, party, home city, age), school (grade, school name, location, type), and school bus (school id, driver id, years working, full-time status)."
+    },
+    {
+        "name": "machine_repair",
+        "description": "The machine_repair database stores information about repairs (name, launch date, notes), machines (making year, class, team, machine series, value points, quality rank), technicians (name, team, starting year, age), and repair assignments (technician, repair, machine)."
+    },
+    {
+        "name": "theme_gallery",
+        "description": "The theme_gallery database stores information about artist (name, country, year joined, age), exhibition (year, theme, artist, ticket price), and exhibition record (date, attendance)."
+    },
+    {
+        "name": "film_rank",
+        "description": "The film_rank database stores information about film (title, studio, director, gross), market (country, number of cities), and film market estimation (low estimate, high estimate, type, year)."
+    },
+    {
+        "name": "party_people",
+        "description": "The party_people database contains region (region name, date, label, format, catalogue), party (minister, took office, left office, region, party name), member (member name, party, in office), and party events (event name, party, member in charge)."
+    },
+    {
+        "name": "hospital_1",
+        "description": "The hospital_1 database stores information about physician (name, position, ssn), department (name, head), affiliated with (physician, department, primary affiliation), procedures (code, name, cost), trained in (physician, treatment, certification date, certification expires), patient (ssn, name, address, phone, insurance id, pcp), nurse (name, position, registered, ssn), appointment (patient, prep nurse, physician, start, end, examination room), medication (code, name, brand, description), prescribes (physician, patient, medication, date, appointment, dose), block (floor, code), room (room number, type, floor, code, unavailable), on call (nurse, floor, code, oncall start, oncall end), stay (patient, room, stay start, stay end), undergoes (patient, procedures, stay, date undergoes, physician, assisting nurse)."
+    },
+    {
+        "name": "customers_campaigns_ecommerce",
+        "description": "The customers_campaigns_ecommerce database stores premises (premise type, premise details), products (product category, product name), customers (customer name, contact info, payment method, login), mailshot campaigns (product category, mailshot name, start date, end date), customer addresses (address type, date address from, date address to), customer orders (order status, shipping method, order placed datetime, order delivered datetime, shipping charges), mailshot customers (outcome code, mailshot customer date), and order items (item status, product, item delivered datetime, item order quantity)."
+    },
+    {
+        "name": "gymnast",
+        "description": "The gymnast database stores information about gymnasts (floor exercise points, pommel horse points, rings points, vault points, parallel bars points, horizontal bar points, total points) and people (name, age, height, hometown)."
+    },
+    {
+        "name": "mountain_photos",
+        "description": "The mountain_photos database stores information about mountains (name, height, prominence, range, country), camera lenses (brand, name, focal length, max aperture), and photos (camera lens, mountain, color, name)."
+    },
+    {
+        "name": "cre_Doc_Control_Systems",
+        "description": "The cre_Doc_Control_Systems database stores reference document types (type code, description), roles (role code, description), addresses (address details), reference document status (status code, description), reference shipping agents (agent code, name, description), documents (status code, type code, shipping agent code, receipt date, receipt number, details), employees (role code, name, details), document drafts (draft number, details), draft copies (draft number, copy number), circulation history (draft number, copy number, employee id), and documents mailed (address id, mailing date)."
+    },
+    {
+        "name": "tracking_share_transactions",
+        "description": "The tracking_share_transactions database stores information about investors (investor details), lots (lot details, investor id), reference transaction types (transaction type code, description), transactions (transaction type code, date, amount, share count, other details), sales (sales details), purchases (purchase details), and transaction‑lot mappings (transaction id, lot id)."
+    },
+    {
+        "name": "apartment_rentals",
+        "description": "The apartment_rentals database stores information about apartment buildings (short/full name, description, address, manager, phone), apartments (building, type code, number, bathroom count, bedroom count, room count), apartment facilities (facility code), guests (gender code, first name, last name, date of birth), apartment bookings (apartment, guest, status code, start date, end date), and view unit status (apartment, booking, status date, availability)."
+    },
+    {
+        "name": "cre_Docs_and_Epenses",
+        "description": "The cre_Docs_and_Epenses database stores reference document types (type code, name, description), reference budget codes (budget type code, description), projects (details), documents (type code, project reference, date, name, description), statements (details), documents with expenses (budget type code, details), and accounts (statement reference, details)."
+    },
+    {
+        "name": "ship_mission",
+        "description": "The ship_mission database stores information about missions (ship reference, mission code, launch year, location, speed in knots, fate) and ships (name, type, nationality, tonnage)."
+    },
+    {
+        "name": "company_office",
+        "description": "The company_office database stores information about buildings (name, city, height, stories, status), companies (name, headquarters, industry, financials: sales, profits, assets, market value), and office locations (building, company, move in year)."
+    },
+    {
+        "name": "tracking_software_problems",
+        "description": "The tracking_software_problems database stores information about problem category codes (category code, description), problem status codes (status code, description), products (product name, details), staff (first name, last name), problems (product, closure authorizer, reporter, reported date, closed date, description), and problem log (assigned staff, problem, category, status, entry date, entry description, entry fix)."
+    },
+    {
+        "name": "products_gen_characteristics",
+        "description": "The products_gen_characteristics database stores reference characteristic types (characteristic type code, description), reference colors (color code, description), reference product categories (product category code, description, unit of measure), characteristics (characteristic type code, data type, name, details), products (color code, product category code, name, typical buying price, typical selling price, description), and product characteristics (product id, characteristic id, product characteristic value)."
+    },
+    {
+        "name": "coffee_shop",
+        "description": "The coffee_shop database stores information about shops (address, staff count, rating score, opening year), members (name, membership card, age, purchase time, membership level, address), happy hour events (shop, month, staff in charge count), and happy hour member participation (happy hour, member, total amount)."
+    },
+    {
+        "name": "riding_club",
+        "description": "The riding_club database stores information about players (player name, sponsor name, gender, residence, occupation, votes, rank), clubs (club name, region, start year), coaches (coach name, gender, club affiliation, rank), player‑coach relationships (starting year), and match results (rank, club, gold, big silver, small silver, bronze, points)."
+    },
+    {
+        "name": "customers_card_transactions",
+        "description": "The customers_card_transactions database contains accounts (account name, customer id), customers (first name, last name, address, phone, email), customers cards (card type code, card number, valid from, valid to, customer id), and financial transactions (transaction type, transaction date, transaction amount, transaction comment, account id, card id)."
+    },
+    {
+        "name": "county_public_safety",
+        "description": "The county_public_safety database includes county public safety (name, population, police force size, residents per officer, case burden, crime rate, location) and city (county reference, name, demographic composition: white, black, amerindian, asian, multiracial, hispanic)."
+    },
+    {
+        "name": "performance_attendance",
+        "description": "The performance_attendance database stores information about members (name, nationality, role), performances (date, host, location, attendance), and member attendance (num of pieces performed by each member at each performance)."
+    },
+    {
+        "name": "club_1",
+        "description": "The club_1 database stores information about students (first name, last name, age, sex, major, advisor, city code), clubs (club name, club description, club location), and member of club (position)."
+    },
+    {
+        "name": "culture_company",
+        "description": "The culture_company database stores information about book club (year, author/editor, book title, publisher, category, result), movie (title, year, director, budget million, gross worldwide), and culture company (company name, type, incorporated in, group equity shareholding, book club id, movie id)."
+    },
+    {
+        "name": "musical",
+        "description": "The musical database stores information about musical productions (name, year, award, category, nominee, result) and actors (name, character, duration, age, musical id)."
+    },
+    {
+        "name": "device",
+        "description": "The device database stores information about devices (device, carrier, package version, applications, software platform), shops (shop name, location, open date/year), and stock levels (shop, device, quantity)."
+    },
+    {
+        "name": "tracking_grants_for_research",
+        "description": "The tracking_grants_for_research database contains document types (type code, description), documents (type code, grant reference, sent date, response date), grants (amount, start date, end date), organisation types (type, description), organisations (type, details), projects (details), project outcomes (outcome code, details), research outcomes (description), project staff (role code, assignment dates), research staff (employer organisation, details), staff roles (role description), and tasks (details)."
+    },
+    {
+        "name": "movie_1",
+        "description": "The movie_1 database stores information about movies (title, year, director), reviewers (name), and ratings (reviewer id, movie id, rating stars, rating date)."
+    },
+    {
+        "name": "program_share",
+        "description": "The program_share database stores information about programs (name, origin, launch date, owner), channels (name, owner, share percent, rating percent), broadcast schedules linking channels and programs (channel, program, time of day), and broadcast share records linking channels and programs with daily audience share (channel, program, date, share percent)."
+    },
+    {
+        "name": "aircraft",
+        "description": "The aircraft database contains information about pilots (name, age), aircraft (aircraft, description, max gross weight, total disk area, max disk loading), matches (round, location, country, date, fastest qualifying, winning pilot, winning aircraft), airports (airport name, total passengers, % change 2007, international passengers, domestic passengers, transit passengers, aircraft movements, freight metric tonnes), and airport‑aircraft relationships (airport id, aircraft id)."
+    },
+    {
+        "name": "restaurant_1",
+        "description": "The restaurant_1 database stores student (first name, last name, age, sex, major, advisor, city), restaurant (restaurant name, address, rating), restaurant type (type name, description), type of restaurant (restaurant, restaurant type), and visits restaurant (student, restaurant, time, spent)."
+    },
+    {
+        "name": "customers_and_invoices",
+        "description": "The customers_and_invoices database stores customer profiles (name, gender, email address, login name, phone number, city, state/province, country), orders (customer id, order date, order details), invoices (order id, invoice date), accounts (customer id, account opened date, account name), product categories (type code, description, VAT rating), products (parent product id, type code, unit price, product name, color, size), financial transactions (account id, invoice number, transaction type, transaction date, amount, comment), order items (order id, product id, quantity), and invoice line items (order item id, invoice number, product id, product title, quantity, price, cost, VAT payable, total cost)."
+    },
+    {
+        "name": "insurance_and_eClaims",
+        "description": "The insurance_and_eClaims database stores information about customers (customer details), staff (staff details), policies (customer reference, policy type, start date, end date), claim headers (status code, type code, policy reference, claim date, settlement date, claimed amount, paid amount), claims documents (document type, creator staff, creation date), claims processing stages (status name, description), and claims processing (outcome code, stage reference, responsible staff)."
+    },
+    {
+        "name": "college_1",
+        "description": "The college_1 database stores information about classes (class code, course code, section, time, room, professor employee number), courses (course code, department code, description, credit), departments (department code, department name, school code, address), employees (employee number, name, job code, hire date, birth date), professors (employee number, department code, office, high degree), students (student number, name, birth date, class hours taken, class, GPA, transfer status, department code, phone, advisor professor number), and enrollments (class code, student number, grade)."
+    },
+    {
+        "name": "local_govt_mdm",
+        "description": "The local_govt_mdm database contains a customer master index (cmi details), cmi cross references (source system code), and charge tables—council tax (cmi cross reference), business rates (cmi cross reference), benefits overpayments (cmi cross reference), parking fines (cmi cross reference), rent arrears (cmi cross reference), and electoral register (cmi cross reference)."
+    },
+    {
+        "name": "book_2",
+        "description": "The book_2 database stores information about publications (publisher, publication date, price, book id) and books (title, issues, writer)."
+    },
+    {
+        "name": "hr_1",
+        "description": "The hr_1 database stores information about regions (region name), countries (country name, region), departments (department name, manager, location), jobs (job title, salary range), employees (first name, last name, email, phone number, hire date, job, salary, commission, manager, department), job history (employee, start date, end date, job, department), and locations (street address, postal code, city, state province, country)."
+    },
+    {
+        "name": "soccer_1",
+        "description": "The soccer_1 database stores player attributes (overall rating, potential, preferred foot, attacking/defensive work rates, skill scores such as crossing, finishing, dribbling, shooting, goalkeeper abilities), player (player name, birthday, height, weight), league (name, country reference), country (name), team (team long name, team short name), team attributes (buildup play speed, dribbling, passing, positioning; chance creation passing, crossing, shooting, positioning; defence pressure, aggression, team width, defender line), and sqlite sequence (internal tracking)."
+    },
+    {
+        "name": "sakila_1",
+        "description": "The sakila_1 database stores data about actors (first name, last name), addresses (address lines, district, city, postal code, phone), categories (name), cities (city name, country), countries (country name), customers (first name, last name, email, address, active status, create date), films (title, description, release year, language, original language, rental duration, rental rate, length, replacement cost, rating, special features), film actor relationships (actor, film), film category relationships (film, category), film texts (title, description), inventory items (film, store), languages (language name), payments (customer, staff, rental, amount, payment date), rentals (rental date, inventory, customer, return date, staff), staff members (first name, last name, address, picture, email, store, active status, username), and stores (manager staff, address)."
+    },
+    {
+        "name": "college_3",
+        "description": "The college_3 database stores information about students (last name, first name, age, sex, major, advisor, city code), faculty (last name, first name, rank, sex, phone, room, building), departments (division, department name, room, building, department phone), member of (faculty, department, appointment type), courses (course name, credits, instructor, days, hours, department), minor in (student, department), enrolled in (student, course, grade), and grade conversion (letter grade, grade point)."
+    },
+    {
+        "name": "roller_coaster",
+        "description": "The roller_coaster database contains information about roller coasters (name, park, length, height, speed, opened, status, country) and countries (name, population, area, languages)."
+    },
+    {
+        "name": "customer_deliveries",
+        "description": "The customer_deliveries database stores information about products (name, price, description), addresses (details, city, zip/postcode, region, country), customers (name, phone, email, payment method, signup date), regular orders (distributor), regular order products (regular order id, product id), actual orders (status, order date), actual order products (actual order id, product id), customer addresses (address type, start date, end date), delivery routes (name, details), delivery route locations (code, name), trucks (licence number, details), employees (name, phone), and order deliveries (location code, actual order id, delivery status, delivery date, driver, truck)."
+    },
+    {
+        "name": "game_injury",
+        "description": "The game_injury database stores information about stadium (name, home games, average attendance, total attendance, capacity percentage), game (stadium id, season, date, home team, away team, score, competition), and injury accident (player, injury, number of matches, source)."
+    },
+    {
+        "name": "school_finance",
+        "description": "The school_finance database stores information about schools (school name, location, mascot, enrollment, IHSAA class, IHSAA football class, county), budgets (year, budgeted amount, invested amount, budget percentages), and endowments (donator name, amount)."
+    },
+    {
+        "name": "match_season",
+        "description": "The match_season database contains country (country name, capital, official native language), team (team name), match season (season, player, position, country, team, draft pick number, draft class, college), and player (player name, years played, win‑loss records, team)."
+    },
+    {
+        "name": "small_bank_1",
+        "description": "The small_bank_1 database stores customer account information across three tables: accounts (customer id, name), savings (customer id, balance), and checking (customer id, balance)."
+    },
+    {
+        "name": "student_1",
+        "description": "The student_1 database stores information about list (first name, last name, grade, class room) and teachers (first name, last name, class room)."
+    },
+    {
+        "name": "manufacturer",
+        "description": "The manufacturer database stores information about manufacturers (open year, name, number of factories, number of shops), furniture (name, number of components, market rate), and furniture manufacte (manufacturer id, furniture id, price in dollar)."
+    },
+    {
+        "name": "store_1",
+        "description": "The store_1 database contains sqlite sequence (), artists (name), albums (title, artist), employees (first name, last name, title, reports to, birth date, hire date, address, city, state, country, postal code, phone, fax, email), customers (first name, last name, company, address, city, state, country, postal code, phone, fax, email, support rep), genres (name), media types (name), tracks (name, album, media type, genre, composer, duration, size, unit price), invoices (customer, invoice date, billing address, billing city, billing state, billing country, billing postal code, total), invoice lines (invoice, track, unit price, quantity), playlists (name), and playlist tracks (playlist, track)."
+    },
+    {
+        "name": "train_station",
+        "description": "The train_station database stores information about stations (name, location, main services, number of platforms, passenger statistics), trains (name, time, service), and train‑station assignments (train, station)."
+    },
+    {
+        "name": "document_management",
+        "description": "The document_management database contains roles (role code, description), users (role code, name, login), document structures (structure code, parent structure code, description), functional areas (area code, parent area code, description), images (alt text, name, URL), documents (document code, structure code, type code, access count, name), document functional areas (document code, functional area code), document sections (document code, sequence, section code, title), and document sections images (section id, image id)."
+    },
+    {
+        "name": "formula_1",
+        "description": "The formula_1 database contains circuits (name, location, country, latitude, longitude, altitude), races (year, round, circuit, name, date, time), drivers (number, code, forename, surname, date of birth, nationality), status (status description), seasons (year), constructors (name, nationality), constructor standings (race, constructor, points, position, wins), results (race, driver, constructor, car number, grid position, finishing position, points, laps, race time, fastest lap, fastest lap time, fastest lap speed, status), driver standings (race, driver, points, position, wins), constructor results (race, constructor, points, status), qualifying (race, driver, constructor, car number, qualifying position, Q1 time, Q2 time, Q3 time), pit stops (race, driver, stop number, lap, time, duration), and lap times (race, driver, lap, position, lap time)."
+    },
+    {
+        "name": "game_1",
+        "description": "The game_1 database contains student (name, age, sex, major, advisor, city code), video games (game name, game type), plays games (student, game, hours played), and sports info (student, sport name, weekly hours, games played, scholarship status)."
+    },
+    {
+        "name": "loan_1",
+        "description": "The loan_1 database stores information about banks (bank name, customer count, city, state), customers (customer name, account type, account balance, number of loans, credit score, branch, state), and loans (loan type, amount, customer, branch)."
+    },
+    {
+        "name": "bike_1",
+        "description": "The bike_1 database contains station information (name, latitude, longitude, dock count, city, installation date), status updates (station id, bikes available, docks available, time), trip records (duration, start date, start station name, start station id, end date, end station name, end station id, bike id, subscription type, zip code), and weather observations (date, max/mean/min temperature, max/mean/min dew point, max/mean/min humidity, max/mean/min sea level pressure, max/mean/min visibility, max/mean/gust wind speed, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "entrepreneur",
+        "description": "The entrepreneur database stores information about entrepreneurs (person, company, money requested, investor) and people (name, height, weight, date of birth)."
+    },
+    {
+        "name": "cre_Drama_Workshop_Groups",
+        "description": "The cre_Drama_Workshop_Groups database stores reference payment methods (payment method code, description), reference service types (service type code, parent service type code, description), addresses (line 1, city/town, state/county), products (product name, price, description), marketing regions (region code, name, description), clients (customer name, email address, phone), drama workshop groups (store name, phone, email address, currency code, marketing region code), performers (customer name, phone, email address), customers (customer name, phone, email address), stores (store name, phone, email address, marketing region code), bookings (customer id, workshop group id, status code, store id, order date, planned delivery date, actual delivery date), performers in bookings (performer id), customer orders (customer id, store id, order date, planned delivery date, actual delivery date), order items (product id, order quantity), invoices (payment method code, product id, order quantity), services (service type code, workshop group id, product name, product description, product price), bookings services (product id), and invoice items (product id, order quantity)."
+    },
+    {
+        "name": "behavior_monitoring",
+        "description": "The behavior_monitoring database contains reference address types (address type code, description), reference detention type (detention type code, description), reference incident type (incident type code, description), addresses (street lines, city, postal code, region, country, other details), students (first name, middle name, last name, mobile number, email, first rental date, left university date, other details), teachers (first name, middle name, last name, gender, mobile number, email, other details), assessment notes (student, teacher, date, text, other details), behavior incident (incident type code, student, start date, end date, summary, recommendations, other details), detention (detention type code, teacher, start datetime, end datetime, summary, other details), student addresses (student, address, from date, to date, monthly rental, other details), and students in detention (student, detention, incident)."
+    },
+    {
+        "name": "cre_Doc_Tracking_DB",
+        "description": "The cre_Doc_Tracking_DB database tracks documents and their lifecycle, including reference document types (type name, description), reference calendar (date, day number), reference locations (location name, description), roles (role name, description), all documents (stored date, document type, name, description), employees (role, name, gender, birth date), document locations (location, entry date, exit date), and documents to be destroyed (authorizing employee, destroying employee, planned destruction date, actual destruction date)."
+    },
+    {
+        "name": "university_basketball",
+        "description": "The university_basketball database stores data about basketball match (team name, ACC record, overall record) and university (school, location, founded year, affiliation, enrollment, nickname, primary conference)."
+    },
+    {
+        "name": "soccer_2",
+        "description": "The soccer_2 database stores college data (college name, state, enrollment), player data (player name, yes card, training hours), and tryout outcomes (player id, college name, player position, decision)."
+    },
+    {
+        "name": "activity_1",
+        "description": "The activity_1 database stores information about activity (activity name), participates in (student, activity), faculty participates in (faculty, activity), student (first name, last name, age, sex, major, advisor, city code), and faculty (first name, last name, rank, sex, phone, room, building)."
+    },
+    {
+        "name": "cre_Theme_park",
+        "description": "The cre_Theme_park database contains reference tables for hotel star ratings (description) and attraction types (description); locations (name, address); visitors (details); features (details); hotels (star rating, pets allowed, price range, details); tourist attractions (type, location, access info, name, description, opening hours); street markets (details); shops (details); museums (details); royal family (details); theme parks (details); visits (attraction, tourist, date, details); photos (attraction, name, description, filename); staff (attraction, name); and tourist attraction features (linking attractions to features)."
+    },
+    {
+        "name": "twitter_1",
+        "description": "The twitter_1 database contains follows (user id, follower id), tweets (user id, text, create date), and user profiles (uid, name, email, followers)."
+    },
+    {
+        "name": "election_representative",
+        "description": "The election_representative database stores election results (representative id, date, votes, vote percent, seats, place) and representative details (name, state, party, lifespan)."
+    },
+    {
+        "name": "voter_2",
+        "description": "The voter_2 database stores student information (name, age, sex, major, advisor, city code) and voting records (student id, registration date, election cycle, votes for president, vice president, secretary, treasurer, class president, class senator)."
+    },
+    {
+        "name": "wedding",
+        "description": "The wedding database stores information about people (name, country, gender, age), churches (name, organizer, open date, continuation), and weddings (church, male, female, year)."
+    },
+    {
+        "name": "news_report",
+        "description": "The news_report database stores information about events (date, venue, name, attendance), journalists (name, nationality, age, years working), and news reports (journalist, event, work type)."
+    },
+    {
+        "name": "wine_1",
+        "description": "The wine_1 database contains information about grapes (grape, color), appellations (appelation, county, state, area, isava), and wines (grape, winery, appelation, state, name, year, price, score, cases, drink)."
+    },
+    {
+        "name": "customers_and_addresses",
+        "description": "The customers_and_addresses database stores information about addresses (address content, city, zip/postcode, state/province, country, extra details), products (product details), customers (customer name, payment method, start date, extra details), customer addresses (address type, effective dates), customer contact channels (channel code, active period, contact number), customer orders (order status, order date, order details), and order items (order quantity)."
+    },
+    {
+        "name": "protein_institute",
+        "description": "The protein_institute database stores data about buildings (name, street address, years as tallest, height, floors), institutions (institution name, location, founded year, type, enrollment, team, primary conference, building), and proteins (common name, protein name, divergence from human lineage, accession number, sequence length, sequence identity to human protein, institution)."
+    },
+    {
+        "name": "school_player",
+        "description": "The school_player database stores data about schools (name, location, enrollment, founded year, denomination, gender type, boarding type, competition entry year, colors), school details (nickname, colors, league, class, division), school performance (school year, class A results, class AA results), and players (player name, team, age, position, school affiliation)."
+    },
+    {
+        "name": "phone_1",
+        "description": "The phone_1 database stores information about chip models (model name, launch year, RAM, ROM, slots, Wi‑Fi, Bluetooth), screen modes (graphics mode, character cells, pixel resolution, hardware colours, memory usage, map, type), and phones (company name, hardware model name, accreditation type, accreditation level, release date, chip model, screen mode)."
+    },
+    {
+        "name": "wrestler",
+        "description": "The wrestler database stores information about wrestlers (name, reign, days held, location, event) and eliminations (wrestler id, team, eliminated by, elimination move, time)."
+    },
+    {
+        "name": "customer_complaints",
+        "description": "The customer_complaints database contains staff (gender, first name, last name, email address, phone number), customers (customer type code, address line 1, address line 2, town/city, state, email address, phone number), products (product category code, first available date, discontinued date, product name, product description, product price), and complaints (product, customer, complaint outcome code, complaint status code, complaint type code, raised date, closed date, staff)."
+    },
+    {
+        "name": "department_management",
+        "description": "The department_management database stores information about departments (name, creation date, ranking, budget, number of employees), heads (name, born state, age), and management assignments (department, head, temporary acting)."
+    },
+    {
+        "name": "customers_and_products_contacts",
+        "description": "The customers_and_products_contacts database stores information about addresses (street address, city, postal code, state/province, country), products (type, name, price), customers (payment method, customer number, name, address, phone, email), contacts (gender, first name, last name, phone), customer address history (address start date, address end date), customer orders (order date, status), and order items (quantity)."
+    },
+    {
+        "name": "company_1",
+        "description": "The company_1 database contains information about works on (employee, project, hours), employee (name, birth date, address, sex, salary, supervisor, department), department (department name, manager, manager start date), project (project name, number, location, department), dependent (dependent name, sex, birth date, relationship, employee), and department locations (department location)."
+    },
+    {
+        "name": "workshop_paper",
+        "description": "The workshop_paper database stores information about workshops (date, venue, name), submissions (scores, author, college), and acceptance decisions (result, workshop id) linking submissions to workshops."
+    },
+    {
+        "name": "epinions_1",
+        "description": "The epinions_1 database stores information about items (title), reviews (rating, rank), user accounts (name), and trust relationships (source user id, target user id, trust)."
+    },
+    {
+        "name": "party_host",
+        "description": "The party_host database stores information about parties (party theme, location, first year, last year, number of hosts), hosts (name, nationality, age), and party host assignments (party id, host id, is main in charge)."
+    },
+    {
+        "name": "product_catalog",
+        "description": "The product_catalog database stores attribute definitions (attribute name, data type), catalogs (catalog name, publisher, publication date, revision date), catalog structure (level number, level name), catalog contents (entry name, stock number, price, capacity, dimensions), and catalog contents additional attributes (attribute value)."
+    }
+]

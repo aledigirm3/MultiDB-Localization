@@ -60,3 +60,7 @@ if __name__ == '__main__':
     filename = 'ARCHER_DB_extractor.json'
     print(f"{CYAN}ARCHER evaluation...{RESET}")
     DBs_extraction_eval(filename)
+
+    filename = 'SPIDERtrain_DB_extractor.json'
+    print(f"{CYAN}SPIDERtrain evaluation...{RESET}")
+    DBs_extraction_eval(filename)

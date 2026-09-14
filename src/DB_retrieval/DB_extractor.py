@@ -72,6 +72,10 @@ def get_dataset_paths(dataset: str):
             dataset_dir = (src_dir / paths.DATASETS.ARCHER.value).resolve()
             description_filename = "ARCHER_DB_descriptions.json"
             result_filename = "ARCHER_DB_extractor.json"
+    elif dataset == "SPIDERtrain":
+            dataset_dir = (src_dir / paths.DATASETS.SPIDERtrain.value).resolve()
+            description_filename = "SPIDERtrain_DB_descriptions.json"
+            result_filename = "SPIDERtrain_DB_extractor.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -415,10 +419,15 @@ if __name__ == "__main__":
     # extract_DB(embedder, "BEAVER")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing ARCHER...{RESET}")
-    extract_DB(embedder, "ARCHER")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing ARCHER...{RESET}")
+    # extract_DB(embedder, "ARCHER")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
     # Time: 6.17s
+
+    print(f"\n{CYAN}Processing SPIDERtrain...{RESET}")
+    extract_DB(embedder, "SPIDERtrain")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+    #Time: 39.83s
 
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")

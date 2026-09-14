@@ -138,12 +138,14 @@ def print_sql_queries(file_path):
         print(f"Error: The file '{file_path}' is not a valid JSON.")
 
 
-def remove_unused_databases_spider1():
-	
-    question_path = paths.DATASETS.SPIDERdev1.value + 'dev.json'
-    tables_path = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+def remove_unused_databases(questions_path, tables_path):
+    """Keep only schemas and SQLite folders for DBs referenced in questions_path.
 
-    with open(question_path, 'r', encoding='utf-8') as f:
+    Overwrite tables_path and remove unused dev_databases/<db_id> folders beside
+    it, if they contain <db_id>.sqlite. Print the number of retained schemas.
+    """
+
+    with open(questions_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     db_ids = {sample['db_id'] for sample in data}  # set comprehension
@@ -153,10 +155,27 @@ def remove_unused_databases_spider1():
 
     filtered_data = [sample for sample in data if sample['db_id'] in db_ids]
 
+    databases_path = Path(tables_path).resolve().parent / 'dev_databases'
+    unused_directories = []
+    if databases_path.is_dir():
+        if databases_path.resolve() != databases_path:
+            raise ValueError(f"Refusing to clean a linked directory: {databases_path}")
+        unused_directories = [
+            directory for directory in sorted(databases_path.iterdir(), key=lambda p: p.name)
+            if directory.is_dir() and directory.name not in db_ids
+            and (directory / f'{directory.name}.sqlite').is_file()
+        ]
+        for directory in unused_directories:
+            if directory.resolve() != directory:
+                raise ValueError(f"Refusing to delete a linked directory: {directory}")
+
     with open(tables_path, 'w', encoding='utf-8') as f:
         json.dump(filtered_data, f, indent=4, ensure_ascii=False)
 
-    print(len(filtered_data))
+    for directory in unused_directories:
+        shutil.rmtree(directory)
+
+    print(f"Number of DBs: {len(filtered_data)}")
 
 
 def create_table_name_mapping(filename: str) -> Dict[str, Dict[str, str]]:
@@ -2006,7 +2025,9 @@ if __name__ == '__main__':
     #print_sql_queries(file_path)
     #print(get_sql_table_names("SELECT product_name, order_date FROM marketing.orders WHERE status = 'shipped';"))
 
-    #remove_unused_databases_spider1()
+    # questions_path = paths.DATASETS.SPIDERtrain.value + 'dev.json'
+    # tables_path = paths.DATASETS.SPIDERtrain.value + 'dev_tables.json'
+    # remove_unused_databases(questions_path, tables_path)
 
     #filename = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
     #dict = create_table_name_mapping(filename)
@@ -2040,6 +2061,10 @@ if __name__ == '__main__':
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
     # dataset_path = paths.DATASETS.ARCHER.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # dataset_path = paths.DATASETS.SPIDERtrain.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 # ====================================================================================== #
