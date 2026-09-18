@@ -42,40 +42,44 @@ def get_dataset_paths(dataset: str):
 
     if dataset == "BIRDdev":
         dataset_dir = (src_dir / paths.DATASETS.BIRDdev.value).resolve()
-        description_filename = "BIRDdev_DB_descriptions.json"
+        description_filename = "DB_descriptions/BIRDdev_DB_descriptions.json"
         result_filename = "BIRDdev_DB_extractor.json"
     elif dataset == "BIRDdev-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.BIRDdev_ambiguous.value).resolve()
-        description_filename = "BIRDdev_DB_descriptions_ambiguous.json"
+        description_filename = "DB_descriptions/BIRDdev_DB_descriptions_ambiguous.json"
         result_filename = "BIRDdev_DB_extractor_ambiguous.json"
     elif dataset == "SPIDERdev1":
         dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1.value).resolve()
-        description_filename = "SPIDERdev1_DB_descriptions.json"
+        description_filename = "DB_descriptions/SPIDERdev1_DB_descriptions.json"
         result_filename = "SPIDERdev1_DB_extractor.json"
     elif dataset == "SPIDERdev1-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.SPIDERdev1_ambiguous.value).resolve()
-        description_filename = "SPIDERdev1_DB_descriptions_ambiguous.json"
+        description_filename = "DB_descriptions/SPIDERdev1_DB_descriptions_ambiguous.json"
         result_filename = "SPIDERdev1_DB_extractor_ambiguous.json"
     elif dataset == "BIRDtrain":
         dataset_dir = (src_dir / paths.DATASETS.BIRDtrain.value).resolve()
-        description_filename = "BIRDtrain_DB_descriptions.json"
+        description_filename = "DB_descriptions/BIRDtrain_DB_descriptions.json"
         result_filename = "BIRDtrain_DB_extractor.json"
     elif dataset == "BIRDtrain-ambiguous":
         dataset_dir = (src_dir / paths.DATASETS.BIRDtrain_ambiguous.value).resolve()
-        description_filename = "BIRDtrain_DB_descriptions_ambiguous.json"
+        description_filename = "DB_descriptions/BIRDtrain_DB_descriptions_ambiguous.json"
         result_filename = "BIRDtrain_DB_extractor_ambiguous.json"
     elif dataset == "BEAVER":
             dataset_dir = (src_dir / paths.DATASETS.BEAVER.value).resolve()
-            description_filename = "BEAVER_DB_descriptions.json"
+            description_filename = "DB_descriptions/BEAVER_DB_descriptions.json"
             result_filename = "BEAVER_DB_extractor.json"
     elif dataset == "ARCHER":
             dataset_dir = (src_dir / paths.DATASETS.ARCHER.value).resolve()
-            description_filename = "ARCHER_DB_descriptions.json"
+            description_filename = "DB_descriptions/ARCHER_DB_descriptions.json"
             result_filename = "ARCHER_DB_extractor.json"
     elif dataset == "SPIDERtrain":
             dataset_dir = (src_dir / paths.DATASETS.SPIDERtrain.value).resolve()
-            description_filename = "SPIDERtrain_DB_descriptions.json"
+            description_filename = "DB_descriptions/SPIDERtrain_DB_descriptions.json"
             result_filename = "SPIDERtrain_DB_extractor.json"
+    elif dataset == "SPIDERtrain-ambiguous":
+            dataset_dir = (src_dir / paths.DATASETS.SPIDERtrain_ambiguous.value).resolve()
+            description_filename = "DB_descriptions/SPIDERtrain_DB_descriptions_ambiguous.json"
+            result_filename = "SPIDERtrain_DB_extractor_ambiguous.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -424,10 +428,15 @@ if __name__ == "__main__":
     # print(f"{GREEN}Extraction completed!{RESET}\n")
     # Time: 6.17s
 
-    print(f"\n{CYAN}Processing SPIDERtrain...{RESET}")
-    extract_DB(embedder, "SPIDERtrain")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERtrain...{RESET}")
+    # extract_DB(embedder, "SPIDERtrain")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 39.83s
+
+    print(f"\n{CYAN}Processing SPIDERtrain-ambiguous...{RESET}")
+    extract_DB(embedder, "SPIDERtrain-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+    #Time: 10.43s
 
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")

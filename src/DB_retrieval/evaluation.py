@@ -64,3 +64,7 @@ if __name__ == '__main__':
     filename = 'SPIDERtrain_DB_extractor.json'
     print(f"{CYAN}SPIDERtrain evaluation...{RESET}")
     DBs_extraction_eval(filename)
+
+    filename = 'SPIDERtrain_DB_extractor_ambiguous.json'
+    print(f"{CYAN}SPIDERtrain AMBIGUOUS evaluation...{RESET}")
+    DBs_extraction_eval(filename)
