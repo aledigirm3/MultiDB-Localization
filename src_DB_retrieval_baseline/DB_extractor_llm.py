@@ -40,32 +40,29 @@ def get_dataset_paths(dataset: str) -> Dict[str, Path]:
 
     if dataset == "BIRDdev":
         dataset_dir = paths.DATASETS.BIRDdev.value
-        doc_filename = "bird_doc.json"
+        doc_filename = "doc.json"
         result_filename = "BIRDdev_DB_extractor.json"
     elif dataset == "BIRDdev-ambiguous":
         dataset_dir = paths.DATASETS.BIRDdev_ambiguous.value
-        doc_filename = "bird_doc.json"
+        doc_filename = "doc.json"
         result_filename = "BIRDdev_DB_extractor_ambiguous.json"
     elif dataset == "SPIDERdev1":
         dataset_dir = paths.DATASETS.SPIDERdev1.value
-        doc_filename = "spider_doc.json"
+        doc_filename = "doc.json"
         result_filename = "SPIDERdev1_DB_extractor.json"
     elif dataset == "SPIDERdev1-ambiguous":
         dataset_dir = paths.DATASETS.SPIDERdev1_ambiguous.value
-        doc_filename = "spider_doc.json"
+        doc_filename = "doc.json"
         result_filename = "SPIDERdev1_DB_extractor_ambiguous.json"
-    elif dataset == "BIRD_SPIDER_dev":
-        dataset_dir = paths.DATASETS.BIRD_SPIDER_dev.value
-        doc_filename = "bird_doc.json"
-        result_filename = "BIRD_SPIDER_dev_DB_extractor.json"
-    elif dataset == "BIRD_SPIDER_dev-ambiguous":
-        dataset_dir = paths.DATASETS.BIRD_SPIDER_dev_ambiguous.value
-        doc_filename = "bird_doc.json"
-        result_filename = "BIRD_SPIDER_dev_DB_extractor_ambiguous.json"
     elif dataset == "BEAVER":
         dataset_dir = paths.DATASETS.BEAVER.value
         doc_filename = "doc.json"
         result_filename = "BEAVER_DB_extractor.json"
+    elif dataset == "SPIDERtrain-ambiguous":
+        dataset_dir = paths.DATASETS.SPIDERtrain_ambiguous.value
+        doc_filename = "doc.json"
+        result_filename = "SPIDERtrain_DB_extractor_ambiguous.json"
+
     else:
         print(f"{RED}DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
@@ -253,8 +250,12 @@ if __name__ == "__main__":
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
 
-    print(f"\n{CYAN}Processing BEAVER...{RESET}")
-    extract_DB("BEAVER")
+    # print(f"\n{CYAN}Processing BEAVER...{RESET}")
+    # extract_DB("BEAVER")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    print(f"\n{CYAN}Processing SPIDERtrain-ambiguous...{RESET}")
+    extract_DB("SPIDERtrain-ambiguous")
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
@@ -315,6 +316,10 @@ if __name__ == "__main__":
 # Extraction completed!
 #(w if cleaned_values:
             #cleaned_top_values[column_name] = cleaned_values[:9])
+
+
+# Processing SPIDERtrain-ambiguous...
+# [Bedrock token saturation] model=openai.gpt-oss-120b-1:0 input=112963 output=1 total=112964 max_output=1 stopReason=max_tokens
 
 # Time: 23431.30s
 

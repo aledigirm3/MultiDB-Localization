@@ -40,14 +40,10 @@ if __name__ == '__main__':
     # print(f"{CYAN}SPIDER dev 1.0 AMBIGUOUS evaluation...{RESET}")
     # DBs_extraction_eval(filename)
 
-    # filename = 'BIRD_SPIDER_dev_DB_extractor.json'
-    # print(f"{CYAN}BIRD SPIDER dev evaluation...{RESET}")
+    # filename = 'BEAVER_DB_extractor.json'
+    # print(f"{CYAN}BEAVER evaluation...{RESET}")
     # DBs_extraction_eval(filename)
 
-    # filename = 'BIRD_SPIDER_dev_DB_extractor_ambiguous.json'
-    # print(f"{CYAN}BIRD SPIDER dev AMBIGUOUS evaluation...{RESET}")
-    # DBs_extraction_eval(filename)
-
-    filename = 'BEAVER_DB_extractor.json'
-    print(f"{CYAN}BEAVER evaluation...{RESET}")
+    filename = 'SPIDERtrain_DB_extractor_ambiguous.json'
+    print(f"{CYAN}SPIDERtrain AMBIGUOUS evaluation...{RESET}")
     DBs_extraction_eval(filename)
