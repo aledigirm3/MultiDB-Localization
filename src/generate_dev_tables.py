@@ -1,7 +1,8 @@
 """Generate dev_tables.json from dev_databases/<db_id>/<db_id>.sqlite.
 
-Uses only SQLite metadata (SQLite >= 3.37) and the standard library. Names are copied verbatim
-into both name lists; types are the declared types in lowercase (empty if absent).
+Uses only SQLite metadata (SQLite >= 3.37) and the standard library. Original names are copied
+verbatim; friendly names replace underscores with spaces. Types are the declared types in
+lowercase (empty if absent).
 The eight fields follow BIRD's layout, including grouped composite primary keys.
 SQLite internal/shadow tables and views are excluded; generated columns are kept.
 No annotations are inferred from row values.
@@ -49,7 +50,7 @@ def read_schema(database_path):
         schema = {
             "db_id": database_path.stem,
             "table_names_original": tables,
-            "table_names": tables.copy(),
+            "table_names": [name.replace("_", " ") for name in tables],
             "column_names_original": [[-1, "*"]],
             "column_names": [[-1, "*"]],
             "column_types": ["text"],
@@ -70,7 +71,7 @@ def read_schema(database_path):
                 position = len(schema["column_names_original"])
                 positions[(identifier_key(table), identifier_key(name))] = position
                 schema["column_names_original"].append([table_index, name])
-                schema["column_names"].append([table_index, name])
+                schema["column_names"].append([table_index, name.replace("_", " ")])
                 schema["column_types"].append(declared_type.lower())
                 if pk:
                     keys.append(position)
