@@ -2047,6 +2047,9 @@ if __name__ == '__main__':
 
     "Used to call utility functions."
 
+    # file_path = paths.DATASETS.ARCHER_ambiguous.value
+    # print_ambiguous_distribution(file_path)
+
     #file_path = paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
     #print_DB_table_att(file_path)
 

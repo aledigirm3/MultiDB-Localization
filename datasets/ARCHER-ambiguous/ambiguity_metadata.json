@@ -1,0 +1,2001 @@
+{
+  "source_dataset": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER",
+  "output_dataset": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous",
+  "distinct_ratio_threshold": 0.3,
+  "min_split_value_chars": 4,
+  "min_split_distinct_values": 3,
+  "selection_method": "low-cardinality normalized text columns ranked by SQL equality/IN literal matches whose normalized value length is greater than 3 and whose usable distinct value count is at least 3. A selected column must also have at least one usable normalized value mentioned in a normalized natural-language question for the same database",
+  "split_policy": "db_id_1 keeps selected-table rows whose normalized selected value equals the primary split value; db_id_2 keeps rows whose normalized selected value equals the secondary split value; db_id_3 keeps all remaining selected-table rows. Child rows referencing removed parent rows are removed recursively.",
+  "sample_assignment_policy": "Each sample must contain an explicit SQL equality/IN reference to the selected split column with a value present in that column and longer than 3 normalized characters. Then the SQL query is executed on the original database and on all clones. A sample is written to dev.json only when exactly one clone returns the same result as the original query. Samples without an explicit split reference, with only short split values, where multiple clones match, or where no clone matches, are skipped.",
+  "databases": [
+    {
+      "db_id": "bike_1",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\bike_1\\bike_1.sqlite",
+      "selected_table": "station",
+      "selected_column": "city",
+      "row_count": 70,
+      "raw_distinct_count": 5,
+      "distinct_ratio": 0.07142857142857142,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 5,
+      "sql_sample_hits": 8,
+      "sql_total_mentions": 14,
+      "sql_value_mentions": {
+        "san francisco": 8,
+        "palo alto": 4,
+        "san jose": 2
+      },
+      "question_sample_hits": 10,
+      "question_value_mentions": {
+        "san jose": 4,
+        "palo alto": 4,
+        "san francisco": 2
+      },
+      "primary_split_value": "san francisco",
+      "primary_split_raw_values": [
+        "San Francisco"
+      ],
+      "secondary_split_value": "palo alto",
+      "secondary_split_raw_values": [
+        "Palo Alto"
+      ],
+      "remaining_split_value_count": 3,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "san jose",
+          "frequency": 16,
+          "raw_values": [
+            "San Jose"
+          ]
+        },
+        {
+          "normalized_value": "mountain view",
+          "frequency": 7,
+          "raw_values": [
+            "Mountain View"
+          ]
+        },
+        {
+          "normalized_value": "redwood citi",
+          "frequency": 7,
+          "raw_values": [
+            "Redwood City"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "san francisco",
+          "frequency": 35,
+          "raw_values": [
+            "San Francisco"
+          ]
+        },
+        {
+          "normalized_value": "san jose",
+          "frequency": 16,
+          "raw_values": [
+            "San Jose"
+          ]
+        },
+        {
+          "normalized_value": "mountain view",
+          "frequency": 7,
+          "raw_values": [
+            "Mountain View"
+          ]
+        },
+        {
+          "normalized_value": "redwood citi",
+          "frequency": 7,
+          "raw_values": [
+            "Redwood City"
+          ]
+        },
+        {
+          "normalized_value": "palo alto",
+          "frequency": 5,
+          "raw_values": [
+            "Palo Alto"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "bike_1_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_1\\bike_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "san francisco"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 35,
+          "table_counts": {
+            "station": 35,
+            "status": 4305,
+            "trip": 9959,
+            "weather": 3665
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "bike_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_2\\bike_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "palo alto"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 5,
+          "table_counts": {
+            "station": 5,
+            "status": 615,
+            "trip": 9959,
+            "weather": 3665
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "bike_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_3\\bike_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "san francisco",
+            "palo alto"
+          ],
+          "selected_table_row_count": 30,
+          "table_counts": {
+            "station": 30,
+            "status": 3567,
+            "trip": 9959,
+            "weather": 3665
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 2,
+        "clone_1_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 46,
+        "skipped_no_clone_matches_original": 4
+      }
+    },
+    {
+      "db_id": "concert_singer",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "customers_and_products_contacts",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\customers_and_products_contacts\\customers_and_products_contacts.sqlite",
+      "selected_table": "Products",
+      "selected_column": "product_name",
+      "row_count": 15,
+      "raw_distinct_count": 4,
+      "distinct_ratio": 0.26666666666666666,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 4,
+      "sql_sample_hits": 10,
+      "sql_total_mentions": 16,
+      "sql_value_mentions": {
+        "gucci": 6,
+        "appl": 10
+      },
+      "question_sample_hits": 10,
+      "question_value_mentions": {
+        "gucci": 6,
+        "appl": 8
+      },
+      "primary_split_value": "appl",
+      "primary_split_raw_values": [
+        "Apple"
+      ],
+      "secondary_split_value": "gucci",
+      "secondary_split_raw_values": [
+        "gucci"
+      ],
+      "remaining_split_value_count": 2,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "jcrew",
+          "frequency": 4,
+          "raw_values": [
+            "jcrew"
+          ]
+        },
+        {
+          "normalized_value": "soni",
+          "frequency": 3,
+          "raw_values": [
+            "Sony"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "appl",
+          "frequency": 5,
+          "raw_values": [
+            "Apple"
+          ]
+        },
+        {
+          "normalized_value": "jcrew",
+          "frequency": 4,
+          "raw_values": [
+            "jcrew"
+          ]
+        },
+        {
+          "normalized_value": "gucci",
+          "frequency": 3,
+          "raw_values": [
+            "gucci"
+          ]
+        },
+        {
+          "normalized_value": "soni",
+          "frequency": 3,
+          "raw_values": [
+            "Sony"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "customers_and_products_contacts_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_1\\customers_and_products_contacts_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "appl"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 5,
+          "table_counts": {
+            "Addresses": 15,
+            "Products": 5,
+            "Customers": 15,
+            "Contacts": 15,
+            "Customer_Address_History": 20,
+            "Customer_Orders": 15,
+            "Order_Items": 4
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "customers_and_products_contacts_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_2\\customers_and_products_contacts_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "gucci"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 3,
+          "table_counts": {
+            "Addresses": 15,
+            "Products": 3,
+            "Customers": 15,
+            "Contacts": 15,
+            "Customer_Address_History": 20,
+            "Customer_Orders": 15,
+            "Order_Items": 5
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "customers_and_products_contacts_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_3\\customers_and_products_contacts_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "appl",
+            "gucci"
+          ],
+          "selected_table_row_count": 7,
+          "table_counts": {
+            "Addresses": 15,
+            "Products": 7,
+            "Customers": 15,
+            "Contacts": 15,
+            "Customer_Address_History": 20,
+            "Customer_Orders": 15,
+            "Order_Items": 6
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 2,
+        "clone_1_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 42,
+        "skipped_no_clone_matches_original": 6
+      }
+    },
+    {
+      "db_id": "driving_school",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "formula_1",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\formula_1\\formula_1.sqlite",
+      "selected_table": "races",
+      "selected_column": "name",
+      "row_count": 997,
+      "raw_distinct_count": 42,
+      "distinct_ratio": 0.04212637913741224,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 42,
+      "sql_sample_hits": 8,
+      "sql_total_mentions": 10,
+      "sql_value_mentions": {
+        "australian grand prix": 4,
+        "british grand prix": 4,
+        "unit state grand prix": 2
+      },
+      "question_sample_hits": 7,
+      "question_value_mentions": {
+        "australian grand prix": 4,
+        "british grand prix": 2,
+        "unit state grand prix": 1
+      },
+      "primary_split_value": "british grand prix",
+      "primary_split_raw_values": [
+        "British Grand Prix"
+      ],
+      "secondary_split_value": "australian grand prix",
+      "secondary_split_raw_values": [
+        "Australian Grand Prix"
+      ],
+      "remaining_split_value_count": 40,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "italian grand prix",
+          "frequency": 69,
+          "raw_values": [
+            "Italian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "monaco grand prix",
+          "frequency": 65,
+          "raw_values": [
+            "Monaco Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "belgian grand prix",
+          "frequency": 63,
+          "raw_values": [
+            "Belgian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "german grand prix",
+          "frequency": 63,
+          "raw_values": [
+            "German Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "french grand prix",
+          "frequency": 59,
+          "raw_values": [
+            "French Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "canadian grand prix",
+          "frequency": 49,
+          "raw_values": [
+            "Canadian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "spanish grand prix",
+          "frequency": 48,
+          "raw_values": [
+            "Spanish Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "brazilian grand prix",
+          "frequency": 46,
+          "raw_values": [
+            "Brazilian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "unit state grand prix",
+          "frequency": 40,
+          "raw_values": [
+            "United States Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "japanes grand prix",
+          "frequency": 34,
+          "raw_values": [
+            "Japanese Grand Prix"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "british grand prix",
+          "frequency": 69,
+          "raw_values": [
+            "British Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "italian grand prix",
+          "frequency": 69,
+          "raw_values": [
+            "Italian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "monaco grand prix",
+          "frequency": 65,
+          "raw_values": [
+            "Monaco Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "belgian grand prix",
+          "frequency": 63,
+          "raw_values": [
+            "Belgian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "german grand prix",
+          "frequency": 63,
+          "raw_values": [
+            "German Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "french grand prix",
+          "frequency": 59,
+          "raw_values": [
+            "French Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "canadian grand prix",
+          "frequency": 49,
+          "raw_values": [
+            "Canadian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "spanish grand prix",
+          "frequency": 48,
+          "raw_values": [
+            "Spanish Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "brazilian grand prix",
+          "frequency": 46,
+          "raw_values": [
+            "Brazilian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "unit state grand prix",
+          "frequency": 40,
+          "raw_values": [
+            "United States Grand Prix"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "formula_1_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_1\\formula_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "british grand prix"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 69,
+          "table_counts": {
+            "circuits": 73,
+            "races": 69,
+            "drivers": 842,
+            "status": 134,
+            "seasons": 69,
+            "constructors": 208,
+            "constructorStandings": 797,
+            "results": 1733,
+            "driverStandings": 2540,
+            "constructorResults": 741,
+            "qualifying": 437,
+            "pitStops": 0,
+            "lapTimes": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "formula_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_2\\formula_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "australian grand prix"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 34,
+          "table_counts": {
+            "circuits": 73,
+            "races": 34,
+            "drivers": 842,
+            "status": 134,
+            "seasons": 69,
+            "constructors": 208,
+            "constructorStandings": 376,
+            "results": 790,
+            "driverStandings": 749,
+            "constructorResults": 403,
+            "qualifying": 480,
+            "pitStops": 0,
+            "lapTimes": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "formula_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_3\\formula_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "british grand prix",
+            "australian grand prix"
+          ],
+          "selected_table_row_count": 894,
+          "table_counts": {
+            "circuits": 73,
+            "races": 894,
+            "drivers": 842,
+            "status": 134,
+            "seasons": 69,
+            "constructors": 208,
+            "constructorStandings": 10723,
+            "results": 21254,
+            "driverStandings": 28437,
+            "constructorResults": 9998,
+            "qualifying": 6599,
+            "pitStops": 0,
+            "lapTimes": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 4,
+        "clone_1_matches_original": 2,
+        "clone_3_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 42
+      }
+    },
+    {
+      "db_id": "hospital_1",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "riding_club",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "soccer_1",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\soccer_1\\soccer_1.sqlite",
+      "selected_table": "Player_Attributes",
+      "selected_column": "attacking_work_rate",
+      "row_count": 183978,
+      "raw_distinct_count": 8,
+      "distinct_ratio": 4.348345997891052e-05,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 5,
+      "sql_sample_hits": 2,
+      "sql_total_mentions": 4,
+      "sql_value_mentions": {
+        "medium": 4
+      },
+      "question_sample_hits": 2,
+      "question_value_mentions": {
+        "medium": 2
+      },
+      "primary_split_value": "medium",
+      "primary_split_raw_values": [
+        "medium"
+      ],
+      "secondary_split_value": "high",
+      "secondary_split_raw_values": [
+        "high"
+      ],
+      "remaining_split_value_count": 3,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "none",
+          "frequency": 3639,
+          "raw_values": [
+            "None"
+          ]
+        },
+        {
+          "normalized_value": "norm",
+          "frequency": 348,
+          "raw_values": [
+            "norm"
+          ]
+        },
+        {
+          "normalized_value": "stoc",
+          "frequency": 89,
+          "raw_values": [
+            "stoc"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "medium",
+          "frequency": 125070,
+          "raw_values": [
+            "medium"
+          ]
+        },
+        {
+          "normalized_value": "high",
+          "frequency": 42823,
+          "raw_values": [
+            "high"
+          ]
+        },
+        {
+          "normalized_value": "none",
+          "frequency": 3639,
+          "raw_values": [
+            "None"
+          ]
+        },
+        {
+          "normalized_value": "norm",
+          "frequency": 348,
+          "raw_values": [
+            "norm"
+          ]
+        },
+        {
+          "normalized_value": "stoc",
+          "frequency": 89,
+          "raw_values": [
+            "stoc"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "soccer_1_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_1\\soccer_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "medium"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 125070,
+          "table_counts": {
+            "Player_Attributes": 125070,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 1458
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        },
+        "soccer_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_2\\soccer_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "high"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 42823,
+          "table_counts": {
+            "Player_Attributes": 42823,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 1458
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        },
+        "soccer_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_3\\soccer_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "medium",
+            "high"
+          ],
+          "selected_table_row_count": 16085,
+          "table_counts": {
+            "Player_Attributes": 16085,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 1458
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 48,
+        "skipped_split_reference_value_not_in_column": 2
+      }
+    },
+    {
+      "db_id": "wine_1",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\wine_1\\wine_1.sqlite",
+      "selected_table": "wine",
+      "selected_column": "Grape",
+      "row_count": 500,
+      "raw_distinct_count": 17,
+      "distinct_ratio": 0.034,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 17,
+      "sql_sample_hits": 4,
+      "sql_total_mentions": 10,
+      "sql_value_mentions": {
+        "zinfandel": 4,
+        "pinot noir": 6
+      },
+      "question_sample_hits": 6,
+      "question_value_mentions": {
+        "sauvignon blanc": 2,
+        "zinfandel": 2,
+        "pinot noir": 2
+      },
+      "primary_split_value": "pinot noir",
+      "primary_split_raw_values": [
+        "Pinot Noir"
+      ],
+      "secondary_split_value": "zinfandel",
+      "secondary_split_raw_values": [
+        "Zinfandel"
+      ],
+      "remaining_split_value_count": 15,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "chardonnay",
+          "frequency": 104,
+          "raw_values": [
+            "Chardonnay"
+          ]
+        },
+        {
+          "normalized_value": "cabernet sauvingnon",
+          "frequency": 68,
+          "raw_values": [
+            "Cabernet Sauvingnon"
+          ]
+        },
+        {
+          "normalized_value": "syrah",
+          "frequency": 61,
+          "raw_values": [
+            "Syrah"
+          ]
+        },
+        {
+          "normalized_value": "sauvignon blanc",
+          "frequency": 46,
+          "raw_values": [
+            "Sauvignon Blanc"
+          ]
+        },
+        {
+          "normalized_value": "grenach",
+          "frequency": 10,
+          "raw_values": [
+            "Grenache"
+          ]
+        },
+        {
+          "normalized_value": "merlot",
+          "frequency": 10,
+          "raw_values": [
+            "Merlot"
+          ]
+        },
+        {
+          "normalized_value": "petit sirah",
+          "frequency": 6,
+          "raw_values": [
+            "Petite Sirah"
+          ]
+        },
+        {
+          "normalized_value": "barbera",
+          "frequency": 1,
+          "raw_values": [
+            "Barbera"
+          ]
+        },
+        {
+          "normalized_value": "cabernet franc",
+          "frequency": 1,
+          "raw_values": [
+            "Cabernet Franc"
+          ]
+        },
+        {
+          "normalized_value": "malbec",
+          "frequency": 1,
+          "raw_values": [
+            "Malbec"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "pinot noir",
+          "frequency": 109,
+          "raw_values": [
+            "Pinot Noir"
+          ]
+        },
+        {
+          "normalized_value": "chardonnay",
+          "frequency": 104,
+          "raw_values": [
+            "Chardonnay"
+          ]
+        },
+        {
+          "normalized_value": "zinfandel",
+          "frequency": 78,
+          "raw_values": [
+            "Zinfandel"
+          ]
+        },
+        {
+          "normalized_value": "cabernet sauvingnon",
+          "frequency": 68,
+          "raw_values": [
+            "Cabernet Sauvingnon"
+          ]
+        },
+        {
+          "normalized_value": "syrah",
+          "frequency": 61,
+          "raw_values": [
+            "Syrah"
+          ]
+        },
+        {
+          "normalized_value": "sauvignon blanc",
+          "frequency": 46,
+          "raw_values": [
+            "Sauvignon Blanc"
+          ]
+        },
+        {
+          "normalized_value": "grenach",
+          "frequency": 10,
+          "raw_values": [
+            "Grenache"
+          ]
+        },
+        {
+          "normalized_value": "merlot",
+          "frequency": 10,
+          "raw_values": [
+            "Merlot"
+          ]
+        },
+        {
+          "normalized_value": "petit sirah",
+          "frequency": 6,
+          "raw_values": [
+            "Petite Sirah"
+          ]
+        },
+        {
+          "normalized_value": "barbera",
+          "frequency": 1,
+          "raw_values": [
+            "Barbera"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "wine_1_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_1\\wine_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "pinot noir"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 109,
+          "table_counts": {
+            "grapes": 20,
+            "appellations": 57,
+            "wine": 109
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "wine_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_2\\wine_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "zinfandel"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 78,
+          "table_counts": {
+            "grapes": 20,
+            "appellations": 57,
+            "wine": 78
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "wine_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_3\\wine_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "pinot noir",
+            "zinfandel"
+          ],
+          "selected_table_row_count": 313,
+          "table_counts": {
+            "grapes": 20,
+            "appellations": 57,
+            "wine": 313
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {},
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 48,
+        "skipped_no_clone_matches_original": 4
+      }
+    },
+    {
+      "db_id": "world_1",
+      "status": "created",
+      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\world_1\\world_1.sqlite",
+      "selected_table": "country",
+      "selected_column": "Continent",
+      "row_count": 239,
+      "raw_distinct_count": 7,
+      "distinct_ratio": 0.029288702928870293,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 7,
+      "sql_sample_hits": 28,
+      "sql_total_mentions": 46,
+      "sql_value_mentions": {
+        "oceania": 2,
+        "south america": 6,
+        "north america": 18,
+        "africa": 4,
+        "europ": 12,
+        "asia": 4
+      },
+      "question_sample_hits": 22,
+      "question_value_mentions": {
+        "oceania": 2,
+        "south america": 5,
+        "north america": 6,
+        "africa": 4,
+        "europ": 5,
+        "asia": 3
+      },
+      "primary_split_value": "north america",
+      "primary_split_raw_values": [
+        "North America"
+      ],
+      "secondary_split_value": "europ",
+      "secondary_split_raw_values": [
+        "Europe"
+      ],
+      "remaining_split_value_count": 5,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "africa",
+          "frequency": 58,
+          "raw_values": [
+            "Africa"
+          ]
+        },
+        {
+          "normalized_value": "asia",
+          "frequency": 51,
+          "raw_values": [
+            "Asia"
+          ]
+        },
+        {
+          "normalized_value": "oceania",
+          "frequency": 28,
+          "raw_values": [
+            "Oceania"
+          ]
+        },
+        {
+          "normalized_value": "south america",
+          "frequency": 14,
+          "raw_values": [
+            "South America"
+          ]
+        },
+        {
+          "normalized_value": "antarctica",
+          "frequency": 5,
+          "raw_values": [
+            "Antarctica"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "africa",
+          "frequency": 58,
+          "raw_values": [
+            "Africa"
+          ]
+        },
+        {
+          "normalized_value": "asia",
+          "frequency": 51,
+          "raw_values": [
+            "Asia"
+          ]
+        },
+        {
+          "normalized_value": "europ",
+          "frequency": 46,
+          "raw_values": [
+            "Europe"
+          ]
+        },
+        {
+          "normalized_value": "north america",
+          "frequency": 37,
+          "raw_values": [
+            "North America"
+          ]
+        },
+        {
+          "normalized_value": "oceania",
+          "frequency": 28,
+          "raw_values": [
+            "Oceania"
+          ]
+        },
+        {
+          "normalized_value": "south america",
+          "frequency": 14,
+          "raw_values": [
+            "South America"
+          ]
+        },
+        {
+          "normalized_value": "antarctica",
+          "frequency": 5,
+          "raw_values": [
+            "Antarctica"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "world_1_1": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_1\\world_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "north america"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 37,
+          "table_counts": {
+            "city": 581,
+            "country": 37,
+            "countrylanguage": 109
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "world_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_2\\world_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "europ"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 46,
+          "table_counts": {
+            "city": 841,
+            "country": 46,
+            "countrylanguage": 202
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "world_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_3\\world_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "north america",
+            "europ"
+          ],
+          "selected_table_row_count": 156,
+          "table_counts": {
+            "city": 2657,
+            "country": 156,
+            "countrylanguage": 673
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 8,
+        "clone_2_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 24,
+        "skipped_no_clone_matches_original": 14,
+        "skipped_multiple_clones_match_original": 4
+      }
+    }
+  ],
+  "dev_json": {
+    "samples_read": 518,
+    "samples_written": 28,
+    "samples_skipped": 490,
+    "assignment_counts": {
+      "clone_3_matches_original": 12,
+      "clone_1_matches_original": 8,
+      "clone_2_matches_original": 8
+    },
+    "skipped_assignment_counts": {
+      "skipped_no_explicit_split_reference": 250,
+      "skipped_no_clone_matches_original": 28,
+      "skipped_split_reference_value_not_in_column": 2,
+      "skipped_multiple_clones_match_original": 4
+    },
+    "skipped_samples": [
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 1,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 1,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 1,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 1,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 1,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "bike_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 15,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 5,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 7,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 15,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 5,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 7,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 15,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 5,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 7,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 15,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 5,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 7,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 4,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 2,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 2,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": true,
+          "original_error": null,
+          "original_row_count": 4,
+          "order_sensitive": false,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": true,
+              "error": null,
+              "row_count": 2,
+              "matches_original": false
+            },
+            "2": {
+              "ok": true,
+              "error": null,
+              "row_count": 2,
+              "matches_original": false
+            },
+            "3": {
+              "ok": true,
+              "error": null,
+              "row_count": 3,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "customers_and_products_contacts",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "driving_school",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "driving_school",
+        "reason": "db_not_duplicated"
+      }
+    ],
+    "assignment_notes": []
+  }
+}

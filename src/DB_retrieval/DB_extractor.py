@@ -72,6 +72,10 @@ def get_dataset_paths(dataset: str):
             dataset_dir = (src_dir / paths.DATASETS.ARCHER.value).resolve()
             description_filename = "DB_descriptions/ARCHER_DB_descriptions.json"
             result_filename = "ARCHER_DB_extractor.json"
+    elif dataset == "ARCHER-ambiguous":
+            dataset_dir = (src_dir / paths.DATASETS.ARCHER_ambiguous.value).resolve()
+            description_filename = "DB_descriptions/ARCHER_DB_descriptions_ambiguous.json"
+            result_filename = "ARCHER_DB_extractor_ambiguous.json"
     elif dataset == "SPIDERtrain":
             dataset_dir = (src_dir / paths.DATASETS.SPIDERtrain.value).resolve()
             description_filename = "DB_descriptions/SPIDERtrain_DB_descriptions.json"
@@ -428,14 +432,19 @@ if __name__ == "__main__":
     # print(f"{GREEN}Extraction completed!{RESET}\n")
     # Time: 6.17s
 
+    print(f"\n{CYAN}Processing ARCHER-ambiguous...{RESET}")
+    extract_DB(embedder, "ARCHER-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+    #Time: 6.95s
+    
     # print(f"\n{CYAN}Processing SPIDERtrain...{RESET}")
     # extract_DB(embedder, "SPIDERtrain")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 39.83s
 
-    print(f"\n{CYAN}Processing SPIDERtrain-ambiguous...{RESET}")
-    extract_DB(embedder, "SPIDERtrain-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing SPIDERtrain-ambiguous...{RESET}")
+    # extract_DB(embedder, "SPIDERtrain-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 10.43s
 
     end = time.perf_counter()

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "bike_1_1",
+        "description": "The bike_1_1 database contains station information (name, coordinates, dock count, city, installation date), status updates (station reference, bikes available, docks available, time), trip records (duration, start date, end date, start station, end station, bike id, subscription type, zip code), and weather observations (date, temperature ranges, dew point ranges, humidity ranges, sea level pressure ranges, visibility ranges, wind speed, gust speed, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "bike_1_2",
+        "description": "The bike_1_2 database contains station information (name, location, dock count, city, installation date), status updates (bikes available, docks available, timestamp), trip records (duration, start/end dates and stations, bike id, subscription type, zip code), and daily weather observations (date, temperature, dew point, humidity, pressure, visibility, wind speed, gust, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "bike_1_3",
+        "description": "The bike_1_3 database contains station (name, location, dock count, city, installation date), status (station reference, bikes available, docks available, timestamp), trip (duration, start time, start station, end time, end station, bike id, subscription type, zip code), and weather (date, temperature, dew point, humidity, sea level pressure, visibility, wind speed, gust speed, precipitation, cloud cover, events, wind direction, zip code)."
+    },
+    {
+        "name": "customers_and_products_contacts_1",
+        "description": "The customers_and_products_contacts_1 database contains Addresses (street address, city, zip/postcode, state/province, country), Products (type code, name, price), Customers (payment method, customer number, name, address, phone, email), Contacts (customer reference, gender, first name, last name, phone), Customer_Address_History (customer, address, start date, end date), Customer_Orders (customer, order date, status code), and Order_Items (order, product, quantity)."
+    },
+    {
+        "name": "customers_and_products_contacts_2",
+        "description": "The customers_and_products_contacts_2 database stores addresses (line, city, zip/postcode, state/province, country), products (type code, name, price), customers (payment method, customer number, name, address, phone, email), contacts (gender, first name, last name, phone), customer address history (customer, address, effective date range), customer orders (order date, status), and order items (product, quantity)."
+    },
+    {
+        "name": "customers_and_products_contacts_3",
+        "description": "The customers_and_products_contacts_3 database contains Addresses (address line, city, zip/postcode, state/province, country), Products (type code, name, price), Customers (payment method, customer number, name, address, phone, email), Contacts (customer reference, gender, first name, last name, phone), Customer_Address_History (customer, address, start and end dates), Customer_Orders (customer, order date, status), and Order_Items (order, product, quantity)."
+    },
+    {
+        "name": "formula_1_1",
+        "description": "The formula_1_1 database contains circuits (name, location, country), races (year, round, circuit, name, date, time), drivers (number, code, forename, surname, date of birth, nationality), status (status description), seasons (year), constructors (name, nationality), constructorStandings (race, constructor, points, position, wins), results (race, driver, constructor, grid, position, points, laps, race time, fastest lap, status), driverStandings (race, driver, points, position, wins), constructorResults (race, constructor, points, status), qualifying (race, driver, constructor, position, Q1‑Q3 times), pitStops (race, driver, stop number, lap, time, duration), and lapTimes (race, driver, lap, position, time)."
+    },
+    {
+        "name": "formula_1_2",
+        "description": "The formula_1_2 database contains circuits (name, location, country), races (year, round, circuit, name, date, time), drivers (number, code, forename, surname, date of birth, nationality), status (status description), seasons (year), constructors (name, nationality), constructorStandings (race, constructor, points, position, wins), results (race, driver, constructor, grid position, final position, points, laps, race time, fastest lap time, fastest lap speed, status), driverStandings (race, driver, points, position, wins), constructorResults (race, constructor, points, status), qualifying (race, driver, constructor, car number, qualifying position, Q1/Q2/Q3 times), pitStops (race, driver, stop number, lap, time, duration), and lapTimes (race, driver, lap, position, lap time)."
+    },
+    {
+        "name": "formula_1_3",
+        "description": "The formula_1_3 database contains circuits (name, location, country), races (year, round, circuit, name, date, time), drivers (number, code, forename, surname, date of birth, nationality), status (status description), seasons (year), constructors (name, nationality), constructorStandings (race, constructor, points, position, wins), results (race, driver, constructor, grid, finishing position, points, laps, race time, fastest lap, status), driverStandings (race, driver, points, position, wins), constructorResults (race, constructor, points, status), qualifying (race, driver, constructor, car number, qualifying position, Q1/Q2/Q3 times), pitStops (race, driver, stop number, lap, time, duration), and lapTimes (race, driver, lap, position, lap time)."
+    },
+    {
+        "name": "soccer_1_1",
+        "description": "The soccer_1_1 database stores Player (player name, birthday, height, weight), Player_Attributes (overall rating, potential, preferred foot, work rates, technical skill scores, goalkeeper skill scores), League (name, country), Country (name), Team (team long name, team short name), and Team_Attributes (date, build‑up play speed, dribbling, passing, positioning, chance‑creation passing, crossing, shooting, defensive pressure, aggression, team width, defender line)."
+    },
+    {
+        "name": "soccer_1_2",
+        "description": "The soccer_1_2 database stores player attributes (overall rating, potential, preferred foot, work rates, skill ratings, goalkeeper ratings), players (player name, birthday, height, weight), leagues (league name, country), countries (country name), teams (team long name, team short name), and team attributes (date, tactical style metrics such as build‑up play, chance creation, and defence characteristics)."
+    },
+    {
+        "name": "soccer_1_3",
+        "description": "The soccer_1_3 database stores Player_Attributes (date, overall rating, potential, preferred foot, work rates, technical skills, physical attributes, mental attributes, goalkeeper skills), Player (player name, birthday, height, weight), League (name, country), Country (name), Team (team long name, team short name), and Team_Attributes (date, build‑up play characteristics, chance‑creation characteristics, defensive characteristics)."
+    },
+    {
+        "name": "wine_1_1",
+        "description": "The wine_1_1 database stores information about grapes (grape type, color), appellations (appellation name, county, state, area, AVA status), and wine (grape, winery, appellation, state, wine name, vintage year, price, rating score, case count, drinking window)."
+    },
+    {
+        "name": "wine_1_2",
+        "description": "The wine_1_2 database contains information about grapes (grape type, color), appellations (appellation name, county, state, area, AVA status), and wine (grape, winery, appellation, state, wine name, vintage year, price, score, cases, drinking window)."
+    },
+    {
+        "name": "wine_1_3",
+        "description": "The wine_1_3 database contains information about grapes (grape variety, color), appellations (appellation name, county, state, area, AVA flag), and wine (grape, winery, appellation, state, wine name, vintage year, price, score, cases, drinking window)."
+    },
+    {
+        "name": "world_1_1",
+        "description": "The world_1_1 database contains information about cities (city name, country code, district, population), countries (country name, continent, region, surface area, independence year, population, life expectancy, GNP, government form, head of state, capital), and country languages (language, official status, usage percentage)."
+    },
+    {
+        "name": "world_1_2",
+        "description": "The world_1_2 database contains information about cities (name, district, population, country), countries (name, continent, region, surface area, independence year, population, life expectancy, GNP, government form, head of state, capital), and country languages (language, official status, usage percentage, country)."
+    },
+    {
+        "name": "world_1_3",
+        "description": "The world_1_3 database contains information about cities (city name, district, population, country code), countries (country code, name, continent, region, surface area, independence year, population, life expectancy, GNP, government form, head of state, capital), and country languages (language, official status, usage percentage)."
+    }
+]
