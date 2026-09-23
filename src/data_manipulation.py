@@ -874,7 +874,8 @@ def create_ambiguous_benchmark(
     a sample must explicitly reference the split column in its SQL with a value
     longer than 3 characters, then the SQL query is executed on the original DB
     and all clones; the sample is kept only when exactly one clone preserves the
-    original query result.
+    original query result. Rows use the first unshadowed SQLite rowid alias;
+    WITHOUT ROWID tables use their ordered primary-key columns instead.
     """
 
     min_split_value_chars = 4
@@ -1463,22 +1464,73 @@ def create_ambiguous_benchmark(
 
         return foreign_keys
 
-    def load_table_rowids(connection, table_name):
-        rows = connection.execute(
-            f"SELECT rowid FROM {quote_identifier(table_name)}"
-        ).fetchall()
-        return {row[0] for row in rows}
+    def get_row_key_spec(connection, table_name):
+        columns = list(connection.execute(
+            "SELECT name, pk FROM pragma_table_xinfo(?) ORDER BY cid",
+            (table_name,),
+        ))
+        column_names = {normalize_identifier(name) for name, _ in columns}
+        quoted_table = quote_identifier(table_name)
 
-    def load_column_values(connection, table_name, column_name):
+        # Preserve the historical path whenever possible. SQLite's three
+        # aliases identify the same internal row, unless a real column uses
+        # that name. WITHOUT ROWID tables reject all three aliases.
+        for alias in ("rowid", "_rowid_", "oid"):
+            if normalize_identifier(alias) in column_names:
+                continue
+            try:
+                connection.execute(
+                    f"SELECT {alias} FROM {quoted_table} LIMIT 0"
+                )
+            except sqlite3.OperationalError:
+                continue
+            return {
+                "expressions": (alias,),
+                "uses_internal_rowid": True,
+            }
+
+        primary_key = [
+            name
+            for _, name in sorted(
+                (position, name) for name, position in columns if position
+            )
+        ]
+        if not primary_key:
+            raise ValueError(
+                f"Cannot identify rows in {table_name}: no usable SQLite rowid "
+                "alias or primary key"
+            )
+        return {
+            "expressions": tuple(quote_identifier(name) for name in primary_key),
+            "uses_internal_rowid": False,
+        }
+
+    def load_table_row_keys(connection, table_name, row_key_spec):
+        expressions = row_key_spec["expressions"]
+        rows = connection.execute(
+            f"SELECT {', '.join(expressions)} FROM {quote_identifier(table_name)}"
+        ).fetchall()
+        if len(expressions) == 1:
+            row_keys = {row[0] for row in rows}
+        else:
+            row_keys = {tuple(row) for row in rows}
+        if len(row_keys) != len(rows):
+            raise ValueError(f"Non-unique row key in {table_name}")
+        return row_keys
+
+    def load_column_values(connection, table_name, column_name, row_key_spec):
+        expressions = row_key_spec["expressions"]
         rows = connection.execute(
             f"""
-            SELECT rowid, {quote_identifier(column_name)}
+            SELECT {', '.join(expressions)}, {quote_identifier(column_name)}
             FROM {quote_identifier(table_name)}
             """
         ).fetchall()
-        return {rowid: value for rowid, value in rows}
+        if len(expressions) == 1:
+            return {row[0]: row[1] for row in rows}
+        return {tuple(row[:-1]): row[-1] for row in rows}
 
-    def build_allowed_rowids(sqlite_path, db_schema, split_info, clone_rule):
+    def build_allowed_row_keys(sqlite_path, db_schema, split_info, clone_rule):
         table_names = db_schema.get("table_names_original", [])
         selected_table = split_info["table_name"]
         selected_column = split_info["column_name"]
@@ -1486,36 +1538,45 @@ def create_ambiguous_benchmark(
 
         connection = sqlite3.connect(sqlite_path)
         try:
-            all_rowids = {
-                table_name: load_table_rowids(connection, table_name)
+            row_key_specs = {
+                table_name: get_row_key_spec(connection, table_name)
                 for table_name in table_names
             }
-            allowed_rowids = {
-                table_name: set(rowids)
-                for table_name, rowids in all_rowids.items()
+            all_row_keys = {
+                table_name: load_table_row_keys(
+                    connection,
+                    table_name,
+                    row_key_specs[table_name],
+                )
+                for table_name in table_names
+            }
+            allowed_row_keys = {
+                table_name: set(row_keys)
+                for table_name, row_keys in all_row_keys.items()
             }
             selected_values = load_column_values(
                 connection,
                 selected_table,
                 selected_column,
+                row_key_specs[selected_table],
             )
 
             keep_values = set(clone_rule["keep_values"])
             excluded_values = set(clone_rule["excluded_values"])
             if keep_values:
-                selected_rowids = {
-                    rowid
-                    for rowid, raw_value in selected_values.items()
+                selected_row_keys = {
+                    row_key
+                    for row_key, raw_value in selected_values.items()
                     if normalized_db_value(raw_value) in keep_values
                 }
             else:
-                selected_rowids = {
-                    rowid
-                    for rowid in all_rowids[selected_table]
-                    if normalized_db_value(selected_values.get(rowid)) not in excluded_values
+                selected_row_keys = {
+                    row_key
+                    for row_key in all_row_keys[selected_table]
+                    if normalized_db_value(selected_values.get(row_key)) not in excluded_values
                 }
 
-            allowed_rowids[selected_table] = selected_rowids
+            allowed_row_keys[selected_table] = selected_row_keys
 
             def cached_values(table_name, column_name):
                 cache_key = (table_name, column_name)
@@ -1524,6 +1585,7 @@ def create_ambiguous_benchmark(
                         connection,
                         table_name,
                         column_name,
+                        row_key_specs[table_name],
                     )
                 return value_cache[cache_key]
 
@@ -1537,38 +1599,44 @@ def create_ambiguous_benchmark(
                     child_table = foreign_key["child_table"]
                     child_column = foreign_key["child_column"]
 
-                    if parent_table not in allowed_rowids or child_table not in allowed_rowids:
+                    if parent_table not in allowed_row_keys or child_table not in allowed_row_keys:
                         continue
 
-                    if len(allowed_rowids[parent_table]) == len(all_rowids[parent_table]):
+                    if len(allowed_row_keys[parent_table]) == len(all_row_keys[parent_table]):
                         continue
 
-                    parent_values_by_rowid = cached_values(parent_table, parent_column)
+                    parent_values_by_row_key = cached_values(parent_table, parent_column)
                     allowed_parent_values = {
-                        parent_values_by_rowid.get(rowid)
-                        for rowid in allowed_rowids[parent_table]
-                        if parent_values_by_rowid.get(rowid) is not None
+                        parent_values_by_row_key.get(row_key)
+                        for row_key in allowed_row_keys[parent_table]
+                        if parent_values_by_row_key.get(row_key) is not None
                     }
-                    child_values_by_rowid = cached_values(child_table, child_column)
-                    child_rowids_to_keep = {
-                        rowid
-                        for rowid in allowed_rowids[child_table]
-                        if child_values_by_rowid.get(rowid) is None
-                        or child_values_by_rowid.get(rowid) in allowed_parent_values
+                    child_values_by_row_key = cached_values(child_table, child_column)
+                    child_row_keys_to_keep = {
+                        row_key
+                        for row_key in allowed_row_keys[child_table]
+                        if child_values_by_row_key.get(row_key) is None
+                        or child_values_by_row_key.get(row_key) in allowed_parent_values
                     }
 
-                    if len(child_rowids_to_keep) < len(allowed_rowids[child_table]):
-                        allowed_rowids[child_table] = child_rowids_to_keep
+                    if len(child_row_keys_to_keep) < len(allowed_row_keys[child_table]):
+                        allowed_row_keys[child_table] = child_row_keys_to_keep
                         changed = True
 
-            return allowed_rowids, {
-                table_name: len(rowids)
-                for table_name, rowids in all_rowids.items()
-            }, len(selected_rowids)
+            return allowed_row_keys, {
+                table_name: len(row_keys)
+                for table_name, row_keys in all_row_keys.items()
+            }, len(selected_row_keys), row_key_specs
         finally:
             connection.close()
 
-    def apply_allowed_rowids(sqlite_path, table_names, allowed_rowids, original_counts):
+    def apply_allowed_row_keys(
+        sqlite_path,
+        table_names,
+        allowed_row_keys,
+        original_counts,
+        row_key_specs,
+    ):
         connection = sqlite3.connect(sqlite_path)
         table_counts = {}
         foreign_key_check_rows = []
@@ -1577,29 +1645,82 @@ def create_ambiguous_benchmark(
         try:
             connection.execute("PRAGMA foreign_keys = OFF")
             for table_name in table_names:
-                keep_rowids = allowed_rowids.get(table_name, set())
-                if len(keep_rowids) == original_counts.get(table_name, 0):
-                    table_counts[table_name] = len(keep_rowids)
+                keep_row_keys = allowed_row_keys.get(table_name, set())
+                if len(keep_row_keys) == original_counts.get(table_name, 0):
+                    table_counts[table_name] = len(keep_row_keys)
                     continue
 
-                connection.execute("DROP TABLE IF EXISTS temp._codex_keep_rowids")
-                connection.execute(
-                    "CREATE TEMP TABLE _codex_keep_rowids (rowid INTEGER PRIMARY KEY)"
-                )
-                connection.executemany(
-                    "INSERT INTO temp._codex_keep_rowids(rowid) VALUES (?)",
-                    ((rowid,) for rowid in keep_rowids),
-                )
-                connection.execute(
-                    f"""
-                    DELETE FROM {quote_identifier(table_name)}
-                    WHERE rowid NOT IN (
-                        SELECT rowid FROM temp._codex_keep_rowids
+                row_key_spec = row_key_specs[table_name]
+                expressions = row_key_spec["expressions"]
+                quoted_table = quote_identifier(table_name)
+                connection.execute("DROP TABLE IF EXISTS temp._ambiguous_keep_row_keys")
+
+                if row_key_spec["uses_internal_rowid"]:
+                    expression = expressions[0]
+                    connection.execute(
+                        "CREATE TEMP TABLE _ambiguous_keep_row_keys "
+                        "(row_key INTEGER PRIMARY KEY)"
                     )
-                    """
-                )
-                connection.execute("DROP TABLE temp._codex_keep_rowids")
-                table_counts[table_name] = len(keep_rowids)
+                    connection.executemany(
+                        "INSERT INTO temp._ambiguous_keep_row_keys(row_key) VALUES (?)",
+                        ((row_key,) for row_key in keep_row_keys),
+                    )
+                    connection.execute(
+                        f"""
+                        DELETE FROM {quoted_table}
+                        WHERE {expression} NOT IN (
+                            SELECT row_key FROM temp._ambiguous_keep_row_keys
+                        )
+                        """
+                    )
+                else:
+                    temp_columns = [
+                        f"row_key_{index}" for index in range(len(expressions))
+                    ]
+                    quoted_temp_columns = [
+                        quote_identifier(column) for column in temp_columns
+                    ]
+                    connection.execute(
+                        "CREATE TEMP TABLE _ambiguous_keep_row_keys ("
+                        + ", ".join(quoted_temp_columns)
+                        + ")"
+                    )
+                    placeholders = ", ".join("?" for _ in expressions)
+                    connection.executemany(
+                        "INSERT INTO temp._ambiguous_keep_row_keys ("
+                        + ", ".join(quoted_temp_columns)
+                        + f") VALUES ({placeholders})",
+                        (
+                            (row_key,) if len(expressions) == 1 else row_key
+                            for row_key in keep_row_keys
+                        ),
+                    )
+                    connection.execute(
+                        "CREATE INDEX temp._ambiguous_keep_row_keys_index ON "
+                        "_ambiguous_keep_row_keys ("
+                        + ", ".join(quoted_temp_columns)
+                        + ")"
+                    )
+                    comparisons = " AND ".join(
+                        f"kept.{temp_column} IS {quoted_table}.{expression}"
+                        for temp_column, expression in zip(
+                            quoted_temp_columns,
+                            expressions,
+                        )
+                    )
+                    connection.execute(
+                        f"""
+                        DELETE FROM {quoted_table}
+                        WHERE NOT EXISTS (
+                            SELECT 1
+                            FROM temp._ambiguous_keep_row_keys AS kept
+                            WHERE {comparisons}
+                        )
+                        """
+                    )
+
+                connection.execute("DROP TABLE temp._ambiguous_keep_row_keys")
+                table_counts[table_name] = len(keep_row_keys)
 
             connection.commit()
             connection.execute("PRAGMA foreign_keys = ON")
@@ -1618,17 +1739,18 @@ def create_ambiguous_benchmark(
     def create_filtered_clone(source_sqlite_path, clone_sqlite_path, db_schema, split_info, clone_rule):
         shutil.copy2(source_sqlite_path, clone_sqlite_path)
 
-        allowed_rowids, original_counts, selected_table_row_count = build_allowed_rowids(
-            source_sqlite_path,
-            db_schema,
-            split_info,
-            clone_rule,
-        )
-        table_counts, foreign_key_check_rows, foreign_key_check_error = apply_allowed_rowids(
+        (
+            allowed_row_keys,
+            original_counts,
+            selected_table_row_count,
+            row_key_specs,
+        ) = build_allowed_row_keys(source_sqlite_path, db_schema, split_info, clone_rule)
+        table_counts, foreign_key_check_rows, foreign_key_check_error = apply_allowed_row_keys(
             clone_sqlite_path,
             db_schema.get("table_names_original", []),
-            allowed_rowids,
+            allowed_row_keys,
             original_counts,
+            row_key_specs,
         )
 
         return {
@@ -2135,6 +2257,13 @@ if __name__ == '__main__':
     # dataset_path = paths.DATASETS.SPIDERtrain.value
     # create_ambiguous_benchmark(dataset_path, overwrite=True)
     # dataset_path = paths.DATASETS.SPIDERtrain_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
+    # SQALE3
+    # dataset_path = paths.DATASETS.SQALE3.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.SQALE3_ambiguous.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
