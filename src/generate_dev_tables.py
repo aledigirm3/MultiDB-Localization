@@ -10,7 +10,9 @@ No annotations are inferred from row values.
 Database IDs are sorted; tables follow sqlite_schema.rowid and columns their cid.
 Primary-key indices follow column order; implicit foreign keys use the actual
 primary-key constraint order. Foreign keys follow SQLite's (id, seq) order, with
-duplicate column pairs removed. Existing output files are never overwritten.
+duplicate column pairs removed. Unresolved foreign-key constraints fail by
+default; callers handling known noisy metadata may skip them and receive a
+deterministic summary. Existing output files are never overwritten.
 
 Edit DATASET_PATH and OUTPUT_PATH below, then run from the src directory:
     python generate_dev_tables.py
@@ -26,7 +28,7 @@ import paths
 
 
 
-DATASET_PATH = paths.DATASETS.ARCHER.value
+DATASET_PATH = paths.DATASETS.BEAVER.value
 OUTPUT_PATH = None  # Default: Path(DATASET_PATH) / "dev_tables.json"; or set another Path.
 
 
@@ -35,7 +37,8 @@ def identifier_key(name):
     return name.translate(str.maketrans("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"))
 
 
-def read_schema(database_path):
+def read_schema(database_path, skip_unresolved_foreign_keys=False,
+                unresolved_foreign_keys=None):
     """Read one database without writing to it or consulting an existing JSON."""
     database_path = Path(database_path).resolve()
     with closing(sqlite3.connect(database_path.as_uri() + "?mode=ro", uri=True)) as connection:
@@ -83,28 +86,56 @@ def read_schema(database_path):
                 'SELECT id, seq, "table", "from", "to" FROM pragma_foreign_key_list(?) ORDER BY id, seq',
                 (table,),
             ))
-            sizes = Counter(row[0] for row in foreign_keys)
-            for key_id, sequence, target_table, source, target in foreign_keys:
-                try:
+            constraints = {}
+            for foreign_key in foreign_keys:
+                constraints.setdefault(foreign_key[0], []).append(foreign_key)
+
+            for constraint in constraints.values():
+                pairs = []
+                error = None
+                for _, sequence, target_table, source, target in constraint:
+                    source_position = (identifier_key(table), identifier_key(source))
+                    if source_position not in positions:
+                        error = "missing source column"
+                        break
+
+                    target_table_key = identifier_key(target_table)
+                    if target_table_key not in primary_columns:
+                        error = "missing target table"
+                        break
+
                     if target is None:
-                        primary = primary_columns[identifier_key(target_table)]
-                        if len(primary) != sizes[key_id]:
-                            raise ValueError("implicit reference does not match the target primary key")
+                        primary = primary_columns[target_table_key]
+                        if len(primary) != len(constraint) or sequence >= len(primary):
+                            error = "invalid implicit primary-key reference"
+                            break
                         target = primary[sequence]
-                    pair = [positions[(identifier_key(table), identifier_key(source))],
-                            positions[(identifier_key(target_table), identifier_key(target))]]
-                except (KeyError, IndexError, ValueError) as error:
+
+                    target_position = (target_table_key, identifier_key(target))
+                    if target_position not in positions:
+                        error = "missing target column"
+                        break
+                    pairs.append([positions[source_position], positions[target_position]])
+
+                if error is not None:
+                    if skip_unresolved_foreign_keys:
+                        if unresolved_foreign_keys is not None:
+                            unresolved_foreign_keys[error] += 1
+                        continue
                     raise ValueError(
                         f"{database_path}: unresolved foreign key {table}.{source} -> "
                         f"{target_table}.{target}: {error}"
-                    ) from error
-                if pair not in schema["foreign_keys"]:
-                    schema["foreign_keys"].append(pair)
+                    )
+
+                for pair in pairs:
+                    if pair not in schema["foreign_keys"]:
+                        schema["foreign_keys"].append(pair)
         return schema
 
 
-def generate_dev_tables(dataset_path, output_path=None):
-    """Create the JSON for every DB folder, failing before writing on bad input."""
+def generate_dev_tables(dataset_path, output_path=None,
+                        skip_unresolved_foreign_keys=False):
+    """Create the JSON for every DB folder, optionally skipping unresolved FKs."""
     dataset_path = Path(dataset_path)
     output_path = Path(output_path) if output_path is not None else dataset_path / "dev_tables.json"
     if output_path.exists():
@@ -115,10 +146,34 @@ def generate_dev_tables(dataset_path, output_path=None):
     )
     if not directories:
         raise ValueError(f"No database directories in {dataset_path / 'dev_databases'}")
-    schemas = [read_schema(directory / f"{directory.name}.sqlite") for directory in directories]
+    schemas = []
+    unresolved_foreign_keys = Counter()
+    affected_databases = 0
+    for directory in directories:
+        database_stats = Counter()
+        schemas.append(read_schema(
+            directory / f"{directory.name}.sqlite",
+            skip_unresolved_foreign_keys=skip_unresolved_foreign_keys,
+            unresolved_foreign_keys=database_stats,
+        ))
+        if database_stats:
+            affected_databases += 1
+            unresolved_foreign_keys.update(database_stats)
+
     payload = json.dumps(schemas, ensure_ascii=False, indent=2) + "\n"
     with output_path.open("x", encoding="utf-8", newline="\n") as output:
         output.write(payload)
+    if skip_unresolved_foreign_keys:
+        print("Foreign-key validation:")
+        print(f"  unresolved constraints skipped: {sum(unresolved_foreign_keys.values())}")
+        print(f"  affected databases: {affected_databases}")
+        for reason in (
+            "missing target table",
+            "missing target column",
+            "missing source column",
+            "invalid implicit primary-key reference",
+        ):
+            print(f"  {reason}: {unresolved_foreign_keys[reason]}")
     return output_path
 
 
