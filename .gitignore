@@ -216,5 +216,6 @@ BIRD_SPIDER_dev-ambiguous/
 BIRDtrain/
 BIRDtrain-ambiguous/
 SPIDERtrain-ambiguous/
+ARCHER-ambiguous/
 agent.md
 iterative_jar/
