@@ -8,16 +8,16 @@
       "name",
       "lat",
       "long",
-      "dock_count",
+      "dock count",
       "city",
-      "installation_date"
+      "installation date"
     ],
     "schema_sql": "CREATE TABLE station ( id INTEGER PRIMARY KEY, name TEXT, lat NUMERIC, long NUMERIC, dock_count INTEGER, city TEXT, installation_date TEXT)",
     "joinable_tables": [
       "status"
     ],
     "top_values": {
-      "dock_count": [
+      "dock count": [
         15,
         19,
         23,
@@ -32,7 +32,7 @@
         "Redwood City",
         "Palo Alto"
       ],
-      "installation_date": [
+      "installation date": [
         "8/23/2013",
         "8/19/2013",
         "8/20/2013",
@@ -59,9 +59,9 @@
     "db": "bike_1",
     "table": "status",
     "columns": [
-      "station_id",
-      "bikes_available",
-      "docks_available",
+      "station id",
+      "bikes available",
+      "docks available",
       "time"
     ],
     "schema_sql": "CREATE TABLE status ( station_id INTEGER, bikes_available INTEGER, docks_available INTEGER, time TEXT, FOREIGN KEY (station_id) REFERENCES station(id) )",
@@ -69,7 +69,7 @@
       "station"
     ],
     "top_values": {
-      "station_id": [
+      "station id": [
         10,
         11,
         12,
@@ -121,7 +121,7 @@
         64,
         65
       ],
-      "bikes_available": [
+      "bikes available": [
         8,
         5,
         7,
@@ -141,7 +141,7 @@
         17,
         16
       ],
-      "docks_available": [
+      "docks available": [
         7,
         8,
         10,
@@ -231,15 +231,15 @@
     "columns": [
       "id",
       "duration",
-      "start_date",
-      "start_station_name",
-      "start_station_id",
-      "end_date",
-      "end_station_name",
-      "end_station_id",
-      "bike_id",
-      "subscription_type",
-      "zip_code"
+      "start date",
+      "start station name",
+      "start station id",
+      "end date",
+      "end station name",
+      "end station id",
+      "bike id",
+      "subscription type",
+      "zip code"
     ],
     "schema_sql": "CREATE TABLE trip ( id INTEGER PRIMARY KEY, duration INTEGER, start_date TEXT, start_station_name TEXT, -- this should be removed start_station_id INTEGER, end_date TEXT, end_station_name TEXT, -- this should be removed end_station_id INTEGER, bike_id INTEGER, subscription_type TEXT, zip_code INTEGER)",
     "joinable_tables": [],
@@ -296,7 +296,7 @@
         358,
         359
       ],
-      "start_station_name": [
+      "start station name": [
         "San Francisco Caltrain 2 (330 Townsend)",
         "San Francisco Caltrain (Townsend at 4th)",
         "Harry Bridges Plaza (Ferry Building)",
@@ -348,7 +348,7 @@
         "San Antonio Shopping Center",
         "Cowper at University"
       ],
-      "start_station_id": [
+      "start station id": [
         69,
         70,
         50,
@@ -400,7 +400,7 @@
         84,
         37
       ],
-      "end_date": [
+      "end date": [
         "8/25/2015 8:18",
         "8/27/2015 17:09",
         "8/25/2015 18:16",
@@ -452,7 +452,7 @@
         "8/28/2015 16:20",
         "8/28/2015 8:17"
       ],
-      "end_station_name": [
+      "end station name": [
         "San Francisco Caltrain (Townsend at 4th)",
         "San Francisco Caltrain 2 (330 Townsend)",
         "Harry Bridges Plaza (Ferry Building)",
@@ -504,7 +504,7 @@
         "Paseo de San Antonio",
         "Rengstorff Avenue / California Street"
       ],
-      "end_station_id": [
+      "end station id": [
         70,
         69,
         50,
@@ -556,7 +556,7 @@
         33,
         7
       ],
-      "bike_id": [
+      "bike id": [
         327,
         448,
         687,
@@ -608,11 +608,11 @@
         269,
         282
       ],
-      "subscription_type": [
+      "subscription type": [
         "Subscriber",
         "Customer"
       ],
-      "zip_code": [
+      "zip code": [
         94107,
         94105,
         94133,
@@ -673,29 +673,29 @@
     "table": "weather",
     "columns": [
       "date",
-      "max_temperature_f",
-      "mean_temperature_f",
-      "min_temperature_f",
-      "max_dew_point_f",
-      "mean_dew_point_f",
-      "min_dew_point_f",
-      "max_humidity",
-      "mean_humidity",
-      "min_humidity",
-      "max_sea_level_pressure_inches",
-      "mean_sea_level_pressure_inches",
-      "min_sea_level_pressure_inches",
-      "max_visibility_miles",
-      "mean_visibility_miles",
-      "min_visibility_miles",
-      "max_wind_Speed_mph",
-      "mean_wind_speed_mph",
-      "max_gust_speed_mph",
-      "precipitation_inches",
-      "cloud_cover",
+      "max temperature f",
+      "mean temperature f",
+      "min temperature f",
+      "max dew point f",
+      "mean dew point f",
+      "min dew point f",
+      "max humidity",
+      "mean humidity",
+      "min humidity",
+      "max sea level pressure inches",
+      "mean sea level pressure inches",
+      "min sea level pressure inches",
+      "max visibility miles",
+      "mean visibility miles",
+      "min visibility miles",
+      "max wind Speed mph",
+      "mean wind speed mph",
+      "max gust speed mph",
+      "precipitation inches",
+      "cloud cover",
       "events",
-      "wind_dir_degrees",
-      "zip_code"
+      "wind dir degrees",
+      "zip code"
     ],
     "schema_sql": "CREATE TABLE weather ( date TEXT, max_temperature_f INTEGER, mean_temperature_f INTEGER, min_temperature_f INTEGER, max_dew_point_f INTEGER, mean_dew_point_f INTEGER, min_dew_point_f INTEGER, max_humidity INTEGER, mean_humidity INTEGER, min_humidity INTEGER, max_sea_level_pressure_inches NUMERIC, mean_sea_level_pressure_inches NUMERIC, min_sea_level_pressure_inches NUMERIC, max_visibility_miles INTEGER, mean_visibility_miles INTEGER, min_visibility_miles INTEGER, max_wind_Speed_mph INTEGER, mean_wind_speed_mph INTEGER, max_gust_speed_mph INTEGER, precipitation_inches INTEGER, cloud_cover INTEGER, events TEXT, wind_dir_degrees INTEGER, zip_code INTEGER)",
     "joinable_tables": [],
@@ -752,7 +752,7 @@
         "1/31/2014",
         "1/31/2015"
       ],
-      "max_temperature_f": [
+      "max temperature f": [
         66,
         64,
         75,
@@ -804,7 +804,7 @@
         46,
         47
       ],
-      "mean_temperature_f": [
+      "mean temperature f": [
         60,
         68,
         58,
@@ -853,7 +853,7 @@
         81,
         84
       ],
-      "min_temperature_f": [
+      "min temperature f": [
         53,
         55,
         50,
@@ -901,7 +901,7 @@
         73,
         75
       ],
-      "max_dew_point_f": [
+      "max dew point f": [
         59,
         57,
         54,
@@ -949,7 +949,7 @@
         29,
         20
       ],
-      "mean_dew_point_f": [
+      "mean dew point f": [
         56,
         49,
         48,
@@ -1001,7 +1001,7 @@
         15,
         16
       ],
-      "min_dew_point_f": [
+      "min dew point f": [
         46,
         55,
         48,
@@ -1053,7 +1053,7 @@
         15,
         10
       ],
-      "max_humidity": [
+      "max humidity": [
         93,
         100,
         88,
@@ -1105,7 +1105,7 @@
         40,
         56
       ],
-      "mean_humidity": [
+      "mean humidity": [
         69,
         71,
         72,
@@ -1157,7 +1157,7 @@
         40,
         88
       ],
-      "min_humidity": [
+      "min humidity": [
         53,
         57,
         52,
@@ -1209,7 +1209,7 @@
         21,
         73
       ],
-      "max_sea_level_pressure_inches": [
+      "max sea level pressure inches": [
         30.06,
         30.09,
         30.02,
@@ -1261,7 +1261,7 @@
         29.84,
         30.33
       ],
-      "mean_sea_level_pressure_inches": [
+      "mean sea level pressure inches": [
         29.99,
         30,
         29.98,
@@ -1313,7 +1313,7 @@
         29.81,
         29.77
       ],
-      "min_sea_level_pressure_inches": [
+      "min sea level pressure inches": [
         29.91,
         29.94,
         29.92,
@@ -1365,7 +1365,7 @@
         30.24,
         29.74
       ],
-      "max_visibility_miles": [
+      "max visibility miles": [
         10,
         20,
         15,
@@ -1379,7 +1379,7 @@
         19,
         5
       ],
-      "mean_visibility_miles": [
+      "mean visibility miles": [
         10,
         9,
         8,
@@ -1399,7 +1399,7 @@
         20,
         19
       ],
-      "min_visibility_miles": [
+      "min visibility miles": [
         10,
         7,
         9,
@@ -1415,7 +1415,7 @@
         "",
         20
       ],
-      "max_wind_Speed_mph": [
+      "max wind Speed mph": [
         14,
         17,
         18,
@@ -1467,7 +1467,7 @@
         86,
         94
       ],
-      "mean_wind_speed_mph": [
+      "mean wind speed mph": [
         6,
         7,
         5,
@@ -1494,7 +1494,7 @@
         21,
         23
       ],
-      "max_gust_speed_mph": [
+      "max gust speed mph": [
         "",
         23,
         22,
@@ -1542,7 +1542,7 @@
         62,
         93
       ],
-      "precipitation_inches": [
+      "precipitation inches": [
         0,
         "T",
         0.01,
@@ -1594,7 +1594,7 @@
         0.4,
         0.41
       ],
-      "cloud_cover": [
+      "cloud cover": [
         0,
         1,
         2,
@@ -1614,7 +1614,7 @@
         "Rain-Thunderstorm",
         "rain"
       ],
-      "wind_dir_degrees": [
+      "wind dir degrees": [
         350,
         299,
         349,
@@ -1666,7 +1666,7 @@
         335,
         336
       ],
-      "zip_code": [
+      "zip code": [
         94041,
         94063,
         94107,
@@ -1681,7 +1681,7 @@
     "db": "concert_singer",
     "table": "stadium",
     "columns": [
-      "Stadium_ID",
+      "Stadium ID",
       "Location",
       "Name",
       "Capacity",
@@ -1701,17 +1701,17 @@
     "db": "concert_singer",
     "table": "singer",
     "columns": [
-      "Singer_ID",
+      "Singer ID",
       "Name",
       "Country",
-      "Song_Name",
-      "Song_release_year",
+      "Song Name",
+      "Song release year",
       "Age",
-      "Is_male"
+      "Is male"
     ],
     "schema_sql": "CREATE TABLE \"singer\" ( \"Singer_ID\" int, \"Name\" text, \"Country\" text, \"Song_Name\" text, \"Song_release_year\" text, \"Age\" int, \"Is_male\" bool, PRIMARY KEY (\"Singer_ID\") )",
     "joinable_tables": [
-      "singer_in_concert"
+      "singer in concert"
     ],
     "top_values": {
       "Country": [
@@ -1719,7 +1719,7 @@
         "Netherlands",
         "United States"
       ],
-      "Is_male": [
+      "Is male": [
         "T",
         "F"
       ]
@@ -1731,16 +1731,16 @@
     "db": "concert_singer",
     "table": "concert",
     "columns": [
-      "concert_ID",
-      "concert_Name",
+      "concert ID",
+      "concert Name",
       "Theme",
-      "Stadium_ID",
+      "Stadium ID",
       "Year"
     ],
     "schema_sql": "CREATE TABLE \"concert\" ( \"concert_ID\" int, \"concert_Name\" text, \"Theme\" text, \"Stadium_ID\" text, \"Year\" text, PRIMARY KEY (\"concert_ID\"), FOREIGN KEY (\"Stadium_ID\") REFERENCES \"stadium\"(\"Stadium_ID\") )",
     "joinable_tables": [
       "stadium",
-      "singer_in_concert"
+      "singer in concert"
     ],
     "top_values": {
       "Year": [
@@ -1751,12 +1751,12 @@
     "bm25_text": "concert concert id concert name theme stadium id year stadium singer in concert char4:conc char4:once char4:ncer char4:cert char4:conc char4:once char4:ncer char4:cert char4:conc char4:once char4:ncer char4:cert char4:name char4:them char4:heme char4:stad char4:tadi char4:adiu char4:dium char4:year char4:stad char4:tadi char4:adiu char4:dium char4:sing char4:inge char4:nger char4:conc char4:once char4:ncer char4:cert"
   },
   {
-    "table_id": "concert_singer.singer_in_concert",
+    "table_id": "concert_singer.singer in concert",
     "db": "concert_singer",
-    "table": "singer_in_concert",
+    "table": "singer in concert",
     "columns": [
-      "concert_ID",
-      "Singer_ID"
+      "concert ID",
+      "Singer ID"
     ],
     "schema_sql": "CREATE TABLE \"singer_in_concert\" ( \"concert_ID\" int, \"Singer_ID\" text, PRIMARY KEY (\"concert_ID\",\"Singer_ID\"), FOREIGN KEY (\"concert_ID\") REFERENCES \"concert\"(\"concert_ID\"), FOREIGN KEY (\"Singer_ID\") REFERENCES \"singer\"(\"Singer_ID\") )",
     "joinable_tables": [
@@ -1764,7 +1764,7 @@
       "concert"
     ],
     "top_values": {
-      "Singer_ID": [
+      "Singer ID": [
         "3",
         "2",
         "5",
@@ -1779,16 +1779,16 @@
     "db": "customers_and_products_contacts",
     "table": "Addresses",
     "columns": [
-      "address_id",
-      "line_1_number_building",
+      "address id",
+      "line 1 number building",
       "city",
-      "zip_postcode",
-      "state_province_county",
+      "zip postcode",
+      "state province county",
       "country"
     ],
     "schema_sql": "CREATE TABLE `Addresses` ( `address_id` INTEGER PRIMARY KEY, `line_1_number_building` VARCHAR(80), `city` VARCHAR(50), `zip_postcode` VARCHAR(20), `state_province_county` VARCHAR(50), `country` VARCHAR(50) )",
     "joinable_tables": [
-      "Customer_Address_History"
+      "Customer Address History"
     ],
     "top_values": {
       "country": [
@@ -1802,21 +1802,21 @@
     "db": "customers_and_products_contacts",
     "table": "Products",
     "columns": [
-      "product_id",
-      "product_type_code",
-      "product_name",
-      "product_price"
+      "product id",
+      "product type code",
+      "product name",
+      "product price"
     ],
     "schema_sql": "CREATE TABLE `Products` ( `product_id` INTEGER PRIMARY KEY, `product_type_code` VARCHAR(15), `product_name` VARCHAR(80), `product_price` DOUBLE NULL )",
     "joinable_tables": [
-      "Order_Items"
+      "Order Items"
     ],
     "top_values": {
-      "product_type_code": [
+      "product type code": [
         "Hardware",
         "Clothes"
       ],
-      "product_name": [
+      "product name": [
         "Apple",
         "jcrew",
         "Sony",
@@ -1830,21 +1830,21 @@
     "db": "customers_and_products_contacts",
     "table": "Customers",
     "columns": [
-      "customer_id",
-      "payment_method_code",
-      "customer_number",
-      "customer_name",
-      "customer_address",
-      "customer_phone",
-      "customer_email"
+      "customer id",
+      "payment method code",
+      "customer number",
+      "customer name",
+      "customer address",
+      "customer phone",
+      "customer email"
     ],
     "schema_sql": "CREATE TABLE `Customers` ( `customer_id` INTEGER PRIMARY KEY, `payment_method_code` VARCHAR(15), `customer_number` VARCHAR(20), `customer_name` VARCHAR(80), `customer_address` VARCHAR(255), `customer_phone` VARCHAR(80), `customer_email` VARCHAR(80) )",
     "joinable_tables": [
-      "Customer_Address_History",
-      "Customer_Orders"
+      "Customer Address History",
+      "Customer Orders"
     ],
     "top_values": {
-      "payment_method_code": [
+      "payment method code": [
         "Direct Debit",
         "Credit Card"
       ]
@@ -1856,12 +1856,12 @@
     "db": "customers_and_products_contacts",
     "table": "Contacts",
     "columns": [
-      "contact_id",
-      "customer_id",
+      "contact id",
+      "customer id",
       "gender",
-      "first_name",
-      "last_name",
-      "contact_phone"
+      "first name",
+      "last name",
+      "contact phone"
     ],
     "schema_sql": "CREATE TABLE `Contacts` ( `contact_id` INTEGER PRIMARY KEY, `customer_id` INTEGER NOT NULL, `gender` VARCHAR(1), `first_name` VARCHAR(80), `last_name` VARCHAR(50), `contact_phone` VARCHAR(80) )",
     "joinable_tables": [],
@@ -1874,14 +1874,14 @@
     "bm25_text": "contact contact id custom id gender first name last name contact phone femal male femal male char4:cont char4:onta char4:ntac char4:tact char4:cont char4:onta char4:ntac char4:tact char4:cust char4:usto char4:stom char4:gend char4:ende char4:nder char4:firs char4:irst char4:name char4:last char4:name char4:cont char4:onta char4:ntac char4:tact char4:phon char4:hone char4:fema char4:emal char4:male char4:fema char4:emal char4:male"
   },
   {
-    "table_id": "customers_and_products_contacts.Customer_Address_History",
+    "table_id": "customers_and_products_contacts.Customer Address History",
     "db": "customers_and_products_contacts",
-    "table": "Customer_Address_History",
+    "table": "Customer Address History",
     "columns": [
-      "customer_id",
-      "address_id",
-      "date_from",
-      "date_to"
+      "customer id",
+      "address id",
+      "date from",
+      "date to"
     ],
     "schema_sql": "CREATE TABLE `Customer_Address_History` ( `customer_id` INTEGER NOT NULL, `address_id` INTEGER NOT NULL, `date_from` DATETIME NOT NULL, `date_to` DATETIME, FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` ), FOREIGN KEY (`address_id` ) REFERENCES `Addresses`(`address_id` ) )",
     "joinable_tables": [
@@ -1889,7 +1889,7 @@
       "Customers"
     ],
     "top_values": {
-      "customer_id": [
+      "customer id": [
         12,
         13,
         7,
@@ -1904,22 +1904,22 @@
     "bm25_text": "custom address histori custom id address id date from date to address custom char4:cust char4:usto char4:stom char4:addr char4:ddre char4:dres char4:ress char4:hist char4:isto char4:stor char4:tori char4:cust char4:usto char4:stom char4:addr char4:ddre char4:dres char4:ress char4:date char4:from char4:date char4:addr char4:ddre char4:dres char4:ress char4:cust char4:usto char4:stom"
   },
   {
-    "table_id": "customers_and_products_contacts.Customer_Orders",
+    "table_id": "customers_and_products_contacts.Customer Orders",
     "db": "customers_and_products_contacts",
-    "table": "Customer_Orders",
+    "table": "Customer Orders",
     "columns": [
-      "order_id",
-      "customer_id",
-      "order_date",
-      "order_status_code"
+      "order id",
+      "customer id",
+      "order date",
+      "order status code"
     ],
     "schema_sql": "CREATE TABLE `Customer_Orders` ( `order_id` INTEGER PRIMARY KEY, `customer_id` INTEGER NOT NULL, `order_date` DATETIME NOT NULL, `order_status_code` VARCHAR(15), FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` ) )",
     "joinable_tables": [
       "Customers",
-      "Order_Items"
+      "Order Items"
     ],
     "top_values": {
-      "order_status_code": [
+      "order status code": [
         "Completed",
         "Part"
       ]
@@ -1927,18 +1927,18 @@
     "bm25_text": "custom order order id custom id order date order status code custom order item complet part complet part char4:cust char4:usto char4:stom char4:orde char4:rder char4:orde char4:rder char4:cust char4:usto char4:stom char4:orde char4:rder char4:date char4:orde char4:rder char4:stat char4:tatu char4:atus char4:code char4:cust char4:usto char4:stom char4:orde char4:rder char4:item char4:comp char4:ompl char4:mple char4:plet char4:part char4:comp char4:ompl char4:mple char4:plet char4:part"
   },
   {
-    "table_id": "customers_and_products_contacts.Order_Items",
+    "table_id": "customers_and_products_contacts.Order Items",
     "db": "customers_and_products_contacts",
-    "table": "Order_Items",
+    "table": "Order Items",
     "columns": [
-      "order_item_id",
-      "order_id",
-      "product_id",
-      "order_quantity"
+      "order item id",
+      "order id",
+      "product id",
+      "order quantity"
     ],
     "schema_sql": "CREATE TABLE `Order_Items` ( `order_item_id` INTEGER NOT NULL , `order_id` INTEGER NOT NULL, `product_id` INTEGER NOT NULL, `order_quantity` VARCHAR(80), FOREIGN KEY (`product_id` ) REFERENCES `Products`(`product_id` ), FOREIGN KEY (`order_id` ) REFERENCES `Customer_Orders`(`order_id` ) )",
     "joinable_tables": [
-      "Customer_Orders",
+      "Customer Orders",
       "Products"
     ],
     "top_values": {},
@@ -1949,11 +1949,11 @@
     "db": "driving_school",
     "table": "Addresses",
     "columns": [
-      "address_id",
-      "line_1_number_building",
+      "address id",
+      "line 1 number building",
       "city",
-      "zip_postcode",
-      "state_province_county",
+      "zip postcode",
+      "state province county",
       "country"
     ],
     "schema_sql": "CREATE TABLE `Addresses` ( `address_id` INTEGER PRIMARY KEY, `line_1_number_building` VARCHAR(80), `city` VARCHAR(50), `zip_postcode` VARCHAR(20), `state_province_county` VARCHAR(50), `country` VARCHAR(50) )",
@@ -1973,15 +1973,15 @@
     "db": "driving_school",
     "table": "Staff",
     "columns": [
-      "staff_id",
-      "staff_address_id",
+      "staff id",
+      "staff address id",
       "nickname",
-      "first_name",
-      "middle_name",
-      "last_name",
-      "date_of_birth",
-      "date_joined_staff",
-      "date_left_staff"
+      "first name",
+      "middle name",
+      "last name",
+      "date of birth",
+      "date joined staff",
+      "date left staff"
     ],
     "schema_sql": "CREATE TABLE `Staff` ( `staff_id` INTEGER PRIMARY KEY, `staff_address_id` INTEGER NOT NULL, `nickname` VARCHAR(80), `first_name` VARCHAR(80), `middle_name` VARCHAR(80), `last_name` VARCHAR(80), `date_of_birth` DATETIME, `date_joined_staff` DATETIME, `date_left_staff` DATETIME, FOREIGN KEY (`staff_address_id` ) REFERENCES `Addresses`(`address_id` ) )",
     "joinable_tables": [
@@ -1996,8 +1996,8 @@
     "db": "driving_school",
     "table": "Vehicles",
     "columns": [
-      "vehicle_id",
-      "vehicle_details"
+      "vehicle id",
+      "vehicle details"
     ],
     "schema_sql": "CREATE TABLE `Vehicles` ( `vehicle_id` INTEGER PRIMARY KEY, `vehicle_details` VARCHAR(255) )",
     "joinable_tables": [
@@ -2011,26 +2011,26 @@
     "db": "driving_school",
     "table": "Customers",
     "columns": [
-      "customer_id",
-      "customer_address_id",
-      "customer_status_code",
-      "date_became_customer",
-      "date_of_birth",
-      "first_name",
-      "last_name",
-      "amount_outstanding",
-      "email_address",
-      "phone_number",
-      "cell_mobile_phone_number"
+      "customer id",
+      "customer address id",
+      "customer status code",
+      "date became customer",
+      "date of birth",
+      "first name",
+      "last name",
+      "amount outstanding",
+      "email address",
+      "phone number",
+      "cell mobile phone number"
     ],
     "schema_sql": "CREATE TABLE `Customers` ( `customer_id` INTEGER PRIMARY KEY, `customer_address_id` INTEGER NOT NULL, `customer_status_code` VARCHAR(15) NOT NULL, `date_became_customer` DATETIME, `date_of_birth` DATETIME, `first_name` VARCHAR(80), `last_name` VARCHAR(80), `amount_outstanding` DOUBLE NULL, `email_address` VARCHAR(250), `phone_number` VARCHAR(255), `cell_mobile_phone_number` VARCHAR(255), FOREIGN KEY (`customer_address_id` ) REFERENCES `Addresses`(`address_id` ) )",
     "joinable_tables": [
       "Addresses",
-      "Customer_Payments",
+      "Customer Payments",
       "Lessons"
     ],
     "top_values": {
-      "customer_status_code": [
+      "customer status code": [
         "Bad Customer",
         "Good Customer"
       ]
@@ -2038,21 +2038,21 @@
     "bm25_text": "custom custom id custom address id custom status code date becam custom date of birth first name last name amount outstand email address phone number cell mobil phone number address custom payment lesson bad custom good custom bad custom good custom char4:cust char4:usto char4:stom char4:cust char4:usto char4:stom char4:cust char4:usto char4:stom char4:addr char4:ddre char4:dres char4:ress char4:cust char4:usto char4:stom char4:stat char4:tatu char4:atus char4:code char4:date char4:beca char4:ecam char4:cust char4:usto char4:stom char4:date char4:birt char4:irth char4:firs char4:irst char4:name char4:last char4:name char4:amou char4:moun char4:ount char4:outs char4:utst char4:tsta char4:stan char4:tand char4:emai char4:mail char4:addr char4:ddre char4:dres char4:ress char4:phon char4:hone char4:numb char4:umbe char4:mber char4:cell char4:mobi char4:obil char4:phon char4:hone char4:numb char4:umbe char4:mber char4:addr char4:ddre char4:dres char4:ress char4:cust char4:usto char4:stom char4:paym char4:ayme char4:ymen char4:ment char4:less char4:esso char4:sson char4:cust char4:usto char4:stom char4:good char4:cust char4:usto char4:stom char4:cust char4:usto char4:stom char4:good char4:cust char4:usto char4:stom"
   },
   {
-    "table_id": "driving_school.Customer_Payments",
+    "table_id": "driving_school.Customer Payments",
     "db": "driving_school",
-    "table": "Customer_Payments",
+    "table": "Customer Payments",
     "columns": [
-      "customer_id",
-      "datetime_payment",
-      "payment_method_code",
-      "amount_payment"
+      "customer id",
+      "datetime payment",
+      "payment method code",
+      "amount payment"
     ],
     "schema_sql": "CREATE TABLE `Customer_Payments` ( `customer_id` INTEGER NOT NULL, `datetime_payment` DATETIME NOT NULL, `payment_method_code` VARCHAR(10) NOT NULL, `amount_payment` DOUBLE NULL, PRIMARY KEY (`customer_id`,`datetime_payment`), FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` ) )",
     "joinable_tables": [
       "Customers"
     ],
     "top_values": {
-      "payment_method_code": [
+      "payment method code": [
         "Direct Debit",
         "Credit Card"
       ]
@@ -2064,13 +2064,13 @@
     "db": "driving_school",
     "table": "Lessons",
     "columns": [
-      "lesson_id",
-      "customer_id",
-      "lesson_status_code",
-      "staff_id",
-      "vehicle_id",
-      "lesson_date",
-      "lesson_time",
+      "lesson id",
+      "customer id",
+      "lesson status code",
+      "staff id",
+      "vehicle id",
+      "lesson date",
+      "lesson time",
       "price"
     ],
     "schema_sql": "CREATE TABLE `Lessons` ( `lesson_id` INTEGER PRIMARY KEY, `customer_id` INTEGER NOT NULL, `lesson_status_code` VARCHAR(15) NOT NULL, `staff_id` INTEGER, `vehicle_id` INTEGER NOT NULL, `lesson_date` DATETIME, `lesson_time` VARCHAR(10), `price` DOUBLE NULL, FOREIGN KEY (`vehicle_id` ) REFERENCES `Vehicles`(`vehicle_id` ), FOREIGN KEY (`staff_id` ) REFERENCES `Staff`(`staff_id` ), FOREIGN KEY (`customer_id` ) REFERENCES `Customers`(`customer_id` ) )",
@@ -2080,16 +2080,16 @@
       "Vehicles"
     ],
     "top_values": {
-      "lesson_status_code": [
+      "lesson status code": [
         "Cancelled",
         "Completed"
       ],
-      "vehicle_id": [
+      "vehicle id": [
         2,
         1,
         3
       ],
-      "lesson_time": [
+      "lesson time": [
         "9",
         "2",
         "5",
@@ -4577,8 +4577,8 @@
     "schema_sql": "CREATE TABLE Physician ( EmployeeID INTEGER NOT NULL, Name VARCHAR(30) NOT NULL, Position VARCHAR(30) NOT NULL, SSN INTEGER NOT NULL, CONSTRAINT pk_physician PRIMARY KEY(EmployeeID) )",
     "joinable_tables": [
       "Department",
-      "Affiliated_With",
-      "Trained_In",
+      "Affiliated With",
+      "Trained In",
       "Patient",
       "Appointment",
       "Prescribes",
@@ -4599,15 +4599,15 @@
     "schema_sql": "CREATE TABLE Department ( DepartmentID INTEGER NOT NULL, Name VARCHAR(30) NOT NULL, Head INTEGER NOT NULL, CONSTRAINT pk_Department PRIMARY KEY(DepartmentID), CONSTRAINT fk_Department_Physician_EmployeeID FOREIGN KEY(Head) REFERENCES Physician(EmployeeID) )",
     "joinable_tables": [
       "Physician",
-      "Affiliated_With"
+      "Affiliated With"
     ],
     "top_values": {},
     "bm25_text": "depart departmentid name head physician affili with char4:depa char4:epar char4:part char4:depa char4:epar char4:part char4:artm char4:rtme char4:tmen char4:ment char4:enti char4:ntid char4:name char4:head char4:phys char4:hysi char4:ysic char4:sici char4:icia char4:cian char4:affi char4:ffil char4:fili char4:with"
   },
   {
-    "table_id": "hospital_1.Affiliated_With",
+    "table_id": "hospital_1.Affiliated With",
     "db": "hospital_1",
-    "table": "Affiliated_With",
+    "table": "Affiliated With",
     "columns": [
       "Physician",
       "Department",
@@ -4642,16 +4642,16 @@
     ],
     "schema_sql": "CREATE TABLE Procedures ( Code INTEGER PRIMARY KEY NOT NULL, Name VARCHAR(30) NOT NULL, Cost REAL NOT NULL )",
     "joinable_tables": [
-      "Trained_In",
+      "Trained In",
       "Undergoes"
     ],
     "top_values": {},
     "bm25_text": "procedur code name cost train in undergo char4:proc char4:roce char4:oced char4:cedu char4:edur char4:code char4:name char4:cost char4:trai char4:rain char4:unde char4:nder char4:derg char4:ergo"
   },
   {
-    "table_id": "hospital_1.Trained_In",
+    "table_id": "hospital_1.Trained In",
     "db": "hospital_1",
-    "table": "Trained_In",
+    "table": "Trained In",
     "columns": [
       "Physician",
       "Treatment",
@@ -4726,7 +4726,7 @@
     "schema_sql": "CREATE TABLE Nurse ( EmployeeID INTEGER PRIMARY KEY NOT NULL, Name VARCHAR(30) NOT NULL, Position VARCHAR(30) NOT NULL, Registered BOOLEAN NOT NULL, SSN INTEGER NOT NULL )",
     "joinable_tables": [
       "Appointment",
-      "On_Call",
+      "On Call",
       "Undergoes"
     ],
     "top_values": {},
@@ -4826,7 +4826,7 @@
     "schema_sql": "CREATE TABLE Block ( BlockFloor INTEGER NOT NULL, BlockCode INTEGER NOT NULL, PRIMARY KEY(BlockFloor, BlockCode) )",
     "joinable_tables": [
       "Room",
-      "On_Call"
+      "On Call"
     ],
     "top_values": {
       "BlockFloor": [
@@ -4882,9 +4882,9 @@
     "bm25_text": "room roomnumb roomtyp blockfloor blockcod unavail block stay singl singl char4:room char4:room char4:oomn char4:omnu char4:mnum char4:numb char4:room char4:oomt char4:omty char4:mtyp char4:bloc char4:lock char4:ockf char4:ckfl char4:kflo char4:floo char4:loor char4:bloc char4:lock char4:ockc char4:ckco char4:kcod char4:unav char4:nava char4:avai char4:vail char4:bloc char4:lock char4:stay char4:sing char4:ingl char4:sing char4:ingl"
   },
   {
-    "table_id": "hospital_1.On_Call",
+    "table_id": "hospital_1.On Call",
     "db": "hospital_1",
-    "table": "On_Call",
+    "table": "On Call",
     "columns": [
       "Nurse",
       "BlockFloor",
@@ -4984,9 +4984,9 @@
     "db": "riding_club",
     "table": "player",
     "columns": [
-      "Player_ID",
-      "Sponsor_name",
-      "Player_name",
+      "Player ID",
+      "Sponsor name",
+      "Player name",
       "Gender",
       "Residence",
       "Occupation",
@@ -4995,7 +4995,7 @@
     ],
     "schema_sql": "CREATE TABLE \"player\" ( \"Player_ID\" int, \"Sponsor_name\" text, \"Player_name\" text, \"Gender\" text, \"Residence\" text, \"Occupation\" text, \"Votes\" int, \"Rank\" text, PRIMARY KEY (\"Player_ID\") )",
     "joinable_tables": [
-      "player_coach"
+      "player coach"
     ],
     "top_values": {
       "Gender": [
@@ -5024,15 +5024,15 @@
     "db": "riding_club",
     "table": "club",
     "columns": [
-      "Club_ID",
-      "Club_name",
+      "Club ID",
+      "Club name",
       "Region",
-      "Start_year"
+      "Start year"
     ],
     "schema_sql": "CREATE TABLE \"club\" ( \"Club_ID\" int, \"Club_name\" text, \"Region\" text, \"Start_year\" int, PRIMARY KEY (\"Club_ID\") )",
     "joinable_tables": [
       "coach",
-      "match_result"
+      "match result"
     ],
     "top_values": {},
     "bm25_text": "club club id club name region start year coach match result char4:club char4:club char4:club char4:name char4:regi char4:egio char4:gion char4:star char4:tart char4:year char4:coac char4:oach char4:matc char4:atch char4:resu char4:esul char4:sult"
@@ -5042,23 +5042,23 @@
     "db": "riding_club",
     "table": "coach",
     "columns": [
-      "Coach_ID",
-      "Coach_name",
+      "Coach ID",
+      "Coach name",
       "Gender",
-      "Club_ID",
+      "Club ID",
       "Rank"
     ],
     "schema_sql": "CREATE TABLE \"coach\" ( \"Coach_ID\" int, \"Coach_name\" text, \"Gender\" text, \"Club_ID\" int, \"Rank\" int, PRIMARY KEY (\"Coach_ID\"), FOREIGN KEY (`Club_ID`) REFERENCES `club`(`Club_ID`) )",
     "joinable_tables": [
       "club",
-      "player_coach"
+      "player coach"
     ],
     "top_values": {
       "Gender": [
         "M",
         "F"
       ],
-      "Club_ID": [
+      "Club ID": [
         1,
         3
       ]
@@ -5066,13 +5066,13 @@
     "bm25_text": "coach coach id coach name gender club id rank club player coach m f m f char4:coac char4:oach char4:coac char4:oach char4:coac char4:oach char4:name char4:gend char4:ende char4:nder char4:club char4:rank char4:club char4:play char4:laye char4:ayer char4:coac char4:oach"
   },
   {
-    "table_id": "riding_club.player_coach",
+    "table_id": "riding_club.player coach",
     "db": "riding_club",
-    "table": "player_coach",
+    "table": "player coach",
     "columns": [
-      "Player_ID",
-      "Coach_ID",
-      "Starting_year"
+      "Player ID",
+      "Coach ID",
+      "Starting year"
     ],
     "schema_sql": "CREATE TABLE \"player_coach\" ( \"Player_ID\" int, \"Coach_ID\" int, \"Starting_year\" int, PRIMARY KEY (\"Player_ID\",\"Coach_ID\"), FOREIGN KEY (`Player_ID`) REFERENCES `player`(`Player_ID`), FOREIGN KEY (`Coach_ID`) REFERENCES `coach`(`Coach_ID`) )",
     "joinable_tables": [
@@ -5083,15 +5083,15 @@
     "bm25_text": "player coach player id coach id start year coach player char4:play char4:laye char4:ayer char4:coac char4:oach char4:play char4:laye char4:ayer char4:coac char4:oach char4:star char4:tart char4:year char4:coac char4:oach char4:play char4:laye char4:ayer"
   },
   {
-    "table_id": "riding_club.match_result",
+    "table_id": "riding_club.match result",
     "db": "riding_club",
-    "table": "match_result",
+    "table": "match result",
     "columns": [
       "Rank",
-      "Club_ID",
+      "Club ID",
       "Gold",
-      "Big_Silver",
-      "Small_Silver",
+      "Big Silver",
+      "Small Silver",
       "Bronze",
       "Points"
     ],
@@ -5103,59 +5103,59 @@
     "bm25_text": "match result rank club id gold big silver small silver bronz point club char4:matc char4:atch char4:resu char4:esul char4:sult char4:rank char4:club char4:gold char4:silv char4:ilve char4:lver char4:smal char4:mall char4:silv char4:ilve char4:lver char4:bron char4:ronz char4:poin char4:oint char4:club"
   },
   {
-    "table_id": "soccer_1.Player_Attributes",
+    "table_id": "soccer_1.Player Attributes",
     "db": "soccer_1",
-    "table": "Player_Attributes",
+    "table": "Player Attributes",
     "columns": [
       "id",
-      "player_fifa_api_id",
-      "player_api_id",
+      "player fifa api id",
+      "player api id",
       "date",
-      "overall_rating",
+      "overall rating",
       "potential",
-      "preferred_foot",
-      "attacking_work_rate",
-      "defensive_work_rate",
+      "preferred foot",
+      "attacking work rate",
+      "defensive work rate",
       "crossing",
       "finishing",
-      "heading_accuracy",
-      "short_passing",
+      "heading accuracy",
+      "short passing",
       "volleys",
       "dribbling",
       "curve",
-      "free_kick_accuracy",
-      "long_passing",
-      "ball_control",
+      "free kick accuracy",
+      "long passing",
+      "ball control",
       "acceleration",
-      "sprint_speed",
+      "sprint speed",
       "agility",
       "reactions",
       "balance",
-      "shot_power",
+      "shot power",
       "jumping",
       "stamina",
       "strength",
-      "long_shots",
+      "long shots",
       "aggression",
       "interceptions",
       "positioning",
       "vision",
       "penalties",
       "marking",
-      "standing_tackle",
-      "sliding_tackle",
-      "gk_diving",
-      "gk_handling",
-      "gk_kicking",
-      "gk_positioning",
-      "gk_reflexes"
+      "standing tackle",
+      "sliding tackle",
+      "gk diving",
+      "gk handling",
+      "gk kicking",
+      "gk positioning",
+      "gk reflexes"
     ],
     "schema_sql": "CREATE TABLE \"Player_Attributes\" ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `player_fifa_api_id` INTEGER, `player_api_id` INTEGER, `date` TEXT, `overall_rating` INTEGER, `potential` INTEGER, `preferred_foot` TEXT, `attacking_work_rate` TEXT, `defensive_work_rate` TEXT, `crossing` INTEGER, `finishing` INTEGER, `heading_accuracy` INTEGER, `short_passing` INTEGER, `volleys` INTEGER, `dribbling` INTEGER, `curve` INTEGER, `free_kick_accuracy` INTEGER, `long_passing` INTEGER, `ball_control` INTEGER, `acceleration` INTEGER, `sprint_speed` INTEGER, `agility` INTEGER, `reactions` INTEGER, `balance` INTEGER, `shot_power` INTEGER, `jumping` INTEGER, `stamina` INTEGER, `strength` INTEGER, `long_shots` INTEGER, `aggression` INTEGER, `interceptions` INTEGER, `positioning` INTEGER, `vision` INTEGER, `penalties` INTEGER, `marking` INTEGER, `standing_tackle` INTEGER, `sliding_tackle` INTEGER, `gk_diving` INTEGER, `gk_handling` INTEGER, `gk_kicking` INTEGER, `gk_positioning` INTEGER, `gk_reflexes` INTEGER, FOREIGN KEY(`player_fifa_api_id`) REFERENCES `Player`(`player_fifa_api_id`), FOREIGN KEY(`player_api_id`) REFERENCES `Player`(`player_api_id`) )",
     "joinable_tables": [
       "Player"
     ],
     "top_values": {
-      "player_fifa_api_id": [
+      "player fifa api id": [
         184431,
         178393,
         193061,
@@ -5207,7 +5207,7 @@
         103935,
         138831
       ],
-      "player_api_id": [
+      "player api id": [
         210278,
         41269,
         42116,
@@ -5311,7 +5311,7 @@
         "2014-07-18 00:00:00",
         "2013-03-15 00:00:00"
       ],
-      "overall_rating": [
+      "overall rating": [
         68,
         69,
         67,
@@ -5415,11 +5415,11 @@
         45,
         97
       ],
-      "preferred_foot": [
+      "preferred foot": [
         "right",
         "left"
       ],
-      "attacking_work_rate": [
+      "attacking work rate": [
         "medium",
         "high",
         "low",
@@ -5429,7 +5429,7 @@
         "le",
         "stoc"
       ],
-      "defensive_work_rate": [
+      "defensive work rate": [
         "medium",
         "high",
         "low",
@@ -5554,7 +5554,7 @@
         76,
         29
       ],
-      "heading_accuracy": [
+      "heading accuracy": [
         68,
         60,
         64,
@@ -5606,7 +5606,7 @@
         37,
         83
       ],
-      "short_passing": [
+      "short passing": [
         65,
         64,
         68,
@@ -5814,7 +5814,7 @@
         35,
         30
       ],
-      "free_kick_accuracy": [
+      "free kick accuracy": [
         25,
         60,
         58,
@@ -5866,7 +5866,7 @@
         76,
         28
       ],
-      "long_passing": [
+      "long passing": [
         64,
         65,
         62,
@@ -5918,7 +5918,7 @@
         37,
         79
       ],
-      "ball_control": [
+      "ball control": [
         68,
         74,
         73,
@@ -6022,7 +6022,7 @@
         44,
         92
       ],
-      "sprint_speed": [
+      "sprint speed": [
         68,
         69,
         76,
@@ -6230,7 +6230,7 @@
         41,
         38
       ],
-      "shot_power": [
+      "shot power": [
         68,
         72,
         74,
@@ -6438,7 +6438,7 @@
         43,
         34
       ],
-      "long_shots": [
+      "long shots": [
         25,
         64,
         68,
@@ -6802,7 +6802,7 @@
         18,
         15
       ],
-      "standing_tackle": [
+      "standing tackle": [
         25,
         68,
         66,
@@ -6854,7 +6854,7 @@
         43,
         12
       ],
-      "sliding_tackle": [
+      "sliding tackle": [
         25,
         68,
         65,
@@ -6906,7 +6906,7 @@
         38,
         19
       ],
-      "gk_diving": [
+      "gk diving": [
         8,
         9,
         7,
@@ -6958,7 +6958,7 @@
         18,
         53
       ],
-      "gk_handling": [
+      "gk handling": [
         7,
         11,
         14,
@@ -7010,7 +7010,7 @@
         80,
         81
       ],
-      "gk_kicking": [
+      "gk kicking": [
         7,
         12,
         10,
@@ -7062,7 +7062,7 @@
         78,
         44
       ],
-      "gk_positioning": [
+      "gk positioning": [
         9,
         7,
         8,
@@ -7114,7 +7114,7 @@
         54,
         81
       ],
-      "gk_reflexes": [
+      "gk reflexes": [
         8,
         10,
         14,
@@ -7175,16 +7175,16 @@
     "table": "Player",
     "columns": [
       "id",
-      "player_api_id",
-      "player_name",
-      "player_fifa_api_id",
+      "player api id",
+      "player name",
+      "player fifa api id",
       "birthday",
       "height",
       "weight"
     ],
     "schema_sql": "CREATE TABLE `Player` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `player_api_id` INTEGER UNIQUE, `player_name` TEXT, `player_fifa_api_id` INTEGER UNIQUE, `birthday` TEXT, `height` INTEGER, `weight` INTEGER )",
     "joinable_tables": [
-      "Player_Attributes"
+      "Player Attributes"
     ],
     "top_values": {
       "height": [
@@ -7270,7 +7270,7 @@
     "table": "League",
     "columns": [
       "id",
-      "country_id",
+      "country id",
       "name"
     ],
     "schema_sql": "CREATE TABLE `League` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `country_id` INTEGER, `name` TEXT UNIQUE, FOREIGN KEY(`country_id`) REFERENCES `Country`(`id`) )",
@@ -7301,26 +7301,26 @@
     "table": "Team",
     "columns": [
       "id",
-      "team_api_id",
-      "team_fifa_api_id",
-      "team_long_name",
-      "team_short_name"
+      "team api id",
+      "team fifa api id",
+      "team long name",
+      "team short name"
     ],
     "schema_sql": "CREATE TABLE \"Team\" ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `team_api_id` INTEGER UNIQUE, `team_fifa_api_id` INTEGER, `team_long_name` TEXT, `team_short_name` TEXT )",
     "joinable_tables": [
-      "Team_Attributes"
+      "Team Attributes"
     ],
     "top_values": {},
     "bm25_text": "team id team api id team fifa api id team long name team short name team attribut char4:team char4:team char4:team char4:fifa char4:team char4:long char4:name char4:team char4:shor char4:hort char4:name char4:team char4:attr char4:ttri char4:trib char4:ribu char4:ibut"
   },
   {
-    "table_id": "soccer_1.Team_Attributes",
+    "table_id": "soccer_1.Team Attributes",
     "db": "soccer_1",
-    "table": "Team_Attributes",
+    "table": "Team Attributes",
     "columns": [
       "id",
-      "team_fifa_api_id",
-      "team_api_id",
+      "team fifa api id",
+      "team api id",
       "date",
       "buildUpPlaySpeed",
       "buildUpPlaySpeedClass",
@@ -7349,7 +7349,7 @@
       "Team"
     ],
     "top_values": {
-      "team_fifa_api_id": [
+      "team fifa api id": [
         301,
         1,
         10,
@@ -7401,7 +7401,7 @@
         1793,
         1795
       ],
-      "team_api_id": [
+      "team api id": [
         10000,
         10003,
         10167,

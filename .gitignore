@@ -211,12 +211,11 @@ results/
 dev_databases/
 BIRDdev-ambiguous/
 SPIDERdev1.0-ambiguous/
-BIRD_SPIDER_dev/
-BIRD_SPIDER_dev-ambiguous/
 BIRDtrain/
 BIRDtrain-ambiguous/
 SPIDERtrain-ambiguous/
 ARCHER-ambiguous/
 BEAVER-ambiguous/
+SQALE3-ambiguous/
 agent.md
 iterative_jar/
