@@ -5,13 +5,14 @@
   "min_split_value_chars": 4,
   "min_split_distinct_values": 3,
   "selection_method": "low-cardinality normalized text columns ranked by SQL equality/IN literal matches whose normalized value length is greater than 3 and whose usable distinct value count is at least 3. A selected column must also have at least one usable normalized value mentioned in a normalized natural-language question for the same database",
-  "split_policy": "db_id_1 keeps selected-table rows whose normalized selected value equals the primary split value; db_id_2 keeps rows whose normalized selected value equals the secondary split value; db_id_3 keeps all remaining selected-table rows. Child rows referencing removed parent rows are removed recursively.",
+  "split_policy": "Duplicated databases are ordered by db_id. Their primary, secondary, and remaining value groups are assigned cyclically to suffixes _1, _2, and _3 using rotation offsets 0, 1, and 2. The rotation only relabels the groups; child rows referencing removed parent rows are removed recursively.",
   "sample_assignment_policy": "Each sample must contain an explicit SQL equality/IN reference to the selected split column with a value present in that column and longer than 3 normalized characters. Then the SQL query is executed on the original database and on all clones. A sample is written to dev.json only when exactly one clone returns the same result as the original query. Samples without an explicit split reference, with only short split values, where multiple clones match, or where no clone matches, are skipped.",
   "databases": [
     {
       "db_id": "bike_1",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\bike_1\\bike_1.sqlite",
+      "split_rotation_offset": 0,
       "selected_table": "station",
       "selected_column": "city",
       "row_count": 70,
@@ -178,6 +179,7 @@
       "db_id": "customers_and_products_contacts",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\customers_and_products_contacts\\customers_and_products_contacts.sqlite",
+      "split_rotation_offset": 1,
       "selected_table": "Products",
       "selected_column": "product_name",
       "row_count": 15,
@@ -256,48 +258,6 @@
       "clones": {
         "customers_and_products_contacts_1": {
           "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_1\\customers_and_products_contacts_1.sqlite",
-          "split_kind": "primary_value",
-          "split_keep_values": [
-            "appl"
-          ],
-          "split_excluded_values": [],
-          "selected_table_row_count": 5,
-          "table_counts": {
-            "Addresses": 15,
-            "Products": 5,
-            "Customers": 15,
-            "Contacts": 15,
-            "Customer_Address_History": 20,
-            "Customer_Orders": 15,
-            "Order_Items": 4
-          },
-          "foreign_key_check": [],
-          "foreign_key_check_count": 0,
-          "foreign_key_check_error": null
-        },
-        "customers_and_products_contacts_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_2\\customers_and_products_contacts_2.sqlite",
-          "split_kind": "secondary_value",
-          "split_keep_values": [
-            "gucci"
-          ],
-          "split_excluded_values": [],
-          "selected_table_row_count": 3,
-          "table_counts": {
-            "Addresses": 15,
-            "Products": 3,
-            "Customers": 15,
-            "Contacts": 15,
-            "Customer_Address_History": 20,
-            "Customer_Orders": 15,
-            "Order_Items": 5
-          },
-          "foreign_key_check": [],
-          "foreign_key_check_count": 0,
-          "foreign_key_check_error": null
-        },
-        "customers_and_products_contacts_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_3\\customers_and_products_contacts_3.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -317,11 +277,53 @@
           "foreign_key_check": [],
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
+        },
+        "customers_and_products_contacts_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_2\\customers_and_products_contacts_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "appl"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 5,
+          "table_counts": {
+            "Addresses": 15,
+            "Products": 5,
+            "Customers": 15,
+            "Contacts": 15,
+            "Customer_Address_History": 20,
+            "Customer_Orders": 15,
+            "Order_Items": 4
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "customers_and_products_contacts_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_3\\customers_and_products_contacts_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "gucci"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 3,
+          "table_counts": {
+            "Addresses": 15,
+            "Products": 3,
+            "Customers": 15,
+            "Contacts": 15,
+            "Customer_Address_History": 20,
+            "Customer_Orders": 15,
+            "Order_Items": 5
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
         }
       },
       "dev_assignment_counts": {
-        "clone_2_matches_original": 2,
-        "clone_1_matches_original": 2
+        "clone_3_matches_original": 2,
+        "clone_2_matches_original": 2
       },
       "dev_skipped_counts": {
         "skipped_no_explicit_split_reference": 42,
@@ -337,6 +339,7 @@
       "db_id": "formula_1",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\formula_1\\formula_1.sqlite",
+      "split_rotation_offset": 2,
       "selected_table": "races",
       "selected_column": "name",
       "row_count": 997,
@@ -515,33 +518,6 @@
       "clones": {
         "formula_1_1": {
           "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_1\\formula_1_1.sqlite",
-          "split_kind": "primary_value",
-          "split_keep_values": [
-            "british grand prix"
-          ],
-          "split_excluded_values": [],
-          "selected_table_row_count": 69,
-          "table_counts": {
-            "circuits": 73,
-            "races": 69,
-            "drivers": 842,
-            "status": 134,
-            "seasons": 69,
-            "constructors": 208,
-            "constructorStandings": 797,
-            "results": 1733,
-            "driverStandings": 2540,
-            "constructorResults": 741,
-            "qualifying": 437,
-            "pitStops": 0,
-            "lapTimes": 0
-          },
-          "foreign_key_check": [],
-          "foreign_key_check_count": 0,
-          "foreign_key_check_error": null
-        },
-        "formula_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_2\\formula_1_2.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "australian grand prix"
@@ -567,8 +543,8 @@
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
         },
-        "formula_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_3\\formula_1_3.sqlite",
+        "formula_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_2\\formula_1_2.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -594,12 +570,39 @@
           "foreign_key_check": [],
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
+        },
+        "formula_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_3\\formula_1_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "british grand prix"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 69,
+          "table_counts": {
+            "circuits": 73,
+            "races": 69,
+            "drivers": 842,
+            "status": 134,
+            "seasons": 69,
+            "constructors": 208,
+            "constructorStandings": 797,
+            "results": 1733,
+            "driverStandings": 2540,
+            "constructorResults": 741,
+            "qualifying": 437,
+            "pitStops": 0,
+            "lapTimes": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
         }
       },
       "dev_assignment_counts": {
-        "clone_2_matches_original": 4,
-        "clone_1_matches_original": 2,
-        "clone_3_matches_original": 2
+        "clone_1_matches_original": 4,
+        "clone_3_matches_original": 2,
+        "clone_2_matches_original": 2
       },
       "dev_skipped_counts": {
         "skipped_no_explicit_split_reference": 42
@@ -619,6 +622,7 @@
       "db_id": "soccer_1",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\soccer_1\\soccer_1.sqlite",
+      "split_rotation_offset": 0,
       "selected_table": "Player_Attributes",
       "selected_column": "attacking_work_rate",
       "row_count": 183978,
@@ -781,6 +785,7 @@
       "db_id": "wine_1",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\wine_1\\wine_1.sqlite",
+      "split_rotation_offset": 1,
       "selected_table": "wine",
       "selected_column": "Grape",
       "row_count": 500,
@@ -958,6 +963,24 @@
       "clones": {
         "wine_1_1": {
           "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_1\\wine_1_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "pinot noir",
+            "zinfandel"
+          ],
+          "selected_table_row_count": 313,
+          "table_counts": {
+            "grapes": 20,
+            "appellations": 57,
+            "wine": 313
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "wine_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_2\\wine_1_2.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "pinot noir"
@@ -973,8 +996,8 @@
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
         },
-        "wine_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_2\\wine_1_2.sqlite",
+        "wine_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_3\\wine_1_3.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "zinfandel"
@@ -985,24 +1008,6 @@
             "grapes": 20,
             "appellations": 57,
             "wine": 78
-          },
-          "foreign_key_check": [],
-          "foreign_key_check_count": 0,
-          "foreign_key_check_error": null
-        },
-        "wine_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_3\\wine_1_3.sqlite",
-          "split_kind": "remaining_values",
-          "split_keep_values": [],
-          "split_excluded_values": [
-            "pinot noir",
-            "zinfandel"
-          ],
-          "selected_table_row_count": 313,
-          "table_counts": {
-            "grapes": 20,
-            "appellations": 57,
-            "wine": 313
           },
           "foreign_key_check": [],
           "foreign_key_check_count": 0,
@@ -1019,6 +1024,7 @@
       "db_id": "world_1",
       "status": "created",
       "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\world_1\\world_1.sqlite",
+      "split_rotation_offset": 2,
       "selected_table": "country",
       "selected_column": "Continent",
       "row_count": 239,
@@ -1147,23 +1153,6 @@
       "clones": {
         "world_1_1": {
           "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_1\\world_1_1.sqlite",
-          "split_kind": "primary_value",
-          "split_keep_values": [
-            "north america"
-          ],
-          "split_excluded_values": [],
-          "selected_table_row_count": 37,
-          "table_counts": {
-            "city": 581,
-            "country": 37,
-            "countrylanguage": 109
-          },
-          "foreign_key_check": [],
-          "foreign_key_check_count": 0,
-          "foreign_key_check_error": null
-        },
-        "world_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_2\\world_1_2.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "europ"
@@ -1179,8 +1168,8 @@
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
         },
-        "world_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_3\\world_1_3.sqlite",
+        "world_1_2": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_2\\world_1_2.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -1196,11 +1185,28 @@
           "foreign_key_check": [],
           "foreign_key_check_count": 0,
           "foreign_key_check_error": null
+        },
+        "world_1_3": {
+          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_3\\world_1_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "north america"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 37,
+          "table_counts": {
+            "city": 581,
+            "country": 37,
+            "countrylanguage": 109
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
         }
       },
       "dev_assignment_counts": {
-        "clone_3_matches_original": 8,
-        "clone_2_matches_original": 2
+        "clone_2_matches_original": 8,
+        "clone_1_matches_original": 2
       },
       "dev_skipped_counts": {
         "skipped_no_explicit_split_reference": 24,
@@ -1214,9 +1220,9 @@
     "samples_written": 28,
     "samples_skipped": 490,
     "assignment_counts": {
-      "clone_3_matches_original": 12,
-      "clone_1_matches_original": 8,
-      "clone_2_matches_original": 8
+      "clone_3_matches_original": 6,
+      "clone_1_matches_original": 10,
+      "clone_2_matches_original": 12
     },
     "skipped_assignment_counts": {
       "skipped_no_explicit_split_reference": 250,
@@ -1657,19 +1663,19 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 5,
+              "row_count": 7,
               "matches_original": false
             },
             "2": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 5,
               "matches_original": false
             },
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 7,
+              "row_count": 3,
               "matches_original": false
             }
           }
@@ -1689,19 +1695,19 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 5,
+              "row_count": 7,
               "matches_original": false
             },
             "2": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 5,
               "matches_original": false
             },
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 7,
+              "row_count": 3,
               "matches_original": false
             }
           }
@@ -1721,19 +1727,19 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 5,
+              "row_count": 7,
               "matches_original": false
             },
             "2": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 5,
               "matches_original": false
             },
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 7,
+              "row_count": 3,
               "matches_original": false
             }
           }
@@ -1753,19 +1759,19 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 5,
+              "row_count": 7,
               "matches_original": false
             },
             "2": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 5,
               "matches_original": false
             },
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 7,
+              "row_count": 3,
               "matches_original": false
             }
           }
@@ -1815,7 +1821,7 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 2,
+              "row_count": 3,
               "matches_original": false
             },
             "2": {
@@ -1827,7 +1833,7 @@
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 2,
               "matches_original": false
             }
           }
@@ -1847,7 +1853,7 @@
             "1": {
               "ok": true,
               "error": null,
-              "row_count": 2,
+              "row_count": 3,
               "matches_original": false
             },
             "2": {
@@ -1859,7 +1865,7 @@
             "3": {
               "ok": true,
               "error": null,
-              "row_count": 3,
+              "row_count": 2,
               "matches_original": false
             }
           }

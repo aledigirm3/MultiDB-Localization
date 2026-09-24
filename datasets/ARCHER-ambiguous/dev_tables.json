@@ -226,7 +226,7 @@
       ],
       [
         0,
-        "dock_count"
+        "dock count"
       ],
       [
         0,
@@ -234,19 +234,19 @@
       ],
       [
         0,
-        "installation_date"
+        "installation date"
       ],
       [
         1,
-        "station_id"
+        "station id"
       ],
       [
         1,
-        "bikes_available"
+        "bikes available"
       ],
       [
         1,
-        "docks_available"
+        "docks available"
       ],
       [
         1,
@@ -262,39 +262,39 @@
       ],
       [
         2,
-        "start_date"
+        "start date"
       ],
       [
         2,
-        "start_station_name"
+        "start station name"
       ],
       [
         2,
-        "start_station_id"
+        "start station id"
       ],
       [
         2,
-        "end_date"
+        "end date"
       ],
       [
         2,
-        "end_station_name"
+        "end station name"
       ],
       [
         2,
-        "end_station_id"
+        "end station id"
       ],
       [
         2,
-        "bike_id"
+        "bike id"
       ],
       [
         2,
-        "subscription_type"
+        "subscription type"
       ],
       [
         2,
-        "zip_code"
+        "zip code"
       ],
       [
         3,
@@ -302,83 +302,83 @@
       ],
       [
         3,
-        "max_temperature_f"
+        "max temperature f"
       ],
       [
         3,
-        "mean_temperature_f"
+        "mean temperature f"
       ],
       [
         3,
-        "min_temperature_f"
+        "min temperature f"
       ],
       [
         3,
-        "max_dew_point_f"
+        "max dew point f"
       ],
       [
         3,
-        "mean_dew_point_f"
+        "mean dew point f"
       ],
       [
         3,
-        "min_dew_point_f"
+        "min dew point f"
       ],
       [
         3,
-        "max_humidity"
+        "max humidity"
       ],
       [
         3,
-        "mean_humidity"
+        "mean humidity"
       ],
       [
         3,
-        "min_humidity"
+        "min humidity"
       ],
       [
         3,
-        "max_sea_level_pressure_inches"
+        "max sea level pressure inches"
       ],
       [
         3,
-        "mean_sea_level_pressure_inches"
+        "mean sea level pressure inches"
       ],
       [
         3,
-        "min_sea_level_pressure_inches"
+        "min sea level pressure inches"
       ],
       [
         3,
-        "max_visibility_miles"
+        "max visibility miles"
       ],
       [
         3,
-        "mean_visibility_miles"
+        "mean visibility miles"
       ],
       [
         3,
-        "min_visibility_miles"
+        "min visibility miles"
       ],
       [
         3,
-        "max_wind_Speed_mph"
+        "max wind Speed mph"
       ],
       [
         3,
-        "mean_wind_speed_mph"
+        "mean wind speed mph"
       ],
       [
         3,
-        "max_gust_speed_mph"
+        "max gust speed mph"
       ],
       [
         3,
-        "precipitation_inches"
+        "precipitation inches"
       ],
       [
         3,
-        "cloud_cover"
+        "cloud cover"
       ],
       [
         3,
@@ -386,11 +386,11 @@
       ],
       [
         3,
-        "wind_dir_degrees"
+        "wind dir degrees"
       ],
       [
         3,
-        "zip_code"
+        "zip code"
       ]
     ],
     "column_types": [
@@ -680,7 +680,7 @@
       ],
       [
         0,
-        "dock_count"
+        "dock count"
       ],
       [
         0,
@@ -688,19 +688,19 @@
       ],
       [
         0,
-        "installation_date"
+        "installation date"
       ],
       [
         1,
-        "station_id"
+        "station id"
       ],
       [
         1,
-        "bikes_available"
+        "bikes available"
       ],
       [
         1,
-        "docks_available"
+        "docks available"
       ],
       [
         1,
@@ -716,39 +716,39 @@
       ],
       [
         2,
-        "start_date"
+        "start date"
       ],
       [
         2,
-        "start_station_name"
+        "start station name"
       ],
       [
         2,
-        "start_station_id"
+        "start station id"
       ],
       [
         2,
-        "end_date"
+        "end date"
       ],
       [
         2,
-        "end_station_name"
+        "end station name"
       ],
       [
         2,
-        "end_station_id"
+        "end station id"
       ],
       [
         2,
-        "bike_id"
+        "bike id"
       ],
       [
         2,
-        "subscription_type"
+        "subscription type"
       ],
       [
         2,
-        "zip_code"
+        "zip code"
       ],
       [
         3,
@@ -756,83 +756,83 @@
       ],
       [
         3,
-        "max_temperature_f"
+        "max temperature f"
       ],
       [
         3,
-        "mean_temperature_f"
+        "mean temperature f"
       ],
       [
         3,
-        "min_temperature_f"
+        "min temperature f"
       ],
       [
         3,
-        "max_dew_point_f"
+        "max dew point f"
       ],
       [
         3,
-        "mean_dew_point_f"
+        "mean dew point f"
       ],
       [
         3,
-        "min_dew_point_f"
+        "min dew point f"
       ],
       [
         3,
-        "max_humidity"
+        "max humidity"
       ],
       [
         3,
-        "mean_humidity"
+        "mean humidity"
       ],
       [
         3,
-        "min_humidity"
+        "min humidity"
       ],
       [
         3,
-        "max_sea_level_pressure_inches"
+        "max sea level pressure inches"
       ],
       [
         3,
-        "mean_sea_level_pressure_inches"
+        "mean sea level pressure inches"
       ],
       [
         3,
-        "min_sea_level_pressure_inches"
+        "min sea level pressure inches"
       ],
       [
         3,
-        "max_visibility_miles"
+        "max visibility miles"
       ],
       [
         3,
-        "mean_visibility_miles"
+        "mean visibility miles"
       ],
       [
         3,
-        "min_visibility_miles"
+        "min visibility miles"
       ],
       [
         3,
-        "max_wind_Speed_mph"
+        "max wind Speed mph"
       ],
       [
         3,
-        "mean_wind_speed_mph"
+        "mean wind speed mph"
       ],
       [
         3,
-        "max_gust_speed_mph"
+        "max gust speed mph"
       ],
       [
         3,
-        "precipitation_inches"
+        "precipitation inches"
       ],
       [
         3,
-        "cloud_cover"
+        "cloud cover"
       ],
       [
         3,
@@ -840,11 +840,11 @@
       ],
       [
         3,
-        "wind_dir_degrees"
+        "wind dir degrees"
       ],
       [
         3,
-        "zip_code"
+        "zip code"
       ]
     ],
     "column_types": [
@@ -1134,7 +1134,7 @@
       ],
       [
         0,
-        "dock_count"
+        "dock count"
       ],
       [
         0,
@@ -1142,19 +1142,19 @@
       ],
       [
         0,
-        "installation_date"
+        "installation date"
       ],
       [
         1,
-        "station_id"
+        "station id"
       ],
       [
         1,
-        "bikes_available"
+        "bikes available"
       ],
       [
         1,
-        "docks_available"
+        "docks available"
       ],
       [
         1,
@@ -1170,39 +1170,39 @@
       ],
       [
         2,
-        "start_date"
+        "start date"
       ],
       [
         2,
-        "start_station_name"
+        "start station name"
       ],
       [
         2,
-        "start_station_id"
+        "start station id"
       ],
       [
         2,
-        "end_date"
+        "end date"
       ],
       [
         2,
-        "end_station_name"
+        "end station name"
       ],
       [
         2,
-        "end_station_id"
+        "end station id"
       ],
       [
         2,
-        "bike_id"
+        "bike id"
       ],
       [
         2,
-        "subscription_type"
+        "subscription type"
       ],
       [
         2,
-        "zip_code"
+        "zip code"
       ],
       [
         3,
@@ -1210,83 +1210,83 @@
       ],
       [
         3,
-        "max_temperature_f"
+        "max temperature f"
       ],
       [
         3,
-        "mean_temperature_f"
+        "mean temperature f"
       ],
       [
         3,
-        "min_temperature_f"
+        "min temperature f"
       ],
       [
         3,
-        "max_dew_point_f"
+        "max dew point f"
       ],
       [
         3,
-        "mean_dew_point_f"
+        "mean dew point f"
       ],
       [
         3,
-        "min_dew_point_f"
+        "min dew point f"
       ],
       [
         3,
-        "max_humidity"
+        "max humidity"
       ],
       [
         3,
-        "mean_humidity"
+        "mean humidity"
       ],
       [
         3,
-        "min_humidity"
+        "min humidity"
       ],
       [
         3,
-        "max_sea_level_pressure_inches"
+        "max sea level pressure inches"
       ],
       [
         3,
-        "mean_sea_level_pressure_inches"
+        "mean sea level pressure inches"
       ],
       [
         3,
-        "min_sea_level_pressure_inches"
+        "min sea level pressure inches"
       ],
       [
         3,
-        "max_visibility_miles"
+        "max visibility miles"
       ],
       [
         3,
-        "mean_visibility_miles"
+        "mean visibility miles"
       ],
       [
         3,
-        "min_visibility_miles"
+        "min visibility miles"
       ],
       [
         3,
-        "max_wind_Speed_mph"
+        "max wind Speed mph"
       ],
       [
         3,
-        "mean_wind_speed_mph"
+        "mean wind speed mph"
       ],
       [
         3,
-        "max_gust_speed_mph"
+        "max gust speed mph"
       ],
       [
         3,
-        "precipitation_inches"
+        "precipitation inches"
       ],
       [
         3,
-        "cloud_cover"
+        "cloud cover"
       ],
       [
         3,
@@ -1294,11 +1294,11 @@
       ],
       [
         3,
-        "wind_dir_degrees"
+        "wind dir degrees"
       ],
       [
         3,
-        "zip_code"
+        "zip code"
       ]
     ],
     "column_types": [
@@ -1377,9 +1377,9 @@
       "Products",
       "Customers",
       "Contacts",
-      "Customer_Address_History",
-      "Customer_Orders",
-      "Order_Items"
+      "Customer Address History",
+      "Customer Orders",
+      "Order Items"
     ],
     "column_names_original": [
       [
@@ -1534,11 +1534,11 @@
       ],
       [
         0,
-        "address_id"
+        "address id"
       ],
       [
         0,
-        "line_1_number_building"
+        "line 1 number building"
       ],
       [
         0,
@@ -1546,11 +1546,11 @@
       ],
       [
         0,
-        "zip_postcode"
+        "zip postcode"
       ],
       [
         0,
-        "state_province_county"
+        "state province county"
       ],
       [
         0,
@@ -1558,55 +1558,55 @@
       ],
       [
         1,
-        "product_id"
+        "product id"
       ],
       [
         1,
-        "product_type_code"
+        "product type code"
       ],
       [
         1,
-        "product_name"
+        "product name"
       ],
       [
         1,
-        "product_price"
+        "product price"
       ],
       [
         2,
-        "customer_id"
+        "customer id"
       ],
       [
         2,
-        "payment_method_code"
+        "payment method code"
       ],
       [
         2,
-        "customer_number"
+        "customer number"
       ],
       [
         2,
-        "customer_name"
+        "customer name"
       ],
       [
         2,
-        "customer_address"
+        "customer address"
       ],
       [
         2,
-        "customer_phone"
+        "customer phone"
       ],
       [
         2,
-        "customer_email"
+        "customer email"
       ],
       [
         3,
-        "contact_id"
+        "contact id"
       ],
       [
         3,
-        "customer_id"
+        "customer id"
       ],
       [
         3,
@@ -1614,63 +1614,63 @@
       ],
       [
         3,
-        "first_name"
+        "first name"
       ],
       [
         3,
-        "last_name"
+        "last name"
       ],
       [
         3,
-        "contact_phone"
+        "contact phone"
       ],
       [
         4,
-        "customer_id"
+        "customer id"
       ],
       [
         4,
-        "address_id"
+        "address id"
       ],
       [
         4,
-        "date_from"
+        "date from"
       ],
       [
         4,
-        "date_to"
+        "date to"
       ],
       [
         5,
-        "order_id"
+        "order id"
       ],
       [
         5,
-        "customer_id"
+        "customer id"
       ],
       [
         5,
-        "order_date"
+        "order date"
       ],
       [
         5,
-        "order_status_code"
+        "order status code"
       ],
       [
         6,
-        "order_item_id"
+        "order item id"
       ],
       [
         6,
-        "order_id"
+        "order id"
       ],
       [
         6,
-        "product_id"
+        "product id"
       ],
       [
         6,
-        "order_quantity"
+        "order quantity"
       ]
     ],
     "column_types": [
@@ -1757,9 +1757,9 @@
       "Products",
       "Customers",
       "Contacts",
-      "Customer_Address_History",
-      "Customer_Orders",
-      "Order_Items"
+      "Customer Address History",
+      "Customer Orders",
+      "Order Items"
     ],
     "column_names_original": [
       [
@@ -1914,11 +1914,11 @@
       ],
       [
         0,
-        "address_id"
+        "address id"
       ],
       [
         0,
-        "line_1_number_building"
+        "line 1 number building"
       ],
       [
         0,
@@ -1926,11 +1926,11 @@
       ],
       [
         0,
-        "zip_postcode"
+        "zip postcode"
       ],
       [
         0,
-        "state_province_county"
+        "state province county"
       ],
       [
         0,
@@ -1938,55 +1938,55 @@
       ],
       [
         1,
-        "product_id"
+        "product id"
       ],
       [
         1,
-        "product_type_code"
+        "product type code"
       ],
       [
         1,
-        "product_name"
+        "product name"
       ],
       [
         1,
-        "product_price"
+        "product price"
       ],
       [
         2,
-        "customer_id"
+        "customer id"
       ],
       [
         2,
-        "payment_method_code"
+        "payment method code"
       ],
       [
         2,
-        "customer_number"
+        "customer number"
       ],
       [
         2,
-        "customer_name"
+        "customer name"
       ],
       [
         2,
-        "customer_address"
+        "customer address"
       ],
       [
         2,
-        "customer_phone"
+        "customer phone"
       ],
       [
         2,
-        "customer_email"
+        "customer email"
       ],
       [
         3,
-        "contact_id"
+        "contact id"
       ],
       [
         3,
-        "customer_id"
+        "customer id"
       ],
       [
         3,
@@ -1994,63 +1994,63 @@
       ],
       [
         3,
-        "first_name"
+        "first name"
       ],
       [
         3,
-        "last_name"
+        "last name"
       ],
       [
         3,
-        "contact_phone"
+        "contact phone"
       ],
       [
         4,
-        "customer_id"
+        "customer id"
       ],
       [
         4,
-        "address_id"
+        "address id"
       ],
       [
         4,
-        "date_from"
+        "date from"
       ],
       [
         4,
-        "date_to"
+        "date to"
       ],
       [
         5,
-        "order_id"
+        "order id"
       ],
       [
         5,
-        "customer_id"
+        "customer id"
       ],
       [
         5,
-        "order_date"
+        "order date"
       ],
       [
         5,
-        "order_status_code"
+        "order status code"
       ],
       [
         6,
-        "order_item_id"
+        "order item id"
       ],
       [
         6,
-        "order_id"
+        "order id"
       ],
       [
         6,
-        "product_id"
+        "product id"
       ],
       [
         6,
-        "order_quantity"
+        "order quantity"
       ]
     ],
     "column_types": [
@@ -2137,9 +2137,9 @@
       "Products",
       "Customers",
       "Contacts",
-      "Customer_Address_History",
-      "Customer_Orders",
-      "Order_Items"
+      "Customer Address History",
+      "Customer Orders",
+      "Order Items"
     ],
     "column_names_original": [
       [
@@ -2294,11 +2294,11 @@
       ],
       [
         0,
-        "address_id"
+        "address id"
       ],
       [
         0,
-        "line_1_number_building"
+        "line 1 number building"
       ],
       [
         0,
@@ -2306,11 +2306,11 @@
       ],
       [
         0,
-        "zip_postcode"
+        "zip postcode"
       ],
       [
         0,
-        "state_province_county"
+        "state province county"
       ],
       [
         0,
@@ -2318,55 +2318,55 @@
       ],
       [
         1,
-        "product_id"
+        "product id"
       ],
       [
         1,
-        "product_type_code"
+        "product type code"
       ],
       [
         1,
-        "product_name"
+        "product name"
       ],
       [
         1,
-        "product_price"
+        "product price"
       ],
       [
         2,
-        "customer_id"
+        "customer id"
       ],
       [
         2,
-        "payment_method_code"
+        "payment method code"
       ],
       [
         2,
-        "customer_number"
+        "customer number"
       ],
       [
         2,
-        "customer_name"
+        "customer name"
       ],
       [
         2,
-        "customer_address"
+        "customer address"
       ],
       [
         2,
-        "customer_phone"
+        "customer phone"
       ],
       [
         2,
-        "customer_email"
+        "customer email"
       ],
       [
         3,
-        "contact_id"
+        "contact id"
       ],
       [
         3,
-        "customer_id"
+        "customer id"
       ],
       [
         3,
@@ -2374,63 +2374,63 @@
       ],
       [
         3,
-        "first_name"
+        "first name"
       ],
       [
         3,
-        "last_name"
+        "last name"
       ],
       [
         3,
-        "contact_phone"
+        "contact phone"
       ],
       [
         4,
-        "customer_id"
+        "customer id"
       ],
       [
         4,
-        "address_id"
+        "address id"
       ],
       [
         4,
-        "date_from"
+        "date from"
       ],
       [
         4,
-        "date_to"
+        "date to"
       ],
       [
         5,
-        "order_id"
+        "order id"
       ],
       [
         5,
-        "customer_id"
+        "customer id"
       ],
       [
         5,
-        "order_date"
+        "order date"
       ],
       [
         5,
-        "order_status_code"
+        "order status code"
       ],
       [
         6,
-        "order_item_id"
+        "order item id"
       ],
       [
         6,
-        "order_id"
+        "order id"
       ],
       [
         6,
-        "product_id"
+        "product id"
       ],
       [
         6,
-        "order_quantity"
+        "order quantity"
       ]
     ],
     "column_types": [
@@ -5473,12 +5473,12 @@
       "Team_Attributes"
     ],
     "table_names": [
-      "Player_Attributes",
+      "Player Attributes",
       "Player",
       "League",
       "Country",
       "Team",
-      "Team_Attributes"
+      "Team Attributes"
     ],
     "column_names_original": [
       [
@@ -5833,11 +5833,11 @@
       ],
       [
         0,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         0,
-        "player_api_id"
+        "player api id"
       ],
       [
         0,
@@ -5845,7 +5845,7 @@
       ],
       [
         0,
-        "overall_rating"
+        "overall rating"
       ],
       [
         0,
@@ -5853,15 +5853,15 @@
       ],
       [
         0,
-        "preferred_foot"
+        "preferred foot"
       ],
       [
         0,
-        "attacking_work_rate"
+        "attacking work rate"
       ],
       [
         0,
-        "defensive_work_rate"
+        "defensive work rate"
       ],
       [
         0,
@@ -5873,11 +5873,11 @@
       ],
       [
         0,
-        "heading_accuracy"
+        "heading accuracy"
       ],
       [
         0,
-        "short_passing"
+        "short passing"
       ],
       [
         0,
@@ -5893,15 +5893,15 @@
       ],
       [
         0,
-        "free_kick_accuracy"
+        "free kick accuracy"
       ],
       [
         0,
-        "long_passing"
+        "long passing"
       ],
       [
         0,
-        "ball_control"
+        "ball control"
       ],
       [
         0,
@@ -5909,7 +5909,7 @@
       ],
       [
         0,
-        "sprint_speed"
+        "sprint speed"
       ],
       [
         0,
@@ -5925,7 +5925,7 @@
       ],
       [
         0,
-        "shot_power"
+        "shot power"
       ],
       [
         0,
@@ -5941,7 +5941,7 @@
       ],
       [
         0,
-        "long_shots"
+        "long shots"
       ],
       [
         0,
@@ -5969,31 +5969,31 @@
       ],
       [
         0,
-        "standing_tackle"
+        "standing tackle"
       ],
       [
         0,
-        "sliding_tackle"
+        "sliding tackle"
       ],
       [
         0,
-        "gk_diving"
+        "gk diving"
       ],
       [
         0,
-        "gk_handling"
+        "gk handling"
       ],
       [
         0,
-        "gk_kicking"
+        "gk kicking"
       ],
       [
         0,
-        "gk_positioning"
+        "gk positioning"
       ],
       [
         0,
-        "gk_reflexes"
+        "gk reflexes"
       ],
       [
         1,
@@ -6001,15 +6001,15 @@
       ],
       [
         1,
-        "player_api_id"
+        "player api id"
       ],
       [
         1,
-        "player_name"
+        "player name"
       ],
       [
         1,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         1,
@@ -6029,7 +6029,7 @@
       ],
       [
         2,
-        "country_id"
+        "country id"
       ],
       [
         2,
@@ -6049,19 +6049,19 @@
       ],
       [
         4,
-        "team_api_id"
+        "team api id"
       ],
       [
         4,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         4,
-        "team_long_name"
+        "team long name"
       ],
       [
         4,
-        "team_short_name"
+        "team short name"
       ],
       [
         5,
@@ -6069,11 +6069,11 @@
       ],
       [
         5,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         5,
-        "team_api_id"
+        "team api id"
       ],
       [
         5,
@@ -6293,12 +6293,12 @@
       "Team_Attributes"
     ],
     "table_names": [
-      "Player_Attributes",
+      "Player Attributes",
       "Player",
       "League",
       "Country",
       "Team",
-      "Team_Attributes"
+      "Team Attributes"
     ],
     "column_names_original": [
       [
@@ -6653,11 +6653,11 @@
       ],
       [
         0,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         0,
-        "player_api_id"
+        "player api id"
       ],
       [
         0,
@@ -6665,7 +6665,7 @@
       ],
       [
         0,
-        "overall_rating"
+        "overall rating"
       ],
       [
         0,
@@ -6673,15 +6673,15 @@
       ],
       [
         0,
-        "preferred_foot"
+        "preferred foot"
       ],
       [
         0,
-        "attacking_work_rate"
+        "attacking work rate"
       ],
       [
         0,
-        "defensive_work_rate"
+        "defensive work rate"
       ],
       [
         0,
@@ -6693,11 +6693,11 @@
       ],
       [
         0,
-        "heading_accuracy"
+        "heading accuracy"
       ],
       [
         0,
-        "short_passing"
+        "short passing"
       ],
       [
         0,
@@ -6713,15 +6713,15 @@
       ],
       [
         0,
-        "free_kick_accuracy"
+        "free kick accuracy"
       ],
       [
         0,
-        "long_passing"
+        "long passing"
       ],
       [
         0,
-        "ball_control"
+        "ball control"
       ],
       [
         0,
@@ -6729,7 +6729,7 @@
       ],
       [
         0,
-        "sprint_speed"
+        "sprint speed"
       ],
       [
         0,
@@ -6745,7 +6745,7 @@
       ],
       [
         0,
-        "shot_power"
+        "shot power"
       ],
       [
         0,
@@ -6761,7 +6761,7 @@
       ],
       [
         0,
-        "long_shots"
+        "long shots"
       ],
       [
         0,
@@ -6789,31 +6789,31 @@
       ],
       [
         0,
-        "standing_tackle"
+        "standing tackle"
       ],
       [
         0,
-        "sliding_tackle"
+        "sliding tackle"
       ],
       [
         0,
-        "gk_diving"
+        "gk diving"
       ],
       [
         0,
-        "gk_handling"
+        "gk handling"
       ],
       [
         0,
-        "gk_kicking"
+        "gk kicking"
       ],
       [
         0,
-        "gk_positioning"
+        "gk positioning"
       ],
       [
         0,
-        "gk_reflexes"
+        "gk reflexes"
       ],
       [
         1,
@@ -6821,15 +6821,15 @@
       ],
       [
         1,
-        "player_api_id"
+        "player api id"
       ],
       [
         1,
-        "player_name"
+        "player name"
       ],
       [
         1,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         1,
@@ -6849,7 +6849,7 @@
       ],
       [
         2,
-        "country_id"
+        "country id"
       ],
       [
         2,
@@ -6869,19 +6869,19 @@
       ],
       [
         4,
-        "team_api_id"
+        "team api id"
       ],
       [
         4,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         4,
-        "team_long_name"
+        "team long name"
       ],
       [
         4,
-        "team_short_name"
+        "team short name"
       ],
       [
         5,
@@ -6889,11 +6889,11 @@
       ],
       [
         5,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         5,
-        "team_api_id"
+        "team api id"
       ],
       [
         5,
@@ -7113,12 +7113,12 @@
       "Team_Attributes"
     ],
     "table_names": [
-      "Player_Attributes",
+      "Player Attributes",
       "Player",
       "League",
       "Country",
       "Team",
-      "Team_Attributes"
+      "Team Attributes"
     ],
     "column_names_original": [
       [
@@ -7473,11 +7473,11 @@
       ],
       [
         0,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         0,
-        "player_api_id"
+        "player api id"
       ],
       [
         0,
@@ -7485,7 +7485,7 @@
       ],
       [
         0,
-        "overall_rating"
+        "overall rating"
       ],
       [
         0,
@@ -7493,15 +7493,15 @@
       ],
       [
         0,
-        "preferred_foot"
+        "preferred foot"
       ],
       [
         0,
-        "attacking_work_rate"
+        "attacking work rate"
       ],
       [
         0,
-        "defensive_work_rate"
+        "defensive work rate"
       ],
       [
         0,
@@ -7513,11 +7513,11 @@
       ],
       [
         0,
-        "heading_accuracy"
+        "heading accuracy"
       ],
       [
         0,
-        "short_passing"
+        "short passing"
       ],
       [
         0,
@@ -7533,15 +7533,15 @@
       ],
       [
         0,
-        "free_kick_accuracy"
+        "free kick accuracy"
       ],
       [
         0,
-        "long_passing"
+        "long passing"
       ],
       [
         0,
-        "ball_control"
+        "ball control"
       ],
       [
         0,
@@ -7549,7 +7549,7 @@
       ],
       [
         0,
-        "sprint_speed"
+        "sprint speed"
       ],
       [
         0,
@@ -7565,7 +7565,7 @@
       ],
       [
         0,
-        "shot_power"
+        "shot power"
       ],
       [
         0,
@@ -7581,7 +7581,7 @@
       ],
       [
         0,
-        "long_shots"
+        "long shots"
       ],
       [
         0,
@@ -7609,31 +7609,31 @@
       ],
       [
         0,
-        "standing_tackle"
+        "standing tackle"
       ],
       [
         0,
-        "sliding_tackle"
+        "sliding tackle"
       ],
       [
         0,
-        "gk_diving"
+        "gk diving"
       ],
       [
         0,
-        "gk_handling"
+        "gk handling"
       ],
       [
         0,
-        "gk_kicking"
+        "gk kicking"
       ],
       [
         0,
-        "gk_positioning"
+        "gk positioning"
       ],
       [
         0,
-        "gk_reflexes"
+        "gk reflexes"
       ],
       [
         1,
@@ -7641,15 +7641,15 @@
       ],
       [
         1,
-        "player_api_id"
+        "player api id"
       ],
       [
         1,
-        "player_name"
+        "player name"
       ],
       [
         1,
-        "player_fifa_api_id"
+        "player fifa api id"
       ],
       [
         1,
@@ -7669,7 +7669,7 @@
       ],
       [
         2,
-        "country_id"
+        "country id"
       ],
       [
         2,
@@ -7689,19 +7689,19 @@
       ],
       [
         4,
-        "team_api_id"
+        "team api id"
       ],
       [
         4,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         4,
-        "team_long_name"
+        "team long name"
       ],
       [
         4,
-        "team_short_name"
+        "team short name"
       ],
       [
         5,
@@ -7709,11 +7709,11 @@
       ],
       [
         5,
-        "team_fifa_api_id"
+        "team fifa api id"
       ],
       [
         5,
-        "team_api_id"
+        "team api id"
       ],
       [
         5,
