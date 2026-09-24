@@ -64,8 +64,8 @@ def generate_DB_descriptions(file_path: str, output_file_name: str) -> None:
 if __name__ == "__main__":
 
 
-    file_path = '../' + paths.DATASETS.ARCHER_ambiguous.value + "dev_tables.json"
-    output_file_name = './DB_descriptions/ARCHER_DB_descriptions_ambiguous.json'
+    file_path = '../' + paths.DATASETS.BEAVER_ambiguous.value + "dev_tables.json"
+    output_file_name = './DB_descriptions/BEAVER_DB_descriptions_ambiguous.json'
     print(f"{GREEN}Start generation DBs descriptions...{RESET} ({file_path})")
     generate_DB_descriptions(file_path, output_file_name)
     print(f"{GREEN}DBs descriptions generated!{RESET} ({file_path})")

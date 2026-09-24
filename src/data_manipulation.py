@@ -2288,6 +2288,13 @@ if __name__ == '__main__':
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
+    # BEAVER
+    # dataset_path = paths.DATASETS.BEAVER.value
+    # create_ambiguous_benchmark(dataset_path, overwrite=True)
+    # dataset_path = paths.DATASETS.BEAVER_ambiguous.value
+    # create_benchmark_doc(dataset_path)
+    # add_bm25_text_to_benchmark_doc(dataset_path)
+
     # SPIDERtrain
     # dataset_path = paths.DATASETS.SPIDERtrain.value
     # create_ambiguous_benchmark(dataset_path, overwrite=True)

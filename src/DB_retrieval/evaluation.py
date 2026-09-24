@@ -57,6 +57,10 @@ if __name__ == '__main__':
     print(f"{CYAN}BEAVER evaluation...{RESET}")
     DBs_extraction_eval(filename)
 
+    filename = 'BEAVER_DB_extractor_ambiguous.json'
+    print(f"{CYAN}BEAVER AMBIGUOUS evaluation...{RESET}")
+    DBs_extraction_eval(filename)
+
     filename = 'ARCHER_DB_extractor.json'
     print(f"{CYAN}ARCHER evaluation...{RESET}")
     DBs_extraction_eval(filename)

@@ -8,6 +8,7 @@ class DATASETS(Enum):
     BIRDtrain = "../datasets/BIRDtrain/"
     BIRDtrain_ambiguous = "../datasets/BIRDtrain-ambiguous/"
     BEAVER = "../datasets/BEAVER/"
+    BEAVER_ambiguous = "../datasets/BEAVER-ambiguous/"
     ARCHER = "../datasets/ARCHER/"
     ARCHER_ambiguous = "../datasets/ARCHER-ambiguous/"
     SPIDERtrain = "../datasets/SPIDERtrain/"

@@ -68,6 +68,10 @@ def get_dataset_paths(dataset: str):
             dataset_dir = (src_dir / paths.DATASETS.BEAVER.value).resolve()
             description_filename = "DB_descriptions/BEAVER_DB_descriptions.json"
             result_filename = "BEAVER_DB_extractor.json"
+    elif dataset == "BEAVER-ambiguous":
+            dataset_dir = (src_dir / paths.DATASETS.BEAVER_ambiguous.value).resolve()
+            description_filename = "DB_descriptions/BEAVER_DB_descriptions_ambiguous.json"
+            result_filename = "BEAVER_DB_extractor_ambiguous.json"
     elif dataset == "ARCHER":
             dataset_dir = (src_dir / paths.DATASETS.ARCHER.value).resolve()
             description_filename = "DB_descriptions/ARCHER_DB_descriptions.json"
@@ -427,14 +431,20 @@ if __name__ == "__main__":
     # extract_DB(embedder, "BEAVER")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    print(f"\n{CYAN}Processing BEAVER-ambiguous...{RESET}")
+    extract_DB(embedder, "BEAVER-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+    #Time: 30.20s
+
+
     # print(f"\n{CYAN}Processing ARCHER...{RESET}")
     # extract_DB(embedder, "ARCHER")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
     # Time: 6.17s
 
-    print(f"\n{CYAN}Processing ARCHER-ambiguous...{RESET}")
-    extract_DB(embedder, "ARCHER-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing ARCHER-ambiguous...{RESET}")
+    # extract_DB(embedder, "ARCHER-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 6.95s
     
     # print(f"\n{CYAN}Processing SPIDERtrain...{RESET}")
