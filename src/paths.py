@@ -12,6 +12,8 @@ class DATASETS(Enum):
     ARCHER_ambiguous = "../datasets/ARCHER-ambiguous/"
     SPIDERtrain = "../datasets/SPIDERtrain/"
     SPIDERtrain_ambiguous = "../datasets/SPIDERtrain-ambiguous/"
+    SQALE3 = "../datasets/SQALE3/"
+    SQALE3_ambiguous = "../datasets/SQALE3-ambiguous/"
 
 class RESULTS(Enum):
     DB_RETRIEVAL = '../results/DB_retrieval/'
