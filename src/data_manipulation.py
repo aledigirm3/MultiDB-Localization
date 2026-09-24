@@ -866,11 +866,13 @@ def create_ambiguous_benchmark(
     The selected column is chosen by counting SQL equality/IN predicates whose
     literal values match normalized database values and whose normalized length
     is greater than 3 characters. A split column must have at least 3 distinct
-    usable normalized values. For each duplicated DB, `<db_id>_1` keeps rows
-    with the primary split value, `<db_id>_2` keeps rows with the secondary split
-    value, and `<db_id>_3` keeps all remaining selected-table rows. Child rows
-    that would reference removed parent rows are removed recursively according
-    to `dev_tables.json` foreign keys. Sample assignment is intentionally strict:
+    usable normalized values. To avoid a systematic suffix imbalance, duplicated
+    databases are ordered by `db_id` and the primary, secondary, and remaining
+    value groups are cyclically assigned to suffixes `_1`, `_2`, and `_3`. This
+    rotation only relabels the three groups; it does not change their rows. Child
+    rows that would reference removed parent rows are removed recursively
+    according to `dev_tables.json` foreign keys. Sample assignment is
+    intentionally strict:
     a sample must explicitly reference the split column in its SQL with a value
     longer than 3 characters, then the SQL query is executed on the original DB
     and all clones; the sample is kept only when exactly one clone preserves the
@@ -931,27 +933,32 @@ def create_ambiguous_benchmark(
     def normalized_phrase_in_text(normalized_phrase, normalized_text):
         return f" {normalized_phrase} " in f" {normalized_text} "
 
-    def build_clone_split_rules(split_info):
+    def build_clone_split_rules(split_info, rotation_offset):
         primary_value = split_info["primary_split_value"]
         secondary_value = split_info["secondary_split_value"]
 
-        return {
-            1: {
+        logical_rules = [
+            {
                 "kind": "primary_value",
                 "keep_values": [primary_value],
                 "excluded_values": [],
             },
-            2: {
+            {
                 "kind": "secondary_value",
                 "keep_values": [secondary_value],
                 "excluded_values": [],
             },
-            3: {
+            {
                 "kind": "remaining_values",
                 "keep_values": [],
                 "excluded_values": [primary_value, secondary_value],
             },
+        ]
+        rotated_rules = {
+            ((logical_index + rotation_offset) % 3) + 1: rule
+            for logical_index, rule in enumerate(logical_rules)
         }
+        return dict(sorted(rotated_rules.items()))
 
     def sql_field_name(sample):
         if "SQL" in sample:
@@ -1942,11 +1949,11 @@ def create_ambiguous_benchmark(
             "in a normalized natural-language question for the same database"
         ),
         "split_policy": (
-            "db_id_1 keeps selected-table rows whose normalized selected value "
-            "equals the primary split value; db_id_2 keeps rows whose normalized "
-            "selected value equals the secondary split value; db_id_3 keeps all "
-            "remaining selected-table rows. Child rows referencing removed parent "
-            "rows are removed recursively."
+            "Duplicated databases are ordered by db_id. Their primary, secondary, "
+            "and remaining value groups are assigned cyclically to suffixes _1, "
+            "_2, and _3 using rotation offsets 0, 1, and 2. The rotation only "
+            "relabels the groups; child rows referencing removed parent rows are "
+            "removed recursively."
         ),
         "sample_assignment_policy": (
             "Each sample must contain an explicit SQL equality/IN reference to "
@@ -1962,17 +1969,14 @@ def create_ambiguous_benchmark(
         "dev_json": {},
     }
 
+    database_plans = []
     for db_schema in schemas:
         db_id = db_schema.get("db_id")
-        db_metadata = {
-            "db_id": db_id,
-            "status": "skipped",
-        }
-
         sqlite_path = get_sqlite_path(dataset_dir, db_id)
         if not sqlite_path:
-            db_metadata["reason"] = "sqlite_not_found"
-            metadata["databases"].append(db_metadata)
+            database_plans.append(
+                (db_schema, None, None, "sqlite_not_found")
+            )
             continue
 
         split_info, skip_reason = select_split_column(
@@ -1980,6 +1984,32 @@ def create_ambiguous_benchmark(
             db_schema,
             samples_by_db.get(db_id, []),
         )
+        database_plans.append(
+            (db_schema, sqlite_path, split_info, skip_reason)
+        )
+
+    eligible_db_ids = sorted(
+        db_schema.get("db_id")
+        for db_schema, _, split_info, _ in database_plans
+        if split_info
+    )
+    rotation_by_db = {
+        db_id: index % 3
+        for index, db_id in enumerate(eligible_db_ids)
+    }
+
+    for db_schema, sqlite_path, split_info, skip_reason in database_plans:
+        db_id = db_schema.get("db_id")
+        db_metadata = {
+            "db_id": db_id,
+            "status": "skipped",
+        }
+
+        if not sqlite_path:
+            db_metadata["reason"] = skip_reason
+            metadata["databases"].append(db_metadata)
+            continue
+
         if not split_info:
             db_metadata["reason"] = skip_reason
             metadata["databases"].append(db_metadata)
@@ -1987,7 +2017,11 @@ def create_ambiguous_benchmark(
 
         clone_paths = {}
         clone_stats = {}
-        clone_split_rules = build_clone_split_rules(split_info)
+        rotation_offset = rotation_by_db[db_id]
+        clone_split_rules = build_clone_split_rules(
+            split_info,
+            rotation_offset,
+        )
         for clone_number, clone_rule in clone_split_rules.items():
             clone_db_id = f"{db_id}_{clone_number}"
             clone_dir = output_databases_dir / clone_db_id
@@ -2010,6 +2044,7 @@ def create_ambiguous_benchmark(
             {
                 "status": "created",
                 "source_sqlite": str(sqlite_path),
+                "split_rotation_offset": rotation_offset,
                 "selected_table": split_info["table_name"],
                 "selected_column": split_info["column_name"],
                 "row_count": split_info["row_count"],
@@ -2225,14 +2260,14 @@ if __name__ == '__main__':
 
 # ===================== AMBIGUOUS ====================================================== #
 
-    # # SPIDER
+    # SPIDER
     # dataset_path = paths.DATASETS.SPIDERdev1.value
     # create_ambiguous_benchmark(dataset_path, overwrite=True)
     # dataset_path = paths.DATASETS.SPIDERdev1_ambiguous.value
     # create_benchmark_doc(dataset_path)
     # add_bm25_text_to_benchmark_doc(dataset_path)
 
-    # # BIRD
+    # BIRD
     # dataset_path = paths.DATASETS.BIRDdev.value
     # create_ambiguous_benchmark(dataset_path, overwrite=True)
     # dataset_path = paths.DATASETS.BIRDdev_ambiguous.value
