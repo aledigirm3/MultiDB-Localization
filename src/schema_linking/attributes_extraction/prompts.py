@@ -55,7 +55,7 @@ What is the total number of orders for each customer? Show the customer's name a
 [RELEVANT TABLES SCHEMA]:
 TABLE: customers
 COLUMNS:
-- customer_id
+- id
 - name
 - email
 TABLE: orders
@@ -66,7 +66,7 @@ COLUMNS:
 - amount
 
 EXPECTED OUTPUT:
-customers.customer_id,customers.name,orders.customer id,orders.order_id
+customers.id,customers.name,orders.customer id,orders.order_id
 
 ---
 
