@@ -1,0 +1,33 @@
+{
+  "method": "iterative-jar-first-seed-to-db",
+  "upstream_commit": "b90504969c2c4f5056142dc98e183974c60c646c",
+  "dataset_dir": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\BEAVER-ambiguous",
+  "encoder": {
+    "model": "facebook/contriever-msmarco",
+    "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+    "pooling": "masked_mean",
+    "max_length": 512,
+    "torch": "2.6.0+cu118",
+    "transformers": "4.50.3"
+  },
+  "device": "cuda",
+  "batch_size": 32,
+  "K": 1,
+  "candidate_count": 20,
+  "lambda_cov": 2.0,
+  "lambda_coarse": 4.0,
+  "questions": 502,
+  "tables": 1143,
+  "questions_sha256": "f5f63f6989e7407d478c8fbf4ab7b665a54ad9bf8ef2a4701efd122ae81bef9a",
+  "tables_sha256": "97f1e4a55dcdb6aeeccc1161c988136fd5c21804f822f0e637058193795e38ea",
+  "decompositions_sha256": "d78dae34d2eb0e5c113ead6f4948b4c22602928948dacf8b2d91261c9556fcbd",
+  "decomposition_provider": "bedrock",
+  "decomposition_model": "openai.gpt-oss-120b-1:0",
+  "preparation_seconds": 17.349899099997856,
+  "ranking_seconds": 5.417693700001109,
+  "includes_single_table_queries": true,
+  "labeled_questions": 502,
+  "db_accuracy": 0.3605577689243028,
+  "coarse_db_accuracy": 0.3466135458167331,
+  "candidate_db_hit_rate": 1.0
+}

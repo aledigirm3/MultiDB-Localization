@@ -1,0 +1,33 @@
+{
+  "method": "iterative-jar-first-seed-to-db",
+  "upstream_commit": "b90504969c2c4f5056142dc98e183974c60c646c",
+  "dataset_dir": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER",
+  "encoder": {
+    "model": "facebook/contriever-msmarco",
+    "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+    "pooling": "masked_mean",
+    "max_length": 512,
+    "torch": "2.6.0+cu118",
+    "transformers": "4.50.3"
+  },
+  "device": "cuda",
+  "batch_size": 32,
+  "K": 1,
+  "candidate_count": 20,
+  "lambda_cov": 2.0,
+  "lambda_coarse": 4.0,
+  "questions": 518,
+  "tables": 66,
+  "questions_sha256": "c1a91e81d63ad008041fcca2693b9d46f2173f7ff133b9b5d5809086859b5ff6",
+  "tables_sha256": "a1a4f8cf8f6c78c253dd02de048125939ce90a52a651f858dd4101743d6df15d",
+  "decompositions_sha256": "c3ac05ad8201c73fbe8b596ee4723de4e2fc130c8fdd4e298c1f5e85909844fe",
+  "decomposition_provider": "bedrock",
+  "decomposition_model": "openai.gpt-oss-120b-1:0",
+  "preparation_seconds": 9.640971700000591,
+  "ranking_seconds": 2.611212499999965,
+  "includes_single_table_queries": true,
+  "labeled_questions": 518,
+  "db_accuracy": 0.9054054054054054,
+  "coarse_db_accuracy": 0.9092664092664092,
+  "candidate_db_hit_rate": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "method": "iterative-jar-first-seed-to-db",
+  "upstream_commit": "b90504969c2c4f5056142dc98e183974c60c646c",
+  "dataset_dir": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\SPIDERtrain",
+  "encoder": {
+    "model": "facebook/contriever-msmarco",
+    "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+    "pooling": "masked_mean",
+    "max_length": 512,
+    "torch": "2.6.0+cu118",
+    "transformers": "4.50.3"
+  },
+  "device": "cuda",
+  "batch_size": 32,
+  "K": 1,
+  "candidate_count": 20,
+  "lambda_cov": 2.0,
+  "lambda_coarse": 4.0,
+  "questions": 7000,
+  "tables": 737,
+  "questions_sha256": "d4c38255bb24b6b33a850b75d74db822d4a0ffa9b158c2c90b4308088e53bd3a",
+  "tables_sha256": "2631e6e90d5239d0f1c90eeadae7740d10969ed95727a4a793d63bd00f837fd7",
+  "decompositions_sha256": "191a9b27ea066397c7471a6d13095f519f3386fbc9ebaf81f0372b179deba05f",
+  "decomposition_provider": "bedrock",
+  "decomposition_model": "openai.gpt-oss-120b-1:0",
+  "preparation_seconds": 19.40670280001359,
+  "ranking_seconds": 18.789576299954206,
+  "includes_single_table_queries": true,
+  "labeled_questions": 7000,
+  "db_accuracy": 0.7135714285714285,
+  "coarse_db_accuracy": 0.6675714285714286,
+  "candidate_db_hit_rate": 0.9597142857142857
+}

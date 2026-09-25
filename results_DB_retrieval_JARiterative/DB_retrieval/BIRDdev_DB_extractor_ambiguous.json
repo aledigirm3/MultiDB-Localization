@@ -1,0 +1,3131 @@
+[
+  {
+    "question_id": 16,
+    "db_id": "california_schools_3",
+    "question": "How many schools in merged Alameda have number of test takers less than 100?",
+    "evidence": "",
+    "SQL": "SELECT COUNT(T1.CDSCode) FROM schools AS T1 INNER JOIN satscores AS T2 ON T1.CDSCode = T2.cds WHERE T1.StatusType = 'Merged' AND T2.NumTstTakr < 100 AND T1.County = 'Lake'",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "codebase_community_1",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3000997006893158,
+      "coverage": 1.4867417812347412,
+      "utility": 4.173882365226746
+    }
+  },
+  {
+    "question_id": 20,
+    "db_id": "california_schools_3",
+    "question": "How many schools in Amador which the Low Grade is 9 and the High Grade is 12?",
+    "evidence": "",
+    "SQL": "SELECT COUNT(T1.`School Name`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Amador' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "student_club_2",
+      "student_club_1",
+      "student_club_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3257921040058136,
+      "coverage": 2.192173957824707,
+      "utility": 5.6875163316726685
+    }
+  },
+  {
+    "question_id": 26,
+    "db_id": "california_schools_3",
+    "question": "State the names and full communication address of high schools in Monterey which has more than 800 free or reduced price meals for ages 15-17?",
+    "evidence": "Full communication address should include Street, City, State and zip code if any.",
+    "SQL": "SELECT T1.`School Name`, T2.Street, T2.City, T2.State, T2.Zip FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Monterey' AND T1.`Free Meal Count (Ages 5-17)` > 800 AND T1.`School Type` = 'High Schools (Public)'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_1",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_1#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2",
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.38254714012145996,
+      "coverage": 3.023702621459961,
+      "utility": 7.577593803405762
+    }
+  },
+  {
+    "question_id": 38,
+    "db_id": "california_schools_1",
+    "question": "What are the webpages for the Los Angeles County school that has between 2,000 and 3,000 test takers?",
+    "evidence": "",
+    "SQL": "SELECT T2.Website FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE T1.NumTstTakr BETWEEN 2000 AND 3000 AND T2.County = 'Los Angeles'",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "student_club_3",
+      "student_club_1",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "codebase_community_3",
+      "codebase_community_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3658299446105957,
+      "coverage": 2.391070604324341,
+      "utility": 6.2454609870910645
+    }
+  },
+  {
+    "question_id": 39,
+    "db_id": "california_schools_3",
+    "question": "What is the average number of test takers from Fresno schools that opened between 1/1/1980 and 12/31/1980?",
+    "evidence": "between 1/1/1980 and 12/31/1980 means the year = 1980",
+    "SQL": "SELECT AVG(T1.NumTstTakr) FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE strftime('%Y', T2.OpenDate) = '1980' AND T2.County = 'Fresno'",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1",
+      "debit_card_specializing_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.2732831835746765,
+      "coverage": 2.25173282623291,
+      "utility": 5.596598386764526
+    }
+  },
+  {
+    "question_id": 47,
+    "db_id": "california_schools_3",
+    "question": "What is the monthly average number of schools that opened in Alameda County under the jurisdiction of the Elementary School District in 1980?",
+    "evidence": "Elementary School District refers to DOC = 52; Monthly average number of schools that opened in 1980 = count(schools that opened in 1980) / 12",
+    "SQL": "SELECT CAST(COUNT(School) AS REAL) / 12 FROM schools WHERE DOC = 52 AND County = 'Alameda' AND strftime('%Y', OpenDate) = '1980'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_1",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_1#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "debit_card_specializing_1",
+      "debit_card_specializing_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.39738887548446655,
+      "coverage": 2.8520703315734863,
+      "utility": 7.293696165084839
+    }
+  },
+  {
+    "question_id": 48,
+    "db_id": "california_schools_3",
+    "question": "What is the ratio of merged Unified School District schools in Orange County to merged Elementary School District schools?",
+    "evidence": "Elementary School District refers to DOC = 52; Unified School District refers to DOC = 54.",
+    "SQL": "SELECT CAST(SUM(CASE WHEN DOC = 54 THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN DOC = 52 THEN 1 ELSE 0 END) FROM schools WHERE StatusType = 'Merged' AND County = 'Orange'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "codebase_community_3",
+      "codebase_community_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.39741605520248413,
+      "coverage": 2.406198263168335,
+      "utility": 6.4020607471466064
+    }
+  },
+  {
+    "question_id": 55,
+    "db_id": "california_schools_3",
+    "question": "Of the schools with a mailing state address in California, what is the ratio of the schools located in the county of Colusa against the school located in the county of Humboldt?",
+    "evidence": "Ratio = count(schools in Colusa) / count(schools in Humboldt)",
+    "SQL": "SELECT CAST(SUM(CASE WHEN County = 'Colusa' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN County = 'Humboldt' THEN 1 ELSE 0 END) FROM schools WHERE MailState = 'CA'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_2",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_2#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4907504916191101,
+      "coverage": 1.7441378831863403,
+      "utility": 5.451277732849121
+    }
+  },
+  {
+    "question_id": 60,
+    "db_id": "california_schools_3",
+    "question": "What are the websites for all the partially virtual chartered schools located in San Joaquin?",
+    "evidence": "Virtual = 'P' means partially virtual; Charter schools refers to Charter = 1 in the table schools",
+    "SQL": "SELECT Website FROM schools WHERE County = 'San Joaquin' AND Virtual = 'P' AND Charter = 1",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.467359334230423,
+      "coverage": 3.796718120574951,
+      "utility": 9.462873578071594
+    }
+  },
+  {
+    "question_id": 62,
+    "db_id": "california_schools_1",
+    "question": "What is the total number of non-chartered schools in the county of Los Angeles with a percent (%) of eligible free meals for grades 1 through 12 that is less than 0.18%?",
+    "evidence": "non-chartered schools refer to schools whose Charter = 0; K-12 means grades 1 through 12; percent of eligible free rate for K-12 = `Free Meal Count (K-12)` * 100 / `Enrollment (K-12)`",
+    "SQL": "SELECT COUNT(T2.School) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Los Angeles' AND T2.Charter = 0 AND CAST(T1.`Free Meal Count (K-12)` AS REAL) * 100 / T1.`Enrollment (K-12)` < 0.18",
+    "difficulty": "challenging",
+    "DB_result": "california_schools_1",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_1#sep#schools",
+    "coarse_DB_result": "california_schools_3",
+    "candidate_DBs": [
+      "california_schools_3",
+      "california_schools_2",
+      "california_schools_1",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.43338772654533386,
+      "coverage": 2.80104923248291,
+      "utility": 7.335649371147156
+    }
+  },
+  {
+    "question_id": 65,
+    "db_id": "california_schools_3",
+    "question": "What is the ratio in percentage of Santa Clara County schools that are locally funded compared to all other types of charter school funding?",
+    "evidence": "Ratio in percentage = (count(locally funded schools in Santa Clara) / count(all funding type schools in Santa Clara) * 100%",
+    "SQL": "SELECT CAST(SUM(CASE WHEN FundingType = 'Locally funded' THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN FundingType != 'Locally funded' THEN 1 ELSE 0 END) FROM schools WHERE County = 'Santa Clara' AND Charter = 1",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_3",
+    "candidate_DBs": [
+      "california_schools_3",
+      "california_schools_2",
+      "california_schools_1",
+      "student_club_3",
+      "student_club_1",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.463368684053421,
+      "coverage": 3.2742931842803955,
+      "utility": 8.402061104774475
+    }
+  },
+  {
+    "question_id": 66,
+    "db_id": "california_schools_3",
+    "question": "Between 1/1/2000 to 12/31/2005, how many directly funded schools opened in the county of Stanislaus?",
+    "evidence": "Directly funded schools refers to FundingType = 'Directly Funded'",
+    "SQL": "SELECT COUNT(School) FROM schools WHERE strftime('%Y', OpenDate) BETWEEN '2000' AND '2005' AND County = 'Stanislaus' AND FundingType = 'Directly funded'",
+    "difficulty": "simple",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2",
+      "financial_1",
+      "financial_3",
+      "student_club_1",
+      "financial_2",
+      "student_club_3",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.39545562863349915,
+      "coverage": 3.207571506500244,
+      "utility": 7.996965527534485
+    }
+  },
+  {
+    "question_id": 70,
+    "db_id": "california_schools_3",
+    "question": "How many active and closed District Community Day Schools are there in the county of Alpine?",
+    "evidence": "",
+    "SQL": "SELECT COUNT(School) FROM schools WHERE (StatusType = 'Closed' OR StatusType = 'Active') AND SOC = 69 AND County = 'Alpine'",
+    "difficulty": "simple",
+    "DB_result": "california_schools_2",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_2#sep#schools",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "financial_1",
+      "financial_2",
+      "financial_3",
+      "student_club_2",
+      "student_club_3",
+      "student_club_1",
+      "codebase_community_2",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3993168771266937,
+      "coverage": 2.3846123218536377,
+      "utility": 6.36649215221405
+    }
+  },
+  {
+    "question_id": 76,
+    "db_id": "california_schools_3",
+    "question": "What is the city location of the high school level school with Lunch Provision 2 whose lowest grade is 9 and the highest grade is 12 in the county of Merced?",
+    "evidence": "High school can be represented as EILCode = 'HS'",
+    "SQL": "SELECT T2.City FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T1.`NSLP Provision Status` = 'Lunch Provision 2' AND T2.County = 'Merced' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12 AND T2.EILCode = 'HS'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_2",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_2#sep#schools",
+    "coarse_DB_result": "california_schools_3",
+    "candidate_DBs": [
+      "california_schools_3",
+      "california_schools_2",
+      "california_schools_1",
+      "student_club_2",
+      "student_club_3",
+      "student_club_1",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.47231367230415344,
+      "coverage": 4.038606643676758,
+      "utility": 9.96646797657013
+    }
+  },
+  {
+    "question_id": 77,
+    "db_id": "california_schools_1",
+    "question": "Which schools served a grade span of Kindergarten to 9th grade in the county of Los Angeles and what is its Percent (%) Eligible FRPM (Ages 5-17)?",
+    "evidence": "Percent (%) Eligible FRPM (Ages 5-17) can be acquired by `FRPM Count (Ages 5-17)` / `Enrollment (Ages 5-17)` * 100",
+    "SQL": "SELECT T2.School, T1.`FRPM Count (Ages 5-17)` * 100 / T1.`Enrollment (Ages 5-17)` FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Los Angeles' AND T2.GSserved = 'K-9'",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_1",
+    "selected_table": "frpm",
+    "selected_table_id": "california_schools_1#sep#frpm",
+    "coarse_DB_result": "california_schools_1",
+    "candidate_DBs": [
+      "california_schools_1",
+      "california_schools_2",
+      "california_schools_3",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_2",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.6917495727539062,
+      "coverage": 1.7592068910598755,
+      "utility": 6.285412073135376
+    }
+  },
+  {
+    "question_id": 79,
+    "db_id": "california_schools_2",
+    "question": "Between San Diego and Santa Barbara, which county offers the most number of schools that does not offer physical building? Indicate the amount.",
+    "evidence": "'Does not offer physical building' means Virtual = F in the database.",
+    "SQL": "SELECT County, COUNT(Virtual) FROM schools WHERE (County = 'San Diego' OR County = 'Santa Barbara') AND Virtual = 'F' GROUP BY County ORDER BY COUNT(Virtual) DESC LIMIT 1",
+    "difficulty": "moderate",
+    "DB_result": "california_schools_2",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_2#sep#schools",
+    "coarse_DB_result": "california_schools_2",
+    "candidate_DBs": [
+      "california_schools_2",
+      "california_schools_1",
+      "california_schools_3",
+      "student_club_2",
+      "student_club_3",
+      "student_club_1",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.41019076108932495,
+      "coverage": 2.8669142723083496,
+      "utility": 7.374591588973999
+    }
+  },
+  {
+    "question_id": 87,
+    "db_id": "california_schools_3",
+    "question": "What are the valid e-mail addresses of the administrator of the school located in the San Bernardino county, City of San Bernardino City Unified that opened between 1/1/2009 to 12/31/2010 whose school types are public Intermediate/Middle Schools and Unified Schools?",
+    "evidence": "Intermediate/Middle Schools refers to SOC = 62; Unified School refers to DOC = 54; years between 2009 and 2010 can refer to 'between 1/1/2009 to 12/31/2010'",
+    "SQL": "SELECT T2.AdmEmail1, T2.AdmEmail2 FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'San Bernardino' AND T2.City = 'San Bernardino' AND T2.DOC = 54 AND strftime('%Y', T2.OpenDate) BETWEEN '2009' AND '2010' AND T2.SOC = 62",
+    "difficulty": "challenging",
+    "DB_result": "california_schools_3",
+    "selected_table": "schools",
+    "selected_table_id": "california_schools_3#sep#schools",
+    "coarse_DB_result": "california_schools_3",
+    "candidate_DBs": [
+      "california_schools_3",
+      "california_schools_1",
+      "california_schools_2",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5271086096763611,
+      "coverage": 3.8605213165283203,
+      "utility": 9.829477071762085
+    }
+  },
+  {
+    "question_id": 89,
+    "db_id": "financial_3",
+    "question": "How many accounts who choose issuance after transaction are staying in East Bohemia region?",
+    "evidence": "A3 contains the data of region; 'POPLATEK PO OBRATU' represents for 'issuance after transaction'.",
+    "SQL": "SELECT COUNT(T2.account_id) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id WHERE T1.A3 = 'east Bohemia' AND T2.frequency = 'POPLATEK PO OBRATU'",
+    "difficulty": "moderate",
+    "DB_result": "financial_1",
+    "selected_table": "account",
+    "selected_table_id": "financial_1#sep#account",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_3",
+      "debit_card_specializing_3",
+      "financial_2",
+      "debit_card_specializing_2",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.39233773946762085,
+      "coverage": 1.101532220840454,
+      "utility": 3.7724153995513916
+    }
+  },
+  {
+    "question_id": 90,
+    "db_id": "financial_2",
+    "question": "How many accounts who have region in Prague are eligible for loans?",
+    "evidence": "A3 contains the data of region",
+    "SQL": "SELECT COUNT(T1.account_id) FROM account AS T1 INNER JOIN loan AS T2 ON T1.account_id = T2.account_id INNER JOIN district AS T3 ON T1.district_id = T3.district_id WHERE T3.A3 = 'Prague'",
+    "difficulty": "simple",
+    "DB_result": "financial_1",
+    "selected_table": "loan",
+    "selected_table_id": "financial_1#sep#loan",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_2",
+      "financial_3",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4310857653617859,
+      "coverage": 1.2239326238632202,
+      "utility": 4.172208309173584
+    }
+  },
+  {
+    "question_id": 93,
+    "db_id": "financial_1",
+    "question": "How many male customers who are living in North Bohemia have average salary greater than 8000?",
+    "evidence": "Male means that gender = 'M'; A3 refers to region; A11 pertains to average salary.",
+    "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'M' AND T2.A3 = 'north Bohemia' AND T2.A11 > 8000",
+    "difficulty": "moderate",
+    "DB_result": "debit_card_specializing_1",
+    "selected_table": "customers",
+    "selected_table_id": "debit_card_specializing_1#sep#customers",
+    "coarse_DB_result": "debit_card_specializing_1",
+    "candidate_DBs": [
+      "debit_card_specializing_1",
+      "debit_card_specializing_3",
+      "debit_card_specializing_2",
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.31933045387268066,
+      "coverage": 1.8498585224151611,
+      "utility": 4.977038860321045
+    }
+  },
+  {
+    "question_id": 114,
+    "db_id": "financial_2",
+    "question": "For the first client who opened his/her account in Prague, what is his/her account ID?",
+    "evidence": "A3 stands for region names",
+    "SQL": "SELECT T1.account_id FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'Prague' ORDER BY T1.date ASC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "financial_1",
+    "selected_table": "client",
+    "selected_table_id": "financial_1#sep#client",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_2",
+      "financial_3",
+      "debit_card_specializing_1",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5418521165847778,
+      "coverage": 2.1601176261901855,
+      "utility": 6.487643718719482
+    }
+  },
+  {
+    "question_id": 115,
+    "db_id": "financial_2",
+    "question": "For the branch which located in the south Bohemia with biggest number of inhabitants, what is the percentage of the male clients?",
+    "evidence": "Percentage of the male clients = DIVIDE(COUNT(male clients), COUNT(clients)) * 100; Male refers to gender = 'M', A3 is the region name. A4 contains the information about inhabitants.",
+    "SQL": "SELECT CAST(SUM(T1.gender = 'M') AS REAL) * 100 / COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'south Bohemia' GROUP BY T2.A4 ORDER BY T2.A4 DESC LIMIT 1",
+    "difficulty": "challenging",
+    "DB_result": "financial_3",
+    "selected_table": "client",
+    "selected_table_id": "financial_3#sep#client",
+    "coarse_DB_result": "financial_3",
+    "candidate_DBs": [
+      "financial_3",
+      "financial_2",
+      "financial_1",
+      "debit_card_specializing_3",
+      "debit_card_specializing_2",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4350733458995819,
+      "coverage": 2.1805601119995117,
+      "utility": 6.101413607597351
+    }
+  },
+  {
+    "question_id": 120,
+    "db_id": "financial_3",
+    "question": "From Year 1995 to 2000, who are the accounts holders from 'east Bohemia'. State the account ID the frequency of statement issuance.",
+    "evidence": "Accounts holder refers to the person who own this account.",
+    "SQL": "SELECT T1.account_id, T1.frequency FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'east Bohemia' AND STRFTIME('%Y', T1.date) BETWEEN '1995' AND '2000'",
+    "difficulty": "moderate",
+    "DB_result": "financial_1",
+    "selected_table": "account",
+    "selected_table_id": "financial_1#sep#account",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_2",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5242599844932556,
+      "coverage": 2.5976178646087646,
+      "utility": 7.292275667190552
+    }
+  },
+  {
+    "question_id": 147,
+    "db_id": "financial_2",
+    "question": "How many female clients' accounts are in the region of South Bohemia?",
+    "evidence": "Female refers to gender = 'F'; A3 contains the region 'south Bohemia'",
+    "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'F' AND T2.A3 = 'south Bohemia'",
+    "difficulty": "simple",
+    "DB_result": "financial_1",
+    "selected_table": "client",
+    "selected_table_id": "financial_1#sep#client",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.47786036133766174,
+      "coverage": 1.803605079650879,
+      "utility": 5.518651604652405
+    }
+  },
+  {
+    "question_id": 150,
+    "db_id": "financial_1",
+    "question": "How many accounts in North Bohemia has made a transaction with the partner's bank being AB?",
+    "evidence": "A3 contains the region names; North Bohemia is a region.",
+    "SQL": "SELECT COUNT(T2.account_id) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id INNER JOIN trans AS T3 ON T2.account_id = T3.account_id WHERE T3.bank = 'AB' AND T1.A3 = 'north Bohemia'",
+    "difficulty": "moderate",
+    "DB_result": "financial_2",
+    "selected_table": "trans",
+    "selected_table_id": "financial_2#sep#trans",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_2",
+      "financial_3",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.36400917172431946,
+      "coverage": 1.0144469738006592,
+      "utility": 3.484930634498596
+    }
+  },
+  {
+    "question_id": 180,
+    "db_id": "financial_3",
+    "question": "Please provide a list of clients who were born between 1983 and 1987 and whose account branch is in East Bohemia, along with their IDs.",
+    "evidence": "",
+    "SQL": "SELECT T1.client_id, T3.account_id FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T4 ON T1.client_id = T4.client_id INNER JOIN account AS T3 ON T2.district_id = T3.district_id and T4.account_id = T3.account_id WHERE T2.A3 = 'east Bohemia' AND STRFTIME('%Y', T1.birth_date) BETWEEN '1983' AND '1987'",
+    "difficulty": "moderate",
+    "DB_result": "financial_3",
+    "selected_table": "client",
+    "selected_table_id": "financial_3#sep#client",
+    "coarse_DB_result": "financial_3",
+    "candidate_DBs": [
+      "financial_3",
+      "financial_1",
+      "financial_2",
+      "debit_card_specializing_1",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5190748572349548,
+      "coverage": 2.488799571990967,
+      "utility": 7.053898572921753
+    }
+  },
+  {
+    "question_id": 185,
+    "db_id": "financial_2",
+    "question": "What proportion of customers who have accounts at the Prague branch are female?",
+    "evidence": "Female refers to gender = 'F'; Percentage of female clients in Prague branch = count[female clients with accounts in Prague branch / count(clients with accounts in Prague branch)] * 100%; A3 may contain information about Prague",
+    "SQL": "SELECT CAST(SUM(T2.gender = 'F') AS REAL) / COUNT(T2.client_id) * 100 FROM district AS T1 INNER JOIN client AS T2 ON T1.district_id = T2.district_id WHERE T1.A3 = 'Prague'",
+    "difficulty": "moderate",
+    "DB_result": "debit_card_specializing_1",
+    "selected_table": "customers",
+    "selected_table_id": "debit_card_specializing_1#sep#customers",
+    "coarse_DB_result": "debit_card_specializing_1",
+    "candidate_DBs": [
+      "debit_card_specializing_1",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "financial_2",
+      "financial_1",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.43591898679733276,
+      "coverage": 1.7968220710754395,
+      "utility": 5.33732008934021
+    }
+  },
+  {
+    "question_id": 190,
+    "db_id": "financial_3",
+    "question": "How many clients who were born in 1920 stay in east Bohemia?",
+    "evidence": "East Bohemia appears in the column A3, which refers to the region.",
+    "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE STRFTIME('%Y', T1.birth_date) = '1920' AND T2.A3 = 'east Bohemia'",
+    "difficulty": "simple",
+    "DB_result": "financial_1",
+    "selected_table": "client",
+    "selected_table_id": "financial_1#sep#client",
+    "coarse_DB_result": "financial_1",
+    "candidate_DBs": [
+      "financial_1",
+      "financial_3",
+      "financial_2",
+      "formula_1_2",
+      "formula_1_3",
+      "formula_1_1",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1",
+      "european_football_2_2",
+      "european_football_2_1",
+      "european_football_2_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.38873475790023804,
+      "coverage": 1.3950328826904297,
+      "utility": 4.3450047969818115
+    }
+  },
+  {
+    "question_id": 353,
+    "db_id": "card_games_2",
+    "question": "List all the sets available in Italian translation. State the total number of cards per set.",
+    "evidence": "Italian translation refers to language = 'Italian'; total number of card per set refers to totalSetSize;",
+    "SQL": "SELECT T1.name, T1.totalSetSize FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Italian'",
+    "difficulty": "simple",
+    "DB_result": "card_games_1",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_1#sep#set_translations",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_3",
+      "card_games_2",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.6283571720123291,
+      "coverage": 1.9027917385101318,
+      "utility": 6.31901216506958
+    }
+  },
+  {
+    "question_id": 400,
+    "db_id": "card_games_1",
+    "question": "Lists the set code of all cards translated into Spanish.",
+    "evidence": "Spanish refer to language; set code refers to setCode",
+    "SQL": "SELECT setCode FROM set_translations WHERE language = 'Spanish'",
+    "difficulty": "simple",
+    "DB_result": "card_games_3",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_3#sep#set_translations",
+    "coarse_DB_result": "card_games_3",
+    "candidate_DBs": [
+      "card_games_3",
+      "card_games_1",
+      "card_games_2",
+      "financial_3",
+      "financial_2",
+      "financial_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.7112934589385986,
+      "coverage": 1.1045536994934082,
+      "utility": 5.054281234741211
+    }
+  },
+  {
+    "question_id": 405,
+    "db_id": "card_games_1",
+    "question": "How many Brazilian Portuguese translated sets are inside the Commander block?",
+    "evidence": "Commander block refer to block = 'Commander'; sets refer to code = setCode; Portuguese refer to language = 'Portuguese (Brasil)'",
+    "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Portuguese (Brazil)' AND T1.block = 'Commander'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_3",
+    "selected_table": "sets",
+    "selected_table_id": "card_games_3#sep#sets",
+    "coarse_DB_result": "card_games_3",
+    "candidate_DBs": [
+      "card_games_3",
+      "card_games_1",
+      "card_games_2",
+      "financial_3",
+      "financial_1",
+      "financial_2",
+      "european_football_2_3",
+      "codebase_community_3",
+      "european_football_2_2",
+      "european_football_2_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3551389276981354,
+      "coverage": 1.3588817119598389,
+      "utility": 4.138319134712219
+    }
+  },
+  {
+    "question_id": 430,
+    "db_id": "card_games_2",
+    "question": "Please list top two sets of cards with their IDs that have Italian-language cards and are located in the Shadowmoor block in alphabetical order.",
+    "evidence": "",
+    "SQL": "SELECT T1.name, T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T1.block = 'Shadowmoor' AND T2.language = 'Italian' ORDER BY T1.id LIMIT 2",
+    "difficulty": "simple",
+    "DB_result": "card_games_2",
+    "selected_table": "sets",
+    "selected_table_id": "card_games_2#sep#sets",
+    "coarse_DB_result": "card_games_2",
+    "candidate_DBs": [
+      "card_games_2",
+      "card_games_1",
+      "card_games_3",
+      "financial_2",
+      "financial_1",
+      "financial_3",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.4358510971069336,
+      "coverage": 3.6615657806396484,
+      "utility": 9.066535949707031
+    }
+  },
+  {
+    "question_id": 431,
+    "db_id": "card_games_3",
+    "question": "Which set is not available outside of the United States and has foil cards with Japanese writing on them? Please include the set ID in your response.",
+    "evidence": "available outside of the United States refers to isForeignOnly = 1; has foil cards refers to isFoilOnly = 1; with Japanese writing on them refers to language = 'Japanese'",
+    "SQL": "SELECT T1.name, T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Japanese' AND T1.isFoilOnly = 1 AND T1.isForeignOnly = 0",
+    "difficulty": "challenging",
+    "DB_result": "card_games_2",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_2#sep#set_translations",
+    "coarse_DB_result": "card_games_2",
+    "candidate_DBs": [
+      "card_games_2",
+      "card_games_1",
+      "card_games_3",
+      "financial_2",
+      "financial_1",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5096707940101624,
+      "coverage": 2.709214448928833,
+      "utility": 7.457112073898315
+    }
+  },
+  {
+    "question_id": 432,
+    "db_id": "card_games_1",
+    "question": "Which Russian set of cards contains the most cards overall?",
+    "evidence": "Russian refers to language = 'Russian'; contains the most cards overall refers to MAX(baseSetSize)",
+    "SQL": "SELECT T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Russian' GROUP BY T1.baseSetSize ORDER BY T1.baseSetSize DESC LIMIT 1",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_1#sep#set_translations",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_2",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.49489378929138184,
+      "coverage": 1.0528054237365723,
+      "utility": 4.085186004638672
+    }
+  },
+  {
+    "question_id": 434,
+    "db_id": "card_games_3",
+    "question": "How many sets are available just in Japanese and not in Magic: The Gathering Online?",
+    "evidence": "Japanese refers to language = 'Japanese'; not in Magic: The Gathering Online refers to mtgoCode is null or mtgoCode = ''",
+    "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.language = 'Japanese'  AND (T1.mtgoCode IS NULL OR T1.mtgoCode = '')",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "sets",
+    "selected_table_id": "card_games_1#sep#sets",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_2",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3394862115383148,
+      "coverage": 1.6013025045394897,
+      "utility": 4.560549855232239
+    }
+  },
+  {
+    "question_id": 462,
+    "db_id": "card_games_2",
+    "question": "What's the Italian name of the set of cards with \"Ancestor's Chosen\" is in?",
+    "evidence": "Italian is a language which refers to language = 'Italian'; with \"Ancestor's Chosen\" in the card set refers to name = 'Ancestor''s Chosen'",
+    "SQL": "SELECT translation FROM set_translations WHERE setCode IN ( SELECT setCode FROM cards WHERE name = 'Ancestor''s Chosen' ) AND language = 'Italian'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "sets",
+    "selected_table_id": "card_games_1#sep#sets",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4174053370952606,
+      "coverage": 2.2921199798583984,
+      "utility": 6.253861308097839
+    }
+  },
+  {
+    "question_id": 465,
+    "db_id": "card_games_1",
+    "question": "For the set of cards with \"Ancestor's Chosen\" in it, is there a Korean version of it?",
+    "evidence": "set of cards with \"Ancestor''s Chosen\" in it refers to name = 'Ancestor''s Chosen'; Korean version refers to language = 'Korean'",
+    "SQL": "SELECT IIF(SUM(CASE WHEN T2.language = 'Korean' AND T2.translation IS NOT NULL THEN 1 ELSE 0 END) > 0, 'YES', 'NO') FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Ancestor''s Chosen'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "cards",
+    "selected_table_id": "card_games_1#sep#cards",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_2",
+      "financial_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3775109052658081,
+      "coverage": 1.6874330043792725,
+      "utility": 4.884909629821777
+    }
+  },
+  {
+    "question_id": 468,
+    "db_id": "card_games_1",
+    "question": "What is the Simplified Chinese translation of the name of the set \"Eighth Edition\"?",
+    "evidence": "Eighth Edition is the name of card set which refers to name = 'Eighth Edition'; Simplified Chinese refers to language = 'Chinese Simplified'; translation of the name refers to translation",
+    "SQL": "SELECT T2.translation FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.name = 'Eighth Edition' AND T2.language = 'Chinese Simplified'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_1#sep#set_translations",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_2",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.45726436376571655,
+      "coverage": 2.261260509490967,
+      "utility": 6.3515784740448
+    }
+  },
+  {
+    "question_id": 472,
+    "db_id": "card_games_2",
+    "question": "Among the sets in the block \"Ice Age\", how many of them have an Italian translation?",
+    "evidence": "sets in the block \"Ice Age\" refers to block = 'Ice Age'; Italian translation refers to language = 'Italian' and translation is not null",
+    "SQL": "SELECT COUNT(DISTINCT T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block = 'Ice Age' AND T2.language = 'Italian' AND T2.translation IS NOT NULL",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_1#sep#set_translations",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_3",
+      "card_games_2",
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2",
+      "codebase_community_3",
+      "codebase_community_1",
+      "codebase_community_2",
+      "financial_3",
+      "financial_1",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.42978528141975403,
+      "coverage": 2.015014886856079,
+      "utility": 5.749170899391174
+    }
+  },
+  {
+    "question_id": 474,
+    "db_id": "card_games_2",
+    "question": "Among the sets of cards that have an Italian translation, how many of them have a base set number of under 100?",
+    "evidence": "Italian translation refers to language = 'Italian'; have a translation means translation is not null; base set number of under 100 refers to baseSetSize < 10",
+    "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation IS NOT NULL AND T1.baseSetSize < 100 AND T2.language = 'Italian'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_1#sep#set_translations",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_2",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.587968111038208,
+      "coverage": 1.0279278755187988,
+      "utility": 4.40772819519043
+    }
+  },
+  {
+    "question_id": 498,
+    "db_id": "card_games_1",
+    "question": "What's the French name of the set of cards with \"Tendo Ice Bridge\" is in?",
+    "evidence": "French refers to language = 'French'; \"Tendo Ice Bridge\" is a translated name of a card; translated name refers to translation",
+    "SQL": "SELECT T2.translation FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Tendo Ice Bridge' AND T2.language = 'French' AND T2.translation IS NOT NULL",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "sets",
+    "selected_table_id": "card_games_1#sep#sets",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "european_football_2_2",
+      "european_football_2_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.4129827618598938,
+      "coverage": 1.3410334587097168,
+      "utility": 4.333997964859009
+    }
+  },
+  {
+    "question_id": 500,
+    "db_id": "card_games_3",
+    "question": "Tell the Japanese name of the set which card \"Fellwar Stone\" is in it.",
+    "evidence": "Japanese name refers to language = 'Japanese'; card \"Fellwar Stone\" refers to name = 'Fellwar Stone'",
+    "SQL": "SELECT T2.translation FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Fellwar Stone' AND T2.language = 'Japanese' AND T2.translation IS NOT NULL",
+    "difficulty": "moderate",
+    "DB_result": "card_games_1",
+    "selected_table": "cards",
+    "selected_table_id": "card_games_1#sep#cards",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "financial_1",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.36323773860931396,
+      "coverage": 1.5105738639831543,
+      "utility": 4.4740986824035645
+    }
+  },
+  {
+    "question_id": 505,
+    "db_id": "card_games_1",
+    "question": "Show the Simplified Chinese translation of the name of the set \"Mirrodin\"?",
+    "evidence": "Simplified Chinese translation refers to language = 'Chinese Simplified'; name of the set \"Mirrodin\" refers to name = 'Mirrodin'",
+    "SQL": "SELECT translation FROM set_translations WHERE setCode IN ( SELECT code FROM sets WHERE name = 'Mirrodin' ) AND language = 'Chinese Simplified'",
+    "difficulty": "moderate",
+    "DB_result": "card_games_2",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_2#sep#set_translations",
+    "coarse_DB_result": "card_games_2",
+    "candidate_DBs": [
+      "card_games_2",
+      "card_games_1",
+      "card_games_3",
+      "formula_1_2",
+      "formula_1_3",
+      "formula_1_1",
+      "european_football_2_2",
+      "european_football_2_3",
+      "european_football_2_1",
+      "thrombosis_prediction_2",
+      "thrombosis_prediction_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4690248966217041,
+      "coverage": 1.320150375366211,
+      "utility": 4.516400337219238
+    }
+  },
+  {
+    "question_id": 506,
+    "db_id": "card_games_3",
+    "question": "For all the set of cards that has Japanese translation, what is the percentage of them are only available in non-foil?",
+    "evidence": "Japanese translation refers to language = 'Japanese'; in non-foil refers to isNonFoilOnly = 1; percentage of Japanese non foil in Japanese cards refers to DIVIDE(SUM(isNonFoilOnly = 1), SUM(language = 'Japanese'))*100",
+    "SQL": "SELECT CAST(SUM(CASE WHEN isNonFoilOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Japanese' )",
+    "difficulty": "challenging",
+    "DB_result": "card_games_3",
+    "selected_table": "cards",
+    "selected_table_id": "card_games_3#sep#cards",
+    "coarse_DB_result": "card_games_2",
+    "candidate_DBs": [
+      "card_games_2",
+      "card_games_1",
+      "card_games_3",
+      "financial_2",
+      "financial_3",
+      "financial_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.39155298471450806,
+      "coverage": 1.9311649799346924,
+      "utility": 5.428541898727417
+    }
+  },
+  {
+    "question_id": 507,
+    "db_id": "card_games_1",
+    "question": "For all the set of cards that has Brazil Portuguese translation, what is the percentage of them are only available online?",
+    "evidence": "Brazil Portuguese translation refers to language = 'Portuguese (Brazil)'; only available online refers to isOnlineOnly = 1; percentage of online only Brazil Portuguese in all Brazil Portuguese cards refers to DIVIDE(SUM(isOnlineOnly = 1), SUM(language = 'Portuguese (Brazil)))*100",
+    "SQL": "SELECT CAST(SUM(CASE WHEN isOnlineOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Portuguese (Brazil)' )",
+    "difficulty": "challenging",
+    "DB_result": "card_games_2",
+    "selected_table": "cards",
+    "selected_table_id": "card_games_2#sep#cards",
+    "coarse_DB_result": "card_games_1",
+    "candidate_DBs": [
+      "card_games_1",
+      "card_games_3",
+      "card_games_2",
+      "financial_2",
+      "financial_1",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.37749892473220825,
+      "coverage": 1.9100923538208008,
+      "utility": 5.330180406570435
+    }
+  },
+  {
+    "question_id": 529,
+    "db_id": "card_games_1",
+    "question": "Find and list the names of sets which doesn't have Japanese translation but have Korean translation.",
+    "evidence": "names of sets refers to name; doesn't have Japanese translation refers to language not like '%Japanese%'; have Korean translation refers to language = 'Korean'",
+    "SQL": "SELECT name FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Korean' AND language NOT LIKE '%Japanese%' )",
+    "difficulty": "moderate",
+    "DB_result": "card_games_2",
+    "selected_table": "set_translations",
+    "selected_table_id": "card_games_2#sep#set_translations",
+    "coarse_DB_result": "card_games_2",
+    "candidate_DBs": [
+      "card_games_2",
+      "card_games_1",
+      "card_games_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5601189732551575,
+      "coverage": 2.116825580596924,
+      "utility": 6.4741270542144775
+    }
+  },
+  {
+    "question_id": 560,
+    "db_id": "codebase_community_2",
+    "question": "Give the number of \"Revival\" badges.",
+    "evidence": "number refers to Id; 'Revival' is the Name of badge",
+    "SQL": "SELECT COUNT(Id) FROM badges WHERE Name = 'Revival'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "card_games_1",
+      "card_games_2",
+      "card_games_3",
+      "formula_1_1",
+      "formula_1_2",
+      "formula_1_3",
+      "financial_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4183432459831238,
+      "coverage": 1.6630116701126099,
+      "utility": 4.999396324157715
+    }
+  },
+  {
+    "question_id": 580,
+    "db_id": "codebase_community_2",
+    "question": "Name 10 users with the badge name 'Necromancer.'",
+    "evidence": "\"Necromancer\" is the Name of badge; users refers to DisplayName",
+    "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Necromancer' LIMIT 10",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2",
+      "card_games_1",
+      "card_games_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.47092151641845703,
+      "coverage": 0.7582396268844604,
+      "utility": 3.400165319442749
+    }
+  },
+  {
+    "question_id": 591,
+    "db_id": "codebase_community_3",
+    "question": "How many users are awarded with supporter badge during year 2011?",
+    "evidence": "\"Supporter\" is the Name of badge; in year 2011 refers to year(Date) = 2011",
+    "SQL": "SELECT COUNT(Id) FROM badges WHERE STRFTIME('%Y', Date) = '2011' AND Name = 'Supporter'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.4551941454410553,
+      "coverage": 1.1159456968307495,
+      "utility": 4.05266797542572
+    }
+  },
+  {
+    "question_id": 597,
+    "db_id": "codebase_community_1",
+    "question": "How many users from India have the teacher badges?",
+    "evidence": "\"India\" is the Location; \"Teacher\" is the Name of badge",
+    "SQL": "SELECT COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.Location = 'India' AND T1.Name = 'Teacher'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.4503820538520813,
+      "coverage": 1.2464299201965332,
+      "utility": 4.294388055801392
+    }
+  },
+  {
+    "question_id": 598,
+    "db_id": "codebase_community_2",
+    "question": "What is the percentage difference of student badges given during 2010 and 2011?",
+    "evidence": "student badges refers to badge's name = 'Student'; during 2010 refers to Year(Date) = 2010; during 2011 refers to Year(Date) = 2011; percentage difference = Subtract (Divide(Count(Name where Year(Date) = 2010), Count (Name)) *100, Divide(Count(Name where Year(Date) = 2011), Count(Name)) * 100)",
+    "SQL": "SELECT CAST(SUM(IIF(STRFTIME('%Y', Date) = '2010', 1, 0)) AS REAL) * 100 / COUNT(Id) - CAST(SUM(IIF(STRFTIME('%Y', Date) = '2011', 1, 0)) AS REAL) * 100 / COUNT(Id) FROM badges WHERE Name = 'Student'",
+    "difficulty": "challenging",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "california_schools_3",
+      "california_schools_2",
+      "california_schools_1",
+      "codebase_community_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.32632535696029663,
+      "coverage": 0.9946804642677307,
+      "utility": 3.294662356376648
+    }
+  },
+  {
+    "question_id": 605,
+    "db_id": "codebase_community_2",
+    "question": "How many users obtained the \"Announcer\" badge?",
+    "evidence": "\"Announcer\" is the Name of badge; user refers to UserId",
+    "SQL": "SELECT COUNT(id) FROM badges WHERE Name = 'Announcer'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "financial_1",
+      "card_games_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.44172266125679016,
+      "coverage": 1.4757211208343506,
+      "utility": 4.718332886695862
+    }
+  },
+  {
+    "question_id": 614,
+    "db_id": "codebase_community_1",
+    "question": "Among the users who obtained the \"Teacher\" badge, calculate their percentage of users",
+    "evidence": "\"Teacher\" is the Name of badge;  percentage = Divide (Count(UserId where it's \"Teacher\"), Count(UserId)) * 100",
+    "SQL": "SELECT CAST(COUNT(T1.Id) AS REAL) * 100 / (SELECT COUNT(Id) FROM users) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Teacher'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "formula_1_2",
+      "formula_1_3",
+      "codebase_community_2",
+      "formula_1_1",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.42641276121139526,
+      "coverage": 1.3340458869934082,
+      "utility": 4.3737428188323975
+    }
+  },
+  {
+    "question_id": 615,
+    "db_id": "codebase_community_2",
+    "question": "Among the users who obtained the \"Organizer\" badges, calculate the percentage of users who are teenagers.",
+    "evidence": "\"Organizer\" is the Name of badge; teenager refers to Age BETWEEN 13 AND 18; percentage = Divide (Count(UserId where Age BETWEEN 13 AND 18), Count(UserId)) *100",
+    "SQL": "SELECT CAST(SUM(IIF(T2.Age BETWEEN 13 AND 18, 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.`Name` = 'Organizer'",
+    "difficulty": "moderate",
+    "DB_result": "codebase_community_2",
+    "selected_table": "users",
+    "selected_table_id": "codebase_community_2#sep#users",
+    "coarse_DB_result": "formula_1_2",
+    "candidate_DBs": [
+      "formula_1_2",
+      "formula_1_1",
+      "formula_1_3",
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3610299825668335,
+      "coverage": 1.686861515045166,
+      "utility": 4.817842960357666
+    }
+  },
+  {
+    "question_id": 619,
+    "db_id": "codebase_community_3",
+    "question": "How many adults who obtained the badge Supporter?",
+    "evidence": "Supporter is the Name of badge; adult refers to Age BETWEEN 19 AND 65",
+    "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Supporter' AND T1.Age BETWEEN 19 AND 65",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4097020626068115,
+      "coverage": 0.9762462377548218,
+      "utility": 3.5913007259368896
+    }
+  },
+  {
+    "question_id": 623,
+    "db_id": "codebase_community_3",
+    "question": "How many elders obtained the \"Supporter\" badge?",
+    "evidence": "\"Supporter\" is the Name of badge;  elders refers to Age > 65",
+    "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Age > 65 AND T2.Name = 'Supporter'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "formula_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3966960310935974,
+      "coverage": 0.5998972654342651,
+      "utility": 2.78657865524292
+    }
+  },
+  {
+    "question_id": 638,
+    "db_id": "codebase_community_2",
+    "question": "List all the name of users that obtained the Organizer Badges.",
+    "evidence": "name of users refers to DisplayName; the Organizer Badges refer to badges where Name = 'Organizer';",
+    "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.`Name` = 'Organizer'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2",
+      "card_games_3",
+      "card_games_1",
+      "card_games_2",
+      "student_club_3",
+      "financial_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5001400709152222,
+      "coverage": 2.264910936355591,
+      "utility": 6.53038215637207
+    }
+  },
+  {
+    "question_id": 641,
+    "db_id": "codebase_community_2",
+    "question": "How many users received commentator badges in 2014?",
+    "evidence": "Commentator is the name of the badge; year(Date) = 2014;",
+    "SQL": "SELECT COUNT(Id) FROM badges WHERE Name = 'Commentator' AND STRFTIME('%Y', Date) = '2014'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4685348570346832,
+      "coverage": 1.0781911611557007,
+      "utility": 4.030521750450134
+    }
+  },
+  {
+    "question_id": 650,
+    "db_id": "codebase_community_2",
+    "question": "Describe the last accessed date and location of the users who received the outliers badge.",
+    "evidence": "Outliers is the name of the badge;",
+    "SQL": "SELECT T1.LastAccessDate, T1.Location FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'outliers'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "users",
+    "selected_table_id": "codebase_community_1#sep#users",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4505345821380615,
+      "coverage": 2.3875732421875,
+      "utility": 6.577284812927246
+    }
+  },
+  {
+    "question_id": 671,
+    "db_id": "codebase_community_2",
+    "question": "What is the display name of the user who acquired the first Autobiographer badge?",
+    "evidence": "Autobiographer is the name of the badge; acquired the first refers to MIN(Date);",
+    "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.`Name` = 'Autobiographer' ORDER BY T2.Date LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4484395384788513,
+      "coverage": 2.232590675354004,
+      "utility": 6.258939504623413
+    }
+  },
+  {
+    "question_id": 695,
+    "db_id": "codebase_community_2",
+    "question": "How many users were awarded with 'Citizen Patrol' badge?",
+    "evidence": "Citizen Patrol' is the name of the badge;",
+    "SQL": "SELECT COUNT(id) FROM badges WHERE `Name` = 'Citizen Patrol'",
+    "difficulty": "simple",
+    "DB_result": "codebase_community_1",
+    "selected_table": "badges",
+    "selected_table_id": "codebase_community_1#sep#badges",
+    "coarse_DB_result": "codebase_community_1",
+    "candidate_DBs": [
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4541100263595581,
+      "coverage": 0.798748791217804,
+      "utility": 3.4139376878738403
+    }
+  },
+  {
+    "question_id": 854,
+    "db_id": "formula_1_1",
+    "question": "What is the coordinates location of the circuits for Australian grand prix?",
+    "evidence": "coordinate position/location refers to lat, lng; circuits for Australian grand prix refers to races.name = 'Australian Grand Prix'",
+    "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Australian Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "circuits",
+    "selected_table_id": "formula_1_3#sep#circuits",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4238700270652771,
+      "coverage": 1.0989961624145508,
+      "utility": 3.89347243309021
+    }
+  },
+  {
+    "question_id": 857,
+    "db_id": "formula_1_3",
+    "question": "Give the coordinate position for Abu Dhabi Grand Prix.",
+    "evidence": "coordinate position/location refers to lat, lng; Abu Dhabi Grand Prix refers to races.name = 'Abu Dhabi Grand Prix'",
+    "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Abu Dhabi Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "lapTimes",
+    "selected_table_id": "formula_1_3#sep#lapTimes",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4742182195186615,
+      "coverage": 0.7448039054870605,
+      "utility": 3.386480689048767
+    }
+  },
+  {
+    "question_id": 862,
+    "db_id": "formula_1_3",
+    "question": "For the Bahrain Grand Prix in 2007, how many drivers not finished the game?",
+    "evidence": "Bahrain Grand Prix refers to races.name = 'Bahrain Grand Prix'; drivers who finished the race refers to time is not empty (i.e. time IS NOT NULL);",
+    "SQL": "SELECT COUNT(T3.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2007 AND T1.name = 'Bahrain Grand Prix' AND T2.time IS NULL",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.36695313453674316,
+      "coverage": 1.5508230924606323,
+      "utility": 4.569458723068237
+    }
+  },
+  {
+    "question_id": 868,
+    "db_id": "formula_1_3",
+    "question": "Where is Malaysian Grand Prix held? Give the location coordinates.",
+    "evidence": "location coordinates refers to (lat, lng); Malaysian Grand Prix refers to races.name = 'Malaysian Grand Prix'",
+    "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Malaysian Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "circuits",
+    "selected_table_id": "formula_1_3#sep#circuits",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2",
+      "student_club_3",
+      "student_club_1",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4118935465812683,
+      "coverage": 1.2182390689849854,
+      "utility": 4.084052324295044
+    }
+  },
+  {
+    "question_id": 874,
+    "db_id": "formula_1_3",
+    "question": "Who finished second in the San Marino Grand Prix in 2006?",
+    "evidence": "finished second refers to position = 2;",
+    "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2006 AND T1.name = 'San Marino Grand Prix' AND T2.position = 2",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.33442971110343933,
+      "coverage": 2.0138051509857178,
+      "utility": 5.365329146385193
+    }
+  },
+  {
+    "question_id": 882,
+    "db_id": "formula_1_3",
+    "question": "Which year was the first Singapore Grand Prix?",
+    "evidence": "the first race refers to race happened in min(year);",
+    "SQL": "SELECT year FROM races WHERE name = 'Singapore Grand Prix' ORDER BY year ASC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2",
+      "thrombosis_prediction_1",
+      "thrombosis_prediction_2",
+      "thrombosis_prediction_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3898591995239258,
+      "coverage": 0.6083554029464722,
+      "utility": 2.7761476039886475
+    }
+  },
+  {
+    "question_id": 888,
+    "db_id": "formula_1_3",
+    "question": "In which country was the first European Grand Prix hosted? Name the circuit and location.",
+    "evidence": "the first refers to min(year);",
+    "SQL": "SELECT T1.country, T1.location FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'European Grand Prix' ORDER BY T2.year ASC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "circuits",
+    "selected_table_id": "formula_1_1#sep#circuits",
+    "coarse_DB_result": "european_football_2_1",
+    "candidate_DBs": [
+      "european_football_2_1",
+      "european_football_2_2",
+      "european_football_2_3",
+      "formula_1_1",
+      "formula_1_3",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3878742754459381,
+      "coverage": 2.553839683532715,
+      "utility": 6.659176468849182
+    }
+  },
+  {
+    "question_id": 889,
+    "db_id": "formula_1_3",
+    "question": "When was the last f1 season whereby Brands Hatch hosted the British Grand Prix?",
+    "evidence": "the last refers to max(year);",
+    "SQL": "SELECT T2.date FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T1.name = 'Brands Hatch' AND T2.name = 'British Grand Prix' ORDER BY T2.year DESC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2",
+      "european_football_2_3",
+      "european_football_2_1",
+      "european_football_2_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3973815441131592,
+      "coverage": 1.7257421016693115,
+      "utility": 5.04101037979126
+    }
+  },
+  {
+    "question_id": 890,
+    "db_id": "formula_1_3",
+    "question": "How many seasons has Silverstone Circuit hosted the United Kindom grand prix?",
+    "evidence": "British Grand Prix is the name of race; British refers to the United Kindom",
+    "SQL": "SELECT COUNT(T2.circuitid) FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T1.name = 'Silverstone Circuit' AND T2.name = 'British Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "circuits",
+    "selected_table_id": "formula_1_3#sep#circuits",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3231406509876251,
+      "coverage": 1.9959162473678589,
+      "utility": 5.284395098686218
+    }
+  },
+  {
+    "question_id": 891,
+    "db_id": "formula_1_3",
+    "question": "Name all drivers in the 2010 Singapore Grand Prix order by their position stands.",
+    "evidence": "",
+    "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN driverStandings AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Singapore Grand Prix' AND T1.year = 2010 ORDER BY T2.position ASC",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "drivers",
+    "selected_table_id": "formula_1_1#sep#drivers",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.41963475942611694,
+      "coverage": 2.1338610649108887,
+      "utility": 5.946261167526245
+    }
+  },
+  {
+    "question_id": 893,
+    "db_id": "formula_1_3",
+    "question": "Name the top 3 drivers and the points they scored in the 2017 Chinese Grand Prix.",
+    "evidence": "",
+    "SQL": "SELECT T3.forename, T3.surname, T2.points FROM races AS T1 INNER JOIN driverStandings AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Chinese Grand Prix' AND T1.year = 2017 ORDER BY T2.points DESC LIMIT 3",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "drivers",
+    "selected_table_id": "formula_1_3#sep#drivers",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.41296619176864624,
+      "coverage": 1.6727099418640137,
+      "utility": 4.997284650802612
+    }
+  },
+  {
+    "question_id": 895,
+    "db_id": "formula_1_3",
+    "question": "What is the average lap time for Lewis Hamilton in the 2009 Malaysian Grand Prix?",
+    "evidence": "average lap time = AVG(milliseconds); 'Lewis Hamilton' refers to the full name of the driver; Full name of the driver refers to drivers.forename and drivers.surname; 'Malaysian Grand Prix' refers to races.name = 'Malaysian Grand Prix'",
+    "SQL": "SELECT AVG(T2.milliseconds) FROM races AS T1 INNER JOIN lapTimes AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T3.forename = 'Lewis' AND T3.surname = 'Hamilton' AND T1.year = 2009 AND T1.name = 'Malaysian Grand Prix'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3843221366405487,
+      "coverage": 2.6800923347473145,
+      "utility": 6.897473216056824
+    }
+  },
+  {
+    "question_id": 909,
+    "db_id": "formula_1_3",
+    "question": "Among all European Grand Prix races, what is the percentage of the races were hosted in Germany?",
+    "evidence": "European Grand Prix races refers to races.name = 'European Grand Prix';percentage = divide(COUNT(races where country = Germany and name = 'Europearn Grand Prix'),COUNT(races where name = 'Europearn Grand Prix'))*100",
+    "SQL": "SELECT CAST(COUNT(CASE WHEN T1.country = 'Germany' THEN T2.circuitID END) AS REAL) * 100 / COUNT(T2.circuitId) FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'European Grand Prix'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_3",
+      "formula_1_2",
+      "european_football_2_1",
+      "european_football_2_3",
+      "european_football_2_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.40590518712997437,
+      "coverage": 1.2009319067001343,
+      "utility": 4.025484561920166
+    }
+  },
+  {
+    "question_id": 919,
+    "db_id": "formula_1_3",
+    "question": "Which circuit did the 2009 Spanish Grand Prix use?",
+    "evidence": "",
+    "SQL": "SELECT T1.name FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.41398733854293823,
+      "coverage": 1.1952592134475708,
+      "utility": 4.0464677810668945
+    }
+  },
+  {
+    "question_id": 922,
+    "db_id": "formula_1_3",
+    "question": "What time did the the 2010's Formula_1 race took place on the Abu Dhabi Circuit?",
+    "evidence": "",
+    "SQL": "SELECT T2.date, T2.time FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2010 AND T2.name = 'Abu Dhabi Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5200466513633728,
+      "coverage": 2.439462184906006,
+      "utility": 6.959110975265503
+    }
+  },
+  {
+    "question_id": 925,
+    "db_id": "formula_1_3",
+    "question": "Please give the link of the website that shows more information about the circuits the Spanish Grand Prix used in 2009.",
+    "evidence": "link of the website refers to url",
+    "SQL": "SELECT T1.url FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.46539705991744995,
+      "coverage": 2.0878448486328125,
+      "utility": 6.037277936935425
+    }
+  },
+  {
+    "question_id": 928,
+    "db_id": "formula_1_3",
+    "question": "Which driver ranked the first in the Canadian Grand Prix in 2007? Please give his reference name.",
+    "evidence": "reference name refers to driverRef; Canadian Grand Prix refers to races.name = 'Canadian Grand Prix';",
+    "SQL": "SELECT T3.forename, T3.surname, T3.driverRef FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Canadian Grand Prix' AND T2.rank = 1 AND T1.year = 2007",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "drivers",
+    "selected_table_id": "formula_1_3#sep#drivers",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_2",
+      "formula_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.37841811776161194,
+      "coverage": 1.8530367612838745,
+      "utility": 5.219745993614197
+    }
+  },
+  {
+    "question_id": 931,
+    "db_id": "formula_1_3",
+    "question": "What was the fastest lap speed among all drivers in the 2009 Spanish Grand Prix?",
+    "evidence": "the fastest lap speed among all refers to max(fastestLapSpeed); Spanish Grand Prix refers to races.name = 'Spanish Grand Prix';",
+    "SQL": "SELECT T2.fastestLapSpeed FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.name = 'Spanish Grand Prix' AND T1.year = 2009 AND T2.fastestLapSpeed IS NOT NULL ORDER BY T2.fastestLapSpeed DESC LIMIT 1",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.35024768114089966,
+      "coverage": 1.678350567817688,
+      "utility": 4.757691860198975
+    }
+  },
+  {
+    "question_id": 933,
+    "db_id": "formula_1_3",
+    "question": "What was Lewis Hamilton's final rank in the 2008 Chinese Grand Prix?",
+    "evidence": "Lewis Hamilton refers to the full name of the driver; Full name of the driver refers to drivers.forename and drivers.surname; final rank refers to positionOrder; Chinese Grand Prix refers to races.name = 'Chinese Grand Prix';",
+    "SQL": "SELECT T2.positionOrder FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T3.forename = 'Lewis' AND T3.surname = 'Hamilton' AND T1.name = 'Chinese Grand Prix' AND T1.year = 2008",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_3",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.30730536580085754,
+      "coverage": 2.683556079864502,
+      "utility": 6.596333622932434
+    }
+  },
+  {
+    "question_id": 934,
+    "db_id": "formula_1_1",
+    "question": "Which driver was in the no. 4 grid formation when starting the race in 1989's Australian Grand Prix? Please give his forename and surname.",
+    "evidence": "the no. 4 grid formation refers to grid = 4",
+    "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T2.grid = 4 AND T1.name = 'Australian Grand Prix' AND T1.year = 1989",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_1",
+    "selected_table": "drivers",
+    "selected_table_id": "formula_1_1#sep#drivers",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_3",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.42511770129203796,
+      "coverage": 3.4227867126464844,
+      "utility": 8.54604423046112
+    }
+  },
+  {
+    "question_id": 935,
+    "db_id": "formula_1_1",
+    "question": "How many drivers managed to finish the race in the 2008 Australian Grand Prix?",
+    "evidence": "managed to finish the race refers to time is not null",
+    "SQL": "SELECT COUNT(T2.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.name = 'Australian Grand Prix' AND T1.year = 2008 AND T2.time IS NOT NULL",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3626473546028137,
+      "coverage": 1.9931185245513916,
+      "utility": 5.436826467514038
+    }
+  },
+  {
+    "question_id": 936,
+    "db_id": "formula_1_1",
+    "question": "Which was the fastest lap for Lewis Hamilton in the 2008 Australian Grand Prix?",
+    "evidence": "",
+    "SQL": "SELECT T1.fastestLap FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN drivers AS T3 on T1.driverId = T3.driverId WHERE T2.name = 'Australian Grand Prix' AND T2.year = 2008 AND T3.forename = 'Lewis' AND T3.surname = 'Hamilton'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.3671349883079529,
+      "coverage": 2.7815165519714355,
+      "utility": 7.031573057174683
+    }
+  },
+  {
+    "question_id": 937,
+    "db_id": "formula_1_3",
+    "question": "What's the finish time for the driver who ranked second in 2008's AustChineseralian Grand Prix?",
+    "evidence": "finish time refers to time; Chinese Grand Prix refers to races.name = 'Chinese Grand Prix';",
+    "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank = 2 AND T2.name = 'Chinese Grand Prix' AND T2.year = 2008",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4184771776199341,
+      "coverage": 2.5501315593719482,
+      "utility": 6.774171829223633
+    }
+  },
+  {
+    "question_id": 938,
+    "db_id": "formula_1_1",
+    "question": "Who was the champion of 2008's Australian Grand Prix and where can I know more about him?",
+    "evidence": "only champion's finished time is represented by 'HH:MM:SS.mmm'; where can I know more refers to url",
+    "SQL": "SELECT T1.forename, T1.surname, T1.url FROM drivers AS T1 INNER JOIN results AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T3.name = 'Australian Grand Prix' AND T2.time LIKE '_:%:__.___' AND T3.year = 2008",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "pitStops",
+    "selected_table_id": "formula_1_3#sep#pitStops",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3959275186061859,
+      "coverage": 0.7457047700881958,
+      "utility": 3.0751196146011353
+    }
+  },
+  {
+    "question_id": 939,
+    "db_id": "formula_1_1",
+    "question": "How many drivers from the UN participated in the 2008 Australian Grand Prix?",
+    "evidence": "from the UN refers to nationality = 'British'",
+    "SQL": "SELECT COUNT(*) FROM drivers AS T1 INNER JOIN results AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T3.name = 'Australian Grand Prix' AND T1.nationality = 'British' AND T3.year = 2008",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_1",
+    "selected_table": "lapTimes",
+    "selected_table_id": "formula_1_1#sep#lapTimes",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.41636723279953003,
+      "coverage": 0.7922617197036743,
+      "utility": 3.2499923706054688
+    }
+  },
+  {
+    "question_id": 940,
+    "db_id": "formula_1_3",
+    "question": "Among the drivers that finished the race in the 2008 Chinese Grand Prix, how many of them have participated in Formula_1 races?",
+    "evidence": "COUNT(raceID) > 0 reveals that this driver participated in races; drivers who finished the race refers to time has value.",
+    "SQL": "SELECT COUNT(*) FROM ( SELECT T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.name = 'Chinese Grand Prix' AND T2.year = 2008 AND T1.time IS NOT NULL GROUP BY T1.driverId HAVING COUNT(T2.raceId) > 0 )",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.44100210070610046,
+      "coverage": 3.2749083042144775,
+      "utility": 8.313825011253357
+    }
+  },
+  {
+    "question_id": 943,
+    "db_id": "formula_1_1",
+    "question": "What is the rate of drivers completing all the laps in the 2008 Australian Grand Prix?",
+    "evidence": "completing all the laps refers to time is not null; rate = divide(COUNT(raceID where time is not null), COUNT(raceID))",
+    "SQL": "SELECT CAST(SUM(IIF(T1.time IS NOT NULL, 1, 0)) AS REAL) * 100 / COUNT(T1.resultId) FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Australian Grand Prix' AND T2.year = 2008",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.34746453166007996,
+      "coverage": 2.291165351867676,
+      "utility": 5.972188830375671
+    }
+  },
+  {
+    "question_id": 944,
+    "db_id": "formula_1_1",
+    "question": "How much faster in percentage is the champion than the driver who finished the race last in the 2008 Australian Grand Prix?",
+    "evidence": "how much faster in percentage = divide(subtract(incremental time, champion time), last_driver time) * 100; last driver finished time = incremental time + champion time; only champion's finished time is represented by 'HH:MM:SS.mmm'; finished the game refers to time is not null",
+    "SQL": "WITH time_in_seconds AS ( SELECT T1.positionOrder, CASE WHEN T1.positionOrder = 1 THEN (CAST(SUBSTR(T1.time, 1, 1) AS REAL) * 3600) + (CAST(SUBSTR(T1.time, 3, 2) AS REAL) * 60) + CAST(SUBSTR(T1.time, 6) AS REAL) ELSE CAST(SUBSTR(T1.time, 2) AS REAL) END AS time_seconds FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Australian Grand Prix' AND T1.time IS NOT NULL AND T2.year = 2008 ), champion_time AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = 1), last_driver_incremental AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = (SELECT MAX(positionOrder) FROM time_in_seconds) ) SELECT (CAST((SELECT time_seconds FROM last_driver_incremental) AS REAL) * 100) / (SELECT time_seconds + (SELECT time_seconds FROM last_driver_incremental) FROM champion_time)",
+    "difficulty": "challenging",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3638315498828888,
+      "coverage": 2.6691761016845703,
+      "utility": 6.793678402900696
+    }
+  },
+  {
+    "question_id": 960,
+    "db_id": "formula_1_3",
+    "question": "What is the average of fastest lap speed in the 2009 Spanish Grand Prix race?",
+    "evidence": "Spanish Grand Prix is the name of race refers to name = 'Spanish Grand Prix'; average fastest lap speed refers to avg(fastestLapSpeed);",
+    "SQL": "SELECT AVG(T1.fastestLapSpeed) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.36777448654174805,
+      "coverage": 2.3597841262817383,
+      "utility": 6.190666198730469
+    }
+  },
+  {
+    "question_id": 985,
+    "db_id": "formula_1_3",
+    "question": "Among the drivers who participated in the French Grand Prix, who has the slowest time in the 3rd lap.",
+    "evidence": "slowest time refers to Max(time);",
+    "SQL": "SELECT T1.driverId FROM lapTimes AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.name = 'French Grand Prix' AND T1.lap = 3 ORDER BY T1.time DESC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "lapTimes",
+    "selected_table_id": "formula_1_3#sep#lapTimes",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5349951982498169,
+      "coverage": 2.345743179321289,
+      "utility": 6.831467151641846
+    }
+  },
+  {
+    "question_id": 987,
+    "db_id": "formula_1_3",
+    "question": "What is the average fastest lap time of the top 10 drivers in the 2006 United States Grand Prix?",
+    "evidence": "top 10 refers to rank <11; AVG(fastestLapTime);",
+    "SQL": "SELECT AVG(T1.fastestLapTime) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank < 11 AND T2.year = 2006 AND T2.name = 'United States Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4152153730392456,
+      "coverage": 2.838407516479492,
+      "utility": 7.337676525115967
+    }
+  },
+  {
+    "question_id": 989,
+    "db_id": "formula_1_3",
+    "question": "Who is the champion of the Canadian Grand Prix in 2008? Indicate his finish time.",
+    "evidence": "Only the time of the champion shows in the format of \"hour: minutes: seconds.millionsecond\";",
+    "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Canadian Grand Prix' AND T2.year = 2008 AND T1.time LIKE '_:%:__.___'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_1",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_1#sep#races",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_2",
+      "formula_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.4639587998390198,
+      "coverage": 1.6013693809509277,
+      "utility": 5.058573961257935
+    }
+  },
+  {
+    "question_id": 990,
+    "db_id": "formula_1_3",
+    "question": "What is the constructor reference name of the champion in the 2009 Singapore Grand Prix? Please give its website.",
+    "evidence": "the time of the champion shows in the format of \"minutes: seconds.millionsecond\" in which Max(time); constructor reference name refers to constructorRef; website refers to url",
+    "SQL": "SELECT T3.constructorRef, T3.url FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN constructors AS T3 on T1.constructorId = T3.constructorId WHERE T2.name = 'Singapore Grand Prix' AND T2.year = 2009 AND T1.time LIKE '_:%:__.___'",
+    "difficulty": "challenging",
+    "DB_result": "formula_1_1",
+    "selected_table": "constructors",
+    "selected_table_id": "formula_1_1#sep#constructors",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4696469306945801,
+      "coverage": 2.4881224632263184,
+      "utility": 6.854832649230957
+    }
+  },
+  {
+    "question_id": 994,
+    "db_id": "formula_1_3",
+    "question": "Which constructor scored most points from Monaco Grand Prix between 1980 and 2010? List the score, name and nationality of this team.",
+    "evidence": "Monaco Grand Priz refers to the race; race in year between 1980 and 2010",
+    "SQL": "SELECT SUM(T1.points), T2.name, T2.nationality FROM constructorResults AS T1 INNER JOIN constructors AS T2 ON T1.constructorId = T2.constructorId INNER JOIN races AS T3 ON T3.raceid = T1.raceid WHERE T3.name = 'Monaco Grand Prix' AND T3.year BETWEEN 1980 AND 2010 GROUP BY T2.name ORDER BY SUM(T1.points) DESC LIMIT 1",
+    "difficulty": "challenging",
+    "DB_result": "formula_1_3",
+    "selected_table": "constructors",
+    "selected_table_id": "formula_1_3#sep#constructors",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4010244905948639,
+      "coverage": 3.3565311431884766,
+      "utility": 8.317160248756409
+    }
+  },
+  {
+    "question_id": 995,
+    "db_id": "formula_1_3",
+    "question": "What is the average score of Lewis Hamilton among all the Turkish Grand Prix?",
+    "evidence": "Average score = AVG(points)",
+    "SQL": "SELECT AVG(T2.points) FROM drivers AS T1 INNER JOIN driverStandings AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T1.forename = 'Lewis' AND T1.surname = 'Hamilton' AND T3.name = 'Turkish Grand Prix'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "pitStops",
+    "selected_table_id": "formula_1_3#sep#pitStops",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "codebase_community_1",
+      "codebase_community_3",
+      "codebase_community_2",
+      "european_football_2_3",
+      "european_football_2_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.38988175988197327,
+      "coverage": 1.398681879043579,
+      "utility": 4.356890797615051
+    }
+  },
+  {
+    "question_id": 1003,
+    "db_id": "formula_1_3",
+    "question": "How many accidents did the driver who had the highest number accidents in the Canadian Grand Prix have?",
+    "evidence": "number of accidents refers to the number where statusid = 3; Canadian Grand Prix refers to the race of name\n",
+    "SQL": "SELECT COUNT(T1.driverId) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN status AS T3 on T1.statusId = T3.statusId WHERE T3.statusId = 3 AND T2.name = 'Canadian Grand Prix' GROUP BY T1.driverId ORDER BY COUNT(T1.driverId) DESC LIMIT 1",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "drivers",
+    "selected_table_id": "formula_1_3#sep#drivers",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.34362488985061646,
+      "coverage": 1.177844524383545,
+      "utility": 3.7301886081695557
+    }
+  },
+  {
+    "question_id": 1008,
+    "db_id": "formula_1_1",
+    "question": "During which lap did Lewis Hamilton take a pit stop during the 2011 Australian Grand Prix?",
+    "evidence": "",
+    "SQL": "SELECT T1.lap FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId INNER JOIN races AS T3 on T1.raceId = T3.raceId WHERE T2.forename = 'Lewis' AND T2.surname = 'Hamilton' AND T3.year = 2011 AND T3.name = 'Australian Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "pitStops",
+    "selected_table_id": "formula_1_3#sep#pitStops",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5609732866287231,
+      "coverage": 1.7425601482391357,
+      "utility": 5.729013442993164
+    }
+  },
+  {
+    "question_id": 1009,
+    "db_id": "formula_1_1",
+    "question": "Please list the time each driver spent at the pit stop during the 2011 Australian Grand Prix.",
+    "evidence": "time spent at pit stop refers to duration",
+    "SQL": "SELECT T1.duration FROM pitStops AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.year = 2011 AND T2.name = 'Australian Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4114513099193573,
+      "coverage": 2.362903118133545,
+      "utility": 6.371611475944519
+    }
+  },
+  {
+    "question_id": 1013,
+    "db_id": "formula_1_2",
+    "question": "What is the lap record for the Austrian Grand Prix Circuit?",
+    "evidence": "lap record means the fastest time recorded which refers to time",
+    "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.fastestLapTime FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL) SELECT MIN(fastest_lap_times.fastestLapTime) as lap_record FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix'",
+    "difficulty": "simple",
+    "DB_result": "formula_1_1",
+    "selected_table": "circuits",
+    "selected_table_id": "formula_1_1#sep#circuits",
+    "coarse_DB_result": "formula_1_1",
+    "candidate_DBs": [
+      "formula_1_1",
+      "formula_1_2",
+      "formula_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.3339777886867523,
+      "coverage": 1.4602322578430176,
+      "utility": 4.256375670433044
+    }
+  },
+  {
+    "question_id": 1015,
+    "db_id": "formula_1_2",
+    "question": "In which Formula_1 race was the lap record for the Austrian Grand Prix Circuit set?",
+    "evidence": "lap record means the fastest time recorded which refers to time",
+    "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.FastestLapTime, (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) as time_in_seconds FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL ) SELECT T2.name FROM races AS T2 INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId INNER JOIN results AS T1 on T2.raceId = T1.raceId INNER JOIN ( SELECT MIN(fastest_lap_times.time_in_seconds) as min_time_in_seconds FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix') AS T4 ON (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) = T4.min_time_in_seconds WHERE T2.name = 'Austrian Grand Prix'",
+    "difficulty": "moderate",
+    "DB_result": "formula_1_3",
+    "selected_table": "races",
+    "selected_table_id": "formula_1_3#sep#races",
+    "coarse_DB_result": "formula_1_3",
+    "candidate_DBs": [
+      "formula_1_3",
+      "formula_1_1",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5248436331748962,
+      "coverage": 1.0977857112884521,
+      "utility": 4.294945955276489
+    }
+  },
+  {
+    "question_id": 1016,
+    "db_id": "formula_1_2",
+    "question": "In the race a driver set the lap record for the Austrian Grand Prix Circuit, how long did he spent at the pit stop at that same race?",
+    "evidence": "lap record means the fastest time recorded which refers to time, how long spent at pitstop refers to duration",
+    "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.driverId, T1.FastestLapTime, (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) as time_in_seconds FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL), lap_record_race AS ( SELECT T1.raceId, T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId INNER JOIN ( SELECT MIN(fastest_lap_times.time_in_seconds) as min_time_in_seconds FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix') AS T4 ON (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) = T4.min_time_in_seconds WHERE T2.name = 'Austrian Grand Prix') SELECT T4.duration FROM lap_record_race INNER JOIN pitStops AS T4 on lap_record_race.raceId = T4.raceId AND lap_record_race.driverId = T4.driverId",
+    "difficulty": "challenging",
+    "DB_result": "formula_1_2",
+    "selected_table": "pitStops",
+    "selected_table_id": "formula_1_2#sep#pitStops",
+    "coarse_DB_result": "formula_1_2",
+    "candidate_DBs": [
+      "formula_1_2",
+      "formula_1_3",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.6243042945861816,
+      "coverage": 2.0119471549987793,
+      "utility": 6.521111488342285
+    }
+  },
+  {
+    "question_id": 1053,
+    "db_id": "european_football_2_2",
+    "question": "List the football teams that has a chance creation passing class of Risky. Inidcate its short name only.",
+    "evidence": "chance creation passing class refers to chanceCreationPassingClass; chanceCreationPassingClass = 'Risky'; short name refers to team_short_name;",
+    "SQL": "SELECT DISTINCT t1.team_short_name FROM Team AS t1 INNER JOIN Team_attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.chanceCreationPassingClass = 'Risky'",
+    "difficulty": "moderate",
+    "DB_result": "european_football_2_3",
+    "selected_table": "Team",
+    "selected_table_id": "european_football_2_3#sep#Team",
+    "coarse_DB_result": "european_football_2_3",
+    "candidate_DBs": [
+      "european_football_2_3",
+      "european_football_2_2",
+      "european_football_2_1",
+      "student_club_1",
+      "student_club_3",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4719615876674652,
+      "coverage": 1.2497135400772095,
+      "utility": 4.38727343082428
+    }
+  },
+  {
+    "question_id": 1130,
+    "db_id": "european_football_2_3",
+    "question": "What are the short name of team who played safe while creating chance of passing?",
+    "evidence": "played safe while creating chance of passing refers to chanceCreationPassingClass = 'Safe'; short name of team refers to team_short_name",
+    "SQL": "SELECT DISTINCT t1.team_short_name FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.chanceCreationPassingClass = 'Safe'",
+    "difficulty": "moderate",
+    "DB_result": "european_football_2_3",
+    "selected_table": "Team",
+    "selected_table_id": "european_football_2_3#sep#Team",
+    "coarse_DB_result": "european_football_2_3",
+    "candidate_DBs": [
+      "european_football_2_3",
+      "european_football_2_2",
+      "european_football_2_1",
+      "formula_1_1",
+      "formula_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.41140714287757874,
+      "coverage": 1.986795425415039,
+      "utility": 5.619219422340393
+    }
+  },
+  {
+    "question_id": 1178,
+    "db_id": "thrombosis_prediction_2",
+    "question": "What was the gender of the first AORTITIS diagnosed patient?",
+    "evidence": "gender means SEX; 'AORTITIS' refers to Diagnosis;",
+    "SQL": "SELECT SEX FROM Patient WHERE Diagnosis = 'AORTITIS' AND `First Date` IS NOT NULL ORDER BY `First Date` ASC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "thrombosis_prediction_2",
+    "selected_table": "Patient",
+    "selected_table_id": "thrombosis_prediction_2#sep#Patient",
+    "coarse_DB_result": "thrombosis_prediction_2",
+    "candidate_DBs": [
+      "thrombosis_prediction_2",
+      "thrombosis_prediction_1",
+      "thrombosis_prediction_3",
+      "financial_2",
+      "financial_1",
+      "financial_3",
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.6042904853820801,
+      "coverage": 2.5619401931762695,
+      "utility": 7.541042327880859
+    }
+  },
+  {
+    "question_id": 1309,
+    "db_id": "thrombosis_prediction_1",
+    "question": "Please list a patient's platelet level if it is within the normal range and if he or she is diagnosed with MCTD.",
+    "evidence": "PLT > 100 and PLT < 400 means platelet level is within the normal range; PLT < 100 and PLT > 400 means platelet level is not within the normal range; diagnosed with MCTD refers to Diagnosis = 'MCTD';",
+    "SQL": "SELECT T2.PLT FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'MCTD' AND T2.PLT BETWEEN 100 AND 400",
+    "difficulty": "moderate",
+    "DB_result": "thrombosis_prediction_3",
+    "selected_table": "Patient",
+    "selected_table_id": "thrombosis_prediction_3#sep#Patient",
+    "coarse_DB_result": "thrombosis_prediction_1",
+    "candidate_DBs": [
+      "thrombosis_prediction_1",
+      "thrombosis_prediction_3",
+      "thrombosis_prediction_2",
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3",
+      "card_games_3",
+      "card_games_1",
+      "card_games_2",
+      "financial_1",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.41976284980773926,
+      "coverage": 1.901555061340332,
+      "utility": 5.482161521911621
+    }
+  },
+  {
+    "question_id": 1331,
+    "db_id": "student_club_3",
+    "question": "What is the amount of the funds that the Vice President received?",
+    "evidence": "'Vice President' is a position of Student Club; funds received refers to amount.",
+    "SQL": "SELECT T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Vice President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_2",
+    "selected_table": "budget",
+    "selected_table_id": "student_club_2#sep#budget",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_1",
+      "student_club_3",
+      "financial_2",
+      "financial_1",
+      "financial_3",
+      "debit_card_specializing_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4189244210720062,
+      "coverage": 0.9928057789802551,
+      "utility": 3.661309242248535
+    }
+  },
+  {
+    "question_id": 1333,
+    "db_id": "student_club_1",
+    "question": "What city and state did the President of the Student_Club grow up?",
+    "evidence": "'President' is a position of Student Club;",
+    "SQL": "SELECT T2.city, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.position = 'President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_2",
+    "selected_table": "zip_code",
+    "selected_table_id": "student_club_2#sep#zip_code",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_3",
+      "student_club_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5052649974822998,
+      "coverage": 1.31589674949646,
+      "utility": 4.652853488922119
+    }
+  },
+  {
+    "question_id": 1354,
+    "db_id": "student_club_3",
+    "question": "State the major name for the Vice President of the club.",
+    "evidence": "'Vice President' is a position of Student Club",
+    "SQL": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'Vice President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_2",
+    "selected_table": "member",
+    "selected_table_id": "student_club_2#sep#member",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_1",
+      "student_club_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5081111192703247,
+      "coverage": 1.458970308303833,
+      "utility": 4.950385093688965
+    }
+  },
+  {
+    "question_id": 1356,
+    "db_id": "student_club_1",
+    "question": "Which department was the President of the club in?",
+    "evidence": "'President' is a position of Student Club",
+    "SQL": "SELECT T2.department FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_3",
+    "selected_table": "major",
+    "selected_table_id": "student_club_3#sep#major",
+    "coarse_DB_result": "student_club_3",
+    "candidate_DBs": [
+      "student_club_3",
+      "student_club_2",
+      "student_club_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5229494571685791,
+      "coverage": 1.0393733978271484,
+      "utility": 4.170544624328613
+    }
+  },
+  {
+    "question_id": 1370,
+    "db_id": "student_club_3",
+    "question": "List all the expenses incurred by the vice president.",
+    "evidence": "expense refers to expense_description; 'Vice President' is a position of the Student Club",
+    "SQL": "SELECT T2.expense_id, T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Vice President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_2",
+    "selected_table": "expense",
+    "selected_table_id": "student_club_2#sep#expense",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_1",
+      "student_club_3",
+      "financial_2",
+      "financial_3",
+      "financial_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4954613447189331,
+      "coverage": 0.9821285009384155,
+      "utility": 3.9461023807525635
+    }
+  },
+  {
+    "question_id": 1377,
+    "db_id": "student_club_1",
+    "question": "How many student have the position of president?",
+    "evidence": "'President' is a position of Student Club",
+    "SQL": "SELECT COUNT(member_id) FROM member WHERE position = 'President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4500982165336609,
+      "coverage": 0.632963240146637,
+      "utility": 3.0663193464279175
+    }
+  },
+  {
+    "question_id": 1393,
+    "db_id": "student_club_1",
+    "question": "Provide the full name and email address of the Student_Club's Secretary.",
+    "evidence": "full name refers to first_name, last_name; 'Secretary' is a position of Student Club",
+    "SQL": "SELECT first_name, last_name, email FROM member WHERE position = 'Secretary'",
+    "difficulty": "simple",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_2",
+      "student_club_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.6582716107368469,
+      "coverage": 1.5495877265930176,
+      "utility": 5.732261896133423
+    }
+  },
+  {
+    "question_id": 1420,
+    "db_id": "student_club_3",
+    "question": "State the name of major that Vice President has joined.",
+    "evidence": "name of major refers to major_name; 'Vice President' is position of Student Club",
+    "SQL": "SELECT T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'Vice President'",
+    "difficulty": "simple",
+    "DB_result": "student_club_2",
+    "selected_table": "major",
+    "selected_table_id": "student_club_2#sep#major",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_1",
+      "student_club_3",
+      "codebase_community_2",
+      "codebase_community_3",
+      "codebase_community_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.49001026153564453,
+      "coverage": 1.225340485572815,
+      "utility": 4.410722017288208
+    }
+  },
+  {
+    "question_id": 1421,
+    "db_id": "student_club_2",
+    "question": "Calculate the percentage of members who are major Business in the list?",
+    "evidence": "DIVIDE(SUM(position = 'Member' and major_name = 'Business'), COUNT(member_id)) * 100",
+    "SQL": "SELECT CAST(SUM(CASE WHEN T2.major_name = 'Business' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.member_id) FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Member'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4534805417060852,
+      "coverage": 0.7032349705696106,
+      "utility": 3.220392107963562
+    }
+  },
+  {
+    "question_id": 1424,
+    "db_id": "student_club_2",
+    "question": "Among the members, how many of them have an extra large t-shirt size?",
+    "evidence": "among the members refers to position = 'Member'; extra large t-shirt size refers to t_shirt_size = 'X-Large'",
+    "SQL": "SELECT COUNT(member_id) FROM member WHERE position = 'Member' AND t_shirt_size = 'X-Large'",
+    "difficulty": "simple",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "european_football_2_1",
+      "european_football_2_2",
+      "european_football_2_3",
+      "codebase_community_1",
+      "codebase_community_2",
+      "codebase_community_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5619712471961975,
+      "coverage": 0.8294543623924255,
+      "utility": 3.906793713569641
+    }
+  },
+  {
+    "question_id": 1426,
+    "db_id": "student_club_2",
+    "question": "List the last name of members with a major in environmental engineering and include its department and college name.",
+    "evidence": "'Environmental Engineering' is the major_name;",
+    "SQL": "SELECT T2.last_name, T1.department, T1.college FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'Member' AND T1.major_name = 'Environmental Engineering'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "formula_1_1",
+      "formula_1_3",
+      "formula_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5379695296287537,
+      "coverage": 2.776289939880371,
+      "utility": 7.704457998275757
+    }
+  },
+  {
+    "question_id": 1428,
+    "db_id": "student_club_2",
+    "question": "List the city and state of members enrolled under electrical and computer engineering department.",
+    "evidence": "'Electrical and Computer Engineering Department' is the department; members enrolled refers to position = 'Member'",
+    "SQL": "SELECT city, state FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN zip_code AS T3 ON T3.zip_code = T1.zip WHERE department = 'Electrical and Computer Engineering Department' AND position = 'Member'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "california_schools_1",
+      "california_schools_3",
+      "california_schools_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4557105004787445,
+      "coverage": 1.7652530670166016,
+      "utility": 5.353348135948181
+    }
+  },
+  {
+    "question_id": 1429,
+    "db_id": "student_club_3",
+    "question": "What is the name of the social event that was attended by the vice president of the Student_Club located at 900 E. Washington St.?",
+    "evidence": "name of social event refers to event_name where type = 'Social'; 'Vice President' is position; located at refers to location",
+    "SQL": "SELECT T2.event_name FROM attendance AS T1 INNER JOIN event AS T2 ON T2.event_id = T1.link_to_event INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id WHERE T3.position = 'Vice President' AND T2.location = '900 E. Washington St.' AND T2.type = 'Social'",
+    "difficulty": "challenging",
+    "DB_result": "student_club_2",
+    "selected_table": "event",
+    "selected_table_id": "student_club_2#sep#event",
+    "coarse_DB_result": "student_club_2",
+    "candidate_DBs": [
+      "student_club_2",
+      "student_club_3",
+      "student_club_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.6121089458465576,
+      "coverage": 1.2843784093856812,
+      "utility": 5.017192602157593
+    }
+  },
+  {
+    "question_id": 1431,
+    "db_id": "student_club_2",
+    "question": "List the last name of the members of the club that attended the women's soccer event.",
+    "evidence": "members of the club refers to position = 'Member'; 'Women's Soccer' is event name;",
+    "SQL": "SELECT T3.last_name FROM attendance AS T1 INNER JOIN event AS T2 ON T2.event_id = T1.link_to_event INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id WHERE T2.event_name = 'Women''s Soccer' AND T3.position = 'Member'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_2",
+      "student_club_3",
+      "european_football_2_1",
+      "european_football_2_2",
+      "european_football_2_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5197513103485107,
+      "coverage": 2.087761402130127,
+      "utility": 6.254528045654297
+    }
+  },
+  {
+    "question_id": 1432,
+    "db_id": "student_club_2",
+    "question": "Among the members with t-shirt size of medium, what is the percentage of the amount 50 received by the Student_Club?",
+    "evidence": "t_shirt_size = 'Medium' where position = 'Member'; percentage = DIVIDE(COUNT(amount = 50), COUNT(member_id)) * 100",
+    "SQL": "SELECT CAST(SUM(CASE WHEN T2.amount = 50 THEN 1.0 ELSE 0 END) AS REAL) * 100 / COUNT(T2.income_id) FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Member' AND T1.t_shirt_size = 'Medium'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.6324765086174011,
+      "coverage": 1.6476531028747559,
+      "utility": 5.825212240219116
+    }
+  },
+  {
+    "question_id": 1441,
+    "db_id": "student_club_2",
+    "question": "How many members have education major in the College of Education & Human Services?",
+    "evidence": "'education' is the major name; 'Member' is a position of club;",
+    "SQL": "SELECT COUNT(T1.member_id) FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Member' AND T2.major_name LIKE '%Education%' AND T2.college = 'College of Education & Human Services'",
+    "difficulty": "moderate",
+    "DB_result": "student_club_1",
+    "selected_table": "major",
+    "selected_table_id": "student_club_1#sep#major",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_3",
+      "student_club_2",
+      "california_schools_1",
+      "california_schools_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5828794240951538,
+      "coverage": 1.2336077690124512,
+      "utility": 4.798733234405518
+    }
+  },
+  {
+    "question_id": 1466,
+    "db_id": "student_club_1",
+    "question": "Write the full name of the club member with the position of 'Secretary' and list which college the club member belongs to.",
+    "evidence": "full name refers to first_name, last name",
+    "SQL": "SELECT T1.first_name, T1.last_name, college FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Secretary'",
+    "difficulty": "simple",
+    "DB_result": "student_club_1",
+    "selected_table": "member",
+    "selected_table_id": "student_club_1#sep#member",
+    "coarse_DB_result": "student_club_1",
+    "candidate_DBs": [
+      "student_club_1",
+      "student_club_2",
+      "student_club_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.6217236518859863,
+      "coverage": 2.0266454219818115,
+      "utility": 6.540185451507568
+    }
+  },
+  {
+    "question_id": 1470,
+    "db_id": "debit_card_specializing_1",
+    "question": "How many gas stations in CZE has Premium gas?",
+    "evidence": "",
+    "SQL": "SELECT COUNT(GasStationID) FROM gasstations WHERE Country = 'CZE' AND Segment = 'Premium'",
+    "difficulty": "simple",
+    "DB_result": "debit_card_specializing_1",
+    "selected_table": "gasstations",
+    "selected_table_id": "debit_card_specializing_1#sep#gasstations",
+    "coarse_DB_result": "debit_card_specializing_1",
+    "candidate_DBs": [
+      "debit_card_specializing_1",
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "student_club_1",
+      "financial_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.36694857478141785,
+      "coverage": 1.1878594160079956,
+      "utility": 3.8435131311416626
+    }
+  },
+  {
+    "question_id": 1484,
+    "db_id": "debit_card_specializing_3",
+    "question": "How many more \"discount\" gas stations does the Czech Republic have compared to Slovakia?",
+    "evidence": "Czech Republic can be represented as the Country value in gasstations table is 'CZE'; Slovakia can be represented as the Country value in the gasstations table is 'SVK';  Computation of more \"discount\" gas stations= Total no. of discount gas stations in Czech Republic - Total no. of discount gas stations in Slovakia",
+    "SQL": "SELECT SUM(IIF(Country = 'CZE', 1, 0)) - SUM(IIF(Country = 'SVK', 1, 0)) FROM gasstations WHERE Segment = 'Discount'",
+    "difficulty": "simple",
+    "DB_result": "debit_card_specializing_2",
+    "selected_table": "gasstations",
+    "selected_table_id": "debit_card_specializing_2#sep#gasstations",
+    "coarse_DB_result": "debit_card_specializing_2",
+    "candidate_DBs": [
+      "debit_card_specializing_2",
+      "debit_card_specializing_3",
+      "debit_card_specializing_1",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "european_football_2_1",
+      "european_football_2_2",
+      "european_football_2_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.38808369636535645,
+      "coverage": 1.1188623905181885,
+      "utility": 3.7900595664978027
+    }
+  },
+  {
+    "question_id": 1491,
+    "db_id": "debit_card_specializing_2",
+    "question": "Which country has more \"value for money\" gas stations? Please give a total number of \"value for money\" gas stations in each country.",
+    "evidence": "",
+    "SQL": "SELECT Country , ( SELECT COUNT(GasStationID) FROM gasstations WHERE Segment = 'Value for money' ) FROM gasstations WHERE Segment = 'Value for money' GROUP BY Country ORDER BY COUNT(GasStationID) DESC LIMIT 1",
+    "difficulty": "simple",
+    "DB_result": "debit_card_specializing_2",
+    "selected_table": "gasstations",
+    "selected_table_id": "debit_card_specializing_2#sep#gasstations",
+    "coarse_DB_result": "debit_card_specializing_2",
+    "candidate_DBs": [
+      "debit_card_specializing_2",
+      "debit_card_specializing_1",
+      "debit_card_specializing_3",
+      "formula_1_3",
+      "formula_1_2",
+      "formula_1_1",
+      "european_football_2_1",
+      "european_football_2_3",
+      "european_football_2_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.47678959369659424,
+      "coverage": 1.0151584148406982,
+      "utility": 3.9374752044677734
+    }
+  }
+]

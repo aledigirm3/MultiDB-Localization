@@ -1,0 +1,5924 @@
+[
+  {
+    "db_id": "car_1_1",
+    "query": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "T2.edispl",
+      ")",
+      "FROM",
+      "CAR_NAMES",
+      "AS",
+      "T1",
+      "JOIN",
+      "CARS_DATA",
+      "AS",
+      "T2",
+      "ON",
+      "T1.MakeId",
+      "=",
+      "T2.Id",
+      "WHERE",
+      "T1.Model",
+      "=",
+      "'volvo",
+      "'",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "t2",
+      ".",
+      "edispl",
+      ")",
+      "from",
+      "car_names",
+      "as",
+      "t1",
+      "join",
+      "cars_data",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "makeid",
+      "=",
+      "t2",
+      ".",
+      "id",
+      "where",
+      "t1",
+      ".",
+      "model",
+      "=",
+      "value"
+    ],
+    "question": "What is the average edispl of the cars of model volvo?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "edispl",
+      "of",
+      "the",
+      "cars",
+      "of",
+      "model",
+      "volvo",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                13,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              16,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            5
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                19,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              14,
+              false
+            ],
+            null
+          ],
+          "\"volvo\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 0,
+    "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+    "DB_result": "car_1_1",
+    "selected_table": "cars_data",
+    "selected_table_id": "car_1_1#sep#cars_data",
+    "coarse_DB_result": "car_1_1",
+    "candidate_DBs": [
+      "car_1_1",
+      "car_1_3",
+      "car_1_2",
+      "world_1_3",
+      "world_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.49155595898628235,
+      "coverage": 1.4978687763214111,
+      "utility": 4.961961388587952
+    }
+  },
+  {
+    "db_id": "car_1_1",
+    "query": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "T2.edispl",
+      ")",
+      "FROM",
+      "CAR_NAMES",
+      "AS",
+      "T1",
+      "JOIN",
+      "CARS_DATA",
+      "AS",
+      "T2",
+      "ON",
+      "T1.MakeId",
+      "=",
+      "T2.Id",
+      "WHERE",
+      "T1.Model",
+      "=",
+      "'volvo",
+      "'",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "t2",
+      ".",
+      "edispl",
+      ")",
+      "from",
+      "car_names",
+      "as",
+      "t1",
+      "join",
+      "cars_data",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "makeid",
+      "=",
+      "t2",
+      ".",
+      "id",
+      "where",
+      "t1",
+      ".",
+      "model",
+      "=",
+      "value"
+    ],
+    "question": "What is the average edispl for all volvos?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "edispl",
+      "for",
+      "all",
+      "volvos",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                13,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              16,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            5
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                19,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              14,
+              false
+            ],
+            null
+          ],
+          "\"volvo\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 1,
+    "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+    "DB_result": "car_1_1",
+    "selected_table": "cars_data",
+    "selected_table_id": "car_1_1#sep#cars_data",
+    "coarse_DB_result": "car_1_1",
+    "candidate_DBs": [
+      "car_1_1",
+      "car_1_3",
+      "car_1_2",
+      "world_1_1",
+      "world_1_3",
+      "world_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4123610258102417,
+      "coverage": 1.3381880521774292,
+      "utility": 4.325820207595825
+    }
+  },
+  {
+    "db_id": "car_1_1",
+    "query": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+    "query_toks": [
+      "SELECT",
+      "T1.cylinders",
+      "FROM",
+      "CARS_DATA",
+      "AS",
+      "T1",
+      "JOIN",
+      "CAR_NAMES",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Id",
+      "=",
+      "T2.MakeId",
+      "WHERE",
+      "T2.Model",
+      "=",
+      "'volvo",
+      "'",
+      "ORDER",
+      "BY",
+      "T1.accelerate",
+      "ASC",
+      "LIMIT",
+      "1",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "cylinders",
+      "from",
+      "cars_data",
+      "as",
+      "t1",
+      "join",
+      "car_names",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "id",
+      "=",
+      "t2",
+      ".",
+      "makeid",
+      "where",
+      "t2",
+      ".",
+      "model",
+      "=",
+      "value",
+      "order",
+      "by",
+      "t1",
+      ".",
+      "accelerate",
+      "asc",
+      "limit",
+      "value"
+    ],
+    "question": "For model volvo, how many cylinders does the car with the least accelerate have?",
+    "question_toks": [
+      "For",
+      "model",
+      "volvo",
+      ",",
+      "how",
+      "many",
+      "cylinders",
+      "does",
+      "the",
+      "car",
+      "with",
+      "the",
+      "least",
+      "accelerate",
+      "have",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              13,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ],
+          [
+            "table_unit",
+            4
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              22,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                18,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              14,
+              false
+            ],
+            null
+          ],
+          "\"volvo\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 2,
+    "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+    "DB_result": "car_1_1",
+    "selected_table": "cars_data",
+    "selected_table_id": "car_1_1#sep#cars_data",
+    "coarse_DB_result": "car_1_1",
+    "candidate_DBs": [
+      "car_1_1",
+      "car_1_2",
+      "car_1_3",
+      "world_1_2",
+      "world_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.6107354164123535,
+      "coverage": 2.213552474975586,
+      "utility": 6.870046615600586
+    }
+  },
+  {
+    "db_id": "car_1_1",
+    "query": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+    "query_toks": [
+      "SELECT",
+      "T1.cylinders",
+      "FROM",
+      "CARS_DATA",
+      "AS",
+      "T1",
+      "JOIN",
+      "CAR_NAMES",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Id",
+      "=",
+      "T2.MakeId",
+      "WHERE",
+      "T2.Model",
+      "=",
+      "'volvo",
+      "'",
+      "ORDER",
+      "BY",
+      "T1.accelerate",
+      "ASC",
+      "LIMIT",
+      "1",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "cylinders",
+      "from",
+      "cars_data",
+      "as",
+      "t1",
+      "join",
+      "car_names",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "id",
+      "=",
+      "t2",
+      ".",
+      "makeid",
+      "where",
+      "t2",
+      ".",
+      "model",
+      "=",
+      "value",
+      "order",
+      "by",
+      "t1",
+      ".",
+      "accelerate",
+      "asc",
+      "limit",
+      "value"
+    ],
+    "question": "For a volvo model, how many cylinders does the version with least accelerate have?",
+    "question_toks": [
+      "For",
+      "a",
+      "volvo",
+      "model",
+      ",",
+      "how",
+      "many",
+      "cylinders",
+      "does",
+      "the",
+      "version",
+      "with",
+      "least",
+      "accelerate",
+      "have",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              13,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ],
+          [
+            "table_unit",
+            4
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              22,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                18,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              14,
+              false
+            ],
+            null
+          ],
+          "\"volvo\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 3,
+    "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+    "DB_result": "car_1_1",
+    "selected_table": "cars_data",
+    "selected_table_id": "car_1_1#sep#cars_data",
+    "coarse_DB_result": "car_1_1",
+    "candidate_DBs": [
+      "car_1_1",
+      "car_1_2",
+      "car_1_3",
+      "world_1_2",
+      "world_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.562744140625,
+      "coverage": 1.7512307167053223,
+      "utility": 5.7534379959106445
+    }
+  },
+  {
+    "db_id": "wta_1_1",
+    "query": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "winner_name",
+      "FROM",
+      "matches",
+      "WHERE",
+      "tourney_name",
+      "=",
+      "'Australian",
+      "Open",
+      "'",
+      "ORDER",
+      "BY",
+      "winner_rank_points",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "winner_name",
+      "from",
+      "matches",
+      "where",
+      "tourney_name",
+      "=",
+      "value",
+      "order",
+      "by",
+      "winner_rank_points",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+    "question_toks": [
+      "Find",
+      "the",
+      "name",
+      "of",
+      "the",
+      "winner",
+      "who",
+      "has",
+      "the",
+      "highest",
+      "rank",
+      "points",
+      "and",
+      "participated",
+      "in",
+      "the",
+      "Australian",
+      "Open",
+      "tourney",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              36,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              27,
+              false
+            ],
+            null
+          ],
+          "\"Australian Open\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 4,
+    "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+    "DB_result": "wta_1_1",
+    "selected_table": "matches",
+    "selected_table_id": "wta_1_1#sep#matches",
+    "coarse_DB_result": "wta_1_1",
+    "candidate_DBs": [
+      "wta_1_1",
+      "wta_1_3",
+      "wta_1_2",
+      "tvshow_1",
+      "tvshow_3",
+      "tvshow_2",
+      "world_1_1",
+      "world_1_3",
+      "world_1_2",
+      "car_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.612871527671814,
+      "coverage": 2.362121105194092,
+      "utility": 7.1757283210754395
+    }
+  },
+  {
+    "db_id": "wta_1_1",
+    "query": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "winner_name",
+      "FROM",
+      "matches",
+      "WHERE",
+      "tourney_name",
+      "=",
+      "'Australian",
+      "Open",
+      "'",
+      "ORDER",
+      "BY",
+      "winner_rank_points",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "winner_name",
+      "from",
+      "matches",
+      "where",
+      "tourney_name",
+      "=",
+      "value",
+      "order",
+      "by",
+      "winner_rank_points",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "What is the name of the winner with the most rank points who participated in the Australian Open tournament?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "name",
+      "of",
+      "the",
+      "winner",
+      "with",
+      "the",
+      "most",
+      "rank",
+      "points",
+      "who",
+      "participated",
+      "in",
+      "the",
+      "Australian",
+      "Open",
+      "tournament",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              36,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              27,
+              false
+            ],
+            null
+          ],
+          "\"Australian Open\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 5,
+    "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+    "DB_result": "wta_1_3",
+    "selected_table": "matches",
+    "selected_table_id": "wta_1_3#sep#matches",
+    "coarse_DB_result": "wta_1_1",
+    "candidate_DBs": [
+      "wta_1_1",
+      "wta_1_2",
+      "wta_1_3",
+      "tvshow_3",
+      "tvshow_1",
+      "tvshow_2",
+      "world_1_3",
+      "world_1_1",
+      "world_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5469228625297546,
+      "coverage": 2.0180110931396484,
+      "utility": 6.223713636398315
+    }
+  },
+  {
+    "db_id": "wta_1_2",
+    "query": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "DISTINCT",
+      "winner_name",
+      ")",
+      "FROM",
+      "matches",
+      "WHERE",
+      "tourney_name",
+      "=",
+      "'WTA",
+      "Championships",
+      "'",
+      "AND",
+      "winner_hand",
+      "=",
+      "'L",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "distinct",
+      "winner_name",
+      ")",
+      "from",
+      "matches",
+      "where",
+      "tourney_name",
+      "=",
+      "value",
+      "and",
+      "winner_hand",
+      "=",
+      "value"
+    ],
+    "question": "How many different winners both participated in the WTA Championships and were left handed?",
+    "question_toks": [
+      "How",
+      "many",
+      "different",
+      "winners",
+      "both",
+      "participated",
+      "in",
+      "the",
+      "WTA",
+      "Championships",
+      "and",
+      "were",
+      "left",
+      "handed",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                34,
+                true
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              27,
+              false
+            ],
+            null
+          ],
+          "\"WTA Championships\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              30,
+              false
+            ],
+            null
+          ],
+          "\"L\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 6,
+    "SQL": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+    "DB_result": "wta_1_2",
+    "selected_table": "players",
+    "selected_table_id": "wta_1_2#sep#players",
+    "coarse_DB_result": "wta_1_2",
+    "candidate_DBs": [
+      "wta_1_2",
+      "wta_1_3",
+      "wta_1_1",
+      "car_1_2",
+      "tvshow_2",
+      "tvshow_1",
+      "car_1_1",
+      "tvshow_3",
+      "car_1_3",
+      "world_1_2",
+      "world_1_3",
+      "world_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.569923460483551,
+      "coverage": 2.1797995567321777,
+      "utility": 6.63929295539856
+    }
+  },
+  {
+    "db_id": "wta_1_2",
+    "query": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "DISTINCT",
+      "winner_name",
+      ")",
+      "FROM",
+      "matches",
+      "WHERE",
+      "tourney_name",
+      "=",
+      "'WTA",
+      "Championships",
+      "'",
+      "AND",
+      "winner_hand",
+      "=",
+      "'L",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "distinct",
+      "winner_name",
+      ")",
+      "from",
+      "matches",
+      "where",
+      "tourney_name",
+      "=",
+      "value",
+      "and",
+      "winner_hand",
+      "=",
+      "value"
+    ],
+    "question": "Find the number of left handed winners who participated in the WTA Championships.",
+    "question_toks": [
+      "Find",
+      "the",
+      "number",
+      "of",
+      "left",
+      "handed",
+      "winners",
+      "who",
+      "participated",
+      "in",
+      "the",
+      "WTA",
+      "Championships",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                34,
+                true
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              27,
+              false
+            ],
+            null
+          ],
+          "\"WTA Championships\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              30,
+              false
+            ],
+            null
+          ],
+          "\"L\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 7,
+    "SQL": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+    "DB_result": "wta_1_2",
+    "selected_table": "players",
+    "selected_table_id": "wta_1_2#sep#players",
+    "coarse_DB_result": "wta_1_2",
+    "candidate_DBs": [
+      "wta_1_2",
+      "wta_1_1",
+      "wta_1_3",
+      "car_1_2",
+      "car_1_1",
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_3",
+      "tvshow_2",
+      "tvshow_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5921764373779297,
+      "coverage": 2.0585334300994873,
+      "utility": 6.485772609710693
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+    "query_toks": [
+      "SELECT",
+      "Title",
+      "FROM",
+      "Cartoon",
+      "WHERE",
+      "Directed_by",
+      "=",
+      "``",
+      "Ben",
+      "Jones",
+      "''",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "title",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value"
+    ],
+    "question": "List all cartoon directed by \"Ben Jones\".",
+    "question_toks": [
+      "List",
+      "all",
+      "cartoon",
+      "directed",
+      "by",
+      "``",
+      "Ben",
+      "Jones",
+      "''",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                20,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              21,
+              false
+            ],
+            null
+          ],
+          "\"Ben Jones\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 8,
+    "SQL": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_3",
+      "tvshow_2",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "wta_1_3",
+      "wta_1_1",
+      "wta_1_2",
+      "world_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5388901829719543,
+      "coverage": 0.8030879497528076,
+      "utility": 3.7617366313934326
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+    "query_toks": [
+      "SELECT",
+      "Title",
+      "FROM",
+      "Cartoon",
+      "WHERE",
+      "Directed_by",
+      "=",
+      "``",
+      "Ben",
+      "Jones",
+      "''",
+      ";"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "title",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value"
+    ],
+    "question": "What are the names of all cartoons directed by Ben Jones?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "all",
+      "cartoons",
+      "directed",
+      "by",
+      "Ben",
+      "Jones",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                20,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              21,
+              false
+            ],
+            null
+          ],
+          "\"Ben Jones\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 9,
+    "SQL": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_3",
+      "tvshow_2",
+      "car_1_3",
+      "car_1_1",
+      "car_1_2",
+      "world_1_3",
+      "wta_1_3",
+      "world_1_2",
+      "world_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5497641563415527,
+      "coverage": 1.58504056930542,
+      "utility": 5.369137763977051
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+    "query_toks": [
+      "SELECT",
+      "id",
+      "FROM",
+      "TV_Channel",
+      "EXCEPT",
+      "SELECT",
+      "channel",
+      "FROM",
+      "cartoon",
+      "WHERE",
+      "directed_by",
+      "=",
+      "'Ben",
+      "Jones",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "id",
+      "from",
+      "tv_channel",
+      "except",
+      "select",
+      "channel",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value"
+    ],
+    "question": "find the id of tv channels that do not play any cartoon directed by Ben Jones.",
+    "question_toks": [
+      "find",
+      "the",
+      "id",
+      "of",
+      "tv",
+      "channels",
+      "that",
+      "do",
+      "not",
+      "play",
+      "any",
+      "cartoon",
+      "directed",
+      "by",
+      "Ben",
+      "Jones",
+      "."
+    ],
+    "sql": {
+      "except": {
+        "except": null,
+        "from": {
+          "conds": [],
+          "table_units": [
+            [
+              "table_unit",
+              2
+            ]
+          ]
+        },
+        "groupBy": [],
+        "having": [],
+        "intersect": null,
+        "limit": null,
+        "orderBy": [],
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  25,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "union": null,
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ],
+            "\"Ben Jones\"",
+            null
+          ]
+        ]
+      },
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                1,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": []
+    },
+    "question_id": 10,
+    "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_2",
+      "tvshow_3",
+      "wta_1_2",
+      "wta_1_1",
+      "wta_1_3",
+      "car_1_2",
+      "car_1_1",
+      "car_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.619425892829895,
+      "coverage": 1.4394361972808838,
+      "utility": 5.356575965881348
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+    "query_toks": [
+      "SELECT",
+      "id",
+      "FROM",
+      "TV_Channel",
+      "EXCEPT",
+      "SELECT",
+      "channel",
+      "FROM",
+      "cartoon",
+      "WHERE",
+      "directed_by",
+      "=",
+      "'Ben",
+      "Jones",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "id",
+      "from",
+      "tv_channel",
+      "except",
+      "select",
+      "channel",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value"
+    ],
+    "question": "What are the ids of the TV channels that do not have any cartoons directed by Ben Jones?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "ids",
+      "of",
+      "the",
+      "TV",
+      "channels",
+      "that",
+      "do",
+      "not",
+      "have",
+      "any",
+      "cartoons",
+      "directed",
+      "by",
+      "Ben",
+      "Jones",
+      "?"
+    ],
+    "sql": {
+      "except": {
+        "except": null,
+        "from": {
+          "conds": [],
+          "table_units": [
+            [
+              "table_unit",
+              2
+            ]
+          ]
+        },
+        "groupBy": [],
+        "having": [],
+        "intersect": null,
+        "limit": null,
+        "orderBy": [],
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  25,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "union": null,
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ],
+            "\"Ben Jones\"",
+            null
+          ]
+        ]
+      },
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                1,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": []
+    },
+    "question_id": 11,
+    "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_2",
+      "tvshow_3",
+      "wta_1_2",
+      "wta_1_1",
+      "wta_1_3",
+      "car_1_1",
+      "car_1_2",
+      "car_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.6381123065948486,
+      "coverage": 1.4394361972808838,
+      "utility": 5.431321620941162
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+    "query_toks": [
+      "SELECT",
+      "package_option",
+      "FROM",
+      "TV_Channel",
+      "WHERE",
+      "id",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "channel",
+      "FROM",
+      "cartoon",
+      "WHERE",
+      "directed_by",
+      "=",
+      "'Ben",
+      "Jones",
+      "'",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "package_option",
+      "from",
+      "tv_channel",
+      "where",
+      "id",
+      "not",
+      "in",
+      "(",
+      "select",
+      "channel",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value",
+      ")"
+    ],
+    "question": "find the package option of the tv channel that do not have any cartoon directed by Ben Jones.",
+    "question_toks": [
+      "find",
+      "the",
+      "package",
+      "option",
+      "of",
+      "the",
+      "tv",
+      "channel",
+      "that",
+      "do",
+      "not",
+      "have",
+      "any",
+      "cartoon",
+      "directed",
+      "by",
+      "Ben",
+      "Jones",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          true,
+          8,
+          [
+            0,
+            [
+              0,
+              1,
+              false
+            ],
+            null
+          ],
+          {
+            "except": null,
+            "from": {
+              "conds": [],
+              "table_units": [
+                [
+                  "table_unit",
+                  2
+                ]
+              ]
+            },
+            "groupBy": [],
+            "having": [],
+            "intersect": null,
+            "limit": null,
+            "orderBy": [],
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      25,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "union": null,
+            "where": [
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    21,
+                    false
+                  ],
+                  null
+                ],
+                "\"Ben Jones\"",
+                null
+              ]
+            ]
+          },
+          null
+        ]
+      ]
+    },
+    "question_id": 12,
+    "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_2",
+      "tvshow_3",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "wta_1_3",
+      "wta_1_2",
+      "wta_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5836636424064636,
+      "coverage": 1.3187904357910156,
+      "utility": 4.972235441207886
+    }
+  },
+  {
+    "db_id": "tvshow_2",
+    "query": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+    "query_toks": [
+      "SELECT",
+      "package_option",
+      "FROM",
+      "TV_Channel",
+      "WHERE",
+      "id",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "channel",
+      "FROM",
+      "cartoon",
+      "WHERE",
+      "directed_by",
+      "=",
+      "'Ben",
+      "Jones",
+      "'",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "package_option",
+      "from",
+      "tv_channel",
+      "where",
+      "id",
+      "not",
+      "in",
+      "(",
+      "select",
+      "channel",
+      "from",
+      "cartoon",
+      "where",
+      "directed_by",
+      "=",
+      "value",
+      ")"
+    ],
+    "question": "What are the package options of all tv channels that are not playing any cartoons directed by Ben Jones?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "package",
+      "options",
+      "of",
+      "all",
+      "tv",
+      "channels",
+      "that",
+      "are",
+      "not",
+      "playing",
+      "any",
+      "cartoons",
+      "directed",
+      "by",
+      "Ben",
+      "Jones",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          true,
+          8,
+          [
+            0,
+            [
+              0,
+              1,
+              false
+            ],
+            null
+          ],
+          {
+            "except": null,
+            "from": {
+              "conds": [],
+              "table_units": [
+                [
+                  "table_unit",
+                  2
+                ]
+              ]
+            },
+            "groupBy": [],
+            "having": [],
+            "intersect": null,
+            "limit": null,
+            "orderBy": [],
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      25,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "union": null,
+            "where": [
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    21,
+                    false
+                  ],
+                  null
+                ],
+                "\"Ben Jones\"",
+                null
+              ]
+            ]
+          },
+          null
+        ]
+      ]
+    },
+    "question_id": 13,
+    "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+    "DB_result": "tvshow_1",
+    "selected_table": "Cartoon",
+    "selected_table_id": "tvshow_1#sep#Cartoon",
+    "coarse_DB_result": "tvshow_1",
+    "candidate_DBs": [
+      "tvshow_1",
+      "tvshow_2",
+      "tvshow_3",
+      "wta_1_3",
+      "wta_1_2",
+      "wta_1_1",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5454142093658447,
+      "coverage": 2.238799571990967,
+      "utility": 6.6592559814453125
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "Name",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "ORDER",
+      "BY",
+      "LifeExpectancy",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "name",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "order",
+      "by",
+      "lifeexpectancy",
+      "limit",
+      "value"
+    ],
+    "question": "What is the name of country that has the shortest life expectancy in Asia?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "name",
+      "of",
+      "country",
+      "that",
+      "has",
+      "the",
+      "shortest",
+      "life",
+      "expectancy",
+      "in",
+      "Asia",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              15,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 14,
+    "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+    "DB_result": "world_1_1",
+    "selected_table": "country",
+    "selected_table_id": "world_1_1#sep#country",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_2",
+      "car_1_3",
+      "car_1_1",
+      "wta_1_1",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4598943591117859,
+      "coverage": 2.193333148956299,
+      "utility": 6.226243734359741
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "Name",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "ORDER",
+      "BY",
+      "LifeExpectancy",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "name",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "order",
+      "by",
+      "lifeexpectancy",
+      "limit",
+      "value"
+    ],
+    "question": "Give the name of the country in Asia with the lowest life expectancy.",
+    "question_toks": [
+      "Give",
+      "the",
+      "name",
+      "of",
+      "the",
+      "country",
+      "in",
+      "Asia",
+      "with",
+      "the",
+      "lowest",
+      "life",
+      "expectancy",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              15,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 15,
+    "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+    "DB_result": "world_1_1",
+    "selected_table": "country",
+    "selected_table_id": "world_1_1#sep#country",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_2",
+      "car_1_1",
+      "car_1_3",
+      "wta_1_1",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4842216670513153,
+      "coverage": 2.625408887863159,
+      "utility": 7.18770444393158
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "sum",
+      "(",
+      "Population",
+      ")",
+      ",",
+      "max",
+      "(",
+      "GNP",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "sum",
+      "(",
+      "population",
+      ")",
+      ",",
+      "max",
+      "(",
+      "gnp",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "What is the total population and maximum GNP in Asia?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "total",
+      "population",
+      "and",
+      "maximum",
+      "GNP",
+      "in",
+      "Asia",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            4,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            1,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 16,
+    "SQL": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_1",
+      "world_1_3",
+      "car_1_3",
+      "car_1_1",
+      "car_1_2",
+      "tvshow_3",
+      "tvshow_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5270410180091858,
+      "coverage": 1.5898239612579346,
+      "utility": 5.287811994552612
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "sum",
+      "(",
+      "Population",
+      ")",
+      ",",
+      "max",
+      "(",
+      "GNP",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "sum",
+      "(",
+      "population",
+      ")",
+      ",",
+      "max",
+      "(",
+      "gnp",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "How many people live in Asia, and what is the largest GNP among them?",
+    "question_toks": [
+      "How",
+      "many",
+      "people",
+      "live",
+      "in",
+      "Asia",
+      ",",
+      "and",
+      "what",
+      "is",
+      "the",
+      "largest",
+      "GNP",
+      "among",
+      "them",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            4,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            1,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 17,
+    "SQL": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_1",
+      "world_1_3",
+      "car_1_3",
+      "car_1_1",
+      "car_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5622744560241699,
+      "coverage": 2.631662130355835,
+      "utility": 7.51242208480835
+    }
+  },
+  {
+    "db_id": "world_1_1",
+    "query": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "LifeExpectancy",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Africa",
+      "''",
+      "AND",
+      "GovernmentForm",
+      "=",
+      "``",
+      "Republic",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "lifeexpectancy",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "governmentform",
+      "=",
+      "value"
+    ],
+    "question": "What is the average life expectancy in African countries that are republics?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "life",
+      "expectancy",
+      "in",
+      "African",
+      "countries",
+      "that",
+      "are",
+      "republics",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                15,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Africa\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              19,
+              false
+            ],
+            null
+          ],
+          "\"Republic\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 18,
+    "SQL": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_3",
+      "world_1_1",
+      "car_1_3",
+      "car_1_1",
+      "car_1_2",
+      "tvshow_3",
+      "tvshow_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.43887990713119507,
+      "coverage": 2.30108904838562,
+      "utility": 6.3576977252960205
+    }
+  },
+  {
+    "db_id": "world_1_1",
+    "query": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "LifeExpectancy",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Africa",
+      "''",
+      "AND",
+      "GovernmentForm",
+      "=",
+      "``",
+      "Republic",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "lifeexpectancy",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "governmentform",
+      "=",
+      "value"
+    ],
+    "question": "Give the average life expectancy for countries in Africa which are republics?",
+    "question_toks": [
+      "Give",
+      "the",
+      "average",
+      "life",
+      "expectancy",
+      "for",
+      "countries",
+      "in",
+      "Africa",
+      "which",
+      "are",
+      "republics",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                15,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Africa\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              19,
+              false
+            ],
+            null
+          ],
+          "\"Republic\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 19,
+    "SQL": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_3",
+      "world_1_1",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "tvshow_3",
+      "tvshow_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4892486333847046,
+      "coverage": 2.3114664554595947,
+      "utility": 6.579927444458008
+    }
+  },
+  {
+    "db_id": "world_1_1",
+    "query": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "DISTINCT",
+      "GovernmentForm",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Africa",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "distinct",
+      "governmentform",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "How many type of governments are in Africa?",
+    "question_toks": [
+      "How",
+      "many",
+      "type",
+      "of",
+      "governments",
+      "are",
+      "in",
+      "Africa",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                19,
+                true
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Africa\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 20,
+    "SQL": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+    "DB_result": "world_1_3",
+    "selected_table": "country",
+    "selected_table_id": "world_1_3#sep#country",
+    "coarse_DB_result": "world_1_3",
+    "candidate_DBs": [
+      "world_1_3",
+      "world_1_1",
+      "world_1_2",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.442807137966156,
+      "coverage": 1.4072926044464111,
+      "utility": 4.585813760757446
+    }
+  },
+  {
+    "db_id": "world_1_1",
+    "query": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "DISTINCT",
+      "GovernmentForm",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Africa",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "distinct",
+      "governmentform",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "How many different forms of governments are there in Africa?",
+    "question_toks": [
+      "How",
+      "many",
+      "different",
+      "forms",
+      "of",
+      "governments",
+      "are",
+      "there",
+      "in",
+      "Africa",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                19,
+                true
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Africa\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 21,
+    "SQL": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+    "DB_result": "world_1_3",
+    "selected_table": "country",
+    "selected_table_id": "world_1_3#sep#country",
+    "coarse_DB_result": "world_1_3",
+    "candidate_DBs": [
+      "world_1_3",
+      "world_1_2",
+      "world_1_1",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.4136756658554077,
+      "coverage": 1.4323091506958008,
+      "utility": 4.519320964813232
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "T2.Language",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Code",
+      "=",
+      "T2.CountryCode",
+      "WHERE",
+      "T1.Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "GROUP",
+      "BY",
+      "T2.Language",
+      "ORDER",
+      "BY",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t2",
+      ".",
+      "language",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "countrylanguage",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t2",
+      ".",
+      "countrycode",
+      "where",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value",
+      "group",
+      "by",
+      "t2",
+      ".",
+      "language",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "Which language is the most popular on the Asian continent?",
+    "question_toks": [
+      "Which",
+      "language",
+      "is",
+      "the",
+      "most",
+      "popular",
+      "on",
+      "the",
+      "Asian",
+      "continent",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                8,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              23,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            3
+          ]
+        ]
+      },
+      "groupBy": [
+        [
+          0,
+          24,
+          false
+        ]
+      ],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                24,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 22,
+    "SQL": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_3",
+    "candidate_DBs": [
+      "world_1_3",
+      "world_1_1",
+      "world_1_2",
+      "car_1_2",
+      "car_1_1",
+      "car_1_3",
+      "tvshow_2",
+      "tvshow_1",
+      "tvshow_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.44843271374702454,
+      "coverage": 1.2736625671386719,
+      "utility": 4.341055989265442
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "T2.Language",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Code",
+      "=",
+      "T2.CountryCode",
+      "WHERE",
+      "T1.Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "GROUP",
+      "BY",
+      "T2.Language",
+      "ORDER",
+      "BY",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t2",
+      ".",
+      "language",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "countrylanguage",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t2",
+      ".",
+      "countrycode",
+      "where",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value",
+      "group",
+      "by",
+      "t2",
+      ".",
+      "language",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "What is the language that is used by the largest number of Asian nations?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "language",
+      "that",
+      "is",
+      "used",
+      "by",
+      "the",
+      "largest",
+      "number",
+      "of",
+      "Asian",
+      "nations",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                8,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              23,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            3
+          ]
+        ]
+      },
+      "groupBy": [
+        [
+          0,
+          24,
+          false
+        ]
+      ],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                24,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 23,
+    "SQL": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+    "DB_result": "world_1_1",
+    "selected_table": "countrylanguage",
+    "selected_table_id": "world_1_1#sep#countrylanguage",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_3",
+      "world_1_2",
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "tvshow_1",
+      "tvshow_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.6151610016822815,
+      "coverage": 2.2286455631256104,
+      "utility": 6.917935132980347
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "Name",
+      ",",
+      "Population",
+      ",",
+      "LifeExpectancy",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "ORDER",
+      "BY",
+      "SurfaceArea",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "name",
+      ",",
+      "population",
+      ",",
+      "lifeexpectancy",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "order",
+      "by",
+      "surfacearea",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "Find the name, population and expected life length of asian country with the largest area?",
+    "question_toks": [
+      "Find",
+      "the",
+      "name",
+      ",",
+      "population",
+      "and",
+      "expected",
+      "life",
+      "length",
+      "of",
+      "asian",
+      "country",
+      "with",
+      "the",
+      "largest",
+      "area",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              12,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                15,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 24,
+    "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_1",
+      "world_1_3",
+      "car_1_1",
+      "car_1_2",
+      "car_1_3",
+      "wta_1_1",
+      "wta_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5553945899009705,
+      "coverage": 4.352509021759033,
+      "utility": 10.926596403121948
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "Name",
+      ",",
+      "Population",
+      ",",
+      "LifeExpectancy",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "Asia",
+      "''",
+      "ORDER",
+      "BY",
+      "SurfaceArea",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "name",
+      ",",
+      "population",
+      ",",
+      "lifeexpectancy",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "order",
+      "by",
+      "surfacearea",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "What are the name, population, and life expectancy of the largest Asian country by land?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "name",
+      ",",
+      "population",
+      ",",
+      "and",
+      "life",
+      "expectancy",
+      "of",
+      "the",
+      "largest",
+      "Asian",
+      "country",
+      "by",
+      "land",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": 1,
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              12,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                15,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 25,
+    "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_1",
+      "world_1_3",
+      "car_1_3",
+      "car_1_1",
+      "car_1_2",
+      "wta_1_3",
+      "wta_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5502724647521973,
+      "coverage": 4.317045211791992,
+      "utility": 10.835180282592773
+    }
+  },
+  {
+    "db_id": "world_1_2",
+    "query": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T2.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "city",
+      "AS",
+      "T2",
+      "ON",
+      "T2.CountryCode",
+      "=",
+      "T1.Code",
+      "WHERE",
+      "T1.Continent",
+      "=",
+      "'Europe",
+      "'",
+      "AND",
+      "T1.Name",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "T3.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T3",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T4",
+      "ON",
+      "T3.Code",
+      "=",
+      "T4.CountryCode",
+      "WHERE",
+      "T4.IsOfficial",
+      "=",
+      "'T",
+      "'",
+      "AND",
+      "T4.Language",
+      "=",
+      "'English",
+      "'",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t2",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "city",
+      "as",
+      "t2",
+      "on",
+      "t2",
+      ".",
+      "countrycode",
+      "=",
+      "t1",
+      ".",
+      "code",
+      "where",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "t1",
+      ".",
+      "name",
+      "not",
+      "in",
+      "(",
+      "select",
+      "t3",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t3",
+      "join",
+      "countrylanguage",
+      "as",
+      "t4",
+      "on",
+      "t3",
+      ".",
+      "code",
+      "=",
+      "t4",
+      ".",
+      "countrycode",
+      "where",
+      "t4",
+      ".",
+      "isofficial",
+      "=",
+      "value",
+      "and",
+      "t4",
+      ".",
+      "language",
+      "=",
+      "value",
+      ")"
+    ],
+    "question": "Which cities are in European countries where English is not the official language?",
+    "question_toks": [
+      "Which",
+      "cities",
+      "are",
+      "in",
+      "European",
+      "countries",
+      "where",
+      "English",
+      "is",
+      "not",
+      "the",
+      "official",
+      "language",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              8,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                2,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Europe\"",
+          null
+        ],
+        "and",
+        [
+          true,
+          8,
+          [
+            0,
+            [
+              0,
+              9,
+              false
+            ],
+            null
+          ],
+          {
+            "except": null,
+            "from": {
+              "conds": [
+                [
+                  false,
+                  2,
+                  [
+                    0,
+                    [
+                      0,
+                      8,
+                      false
+                    ],
+                    null
+                  ],
+                  [
+                    0,
+                    23,
+                    false
+                  ],
+                  null
+                ]
+              ],
+              "table_units": [
+                [
+                  "table_unit",
+                  2
+                ],
+                [
+                  "table_unit",
+                  3
+                ]
+              ]
+            },
+            "groupBy": [],
+            "having": [],
+            "intersect": null,
+            "limit": null,
+            "orderBy": [],
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      9,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "union": null,
+            "where": [
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    25,
+                    false
+                  ],
+                  null
+                ],
+                "\"T\"",
+                null
+              ],
+              "and",
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    24,
+                    false
+                  ],
+                  null
+                ],
+                "\"English\"",
+                null
+              ]
+            ]
+          },
+          null
+        ]
+      ]
+    },
+    "question_id": 26,
+    "SQL": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+    "DB_result": "world_1_1",
+    "selected_table": "country",
+    "selected_table_id": "world_1_1#sep#country",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_2",
+      "car_1_1",
+      "car_1_3",
+      "wta_1_2",
+      "wta_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.3854837119579315,
+      "coverage": 3.0061874389648438,
+      "utility": 7.554309725761414
+    }
+  },
+  {
+    "db_id": "world_1_2",
+    "query": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T2.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "city",
+      "AS",
+      "T2",
+      "ON",
+      "T2.CountryCode",
+      "=",
+      "T1.Code",
+      "WHERE",
+      "T1.Continent",
+      "=",
+      "'Europe",
+      "'",
+      "AND",
+      "T1.Name",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "T3.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T3",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T4",
+      "ON",
+      "T3.Code",
+      "=",
+      "T4.CountryCode",
+      "WHERE",
+      "T4.IsOfficial",
+      "=",
+      "'T",
+      "'",
+      "AND",
+      "T4.Language",
+      "=",
+      "'English",
+      "'",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t2",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "city",
+      "as",
+      "t2",
+      "on",
+      "t2",
+      ".",
+      "countrycode",
+      "=",
+      "t1",
+      ".",
+      "code",
+      "where",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "t1",
+      ".",
+      "name",
+      "not",
+      "in",
+      "(",
+      "select",
+      "t3",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t3",
+      "join",
+      "countrylanguage",
+      "as",
+      "t4",
+      "on",
+      "t3",
+      ".",
+      "code",
+      "=",
+      "t4",
+      ".",
+      "countrycode",
+      "where",
+      "t4",
+      ".",
+      "isofficial",
+      "=",
+      "value",
+      "and",
+      "t4",
+      ".",
+      "language",
+      "=",
+      "value",
+      ")"
+    ],
+    "question": "What are the names of cities in Europe for which English is not the official language?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "cities",
+      "in",
+      "Europe",
+      "for",
+      "which",
+      "English",
+      "is",
+      "not",
+      "the",
+      "official",
+      "language",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              8,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            0
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                2,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Europe\"",
+          null
+        ],
+        "and",
+        [
+          true,
+          8,
+          [
+            0,
+            [
+              0,
+              9,
+              false
+            ],
+            null
+          ],
+          {
+            "except": null,
+            "from": {
+              "conds": [
+                [
+                  false,
+                  2,
+                  [
+                    0,
+                    [
+                      0,
+                      8,
+                      false
+                    ],
+                    null
+                  ],
+                  [
+                    0,
+                    23,
+                    false
+                  ],
+                  null
+                ]
+              ],
+              "table_units": [
+                [
+                  "table_unit",
+                  2
+                ],
+                [
+                  "table_unit",
+                  3
+                ]
+              ]
+            },
+            "groupBy": [],
+            "having": [],
+            "intersect": null,
+            "limit": null,
+            "orderBy": [],
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      9,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "union": null,
+            "where": [
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    25,
+                    false
+                  ],
+                  null
+                ],
+                "\"T\"",
+                null
+              ],
+              "and",
+              [
+                false,
+                2,
+                [
+                  0,
+                  [
+                    0,
+                    24,
+                    false
+                  ],
+                  null
+                ],
+                "\"English\"",
+                null
+              ]
+            ]
+          },
+          null
+        ]
+      ]
+    },
+    "question_id": 27,
+    "SQL": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+    "DB_result": "world_1_1",
+    "selected_table": "city",
+    "selected_table_id": "world_1_1#sep#city",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_2",
+      "car_1_1",
+      "car_1_3",
+      "wta_1_1",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.4873845875263214,
+      "coverage": 2.1474716663360596,
+      "utility": 6.244481682777405
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T3.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Code",
+      "=",
+      "T2.CountryCode",
+      "JOIN",
+      "city",
+      "AS",
+      "T3",
+      "ON",
+      "T1.Code",
+      "=",
+      "T3.CountryCode",
+      "WHERE",
+      "T2.IsOfficial",
+      "=",
+      "'T",
+      "'",
+      "AND",
+      "T2.Language",
+      "=",
+      "'Chinese",
+      "'",
+      "AND",
+      "T1.Continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t3",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "countrylanguage",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t2",
+      ".",
+      "countrycode",
+      "join",
+      "city",
+      "as",
+      "t3",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t3",
+      ".",
+      "countrycode",
+      "where",
+      "t2",
+      ".",
+      "isofficial",
+      "=",
+      "value",
+      "and",
+      "t2",
+      ".",
+      "language",
+      "=",
+      "value",
+      "and",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "Whic`h unique cities are in  Asian countries where Chinese is the official language?",
+    "question_toks": [
+      "Whic`h",
+      "unique",
+      "cities",
+      "are",
+      "in",
+      "Asian",
+      "countries",
+      "where",
+      "Chinese",
+      "is",
+      "the",
+      "official",
+      "language",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                8,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              23,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            3
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                2,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              25,
+              false
+            ],
+            null
+          ],
+          "\"T\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              24,
+              false
+            ],
+            null
+          ],
+          "\"Chinese\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 28,
+    "SQL": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_3",
+      "world_1_2",
+      "car_1_1",
+      "car_1_2",
+      "car_1_3",
+      "wta_1_1",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.45172131061553955,
+      "coverage": 2.2628822326660156,
+      "utility": 6.3326497077941895
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T3.Name",
+      "FROM",
+      "country",
+      "AS",
+      "T1",
+      "JOIN",
+      "countrylanguage",
+      "AS",
+      "T2",
+      "ON",
+      "T1.Code",
+      "=",
+      "T2.CountryCode",
+      "JOIN",
+      "city",
+      "AS",
+      "T3",
+      "ON",
+      "T1.Code",
+      "=",
+      "T3.CountryCode",
+      "WHERE",
+      "T2.IsOfficial",
+      "=",
+      "'T",
+      "'",
+      "AND",
+      "T2.Language",
+      "=",
+      "'Chinese",
+      "'",
+      "AND",
+      "T1.Continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t3",
+      ".",
+      "name",
+      "from",
+      "country",
+      "as",
+      "t1",
+      "join",
+      "countrylanguage",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t2",
+      ".",
+      "countrycode",
+      "join",
+      "city",
+      "as",
+      "t3",
+      "on",
+      "t1",
+      ".",
+      "code",
+      "=",
+      "t3",
+      ".",
+      "countrycode",
+      "where",
+      "t2",
+      ".",
+      "isofficial",
+      "=",
+      "value",
+      "and",
+      "t2",
+      ".",
+      "language",
+      "=",
+      "value",
+      "and",
+      "t1",
+      ".",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "Return the different names of cities that are in Asia and for which Chinese is the official language.",
+    "question_toks": [
+      "Return",
+      "the",
+      "different",
+      "names",
+      "of",
+      "cities",
+      "that",
+      "are",
+      "in",
+      "Asia",
+      "and",
+      "for",
+      "which",
+      "Chinese",
+      "is",
+      "the",
+      "official",
+      "language",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                8,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              23,
+              false
+            ],
+            null
+          ]
+        ],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ],
+          [
+            "table_unit",
+            3
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                2,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              25,
+              false
+            ],
+            null
+          ],
+          "\"T\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              24,
+              false
+            ],
+            null
+          ],
+          "\"Chinese\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 29,
+    "SQL": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+    "DB_result": "world_1_1",
+    "selected_table": "city",
+    "selected_table_id": "world_1_1#sep#city",
+    "coarse_DB_result": "world_1_1",
+    "candidate_DBs": [
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "car_1_2",
+      "car_1_3",
+      "car_1_1",
+      "tvshow_2",
+      "tvshow_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.47712838649749756,
+      "coverage": 2.1474716663360596,
+      "utility": 6.203456878662109
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "*",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "*",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "how many countries are in Asia?",
+    "question_toks": [
+      "how",
+      "many",
+      "countries",
+      "are",
+      "in",
+      "Asia",
+      "?"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 30,
+    "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+    "DB_result": "car_1_3",
+    "selected_table": "countries",
+    "selected_table_id": "car_1_3#sep#countries",
+    "coarse_DB_result": "car_1_3",
+    "candidate_DBs": [
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "wta_1_3",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5702140927314758,
+      "coverage": 1.0000001192092896,
+      "utility": 4.280856609344482
+    }
+  },
+  {
+    "db_id": "world_1_3",
+    "query": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "*",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "continent",
+      "=",
+      "``",
+      "Asia",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "*",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value"
+    ],
+    "question": "Count the number of countries in Asia.",
+    "question_toks": [
+      "Count",
+      "the",
+      "number",
+      "of",
+      "countries",
+      "in",
+      "Asia",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"Asia\"",
+          null
+        ]
+      ]
+    },
+    "question_id": 31,
+    "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+    "DB_result": "car_1_3",
+    "selected_table": "countries",
+    "selected_table_id": "car_1_3#sep#countries",
+    "coarse_DB_result": "car_1_3",
+    "candidate_DBs": [
+      "car_1_3",
+      "car_1_2",
+      "car_1_1",
+      "world_1_1",
+      "world_1_2",
+      "world_1_3",
+      "wta_1_3",
+      "wta_1_2"
+    ],
+    "jar_scores": {
+      "coarse": 0.5441312193870544,
+      "coverage": 1.5775234699249268,
+      "utility": 5.331571817398071
+    }
+  },
+  {
+    "db_id": "world_1_2",
+    "query": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+    "query_toks": [
+      "SELECT",
+      "sum",
+      "(",
+      "Population",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "SurfaceArea",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "North",
+      "America",
+      "''",
+      "AND",
+      "SurfaceArea",
+      ">",
+      "3000"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "sum",
+      "(",
+      "population",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "surfacearea",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "surfacearea",
+      ">",
+      "value"
+    ],
+    "question": "What is the total population and average area of countries in the continent of North America whose area is bigger than 3000？",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "total",
+      "population",
+      "and",
+      "average",
+      "area",
+      "of",
+      "countries",
+      "in",
+      "the",
+      "continent",
+      "of",
+      "North",
+      "America",
+      "whose",
+      "area",
+      "is",
+      "bigger",
+      "than",
+      "3000？"
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            4,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                12,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"North America\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          3,
+          [
+            0,
+            [
+              0,
+              12,
+              false
+            ],
+            null
+          ],
+          3000.0,
+          null
+        ]
+      ]
+    },
+    "question_id": 32,
+    "SQL": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "car_1_2",
+    "candidate_DBs": [
+      "car_1_2",
+      "car_1_1",
+      "car_1_3",
+      "world_1_2",
+      "world_1_1",
+      "world_1_3"
+    ],
+    "jar_scores": {
+      "coarse": 0.5757333636283875,
+      "coverage": 2.620912551879883,
+      "utility": 7.544758558273315
+    }
+  },
+  {
+    "db_id": "world_1_2",
+    "query": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+    "query_toks": [
+      "SELECT",
+      "sum",
+      "(",
+      "Population",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "SurfaceArea",
+      ")",
+      "FROM",
+      "country",
+      "WHERE",
+      "Continent",
+      "=",
+      "``",
+      "North",
+      "America",
+      "''",
+      "AND",
+      "SurfaceArea",
+      ">",
+      "3000"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "sum",
+      "(",
+      "population",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "surfacearea",
+      ")",
+      "from",
+      "country",
+      "where",
+      "continent",
+      "=",
+      "value",
+      "and",
+      "surfacearea",
+      ">",
+      "value"
+    ],
+    "question": "Give the total population and average surface area corresponding to countries in Noth America that have a surface area greater than 3000.",
+    "question_toks": [
+      "Give",
+      "the",
+      "total",
+      "population",
+      "and",
+      "average",
+      "surface",
+      "area",
+      "corresponding",
+      "to",
+      "countries",
+      "in",
+      "Noth",
+      "America",
+      "that",
+      "have",
+      "a",
+      "surface",
+      "area",
+      "greater",
+      "than",
+      "3000",
+      "."
+    ],
+    "sql": {
+      "except": null,
+      "from": {
+        "conds": [],
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ]
+      },
+      "groupBy": [],
+      "having": [],
+      "intersect": null,
+      "limit": null,
+      "orderBy": [],
+      "select": [
+        false,
+        [
+          [
+            4,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                12,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "union": null,
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              10,
+              false
+            ],
+            null
+          ],
+          "\"North America\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          3,
+          [
+            0,
+            [
+              0,
+              12,
+              false
+            ],
+            null
+          ],
+          3000.0,
+          null
+        ]
+      ]
+    },
+    "question_id": 33,
+    "SQL": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+    "DB_result": "world_1_2",
+    "selected_table": "country",
+    "selected_table_id": "world_1_2#sep#country",
+    "coarse_DB_result": "world_1_2",
+    "candidate_DBs": [
+      "world_1_2",
+      "world_1_1",
+      "world_1_3",
+      "car_1_2",
+      "car_1_3",
+      "car_1_1"
+    ],
+    "jar_scores": {
+      "coarse": 0.5266204476356506,
+      "coverage": 2.629857063293457,
+      "utility": 7.366195917129517
+    }
+  }
+]
