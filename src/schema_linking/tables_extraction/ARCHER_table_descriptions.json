@@ -1,88 +1,88 @@
 {
     "bike_1": {
-        "station": "The `station` table stores details about bike stations. Columns include: id, name, lat, long, dock_count, city, installation_date.",
-        "status": "The `status` table records real-time availability of bikes and docks at each station. Columns include: station_id, bikes_available, docks_available, time.",
-        "trip": "The `trip` table logs individual bike trips made by users. Columns include: id, duration, start_date, start_station_name, start_station_id, end_date, end_station_name, end_station_id, bike_id, subscription_type, zip_code.",
-        "weather": "The `weather` table contains daily weather observations and related metrics. Columns include: date, max_temperature_f, mean_temperature_f, min_temperature_f, max_dew_point_f, mean_dew_point_f, min_dew_point_f, max_humidity, mean_humidity, min_humidity, max_sea_level_pressure_inches, mean_sea_level_pressure_inches, min_sea_level_pressure_inches, max_visibility_miles, mean_visibility_miles, min_visibility_miles, max_wind_Speed_mph, mean_wind_speed_mph, max_gust_speed_mph, precipitation_inches, cloud_cover, events, wind_dir_degrees, zip_code."
+        "station": "The `station` table stores details about bike stations. Columns include: id, name, lat, long, dock count, city, installation date.",
+        "status": "The `status` table records real-time availability of bikes and docks at stations. Columns include: station id, bikes available, docks available, time.",
+        "trip": "The `trip` table logs individual bike trips made by users. Columns include: id, duration, start date, start station name, start station id, end date, end station name, end station id, bike id, subscription type, zip code.",
+        "weather": "The `weather` table contains daily weather observations that can be linked to bike usage. Columns include: date, max temperature f, mean temperature f, min temperature f, max dew point f, mean dew point f, min dew point f, max humidity, mean humidity, min humidity, max sea level pressure inches, mean sea level pressure inches, min sea level pressure inches, max visibility miles, mean visibility miles, min visibility miles, max wind Speed mph, mean wind speed mph, max gust speed mph, precipitation inches, cloud cover, events, wind dir degrees, zip code."
     },
     "concert_singer": {
-        "stadium": "The `stadium` table stores details about venues where concerts are held. Columns include: Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average.",
-        "singer": "The `singer` table contains information about performers and their songs. Columns include: Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male.",
-        "concert": "The `concert` table records individual concert events. Columns include: concert_ID, concert_Name, Theme, Stadium_ID, Year.",
-        "singer_in_concert": "The `singer_in_concert` table links singers to the concerts they performed in. Columns include: concert_ID, Singer_ID."
+        "stadium": "The `stadium` table stores details about stadium venues. Columns include: Stadium ID, Location, Name, Capacity, Highest, Lowest, Average.",
+        "singer": "The `singer` table contains information about singers and their songs. Columns include: Singer ID, Name, Country, Song Name, Song release year, Age, Is male.",
+        "concert": "The `concert` table records concerts and their attributes. Columns include: concert ID, concert Name, Theme, Stadium ID, Year.",
+        "singer in concert": "The `singer in concert` table links singers to concerts they performed in. Columns include: concert ID, Singer ID."
     },
     "customers_and_products_contacts": {
-        "Addresses": "The `Addresses` table stores address details. Columns include: address_id, line_1_number_building, city, zip_postcode, state_province_county, country.",
-        "Products": "The `Products` table contains information about items available for sale. Columns include: product_id, product_type_code, product_name, product_price.",
-        "Customers": "The `Customers` table holds data about each customer. Columns include: customer_id, payment_method_code, customer_number, customer_name, customer_address, customer_phone, customer_email.",
-        "Contacts": "The `Contacts` table records personal contact persons linked to customers. Columns include: contact_id, customer_id, gender, first_name, last_name, contact_phone.",
-        "Customer_Address_History": "The `Customer_Address_History` table tracks the periods during which customers were associated with specific addresses. Columns include: customer_id, address_id, date_from, date_to.",
-        "Customer_Orders": "The `Customer_Orders` table logs orders placed by customers. Columns include: order_id, customer_id, order_date, order_status_code.",
-        "Order_Items": "The `Order_Items` table lists the individual products included in each order. Columns include: order_item_id, order_id, product_id, order_quantity."
+        "Addresses": "The `Addresses` table stores address details. Columns include: address id, line 1 number building, city, zip postcode, state province county, country.",
+        "Products": "The `Products` table contains product catalog information. Columns include: product id, product type code, product name, product price.",
+        "Customers": "The `Customers` table holds records of customers. Columns include: customer id, payment method code, customer number, customer name, customer address, customer phone, customer email.",
+        "Contacts": "The `Contacts` table stores contact persons associated with customers. Columns include: contact id, customer id, gender, first name, last name, contact phone.",
+        "Customer Address History": "The `Customer Address History` table tracks historical address assignments for customers. Columns include: customer id, address id, date from, date to.",
+        "Customer Orders": "The `Customer Orders` table records orders placed by customers. Columns include: order id, customer id, order date, order status code.",
+        "Order Items": "The `Order Items` table details items included in each order. Columns include: order item id, order id, product id, order quantity."
     },
     "driving_school": {
-        "Addresses": "The `Addresses` table stores location details for addresses. Columns include: address_id, line_1_number_building, city, zip_postcode, state_province_county, country.",
-        "Staff": "The `Staff` table contains information about employees of the driving school. Columns include: staff_id, staff_address_id, nickname, first_name, middle_name, last_name, date_of_birth, date_joined_staff, date_left_staff.",
-        "Vehicles": "The `Vehicles` table records details of vehicles used for instruction. Columns include: vehicle_id, vehicle_details.",
-        "Customers": "The `Customers` table holds data about individuals receiving instruction. Columns include: customer_id, customer_address_id, customer_status_code, date_became_customer, date_of_birth, first_name, last_name, amount_outstanding, email_address, phone_number, cell_mobile_phone_number.",
-        "Customer_Payments": "The `Customer_Payments` table logs payments made by customers. Columns include: customer_id, datetime_payment, payment_method_code, amount_payment.",
-        "Lessons": "The `Lessons` table tracks scheduled driving lessons. Columns include: lesson_id, customer_id, lesson_status_code, staff_id, vehicle_id, lesson_date, lesson_time, price."
+        "Addresses": "The `Addresses` table stores address details for entities in the driving school. Columns include: address id, line 1 number building, city, zip postcode, state province county, country.",
+        "Staff": "The `Staff` table contains information about employees of the driving school. Columns include: staff id, staff address id, nickname, first name, middle name, last name, date of birth, date joined staff, date left staff.",
+        "Vehicles": "The `Vehicles` table records information about vehicles used by the driving school. Columns include: vehicle id, vehicle details.",
+        "Customers": "The `Customers` table holds data on individuals receiving instruction from the driving school. Columns include: customer id, customer address id, customer status code, date became customer, date of birth, first name, last name, amount outstanding, email address, phone number, cell mobile phone number.",
+        "Customer Payments": "The `Customer Payments` table tracks payments made by customers. Columns include: customer id, datetime payment, payment method code, amount payment.",
+        "Lessons": "The `Lessons` table represents scheduled driving lessons and their attributes. Columns include: lesson id, customer id, lesson status code, staff id, vehicle id, lesson date, lesson time, price."
     },
     "formula_1": {
-        "circuits": "The `circuits` table stores details about Formula 1 race tracks. Columns include: circuitId, circuitRef, name, location, country, lat, lng, alt, url.",
-        "races": "The `races` table records individual Grand Prix events. Columns include: raceId, year, round, circuitId, name, date, time, url.",
-        "drivers": "The `drivers` table contains information about Formula 1 drivers. Columns include: driverId, driverRef, number, code, forename, surname, dob, nationality, url.",
-        "status": "The `status` table defines possible race result statuses. Columns include: statusId, status.",
-        "seasons": "The `seasons` table lists Formula 1 seasons. Columns include: year, url.",
-        "constructors": "The `constructors` table holds data on Formula 1 teams. Columns include: constructorId, constructorRef, name, nationality, url.",
-        "constructorStandings": "The `constructorStandings` table captures team championship points per race. Columns include: constructorStandingsId, raceId, constructorId, points, position, positionText, wins.",
-        "results": "The `results` table records driver performance for each race. Columns include: resultId, raceId, driverId, constructorId, number, grid, position, positionText, positionOrder, points, laps, time, milliseconds, fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId.",
-        "driverStandings": "The `driverStandings` table tracks driver championship points per race. Columns include: driverStandingsId, raceId, driverId, points, position, positionText, wins.",
-        "constructorResults": "The `constructorResults` table provides team results for each race. Columns include: constructorResultsId, raceId, constructorId, points, status.",
-        "qualifying": "The `qualifying` table stores qualifying session results. Columns include: qualifyId, raceId, driverId, constructorId, number, position, q1, q2, q3.",
-        "pitStops": "The `pitStops` table logs pit stop details for drivers. Columns include: raceId, driverId, stop, lap, time, duration, milliseconds.",
-        "lapTimes": "The `lapTimes` table records lap timing information for drivers. Columns include: raceId, driverId, lap, position, time, milliseconds."
+        "circuits": "The `circuits` table stores details about Formula 1 racing circuits. Columns include: circuitId, circuitRef, name, location, country, lat, lng, alt, url.",
+        "races": "The `races` table records information for each Grand Prix event. Columns include: raceId, year, round, circuitId, name, date, time, url.",
+        "drivers": "The `drivers` table contains personal and reference data for each driver. Columns include: driverId, driverRef, number, code, forename, surname, dob, nationality, url.",
+        "status": "The `status` table lists possible race result statuses. Columns include: statusId, status.",
+        "seasons": "The `seasons` table represents each Formula 1 season year. Columns include: year, url.",
+        "constructors": "The `constructors` table holds information about each constructor (team). Columns include: constructorId, constructorRef, name, nationality, url.",
+        "constructorStandings": "The `constructorStandings` table captures constructors' championship standings per race. Columns include: constructorStandingsId, raceId, constructorId, points, position, positionText, wins.",
+        "results": "The `results` table stores the race results for each driver. Columns include: resultId, raceId, driverId, constructorId, number, grid, position, positionText, positionOrder, points, laps, time, milliseconds, fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId.",
+        "driverStandings": "The `driverStandings` table records drivers' championship standings per race. Columns include: driverStandingsId, raceId, driverId, points, position, positionText, wins.",
+        "constructorResults": "The `constructorResults` table provides constructors' results for each race. Columns include: constructorResultsId, raceId, constructorId, points, status.",
+        "qualifying": "The `qualifying` table contains qualifying session results for drivers. Columns include: qualifyId, raceId, driverId, constructorId, number, position, q1, q2, q3.",
+        "pitStops": "The `pitStops` table logs pit stop details for drivers during races. Columns include: raceId, driverId, stop, lap, time, duration, milliseconds.",
+        "lapTimes": "The `lapTimes` table records lap time data for each driver in a race. Columns include: raceId, driverId, lap, position, time, milliseconds."
     },
     "hospital_1": {
         "Physician": "The `Physician` table stores employee details for physicians. Columns include: EmployeeID, Name, Position, SSN.",
         "Department": "The `Department` table defines hospital departments. Columns include: DepartmentID, Name, Head.",
-        "Affiliated_With": "The `Affiliated_With` table links physicians to departments and indicates primary affiliation. Columns include: Physician, Department, PrimaryAffiliation.",
-        "Procedures": "The `Procedures` table lists medical procedures with codes and costs. Columns include: Code, Name, Cost.",
-        "Trained_In": "The `Trained_In` table records physicians' training in treatments and certification dates. Columns include: Physician, Treatment, CertificationDate, CertificationExpires.",
-        "Patient": "The `Patient` table contains patient demographic and insurance information. Columns include: SSN, Name, Address, Phone, InsuranceID, PCP.",
-        "Nurse": "The `Nurse` table stores employee details for nurses. Columns include: EmployeeID, Name, Position, Registered, SSN.",
-        "Appointment": "The `Appointment` table schedules patient appointments with staff and rooms. Columns include: AppointmentID, Patient, PrepNurse, Physician, Start, End, ExaminationRoom.",
-        "Medication": "The `Medication` table catalogs medications with identifiers and descriptions. Columns include: Code, Name, Brand, Description.",
-        "Prescribes": "The `Prescribes` table records medication prescriptions linking physicians, patients, and appointments. Columns include: Physician, Patient, Medication, Date, Appointment, Dose.",
+        "Affiliated With": "The `Affiliated With` table records the affiliation of physicians with departments. Columns include: Physician, Department, PrimaryAffiliation.",
+        "Procedures": "The `Procedures` table lists medical procedures offered by the hospital. Columns include: Code, Name, Cost.",
+        "Trained In": "The `Trained In` table captures which physicians are trained in which treatments and their certification dates. Columns include: Physician, Treatment, CertificationDate, CertificationExpires.",
+        "Patient": "The `Patient` table contains demographic and insurance information for patients. Columns include: SSN, Name, Address, Phone, InsuranceID, PCP.",
+        "Nurse": "The `Nurse` table stores employee details for nursing staff. Columns include: EmployeeID, Name, Position, Registered, SSN.",
+        "Appointment": "The `Appointment` table records scheduled appointments between patients and providers. Columns include: AppointmentID, Patient, PrepNurse, Physician, Start, End, ExaminationRoom.",
+        "Medication": "The `Medication` table lists medications available in the hospital. Columns include: Code, Name, Brand, Description.",
+        "Prescribes": "The `Prescribes` table logs medication prescriptions by physicians for patients. Columns include: Physician, Patient, Medication, Date, Appointment, Dose.",
         "Block": "The `Block` table defines building blocks by floor and code. Columns include: BlockFloor, BlockCode.",
-        "Room": "The `Room` table lists rooms with type, location, and availability. Columns include: RoomNumber, RoomType, BlockFloor, BlockCode, Unavailable.",
-        "On_Call": "The `On_Call` table tracks nurses' on‑call assignments to blocks and time periods. Columns include: Nurse, BlockFloor, BlockCode, OnCallStart, OnCallEnd.",
-        "Stay": "The `Stay` table records patient admissions to rooms with start and end dates. Columns include: StayID, Patient, Room, StayStart, StayEnd.",
-        "Undergoes": "The `Undergoes` table logs procedures performed on patients during stays, including staff involved. Columns include: Patient, Procedures, Stay, DateUndergoes, Physician, AssistingNurse."
+        "Room": "The `Room` table details individual rooms and their availability. Columns include: RoomNumber, RoomType, BlockFloor, BlockCode, Unavailable.",
+        "On Call": "The `On Call` table tracks nurses' on‑call schedules for specific blocks. Columns include: Nurse, BlockFloor, BlockCode, OnCallStart, OnCallEnd.",
+        "Stay": "The `Stay` table records patient admissions to rooms. Columns include: StayID, Patient, Room, StayStart, StayEnd.",
+        "Undergoes": "The `Undergoes` table logs procedures performed on patients during stays. Columns include: Patient, Procedures, Stay, DateUndergoes, Physician, AssistingNurse."
     },
     "riding_club": {
-        "player": "The `player` table stores details about individual riders. Columns include: Player_ID, Sponsor_name, Player_name, Gender, Residence, Occupation, Votes, Rank.",
-        "club": "The `club` table contains information about riding clubs. Columns include: Club_ID, Club_name, Region, Start_year.",
-        "coach": "The `coach` table holds data on coaches associated with clubs. Columns include: Coach_ID, Coach_name, Gender, Club_ID, Rank.",
-        "player_coach": "The `player_coach` table links players to their coaches and records the starting year of the relationship. Columns include: Player_ID, Coach_ID, Starting_year.",
-        "match_result": "The `match_result` table records competition outcomes for clubs by rank and medal counts. Columns include: Rank, Club_ID, Gold, Big_Silver, Small_Silver, Bronze, Points."
+        "player": "The `player` table stores details about individual riders. Columns include: Player ID, Sponsor name, Player name, Gender, Residence, Occupation, Votes, Rank.",
+        "club": "The `club` table contains information about riding clubs. Columns include: Club ID, Club name, Region, Start year.",
+        "coach": "The `coach` table records data on coaches associated with clubs. Columns include: Coach ID, Coach name, Gender, Club ID, Rank.",
+        "player coach": "The `player coach` table links players to their coaches and records the starting year of the relationship. Columns include: Player ID, Coach ID, Starting year.",
+        "match result": "The `match result` table captures competition outcomes for clubs, including medal counts and points. Columns include: Rank, Club ID, Gold, Big Silver, Small Silver, Bronze, Points."
     },
     "soccer_1": {
-        "Player_Attributes": "The `Player_Attributes` table stores detailed performance metrics and attributes for each player on specific dates. Columns include: id, player_fifa_api_id, player_api_id, date, overall_rating, potential, preferred_foot, attacking_work_rate, defensive_work_rate, crossing, finishing, heading_accuracy, short_passing, volleys, dribbling, curve, free_kick_accuracy, long_passing, ball_control, acceleration, sprint_speed, agility, reactions, balance, shot_power, jumping, stamina, strength, long_shots, aggression, interceptions, positioning, vision, penalties, marking, standing_tackle, sliding_tackle, gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes.",
-        "Player": "The `Player` table contains basic personal information for each player. Columns include: id, player_api_id, player_name, player_fifa_api_id, birthday, height, weight.",
-        "League": "The `League` table lists football leagues with their associated country. Columns include: id, country_id, name.",
-        "Country": "The `Country` table records countries represented in the dataset. Columns include: id, name.",
-        "Team": "The `Team` table holds identifiers and names for football teams. Columns include: id, team_api_id, team_fifa_api_id, team_long_name, team_short_name.",
-        "Team_Attributes": "The `Team_Attributes` table captures tactical and strategic attributes of teams on given dates. Columns include: id, team_fifa_api_id, team_api_id, date, buildUpPlaySpeed, buildUpPlaySpeedClass, buildUpPlayDribbling, buildUpPlayDribblingClass, buildUpPlayPassing, buildUpPlayPassingClass, buildUpPlayPositioningClass, chanceCreationPassing, chanceCreationPassingClass, chanceCreationCrossing, chanceCreationCrossingClass, chanceCreationShooting, chanceCreationShootingClass, chanceCreationPositioningClass, defencePressure, defencePressureClass, defenceAggression, defenceAggressionClass, defenceTeamWidth, defenceTeamWidthClass, defenceDefenderLineClass."
+        "Player Attributes": "The `Player Attributes` table stores detailed performance metrics and ratings for individual players. Columns include: id, player fifa api id, player api id, date, overall rating, potential, preferred foot, attacking work rate, defensive work rate, crossing, finishing, heading accuracy, short passing, volleys, dribbling, curve, free kick accuracy, long passing, ball control, acceleration, sprint speed, agility, reactions, balance, shot power, jumping, stamina, strength, long shots, aggression, interceptions, positioning, vision, penalties, marking, standing tackle, sliding tackle, gk diving, gk handling, gk kicking, gk positioning, gk reflexes.",
+        "Player": "The `Player` table contains basic personal and identification information for each player. Columns include: id, player api id, player name, player fifa api id, birthday, height, weight.",
+        "League": "The `League` table defines football leagues with their associated country. Columns include: id, country id, name.",
+        "Country": "The `Country` table lists countries referenced by other tables. Columns include: id, name.",
+        "Team": "The `Team` table holds identifiers and naming details for football teams. Columns include: id, team api id, team fifa api id, team long name, team short name.",
+        "Team Attributes": "The `Team Attributes` table records tactical and style metrics for teams on specific dates. Columns include: id, team fifa api id, team api id, date, buildUpPlaySpeed, buildUpPlaySpeedClass, buildUpPlayDribbling, buildUpPlayDribblingClass, buildUpPlayPassing, buildUpPlayPassingClass, buildUpPlayPositioningClass, chanceCreationPassing, chanceCreationPassingClass, chanceCreationCrossing, chanceCreationCrossingClass, chanceCreationShooting, chanceCreationShootingClass, chanceCreationPositioningClass, defencePressure, defencePressureClass, defenceAggression, defenceAggressionClass, defenceTeamWidth, defenceTeamWidthClass, defenceDefenderLineClass."
     },
     "wine_1": {
         "grapes": "The `grapes` table lists grape varieties and their colors. Columns include: ID, Grape, Color.",
-        "appellations": "The `appellations` table contains information about wine appellations, including location and AVA status. Columns include: No, Appelation, County, State, Area, isAVA.",
-        "wine": "The `wine` table records individual wine entries with details such as grape, winery, appellation, and attributes. Columns include: No, Grape, Winery, Appelation, State, Name, Year, Price, Score, Cases, Drink."
+        "appellations": "The `appellations` table contains information about wine appellations and their geographic details. Columns include: No, Appelation, County, State, Area, isAVA.",
+        "wine": "The `wine` table records individual wine entries with attributes such as grape, winery, appellation, and ratings. Columns include: No, Grape, Winery, Appelation, State, Name, Year, Price, Score, Cases, Drink."
     },
     "world_1": {
-        "city": "The `city` table stores information about individual cities. Columns include: ID, Name, CountryCode, District, Population.",
-        "country": "The `country` table contains data about countries. Columns include: Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2.",
+        "city": "The `city` table stores basic information about cities. Columns include: ID, Name, CountryCode, District, Population.",
+        "country": "The `country` table contains detailed data about countries. Columns include: Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2.",
         "countrylanguage": "The `countrylanguage` table records languages spoken in each country. Columns include: CountryCode, Language, IsOfficial, Percentage."
     }
 }

@@ -175,14 +175,13 @@ def read_dump(archive, name, connection):
 def build_schema(name, tables):
     """Assemble one dev_tables.json entry.
 
-    table_names / column_names keep the original identifiers: BEAVER publishes
-    no natural-language names, and normalize_and_stem_text already splits on
-    underscores, so deriving them would add nothing.
+    table_names / column_names expose underscore-separated identifiers with
+    spaces, while their *_original counterparts preserve the exact DDL names.
     """
     schema = {
         "db_id": name,
         "table_names_original": [table["name"] for table in tables],
-        "table_names": [table["name"] for table in tables],
+        "table_names": [table["name"].replace("_", " ") for table in tables],
         "column_names_original": [[-1, "*"]],
         "column_names": [[-1, "*"]],
         "column_types": ["text"],
@@ -195,7 +194,7 @@ def build_schema(name, tables):
         for column, kind in table["columns"]:
             position_of[(table["name"], column)] = len(schema["column_names_original"])
             schema["column_names_original"].append([table_index, column])
-            schema["column_names"].append([table_index, column])
+            schema["column_names"].append([table_index, column.replace("_", " ")])
             schema["column_types"].append(TYPES.get(kind, TEXT_TYPE)[1])
 
     for table in tables:

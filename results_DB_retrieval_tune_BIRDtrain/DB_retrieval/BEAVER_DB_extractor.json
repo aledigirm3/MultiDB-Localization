@@ -13276,7 +13276,7 @@
         "db_id": "neutron",
         "question": "From the top 10 VIF types with the highest number of DOWN ports, display each VIF type, total number of DOWN ports, and the average of the per-port windowed admin_state_up (computed over 2 preceding and 2 following rows partitioned by VIF type and ordered by MAC address). Do not return any rounded answers.",
         "SQL": "WITH inner_cte AS ( SELECT p.NAME, p.MAC_ADDRESS, p.ADMIN_STATE_UP, b.HOST, b.VIF_TYPE, AVG(p.ADMIN_STATE_UP) OVER ( PARTITION BY b.VIF_TYPE ORDER BY p.MAC_ADDRESS ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING ) AS window_column FROM PORTS AS p JOIN ML2_PORT_BINDINGS AS b ON p.ID = b.PORT_ID WHERE p.STATUS = 'DOWN' ORDER BY p.MAC_ADDRESS ) SELECT i.VIF_TYPE, COUNT(*) AS total_down_ports, AVG(i.window_column) AS avg_window_admin_state_up FROM inner_cte AS i JOIN ML2_PORT_BINDINGS AS b2 ON i.MAC_ADDRESS IS NOT NULL AND i.VIF_TYPE = b2.VIF_TYPE GROUP BY i.VIF_TYPE ORDER BY total_down_ports DESC LIMIT 10;",
-        "DB_result": "nova"
+        "DB_result": "neutron"
     },
     {
         "question_id": 6182,
@@ -20682,7 +20682,7 @@
         "db_id": "nova",
         "question": "For each availability zone and coefficient-of-variation status, list the availability zone, a status label ('High' if the coefficient of variation (using STDDEV only and never STDDEV_POP) is at least 1 and 'Low' otherwise), and the number of distinct instance display names. Include subtotals for each availability zone and a grand total, considering only instances that are not deleted and only groups with a positive average time difference. Do not return any rounded answers.",
         "SQL": "WITH inner_cte AS ( SELECT i.display_name, STDDEV(c.updated_at - i.created_at) / NULLIF(AVG(c.updated_at - i.created_at), 0) AS coefficient_of_variation FROM instances AS i JOIN instance_extra AS e ON e.instance_uuid = i.uuid JOIN instance_info_caches AS c ON c.instance_uuid = i.uuid WHERE i.deleted = 0 GROUP BY i.display_name HAVING AVG(c.updated_at - i.created_at) > 0 ORDER BY coefficient_of_variation DESC ), AZCVStatus AS ( SELECT i.availability_zone, CASE WHEN ic.coefficient_of_variation >= 1 THEN 'High' ELSE 'Low' END AS cv_status, COUNT(DISTINCT ic.display_name) AS total_display_names FROM inner_cte ic JOIN instances i ON i.display_name = ic.display_name AND i.deleted = 0 GROUP BY i.availability_zone, cv_status ) SELECT CASE WHEN GROUPING(availability_zone) = 1 THEN 'GRAND TOTAL' ELSE availability_zone END AS availability_zone, CASE WHEN GROUPING(cv_status) = 1 AND GROUPING(availability_zone) = 0 THEN 'SUBTOTAL' ELSE cv_status END AS cv_status, SUM(total_display_names) AS total_display_names FROM AZCVStatus GROUP BY availability_zone, cv_status WITH ROLLUP;",
-        "DB_result": "neutron"
+        "DB_result": "nova"
     },
     {
         "question_id": 7240,
@@ -24938,7 +24938,7 @@
         "db_id": "nova",
         "question": "For each security group that has tcp rules, list the security group ID, name, and description, along with (1) the number of tcp security group rules and the total of their TO_PORT values, and (2) the geometric mean of rule port-range sizes (TO_PORT − FROM_PORT + 1) across its rules where TO_PORT is at least FROM_PORT. Do not return any rounded answers.",
         "SQL": "WITH TcpRuleStats AS ( SELECT sg.ID AS security_group_id, sg.NAME AS security_group_name, sg.DESCRIPTION AS security_group_description, COUNT(sgr.ID) AS rule_count, SUM(sgr.TO_PORT) AS total_to_port FROM SECURITY_GROUPS sg JOIN SECURITY_GROUP_RULES sgr ON sg.ID = sgr.PARENT_GROUP_ID WHERE sgr.PROTOCOL = 'tcp' GROUP BY sg.ID, sg.NAME, sg.DESCRIPTION ), GeoMeanPortRange AS ( SELECT sg.NAME AS security_group_name, EXP(AVG(LN(sgr.TO_PORT - sgr.FROM_PORT + 1))) AS geometric_mean_port_range_size FROM SECURITY_GROUPS AS sg JOIN SECURITY_GROUP_RULES AS sgr ON sg.ID = sgr.PARENT_GROUP_ID WHERE sgr.TO_PORT >= sgr.FROM_PORT GROUP BY sg.NAME ORDER BY geometric_mean_port_range_size DESC ), CombinedSecurityGroupMetrics AS ( SELECT t.security_group_id, t.security_group_name, t.security_group_description, t.rule_count, t.total_to_port, g.geometric_mean_port_range_size FROM TcpRuleStats t JOIN GeoMeanPortRange g ON t.security_group_name = g.security_group_name ) SELECT security_group_id, security_group_name, security_group_description, rule_count, total_to_port, geometric_mean_port_range_size FROM CombinedSecurityGroupMetrics ORDER BY security_group_name;",
-        "DB_result": "nova"
+        "DB_result": "neutron"
     },
     {
         "question_id": 7848,
