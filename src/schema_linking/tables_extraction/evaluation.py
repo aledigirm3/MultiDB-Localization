@@ -37,8 +37,12 @@ def TAB_extraction_eval(dataset):
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
 
-    with open(filename, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+            print(f"{RED}File not found: {filename}. Skipping evaluation.{RESET}\n")
+            return
 
     strict_recall_samples = 0
     samples = 0
@@ -142,14 +146,14 @@ def TAB_extraction_eval(dataset):
 
 if __name__ == '__main__':
 
-    # dataset = 'BIRDdev'
-    # TAB_extraction_eval(dataset)
+    dataset = 'BIRDdev'
+    TAB_extraction_eval(dataset)
 
-    # dataset = 'SPIDERdev1'
-    # TAB_extraction_eval(dataset)
+    dataset = 'SPIDERdev1'
+    TAB_extraction_eval(dataset)
 
-    # dataset = 'BEAVER'
-    # TAB_extraction_eval(dataset)
+    dataset = 'BEAVER'
+    TAB_extraction_eval(dataset)
 
     dataset = 'ARCHER'
     TAB_extraction_eval(dataset)
