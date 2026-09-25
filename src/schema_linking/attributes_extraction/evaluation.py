@@ -42,9 +42,12 @@ def ATT_extraction_eval(dataset):
         db_id: {table: {column: "UNKNOWN" for column in columns} for table, columns in schema.items()}
         for db_id, schema in database_original_schemas.items()
     }
-
-    with open(filename, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+            print(f"{RED}File not found: {filename}. Skipping evaluation.{RESET}\n")
+            return
 
     strict_recall_samples = 0
     samples = 0
@@ -161,13 +164,13 @@ def ATT_extraction_eval(dataset):
 
 if __name__ == '__main__':
 
-    # print(f"===================={BLUE}BIRDdev end-to-end pipeline EVALUATION{RESET}=====================")
-    # dataset = 'BIRDdev'
-    # ATT_extraction_eval(dataset)
+    print(f"===================={BLUE}BIRDdev end-to-end pipeline EVALUATION{RESET}=====================")
+    dataset = 'BIRDdev'
+    ATT_extraction_eval(dataset)
 
-    # print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
-    # dataset = 'SPIDERdev1'
-    # ATT_extraction_eval(dataset)
+    print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
+    dataset = 'SPIDERdev1'
+    ATT_extraction_eval(dataset)
 
     print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
     dataset = 'ARCHER'
