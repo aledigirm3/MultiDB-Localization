@@ -6,8 +6,7 @@
         "SQL": "SELECT count(*) FROM singer",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
-            "singer in concert"
+            "singer"
         ]
     },
     {
@@ -38,7 +37,9 @@
         "SQL": "SELECT name ,  country ,  age FROM singer ORDER BY age DESC",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer"
+            "singer",
+            "stadium",
+            "concert"
         ]
     },
     {
@@ -158,6 +159,7 @@
         "SQL": "SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000",
         "DB_result": "concert_singer",
         "TAB_result": [
+            "singer",
             "stadium"
         ]
     },
@@ -228,9 +230,9 @@
         "SQL": "SELECT T2.name ,  count(*) FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id GROUP BY T1.stadium_id",
         "DB_result": "concert_singer",
         "TAB_result": [
+            "singer",
             "stadium",
-            "concert",
-            "singer"
+            "concert"
         ]
     },
     {
@@ -325,6 +327,7 @@
         "SQL": "SELECT name FROM stadium EXCEPT SELECT T2.name FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  =  2014",
         "DB_result": "concert_singer",
         "TAB_result": [
+            "singer",
             "stadium",
             "concert"
         ]
@@ -337,8 +340,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "stadium",
-            "concert",
-            "singer"
+            "concert"
         ]
     },
     {
@@ -348,9 +350,8 @@
         "SQL": "SELECT T2.concert_name ,  T2.theme ,  count(*) FROM singer_in_concert AS T1 JOIN concert AS T2 ON T1.concert_id  =  T2.concert_id GROUP BY T2.concert_id",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "stadium",
-            "concert",
             "singer",
+            "concert",
             "singer in concert"
         ]
     },
@@ -361,8 +362,9 @@
         "SQL": "SELECT T2.concert_name ,  T2.theme ,  count(*) FROM singer_in_concert AS T1 JOIN concert AS T2 ON T1.concert_id  =  T2.concert_id GROUP BY T2.concert_id",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "concert",
             "singer",
+            "concert",
+            "stadium",
             "singer in concert"
         ]
     },
@@ -373,8 +375,8 @@
         "SQL": "SELECT T2.name ,  count(*) FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id GROUP BY T2.singer_id",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "concert",
             "singer",
+            "concert",
             "singer in concert"
         ]
     },
@@ -385,8 +387,8 @@
         "SQL": "SELECT T2.name ,  count(*) FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id GROUP BY T2.singer_id",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "concert",
             "singer",
+            "concert",
             "singer in concert"
         ]
     },
@@ -397,8 +399,9 @@
         "SQL": "SELECT T2.name FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id JOIN concert AS T3 ON T1.concert_id  =  T3.concert_id WHERE T3.year  =  2014",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "concert",
             "singer",
+            "concert",
+            "stadium",
             "singer in concert"
         ]
     },
@@ -409,8 +412,9 @@
         "SQL": "SELECT T2.name FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id JOIN concert AS T3 ON T1.concert_id  =  T3.concert_id WHERE T3.year  =  2014",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "concert",
             "singer",
+            "concert",
+            "stadium",
             "singer in concert"
         ]
     },
@@ -441,6 +445,7 @@
         "SQL": "SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015",
         "DB_result": "concert_singer",
         "TAB_result": [
+            "singer",
             "stadium",
             "concert"
         ]
@@ -452,6 +457,7 @@
         "SQL": "SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015",
         "DB_result": "concert_singer",
         "TAB_result": [
+            "singer",
             "stadium",
             "concert"
         ]
@@ -546,8 +552,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -558,8 +564,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -570,8 +576,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -582,8 +588,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -614,8 +620,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -626,8 +632,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -638,8 +644,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -650,8 +656,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -662,8 +668,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -674,8 +680,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -686,8 +692,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -698,8 +704,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -710,8 +716,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -722,8 +728,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -785,8 +791,7 @@
         "SQL": "SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype",
         "DB_result": "pets_1",
         "TAB_result": [
-            "pets",
-            "student"
+            "pets"
         ]
     },
     {
@@ -816,8 +821,8 @@
         "SQL": "SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid",
         "DB_result": "pets_1",
         "TAB_result": [
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -828,8 +833,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -840,8 +845,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -852,8 +857,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -864,8 +869,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -876,8 +881,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -887,8 +892,8 @@
         "SQL": "SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1",
         "DB_result": "pets_1",
         "TAB_result": [
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -898,8 +903,8 @@
         "SQL": "SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1",
         "DB_result": "pets_1",
         "TAB_result": [
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -910,8 +915,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -922,8 +927,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -933,8 +938,9 @@
         "SQL": "SELECT avg(age) FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid)",
         "DB_result": "pets_1",
         "TAB_result": [
-            "has pet",
-            "student"
+            "pets",
+            "student",
+            "has pet"
         ]
     },
     {
@@ -945,8 +951,8 @@
         "DB_result": "pets_1",
         "TAB_result": [
             "pets",
-            "has pet",
-            "student"
+            "student",
+            "has pet"
         ]
     },
     {
@@ -956,8 +962,8 @@
         "SQL": "SELECT count(*) FROM CONTINENTS;",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -967,8 +973,8 @@
         "SQL": "SELECT count(*) FROM CONTINENTS;",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -978,8 +984,8 @@
         "SQL": "SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -989,8 +995,8 @@
         "SQL": "SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -1000,7 +1006,6 @@
         "SQL": "SELECT count(*) FROM COUNTRIES;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
             "countries"
         ]
     },
@@ -1021,9 +1026,8 @@
         "SQL": "SELECT T1.FullName ,  T1.Id ,  count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
-            "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1033,9 +1037,8 @@
         "SQL": "SELECT T1.FullName ,  T1.Id ,  count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
-            "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1045,9 +1048,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.horsepower ASC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1057,9 +1060,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.horsepower ASC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1069,9 +1072,9 @@
         "SQL": "SELECT T1.model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Weight  <  (SELECT avg(Weight) FROM CARS_DATA)",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1081,9 +1084,9 @@
         "SQL": "SELECT T1.model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Weight  <  (SELECT avg(Weight) FROM CARS_DATA)",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1093,7 +1096,6 @@
         "SQL": "SELECT DISTINCT T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model JOIN CARS_DATA AS T4 ON T3.MakeId  =  T4.id WHERE T4.year  =  '1970';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
             "cars data"
@@ -1106,10 +1108,10 @@
         "SQL": "SELECT DISTINCT T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model JOIN CARS_DATA AS T4 ON T3.MakeId  =  T4.id WHERE T4.year  =  '1970';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1119,7 +1121,6 @@
         "SQL": "SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
             "cars data"
@@ -1132,10 +1133,10 @@
         "SQL": "SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1145,9 +1146,9 @@
         "SQL": "SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.model  =  T2.model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.id WHERE T3.year  >  1980;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1157,9 +1158,9 @@
         "SQL": "SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.model  =  T2.model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.id WHERE T3.year  >  1980;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1169,9 +1170,9 @@
         "SQL": "SELECT T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.continent JOIN car_makers AS T3 ON T2.CountryId  =  T3.Country GROUP BY T1.Continent;",
         "DB_result": "car_1",
         "TAB_result": [
+            "countries",
             "continents",
-            "car makers",
-            "countries"
+            "car makers"
         ]
     },
     {
@@ -1181,9 +1182,9 @@
         "SQL": "SELECT T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.continent JOIN car_makers AS T3 ON T2.CountryId  =  T3.Country GROUP BY T1.Continent;",
         "DB_result": "car_1",
         "TAB_result": [
+            "countries",
             "continents",
-            "car makers",
-            "countries"
+            "car makers"
         ]
     },
     {
@@ -1193,8 +1194,8 @@
         "SQL": "SELECT T2.CountryName FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId GROUP BY T1.Country ORDER BY Count(*) DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1204,8 +1205,8 @@
         "SQL": "SELECT T2.CountryName FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId GROUP BY T1.Country ORDER BY Count(*) DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1215,9 +1216,8 @@
         "SQL": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
-            "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1227,8 +1227,8 @@
         "SQL": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1238,10 +1238,10 @@
         "SQL": "SELECT T1.Accelerate FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Make  =  'amc hornet sportabout (sw)';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1251,10 +1251,10 @@
         "SQL": "SELECT T1.Accelerate FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Make  =  'amc hornet sportabout (sw)';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1286,10 +1286,10 @@
         "SQL": "SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "countries"
+            "countries",
+            "model list"
         ]
     },
     {
@@ -1299,10 +1299,10 @@
         "SQL": "SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "countries"
+            "countries",
+            "model list"
         ]
     },
     {
@@ -1342,6 +1342,8 @@
         "SQL": "SELECT Weight FROM CARS_DATA WHERE Cylinders  =  4 AND YEAR  =  1974 ORDER BY Weight ASC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
+            "car names",
+            "car makers",
             "cars data"
         ]
     },
@@ -1352,9 +1354,9 @@
         "SQL": "SELECT Maker ,  Model FROM MODEL_LIST;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1364,9 +1366,9 @@
         "SQL": "SELECT Maker ,  Model FROM MODEL_LIST;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1376,8 +1378,8 @@
         "SQL": "SELECT T1.CountryName ,  T1.CountryId FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >=  1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1387,8 +1389,8 @@
         "SQL": "SELECT T1.CountryName ,  T1.CountryId FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >=  1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1438,9 +1440,9 @@
         "SQL": "SELECT T1.CountryName FROM COUNTRIES AS T1 JOIN CONTINENTS AS T2 ON T1.Continent  =  T2.ContId JOIN CAR_MAKERS AS T3 ON T1.CountryId  =  T3.Country WHERE T2.Continent  =  'europe' GROUP BY T1.CountryName HAVING count(*)  >=  3;",
         "DB_result": "car_1",
         "TAB_result": [
+            "countries",
             "continents",
-            "car makers",
-            "countries"
+            "car makers"
         ]
     },
     {
@@ -1450,9 +1452,9 @@
         "SQL": "SELECT T1.CountryName FROM COUNTRIES AS T1 JOIN CONTINENTS AS T2 ON T1.Continent  =  T2.ContId JOIN CAR_MAKERS AS T3 ON T1.CountryId  =  T3.Country WHERE T2.Continent  =  'europe' GROUP BY T1.CountryName HAVING count(*)  >=  3;",
         "DB_result": "car_1",
         "TAB_result": [
+            "countries",
             "continents",
-            "car makers",
-            "countries"
+            "car makers"
         ]
     },
     {
@@ -1462,7 +1464,6 @@
         "SQL": "SELECT T2.horsepower ,  T1.Make FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.cylinders  =  3 ORDER BY T2.horsepower DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
             "cars data"
@@ -1475,9 +1476,7 @@
         "SQL": "SELECT T2.horsepower ,  T1.Make FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.cylinders  =  3 ORDER BY T2.horsepower DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "car makers",
             "cars data"
         ]
     },
@@ -1488,9 +1487,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.mpg DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1500,9 +1499,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.mpg DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1532,9 +1531,9 @@
         "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1544,10 +1543,10 @@
         "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1577,9 +1576,9 @@
         "SQL": "SELECT Model FROM CAR_NAMES GROUP BY Model ORDER BY count(*) DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1589,9 +1588,9 @@
         "SQL": "SELECT Model FROM CAR_NAMES GROUP BY Model ORDER BY count(*) DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1611,6 +1610,8 @@
         "SQL": "SELECT count(*) FROM CARS_DATA WHERE Cylinders  >  4;",
         "DB_result": "car_1",
         "TAB_result": [
+            "car names",
+            "car makers",
             "cars data"
         ]
     },
@@ -1641,8 +1642,9 @@
         "SQL": "SELECT count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker WHERE T1.FullName  =  'American Motor Company';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
-            "car makers"
+            "car names",
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1652,9 +1654,9 @@
         "SQL": "SELECT count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker WHERE T1.FullName  =  'American Motor Company';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "car makers"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1664,9 +1666,8 @@
         "SQL": "SELECT T1.FullName ,  T1.Id FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >  3;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car makers",
-            "cars data"
+            "model list"
         ]
     },
     {
@@ -1676,10 +1677,10 @@
         "SQL": "SELECT T1.FullName ,  T1.Id FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >  3;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1689,10 +1690,10 @@
         "SQL": "SELECT DISTINCT T2.Model FROM CAR_NAMES AS T1 JOIN MODEL_LIST AS T2 ON T1.Model  =  T2.Model JOIN CAR_MAKERS AS T3 ON T2.Maker  =  T3.Id JOIN CARS_DATA AS T4 ON T1.MakeId  =  T4.Id WHERE T3.FullName  =  'General Motors' OR T4.weight  >  3500;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1702,10 +1703,10 @@
         "SQL": "SELECT DISTINCT T2.Model FROM CAR_NAMES AS T1 JOIN MODEL_LIST AS T2 ON T1.Model  =  T2.Model JOIN CAR_MAKERS AS T3 ON T2.Maker  =  T3.Id JOIN CARS_DATA AS T4 ON T1.MakeId  =  T4.Id WHERE T3.FullName  =  'General Motors' OR T4.weight  >  3500;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1755,9 +1756,9 @@
         "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1767,10 +1768,10 @@
         "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1800,8 +1801,8 @@
         "SQL": "SELECT COUNT(*) FROM ( SELECT T1.CountryId ,  COUNT(*) FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >  2 );",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1811,8 +1812,8 @@
         "SQL": "SELECT COUNT(*) FROM ( SELECT T1.CountryId ,  COUNT(*) FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >  2 );",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1842,9 +1843,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Cylinders  =  4 ORDER BY T2.horsepower DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1854,9 +1855,9 @@
         "SQL": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Cylinders  =  4 ORDER BY T2.horsepower DESC LIMIT 1;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1867,7 +1868,6 @@
         "DB_result": "car_1",
         "TAB_result": [
             "car names",
-            "car makers",
             "cars data"
         ]
     },
@@ -1909,10 +1909,10 @@
         "SQL": "SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.Model  =  T2.Model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.Id JOIN CAR_MAKERS AS T4 ON T1.Maker  =  T4.Id WHERE T3.weight  <  3500 AND T4.FullName != 'Ford Motor Company';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1922,10 +1922,10 @@
         "SQL": "SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.Model  =  T2.Model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.Id JOIN CAR_MAKERS AS T4 ON T1.Maker  =  T4.Id WHERE T3.weight  <  3500 AND T4.FullName != 'Ford Motor Company';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1935,8 +1935,8 @@
         "SQL": "SELECT CountryName FROM countries EXCEPT SELECT T1.CountryName FROM countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.countryId  =  T2.Country;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1946,8 +1946,8 @@
         "SQL": "SELECT CountryName FROM countries EXCEPT SELECT T1.CountryName FROM countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.countryId  =  T2.Country;",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "countries"
+            "countries",
+            "car makers"
         ]
     },
     {
@@ -1957,10 +1957,10 @@
         "SQL": "SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >=  2 INTERSECT SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model GROUP BY T1.Id HAVING count(*)  >  3;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1970,10 +1970,10 @@
         "SQL": "SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >=  2 INTERSECT SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model GROUP BY T1.Id HAVING count(*)  >  3;",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
             "car makers",
-            "cars data"
+            "cars data",
+            "model list"
         ]
     },
     {
@@ -1983,11 +1983,10 @@
         "SQL": "SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';",
         "DB_result": "car_1",
         "TAB_result": [
-            "car makers",
-            "cars data",
+            "car names",
             "countries",
-            "model list",
-            "car names"
+            "car makers",
+            "model list"
         ]
     },
     {
@@ -1997,10 +1996,10 @@
         "SQL": "SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';",
         "DB_result": "car_1",
         "TAB_result": [
-            "model list",
             "car names",
+            "countries",
             "car makers",
-            "countries"
+            "model list"
         ]
     },
     {
@@ -2010,8 +2009,8 @@
         "SQL": "SELECT Country FROM AIRLINES WHERE Airline  =  \"JetBlue Airways\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
-            "airlines"
+            "airlines",
+            "airports"
         ]
     },
     {
@@ -2021,8 +2020,8 @@
         "SQL": "SELECT Country FROM AIRLINES WHERE Airline  =  \"JetBlue Airways\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
-            "airlines"
+            "airlines",
+            "airports"
         ]
     },
     {
@@ -2062,7 +2061,6 @@
         "SQL": "SELECT Airline ,  Abbreviation FROM AIRLINES WHERE Country  =  \"USA\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
             "airlines"
         ]
     },
@@ -2093,7 +2091,8 @@
         "SQL": "SELECT count(*) FROM AIRLINES",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2103,7 +2102,6 @@
         "SQL": "SELECT count(*) FROM AIRLINES",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
             "airlines"
         ]
     },
@@ -2174,7 +2172,8 @@
         "SQL": "SELECT count(*) FROM AIRLINES WHERE Country  =  \"USA\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airlines"
+            "airlines",
+            "airports"
         ]
     },
     {
@@ -2184,8 +2183,8 @@
         "SQL": "SELECT count(*) FROM AIRLINES WHERE Country  =  \"USA\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
-            "airlines"
+            "airlines",
+            "airports"
         ]
     },
     {
@@ -2195,8 +2194,7 @@
         "SQL": "SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  \"Alton\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
-            "airlines"
+            "airports"
         ]
     },
     {
@@ -2206,8 +2204,8 @@
         "SQL": "SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  \"Alton\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "airports",
-            "airlines"
+            "airlines",
+            "airports"
         ]
     },
     {
@@ -2267,8 +2265,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS WHERE SourceAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2288,6 +2286,7 @@
         "SQL": "SELECT count(*) FROM FLIGHTS WHERE DestAirport  =  \"ATO\"",
         "DB_result": "flight_2",
         "TAB_result": [
+            "airports",
             "flights"
         ]
     },
@@ -2298,8 +2297,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2309,8 +2308,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2320,8 +2319,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2331,8 +2330,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2342,8 +2341,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRPORTS AS T3 ON T1.SourceAirport  =  T3.AirportCode WHERE T2.City  =  \"Ashley\" AND T3.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2353,8 +2352,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRPORTS AS T3 ON T1.SourceAirport  =  T3.AirportCode WHERE T2.City  =  \"Ashley\" AND T3.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2364,8 +2363,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T1.Airline  =  T2.uid WHERE T2.Airline = \"JetBlue Airways\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2375,8 +2374,8 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T1.Airline  =  T2.uid WHERE T2.Airline = \"JetBlue Airways\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2386,9 +2385,9 @@
         "SQL": "SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  \"United Airlines\" AND T2.DestAirport  =  \"ASY\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2398,9 +2397,9 @@
         "SQL": "SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  \"United Airlines\" AND T2.DestAirport  =  \"ASY\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2410,9 +2409,9 @@
         "SQL": "SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  \"United Airlines\" AND T2.SourceAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2422,9 +2421,9 @@
         "SQL": "SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  \"United Airlines\" AND T2.SourceAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2434,9 +2433,9 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRLINES AS T3 ON T3.uid  =  T1.Airline WHERE T2.City  =  \"Aberdeen\" AND T3.Airline  =  \"United Airlines\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2446,9 +2445,9 @@
         "SQL": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRLINES AS T3 ON T3.uid  =  T1.Airline WHERE T2.City  =  \"Aberdeen\" AND T3.Airline  =  \"United Airlines\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2458,8 +2457,8 @@
         "SQL": "SELECT T1.City FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport GROUP BY T1.City ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2469,8 +2468,8 @@
         "SQL": "SELECT T1.City FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport GROUP BY T1.City ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2480,8 +2479,8 @@
         "SQL": "SELECT T1.City FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.SourceAirport GROUP BY T1.City ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2491,8 +2490,8 @@
         "SQL": "SELECT T1.City FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.SourceAirport GROUP BY T1.City ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2502,8 +2501,8 @@
         "SQL": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2513,8 +2512,8 @@
         "SQL": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2524,8 +2523,8 @@
         "SQL": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2535,8 +2534,8 @@
         "SQL": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2546,8 +2545,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2557,8 +2556,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2568,9 +2567,8 @@
         "SQL": "SELECT T1.Abbreviation ,  T1.Country FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2580,8 +2578,8 @@
         "SQL": "SELECT T1.Abbreviation ,  T1.Country FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) LIMIT 1",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2591,8 +2589,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2602,8 +2600,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2613,9 +2611,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.DestAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2625,8 +2622,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.DestAirport  =  \"AHD\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2636,9 +2633,9 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"APG\" INTERSECT SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"CVO\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2648,9 +2645,9 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"APG\" INTERSECT SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"CVO\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2660,8 +2657,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"CVO\" EXCEPT SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2671,9 +2668,9 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"CVO\" EXCEPT SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
+            "airlines",
             "airports",
-            "airlines"
+            "flights"
         ]
     },
     {
@@ -2683,8 +2680,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  >  10",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2694,8 +2691,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  >  10",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2705,8 +2702,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  <  200",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2716,8 +2713,8 @@
         "SQL": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  <  200",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2727,8 +2724,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T2.uid  =  T1.Airline WHERE T2.Airline  =  \"United Airlines\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2738,8 +2735,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T2.uid  =  T1.Airline WHERE T2.Airline  =  \"United Airlines\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airlines"
+            "airlines",
+            "flights"
         ]
     },
     {
@@ -2749,8 +2746,8 @@
         "SQL": "SELECT FlightNo FROM FLIGHTS WHERE SourceAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2770,8 +2767,8 @@
         "SQL": "SELECT FlightNo FROM FLIGHTS WHERE DestAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2781,8 +2778,7 @@
         "SQL": "SELECT FlightNo FROM FLIGHTS WHERE DestAirport  =  \"APG\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "flights"
         ]
     },
     {
@@ -2792,8 +2788,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport   =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2803,8 +2799,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport   =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2814,8 +2810,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport   =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2825,8 +2821,8 @@
         "SQL": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport   =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2836,8 +2832,8 @@
         "SQL": "SELECT count(*) FROM Flights AS T1 JOIN Airports AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.city  =  \"Aberdeen\" OR T2.city  =  \"Abilene\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2847,8 +2843,8 @@
         "SQL": "SELECT count(*) FROM Flights AS T1 JOIN Airports AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.city  =  \"Aberdeen\" OR T2.city  =  \"Abilene\"",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2858,8 +2854,8 @@
         "SQL": "SELECT AirportName FROM Airports WHERE AirportCode NOT IN (SELECT SourceAirport FROM Flights UNION SELECT DestAirport FROM Flights)",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2869,8 +2865,8 @@
         "SQL": "SELECT AirportName FROM Airports WHERE AirportCode NOT IN (SELECT SourceAirport FROM Flights UNION SELECT DestAirport FROM Flights)",
         "DB_result": "flight_2",
         "TAB_result": [
-            "flights",
-            "airports"
+            "airports",
+            "flights"
         ]
     },
     {
@@ -2880,9 +2876,9 @@
         "SQL": "SELECT count(*) FROM employee",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
             "hiring",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -2892,9 +2888,9 @@
         "SQL": "SELECT count(*) FROM employee",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
             "hiring",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -2914,7 +2910,6 @@
         "SQL": "SELECT name FROM employee ORDER BY age",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
             "employee"
         ]
     },
@@ -3045,8 +3040,7 @@
         "SQL": "SELECT name FROM shop WHERE number_products  >  (SELECT avg(number_products) FROM shop)",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
-            "employee"
+            "shop"
         ]
     },
     {
@@ -3066,8 +3060,8 @@
         "SQL": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID GROUP BY t2.Employee_ID ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -3077,8 +3071,8 @@
         "SQL": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID GROUP BY t2.Employee_ID ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -3088,8 +3082,8 @@
         "SQL": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID ORDER BY t2.bonus DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -3099,8 +3093,8 @@
         "SQL": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID ORDER BY t2.bonus DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -3110,8 +3104,9 @@
         "SQL": "SELECT name FROM employee WHERE Employee_ID NOT IN (SELECT Employee_ID FROM evaluation)",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
-            "evaluation"
+            "evaluation",
+            "hiring",
+            "employee"
         ]
     },
     {
@@ -3121,9 +3116,9 @@
         "SQL": "SELECT name FROM employee WHERE Employee_ID NOT IN (SELECT Employee_ID FROM evaluation)",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "employee",
             "hiring",
-            "evaluation"
+            "evaluation",
+            "employee"
         ]
     },
     {
@@ -3133,9 +3128,9 @@
         "SQL": "SELECT t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t1.shop_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
+            "hiring",
             "employee",
-            "hiring"
+            "shop"
         ]
     },
     {
@@ -3145,9 +3140,9 @@
         "SQL": "SELECT t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t1.shop_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
+            "hiring",
             "shop",
-            "employee",
-            "hiring"
+            "employee"
         ]
     },
     {
@@ -3157,9 +3152,9 @@
         "SQL": "SELECT name FROM shop WHERE shop_id NOT IN (SELECT shop_id FROM hiring)",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
+            "hiring",
             "employee",
-            "hiring"
+            "shop"
         ]
     },
     {
@@ -3169,9 +3164,9 @@
         "SQL": "SELECT name FROM shop WHERE shop_id NOT IN (SELECT shop_id FROM hiring)",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
+            "hiring",
             "employee",
-            "hiring"
+            "shop"
         ]
     },
     {
@@ -3181,9 +3176,9 @@
         "SQL": "SELECT count(*) ,  t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t2.name",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
+            "hiring",
             "shop",
-            "employee",
-            "hiring"
+            "employee"
         ]
     },
     {
@@ -3193,9 +3188,9 @@
         "SQL": "SELECT count(*) ,  t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t2.name",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
+            "hiring",
             "employee",
-            "hiring"
+            "shop"
         ]
     },
     {
@@ -3235,10 +3230,9 @@
         "SQL": "SELECT * FROM hiring",
         "DB_result": "employee_hire_evaluation",
         "TAB_result": [
-            "shop",
-            "employee",
             "hiring",
-            "evaluation"
+            "shop",
+            "employee"
         ]
     },
     {
@@ -3371,8 +3365,8 @@
         "SQL": "SELECT count(DISTINCT template_id) FROM Documents",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3382,8 +3376,8 @@
         "SQL": "SELECT count(DISTINCT template_id) FROM Documents",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3393,8 +3387,8 @@
         "SQL": "SELECT count(*) FROM Documents AS T1 JOIN Templates AS T2 ON T1.Template_ID  =  T2.Template_ID WHERE T2.Template_Type_Code  =  'PPT'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
+            "templates",
             "documents"
         ]
     },
@@ -3405,9 +3399,9 @@
         "SQL": "SELECT count(*) FROM Documents AS T1 JOIN Templates AS T2 ON T1.Template_ID  =  T2.Template_ID WHERE T2.Template_Type_Code  =  'PPT'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3417,8 +3411,8 @@
         "SQL": "SELECT template_id ,  count(*) FROM Documents GROUP BY template_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3428,8 +3422,8 @@
         "SQL": "SELECT template_id ,  count(*) FROM Documents GROUP BY template_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3439,9 +3433,9 @@
         "SQL": "SELECT T1.template_id ,  T2.Template_Type_Code FROM Documents AS T1 JOIN Templates AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3451,9 +3445,9 @@
         "SQL": "SELECT T1.template_id ,  T2.Template_Type_Code FROM Documents AS T1 JOIN Templates AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3463,8 +3457,8 @@
         "SQL": "SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3474,8 +3468,8 @@
         "SQL": "SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3485,8 +3479,8 @@
         "SQL": "SELECT template_id FROM Templates EXCEPT SELECT template_id FROM Documents",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3496,8 +3490,8 @@
         "SQL": "SELECT template_id FROM Templates EXCEPT SELECT template_id FROM Documents",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3517,8 +3511,8 @@
         "SQL": "SELECT count(*) FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3528,8 +3522,8 @@
         "SQL": "SELECT template_id ,  version_number ,  template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3539,8 +3533,8 @@
         "SQL": "SELECT template_id ,  version_number ,  template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3550,8 +3544,8 @@
         "SQL": "SELECT DISTINCT template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3561,8 +3555,8 @@
         "SQL": "SELECT DISTINCT template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3572,8 +3566,8 @@
         "SQL": "SELECT template_id FROM Templates WHERE template_type_code  =  \"PP\" OR template_type_code  =  \"PPT\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3583,8 +3577,8 @@
         "SQL": "SELECT template_id FROM Templates WHERE template_type_code  =  \"PP\" OR template_type_code  =  \"PPT\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3594,8 +3588,8 @@
         "SQL": "SELECT count(*) FROM Templates WHERE template_type_code  =  \"CV\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3605,8 +3599,8 @@
         "SQL": "SELECT count(*) FROM Templates WHERE template_type_code  =  \"CV\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3616,8 +3610,8 @@
         "SQL": "SELECT version_number ,  template_type_code FROM Templates WHERE version_number  >  5",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3627,8 +3621,8 @@
         "SQL": "SELECT version_number ,  template_type_code FROM Templates WHERE version_number  >  5",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3638,8 +3632,8 @@
         "SQL": "SELECT template_type_code ,  count(*) FROM Templates GROUP BY template_type_code",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3649,8 +3643,8 @@
         "SQL": "SELECT template_type_code ,  count(*) FROM Templates GROUP BY template_type_code",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3660,8 +3654,8 @@
         "SQL": "SELECT template_type_code FROM Templates GROUP BY template_type_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3671,8 +3665,8 @@
         "SQL": "SELECT template_type_code FROM Templates GROUP BY template_type_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3682,8 +3676,8 @@
         "SQL": "SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3693,8 +3687,8 @@
         "SQL": "SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3704,8 +3698,8 @@
         "SQL": "SELECT min(Version_Number) ,  template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3715,8 +3709,8 @@
         "SQL": "SELECT min(Version_Number) ,  template_type_code FROM Templates",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3726,9 +3720,9 @@
         "SQL": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T2.document_name  =  \"Data base\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3738,9 +3732,9 @@
         "SQL": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T2.document_name  =  \"Data base\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3750,9 +3744,9 @@
         "SQL": "SELECT T2.document_name FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T1.template_type_code  =  \"BK\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3762,9 +3756,9 @@
         "SQL": "SELECT T2.document_name FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T1.template_type_code  =  \"BK\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3774,9 +3768,9 @@
         "SQL": "SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3786,9 +3780,9 @@
         "SQL": "SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3798,9 +3792,9 @@
         "SQL": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3810,9 +3804,9 @@
         "SQL": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3822,9 +3816,9 @@
         "SQL": "SELECT template_type_code FROM Templates EXCEPT SELECT template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3834,9 +3828,9 @@
         "SQL": "SELECT template_type_code FROM Templates EXCEPT SELECT template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3846,8 +3840,8 @@
         "SQL": "SELECT template_type_code ,  template_type_description FROM Ref_template_types",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3857,8 +3851,8 @@
         "SQL": "SELECT template_type_code ,  template_type_description FROM Ref_template_types",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3878,7 +3872,6 @@
         "SQL": "SELECT template_type_description FROM Ref_template_types WHERE template_type_code  =  \"AD\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types"
         ]
     },
@@ -3889,7 +3882,8 @@
         "SQL": "SELECT template_type_code FROM Ref_template_types WHERE template_type_description  =  \"Book\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3899,7 +3893,6 @@
         "SQL": "SELECT template_type_code FROM Ref_template_types WHERE template_type_description  =  \"Book\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types"
         ]
     },
@@ -3910,9 +3903,9 @@
         "SQL": "SELECT DISTINCT T1.template_type_description FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code JOIN Documents AS T3 ON T2.Template_ID  =  T3.template_ID",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3922,9 +3915,9 @@
         "SQL": "SELECT DISTINCT T1.template_type_description FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code JOIN Documents AS T3 ON T2.Template_ID  =  T3.template_ID",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "documents",
+            "templates"
         ]
     },
     {
@@ -3934,8 +3927,8 @@
         "SQL": "SELECT T2.template_id FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code WHERE T1.template_type_description  =  \"Presentation\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
-            "reference template types"
+            "reference template types",
+            "templates"
         ]
     },
     {
@@ -3945,9 +3938,8 @@
         "SQL": "SELECT T2.template_id FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code WHERE T1.template_type_description  =  \"Presentation\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "templates",
             "reference template types",
-            "documents"
+            "templates"
         ]
     },
     {
@@ -3977,8 +3969,8 @@
         "SQL": "SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -3988,8 +3980,8 @@
         "SQL": "SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4019,8 +4011,8 @@
         "SQL": "SELECT T1.paragraph_id ,   T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.Document_Name  =  'Welcome to NY'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4030,8 +4022,8 @@
         "SQL": "SELECT T1.paragraph_id ,   T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.Document_Name  =  'Welcome to NY'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4041,8 +4033,8 @@
         "SQL": "SELECT T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  \"Customer reviews\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4052,8 +4044,8 @@
         "SQL": "SELECT T1.paragraph_text FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  \"Customer reviews\"",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4063,8 +4055,8 @@
         "SQL": "SELECT document_id ,  count(*) FROM Paragraphs GROUP BY document_id ORDER BY document_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4074,8 +4066,8 @@
         "SQL": "SELECT document_id ,  count(*) FROM Paragraphs GROUP BY document_id ORDER BY document_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4085,8 +4077,8 @@
         "SQL": "SELECT T1.document_id ,  T2.document_name ,  count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4096,8 +4088,8 @@
         "SQL": "SELECT T1.document_id ,  T2.document_name ,  count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4107,8 +4099,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4118,8 +4110,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4129,8 +4121,8 @@
         "SQL": "SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4140,8 +4132,8 @@
         "SQL": "SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4151,8 +4143,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4162,8 +4154,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4173,8 +4165,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4184,8 +4176,8 @@
         "SQL": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4195,8 +4187,8 @@
         "SQL": "SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Brazil' INTERSECT SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Ireland'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4206,8 +4198,8 @@
         "SQL": "SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Brazil' INTERSECT SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Ireland'",
         "DB_result": "cre_Doc_Template_Mgt",
         "TAB_result": [
-            "documents",
-            "paragraphs"
+            "paragraphs",
+            "documents"
         ]
     },
     {
@@ -4217,8 +4209,8 @@
         "SQL": "SELECT count(*) FROM teacher",
         "DB_result": "course_teach",
         "TAB_result": [
-            "teacher",
-            "course arrange"
+            "course arrange",
+            "teacher"
         ]
     },
     {
@@ -4228,6 +4220,7 @@
         "SQL": "SELECT count(*) FROM teacher",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher"
         ]
     },
@@ -4398,9 +4391,9 @@
         "SQL": "SELECT T3.Name ,  T2.Course FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4410,9 +4403,9 @@
         "SQL": "SELECT T3.Name ,  T2.Course FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4422,9 +4415,9 @@
         "SQL": "SELECT T3.Name ,  T2.Course FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID ORDER BY T3.Name",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4434,9 +4427,9 @@
         "SQL": "SELECT T3.Name ,  T2.Course FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID ORDER BY T3.Name",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4446,9 +4439,9 @@
         "SQL": "SELECT T3.Name FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID WHERE T2.Course  =  \"Math\"",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4458,9 +4451,9 @@
         "SQL": "SELECT T3.Name FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID WHERE T2.Course  =  \"Math\"",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4470,9 +4463,9 @@
         "SQL": "SELECT T2.Name ,  COUNT(*) FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4482,9 +4475,9 @@
         "SQL": "SELECT T2.Name ,  COUNT(*) FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4494,9 +4487,9 @@
         "SQL": "SELECT T2.Name FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name HAVING COUNT(*)  >=  2",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4506,9 +4499,9 @@
         "SQL": "SELECT T2.Name FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name HAVING COUNT(*)  >=  2",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4518,9 +4511,9 @@
         "SQL": "SELECT Name FROM teacher WHERE Teacher_id NOT IN (SELECT Teacher_id FROM course_arrange)",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4530,9 +4523,9 @@
         "SQL": "SELECT Name FROM teacher WHERE Teacher_id NOT IN (SELECT Teacher_id FROM course_arrange)",
         "DB_result": "course_teach",
         "TAB_result": [
+            "course arrange",
             "teacher",
-            "course",
-            "course arrange"
+            "course"
         ]
     },
     {
@@ -4542,8 +4535,8 @@
         "SQL": "SELECT count(*) FROM visitor WHERE age  <  30",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4553,8 +4546,8 @@
         "SQL": "SELECT name FROM visitor WHERE Level_of_membership  >  4 ORDER BY Level_of_membership DESC",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4564,8 +4557,8 @@
         "SQL": "SELECT avg(age) FROM visitor WHERE Level_of_membership  <=  4",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4575,8 +4568,9 @@
         "SQL": "SELECT name ,  Level_of_membership FROM visitor WHERE Level_of_membership  >  4 ORDER BY age DESC",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "museum",
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4586,7 +4580,9 @@
         "SQL": "SELECT museum_id ,  name FROM museum ORDER BY num_of_staff DESC LIMIT 1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "museum"
+            "museum",
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4626,9 +4622,9 @@
         "SQL": "SELECT t1.id ,  t1.name ,  t1.age FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id GROUP BY t1.id HAVING count(*)  >  1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
+            "museum",
             "customer",
-            "museum"
+            "visit"
         ]
     },
     {
@@ -4638,9 +4634,9 @@
         "SQL": "SELECT t2.visitor_id ,  t1.name ,  t1.Level_of_membership FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id GROUP BY t2.visitor_id ORDER BY sum(t2.Total_spent) DESC LIMIT 1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
+            "museum",
             "customer",
-            "museum"
+            "visit"
         ]
     },
     {
@@ -4650,8 +4646,8 @@
         "SQL": "SELECT t2.Museum_ID ,  t1.name FROM museum AS t1 JOIN visit AS t2 ON t1.Museum_ID  =  t2.Museum_ID GROUP BY t2.Museum_ID ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "museum"
+            "museum",
+            "visit"
         ]
     },
     {
@@ -4661,8 +4657,8 @@
         "SQL": "SELECT name FROM museum WHERE Museum_ID NOT IN (SELECT museum_id FROM visit)",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "museum"
+            "museum",
+            "visit"
         ]
     },
     {
@@ -4672,8 +4668,8 @@
         "SQL": "SELECT t1.name ,  t1.age FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id ORDER BY t2.num_of_ticket DESC LIMIT 1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4693,8 +4689,8 @@
         "SQL": "SELECT sum(t2.Total_spent) FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id WHERE t1.Level_of_membership  =  1",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
-            "customer"
+            "customer",
+            "visit"
         ]
     },
     {
@@ -4704,9 +4700,9 @@
         "SQL": "SELECT t1.name FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id JOIN museum AS t3 ON t3.Museum_ID  =  t2.Museum_ID WHERE t3.open_year  <  2009 INTERSECT SELECT t1.name FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id JOIN museum AS t3 ON t3.Museum_ID  =  t2.Museum_ID WHERE t3.open_year  >  2011",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
+            "museum",
             "customer",
-            "museum"
+            "visit"
         ]
     },
     {
@@ -4716,9 +4712,9 @@
         "SQL": "SELECT count(*) FROM visitor WHERE id NOT IN (SELECT t2.visitor_id FROM museum AS t1 JOIN visit AS t2 ON t1.Museum_ID  =  t2.Museum_ID WHERE t1.open_year  >  2010)",
         "DB_result": "museum_visit",
         "TAB_result": [
-            "visit",
+            "museum",
             "customer",
-            "museum"
+            "visit"
         ]
     },
     {
@@ -4738,9 +4734,9 @@
         "SQL": "SELECT count(*) FROM players",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -4750,8 +4746,6 @@
         "SQL": "SELECT count(*) FROM players",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches",
             "players"
         ]
     },
@@ -4772,9 +4766,9 @@
         "SQL": "SELECT count(*) FROM matches",
         "DB_result": "voter_1",
         "TAB_result": [
+            "votes",
             "contestants",
-            "area code state",
-            "votes"
+            "area code state"
         ]
     },
     {
@@ -4784,7 +4778,6 @@
         "SQL": "SELECT first_name ,  birth_date FROM players WHERE country_code  =  'USA'",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches",
             "players"
         ]
     },
@@ -4825,7 +4818,8 @@
         "SQL": "SELECT avg(winner_rank) FROM matches",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches"
+            "matches",
+            "rankings"
         ]
     },
     {
@@ -4845,7 +4839,8 @@
         "SQL": "SELECT min(loser_rank) FROM matches",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches"
+            "matches",
+            "rankings"
         ]
     },
     {
@@ -4855,8 +4850,8 @@
         "SQL": "SELECT min(loser_rank) FROM matches",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches"
+            "matches",
+            "rankings"
         ]
     },
     {
@@ -5003,7 +4998,6 @@
         "SQL": "SELECT first_name ,  country_code FROM players ORDER BY birth_date LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches",
             "players"
         ]
     },
@@ -5045,7 +5039,6 @@
         "SQL": "SELECT first_name ,  last_name FROM players WHERE hand  =  'L' ORDER BY birth_date",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches",
             "players"
         ]
     },
@@ -5056,9 +5049,8 @@
         "SQL": "SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id ORDER BY T2.tours DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5068,9 +5060,8 @@
         "SQL": "SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id ORDER BY T2.tours DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5100,9 +5091,9 @@
         "SQL": "SELECT winner_name ,  winner_rank_points FROM matches GROUP BY winner_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5112,9 +5103,9 @@
         "SQL": "SELECT winner_name ,  winner_rank_points FROM matches GROUP BY winner_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5124,8 +5115,9 @@
         "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches"
+            "matches",
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5135,9 +5127,9 @@
         "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5147,8 +5139,7 @@
         "SQL": "SELECT winner_name ,  loser_name FROM matches ORDER BY minutes DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches",
-            "players"
+            "matches"
         ]
     },
     {
@@ -5168,8 +5159,8 @@
         "SQL": "SELECT avg(ranking) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5179,8 +5170,8 @@
         "SQL": "SELECT avg(ranking) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5190,8 +5181,9 @@
         "SQL": "SELECT sum(ranking_points) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "players"
+            "matches",
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5201,8 +5193,8 @@
         "SQL": "SELECT sum(ranking_points) ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id GROUP BY T1.first_name",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5245,7 +5237,6 @@
         "SQL": "SELECT country_code FROM players GROUP BY country_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "matches",
             "players"
         ]
     },
@@ -5318,8 +5309,8 @@
         "SQL": "SELECT DISTINCT winner_name ,  winner_rank FROM matches ORDER BY winner_age LIMIT 3",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
-            "matches"
+            "matches",
+            "rankings"
         ]
     },
     {
@@ -5330,7 +5321,8 @@
         "DB_result": "wta_1",
         "TAB_result": [
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5362,9 +5354,9 @@
         "SQL": "SELECT T1.first_name ,  T1.country_code ,  T1.birth_date FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id ORDER BY T2.winner_rank_points DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
-            "players"
+            "players",
+            "rankings"
         ]
     },
     {
@@ -5374,7 +5366,6 @@
         "SQL": "SELECT T1.first_name ,  T1.country_code ,  T1.birth_date FROM players AS T1 JOIN matches AS T2 ON T1.player_id  =  T2.winner_id ORDER BY T2.winner_rank_points DESC LIMIT 1",
         "DB_result": "wta_1",
         "TAB_result": [
-            "rankings",
             "matches",
             "players"
         ]
@@ -5418,8 +5409,8 @@
         "SQL": "SELECT name ,  tonnage FROM ship ORDER BY name DESC",
         "DB_result": "battle_death",
         "TAB_result": [
-            "ship",
-            "battle"
+            "battle",
+            "ship"
         ]
     },
     {
@@ -5439,9 +5430,9 @@
         "SQL": "SELECT max(killed) ,  min(killed) FROM death",
         "DB_result": "battle_death",
         "TAB_result": [
-            "death",
+            "battle",
             "ship",
-            "battle"
+            "death"
         ]
     },
     {
@@ -5451,9 +5442,9 @@
         "SQL": "SELECT avg(injured) FROM death",
         "DB_result": "battle_death",
         "TAB_result": [
-            "death",
+            "battle",
             "ship",
-            "battle"
+            "death"
         ]
     },
     {
@@ -5463,8 +5454,8 @@
         "SQL": "SELECT T1.killed ,  T1.injured FROM death AS T1 JOIN ship AS t2 ON T1.caused_by_ship_id  =  T2.id WHERE T2.tonnage  =  't'",
         "DB_result": "battle_death",
         "TAB_result": [
-            "death",
-            "ship"
+            "ship",
+            "death"
         ]
     },
     {
@@ -5484,8 +5475,8 @@
         "SQL": "SELECT DISTINCT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.ship_type  =  'Brig'",
         "DB_result": "battle_death",
         "TAB_result": [
-            "ship",
-            "battle"
+            "battle",
+            "ship"
         ]
     },
     {
@@ -5495,9 +5486,9 @@
         "SQL": "SELECT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle JOIN death AS T3 ON T2.id  =  T3.caused_by_ship_id GROUP BY T1.id HAVING sum(T3.killed)  >  10",
         "DB_result": "battle_death",
         "TAB_result": [
-            "death",
+            "battle",
             "ship",
-            "battle"
+            "death"
         ]
     },
     {
@@ -5507,8 +5498,8 @@
         "SQL": "SELECT T2.id ,  T2.name FROM death AS T1 JOIN ship AS t2 ON T1.caused_by_ship_id  =  T2.id GROUP BY T2.id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "battle_death",
         "TAB_result": [
-            "death",
-            "ship"
+            "ship",
+            "death"
         ]
     },
     {
@@ -5538,8 +5529,8 @@
         "SQL": "SELECT count(*) FROM battle WHERE id NOT IN ( SELECT lost_in_battle FROM ship WHERE tonnage  =  '225' );",
         "DB_result": "battle_death",
         "TAB_result": [
-            "ship",
-            "battle"
+            "battle",
+            "ship"
         ]
     },
     {
@@ -5549,8 +5540,8 @@
         "SQL": "SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'Lettice' INTERSECT SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'HMS Atalanta'",
         "DB_result": "battle_death",
         "TAB_result": [
-            "ship",
-            "battle"
+            "battle",
+            "ship"
         ]
     },
     {
@@ -5560,8 +5551,8 @@
         "SQL": "SELECT name ,  RESULT ,  bulgarian_commander FROM battle EXCEPT SELECT T1.name ,  T1.result ,  T1.bulgarian_commander FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.location  =  'English Channel'",
         "DB_result": "battle_death",
         "TAB_result": [
-            "ship",
-            "battle"
+            "battle",
+            "ship"
         ]
     },
     {
@@ -5613,7 +5604,9 @@
         "SQL": "SELECT count(*) FROM Courses",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "courses"
+            "student enrolment courses",
+            "courses",
+            "sections"
         ]
     },
     {
@@ -5663,8 +5656,8 @@
         "SQL": "SELECT T2.department_name ,  T1.department_id FROM Degree_Programs AS T1 JOIN Departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY T1.department_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5674,8 +5667,8 @@
         "SQL": "SELECT T2.department_name ,  T1.department_id FROM Degree_Programs AS T1 JOIN Departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY T1.department_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5685,8 +5678,8 @@
         "SQL": "SELECT count(DISTINCT department_id) FROM Degree_Programs",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5696,8 +5689,8 @@
         "SQL": "SELECT count(DISTINCT department_id) FROM Degree_Programs",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5727,8 +5720,8 @@
         "SQL": "SELECT count(*) FROM Departments AS T1 JOIN Degree_Programs AS T2 ON T1.department_id  =  T2.department_id WHERE T1.department_name  =  'engineer'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5738,8 +5731,8 @@
         "SQL": "SELECT count(*) FROM Departments AS T1 JOIN Degree_Programs AS T2 ON T1.department_id  =  T2.department_id WHERE T1.department_name  =  'engineer'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs"
+            "degree programs",
+            "departments"
         ]
     },
     {
@@ -5811,9 +5804,8 @@
         "SQL": "SELECT T1.semester_name ,  T1.semester_id FROM Semesters AS T1 JOIN Student_Enrolment AS T2 ON T1.semester_id  =  T2.semester_id GROUP BY T1.semester_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "students",
-            "semesters",
-            "student enrolment"
+            "student enrolment",
+            "semesters"
         ]
     },
     {
@@ -5823,9 +5815,13 @@
         "SQL": "SELECT T1.semester_name ,  T1.semester_id FROM Semesters AS T1 JOIN Student_Enrolment AS T2 ON T1.semester_id  =  T2.semester_id GROUP BY T1.semester_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
-            "semesters"
+            "student enrolment",
+            "degree programs",
+            "sections",
+            "departments",
+            "semesters",
+            "courses"
         ]
     },
     {
@@ -5855,9 +5851,9 @@
         "SQL": "SELECT T1.first_name ,  T1.middle_name ,  T1.last_name ,  T1.student_id FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING count(*)  =  2",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "degree programs"
         ]
     },
     {
@@ -5867,9 +5863,9 @@
         "SQL": "SELECT T1.first_name ,  T1.middle_name ,  T1.last_name ,  T1.student_id FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING count(*)  =  2",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "degree programs"
         ]
     },
     {
@@ -5879,9 +5875,9 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "degree programs"
         ]
     },
     {
@@ -5891,9 +5887,9 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "degree programs"
         ]
     },
     {
@@ -5903,9 +5899,9 @@
         "SQL": "SELECT T1.degree_summary_name FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id GROUP BY T1.degree_summary_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
-            "degree programs"
+            "degree programs",
+            "student enrolment"
         ]
     },
     {
@@ -5915,9 +5911,9 @@
         "SQL": "SELECT T1.degree_summary_name FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id GROUP BY T1.degree_summary_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
-            "degree programs"
+            "degree programs",
+            "student enrolment"
         ]
     },
     {
@@ -5927,9 +5923,9 @@
         "SQL": "SELECT T1.degree_program_id ,  T1.degree_summary_name FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id GROUP BY T1.degree_program_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
-            "degree programs"
+            "degree programs",
+            "student enrolment"
         ]
     },
     {
@@ -5939,9 +5935,9 @@
         "SQL": "SELECT T1.degree_program_id ,  T1.degree_summary_name FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id GROUP BY T1.degree_program_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
-            "degree programs"
+            "degree programs",
+            "student enrolment"
         ]
     },
     {
@@ -5984,8 +5980,8 @@
         "SQL": "SELECT semester_name FROM Semesters WHERE semester_id NOT IN( SELECT semester_id FROM Student_Enrolment )",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "student enrolment",
             "students",
+            "student enrolment",
             "semesters"
         ]
     },
@@ -5997,9 +5993,8 @@
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
             "student enrolment courses",
-            "students",
             "courses",
-            "student enrolment"
+            "students"
         ]
     },
     {
@@ -6010,8 +6005,9 @@
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
             "student enrolment courses",
-            "students",
-            "courses"
+            "student enrolment",
+            "courses",
+            "students"
         ]
     },
     {
@@ -6022,7 +6018,8 @@
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
             "student enrolment courses",
-            "courses"
+            "courses",
+            "sections"
         ]
     },
     {
@@ -6032,11 +6029,10 @@
         "SQL": "SELECT  T1.course_name FROM Courses AS T1 JOIN Student_Enrolment_Courses AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "courses",
             "student enrolment courses",
-            "students",
             "student enrolment",
-            "sections"
+            "courses",
+            "students"
         ]
     },
     {
@@ -6046,10 +6042,9 @@
         "SQL": "SELECT T1.last_name FROM Students AS T1 JOIN Addresses AS T2 ON T1.current_address_id  =  T2.address_id WHERE T2.state_province_county  =  'NorthCarolina' EXCEPT SELECT DISTINCT T3.last_name FROM Students AS T3 JOIN Student_Enrolment AS T4 ON T3.student_id  =  T4.student_id",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "addresses"
         ]
     },
     {
@@ -6059,10 +6054,10 @@
         "SQL": "SELECT T1.last_name FROM Students AS T1 JOIN Addresses AS T2 ON T1.current_address_id  =  T2.address_id WHERE T2.state_province_county  =  'NorthCarolina' EXCEPT SELECT DISTINCT T3.last_name FROM Students AS T3 JOIN Student_Enrolment AS T4 ON T3.student_id  =  T4.student_id",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "degree programs",
             "students",
-            "student enrolment"
+            "student enrolment",
+            "addresses",
+            "degree programs"
         ]
     },
     {
@@ -6073,6 +6068,8 @@
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
             "transcripts",
+            "student enrolment courses",
+            "courses",
             "transcript contents"
         ]
     },
@@ -6083,10 +6080,8 @@
         "SQL": "SELECT T2.transcript_date ,  T1.transcript_id FROM Transcript_Contents AS T1 JOIN Transcripts AS T2 ON T1.transcript_id  =  T2.transcript_id GROUP BY T1.transcript_id HAVING count(*)  >=  2",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "courses",
-            "student enrolment courses",
-            "sections",
             "transcripts",
+            "courses",
             "transcript contents"
         ]
     },
@@ -6097,8 +6092,8 @@
         "SQL": "SELECT cell_mobile_number FROM Students WHERE first_name  =  'Timmothy' AND last_name  =  'Ward'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -6148,7 +6143,6 @@
         "SQL": "SELECT first_name ,  middle_name ,  last_name FROM Students ORDER BY date_left ASC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "transcripts",
             "students"
         ]
     },
@@ -6159,7 +6153,8 @@
         "SQL": "SELECT first_name FROM Students WHERE current_address_id != permanent_address_id",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6179,8 +6174,8 @@
         "SQL": "SELECT T1.address_id ,  T1.line_1 ,  T1.line_2 FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id  =  T2.current_address_id GROUP BY T1.address_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6190,8 +6185,17 @@
         "SQL": "SELECT T1.address_id ,  T1.line_1 ,  T1.line_2 FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id  =  T2.current_address_id GROUP BY T1.address_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
+            "students",
+            "degree programs",
+            "student enrolment",
+            "transcripts",
+            "sections",
+            "student enrolment courses",
+            "departments",
+            "semesters",
             "addresses",
-            "students"
+            "courses",
+            "transcript contents"
         ]
     },
     {
@@ -6283,9 +6287,9 @@
         "SQL": "SELECT count(*) ,  student_course_id FROM Transcript_Contents GROUP BY student_course_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
+            "transcripts",
             "student enrolment courses",
-            "transcript contents",
-            "transcripts"
+            "transcript contents"
         ]
     },
     {
@@ -6295,10 +6299,12 @@
         "SQL": "SELECT count(*) ,  student_course_id FROM Transcript_Contents GROUP BY student_course_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
+            "transcripts",
+            "student enrolment",
+            "sections",
             "student enrolment courses",
-            "transcript contents",
             "courses",
-            "transcripts"
+            "transcript contents"
         ]
     },
     {
@@ -6330,10 +6336,10 @@
         "SQL": "SELECT DISTINCT T2.semester_id FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id WHERE degree_summary_name  =  'Master' INTERSECT SELECT DISTINCT T2.semester_id FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id WHERE degree_summary_name  =  'Bachelor'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "semesters",
-            "student enrolment"
+            "student enrolment",
+            "degree programs",
+            "semesters"
         ]
     },
     {
@@ -6343,10 +6349,10 @@
         "SQL": "SELECT DISTINCT T2.semester_id FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id WHERE degree_summary_name  =  'Master' INTERSECT SELECT DISTINCT T2.semester_id FROM Degree_Programs AS T1 JOIN Student_Enrolment AS T2 ON T1.degree_program_id  =  T2.degree_program_id WHERE degree_summary_name  =  'Bachelor'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "degree programs",
             "students",
-            "semesters",
-            "student enrolment"
+            "student enrolment",
+            "degree programs",
+            "semesters"
         ]
     },
     {
@@ -6356,8 +6362,8 @@
         "SQL": "SELECT count(DISTINCT current_address_id) FROM Students",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6367,8 +6373,8 @@
         "SQL": "SELECT count(DISTINCT current_address_id) FROM Students",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6378,7 +6384,8 @@
         "SQL": "SELECT other_student_details FROM Students ORDER BY other_student_details DESC",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "students"
+            "students",
+            "student enrolment"
         ]
     },
     {
@@ -6388,16 +6395,7 @@
         "SQL": "SELECT other_student_details FROM Students ORDER BY other_student_details DESC",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "departments",
-            "degree programs",
-            "semesters",
-            "courses",
-            "student enrolment courses",
-            "students",
-            "student enrolment",
-            "sections",
-            "transcripts",
-            "transcript contents"
+            "students"
         ]
     },
     {
@@ -6427,8 +6425,8 @@
         "SQL": "SELECT T1.first_name FROM Students AS T1 JOIN Addresses AS T2 ON T1.permanent_address_id  =  T2.address_id WHERE T2.country  =  'Haiti' UNION SELECT first_name FROM Students WHERE cell_mobile_number  =  '09700166582'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6438,8 +6436,8 @@
         "SQL": "SELECT T1.first_name FROM Students AS T1 JOIN Addresses AS T2 ON T1.permanent_address_id  =  T2.address_id WHERE T2.country  =  'Haiti' UNION SELECT first_name FROM Students WHERE cell_mobile_number  =  '09700166582'",
         "DB_result": "student_transcripts_tracking",
         "TAB_result": [
-            "addresses",
-            "students"
+            "students",
+            "addresses"
         ]
     },
     {
@@ -6509,8 +6507,7 @@
         "SQL": "SELECT title ,  Directed_by FROM Cartoon ORDER BY Original_air_date",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series"
+            "cartoon"
         ]
     },
     {
@@ -6520,8 +6517,7 @@
         "SQL": "SELECT title ,  Directed_by FROM Cartoon ORDER BY Original_air_date",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series"
+            "cartoon"
         ]
     },
     {
@@ -6601,7 +6597,6 @@
         "SQL": "SELECT Content FROM TV_Channel WHERE series_name = \"Sky Radio\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "tv series",
             "tv channel"
         ]
     },
@@ -6692,9 +6687,9 @@
         "SQL": "SELECT T1.series_name FROM TV_Channel AS T1 JOIN Cartoon AS T2 ON T1.id = T2.Channel WHERE T2.Title = \"The Rise of the Blue Beetle!\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
             "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6704,8 +6699,8 @@
         "SQL": "SELECT T1.series_name FROM TV_Channel AS T1 JOIN Cartoon AS T2 ON T1.id = T2.Channel WHERE T2.Title = \"The Rise of the Blue Beetle!\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6715,8 +6710,8 @@
         "SQL": "SELECT T2.Title FROM TV_Channel AS T1 JOIN Cartoon AS T2 ON T1.id = T2.Channel WHERE T1.series_name = \"Sky Radio\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6726,8 +6721,8 @@
         "SQL": "SELECT T2.Title FROM TV_Channel AS T1 JOIN Cartoon AS T2 ON T1.id = T2.Channel WHERE T1.series_name = \"Sky Radio\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6757,7 +6752,8 @@
         "SQL": "SELECT Episode ,  Rating FROM TV_series ORDER BY Rating DESC LIMIT 3;",
         "DB_result": "tvshow",
         "TAB_result": [
-            "tv series"
+            "tv series",
+            "tv channel"
         ]
     },
     {
@@ -6807,8 +6803,8 @@
         "SQL": "SELECT Air_Date FROM TV_series WHERE Episode = \"A Love of a Lifetime\";",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series"
+            "tv series",
+            "cartoon"
         ]
     },
     {
@@ -6902,9 +6898,8 @@
         "SQL": "SELECT production_code ,  channel FROM cartoon ORDER BY original_air_date LIMIT 1",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
             "tv series",
-            "tv channel"
+            "cartoon"
         ]
     },
     {
@@ -6914,9 +6909,8 @@
         "SQL": "SELECT production_code ,  channel FROM cartoon ORDER BY original_air_date LIMIT 1",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
             "tv series",
-            "tv channel"
+            "cartoon"
         ]
     },
     {
@@ -6946,9 +6940,8 @@
         "SQL": "SELECT T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.written_by  =  'Todd Casey'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6958,8 +6951,8 @@
         "SQL": "SELECT T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.written_by  =  'Todd Casey'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6969,8 +6962,8 @@
         "SQL": "SELECT country FROM TV_Channel EXCEPT SELECT T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.written_by  =  'Todd Casey'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6980,8 +6973,8 @@
         "SQL": "SELECT country FROM TV_Channel EXCEPT SELECT T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.written_by  =  'Todd Casey'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -6991,9 +6984,8 @@
         "SQL": "SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Michael Chang' INTERSECT SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Ben Jones'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7003,8 +6995,8 @@
         "SQL": "SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Michael Chang' INTERSECT SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Ben Jones'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7034,7 +7026,9 @@
         "SQL": "SELECT id FROM tv_channel GROUP BY country HAVING count(*)  >  2",
         "DB_result": "tvshow",
         "TAB_result": [
-            "tv channel"
+            "tv series",
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7044,9 +7038,9 @@
         "SQL": "SELECT id FROM tv_channel GROUP BY country HAVING count(*)  >  2",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
             "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7056,9 +7050,8 @@
         "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7068,9 +7061,8 @@
         "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7080,8 +7072,8 @@
         "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7091,9 +7083,8 @@
         "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
         "DB_result": "tvshow",
         "TAB_result": [
-            "cartoon",
-            "tv series",
-            "tv channel"
+            "tv channel",
+            "cartoon"
         ]
     },
     {
@@ -7519,8 +7510,8 @@
         "SQL": "SELECT count(*) FROM area_code_state",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7530,8 +7521,8 @@
         "SQL": "SELECT contestant_number ,  contestant_name FROM contestants ORDER BY contestant_name DESC",
         "DB_result": "voter_1",
         "TAB_result": [
-            "contestants",
-            "votes"
+            "votes",
+            "contestants"
         ]
     },
     {
@@ -7541,8 +7532,8 @@
         "SQL": "SELECT vote_id ,  phone_number ,  state FROM votes",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7562,8 +7553,8 @@
         "SQL": "SELECT max(created) FROM votes WHERE state  =  'CA'",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7583,8 +7574,8 @@
         "SQL": "SELECT DISTINCT state ,  created FROM votes",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7594,8 +7585,8 @@
         "SQL": "SELECT T1.contestant_number , T1.contestant_name FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number GROUP BY T1.contestant_number HAVING count(*)  >=  2",
         "DB_result": "voter_1",
         "TAB_result": [
-            "contestants",
-            "votes"
+            "votes",
+            "contestants"
         ]
     },
     {
@@ -7605,8 +7596,8 @@
         "SQL": "SELECT T1.contestant_number , T1.contestant_name FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number GROUP BY T1.contestant_number ORDER BY count(*) ASC LIMIT 1",
         "DB_result": "voter_1",
         "TAB_result": [
-            "contestants",
-            "votes"
+            "votes",
+            "contestants"
         ]
     },
     {
@@ -7616,8 +7607,8 @@
         "SQL": "SELECT count(*) FROM votes WHERE state  =  'NY' OR state  =  'CA'",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7627,8 +7618,8 @@
         "SQL": "SELECT count(*) FROM contestants WHERE contestant_number NOT IN ( SELECT contestant_number FROM votes )",
         "DB_result": "voter_1",
         "TAB_result": [
-            "contestants",
-            "votes"
+            "votes",
+            "contestants"
         ]
     },
     {
@@ -7638,8 +7629,8 @@
         "SQL": "SELECT T1.area_code FROM area_code_state AS T1 JOIN votes AS T2 ON T1.state  =  T2.state GROUP BY T1.area_code ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "voter_1",
         "TAB_result": [
-            "area code state",
-            "votes"
+            "votes",
+            "area code state"
         ]
     },
     {
@@ -7649,9 +7640,9 @@
         "SQL": "SELECT T2.created ,  T2.state ,  T2.phone_number FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number WHERE T1.contestant_name  =  'Tabatha Gehling'",
         "DB_result": "voter_1",
         "TAB_result": [
+            "votes",
             "contestants",
-            "area code state",
-            "votes"
+            "area code state"
         ]
     },
     {
@@ -7661,9 +7652,9 @@
         "SQL": "SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Tabatha Gehling' INTERSECT SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Kelly Clauss'",
         "DB_result": "voter_1",
         "TAB_result": [
+            "votes",
             "contestants",
-            "area code state",
-            "votes"
+            "area code state"
         ]
     },
     {
@@ -7693,6 +7684,7 @@
         "SQL": "SELECT Name FROM country WHERE IndepYear  >  1950",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -7743,8 +7735,8 @@
         "SQL": "SELECT Continent FROM country WHERE Name  =  \"Anguilla\"",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -7754,8 +7746,8 @@
         "SQL": "SELECT Continent FROM country WHERE Name  =  \"Anguilla\"",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -7809,6 +7801,7 @@
         "SQL": "SELECT Population ,  LifeExpectancy FROM country WHERE Name  =  \"Brazil\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -7830,6 +7823,7 @@
         "SQL": "SELECT Population ,  Region FROM country WHERE Name  =  \"Angola\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -7840,7 +7834,6 @@
         "SQL": "SELECT Population ,  Region FROM country WHERE Name  =  \"Angola\"",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -7891,6 +7884,7 @@
         "SQL": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -7952,7 +7946,8 @@
         "SQL": "SELECT sum(Population) FROM city WHERE District  =  \"Gelderland\"",
         "DB_result": "world_1",
         "TAB_result": [
-            "city"
+            "city",
+            "country"
         ]
     },
     {
@@ -7983,6 +7978,7 @@
         "SQL": "SELECT avg(GNP) ,  sum(population) FROM country WHERE GovernmentForm  =  \"US Territory\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8077,7 +8073,6 @@
         "SQL": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode GROUP BY T1.Name ORDER BY COUNT(*) DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "countrylanguage",
             "country"
         ]
@@ -8090,6 +8085,7 @@
         "DB_result": "world_1",
         "TAB_result": [
             "city",
+            "sqlite sequence",
             "countrylanguage",
             "country"
         ]
@@ -8176,6 +8172,7 @@
         "SQL": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" AND T2.IsOfficial  =  \"T\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"French\" AND T2.IsOfficial  =  \"T\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "countrylanguage",
             "country"
         ]
@@ -8308,7 +8305,8 @@
         "DB_result": "world_1",
         "TAB_result": [
             "city",
-            "countrylanguage"
+            "countrylanguage",
+            "country"
         ]
     },
     {
@@ -8318,7 +8316,6 @@
         "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -8329,7 +8326,6 @@
         "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -8438,7 +8434,8 @@
         "SQL": "SELECT Name FROM country WHERE SurfaceArea  >  (SELECT min(SurfaceArea) FROM country WHERE Continent  =  \"Europe\")",
         "DB_result": "car_1",
         "TAB_result": [
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -8448,6 +8445,7 @@
         "SQL": "SELECT Name FROM country WHERE Continent  =  \"Africa\"  AND population  <  (SELECT max(population) FROM country WHERE Continent  =  \"Asia\")",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8468,6 +8466,7 @@
         "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\"  AND population  >  (SELECT max(population) FROM country WHERE Continent  =  \"Africa\")",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8478,6 +8477,7 @@
         "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\"  AND population  >  (SELECT min(population) FROM country WHERE Continent  =  \"Africa\")",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8488,7 +8488,6 @@
         "SQL": "SELECT CountryCode FROM countrylanguage EXCEPT SELECT CountryCode FROM countrylanguage WHERE LANGUAGE  =  \"English\"",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "countrylanguage",
             "country"
         ]
@@ -8512,6 +8511,7 @@
         "SQL": "SELECT DISTINCT CountryCode FROM countrylanguage WHERE LANGUAGE != \"English\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "countrylanguage",
             "country"
         ]
@@ -8614,7 +8614,6 @@
         "SQL": "SELECT Name ,  SurfaceArea ,  IndepYear FROM country ORDER BY Population LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -8625,6 +8624,7 @@
         "SQL": "SELECT Name ,  population ,  HeadOfState FROM country ORDER BY SurfaceArea DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8645,7 +8645,6 @@
         "SQL": "SELECT COUNT(T2.Language) ,  T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode GROUP BY T1.Name HAVING COUNT(*)  >  2",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "countrylanguage",
             "country"
         ]
@@ -8657,6 +8656,7 @@
         "SQL": "SELECT COUNT(T2.Language) ,  T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode GROUP BY T1.Name HAVING COUNT(*)  >  2",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "countrylanguage",
             "country"
         ]
@@ -8720,8 +8720,7 @@
         "SQL": "SELECT sum(Population) ,  avg(LifeExpectancy) ,  Continent FROM country GROUP BY Continent HAVING avg(LifeExpectancy)  <  72",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "continents"
         ]
     },
     {
@@ -8751,6 +8750,7 @@
         "SQL": "SELECT Name FROM country ORDER BY Population DESC LIMIT 3",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8761,6 +8761,7 @@
         "SQL": "SELECT Name FROM country ORDER BY Population DESC LIMIT 3",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8792,8 +8793,8 @@
         "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -8803,8 +8804,8 @@
         "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
         "DB_result": "car_1",
         "TAB_result": [
-            "continents",
-            "countries"
+            "countries",
+            "continents"
         ]
     },
     {
@@ -8814,6 +8815,7 @@
         "SQL": "SELECT Name FROM country WHERE continent  =  \"Europe\" AND Population  =  \"80000\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -8857,7 +8859,8 @@
         "SQL": "SELECT name FROM city WHERE Population BETWEEN 160000 AND 900000",
         "DB_result": "world_1",
         "TAB_result": [
-            "city"
+            "city",
+            "country"
         ]
     },
     {
@@ -8920,7 +8923,8 @@
         "SQL": "SELECT count(*) ,   max(Percentage) FROM countrylanguage WHERE LANGUAGE  =  \"Spanish\" GROUP BY CountryCode",
         "DB_result": "world_1",
         "TAB_result": [
-            "countrylanguage"
+            "countrylanguage",
+            "country"
         ]
     },
     {
@@ -8963,6 +8967,7 @@
         "SQL": "SELECT count(*) FROM conductor",
         "DB_result": "orchestra",
         "TAB_result": [
+            "orchestra",
             "conductor"
         ]
     },
@@ -8973,6 +8978,7 @@
         "SQL": "SELECT count(*) FROM conductor",
         "DB_result": "orchestra",
         "TAB_result": [
+            "orchestra",
             "conductor"
         ]
     },
@@ -9144,9 +9150,9 @@
         "SQL": "SELECT T1.Name ,  T2.Orchestra FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID",
         "DB_result": "orchestra",
         "TAB_result": [
+            "show",
             "orchestra",
-            "conductor",
-            "show"
+            "conductor"
         ]
     },
     {
@@ -9167,9 +9173,9 @@
         "SQL": "SELECT T1.Name FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID GROUP BY T2.Conductor_ID HAVING COUNT(*)  >  1",
         "DB_result": "orchestra",
         "TAB_result": [
+            "show",
             "orchestra",
-            "conductor",
-            "show"
+            "conductor"
         ]
     },
     {
@@ -9190,9 +9196,9 @@
         "SQL": "SELECT T1.Name FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID GROUP BY T2.Conductor_ID ORDER BY COUNT(*) DESC LIMIT 1",
         "DB_result": "orchestra",
         "TAB_result": [
+            "show",
             "orchestra",
-            "conductor",
-            "show"
+            "conductor"
         ]
     },
     {
@@ -9213,9 +9219,9 @@
         "SQL": "SELECT T1.Name FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID WHERE Year_of_Founded  >  2008",
         "DB_result": "orchestra",
         "TAB_result": [
+            "show",
             "orchestra",
-            "conductor",
-            "show"
+            "conductor"
         ]
     },
     {
@@ -9236,8 +9242,8 @@
         "SQL": "SELECT Record_Company ,  COUNT(*) FROM orchestra GROUP BY Record_Company",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "show"
+            "show",
+            "orchestra"
         ]
     },
     {
@@ -9257,8 +9263,8 @@
         "SQL": "SELECT Major_Record_Format FROM orchestra GROUP BY Major_Record_Format ORDER BY COUNT(*) ASC",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "show"
+            "show",
+            "orchestra"
         ]
     },
     {
@@ -9298,8 +9304,8 @@
         "SQL": "SELECT Orchestra FROM orchestra WHERE Orchestra_ID NOT IN (SELECT Orchestra_ID FROM performance)",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "performance"
+            "performance",
+            "orchestra"
         ]
     },
     {
@@ -9309,8 +9315,8 @@
         "SQL": "SELECT Orchestra FROM orchestra WHERE Orchestra_ID NOT IN (SELECT Orchestra_ID FROM performance)",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "performance"
+            "performance",
+            "orchestra"
         ]
     },
     {
@@ -9320,8 +9326,8 @@
         "SQL": "SELECT Record_Company FROM orchestra WHERE Year_of_Founded  <  2003 INTERSECT SELECT Record_Company FROM orchestra WHERE Year_of_Founded  >  2003",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "show"
+            "show",
+            "orchestra"
         ]
     },
     {
@@ -9361,9 +9367,9 @@
         "SQL": "SELECT Year_of_Founded FROM orchestra AS T1 JOIN performance AS T2 ON T1.Orchestra_ID  =  T2.Orchestra_ID GROUP BY T2.Orchestra_ID HAVING COUNT(*)  >  1",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
+            "show",
             "performance",
-            "show"
+            "orchestra"
         ]
     },
     {
@@ -9373,8 +9379,8 @@
         "SQL": "SELECT Year_of_Founded FROM orchestra AS T1 JOIN performance AS T2 ON T1.Orchestra_ID  =  T2.Orchestra_ID GROUP BY T2.Orchestra_ID HAVING COUNT(*)  >  1",
         "DB_result": "orchestra",
         "TAB_result": [
-            "orchestra",
-            "performance"
+            "performance",
+            "orchestra"
         ]
     },
     {
@@ -9584,8 +9590,8 @@
         "SQL": "SELECT student_id ,  count(*) FROM Friend GROUP BY student_id",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
+            "likes",
             "high schooler"
         ]
     },
@@ -9596,7 +9602,6 @@
         "SQL": "SELECT student_id ,  count(*) FROM Friend GROUP BY student_id",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
             "high schooler"
         ]
@@ -9707,7 +9712,6 @@
         "SQL": "SELECT count(*) FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id WHERE T2.name  =  \"Kyle\"",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
             "high schooler"
         ]
@@ -9752,7 +9756,6 @@
         "SQL": "SELECT name FROM Highschooler EXCEPT SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
             "high schooler"
         ]
@@ -9764,8 +9767,8 @@
         "SQL": "SELECT student_id FROM Friend INTERSECT SELECT liked_id FROM Likes",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
+            "likes",
             "high schooler"
         ]
     },
@@ -9776,8 +9779,8 @@
         "SQL": "SELECT student_id FROM Friend INTERSECT SELECT liked_id FROM Likes",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
+            "likes",
             "high schooler"
         ]
     },
@@ -9788,8 +9791,8 @@
         "SQL": "SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id INTERSECT SELECT T2.name FROM Likes AS T1 JOIN Highschooler AS T2 ON T1.liked_id  =  T2.id",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
+            "likes",
             "high schooler"
         ]
     },
@@ -9800,8 +9803,8 @@
         "SQL": "SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id INTERSECT SELECT T2.name FROM Likes AS T1 JOIN Highschooler AS T2 ON T1.liked_id  =  T2.id",
         "DB_result": "network_1",
         "TAB_result": [
-            "likes",
             "friend",
+            "likes",
             "high schooler"
         ]
     },
@@ -9813,7 +9816,7 @@
         "DB_result": "network_1",
         "TAB_result": [
             "likes",
-            "friend"
+            "high schooler"
         ]
     },
     {
@@ -9824,7 +9827,7 @@
         "DB_result": "network_1",
         "TAB_result": [
             "likes",
-            "friend"
+            "high schooler"
         ]
     },
     {
@@ -9846,7 +9849,6 @@
         "DB_result": "network_1",
         "TAB_result": [
             "likes",
-            "friend",
             "high schooler"
         ]
     },
@@ -9989,8 +9991,8 @@
         "SQL": "SELECT state FROM Owners INTERSECT SELECT state FROM Professionals",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10000,8 +10002,8 @@
         "SQL": "SELECT state FROM Owners INTERSECT SELECT state FROM Professionals",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10033,9 +10035,9 @@
         "SQL": "SELECT professional_id ,  last_name ,  cell_number FROM Professionals WHERE state  =  'Indiana' UNION SELECT T1.professional_id ,  T1.last_name ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "owners",
             "professionals",
-            "owners"
+            "treatments"
         ]
     },
     {
@@ -10045,9 +10047,9 @@
         "SQL": "SELECT professional_id ,  last_name ,  cell_number FROM Professionals WHERE state  =  'Indiana' UNION SELECT T1.professional_id ,  T1.last_name ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "owners",
             "professionals",
-            "owners"
+            "treatments"
         ]
     },
     {
@@ -10057,9 +10059,9 @@
         "SQL": "SELECT name FROM Dogs WHERE dog_id NOT IN( SELECT dog_id FROM Treatments GROUP BY dog_id HAVING sum(cost_of_treatment)  >  1000 )",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10069,6 +10071,7 @@
         "SQL": "SELECT name FROM Dogs WHERE dog_id NOT IN( SELECT dog_id FROM Treatments GROUP BY dog_id HAVING sum(cost_of_treatment)  >  1000 )",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
             "dogs"
         ]
@@ -10080,9 +10083,9 @@
         "SQL": "SELECT first_name FROM Professionals UNION SELECT first_name FROM Owners EXCEPT SELECT name FROM Dogs",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "professionals",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10092,9 +10095,9 @@
         "SQL": "SELECT first_name FROM Professionals UNION SELECT first_name FROM Owners EXCEPT SELECT name FROM Dogs",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "professionals",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10104,9 +10107,9 @@
         "SQL": "SELECT professional_id ,  role_code ,  email_address FROM Professionals EXCEPT SELECT T1.professional_id ,  T1.role_code ,  T1.email_address FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "dogs",
             "professionals",
-            "dogs"
+            "treatments"
         ]
     },
     {
@@ -10116,8 +10119,9 @@
         "SQL": "SELECT professional_id ,  role_code ,  email_address FROM Professionals EXCEPT SELECT T1.professional_id ,  T1.role_code ,  T1.email_address FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "owners",
             "professionals",
+            "treatments",
             "dogs"
         ]
     },
@@ -10128,8 +10132,8 @@
         "SQL": "SELECT T1.owner_id ,  T2.first_name ,  T2.last_name FROM Dogs AS T1 JOIN Owners AS T2 ON T1.owner_id  =  T2.owner_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10139,8 +10143,9 @@
         "SQL": "SELECT T1.owner_id ,  T2.first_name ,  T2.last_name FROM Dogs AS T1 JOIN Owners AS T2 ON T1.owner_id  =  T2.owner_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "professionals",
+            "dogs"
         ]
     },
     {
@@ -10150,8 +10155,8 @@
         "SQL": "SELECT T1.professional_id ,  T1.role_code ,  T1.first_name FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >=  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals"
+            "professionals",
+            "treatments"
         ]
     },
     {
@@ -10161,8 +10166,8 @@
         "SQL": "SELECT T1.professional_id ,  T1.role_code ,  T1.first_name FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >=  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals"
+            "professionals",
+            "treatments"
         ]
     },
     {
@@ -10172,8 +10177,8 @@
         "SQL": "SELECT T1.breed_name FROM Breeds AS T1 JOIN Dogs AS T2 ON T1.breed_code  =  T2.breed_code GROUP BY T1.breed_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "breeds"
+            "breeds",
+            "dogs"
         ]
     },
     {
@@ -10183,8 +10188,8 @@
         "SQL": "SELECT T1.breed_name FROM Breeds AS T1 JOIN Dogs AS T2 ON T1.breed_code  =  T2.breed_code GROUP BY T1.breed_name ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "breeds"
+            "breeds",
+            "dogs"
         ]
     },
     {
@@ -10194,9 +10199,9 @@
         "SQL": "SELECT T1.owner_id ,  T1.last_name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id JOIN Treatments AS T3 ON T2.dog_id  =  T3.dog_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10206,9 +10211,9 @@
         "SQL": "SELECT T1.owner_id ,  T1.last_name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id JOIN Treatments AS T3 ON T2.dog_id  =  T3.dog_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10218,8 +10223,8 @@
         "SQL": "SELECT T1.treatment_type_description FROM Treatment_types AS T1 JOIN Treatments AS T2 ON T1.treatment_type_code  =  T2.treatment_type_code GROUP BY T1.treatment_type_code ORDER BY sum(cost_of_treatment) ASC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "treatment types"
+            "treatment types",
+            "treatments"
         ]
     },
     {
@@ -10229,8 +10234,8 @@
         "SQL": "SELECT T1.treatment_type_description FROM Treatment_types AS T1 JOIN Treatments AS T2 ON T1.treatment_type_code  =  T2.treatment_type_code GROUP BY T1.treatment_type_code ORDER BY sum(cost_of_treatment) ASC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
             "treatment types",
+            "treatments",
             "sizes"
         ]
     },
@@ -10241,10 +10246,9 @@
         "SQL": "SELECT T1.owner_id ,  T1.zip_code FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id JOIN Treatments AS T3 ON T2.dog_id  =  T3.dog_id GROUP BY T1.owner_id ORDER BY sum(T3.cost_of_treatment) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
-            "charges",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10254,9 +10258,9 @@
         "SQL": "SELECT T1.owner_id ,  T1.zip_code FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id JOIN Treatments AS T3 ON T2.dog_id  =  T3.dog_id GROUP BY T1.owner_id ORDER BY sum(T3.cost_of_treatment) DESC LIMIT 1",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "owners",
             "treatments",
-            "dogs",
-            "owners"
+            "dogs"
         ]
     },
     {
@@ -10266,9 +10270,9 @@
         "SQL": "SELECT T1.professional_id ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >=  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
             "treatment types",
             "professionals",
+            "treatments",
             "owners"
         ]
     },
@@ -10279,9 +10283,9 @@
         "SQL": "SELECT T1.professional_id ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >=  2",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals",
             "owners",
+            "professionals",
+            "treatments",
             "treatment types"
         ]
     },
@@ -10292,8 +10296,9 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T1.last_name FROM Professionals AS T1 JOIN Treatments AS T2 WHERE cost_of_treatment  <  ( SELECT avg(cost_of_treatment) FROM Treatments )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals"
+            "owners",
+            "professionals",
+            "treatments"
         ]
     },
     {
@@ -10303,9 +10308,8 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T1.last_name FROM Professionals AS T1 JOIN Treatments AS T2 WHERE cost_of_treatment  <  ( SELECT avg(cost_of_treatment) FROM Treatments )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
             "professionals",
-            "owners"
+            "treatments"
         ]
     },
     {
@@ -10315,8 +10319,8 @@
         "SQL": "SELECT T1.date_of_treatment ,  T2.first_name FROM Treatments AS T1 JOIN Professionals AS T2 ON T1.professional_id  =  T2.professional_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals"
+            "professionals",
+            "treatments"
         ]
     },
     {
@@ -10326,8 +10330,8 @@
         "SQL": "SELECT T1.date_of_treatment ,  T2.first_name FROM Treatments AS T1 JOIN Professionals AS T2 ON T1.professional_id  =  T2.professional_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "professionals"
+            "professionals",
+            "treatments"
         ]
     },
     {
@@ -10337,8 +10341,8 @@
         "SQL": "SELECT T1.cost_of_treatment ,  T2.treatment_type_description FROM Treatments AS T1 JOIN treatment_types AS T2 ON T1.treatment_type_code  =  T2.treatment_type_code",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "treatment types"
+            "treatment types",
+            "treatments"
         ]
     },
     {
@@ -10348,8 +10352,8 @@
         "SQL": "SELECT T1.cost_of_treatment ,  T2.treatment_type_description FROM Treatments AS T1 JOIN treatment_types AS T2 ON T1.treatment_type_code  =  T2.treatment_type_code",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
-            "treatment types"
+            "treatment types",
+            "treatments"
         ]
     },
     {
@@ -10359,9 +10363,9 @@
         "SQL": "SELECT T1.first_name ,  T1.last_name ,  T2.size_code FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "sizes",
+            "owners",
             "dogs",
-            "owners"
+            "sizes"
         ]
     },
     {
@@ -10371,9 +10375,9 @@
         "SQL": "SELECT T1.first_name ,  T1.last_name ,  T2.size_code FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "sizes",
+            "owners",
             "dogs",
-            "owners"
+            "sizes"
         ]
     },
     {
@@ -10383,8 +10387,9 @@
         "SQL": "SELECT T1.first_name ,  T2.name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "professionals",
+            "dogs"
         ]
     },
     {
@@ -10394,8 +10399,8 @@
         "SQL": "SELECT T1.first_name ,  T2.name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10405,9 +10410,9 @@
         "SQL": "SELECT T1.name ,  T2.date_of_treatment FROM Dogs AS T1 JOIN Treatments AS T2 ON T1.dog_id  =  T2.dog_id WHERE T1.breed_code  =  ( SELECT breed_code FROM Dogs GROUP BY breed_code ORDER BY count(*) ASC LIMIT 1 )",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "breeds",
             "treatments",
-            "dogs",
-            "breeds"
+            "dogs"
         ]
     },
     {
@@ -10417,9 +10422,9 @@
         "SQL": "SELECT T1.name ,  T2.date_of_treatment FROM Dogs AS T1 JOIN Treatments AS T2 ON T1.dog_id  =  T2.dog_id WHERE T1.breed_code  =  ( SELECT breed_code FROM Dogs GROUP BY breed_code ORDER BY count(*) ASC LIMIT 1 )",
         "DB_result": "dog_kennels",
         "TAB_result": [
+            "breeds",
             "treatments",
-            "dogs",
-            "breeds"
+            "dogs"
         ]
     },
     {
@@ -10429,8 +10434,8 @@
         "SQL": "SELECT T1.first_name ,  T2.name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id WHERE T1.state  =  'Virginia'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10440,8 +10445,8 @@
         "SQL": "SELECT T1.first_name ,  T2.name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id WHERE T1.state  =  'Virginia'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10473,8 +10478,8 @@
         "SQL": "SELECT T1.last_name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id WHERE T2.age  =  ( SELECT max(age) FROM Dogs )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10484,8 +10489,8 @@
         "SQL": "SELECT T1.last_name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id WHERE T2.age  =  ( SELECT max(age) FROM Dogs )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10495,8 +10500,8 @@
         "SQL": "SELECT email_address FROM Professionals WHERE state  =  'Hawaii' OR state  =  'Wisconsin'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10506,8 +10511,8 @@
         "SQL": "SELECT email_address FROM Professionals WHERE state  =  'Hawaii' OR state  =  'Wisconsin'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10559,9 +10564,9 @@
         "SQL": "SELECT count(DISTINCT professional_id) FROM Treatments",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "dogs",
             "professionals",
-            "dogs"
+            "treatments"
         ]
     },
     {
@@ -10571,9 +10576,9 @@
         "SQL": "SELECT count(DISTINCT professional_id) FROM Treatments",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "dogs",
             "professionals",
-            "dogs"
+            "treatments"
         ]
     },
     {
@@ -10583,8 +10588,7 @@
         "SQL": "SELECT role_code ,  street ,  city ,  state FROM professionals WHERE city LIKE '%West%'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "professionals"
         ]
     },
     {
@@ -10604,7 +10608,8 @@
         "SQL": "SELECT first_name ,  last_name ,  email_address FROM Owners WHERE state LIKE '%North%'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10614,7 +10619,8 @@
         "SQL": "SELECT first_name ,  last_name ,  email_address FROM Owners WHERE state LIKE '%North%'",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10686,8 +10692,8 @@
         "SQL": "SELECT count(*) FROM Owners WHERE owner_id NOT IN ( SELECT owner_id FROM Dogs )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10697,8 +10703,8 @@
         "SQL": "SELECT count(*) FROM Owners WHERE owner_id NOT IN ( SELECT owner_id FROM Dogs )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "dogs",
-            "owners"
+            "owners",
+            "dogs"
         ]
     },
     {
@@ -10708,9 +10714,9 @@
         "SQL": "SELECT count(*) FROM Professionals WHERE professional_id NOT IN ( SELECT professional_id FROM Treatments )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "dogs",
             "professionals",
-            "dogs"
+            "treatments"
         ]
     },
     {
@@ -10720,9 +10726,9 @@
         "SQL": "SELECT count(*) FROM Professionals WHERE professional_id NOT IN ( SELECT professional_id FROM Treatments )",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "dogs",
             "professionals",
-            "dogs"
+            "treatments"
         ]
     },
     {
@@ -10832,8 +10838,8 @@
         "SQL": "SELECT email_address ,  cell_number ,  home_phone FROM professionals",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10843,8 +10849,8 @@
         "SQL": "SELECT email_address ,  cell_number ,  home_phone FROM professionals",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "professionals",
-            "owners"
+            "owners",
+            "professionals"
         ]
     },
     {
@@ -10854,9 +10860,9 @@
         "SQL": "SELECT DISTINCT breed_code ,  size_code FROM dogs",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "sizes",
+            "breeds",
             "dogs",
-            "breeds"
+            "sizes"
         ]
     },
     {
@@ -10866,9 +10872,9 @@
         "SQL": "SELECT DISTINCT breed_code ,  size_code FROM dogs",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "sizes",
+            "breeds",
             "dogs",
-            "breeds"
+            "sizes"
         ]
     },
     {
@@ -10878,9 +10884,9 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T3.treatment_type_description FROM professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id JOIN Treatment_types AS T3 ON T2.treatment_type_code  =  T3.treatment_type_code",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "treatment types",
             "professionals",
-            "treatment types"
+            "treatments"
         ]
     },
     {
@@ -10890,9 +10896,10 @@
         "SQL": "SELECT DISTINCT T1.first_name ,  T3.treatment_type_description FROM professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id JOIN Treatment_types AS T3 ON T2.treatment_type_code  =  T3.treatment_type_code",
         "DB_result": "dog_kennels",
         "TAB_result": [
-            "treatments",
+            "treatment types",
             "professionals",
-            "treatment types"
+            "treatments",
+            "owners"
         ]
     },
     {
@@ -10913,8 +10920,7 @@
         "SQL": "SELECT count(*) FROM singer",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
-            "singer in concert"
+            "singer"
         ]
     },
     {
@@ -11084,8 +11090,8 @@
         "SQL": "SELECT T2.Title ,  T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11095,8 +11101,8 @@
         "SQL": "SELECT T2.Title ,  T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11106,8 +11112,8 @@
         "SQL": "SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11117,8 +11123,8 @@
         "SQL": "SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11148,8 +11154,8 @@
         "SQL": "SELECT T1.Name ,  sum(T2.Sales) FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11159,8 +11165,8 @@
         "SQL": "SELECT T1.Name ,  sum(T2.Sales) FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11180,8 +11186,8 @@
         "SQL": "SELECT Name FROM singer WHERE Singer_ID NOT IN (SELECT Singer_ID FROM song)",
         "DB_result": "singer",
         "TAB_result": [
-            "song",
-            "singer"
+            "singer",
+            "song"
         ]
     },
     {
@@ -11211,10 +11217,9 @@
         "SQL": "SELECT count(*) FROM Other_Available_Features",
         "DB_result": "real_estate_properties",
         "TAB_result": [
-            "properties",
             "reference feature types",
-            "other available features",
-            "other property features"
+            "other property features",
+            "other available features"
         ]
     },
     {
@@ -11235,8 +11240,8 @@
         "SQL": "SELECT T2.property_type_description FROM Properties AS T1 JOIN Ref_Property_Types AS T2 ON T1.property_type_code  =  T2.property_type_code GROUP BY T1.property_type_code",
         "DB_result": "real_estate_properties",
         "TAB_result": [
-            "reference property types",
-            "properties"
+            "properties",
+            "reference property types"
         ]
     },
     {
@@ -11246,8 +11251,8 @@
         "SQL": "SELECT property_name FROM Properties WHERE property_type_code  =  \"House\" UNION SELECT property_name FROM Properties WHERE property_type_code  =  \"Apartment\" AND room_count  >  1",
         "DB_result": "real_estate_properties",
         "TAB_result": [
-            "properties",
-            "reference property types"
+            "reference property types",
+            "properties"
         ]
     }
 ]

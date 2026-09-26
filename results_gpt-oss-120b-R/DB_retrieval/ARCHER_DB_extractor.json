@@ -389,7 +389,7 @@
         "db_id": "customers_and_products_contacts",
         "question": "What is the total spend for Sterling to date?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "bike_1"
+        "DB_result": "soccer_1"
     },
     {
         "question_id": 56,
@@ -410,21 +410,21 @@
         "db_id": "customers_and_products_contacts",
         "question": "Sterling is a member and gets a 20% discount on all products. How much has he spent so far?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 - 1.0 * 20 / 100 ) ) AS cost_after_discount FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "customers_and_products_contacts"
+        "DB_result": "riding_club"
     },
     {
         "question_id": 59,
         "db_id": "customers_and_products_contacts",
         "question": "Calculate Sterling's spend to date factoring in a 20% member price discount.",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 - 1.0 * 20 / 100 ) ) AS cost_after_discount FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "driving_school"
+        "DB_result": "bike_1"
     },
     {
         "question_id": 60,
         "db_id": "customers_and_products_contacts",
         "question": "Sterling is a member and gets a 20% discount on all products. How much has he saved so far?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 * 20 / 100 ) ) AS svaed_money FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "customers_and_products_contacts"
+        "DB_result": "riding_club"
     },
     {
         "question_id": 61,
@@ -718,7 +718,7 @@
         "db_id": "customers_and_products_contacts",
         "question": "List the year in record and the annual sales revenue for each year.",
         "SQL": "SELECT strftime ( \"%Y\" , A.order_date ) AS year , SUM ( B.order_quantity * C.product_price ) AS annual_sales_revenue FROM Customer_Orders A JOIN Order_Items B ON A.order_id = B.order_id JOIN Products C ON B.product_id = C.product_id GROUP BY strftime ( \"%Y\" , A.order_date )",
-        "DB_result": "concert_singer"
+        "DB_result": "formula_1"
     },
     {
         "question_id": 103,
@@ -1957,7 +1957,7 @@
         "db_id": "riding_club",
         "question": "Out of contestants winning the championship, how many of them are small businessman as a proportion?",
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM ( SELECT * FROM player WHERE Rank = \"1st\" GROUP BY Player_ID ) ) AS propotion FROM ( SELECT * FROM player WHERE Rank = \"1st\" AND Occupation = \"Small Businessman\" GROUP BY Player_ID )",
-        "DB_result": "riding_club"
+        "DB_result": "formula_1"
     },
     {
         "question_id": 280,
@@ -1992,7 +1992,7 @@
         "db_id": "riding_club",
         "question": "If Fiona Shiells won the first place instead, what is the probability of a contestant guided by Jameson Tomas winning the championship?",
         "SQL": "SELECT 1.0 * ( COUNT ( * ) + ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Player_name = \"Fiona Shiells\" ) ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" ) AS prob FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Rank = \"1st\" AND A.Player_name != \"Fiona Shiells\"",
-        "DB_result": "riding_club"
+        "DB_result": "formula_1"
     },
     {
         "question_id": 285,

@@ -221,8 +221,8 @@
         "SQL": "SELECT end_station_name , MAX ( duration ) AS max_duration , MIN ( duration ) AS min_duration , MAX ( duration ) - MIN ( duration ) AS diff FROM trip GROUP BY end_station_name",
         "DB_result": "bike_1",
         "TAB_result": [
-            "trip",
-            "station"
+            "station",
+            "trip"
         ]
     },
     {
@@ -232,8 +232,8 @@
         "SQL": "SELECT end_station_name , MAX ( duration ) AS max_duration , MIN ( duration ) AS min_duration , MAX ( duration ) - MIN ( duration ) AS diff FROM trip GROUP BY end_station_name",
         "DB_result": "bike_1",
         "TAB_result": [
-            "trip",
-            "station"
+            "station",
+            "trip"
         ]
     },
     {
@@ -243,7 +243,8 @@
         "SQL": "SELECT date FROM weather WHERE zip_code = \"94107\" AND max_temperature_f - min_temperature_f = ( SELECT MAX ( max_temperature_f - min_temperature_f ) FROM weather WHERE zip_code = \"94107\" )",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather"
+            "weather",
+            "trip"
         ]
     },
     {
@@ -308,7 +309,8 @@
         "SQL": "SELECT date , 1.0 * ( MAX ( mean_temperature_f ) - 32 ) * 5 / 9 AS celsius FROM weather WHERE zip_code = \"94107\"",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather"
+            "weather",
+            "trip"
         ]
     },
     {
@@ -318,7 +320,8 @@
         "SQL": "SELECT date , 1.0 * ( MAX ( mean_temperature_f ) - 32 ) * 5 / 9 AS celsius FROM weather WHERE zip_code = \"94107\"",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather"
+            "weather",
+            "trip"
         ]
     },
     {
@@ -361,8 +364,7 @@
         "SQL": "SELECT zip_code , mean_wind_speed_mph * ( 1 + 0.2 ) * 1.609344 AS km_per_h FROM weather WHERE date = \"1/1/2014\"",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather",
-            "trip"
+            "weather"
         ]
     },
     {
@@ -558,7 +560,8 @@
         "SQL": "SELECT ( AVG ( max_temperature_f ) - 32 ) * 5 / 9 AS avg_max_celsius , ( ( AVG ( max_temperature_f ) - AVG ( min_temperature_f ) ) ) * 5 / 9 AS diff_celsius FROM weather WHERE zip_code = \"94063\"",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather"
+            "weather",
+            "trip"
         ]
     },
     {
@@ -568,8 +571,7 @@
         "SQL": "SELECT ( AVG ( max_temperature_f ) - 32 ) * 5 / 9 AS avg_max_celsius , ( ( AVG ( max_temperature_f ) - AVG ( min_temperature_f ) ) ) * 5 / 9 AS diff_celsius FROM weather WHERE zip_code = \"94063\"",
         "DB_result": "bike_1",
         "TAB_result": [
-            "weather",
-            "trip"
+            "weather"
         ]
     },
     {
@@ -587,7 +589,7 @@
         "db_id": "customers_and_products_contacts",
         "question": "What is the total spend for Sterling to date?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "bike_1",
+        "DB_result": "soccer_1",
         "TAB_result": [
             "NONE"
         ]
@@ -599,10 +601,10 @@
         "SQL": "SELECT SUM ( cost ) FROM ( SELECT SUM ( C.order_quantity * 600 ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name = \"gucci\" UNION SELECT SUM ( C.order_quantity * D.product_price ) AS ost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name != \"gucci\" )",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Customer_Orders",
             "Customers",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -612,10 +614,10 @@
         "SQL": "SELECT SUM ( cost ) FROM ( SELECT SUM ( C.order_quantity * 600 ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name = \"gucci\" UNION SELECT SUM ( C.order_quantity * D.product_price ) AS ost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name != \"gucci\" )",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -623,13 +625,9 @@
         "db_id": "customers_and_products_contacts",
         "question": "Sterling is a member and gets a 20% discount on all products. How much has he spent so far?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 - 1.0 * 20 / 100 ) ) AS cost_after_discount FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "customers_and_products_contacts",
+        "DB_result": "riding_club",
         "TAB_result": [
-            "Customers",
-            "Order_Items",
-            "Customer_Orders",
-            "Products",
-            "Contacts"
+            "NONE"
         ]
     },
     {
@@ -637,12 +635,9 @@
         "db_id": "customers_and_products_contacts",
         "question": "Calculate Sterling's spend to date factoring in a 20% member price discount.",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 - 1.0 * 20 / 100 ) ) AS cost_after_discount FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "driving_school",
+        "DB_result": "bike_1",
         "TAB_result": [
-            "Lessons",
-            "Customers",
-            "Staff",
-            "Customer_Payments"
+            "NONE"
         ]
     },
     {
@@ -650,13 +645,9 @@
         "db_id": "customers_and_products_contacts",
         "question": "Sterling is a member and gets a 20% discount on all products. How much has he saved so far?",
         "SQL": "SELECT SUM ( C.order_quantity * D.product_price * ( 1.0 * 20 / 100 ) ) AS svaed_money FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\"",
-        "DB_result": "customers_and_products_contacts",
+        "DB_result": "riding_club",
         "TAB_result": [
-            "Customers",
-            "Order_Items",
-            "Customer_Orders",
-            "Products",
-            "Contacts"
+            "NONE"
         ]
     },
     {
@@ -667,6 +658,7 @@
         "DB_result": "driving_school",
         "TAB_result": [
             "Customers",
+            "Customer Payments",
             "Lessons"
         ]
     },
@@ -678,12 +670,11 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Addresses",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Customer Orders",
+            "Customer Address History",
+            "Order Items"
         ]
     },
     {
@@ -694,11 +685,11 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Addresses",
             "Products",
-            "Customer_Address_History"
+            "Customer Orders",
+            "Customer Address History",
+            "Order Items"
         ]
     },
     {
@@ -709,10 +700,9 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Contacts"
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -723,10 +713,9 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Contacts"
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -737,10 +726,9 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Contacts"
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -750,10 +738,10 @@
         "SQL": "SELECT cost FROM ( SELECT B.order_date , SUM ( 5.0 * D.product_price ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Cleo\" GROUP BY C.order_id ) ORDER BY order_date DESC LIMIT 1",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -763,8 +751,8 @@
         "SQL": "SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 40.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"Apple\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 20.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 50.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name != \"Apple\" AND B.product_name != \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , 0 , 0 , 0 FROM ( SELECT product_id FROM Products A EXCEPT SELECT B.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id ) A JOIN Products B ON A.product_id = B.product_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -774,8 +762,8 @@
         "SQL": "SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 40.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"Apple\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 20.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 50.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name != \"Apple\" AND B.product_name != \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , 0 , 0 , 0 FROM ( SELECT product_id FROM Products A EXCEPT SELECT B.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id ) A JOIN Products B ON A.product_id = B.product_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -785,8 +773,8 @@
         "SQL": "SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * ( B.product_price * ( 1.0 - 15.0 / 100 ) ) ) AS revenue , SUM ( A.order_quantity * ( B.product_price * ( 1.0 - 15.0 / 100 ) ) ) * ( 1.0 - 40.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"Apple\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 20.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 50.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name != \"Apple\" AND B.product_name != \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , 0 , 0 , 0 FROM ( SELECT product_id FROM Products A EXCEPT SELECT B.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id ) A JOIN Products B ON A.product_id = B.product_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -796,9 +784,8 @@
         "SQL": "SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * ( B.product_price * ( 1.0 - 15.0 / 100 ) ) ) AS revenue , SUM ( A.order_quantity * ( B.product_price * ( 1.0 - 15.0 / 100 ) ) ) * ( 1.0 - 40.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"Apple\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 20.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name = \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , SUM ( A.order_quantity ) AS quantity , SUM ( A.order_quantity * B.product_price ) AS revenue , SUM ( A.order_quantity * B.product_price ) * ( 1.0 - 50.0 / 100 ) AS profit FROM Order_Items A JOIN Products B ON A.product_id = B.product_id WHERE B.product_name != \"Apple\" AND B.product_name != \"gucci\" GROUP BY B.product_id UNION SELECT B.product_id , B.product_name , 0 , 0 , 0 FROM ( SELECT product_id FROM Products A EXCEPT SELECT B.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id ) A JOIN Products B ON A.product_id = B.product_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -808,7 +795,7 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Customer_Orders ) * 100 AS percent FROM Customer_Orders WHERE order_status_code = \"Completed\"",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Customer_Orders"
+            "Customer Orders"
         ]
     },
     {
@@ -818,7 +805,7 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Customer_Orders ) * 100 AS percent FROM Customer_Orders WHERE order_status_code = \"Completed\"",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Customer_Orders"
+            "Customer Orders"
         ]
     },
     {
@@ -828,7 +815,7 @@
         "SQL": "SELECT 100 - 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Customer_Orders ) * 100 AS percent FROM Customer_Orders WHERE strftime ( \"%Y\" , order_date ) >= \"2000\" AND order_status_code != \"Completed\"",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Customer_Orders"
+            "Customer Orders"
         ]
     },
     {
@@ -838,7 +825,7 @@
         "SQL": "SELECT 100 - 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Customer_Orders ) * 100 AS percent FROM Customer_Orders WHERE strftime ( \"%Y\" , order_date ) >= \"2000\" AND order_status_code != \"Completed\"",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Customer_Orders"
+            "Customer Orders"
         ]
     },
     {
@@ -849,10 +836,10 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Contacts"
+            "Customer Orders",
+            "Contacts",
+            "Order Items"
         ]
     },
     {
@@ -863,10 +850,10 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Contacts"
+            "Customer Orders",
+            "Contacts",
+            "Order Items"
         ]
     },
     {
@@ -877,11 +864,10 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Contacts",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -892,11 +878,10 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Customer Orders",
+            "Contacts",
+            "Order Items"
         ]
     },
     {
@@ -906,10 +891,10 @@
         "SQL": "SELECT customer_name, zip_postcode FROM (SELECT C.customer_name, B.zip_postcode, MAX (julianday (A.date_to) - julianday (A.date_from)) FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Customers C ON C.customer_id = A.customer_id GROUP BY A.customer_id HAVING COUNT (*) > 1)",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Contacts",
-            "Customer_Address_History",
+            "Addresses",
+            "Customer Address History",
             "Customers",
-            "Addresses"
+            "Contacts"
         ]
     },
     {
@@ -919,10 +904,10 @@
         "SQL": "SELECT customer_name, zip_postcode FROM (SELECT C.customer_name, B.zip_postcode, MAX (julianday (A.date_to) - julianday (A.date_from)) FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Customers C ON C.customer_id = A.customer_id GROUP BY A.customer_id HAVING COUNT (*) > 1)",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Contacts",
-            "Customer_Address_History",
+            "Addresses",
+            "Customer Address History",
             "Customers",
-            "Addresses"
+            "Contacts"
         ]
     },
     {
@@ -932,9 +917,10 @@
         "SQL": "SELECT C.customer_name, B.zip_postcode FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Customers C ON C.customer_id = A.customer_id GROUP BY A.customer_id HAVING COUNT (*) = 1",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Customer_Address_History",
+            "Addresses",
+            "Customer Address History",
             "Customers",
-            "Addresses"
+            "Contacts"
         ]
     },
     {
@@ -944,8 +930,7 @@
         "SQL": "SELECT C.customer_name, B.zip_postcode FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Customers C ON C.customer_id = A.customer_id GROUP BY A.customer_id HAVING COUNT (*) = 1",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Contacts",
-            "Customer_Address_History",
+            "Customer Address History",
             "Customers",
             "Addresses"
         ]
@@ -958,11 +943,9 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -972,10 +955,11 @@
         "SQL": "SELECT customer_id , customer_name , customer_email , price AS last_order_price FROM ( SELECT M.customer_id , N.customer_name , N.customer_email , M.price , MAX ( M.order_date ) FROM ( SELECT B.customer_id , B.order_id , B.order_date , SUM ( A.order_quantity * C.product_price ) AS price FROM Order_Items A JOIN Customer_Orders B ON A.order_id = B.order_id JOIN Products C ON C.product_id = A.product_id GROUP BY B.customer_id , B.order_id ) M JOIN Customers N ON M.customer_id = N.customer_id WHERE M.customer_id IN ( SELECT customer_id FROM Customer_Orders GROUP BY customer_id HAVING strftime ( \"%Y\" , MAX ( order_date ) ) < \"2000\" ) GROUP BY M.customer_id )",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Customer Address History",
+            "Order Items"
         ]
     },
     {
@@ -996,11 +980,9 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -1050,10 +1032,11 @@
         "SQL": "SELECT n_total , 1.0 * n_female / n_total AS female_ratio FROM ( SELECT COUNT ( DISTINCT ( A.customer_id ) ) AS n_female FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Contacts C ON A.customer_id = C.customer_id WHERE B.state_province_county = \"Kentucky\" AND C.gender = \"female\" ) JOIN ( SELECT COUNT ( DISTINCT ( A.customer_id ) ) AS n_total FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id WHERE B.state_province_county = \"Kentucky\" )",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Contacts",
-            "Customer_Address_History",
             "Customers",
-            "Addresses"
+            "Addresses",
+            "Contacts",
+            "Customer Orders",
+            "Customer Address History"
         ]
     },
     {
@@ -1063,8 +1046,9 @@
         "SQL": "SELECT n_total , 1.0 * n_female / n_total AS female_ratio FROM ( SELECT COUNT ( DISTINCT ( A.customer_id ) ) AS n_female FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id JOIN Contacts C ON A.customer_id = C.customer_id WHERE B.state_province_county = \"Kentucky\" AND C.gender = \"female\" ) JOIN ( SELECT COUNT ( DISTINCT ( A.customer_id ) ) AS n_total FROM Customer_Address_History A JOIN Addresses B ON A.address_id = B.address_id WHERE B.state_province_county = \"Kentucky\" )",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
+            "Customer Address History",
+            "Customers",
             "Contacts",
-            "Customer_Address_History",
             "Addresses"
         ]
     },
@@ -1075,8 +1059,8 @@
         "SQL": "SELECT t1.product_id , t1.product_name , MAX ( t1.quantity ) AS max_quantity , t2.diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) t1 JOIN ( SELECT MAX ( quantity ) - MIN ( quantity ) AS diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) ) t2",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -1086,8 +1070,8 @@
         "SQL": "SELECT t1.product_id , t1.product_name , MAX ( t1.quantity ) AS max_quantity , t2.diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) t1 JOIN ( SELECT MAX ( quantity ) - MIN ( quantity ) AS diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) ) t2",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -1097,8 +1081,8 @@
         "SQL": "SELECT t1.product_id , t1.product_name , MAX ( t1.quantity ) + 500 AS max_quantity , t2.diff + 500 FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) t1 JOIN ( SELECT MAX ( quantity ) - MIN ( quantity ) AS diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) ) t2",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -1108,8 +1092,8 @@
         "SQL": "SELECT t1.product_id , t1.product_name , MAX ( t1.quantity ) + 500 AS max_quantity , t2.diff + 500 FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) t1 JOIN ( SELECT MAX ( quantity ) - MIN ( quantity ) AS diff FROM ( SELECT A.product_id , B.product_name , SUM ( order_quantity ) AS quantity FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id UNION SELECT product_id , product_name , 0 AS quantity FROM Products WHERE product_id NOT IN ( SELECT A.product_id FROM Order_Items A JOIN Products B ON A.product_id = B.product_id GROUP BY A.product_id ) ) ) t2",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
-            "Products"
+            "Products",
+            "Order Items"
         ]
     },
     {
@@ -1119,10 +1103,10 @@
         "SQL": "SELECT A.customer_name , B.order_id , ( C.order_quantity * D.product_price ) * ( 1 + 5.0 / 100 ) AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code = \"Credit Card\" GROUP BY A.customer_name , B.order_id UNION SELECT A.customer_name , B.order_id , C.order_quantity * D.product_price AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code != \"Credit Card\" GROUP BY A.customer_name , B.order_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -1132,10 +1116,10 @@
         "SQL": "SELECT A.customer_name , B.order_id , ( C.order_quantity * D.product_price ) * ( 1 + 5.0 / 100 ) AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code = \"Credit Card\" GROUP BY A.customer_name , B.order_id UNION SELECT A.customer_name , B.order_id , C.order_quantity * D.product_price AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code != \"Credit Card\" GROUP BY A.customer_name , B.order_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -1145,10 +1129,10 @@
         "SQL": "SELECT A.customer_name , B.order_id , ( C.order_quantity * 99 ) * ( 1 + 5.0 / 100 ) AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code = \"Credit Card\" GROUP BY A.customer_name , B.order_id UNION SELECT A.customer_name , B.order_id , C.order_quantity * 99 AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code != \"Credit Card\" GROUP BY A.customer_name , B.order_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -1158,10 +1142,10 @@
         "SQL": "SELECT A.customer_name , B.order_id , ( C.order_quantity * 99 ) * ( 1 + 5.0 / 100 ) AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code = \"Credit Card\" GROUP BY A.customer_name , B.order_id UNION SELECT A.customer_name , B.order_id , C.order_quantity * 99 AS cost_plus_fee FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.payment_method_code != \"Credit Card\" GROUP BY A.customer_name , B.order_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Order Items"
         ]
     },
     {
@@ -1169,7 +1153,7 @@
         "db_id": "customers_and_products_contacts",
         "question": "List the year in record and the annual sales revenue for each year.",
         "SQL": "SELECT strftime ( \"%Y\" , A.order_date ) AS year , SUM ( B.order_quantity * C.product_price ) AS annual_sales_revenue FROM Customer_Orders A JOIN Order_Items B ON A.order_id = B.order_id JOIN Products C ON B.product_id = C.product_id GROUP BY strftime ( \"%Y\" , A.order_date )",
-        "DB_result": "concert_singer",
+        "DB_result": "formula_1",
         "TAB_result": [
             "NONE"
         ]
@@ -1221,10 +1205,10 @@
         "SQL": "SELECT customer_id , strftime ( \"%Y\" , date_became_customer ) - strftime ( \"%Y\" , date_of_birth ) - ( strftime ( \"%m-%d\" , date_became_customer ) < strftime ( \"%m-%d\" , date_of_birth ) ) AS age FROM Customers",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Lessons",
-            "Customers",
             "Staff",
-            "Customer_Payments"
+            "Customers",
+            "Customer Payments",
+            "Lessons"
         ]
     },
     {
@@ -1234,8 +1218,7 @@
         "SQL": "SELECT customer_id, strftime (\"%Y\", date_became_customer) - strftime (\"%Y\", date_of_birth) - (strftime (\"%m-%d\", date_became_customer) < strftime (\"%m-%d\", date_of_birth)) AS age FROM Customers WHERE NOT (first_name = \"Dameon\" AND last_name = \"Sanford\") UNION ALL SELECT customer_id, strftime (\"%Y\", date_became_customer) - strftime (\"%Y\", \"2001-01-01\") - (strftime (\"%m-%d\", date_became_customer) < strftime (\"%m-%d\", \"2001-01-01\")) AS age FROM Customers WHERE first_name = \"Dameon\" AND last_name = \"Sanford\"",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Customers",
-            "Staff"
+            "Customers"
         ]
     },
     {
@@ -1245,8 +1228,8 @@
         "SQL": "SELECT customer_id, strftime (\"%Y\", date_became_customer) - strftime (\"%Y\", date_of_birth) - (strftime (\"%m-%d\", date_became_customer) < strftime (\"%m-%d\", date_of_birth)) AS age FROM Customers WHERE NOT (first_name = \"Dameon\" AND last_name = \"Sanford\") UNION ALL SELECT customer_id, strftime (\"%Y\", date_became_customer) - strftime (\"%Y\", \"2001-01-01\") - (strftime (\"%m-%d\", date_became_customer) < strftime (\"%m-%d\", \"2001-01-01\")) AS age FROM Customers WHERE first_name = \"Dameon\" AND last_name = \"Sanford\"",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Customers",
-            "Staff"
+            "Staff",
+            "Customers"
         ]
     },
     {
@@ -1297,6 +1280,7 @@
         "DB_result": "driving_school",
         "TAB_result": [
             "Staff",
+            "Customers",
             "Lessons"
         ]
     },
@@ -1340,8 +1324,7 @@
         "SQL": "SELECT staff_id FROM Staff ORDER BY julianday ( date_left_staff ) - julianday ( date_joined_staff ) DESC LIMIT 1",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Staff",
-            "Lessons"
+            "Staff"
         ]
     },
     {
@@ -1361,7 +1344,8 @@
         "SQL": "SELECT staff_id FROM (SELECT staff_id, strftime (\"%Y-%m-%d\", julianday (date_of_birth) + 21 * 365.25) AS date_joined_staff, date_left_staff FROM Staff WHERE first_name = \"Lincoln\" AND middle_name = \"Benny\" AND last_name = \"Carroll\" UNION ALL SELECT staff_id, date_joined_staff, date_left_staff FROM Staff WHERE NOT (first_name = \"Lincoln\" AND middle_name = \"Benny\" AND last_name = \"Carroll\") ) ORDER BY julianday (date_left_staff) - julianday (date_joined_staff) DESC LIMIT 1",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Staff"
+            "Staff",
+            "Lessons"
         ]
     },
     {
@@ -1499,7 +1483,6 @@
         "SQL": "SELECT staff_id , AVG ( price ) - ( SELECT AVG ( price ) FROM ( SELECT A.staff_id , B.first_name , B.middle_name , B.last_name , A.price * ( 1 - 0.12 ) AS price FROM Lessons A JOIN Staff B ON A.staff_id = B.staff_id WHERE B.first_name = \"Winnifred\" AND B.middle_name = \"Liam\" AND B.last_name = \"Jast\" UNION ALL SELECT A.staff_id , B.first_name , B.middle_name , B.last_name , A.price FROM Lessons A JOIN Staff B ON A.staff_id = B.staff_id WHERE NOT ( B.first_name = \"Winnifred\" AND B.middle_name = \"Liam\" AND B.last_name = \"Jast\" ) ) GROUP BY staff_id ORDER BY AVG ( price ) ASC LIMIT 1 ) AS diff FROM ( SELECT A.staff_id , B.first_name , B.middle_name , B.last_name , A.price * ( 1 - 0.12 ) AS price FROM Lessons A JOIN Staff B ON A.staff_id = B.staff_id WHERE B.first_name = \"Winnifred\" AND B.middle_name = \"Liam\" AND B.last_name = \"Jast\" UNION ALL SELECT A.staff_id , B.first_name , B.middle_name , B.last_name , A.price FROM Lessons A JOIN Staff B ON A.staff_id = B.staff_id WHERE NOT ( B.first_name = \"Winnifred\" AND B.middle_name = \"Liam\" AND B.last_name = \"Jast\" ) ) GROUP BY staff_id ORDER BY AVG ( price ) DESC LIMIT 1",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "coach"
         ]
     },
@@ -1511,8 +1494,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -1523,8 +1506,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -1535,8 +1518,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
             "coach",
+            "player coach",
             "club"
         ]
     },
@@ -1547,9 +1530,9 @@
         "SQL": "SELECT 100.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Customers ) AS percent FROM ( SELECT customer_id FROM ( SELECT customer_id , ( SELECT staff_id FROM Staff WHERE first_name = \"Winnifred\" AND middle_name = \"Liam\" AND last_name = \"Jast\" ) AS staff_id FROM Lessons WHERE lesson_id = \"12\" UNION ALL SELECT customer_id , staff_id FROM Lessons WHERE lesson_id != \"12\" ) GROUP BY customer_id HAVING COUNT ( DISTINCT ( staff_id ) ) >= 2 )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
             "coach",
+            "player coach",
             "club"
         ]
     },
@@ -1571,8 +1554,7 @@
         "SQL": "SELECT strftime ( \"%Y\" , MAX ( date_of_birth ) ) - strftime ( \"%Y\" , MIN ( date_of_birth ) ) - ( strftime ( \"%m-%d\" , MAX ( date_of_birth ) ) < strftime ( \"%m-%d\" , MIN ( date_of_birth ) ) ) AS diff FROM Staff",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Staff",
-            "Customers"
+            "Staff"
         ]
     },
     {
@@ -1582,8 +1564,7 @@
         "SQL": "SELECT MAX ( date_of_birth ) - MIN ( date_of_birth ) AS diff FROM ( SELECT 2020 - ( 2020 - 2009 ) * 2 AS date_of_birth FROM Staff WHERE first_name = \"Camylle\" AND middle_name = \"Icie\" AND last_name = \"Weissnat\" UNION ALL SELECT date_of_birth FROM Staff WHERE NOT ( first_name = \"Camylle\" AND middle_name = \"Icie\" AND last_name = \"Weissnat\" ) ) ORDER BY date_of_birth DESC",
         "DB_result": "driving_school",
         "TAB_result": [
-            "Staff",
-            "Customers"
+            "Staff"
         ]
     },
     {
@@ -1593,7 +1574,8 @@
         "SQL": "SELECT MAX ( date_of_birth ) - MIN ( date_of_birth ) AS diff FROM ( SELECT 2020 - ( 2020 - 2009 ) * 2 AS date_of_birth FROM Staff WHERE first_name = \"Camylle\" AND middle_name = \"Icie\" AND last_name = \"Weissnat\" UNION ALL SELECT date_of_birth FROM Staff WHERE NOT ( first_name = \"Camylle\" AND middle_name = \"Icie\" AND last_name = \"Weissnat\" ) ) ORDER BY date_of_birth DESC",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "NONE"
+            "Physician",
+            "Nurse"
         ]
     },
     {
@@ -1648,11 +1630,11 @@
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
             "Customers",
-            "Order_Items",
-            "Customer_Orders",
             "Products",
-            "Customer_Address_History",
-            "Contacts"
+            "Contacts",
+            "Customer Orders",
+            "Customer Address History",
+            "Order Items"
         ]
     },
     {
@@ -1662,10 +1644,12 @@
         "SQL": "SELECT A.customer_id , MAX ( A.amount_payment ) - ( SELECT MIN ( amount_payment ) FROM Customer_Payments ) AS payment_diff FROM Customer_Payments A JOIN Customers B ON A.customer_id = B.customer_id",
         "DB_result": "customers_and_products_contacts",
         "TAB_result": [
-            "Order_Items",
             "Customers",
-            "Customer_Orders",
-            "Products"
+            "Products",
+            "Customer Orders",
+            "Contacts",
+            "Customer Address History",
+            "Order Items"
         ]
     },
     {
@@ -1676,7 +1660,7 @@
         "DB_result": "driving_school",
         "TAB_result": [
             "Customers",
-            "Customer_Payments"
+            "Customer Payments"
         ]
     },
     {
@@ -1687,7 +1671,7 @@
         "DB_result": "driving_school",
         "TAB_result": [
             "Customers",
-            "Customer_Payments"
+            "Customer Payments"
         ]
     },
     {
@@ -1697,7 +1681,6 @@
         "SQL": "SELECT AVG ( strftime ( \"%Y\" , \"now\" ) - strftime ( \"%Y\" , A.date_of_birth ) - ( strftime ( \"%m-%d\" , \"now\" ) < strftime ( \"%m-%d\" , A.date_of_birth ) ) ) AS avg_age FROM Staff A JOIN Addresses B ON A.staff_address_id = B.address_id WHERE B.state_province_county = \"Georgia\" AND B.city = \"Lake Elaina\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player",
             "coach"
         ]
     },
@@ -1708,9 +1691,9 @@
         "SQL": "SELECT AVG ( strftime ( \"%Y\" , \"now\" ) - strftime ( \"%Y\" , A.date_of_birth ) - ( strftime ( \"%m-%d\" , \"now\" ) < strftime ( \"%m-%d\" , A.date_of_birth ) ) ) AS avg_age FROM Staff A JOIN Addresses B ON A.staff_address_id = B.address_id WHERE B.state_province_county = \"Georgia\" AND B.city = \"Lake Elaina\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -1750,8 +1733,7 @@
         "SQL": "SELECT * FROM ( SELECT 5 + strftime ( \"%Y\" , date_left_staff ) - strftime ( \"%Y\" , date_of_birth ) - ( strftime ( \"%m-%d\" , date_left_staff ) < strftime ( \"%m-%d\" , date_of_birth ) ) AS age FROM Staff WHERE first_name = \"Janessa\" AND middle_name = \"Amara\" AND last_name = \"Sawayn\" ) JOIN ( SELECT date_of_birth - ( SELECT date_of_birth FROM Staff WHERE first_name = \"Janessa\" AND middle_name = \"Amara\" AND last_name = \"Sawayn\" ) AS diff FROM Staff WHERE first_name = \"Camylle\" AND middle_name = \"Icie\" AND last_name = \"Weissnat\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
-            "stadium"
+            "singer"
         ]
     },
     {
@@ -1821,18 +1803,13 @@
         "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || q1 ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "constructorResults",
-            "constructors",
-            "qualifying",
-            "constructorStandings",
-            "circuits",
-            "pitStops",
-            "races",
             "lapTimes",
+            "pitStops",
+            "results",
+            "drivers",
             "driverStandings",
-            "seasons",
-            "drivers"
+            "races",
+            "qualifying"
         ]
     },
     {
@@ -1842,15 +1819,14 @@
         "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || q1 ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
         "DB_result": "formula_1",
         "TAB_result": [
+            "circuits",
+            "constructors",
             "results",
-            "qualifying",
-            "constructorStandings",
-            "pitStops",
-            "races",
-            "lapTimes",
             "driverStandings",
             "seasons",
-            "drivers"
+            "constructorStandings",
+            "races",
+            "qualifying"
         ]
     },
     {
@@ -1860,18 +1836,8 @@
         "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || \"1:26.026\" ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "constructorResults",
-            "constructors",
-            "driverStandings",
-            "qualifying",
-            "constructorStandings",
-            "pitStops",
             "races",
-            "lapTimes",
-            "circuits",
-            "seasons",
-            "drivers"
+            "qualifying"
         ]
     },
     {
@@ -1881,18 +1847,16 @@
         "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || \"1:26.026\" ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "constructorResults",
-            "constructors",
-            "driverStandings",
-            "qualifying",
-            "constructorStandings",
-            "pitStops",
-            "races",
             "lapTimes",
-            "circuits",
+            "pitStops",
+            "constructorResults",
+            "results",
+            "drivers",
+            "driverStandings",
             "seasons",
-            "drivers"
+            "constructorStandings",
+            "races",
+            "qualifying"
         ]
     },
     {
@@ -1932,7 +1896,9 @@
         "SQL": "SELECT name FROM circuits ORDER BY ABS ( lat - ( - 23.4394 ) ) DESC LIMIT 1",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits"
+            "races",
+            "circuits",
+            "constructors"
         ]
     },
     {
@@ -1986,8 +1952,8 @@
         "SQL": "SELECT n_france - n_italy FROM ( SELECT COUNT ( * ) AS n_france FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.Country = \"France\" ) JOIN ( SELECT COUNT ( * ) AS n_italy FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.Country = \"Italy\" )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -1997,8 +1963,8 @@
         "SQL": "SELECT n_france - n_italy FROM ( SELECT COUNT ( * ) AS n_france FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.Country = \"France\" ) JOIN ( SELECT COUNT ( * ) AS n_italy FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.Country = \"Italy\" )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2008,8 +1974,8 @@
         "SQL": "SELECT n_north , n_south , n_north - n_south FROM ( SELECT COUNT ( * ) AS n_north FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.lat > 0 ) JOIN ( SELECT COUNT ( * ) AS n_south FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.lat < 0 )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2019,8 +1985,8 @@
         "SQL": "SELECT n_north , n_south , n_north - n_south FROM ( SELECT COUNT ( * ) AS n_north FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.lat > 0 ) JOIN ( SELECT COUNT ( * ) AS n_south FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.lat < 0 )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2030,9 +1996,10 @@
         "SQL": "SELECT forename_slowest , surname_slowest , forename_fastest , surname_fastest , time ( ( strftime ( \"%s\" , \"00:0\" || slowest_q1 ) - strftime ( \"%s\" , \"00:0\" || fastest_q1 ) ) , \"unixepoch\" ) AS diff FROM ( SELECT MAX ( A.q1 ) AS slowest_q1 , D.forename AS forename_slowest , D.surname AS surname_slowest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" ) JOIN ( SELECT MIN ( A.q1 ) AS fastest_q1 , D.forename AS forename_fastest , D.surname AS surname_fastest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" AND A.q1 != \"\" )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "qualifying",
+            "lapTimes",
             "races",
-            "drivers"
+            "drivers",
+            "qualifying"
         ]
     },
     {
@@ -2116,8 +2083,6 @@
         "SQL": "SELECT DISTINCT B.forename , B.surname FROM results A JOIN drivers B ON A.driverId = B.driverId WHERE CAST ( milliseconds AS INT ) > 1.5 * 93000",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "pitStops",
             "lapTimes",
             "drivers"
         ]
@@ -2129,9 +2094,9 @@
         "SQL": "SELECT DISTINCT B.forename , B.surname FROM results A JOIN drivers B ON A.driverId = B.driverId WHERE CAST ( milliseconds AS INT ) > 1.5 * 93000",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "pitStops",
             "lapTimes",
+            "pitStops",
+            "results",
             "drivers"
         ]
     },
@@ -2142,8 +2107,8 @@
         "SQL": "SELECT B.location , COUNT ( * ) AS num_races FROM races A JOIN circuits B ON A.circuitId = B.circuitId GROUP BY B.location HAVING COUNT ( * ) > 3 * ( SELECT COUNT ( * ) FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.location = \"Lisbon\" )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2153,8 +2118,8 @@
         "SQL": "SELECT B.location , COUNT ( * ) AS num_races FROM races A JOIN circuits B ON A.circuitId = B.circuitId GROUP BY B.location HAVING COUNT ( * ) > 3 * ( SELECT COUNT ( * ) FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE B.location = \"Lisbon\" )",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2164,8 +2129,8 @@
         "SQL": "SELECT B.location , COUNT ( * ) AS num_races FROM races A JOIN circuits B ON A.circuitId = B.circuitId GROUP BY B.location HAVING COUNT ( * ) > 3 * 5",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2175,8 +2140,8 @@
         "SQL": "SELECT B.location , COUNT ( * ) AS num_races FROM races A JOIN circuits B ON A.circuitId = B.circuitId GROUP BY B.location HAVING COUNT ( * ) > 3 * 5",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2250,9 +2215,18 @@
         "SQL": "SELECT 1.0 * n_p / n_all FROM ( SELECT COUNT ( DISTINCT A.driverId ) AS n_p FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" AND C.name = \"United States Grand Prix\" AND C.year = \"2006\" ) JOIN ( SELECT COUNT ( DISTINCT A.driverId ) AS n_all FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" )",
         "DB_result": "formula_1",
         "TAB_result": [
+            "lapTimes",
+            "pitStops",
+            "circuits",
+            "constructors",
+            "constructorResults",
             "results",
+            "drivers",
+            "driverStandings",
+            "seasons",
+            "constructorStandings",
             "races",
-            "drivers"
+            "qualifying"
         ]
     },
     {
@@ -2262,9 +2236,9 @@
         "SQL": "SELECT 1.0 * n_p / n_all FROM ( SELECT COUNT ( DISTINCT A.driverId ) AS n_p FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" AND C.name = \"United States Grand Prix\" AND C.year = \"2006\" ) JOIN ( SELECT COUNT ( DISTINCT A.driverId ) AS n_all FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" )",
         "DB_result": "formula_1",
         "TAB_result": [
+            "races",
             "results",
             "circuits",
-            "races",
             "drivers"
         ]
     },
@@ -2275,9 +2249,8 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT 1.0 * COUNT ( * ) FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"UK\" ) AS ratio FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"USA\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "seasons",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2287,8 +2260,8 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT 1.0 * COUNT ( * ) FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"UK\" ) AS ratio FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"USA\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2298,8 +2271,8 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / 10 AS ratio FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"USA\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2309,8 +2282,8 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / 10 AS ratio FROM races A JOIN circuits B ON A.circuitId = B.circuitId WHERE A.year BETWEEN 2001 AND 2009 AND country = \"USA\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "circuits",
-            "races"
+            "races",
+            "circuits"
         ]
     },
     {
@@ -2321,12 +2294,7 @@
         "DB_result": "formula_1",
         "TAB_result": [
             "results",
-            "constructors",
-            "qualifying",
-            "pitStops",
             "races",
-            "lapTimes",
-            "driverStandings",
             "drivers"
         ]
     },
@@ -2373,11 +2341,13 @@
         "SQL": "SELECT CAST ( julianday ( A.StayEnd ) - julianday ( A.StayStart ) AS INTEGER ) AS days_diff FROM Stay A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"John Smith\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
             "Physician",
-            "Nurse",
             "Stay",
-            "Department"
+            "Department",
+            "Patient",
+            "Medication",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2387,12 +2357,11 @@
         "SQL": "SELECT CAST ( julianday ( A.StayEnd ) - julianday ( A.StayStart ) AS INTEGER ) AS days_diff FROM Stay A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"John Smith\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
             "Physician",
-            "Nurse",
             "Stay",
             "Department",
-            "Procedures"
+            "Patient",
+            "Nurse"
         ]
     },
     {
@@ -2402,7 +2371,9 @@
         "SQL": "SELECT julianday ( strftime ( \"%Y-\" , A.StayEnd ) || \"05-12\" ) - julianday ( strftime ( \"%Y-\" , A.StayStart ) || strftime ( \"%m-%d\" , A.StayStart ) ) AS date_diff FROM Stay A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"John Smith\"",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
             "Stay",
+            "Department",
             "Patient",
             "Nurse"
         ]
@@ -2414,7 +2385,9 @@
         "SQL": "SELECT julianday ( strftime ( \"%Y-\" , A.StayEnd ) || \"05-12\" ) - julianday ( strftime ( \"%Y-\" , A.StayStart ) || strftime ( \"%m-%d\" , A.StayStart ) ) AS date_diff FROM Stay A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"John Smith\"",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
             "Stay",
+            "Department",
             "Patient",
             "Nurse"
         ]
@@ -2426,12 +2399,12 @@
         "SQL": "SELECT COUNT ( DISTINCT ( Patient ) ) - ( SELECT COUNT ( DISTINCT ( Patient ) ) FROM Medication A JOIN Prescribes B ON A.code = B.Medication WHERE A.Brand = \"Baz Industries\" ) AS diff FROM Medication A JOIN Prescribes B ON A.code = B.Medication WHERE A.Brand = \"Foo Labs\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Undergoes",
-            "Appointment",
-            "Medication",
-            "Patient",
+            "Prescribes",
             "Stay",
-            "Prescribes"
+            "Undergoes",
+            "Patient",
+            "Medication",
+            "Appointment"
         ]
     },
     {
@@ -2441,12 +2414,9 @@
         "SQL": "SELECT COUNT ( DISTINCT ( Patient ) ) - ( SELECT COUNT ( DISTINCT ( Patient ) ) FROM Medication A JOIN Prescribes B ON A.code = B.Medication WHERE A.Brand = \"Baz Industries\" ) AS diff FROM Medication A JOIN Prescribes B ON A.code = B.Medication WHERE A.Brand = \"Foo Labs\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Undergoes",
-            "Appointment",
+            "Prescribes",
             "Medication",
-            "Patient",
-            "Stay",
-            "Prescribes"
+            "Patient"
         ]
     },
     {
@@ -2457,8 +2427,11 @@
         "DB_result": "hospital_1",
         "TAB_result": [
             "Prescribes",
+            "Stay",
+            "Undergoes",
             "Patient",
-            "Medication"
+            "Medication",
+            "Appointment"
         ]
     },
     {
@@ -2480,12 +2453,8 @@
         "SQL": "SELECT 1.0 * MAX ( c ) / MIN ( c ) AS times FROM ( SELECT Physician , COUNT ( * ) AS c FROM Appointment GROUP BY Physician )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Undergoes",
-            "Appointment",
             "Physician",
-            "Trained_In",
-            "Prescribes",
-            "Affiliated_With"
+            "Appointment"
         ]
     },
     {
@@ -2495,12 +2464,12 @@
         "SQL": "SELECT 1.0 * MAX ( c ) / MIN ( c ) AS times FROM ( SELECT Physician , COUNT ( * ) AS c FROM Appointment GROUP BY Physician )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
+            "Trained In",
+            "Prescribes",
             "Undergoes",
             "Appointment",
-            "Physician",
-            "Trained_In",
-            "Prescribes",
-            "Affiliated_With"
+            "Affiliated With"
         ]
     },
     {
@@ -2510,8 +2479,12 @@
         "SQL": "SELECT 1.0 * MAX ( c ) / ( MIN ( c ) + 2 ) AS times FROM ( SELECT Physician , COUNT ( * ) AS c FROM Appointment GROUP BY Physician )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
+            "Trained In",
+            "Prescribes",
+            "Undergoes",
             "Appointment",
-            "Physician"
+            "Affiliated With"
         ]
     },
     {
@@ -2521,10 +2494,12 @@
         "SQL": "SELECT 1.0 * MAX ( c ) / ( MIN ( c ) + 2 ) AS times FROM ( SELECT Physician , COUNT ( * ) AS c FROM Appointment GROUP BY Physician )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
+            "Trained In",
             "Prescribes",
             "Undergoes",
             "Appointment",
-            "Physician"
+            "Affiliated With"
         ]
     },
     {
@@ -2534,16 +2509,13 @@
         "SQL": "SELECT med_cost + pro_cost AS total_cost FROM ( SELECT 2 * SUM ( A.dose ) AS med_cost FROM Prescribes A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"Dennis Doe\" ) JOIN ( SELECT SUM ( COST ) AS pro_cost FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON B.Patient = C.SSN WHERE C.name = \"Dennis Doe\" )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Undergoes",
             "Appointment",
-            "Medication",
-            "Patient",
-            "Physician",
-            "Nurse",
+            "Prescribes",
             "Stay",
-            "Procedures",
-            "Department",
-            "Prescribes"
+            "Undergoes",
+            "Patient",
+            "Medication",
+            "Procedures"
         ]
     },
     {
@@ -2553,11 +2525,11 @@
         "SQL": "SELECT med_cost + pro_cost AS total_cost FROM ( SELECT 2 * SUM ( A.dose ) AS med_cost FROM Prescribes A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"Dennis Doe\" ) JOIN ( SELECT SUM ( COST ) AS pro_cost FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON B.Patient = C.SSN WHERE C.name = \"Dennis Doe\" )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Prescribes",
             "Undergoes",
-            "Medication",
             "Patient",
-            "Procedures",
-            "Prescribes"
+            "Medication",
+            "Procedures"
         ]
     },
     {
@@ -2567,11 +2539,11 @@
         "SQL": "SELECT med_cost + pro_cost + 10 * 2 AS total_cost FROM ( SELECT 2 * SUM ( A.dose ) AS med_cost FROM Prescribes A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"Dennis Doe\" AND A.Date != \"2008-04-30 16:53\" ) JOIN ( SELECT SUM ( COST ) AS pro_cost FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON B.Patient = C.SSN WHERE C.name = \"Dennis Doe\" )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Prescribes",
             "Undergoes",
-            "Medication",
             "Patient",
-            "Procedures",
-            "Prescribes"
+            "Medication",
+            "Procedures"
         ]
     },
     {
@@ -2581,14 +2553,11 @@
         "SQL": "SELECT med_cost + pro_cost + 10 * 2 AS total_cost FROM ( SELECT 2 * SUM ( A.dose ) AS med_cost FROM Prescribes A JOIN Patient B ON A.Patient = B.SSN WHERE B.name = \"Dennis Doe\" AND A.Date != \"2008-04-30 16:53\" ) JOIN ( SELECT SUM ( COST ) AS pro_cost FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON B.Patient = C.SSN WHERE C.name = \"Dennis Doe\" )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Prescribes",
             "Undergoes",
-            "Medication",
             "Patient",
-            "Physician",
-            "Nurse",
-            "Department",
-            "Procedures",
-            "Prescribes"
+            "Medication",
+            "Procedures"
         ]
     },
     {
@@ -2598,8 +2567,8 @@
         "SQL": "SELECT C.name , CAST ( julianday ( A.CertificationExpires ) - julianday ( A.CertificationDate ) AS INTEGER ) AS lifetime FROM Trained_In A JOIN Physician B ON A.Physician = B.EmployeeID JOIN Procedures C ON C.code = A.Treatment WHERE B.name = \"John Wen\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
             "Physician",
+            "Trained In",
             "Procedures"
         ]
     },
@@ -2610,8 +2579,8 @@
         "SQL": "SELECT C.name , CAST ( julianday ( A.CertificationExpires ) - julianday ( A.CertificationDate ) AS INTEGER ) AS lifetime FROM Trained_In A JOIN Physician B ON A.Physician = B.EmployeeID JOIN Procedures C ON C.code = A.Treatment WHERE B.name = \"John Wen\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
-            "Physician"
+            "Physician",
+            "Trained In"
         ]
     },
     {
@@ -2621,9 +2590,13 @@
         "SQL": "SELECT C.name , CAST ( julianday ( A.CertificationExpires ) - julianday ( A.CertificationDate ) AS INTEGER ) + 180 AS lifetime FROM Trained_In A JOIN Physician B ON A.Physician = B.EmployeeID JOIN Procedures C ON C.code = A.Treatment WHERE B.name = \"John Wen\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
             "Physician",
-            "Procedures"
+            "Trained In",
+            "Department",
+            "Patient",
+            "Medication",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2633,9 +2606,11 @@
         "SQL": "SELECT C.name , CAST ( julianday ( A.CertificationExpires ) - julianday ( A.CertificationDate ) AS INTEGER ) + 180 AS lifetime FROM Trained_In A JOIN Physician B ON A.Physician = B.EmployeeID JOIN Procedures C ON C.code = A.Treatment WHERE B.name = \"John Wen\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
             "Physician",
-            "Procedures"
+            "Trained In",
+            "Patient",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2645,9 +2620,13 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Affiliated_With WHERE Department = ( SELECT DepartmentID FROM Department WHERE Name = \"Surgery\" ) ) AS prop FROM ( select * from Affiliated_With as A join department as B on A.Department = B.DepartmentID WHERE B.Name = \"Surgery\" or B.Name = \"General Medicine\" GROUP BY Physician HAVING COUNT ( DISTINCT ( B.Name ) ) = 2 )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
+            "Trained In",
+            "Prescribes",
             "Department",
-            "Affiliated_With",
-            "Physician"
+            "Undergoes",
+            "Appointment",
+            "Affiliated With"
         ]
     },
     {
@@ -2657,9 +2636,9 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Affiliated_With WHERE Department = ( SELECT DepartmentID FROM Department WHERE Name = \"Surgery\" ) ) AS prop FROM ( select * from Affiliated_With as A join department as B on A.Department = B.DepartmentID WHERE B.Name = \"Surgery\" or B.Name = \"General Medicine\" GROUP BY Physician HAVING COUNT ( DISTINCT ( B.Name ) ) = 2 )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
             "Department",
-            "Affiliated_With",
-            "Physician"
+            "Affiliated With"
         ]
     },
     {
@@ -2669,9 +2648,9 @@
         "SQL": "SELECT 1.0 * ( 1 + COUNT ( * ) ) / ( 1 + ( SELECT COUNT ( * ) FROM Affiliated_With as A join Physician as B on A.Physician = B.EmployeeID WHERE B.Name != \"Keith Dudermeister\" and Department = ( SELECT DepartmentID FROM Department WHERE Name = \"Surgery\" ) ) ) AS prop FROM ( select * from Affiliated_With as A join department as B on A.Department = B.DepartmentID join Physician as C on A.Physician = C.EmployeeID WHERE C.Name != \"Keith Dudermeister\" and ( B.Name = \"Surgery\" or B.Name = \"General Medicine\" ) GROUP BY Physician HAVING COUNT ( DISTINCT ( B.Name ) ) = 2 )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
             "Department",
-            "Affiliated_With",
-            "Physician"
+            "Affiliated With"
         ]
     },
     {
@@ -2681,9 +2660,9 @@
         "SQL": "SELECT 1.0 * ( 1 + COUNT ( * ) ) / ( 1 + ( SELECT COUNT ( * ) FROM Affiliated_With as A join Physician as B on A.Physician = B.EmployeeID WHERE B.Name != \"Keith Dudermeister\" and Department = ( SELECT DepartmentID FROM Department WHERE Name = \"Surgery\" ) ) ) AS prop FROM ( select * from Affiliated_With as A join department as B on A.Department = B.DepartmentID join Physician as C on A.Physician = C.EmployeeID WHERE C.Name != \"Keith Dudermeister\" and ( B.Name = \"Surgery\" or B.Name = \"General Medicine\" ) GROUP BY Physician HAVING COUNT ( DISTINCT ( B.Name ) ) = 2 )",
         "DB_result": "hospital_1",
         "TAB_result": [
+            "Physician",
             "Department",
-            "Affiliated_With",
-            "Physician"
+            "Affiliated With"
         ]
     },
     {
@@ -2703,7 +2682,6 @@
         "SQL": "SELECT 1.0 * MAX ( Cost ) / MIN ( Cost ) AS times FROM Procedures",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
             "Procedures"
         ]
     },
@@ -2734,8 +2712,6 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM Procedures ) FROM Procedures WHERE Cost > 1000",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
-            "Undergoes",
             "Procedures"
         ]
     },
@@ -2757,8 +2733,8 @@
         "DB_result": "hospital_1",
         "TAB_result": [
             "Prescribes",
-            "Patient",
-            "Medication"
+            "Medication",
+            "Patient"
         ]
     },
     {
@@ -2769,8 +2745,11 @@
         "DB_result": "hospital_1",
         "TAB_result": [
             "Prescribes",
+            "Stay",
+            "Undergoes",
             "Patient",
-            "Medication"
+            "Medication",
+            "Appointment"
         ]
     },
     {
@@ -2780,9 +2759,12 @@
         "SQL": "SELECT MAX ( A.Cost ) - MIN ( A.Cost ) AS diff FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON C.SSN = B.Patient WHERE C.Name = \"Dennis Doe\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
+            "Physician",
+            "Department",
             "Undergoes",
-            "Procedures"
+            "Patient",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2792,9 +2774,12 @@
         "SQL": "SELECT MAX ( A.Cost ) - MIN ( A.Cost ) AS diff FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON C.SSN = B.Patient WHERE C.Name = \"Dennis Doe\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
+            "Physician",
+            "Department",
             "Undergoes",
-            "Procedures"
+            "Patient",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2804,9 +2789,9 @@
         "SQL": "SELECT ( ( 1 + 0.5 ) * MAX ( A.Cost ) ) - ( ( 1 + 0.5 ) * MIN ( A.Cost ) ) AS diff FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON C.SSN = B.Patient WHERE C.Name = \"Dennis Doe\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
+            "Procedures",
             "Undergoes",
-            "Procedures"
+            "Patient"
         ]
     },
     {
@@ -2816,9 +2801,12 @@
         "SQL": "SELECT ( ( 1 + 0.5 ) * MAX ( A.Cost ) ) - ( ( 1 + 0.5 ) * MIN ( A.Cost ) ) AS diff FROM Procedures A JOIN Undergoes B ON A.Code = B.Procedures JOIN Patient C ON C.SSN = B.Patient WHERE C.Name = \"Dennis Doe\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Patient",
+            "Physician",
+            "Department",
             "Undergoes",
-            "Procedures"
+            "Patient",
+            "Procedures",
+            "Nurse"
         ]
     },
     {
@@ -2848,7 +2836,8 @@
         "SQL": "SELECT 2 * COUNT ( * ) AS n_people FROM Room WHERE Unavailable = \"0\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Room"
+            "Room",
+            "Stay"
         ]
     },
     {
@@ -2858,7 +2847,6 @@
         "SQL": "SELECT 2 * COUNT ( * ) AS n_people FROM Room WHERE Unavailable = \"0\"",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Stay",
             "Room"
         ]
     },
@@ -2909,8 +2897,8 @@
         "SQL": "SELECT A.Name , A.Position , 50 * COUNT ( * ) AS cost FROM Physician A JOIN Trained_In B ON A.EmployeeID = B.Physician GROUP BY A.EmployeeID HAVING COUNT ( * ) = ( SELECT MAX ( training_count ) FROM ( SELECT COUNT ( * ) AS training_count FROM Trained_In GROUP BY Physician ) )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Trained_In",
-            "Physician"
+            "Physician",
+            "Trained In"
         ]
     },
     {
@@ -2920,14 +2908,8 @@
         "SQL": "SELECT A.Name , A.Position , 50 * COUNT ( * ) AS cost FROM Physician A JOIN Trained_In B ON A.EmployeeID = B.Physician GROUP BY A.EmployeeID HAVING COUNT ( * ) = ( SELECT MAX ( training_count ) FROM ( SELECT COUNT ( * ) AS training_count FROM Trained_In GROUP BY Physician ) )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Undergoes",
-            "Appointment",
-            "Patient",
             "Physician",
-            "Nurse",
-            "Trained_In",
-            "Prescribes",
-            "Affiliated_With"
+            "Trained In"
         ]
     },
     {
@@ -2937,8 +2919,8 @@
         "SQL": "SELECT COUNT ( * ) - ( SELECT COUNT ( * ) FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MIN ( BlockFloor ) FROM Room ) ) AS diff FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MAX ( BlockFloor ) FROM Room )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Block",
-            "Room"
+            "Room",
+            "Block"
         ]
     },
     {
@@ -2948,8 +2930,8 @@
         "SQL": "SELECT COUNT ( * ) - ( SELECT COUNT ( * ) FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MIN ( BlockFloor ) FROM Room ) ) AS diff FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MAX ( BlockFloor ) FROM Room )",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Block",
-            "Room"
+            "Room",
+            "Block"
         ]
     },
     {
@@ -2959,8 +2941,8 @@
         "SQL": "SELECT 20 - ( SELECT COUNT ( * ) FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MIN ( BlockFloor ) FROM Room ) ) AS diff",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Block",
-            "Room"
+            "Room",
+            "Block"
         ]
     },
     {
@@ -2970,8 +2952,8 @@
         "SQL": "SELECT 20 - ( SELECT COUNT ( * ) FROM Room WHERE Unavailable = \"0\" AND BlockFloor = ( SELECT MIN ( BlockFloor ) FROM Room ) ) AS diff",
         "DB_result": "hospital_1",
         "TAB_result": [
-            "Block",
-            "Room"
+            "Room",
+            "Block"
         ]
     },
     {
@@ -2982,8 +2964,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -2994,8 +2976,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3005,9 +2987,9 @@
         "SQL": "SELECT 100.0 * ( COUNT ( DISTINCT ( A.Player_ID ) ) + 1 ) / ( SELECT COUNT ( DISTINCT ( Player_ID ) ) FROM player ) AS ratio FROM player_coach A JOIN player B ON A.Player_ID = B.Player_ID WHERE B.Player_name != \"Jim Maloway\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3017,9 +2999,9 @@
         "SQL": "SELECT 100.0 * ( COUNT ( DISTINCT ( A.Player_ID ) ) + 1 ) / ( SELECT COUNT ( DISTINCT ( Player_ID ) ) FROM player ) AS ratio FROM player_coach A JOIN player B ON A.Player_ID = B.Player_ID WHERE B.Player_name != \"Jim Maloway\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3069,7 +3051,7 @@
         "SQL": "SELECT SUM ( Gold + Big_Silver + Small_Silver + Bronze ) AS total_medals FROM club A JOIN match_result B ON A.Club_ID = B.Club_ID WHERE A.Region = \"Russia\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
+            "match result",
             "club"
         ]
     },
@@ -3080,7 +3062,7 @@
         "SQL": "SELECT SUM ( Gold + Big_Silver + Small_Silver + Bronze ) AS total_medals FROM club A JOIN match_result B ON A.Club_ID = B.Club_ID WHERE A.Region = \"Russia\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
+            "match result",
             "club"
         ]
     },
@@ -3091,7 +3073,7 @@
         "SQL": "SELECT SUM ( 2 * Gold + Big_Silver + Small_Silver + Bronze ) AS total_medals FROM club A JOIN match_result B ON A.Club_ID = B.Club_ID WHERE A.Region = \"Russia\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
+            "match result",
             "club"
         ]
     },
@@ -3102,7 +3084,7 @@
         "SQL": "SELECT SUM ( 2 * Gold + Big_Silver + Small_Silver + Bronze ) AS total_medals FROM club A JOIN match_result B ON A.Club_ID = B.Club_ID WHERE A.Region = \"Russia\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
+            "match result",
             "club"
         ]
     },
@@ -3113,10 +3095,10 @@
         "SQL": "SELECT 1.0 * n_1 / n_3 AS times FROM ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_1 FROM match_result WHERE rank = \"1\" ) JOIN ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_3 FROM match_result WHERE rank = \"3\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3126,9 +3108,10 @@
         "SQL": "SELECT 1.0 * n_1 / n_3 AS times FROM ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_1 FROM match_result WHERE rank = \"1\" ) JOIN ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_3 FROM match_result WHERE rank = \"3\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
+            "player",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3138,10 +3121,10 @@
         "SQL": "SELECT 1.0 * n_1 / n_3 AS times FROM ( SELECT Gold + Big_Silver + Small_Silver + 3 * Bronze AS n_1 FROM match_result WHERE rank = \"1\" ) JOIN ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_3 FROM match_result WHERE rank = \"3\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3151,10 +3134,8 @@
         "SQL": "SELECT 1.0 * n_1 / n_3 AS times FROM ( SELECT Gold + Big_Silver + Small_Silver + 3 * Bronze AS n_1 FROM match_result WHERE rank = \"1\" ) JOIN ( SELECT Gold + Big_Silver + Small_Silver + Bronze AS n_3 FROM match_result WHERE rank = \"3\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
-            "player",
-            "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3164,10 +3145,10 @@
         "SQL": "SELECT * FROM ( SELECT A.Region , A.Start_year , COUNT ( * ) AS n_M FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze ) AS new_points , Club_ID FROM match_result ) ) AND B.Gender = \"M\" ) JOIN ( SELECT COUNT ( * ) AS n_F FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze ) AS new_points , Club_ID FROM match_result ) ) AND B.Gender = \"F\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3177,9 +3158,9 @@
         "SQL": "SELECT * FROM ( SELECT A.Region , A.Start_year , COUNT ( * ) AS n_M FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze ) AS new_points , Club_ID FROM match_result ) ) AND B.Gender = \"M\" ) JOIN ( SELECT COUNT ( * ) AS n_F FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze ) AS new_points , Club_ID FROM match_result ) ) AND B.Gender = \"F\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3189,8 +3170,8 @@
         "SQL": "SELECT * FROM ( SELECT A.Region , A.Start_year , COUNT ( * ) AS n_M FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( new_points ) , Club_ID FROM ( SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze AS new_points , Club_ID FROM match_result WHERE Club_ID != ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) UNION SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * ( SELECT Bronze FROM ( SELECT MAX ( Gold ) , Bronze FROM match_result ) ) AS new_points , Club_ID FROM match_result WHERE Club_ID = ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) ) ) ) AND B.Gender = \"M\" ) JOIN ( SELECT COUNT ( * ) AS n_F FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( new_points ) , Club_ID FROM ( SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze AS new_points , Club_ID FROM match_result WHERE Club_ID != ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) UNION SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * ( SELECT Bronze FROM ( SELECT MAX ( Gold ) , Bronze FROM match_result ) ) AS new_points , Club_ID FROM match_result WHERE Club_ID = ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) ) ) ) AND B.Gender = \"F\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
             "coach",
+            "match result",
             "club"
         ]
     },
@@ -3201,9 +3182,9 @@
         "SQL": "SELECT * FROM ( SELECT A.Region , A.Start_year , COUNT ( * ) AS n_M FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( new_points ) , Club_ID FROM ( SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze AS new_points , Club_ID FROM match_result WHERE Club_ID != ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) UNION SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * ( SELECT Bronze FROM ( SELECT MAX ( Gold ) , Bronze FROM match_result ) ) AS new_points , Club_ID FROM match_result WHERE Club_ID = ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) ) ) ) AND B.Gender = \"M\" ) JOIN ( SELECT COUNT ( * ) AS n_F FROM club A JOIN coach B ON A.Club_ID = B.Club_ID WHERE A.Club_ID = ( SELECT Club_ID FROM ( SELECT MAX ( new_points ) , Club_ID FROM ( SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * Bronze AS new_points , Club_ID FROM match_result WHERE Club_ID != ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) UNION SELECT 5 * Gold + 3 * Big_Silver + 2 * Small_Silver + 1 * ( SELECT Bronze FROM ( SELECT MAX ( Gold ) , Bronze FROM match_result ) ) AS new_points , Club_ID FROM match_result WHERE Club_ID = ( SELECT Club_ID FROM ( SELECT MIN ( Gold ) , Club_ID FROM match_result ) ) ) ) ) AND B.Gender = \"F\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3214,7 +3195,7 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "match_result"
+            "match result"
         ]
     },
     {
@@ -3222,10 +3203,9 @@
         "db_id": "riding_club",
         "question": "Out of contestants winning the championship, how many of them are small businessman as a proportion?",
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM ( SELECT * FROM player WHERE Rank = \"1st\" GROUP BY Player_ID ) ) AS propotion FROM ( SELECT * FROM player WHERE Rank = \"1st\" AND Occupation = \"Small Businessman\" GROUP BY Player_ID )",
-        "DB_result": "riding_club",
+        "DB_result": "formula_1",
         "TAB_result": [
-            "player",
-            "match_result"
+            "NONE"
         ]
     },
     {
@@ -3236,7 +3216,7 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "match_result"
+            "match result"
         ]
     },
     {
@@ -3247,7 +3227,7 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "match_result"
+            "match result"
         ]
     },
     {
@@ -3257,7 +3237,6 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" ) AS prob FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Rank = \"1st\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
             "driverStandings",
             "drivers"
         ]
@@ -3277,12 +3256,12 @@
         "db_id": "riding_club",
         "question": "If Fiona Shiells won the first place instead, what is the probability of a contestant guided by Jameson Tomas winning the championship?",
         "SQL": "SELECT 1.0 * ( COUNT ( * ) + ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Player_name = \"Fiona Shiells\" ) ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" ) AS prob FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Rank = \"1st\" AND A.Player_name != \"Fiona Shiells\"",
-        "DB_result": "riding_club",
+        "DB_result": "formula_1",
         "TAB_result": [
-            "player_coach",
-            "player",
-            "coach",
-            "match_result"
+            "results",
+            "constructorStandings",
+            "driverStandings",
+            "drivers"
         ]
     },
     {
@@ -3292,10 +3271,8 @@
         "SQL": "SELECT 1.0 * ( COUNT ( * ) + ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Player_name = \"Fiona Shiells\" ) ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" ) AS prob FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE C.Coach_name = \"Jameson Tomas\" AND A.Rank = \"1st\" AND A.Player_name != \"Fiona Shiells\"",
         "DB_result": "formula_1",
         "TAB_result": [
-            "results",
-            "races",
             "driverStandings",
-            "seasons",
+            "constructorStandings",
             "drivers"
         ]
     },
@@ -3307,8 +3284,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3318,9 +3295,9 @@
         "SQL": "SELECT Coach_name , n_1st - ( SELECT MIN ( n_1st ) FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) ) AS diff FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) WHERE n_1st = ( SELECT MAX ( n_1st ) FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
+            "player",
             "coach",
-            "player"
+            "player coach"
         ]
     },
     {
@@ -3330,10 +3307,8 @@
         "SQL": "SELECT t1.Coach_name , MAX ( 100 * n_1st + 60 * n_2nd + 20 * n_3rd ) AS money FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) t1 JOIN ( SELECT Coach_name , COUNT ( * ) AS n_2nd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" GROUP BY C.Coach_ID ) ) t2 ON t1.Coach_name = t2.Coach_name JOIN ( SELECT Coach_name , COUNT ( * ) AS n_3rd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID ) ) t3 ON t2.Coach_name = t3.Coach_name",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
-            "player_coach",
             "coach",
-            "player"
+            "match result"
         ]
     },
     {
@@ -3343,8 +3318,10 @@
         "SQL": "SELECT t1.Coach_name , MAX ( 100 * n_1st + 60 * n_2nd + 20 * n_3rd ) AS money FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) t1 JOIN ( SELECT Coach_name , COUNT ( * ) AS n_2nd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" GROUP BY C.Coach_ID ) ) t2 ON t1.Coach_name = t2.Coach_name JOIN ( SELECT Coach_name , COUNT ( * ) AS n_3rd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID ) ) t3 ON t2.Coach_name = t3.Coach_name",
         "DB_result": "riding_club",
         "TAB_result": [
+            "player",
             "coach",
-            "match_result"
+            "match result",
+            "club"
         ]
     },
     {
@@ -3355,8 +3332,9 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "match result",
+            "player coach"
         ]
     },
     {
@@ -3366,10 +3344,9 @@
         "SQL": "SELECT t1.Coach_name , MAX ( 100 * n_1st + 60 * n_2nd + 20 * n_3rd ) AS money FROM ( SELECT Coach_name , COUNT ( * ) AS n_1st FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"1st\" GROUP BY C.Coach_ID ) ) t1 JOIN ( SELECT Coach_name , COUNT ( * ) AS n_2nd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" AND C.Coach_ID != ( SELECT C.Coach_ID FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Player_name = \"Rachel Heinrichs\" ) GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" GROUP BY C.Coach_ID ) AND Coach_ID != ( SELECT C.Coach_ID FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Player_name = \"Rachel Heinrichs\" ) UNION SELECT ( SELECT C.Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Player_name = \"Rachel Heinrichs\" ) AS Coach_name , COUNT ( * ) + 1 AS n_2nd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"2nd\" AND A.Player_name = \"Rachel Heinrichs\" ) t2 ON t1.Coach_name = t2.Coach_name JOIN ( SELECT Coach_name , COUNT ( * ) AS n_3rd FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID UNION SELECT Coach_name , 0 FROM coach WHERE Coach_name NOT IN ( SELECT Coach_name FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON C.Coach_ID = B.Coach_ID WHERE A.Rank = \"3rd\" GROUP BY C.Coach_ID ) ) t3 ON t2.Coach_name = t3.Coach_name",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3459,10 +3436,10 @@
         "SQL": "SELECT A.Player_name , A.Votes - ( SELECT MIN ( Votes ) FROM player ) AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID JOIN club D ON C.Club_ID = D.Club_ID WHERE D.Start_year < 2006",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "club",
+            "player coach"
         ]
     },
     {
@@ -3472,10 +3449,10 @@
         "SQL": "SELECT A.Player_name , A.Votes - ( SELECT MIN ( Votes ) FROM player ) AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID JOIN club D ON C.Club_ID = D.Club_ID WHERE D.Start_year < 2006",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach",
+            "club"
         ]
     },
     {
@@ -3485,10 +3462,10 @@
         "SQL": "SELECT A.Player_name , A.Votes - 1000 AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID JOIN club D ON C.Club_ID = D.Club_ID WHERE D.Start_year < 2006",
         "DB_result": "riding_club",
         "TAB_result": [
-            "club",
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "club",
+            "player coach"
         ]
     },
     {
@@ -3498,10 +3475,10 @@
         "SQL": "SELECT A.Player_name , A.Votes - 1000 AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID JOIN club D ON C.Club_ID = D.Club_ID WHERE D.Start_year < 2006",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
             "coach",
-            "club"
+            "club",
+            "player coach"
         ]
     },
     {
@@ -3511,10 +3488,10 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) ) AS ratio FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND Rank = \"1st\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "player_coach",
             "player",
             "coach",
-            "match_result"
+            "match result",
+            "player coach"
         ]
     },
     {
@@ -3524,11 +3501,11 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) ) AS ratio FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND Rank = \"1st\"",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
-            "club",
             "player",
-            "player_coach",
-            "coach"
+            "match result",
+            "club",
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3538,10 +3515,10 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) - ( SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND ( Rank = \"1st\" OR Rank = \"2nd\" ) ) AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID WHERE ( A.Rank = \"1st\" OR A.Rank = \"2nd\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "coach",
             "player",
-            "player_coach",
-            "match_result"
+            "coach",
+            "match result",
+            "player coach"
         ]
     },
     {
@@ -3551,10 +3528,10 @@
         "SQL": "SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) - ( SELECT 1.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) ) FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND ( Rank = \"1st\" OR Rank = \"2nd\" ) ) AS diff FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID WHERE ( A.Rank = \"1st\" OR A.Rank = \"2nd\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "coach",
             "player",
-            "player_coach",
-            "match_result"
+            "coach",
+            "match result",
+            "player coach"
         ]
     },
     {
@@ -3564,10 +3541,10 @@
         "SQL": "SELECT prob_1 - prob_2 AS diff FROM ( SELECT 1.0 * ( COUNT ( * ) - ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID WHERE ( A.Rank = \"1st\" OR A.Rank = \"2nd\" ) AND A.Player_name = \"Niki Ashton\" ) ) / ( SELECT COUNT ( * ) FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID WHERE A.Player_name != \"Niki Ashton\" ) AS prob_1 FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID WHERE ( A.Rank = \"1st\" OR A.Rank = \"2nd\" ) ) JOIN ( SELECT 1.0 * ( COUNT ( * ) + ( SELECT COUNT ( * ) From player WHERE ( Rank = \"1st\" OR Rank = \"2nd\" ) AND Player_name = \"Niki Ashton\" ) ) / ( SELECT COUNT ( * ) + 1 FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND Player_name != \"Niki Ashton\" ) AS prob_2 FROM player WHERE Player_ID NOT IN ( SELECT A.Player_ID AS player_with_coach FROM player A JOIN player_coach B ON A.Player_ID = B.Player_ID JOIN coach C ON B.Coach_ID = C.Coach_ID ) AND ( Rank = \"1st\" OR Rank = \"2nd\" ) AND Player_name != \"Niki Ashton\" )",
         "DB_result": "riding_club",
         "TAB_result": [
-            "match_result",
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "match result",
+            "player coach"
         ]
     },
     {
@@ -3578,8 +3555,8 @@
         "DB_result": "riding_club",
         "TAB_result": [
             "player",
-            "player_coach",
-            "coach"
+            "coach",
+            "player coach"
         ]
     },
     {
@@ -3589,8 +3566,8 @@
         "SQL": "SELECT name , age FROM ( SELECT B.player_name AS name , MAX ( 0.05 * A.curve + 0.05 * A.free_kick_accuracy + 0.15 * A.long_passing + 0.2 * A.crossing + 0.2 * A.vision + 0.35 * A.short_passing ) AS passing_rating , DATE ( \"now\" ) - strftime ( \"%Y-%m-%d\" , B.birthday ) AS age FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY passing_rating DESC LIMIT 10 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3600,8 +3577,8 @@
         "SQL": "SELECT name , age FROM ( SELECT B.player_name AS name , MAX ( 0.05 * A.curve + 0.05 * A.free_kick_accuracy + 0.15 * A.long_passing + 0.2 * A.crossing + 0.2 * A.vision + 0.35 * A.short_passing ) AS passing_rating , DATE ( \"now\" ) - strftime ( \"%Y-%m-%d\" , B.birthday ) AS age FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY passing_rating DESC LIMIT 10 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3611,8 +3588,8 @@
         "SQL": "SELECT name , age FROM ( SELECT B.player_name AS name , MAX ( 0.05 * A.curve + 0.05 * A.free_kick_accuracy + 0.15 * A.long_passing + 0.2 * A.crossing + 0.2 * 80 + 0.35 * A.short_passing ) AS passing_rating , DATE ( \"now\" ) - strftime ( \"%Y-%m-%d\" , B.birthday ) AS age FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY passing_rating DESC LIMIT 10 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3622,8 +3599,8 @@
         "SQL": "SELECT name , age FROM ( SELECT B.player_name AS name , MAX ( 0.05 * A.curve + 0.05 * A.free_kick_accuracy + 0.15 * A.long_passing + 0.2 * A.crossing + 0.2 * 80 + 0.35 * A.short_passing ) AS passing_rating , DATE ( \"now\" ) - strftime ( \"%Y-%m-%d\" , B.birthday ) AS age FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY passing_rating DESC LIMIT 10 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3633,8 +3610,8 @@
         "SQL": "SELECT player_name , height , weight , BMI FROM ( SELECT B.player_name , MAX ( 0.45 * A.acceleration + 0.55 * A.sprint_speed ) AS pace_rating , B.height , B.weight , B.weight * 0.45 / ( ( 1.0 * B.height / 100 ) * ( 1.0 * B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY pace_rating DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3644,8 +3621,8 @@
         "SQL": "SELECT player_name , height , weight , BMI FROM ( SELECT B.player_name , MAX ( 0.45 * A.acceleration + 0.55 * A.sprint_speed ) AS pace_rating , B.height , B.weight , B.weight * 0.45 / ( ( 1.0 * B.height / 100 ) * ( 1.0 * B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY pace_rating DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3655,8 +3632,8 @@
         "SQL": "SELECT player_name , height , weight , BMI FROM ( SELECT B.player_name , MAX ( 0.45 * 75 + 0.55 * A.sprint_speed ) AS pace_rating , B.height , B.weight , B.weight * 0.45 / ( ( 1.0 * B.height / 100 ) * ( 1.0 * B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY pace_rating DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3666,8 +3643,8 @@
         "SQL": "SELECT player_name , height , weight , BMI FROM ( SELECT B.player_name , MAX ( 0.45 * 75 + 0.55 * A.sprint_speed ) AS pace_rating , B.height , B.weight , B.weight * 0.45 / ( ( 1.0 * B.height / 100 ) * ( 1.0 * B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY pace_rating DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3677,8 +3654,8 @@
         "SQL": "SELECT B.player_name , MAX ( ABS ( A.potential - A.overall_rating ) ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY difference DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3688,8 +3665,8 @@
         "SQL": "SELECT B.player_name , MAX ( ABS ( A.potential - A.overall_rating ) ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ORDER BY difference DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3699,8 +3676,8 @@
         "SQL": "SELECT player_name , MAX ( difference ) FROM ( SELECT B.player_name , ABS ( A.overall_rating - A.potential ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.overall_rating >= 70 UNION SELECT B.player_name , ABS ( A.overall_rating + 5 - A.potential ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.overall_rating < 70 ) GROUP BY player_name ORDER BY difference DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3710,8 +3687,8 @@
         "SQL": "SELECT player_name , MAX ( difference ) FROM ( SELECT B.player_name , ABS ( A.overall_rating - A.potential ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.overall_rating >= 70 UNION SELECT B.player_name , ABS ( A.overall_rating + 5 - A.potential ) AS difference FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.overall_rating < 70 ) GROUP BY player_name ORDER BY difference DESC LIMIT 3",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3721,8 +3698,8 @@
         "SQL": "SELECT left_footed , right_footed , ABS ( left_footed - right_footed ) AS difference FROM ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS left_footed FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.dribbling BETWEEN 80 AND 89 AND A.preferred_foot = \"left\" ) JOIN ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS right_footed FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.dribbling BETWEEN 80 AND 89 AND A.preferred_foot = \"right\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3732,8 +3709,8 @@
         "SQL": "SELECT left_footed , right_footed , ABS ( left_footed - right_footed ) AS difference FROM ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS left_footed FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.dribbling BETWEEN 80 AND 89 AND A.preferred_foot = \"left\" ) JOIN ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS right_footed FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.dribbling BETWEEN 80 AND 89 AND A.preferred_foot = \"right\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3743,8 +3720,8 @@
         "SQL": "SELECT player_name FROM ( SELECT B.player_name , MAX ( A.positioning + A.gk_handling ) AS goalkeeper_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY goalkeeper_rating DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3754,8 +3731,8 @@
         "SQL": "SELECT player_name FROM ( SELECT B.player_name , MAX ( A.positioning + A.gk_handling ) AS goalkeeper_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id GROUP BY B.player_name ) ORDER BY goalkeeper_rating DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3765,8 +3742,8 @@
         "SQL": "SELECT B.player_name , A.long_shots + A.shot_power AS total_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE NOT ( A.stamina IS NULL ) ORDER BY A.stamina ASC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3776,8 +3753,8 @@
         "SQL": "SELECT B.player_name , A.long_shots + A.shot_power AS total_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE NOT ( A.stamina IS NULL ) ORDER BY A.stamina ASC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3787,8 +3764,8 @@
         "SQL": "SELECT B.player_name , 90 + A.shot_power AS total_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE NOT ( A.stamina IS NULL ) ORDER BY A.stamina ASC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3798,8 +3775,8 @@
         "SQL": "SELECT B.player_name , 90 + A.shot_power AS total_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE NOT ( A.stamina IS NULL ) ORDER BY A.stamina ASC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3809,8 +3786,8 @@
         "SQL": "SELECT best_team_name , lowest_team_name FROM ( SELECT B.team_short_name AS best_team_name , A.defencePressure + A.defenceAggression + A.defenceTeamWidth AS defensive_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id ORDER BY defensive_rating DESC LIMIT 1 ) JOIN ( SELECT B.team_short_name AS lowest_team_name , A.defencePressure + A.defenceAggression + A.defenceTeamWidth AS defensive_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id ORDER BY defensive_rating ASC LIMIT 1 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3820,8 +3797,8 @@
         "SQL": "SELECT best_team_name , lowest_team_name FROM ( SELECT B.team_short_name AS best_team_name , A.defencePressure + A.defenceAggression + A.defenceTeamWidth AS defensive_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id ORDER BY defensive_rating DESC LIMIT 1 ) JOIN ( SELECT B.team_short_name AS lowest_team_name , A.defencePressure + A.defenceAggression + A.defenceTeamWidth AS defensive_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id ORDER BY defensive_rating ASC LIMIT 1 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3831,8 +3808,8 @@
         "SQL": "SELECT B.team_long_name , A.buildUpPlaySpeed + A.buildUpPlayDribbling AS combined_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id WHERE A.chanceCreationPositioningClass = \"Free Form\" ORDER BY A.buildUpPlaySpeed + A.buildUpPlayDribbling DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3842,8 +3819,8 @@
         "SQL": "SELECT B.team_long_name , A.buildUpPlaySpeed + A.buildUpPlayDribbling AS combined_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id WHERE A.chanceCreationPositioningClass = \"Free Form\" ORDER BY A.buildUpPlaySpeed + A.buildUpPlayDribbling DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3853,8 +3830,8 @@
         "SQL": "SELECT B.team_long_name , A.buildUpPlaySpeed + 60 AS combined_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id WHERE A.chanceCreationPositioningClass = \"Free Form\" ORDER BY A.buildUpPlaySpeed + 60 DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3864,9 +3841,8 @@
         "SQL": "SELECT B.team_long_name , A.buildUpPlaySpeed + 60 AS combined_rating FROM Team_Attributes A JOIN Team B ON A.team_fifa_api_id = B.team_fifa_api_id WHERE A.chanceCreationPositioningClass = \"Free Form\" ORDER BY A.buildUpPlaySpeed + 60 DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Team",
-            "Team_Attributes",
-            "Player_Attributes"
+            "Team Attributes",
+            "Team"
         ]
     },
     {
@@ -3876,8 +3852,8 @@
         "SQL": "SELECT B.player_name , 0.45 * A.finishing + 0.2 * A.long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ORDER BY shooting_rating DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3887,8 +3863,8 @@
         "SQL": "SELECT B.player_name , 0.45 * A.finishing + 0.2 * A.long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ORDER BY shooting_rating DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3898,8 +3874,8 @@
         "SQL": "SELECT player_name , MAX ( shooting_rating ) FROM ( SELECT B.player_name , MAX ( 0.45 * ( finishing + 5 ) + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE finishing <= long_shots AND finishing <= penalties AND finishing <= positioning AND finishing <= shot_power AND finishing <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * ( long_shots + 5 ) + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE long_shots <= finishing AND long_shots <= penalties AND long_shots <= positioning AND long_shots <= shot_power AND long_shots <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * ( penalties + 5 ) + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE penalties <= finishing AND penalties <= long_shots AND penalties <= positioning AND penalties <= shot_power AND penalties <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * ( positioning + 5 ) + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE positioning <= finishing AND positioning <= long_shots AND positioning <= penalties AND positioning <= shot_power AND positioning <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * ( shot_power + 5 ) + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE shot_power <= finishing AND shot_power <= long_shots AND shot_power <= penalties AND shot_power <= positioning AND shot_power <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * ( volleys + 5 ) ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE volleys <= finishing AND volleys <= long_shots AND volleys <= penalties AND volleys <= positioning AND volleys <= shot_power )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3909,8 +3885,8 @@
         "SQL": "SELECT player_name , MAX ( shooting_rating ) FROM ( SELECT B.player_name , MAX ( 0.45 * ( finishing + 5 ) + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE finishing <= long_shots AND finishing <= penalties AND finishing <= positioning AND finishing <= shot_power AND finishing <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * ( long_shots + 5 ) + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE long_shots <= finishing AND long_shots <= penalties AND long_shots <= positioning AND long_shots <= shot_power AND long_shots <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * ( penalties + 5 ) + 0.05 * positioning + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE penalties <= finishing AND penalties <= long_shots AND penalties <= positioning AND penalties <= shot_power AND penalties <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * ( positioning + 5 ) + 0.2 * shot_power + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE positioning <= finishing AND positioning <= long_shots AND positioning <= penalties AND positioning <= shot_power AND positioning <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * ( shot_power + 5 ) + 0.05 * volleys ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE shot_power <= finishing AND shot_power <= long_shots AND shot_power <= penalties AND shot_power <= positioning AND shot_power <= volleys UNION ALL SELECT B.player_name , MAX ( 0.45 * finishing + 0.2 * long_shots + 0.05 * penalties + 0.05 * positioning + 0.2 * shot_power + 0.05 * ( volleys + 5 ) ) AS shooting_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE volleys <= finishing AND volleys <= long_shots AND volleys <= penalties AND volleys <= positioning AND volleys <= shot_power )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3920,9 +3896,9 @@
         "SQL": "SELECT best_vision_long_passing , worst_vision_long_passing , ABS ( worst_vision_long_passing - best_vision_long_passing ) AS diff FROM ( SELECT A.long_passing AS best_vision_long_passing , MAX ( A.vision ) FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ) JOIN ( SELECT A.long_passing AS worst_vision_long_passing , MIN ( A.vision ) FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id )",
         "DB_result": "soccer_1",
         "TAB_result": [
+            "Player Attributes",
             "Team",
-            "Player",
-            "Player_Attributes"
+            "Player"
         ]
     },
     {
@@ -3932,9 +3908,9 @@
         "SQL": "SELECT best_vision_long_passing , worst_vision_long_passing , ABS ( worst_vision_long_passing - best_vision_long_passing ) AS diff FROM ( SELECT A.long_passing AS best_vision_long_passing , MAX ( A.vision ) FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ) JOIN ( SELECT A.long_passing AS worst_vision_long_passing , MIN ( A.vision ) FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id )",
         "DB_result": "soccer_1",
         "TAB_result": [
+            "Player Attributes",
             "Team",
-            "Player",
-            "Player_Attributes"
+            "Player"
         ]
     },
     {
@@ -3944,8 +3920,8 @@
         "SQL": "SELECT 1.0 * max_strength / min_strength AS ratio FROM ( SELECT MAX ( A.strength ) AS max_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" ) JOIN ( SELECT MIN ( A.strength ) AS min_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3955,8 +3931,8 @@
         "SQL": "SELECT 1.0 * max_strength / min_strength AS ratio FROM ( SELECT MAX ( A.strength ) AS max_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" ) JOIN ( SELECT MIN ( A.strength ) AS min_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3966,8 +3942,8 @@
         "SQL": "SELECT 1.0 * very_good / good AS proportion FROM ( SELECT COUNT ( * ) AS very_good FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.penalties BETWEEN 80 AND 89 ) JOIN ( SELECT COUNT ( * ) AS good FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.penalties BETWEEN 70 AND 79 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -3977,8 +3953,8 @@
         "SQL": "SELECT 1.0 * very_good / good AS proportion FROM ( SELECT COUNT ( * ) AS very_good FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.penalties BETWEEN 80 AND 89 ) JOIN ( SELECT COUNT ( * ) AS good FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.penalties BETWEEN 70 AND 79 )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4028,8 +4004,8 @@
         "SQL": "SELECT B.player_name , B.height , B.weight , A.overall_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id JOIN ( SELECT B.player_fifa_api_id , B.weight * 0.45 / ( ( B.height / 100 ) * ( B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ) AS C ON A.player_fifa_api_id = C.player_fifa_api_id ORDER BY C.BMI DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4039,8 +4015,8 @@
         "SQL": "SELECT B.player_name , B.height , B.weight , A.overall_rating FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id JOIN ( SELECT B.player_fifa_api_id , B.weight * 0.45 / ( ( B.height / 100 ) * ( B.height / 100 ) ) AS BMI FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id ) AS C ON A.player_fifa_api_id = C.player_fifa_api_id ORDER BY C.BMI DESC LIMIT 1",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4050,8 +4026,8 @@
         "SQL": "SELECT left_count , right_count , ABS ( left_count - right_count ) FROM ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS left_count FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"low\" and A.defensive_work_rate = \"low\" and A.preferred_foot = \"left\" ) JOIN ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS right_count FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"low\" and A.defensive_work_rate = \"low\" and A.preferred_foot = \"right\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4061,8 +4037,8 @@
         "SQL": "SELECT left_count , right_count , ABS ( left_count - right_count ) FROM ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS left_count FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"low\" and A.defensive_work_rate = \"low\" and A.preferred_foot = \"left\" ) JOIN ( SELECT COUNT ( DISTINCT ( B.player_name ) ) AS right_count FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"low\" and A.defensive_work_rate = \"low\" and A.preferred_foot = \"right\" )",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4072,8 +4048,8 @@
         "SQL": "SELECT B.player_name , A.overall_rating , A.date FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id , ( SELECT A.crossing AS FC_crossing FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE B.player_name = \"Fabio Cannavaro\" and date ( A.date ) = \"2007-08-30\" ) WHERE A.crossing > 2.0 * FC_crossing",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4083,8 +4059,8 @@
         "SQL": "SELECT B.player_name , A.overall_rating , A.date FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id , ( SELECT A.crossing AS FC_crossing FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE B.player_name = \"Fabio Cannavaro\" and date ( A.date ) = \"2007-08-30\" ) WHERE A.crossing > 2.0 * FC_crossing",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4094,8 +4070,8 @@
         "SQL": "SELECT B.player_name , A.overall_rating , A.date FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.crossing > 2.0 * 45",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4105,8 +4081,8 @@
         "SQL": "SELECT B.player_name , A.overall_rating , A.date FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.crossing > 2.0 * 45",
         "DB_result": "soccer_1",
         "TAB_result": [
-            "Player",
-            "Player_Attributes"
+            "Player Attributes",
+            "Player"
         ]
     },
     {
@@ -4401,8 +4377,8 @@
         "SQL": "SELECT 100.0 * n1 / n2 AS ratio FROM ( SELECT COUNT ( * ) AS n1 FROM ( SELECT Price , Score FROM wine WHERE Grape != \"Zinfandel\" UNION ALL SELECT Price + 15 , Score FROM wine WHERE Grape = \"Zinfandel\" ) WHERE Price < \"40\" AND Score > \"85\" ) JOIN ( SELECT COUNT ( * ) AS n2 FROM ( SELECT Price , Score FROM wine WHERE Grape != \"Zinfandel\" UNION ALL SELECT Price + 15 , Score FROM wine WHERE Grape = \"Zinfandel\" ) WHERE Price < \"40\" )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4548,8 +4524,8 @@
         "SQL": "SELECT Winery , Price - ( SELECT AVG ( Price ) FROM wine WHERE name = \"Cabernet Sauvignon\" ) AS diff FROM wine WHERE name = \"Cabernet Sauvignon\" AND Score = ( SELECT MAX ( Score ) FROM wine WHERE name = \"Cabernet Sauvignon\" )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4570,8 +4546,8 @@
         "SQL": "SELECT Winery , Price - ( SELECT AVG ( Price ) FROM wine WHERE name = \"Cabernet Sauvignon\" ) AS diff FROM ( SELECT Winery , Price , Score - 10 AS Score , Name FROM wine WHERE Year = \"2005\" UNION ALL SELECT Winery , Price , Score , Name FROM wine WHERE Year != \"2005\" ) WHERE name = \"Cabernet Sauvignon\" AND Score = ( SELECT MAX ( Score ) FROM ( SELECT Winery , Price , Score - 10 AS Score , Name FROM wine WHERE Year = \"2005\" UNION ALL SELECT Winery , Price , Score , Name FROM wine WHERE Year != \"2005\" ) WHERE name = \"Cabernet Sauvignon\" )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4581,8 +4557,8 @@
         "SQL": "SELECT Winery , Price - ( SELECT AVG ( Price ) FROM wine WHERE name = \"Cabernet Sauvignon\" ) AS diff FROM ( SELECT Winery , Price , Score - 10 AS Score , Name FROM wine WHERE Year = \"2005\" UNION ALL SELECT Winery , Price , Score , Name FROM wine WHERE Year != \"2005\" ) WHERE name = \"Cabernet Sauvignon\" AND Score = ( SELECT MAX ( Score ) FROM ( SELECT Winery , Price , Score - 10 AS Score , Name FROM wine WHERE Year = \"2005\" UNION ALL SELECT Winery , Price , Score , Name FROM wine WHERE Year != \"2005\" ) WHERE name = \"Cabernet Sauvignon\" )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4614,8 +4590,8 @@
         "SQL": "SELECT max_red - max_white AS diff FROM ( SELECT MAX ( Price ) AS max_red FROM ( SELECT B.Color , A.Price * ( 1 - 0.2 ) AS Price FROM wine A JOIN grapes B ON A.Grape = B.Grape WHERE A.Winery = \"Ampelos\" UNION ALL SELECT B.Color , A.Price FROM wine A JOIN grapes B ON A.Grape = B.Grape WHERE A.Winery != \"Ampelos\" ) WHERE Color = \"Red\" ) JOIN ( SELECT MAX ( Price ) AS max_white FROM ( SELECT B.Color , A.Price * ( 1 - 0.2 ) AS Price FROM wine A JOIN grapes B ON A.Grape = B.Grape WHERE A.Winery = \"Ampelos\" UNION ALL SELECT B.Color , A.Price FROM wine A JOIN grapes B ON A.Grape = B.Grape WHERE A.Winery != \"Ampelos\" ) WHERE Color = \"White\" )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4656,8 +4632,8 @@
         "SQL": "SELECT 100.0 * COUNT ( DISTINCT ( Winery ) ) / ( SELECT COUNT ( DISTINCT ( Winery ) ) FROM wine ) AS percent FROM ( SELECT A.Winery , A.No , A.Year , A.Score , B.No , B.Year , B.Score , C.No , C.Year , C.Score FROM ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) A JOIN ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) B ON A.Winery = B.Winery JOIN ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) C ON A.Winery = C.Winery WHERE A.Score >= 90 AND B.Score >= 90 AND C.Score >= 90 AND B.Year - A.Year = 1 AND C.Year - B.Year = 1 )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4667,8 +4643,8 @@
         "SQL": "SELECT 100.0 * COUNT ( DISTINCT ( Winery ) ) / ( SELECT COUNT ( DISTINCT ( Winery ) ) FROM wine ) AS percent FROM ( SELECT A.Winery , A.No , A.Year , A.Score , B.No , B.Year , B.Score , C.No , C.Year , C.Score FROM ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) A JOIN ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) B ON A.Winery = B.Winery JOIN ( SELECt Winery , No , Year , Score - 5 AS Score FROM wine WHERE Grape = \"Pinot Noir\" UNION ALL SELECt Winery , No , Year , Score FROM wine WHERE Grape != \"Pinot Noir\" ) C ON A.Winery = C.Winery WHERE A.Score >= 90 AND B.Score >= 90 AND C.Score >= 90 AND B.Year - A.Year = 1 AND C.Year - B.Year = 1 )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4700,8 +4676,8 @@
         "SQL": "SELECT Year , cases_white - cases_red AS diff FROM ( SELECT A.Year , SUM ( A.Cases ) AS cases_white FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"White\" GROUP BY A.Year ORDER BY SUM ( A.Cases ) DESC LIMIT 1 ) JOIN ( SELECT SUM ( A.Cases ) AS cases_red FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"Red\" AND Year = ( SELECT A.Year FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"White\" GROUP BY A.Year ORDER BY SUM ( A.Cases ) DESC LIMIT 1 ) )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4711,8 +4687,8 @@
         "SQL": "SELECT Year , cases_white - cases_red AS diff FROM ( SELECT A.Year , SUM ( A.Cases ) AS cases_white FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"White\" GROUP BY A.Year ORDER BY SUM ( A.Cases ) DESC LIMIT 1 ) JOIN ( SELECT SUM ( A.Cases ) AS cases_red FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"Red\" AND Year = ( SELECT A.Year FROM ( SELECT Grape , Year , 2 * Cases AS Cases FROM wine WHERE Winery = \"Beringer\" UNION ALL SELECT Grape , Year , Cases AS Cases FROM wine WHERE Winery != \"Beringer\" ) A JOIN grapes B ON A.Grape = B.Grape WHERE B.Color = \"White\" GROUP BY A.Year ORDER BY SUM ( A.Cases ) DESC LIMIT 1 ) )",
         "DB_result": "wine_1",
         "TAB_result": [
-            "wine",
-            "grapes"
+            "grapes",
+            "wine"
         ]
     },
     {
@@ -4732,7 +4708,9 @@
         "SQL": "SELECT Name , Age + ( SELECT Song_release_year FROM singer WHERE Song_Name = \"Gentleman\" ) - strftime ( \"%Y\" , \"now\" ) AS target_age FROM singer",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer"
+            "stadium",
+            "singer",
+            "concert"
         ]
     },
     {
@@ -4763,7 +4741,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4775,7 +4753,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4787,7 +4765,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4799,7 +4777,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4851,7 +4829,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4863,8 +4841,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "stadium",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4875,9 +4852,9 @@
         "SQL": "SELECT C.Name , ( SELECT Year FROM concert WHERE concert_Name = \"Home Visits\" ) - strftime ( \"%Y\" , \"now\" ) + C.Age + 20 AS target_age FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID WHERE A.concert_Name = \"Home Visits\" OR B.Singer_ID IN ( SELECT C.Singer_ID FROM concert A JOIN stadium B ON A.Stadium_ID = B.Stadium_ID JOIN singer_in_concert C ON A.concert_ID = C.concert_ID WHERE B.Name = \"Stark's Park\" ) GROUP BY B.Singer_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4888,9 +4865,9 @@
         "SQL": "SELECT C.Name , ( SELECT Year FROM concert WHERE concert_Name = \"Home Visits\" ) - strftime ( \"%Y\" , \"now\" ) + C.Age + 20 AS target_age FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID WHERE A.concert_Name = \"Home Visits\" OR B.Singer_ID IN ( SELECT C.Singer_ID FROM concert A JOIN stadium B ON A.Stadium_ID = B.Stadium_ID JOIN singer_in_concert C ON A.concert_ID = C.concert_ID WHERE B.Name = \"Stark's Park\" ) GROUP BY B.Singer_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4941,9 +4918,9 @@
         "SQL": "SELECT p1 + p2 AS cost FROM ( SELECT 355 * ( COUNT ( * ) ) AS p1 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND strftime ( \"%Y\" , \"now\" ) - C.Age < 1980 ) JOIN ( SELECT 228 * ( COUNT ( * ) ) AS p2 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND strftime ( \"%Y\" , \"now\" ) - C.Age >= 1980 )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4954,9 +4931,9 @@
         "SQL": "SELECT p1 + p2 AS cost FROM ( SELECT 355 * ( COUNT ( * ) ) AS p1 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND strftime ( \"%Y\" , \"now\" ) - C.Age < 1980 ) JOIN ( SELECT 228 * ( COUNT ( * ) ) AS p2 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND strftime ( \"%Y\" , \"now\" ) - C.Age >= 1980 )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4967,9 +4944,9 @@
         "SQL": "SELECT p1 + p2 AS cost FROM ( SELECT 355 * ( COUNT ( * ) ) AS p1 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN ( SELECT Singer_ID , Name , strftime ( \"%Y\" , \"now\" ) - Age AS birth_year FROM singer WHERE Name != \"Justin Brown\" UNION ALL SELECT Singer_ID , Name , ( SELECT strftime ( \"%Y\" , \"now\" ) - Age FROM singer WHERE Name = \"John Nizinik\" ) - 3 AS birth_year FROM singer WHERE Name = \"Justin Brown\" ) C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.birth_year < 1980 ) JOIN ( SELECT 228 * ( COUNT ( * ) ) AS p2 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN ( SELECT Singer_ID , Name , strftime ( \"%Y\" , \"now\" ) - Age AS birth_year FROM singer WHERE Name != \"Justin Brown\" UNION ALL SELECT Singer_ID , Name , ( SELECT strftime ( \"%Y\" , \"now\" ) - Age FROM singer WHERE Name = \"John Nizinik\" ) - 3 AS birth_year FROM singer WHERE Name = \"Justin Brown\" ) C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.birth_year >= 1980 )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -4980,9 +4957,9 @@
         "SQL": "SELECT p1 + p2 AS cost FROM ( SELECT 355 * ( COUNT ( * ) ) AS p1 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN ( SELECT Singer_ID , Name , strftime ( \"%Y\" , \"now\" ) - Age AS birth_year FROM singer WHERE Name != \"Justin Brown\" UNION ALL SELECT Singer_ID , Name , ( SELECT strftime ( \"%Y\" , \"now\" ) - Age FROM singer WHERE Name = \"John Nizinik\" ) - 3 AS birth_year FROM singer WHERE Name = \"Justin Brown\" ) C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.birth_year < 1980 ) JOIN ( SELECT 228 * ( COUNT ( * ) ) AS p2 FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN ( SELECT Singer_ID , Name , strftime ( \"%Y\" , \"now\" ) - Age AS birth_year FROM singer WHERE Name != \"Justin Brown\" UNION ALL SELECT Singer_ID , Name , ( SELECT strftime ( \"%Y\" , \"now\" ) - Age FROM singer WHERE Name = \"John Nizinik\" ) - 3 AS birth_year FROM singer WHERE Name = \"Justin Brown\" ) C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON A.Stadium_ID = D.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.birth_year >= 1980 )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5037,9 +5014,9 @@
         "SQL": "SELECT t1.concert_ID, t1.concert_Name, 100.0 * n_female / n AS female_proportion FROM (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.Is_male = \"F\" GROUP BY A.concert_ID UNION ALL SELECT A.concert_ID, A.concert_Name, 0 AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND A.concert_ID NOT IN (SELECT A.concert_ID FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.Is_male = \"F\" GROUP BY A.concert_ID) GROUP BY A.concert_ID) t1 JOIN (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" GROUP BY A.concert_ID) t2 ON t1.concert_ID = t2.concert_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5050,9 +5027,9 @@
         "SQL": "SELECT t1.concert_ID, t1.concert_Name, 100.0 * n_female / n AS female_proportion FROM (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.Is_male = \"F\" GROUP BY A.concert_ID UNION ALL SELECT A.concert_ID, A.concert_Name, 0 AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND A.concert_ID NOT IN (SELECT A.concert_ID FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" AND C.Is_male = \"F\" GROUP BY A.concert_ID) GROUP BY A.concert_ID) t1 JOIN (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE D.Name = \"Somerset Park\" GROUP BY A.concert_ID) t2 ON t1.concert_ID = t2.concert_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5063,9 +5040,9 @@
         "SQL": "SELECT t1.concert_ID, t1.concert_Name, 100.0 * n_female / n AS female_proportion FROM (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND C.Is_male = \"F\" GROUP BY A.concert_ID UNION ALL SELECT A.concert_ID, A.concert_Name, 0 AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND A.concert_ID NOT IN (SELECT A.concert_ID FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND C.Is_male = \"F\" GROUP BY A.concert_ID) GROUP BY A.concert_ID) t1 JOIN (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") GROUP BY A.concert_ID) t2 ON t1.concert_ID = t2.concert_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5076,9 +5053,9 @@
         "SQL": "SELECT t1.concert_ID, t1.concert_Name, 100.0 * n_female / n AS female_proportion FROM (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND C.Is_male = \"F\" GROUP BY A.concert_ID UNION ALL SELECT A.concert_ID, A.concert_Name, 0 AS n_female FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND A.concert_ID NOT IN (SELECT A.concert_ID FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") AND C.Is_male = \"F\" GROUP BY A.concert_ID) GROUP BY A.concert_ID) t1 JOIN (SELECT A.concert_ID, A.concert_Name, COUNT (*) AS n FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN singer C ON B.Singer_ID = C.Singer_ID JOIN stadium D ON D.Stadium_ID = A.Stadium_ID WHERE (D.Name = \"Somerset Park\" OR A.concert_Name = \"Week 2\") GROUP BY A.concert_ID) t2 ON t1.concert_ID = t2.concert_ID",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5111,8 +5088,8 @@
         "SQL": "SELECT 100.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM concert ) AS percent FROM ( SELECT Stadium_ID FROM stadium WHERE Name = \"Glebe Park\" UNION ALL SELECT Stadium_ID FROM concert WHERE Theme != \"Bleeding Love\" ) WHERE Stadium_ID IN ( SELECT Stadium_ID FROM stadium ORDER BY 100.0 * Average / Capacity DESC LIMIT 3 )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
+            "singer",
             "concert"
         ]
     },
@@ -5134,9 +5111,9 @@
         "SQL": "SELECT C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID GROUP BY C.Stadium_ID HAVING COUNT ( DISTINCT ( B.Singer_ID ) ) >= 3 * ( SELECT COUNT ( DISTINCT ( B.Singer_ID ) ) FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Glebe Park\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5147,9 +5124,9 @@
         "SQL": "SELECT C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID GROUP BY C.Stadium_ID HAVING COUNT ( DISTINCT ( B.Singer_ID ) ) >= 3 * ( SELECT COUNT ( DISTINCT ( B.Singer_ID ) ) FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Glebe Park\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5160,9 +5137,9 @@
         "SQL": "SELECT Name FROM ( SELECT C.Stadium_ID , B.Singer_ID , C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID UNION ALL SELECT ( SELECT Stadium_ID FROM stadium WHERE Name = \"Balmoor\" ) , B.Singer_ID , C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Somerset Park\" ) GROUP BY Stadium_ID HAVING COUNT ( DISTINCT ( Singer_ID ) ) >= 3 * ( SELECT COUNT ( DISTINCT ( B.Singer_ID ) ) FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Glebe Park\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5173,9 +5150,9 @@
         "SQL": "SELECT Name FROM ( SELECT C.Stadium_ID , B.Singer_ID , C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID UNION ALL SELECT ( SELECT Stadium_ID FROM stadium WHERE Name = \"Balmoor\" ) , B.Singer_ID , C.Name FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Somerset Park\" ) GROUP BY Stadium_ID HAVING COUNT ( DISTINCT ( Singer_ID ) ) >= 3 * ( SELECT COUNT ( DISTINCT ( B.Singer_ID ) ) FROM concert A JOIN singer_in_concert B ON A.concert_ID = B.concert_ID JOIN stadium C ON A.Stadium_ID = C.Stadium_ID WHERE C.name = \"Glebe Park\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
             "stadium",
-            "singer_in_concert",
+            "singer",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5227,7 +5204,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5239,7 +5216,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5251,7 +5228,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5263,7 +5240,7 @@
         "DB_result": "concert_singer",
         "TAB_result": [
             "singer",
-            "singer_in_concert",
+            "singer in concert",
             "concert"
         ]
     },
@@ -5294,8 +5271,7 @@
         "SQL": "SELECT Name FROM singer WHERE 2010 - ( strftime ( \"%Y\" , \"now\" ) - Age ) > 2 * ( SELECT Age - ( strftime ( \"%Y\" , \"now\" ) - 2010 ) FROM singer WHERE Song_Name = \"Love\" )",
         "DB_result": "concert_singer",
         "TAB_result": [
-            "singer",
-            "stadium"
+            "singer"
         ]
     },
     {
@@ -5452,6 +5428,7 @@
         "SQL": "SELECT Name FROM country WHERE Code NOT IN ( SELECT CountryCode FROM countrylanguage WHERE Language = \"Arabic\" AND IsOfficial = \"T\" ) ORDER BY 100.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "countrylanguage",
             "country"
         ]
@@ -5463,6 +5440,7 @@
         "SQL": "SELECT Name FROM ( SELECT Name , Code , GNP , GNPOld + 9999.0 AS GNPOld FROM country WHERE Continent = \"South America\" UNION ALL SELECT Name , Code , GNP , GNPOld FROM country WHERE Continent != \"South America\" ) WHERE Code NOT IN ( SELECT CountryCode FROM countrylanguage WHERE Language = \"Arabic\" AND IsOfficial = \"T\" ) ORDER BY 100.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "countrylanguage",
             "country"
         ]
@@ -5507,8 +5485,8 @@
         "SQL": "SELECT DISTINCT ( name ) FROM ( SELECT B.name , B.Population * ( 1 + 0.01 ) AS Population FROM country A JOIN city B ON A.Code = B.CountryCode JOIN countrylanguage C ON A.Code = C.CountryCode WHERE A.Continent = \"North America\" AND C.Language = \"English\" AND C.IsOfficial = \"T\" UNION ALL SELECT B.name , B.Population FROM country A JOIN city B ON A.Code = B.CountryCode JOIN countrylanguage C ON A.Code = C.CountryCode WHERE A.Continent = \"North America\" AND NOT ( C.Language = \"English\" AND C.IsOfficial = \"T\" ) ) WHERE Population >= 2 * ( SELECT SUM ( Population ) FROM city WHERE District = \"Kang-won\" )",
         "DB_result": "world_1",
         "TAB_result": [
-            "countrylanguage",
             "city",
+            "countrylanguage",
             "country"
         ]
     },
@@ -5519,8 +5497,8 @@
         "SQL": "SELECT DISTINCT ( name ) FROM ( SELECT B.name , B.Population * ( 1 + 0.01 ) AS Population FROM country A JOIN city B ON A.Code = B.CountryCode JOIN countrylanguage C ON A.Code = C.CountryCode WHERE A.Continent = \"North America\" AND C.Language = \"English\" AND C.IsOfficial = \"T\" UNION ALL SELECT B.name , B.Population FROM country A JOIN city B ON A.Code = B.CountryCode JOIN countrylanguage C ON A.Code = C.CountryCode WHERE A.Continent = \"North America\" AND NOT ( C.Language = \"English\" AND C.IsOfficial = \"T\" ) ) WHERE Population >= 2 * ( SELECT SUM ( Population ) FROM city WHERE District = \"Kang-won\" )",
         "DB_result": "world_1",
         "TAB_result": [
-            "countrylanguage",
             "city",
+            "countrylanguage",
             "country"
         ]
     },
@@ -5677,6 +5655,7 @@
         "SQL": "SELECT COUNT ( * ) - ( SELECT COUNT ( * ) FROM country WHERE GNP < GNPOld AND Continent = \"South America\" ) AS diff FROM ( SELECT Name , GNP * ( 1 + 0.02 ) AS GNP , GNPOld , Continent FROM country WHERE Continent = \"North America\" AND Code IN ( SELECT Code FROM country WHERE Continent = \"North America\" ORDER BY Population DESC LIMIT 2 ) UNION ALL SELECT Name , GNP , GNPOld , Continent FROM country WHERE Continent = \"North America\" AND Code NOT IN ( SELECT Code FROM country WHERE Continent = \"North America\" ORDER BY Population DESC LIMIT 2 ) ) WHERE GNP < GNPOld AND Continent = \"North America\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -5687,7 +5666,6 @@
         "SQL": "SELECT COUNT ( * ) - ( SELECT COUNT ( * ) FROM country WHERE GNP < GNPOld AND Continent = \"South America\" ) AS diff FROM ( SELECT Name , GNP * ( 1 + 0.02 ) AS GNP , GNPOld , Continent FROM country WHERE Continent = \"North America\" AND Code IN ( SELECT Code FROM country WHERE Continent = \"North America\" ORDER BY Population DESC LIMIT 2 ) UNION ALL SELECT Name , GNP , GNPOld , Continent FROM country WHERE Continent = \"North America\" AND Code NOT IN ( SELECT Code FROM country WHERE Continent = \"North America\" ORDER BY Population DESC LIMIT 2 ) ) WHERE GNP < GNPOld AND Continent = \"North America\"",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -5728,7 +5706,6 @@
         "SQL": "SELECT Continent FROM ( SELECT name , Continent , GNP * ( 1 - 0.02 ) AS GNP , Population , GNPOld FROM country WHERE Code IN ( SELECT Code FROM country ORDER BY LifeExpectancy DESC LIMIT 3 ) UNION ALL SELECT name , Continent , GNP , Population , GNPOld FROM country WHERE Code NOT IN ( SELECT Code FROM country ORDER BY LifeExpectancy DESC LIMIT 3 ) ) GROUP BY Continent HAVING 1.0 * ( SUM ( GNP ) / SUM ( Population ) - SUM ( GNPOld ) / SUM ( Population ) ) / ( SUM ( GNPOld ) / SUM ( Population ) ) >= ( SELECT 1.0 * ( SUM ( GNP ) / SUM ( Population ) - SUM ( GNPOld ) / SUM ( Population ) ) / ( SUM ( GNPOld ) / SUM ( Population ) ) FROM country WHERE Continent = \"Europe\" ) + 0.02",
         "DB_result": "world_1",
         "TAB_result": [
-            "city",
             "country"
         ]
     },
@@ -5739,6 +5716,7 @@
         "SQL": "SELECT name , GNPOld , GNP , GNP + ( GNP - GNPOld ) AS GNPFuture FROM country WHERE Continent = \"Asia\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -5781,6 +5759,7 @@
         "SQL": "SELECT Population * ( 1 + 0.004 ) AS population_in_1year FROM country WHERE name = \"United Kingdom\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
@@ -5802,6 +5781,7 @@
         "SQL": "SELECT Population * ( 1 + 0.004 ) AS population_in_1year FROM ( SELECT Continent , name , 103000 AS Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy > 75 UNION SELECT Continent , name , Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy <= 75 ) WHERE name = \"United Kingdom\"",
         "DB_result": "world_1",
         "TAB_result": [
+            "city",
             "country"
         ]
     },
