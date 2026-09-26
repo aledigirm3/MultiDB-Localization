@@ -150,26 +150,26 @@ if __name__ == '__main__':
         print(f"{RED}Please, select the prompt!{RESET}")
         sys.exit(1)
     
-    # start = time.perf_counter()
+    start = time.perf_counter()
 
-    # print(f"\n{CYAN}Processing BIRDdev...{RESET}")
-    # dataset = 'BIRDdev'
-    # extract_attributes(dataset, prompt_type)
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRDdev...{RESET}")
+    dataset = 'BIRDdev'
+    extract_attributes(dataset, prompt_type)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # end = time.perf_counter()
-    # print(f"BIRDdev time: {end - start:.2f}s")
+    end = time.perf_counter()
+    print(f"BIRDdev time: {end - start:.2f}s")
 
 
-    # start = time.perf_counter()
+    start = time.perf_counter()
 
-    # print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
-    # dataset = 'SPIDERdev1'
-    # extract_attributes(dataset, prompt_type)
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing SPIDERdev1.0...{RESET}")
+    dataset = 'SPIDERdev1'
+    extract_attributes(dataset, prompt_type)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # end = time.perf_counter()
-    # print(f"SPIDERdev time: {end - start:.2f}s")
+    end = time.perf_counter()
+    print(f"SPIDERdev time: {end - start:.2f}s")
 
 
     start = time.perf_counter()
