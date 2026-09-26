@@ -88,6 +88,10 @@ def get_dataset_paths(dataset: str):
             dataset_dir = (src_dir / paths.DATASETS.SPIDERtrain_ambiguous.value).resolve()
             description_filename = "DB_descriptions/SPIDERtrain_DB_descriptions_ambiguous.json"
             result_filename = "SPIDERtrain_DB_extractor_ambiguous.json"
+    elif dataset == "SQALE3-ambiguous":
+            dataset_dir = (src_dir / paths.DATASETS.SQALE3_ambiguous.value).resolve()
+            description_filename = "DB_descriptions/SQALE3_DB_descriptions_ambiguous.json"
+            result_filename = "SQALE3_DB_extractor_ambiguous.json"
     else:
         raise ValueError(f"Dataset not found: {dataset}")
 
@@ -431,9 +435,9 @@ if __name__ == "__main__":
     # extract_DB(embedder, "BEAVER")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    print(f"\n{CYAN}Processing BEAVER-ambiguous...{RESET}")
-    extract_DB(embedder, "BEAVER-ambiguous")
-    print(f"{GREEN}Extraction completed!{RESET}\n")
+    # print(f"\n{CYAN}Processing BEAVER-ambiguous...{RESET}")
+    # extract_DB(embedder, "BEAVER-ambiguous")
+    # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 30.20s
 
 
@@ -456,6 +460,10 @@ if __name__ == "__main__":
     # extract_DB(embedder, "SPIDERtrain-ambiguous")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
     #Time: 10.43s
+
+    print(f"\n{CYAN}Processing SQALE3-ambiguous...{RESET}")
+    extract_DB(embedder, "SQALE3-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")
