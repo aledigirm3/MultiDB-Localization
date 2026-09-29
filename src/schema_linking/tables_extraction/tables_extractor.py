@@ -23,9 +23,10 @@ def get_llm_response(query: str, tables: str) -> str:
 - When analyzing the query identify the attributes the user asks for (explicit columns or implied attributes).
 - If an attribute required or explicitly mentioned in the query appears in multiple tables, include all of those tables, even if one table alone would be sufficient. Do not try to optimize or exclude. Always include every table that contains that attribute.
 - **If a table is explicitly mentioned in the query, or a close variation of its name (including singular/plural forms, abbreviations, or similar naming), always include that table.**
+- "Directly joinable tables" lists tables connected by a direct foreign-key relationship. Do not select a table only because it appears in this list; include it only when it is needed to connect information required by the query.
 
 OUTPUT RULES:
-1. Output must be a single line containing only table names separated by commas, with NO SPACES (example: customers,orders). Do NOT include any labels, punctuation, explanation, or code fences.
+1. Output must be a single line containing only table names separated by commas, with no spaces around the comma separators (example: customers,orders). Preserve spaces that are part of a canonical table name. Do NOT include any labels, punctuation, explanation, or code fences.
 2. Use only the table names exactly as they appear on the left-hand side of the database description lines (the canonical names). Do not invent, abbreviate, or change names.
 3. Return the set of tables that together contain the information required to satisfy the query.
 4. If no table is needed to answer the query (e.g., query is about general facts not in the DB), return exactly: NONE
@@ -38,10 +39,11 @@ INPUT FORMAT (this exact structure will be provided):
 
 [DATABASE WITH TABLE DESCRIPTIONS]:
 database: <DatabaseName>
-tableA: <short description including columns if present>
+tableA: <short description including columns if present> (Directly joinable tables: tableB)
 tableB: <short description>
 ...
 (Each table line begins with the canonical table name, then a colon, then description.)
+(The parenthetical joinable-tables suffix is omitted when no direct relationship exists.)
 
 EXAMPLES (generic):
 
@@ -51,8 +53,8 @@ List all active customers who placed orders last month.
 
 [DATABASE WITH TABLE DESCRIPTIONS]:
 database: shop_db
-customers: The `customers` table stores information about people registered in the system. Columns include: customer_id, name, email, status (active/inactive).
-orders: The `orders` table represents purchases made by users. Columns include: order_id, customer_id, order_date, total.
+customers: The `customers` table stores information about people registered in the system. Columns include: customer_id, name, email, status (active/inactive). (Directly joinable tables: orders)
+orders: The `orders` table represents purchases made by users. Columns include: order_id, customer_id, order_date, total. (Directly joinable tables: customers)
 products: The `products` table contains information about products available in the system. Columns include: product_id, name, price.
 
 EXPECTED OUTPUT (single-line):
@@ -77,9 +79,9 @@ List the email addresses of all users who completed the survey last month.
 
 [DATABASE WITH TABLE DESCRIPTIONS]:
 database: survey_db
-users: The `users` table stores information about registered users. Columns include: user_id, name, email, signup_date.
-survey_responses: The `survey_responses` table records all survey submissions. Columns include: response_id, user_id, email, survey_id, completion_date.
-surveys: The `surveys` table contains details about the surveys. Columns include: survey_id, survey_name, created_date.
+users: The `users` table stores information about registered users. Columns include: user_id, name, email, signup_date. (Directly joinable tables: survey_responses)
+survey_responses: The `survey_responses` table records all survey submissions. Columns include: response_id, user_id, email, survey_id, completion_date. (Directly joinable tables: users, surveys)
+surveys: The `surveys` table contains details about the surveys. Columns include: survey_id, survey_name, created_date. (Directly joinable tables: survey_responses)
 
 EXPECTED OUTPUT (single-line):
 users,survey_responses
@@ -181,19 +183,29 @@ def extract_tables(dataset):
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
 
+    with open('../../' + paths.DATASETS[dataset].value + 'doc.json', "r", encoding="utf-8") as f:
+        doc = json.load(f)
+
+    joinables = {
+        (item["db"], item["table"]): item["joinable_tables"]
+        for item in doc
+    }
+
     result_list = []
 
     for sample in data:
 
-        # if sample['question_id'] not in [6157,6331,6468,6724]:
-        #     continue
+        if sample['question_id'] <= 6010:
+            continue
 
         query = sample['question']
         db = sample['DB_result']
 
         tables = f"database: {db}\n"
         for table, desc in table_descriptions[db].items():
-            tables += f"{table}: {desc}\n"
+            related = joinables[(db, table)]
+            joins = f" (Directly joinable tables: {', '.join(related)})" if related else ""
+            tables += f"{table}: {desc}{joins}\n"
 
         llm_response = get_llm_response(query, tables)
 
@@ -257,26 +269,26 @@ if __name__ == '__main__':
     # print(f"SPIDERdev time: {end - start:.2f}s")
 
 
-    start = time.perf_counter()
-
-    print(f"\n{CYAN}Processing ARCHER...{RESET}")
-    dataset = 'ARCHER'
-    extract_tables(dataset)
-    print(f"{GREEN}Extraction completed!{RESET}\n")
-
-    end = time.perf_counter()
-    print(f"ARCHER time: {end - start:.2f}s")
-
-
     # start = time.perf_counter()
-    
-    # print(f"\n{CYAN}Processing BEAVER...{RESET}")
-    # dataset = 'BEAVER'
+
+    # print(f"\n{CYAN}Processing ARCHER...{RESET}")
+    # dataset = 'ARCHER'
     # extract_tables(dataset)
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
     # end = time.perf_counter()
-    # print(f"BEAVER time: {end - start:.2f}s")
+    # print(f"ARCHER time: {end - start:.2f}s")
+
+
+    start = time.perf_counter()
+    
+    print(f"\n{CYAN}Processing BEAVER...{RESET}")
+    dataset = 'BEAVER'
+    extract_tables(dataset)
+    print(f"{GREEN}Extraction completed!{RESET}\n")
+
+    end = time.perf_counter()
+    print(f"BEAVER time: {end - start:.2f}s")
 
 
 # Processing BIRDdev...

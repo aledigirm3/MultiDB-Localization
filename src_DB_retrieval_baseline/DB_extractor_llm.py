@@ -35,6 +35,9 @@ Rules:
    evidence from the question, schema_sql, and top_values.
 """
 
+WRITE_MAX_ATTEMPTS = 7
+WRITE_RETRY_DELAY_SECONDS = 0.5
+
 
 def get_dataset_paths(dataset: str) -> Dict[str, Path]:
 
@@ -58,6 +61,18 @@ def get_dataset_paths(dataset: str) -> Dict[str, Path]:
         dataset_dir = paths.DATASETS.BEAVER.value
         doc_filename = "doc.json"
         result_filename = "BEAVER_DB_extractor.json"
+    elif dataset == "ARCHER":
+        dataset_dir = paths.DATASETS.ARCHER.value
+        doc_filename = "doc.json"
+        result_filename = "ARCHER_DB_extractor.json"
+    elif dataset == "ARCHER-ambiguous":
+        dataset_dir = paths.DATASETS.ARCHER_ambiguous.value
+        doc_filename = "doc.json"
+        result_filename = "ARCHER_DB_extractor_ambiguous.json"
+    elif dataset == "SPIDERtrain":
+        dataset_dir = paths.DATASETS.SPIDERtrain.value
+        doc_filename = "doc.json"
+        result_filename = "SPIDERtrain_DB_extractor.json"
     elif dataset == "SPIDERtrain-ambiguous":
         dataset_dir = paths.DATASETS.SPIDERtrain_ambiguous.value
         doc_filename = "doc.json"
@@ -67,7 +82,7 @@ def get_dataset_paths(dataset: str) -> Dict[str, Path]:
         print(f"{RED}DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
 
-    results_folder = paths.RESULTS.DB_RETRIEVAL.value
+    results_folder = "../results_DB_LLM/DB_retrieval"
 
     return {
         "questions_path": dataset_dir + "/dev.json",
@@ -193,7 +208,26 @@ def sample_question_id(sample: dict, fallback_question_id: int) -> int:
     return sample.get("question_id", fallback_question_id)
 
 
-def extract_DB(dataset: str):
+def write_results(path: str, data: List[dict]):
+    payload = json.dumps(data, ensure_ascii=False, indent=4)
+
+    for attempt in range(1, WRITE_MAX_ATTEMPTS + 1):
+        try:
+            with open(path, "w", encoding="utf-8") as file:
+                file.write(payload)
+            return
+        except OSError as error:
+            if attempt == WRITE_MAX_ATTEMPTS:
+                raise
+            print(
+                f"[write retry] attempt {attempt}/{WRITE_MAX_ATTEMPTS} failed: "
+                f"{type(error).__name__}: {error}",
+                flush=True,
+            )
+            time.sleep(WRITE_RETRY_DELAY_SECONDS)
+
+
+def extract_DB(dataset: str, start_index: int = 0):
     dataset_paths = get_dataset_paths(dataset)
 
     with open(dataset_paths["doc_path"], "r", encoding="utf-8") as file:
@@ -201,6 +235,9 @@ def extract_DB(dataset: str):
 
     with open(dataset_paths["questions_path"], "r", encoding="utf-8") as file:
         data = json.load(file)
+
+    if not 0 <= start_index <= len(data):
+        raise ValueError(f"Invalid start_index {start_index} for {len(data)} samples.")
 
     catalog = build_database_catalog(table_docs)
     # print(json.dumps(catalog, ensure_ascii=False, indent=2))
@@ -210,7 +247,7 @@ def extract_DB(dataset: str):
 
     os.makedirs(dataset_paths["results_folder"], exist_ok=True)
 
-    for question_id, sample in enumerate(data):
+    for question_id, sample in enumerate(data[start_index:], start=start_index):
         question = sample["question"]
         llm_response = get_llm_response(question, catalog)
         db_result = clean_llm_db_result(llm_response, valid_db_ids)
@@ -224,8 +261,7 @@ def extract_DB(dataset: str):
         }
         result_list.append(item)
 
-        with open(dataset_paths["result_file_path"], "w", encoding="utf-8") as file:
-            json.dump(result_list, file, ensure_ascii=False, indent=4)
+        write_results(dataset_paths["result_file_path"], result_list)
 
     print(f"{GREEN}JSON file saved at {dataset_paths['result_file_path']}{RESET}")
 
@@ -241,14 +277,17 @@ if __name__ == "__main__":
     # extract_DB("SPIDERdev1")
     # print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
-    # extract_DB("BIRDdev-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing BIRDdev-ambiguous...{RESET}")
+    extract_DB("BIRDdev-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
-    # print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
-    # extract_DB("SPIDERdev1-ambiguous")
-    # print(f"{GREEN}Extraction completed!{RESET}\n")
+    print(f"\n{CYAN}Processing SPIDERdev1-ambiguous...{RESET}")
+    extract_DB("SPIDERdev1-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
+    print(f"\n{CYAN}Processing ARCHER-ambiguous...{RESET}")
+    extract_DB("ARCHER-ambiguous")
+    print(f"{GREEN}Extraction completed!{RESET}\n")
 
     # print(f"\n{CYAN}Processing BEAVER...{RESET}")
     # extract_DB("BEAVER")

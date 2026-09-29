@@ -6,6 +6,9 @@ class DATASETS(Enum):
     SPIDERdev1 = "../datasets/SPIDERdev1.0/"
     SPIDERdev1_ambiguous = "../datasets/SPIDERdev1.0-ambiguous/"
     BEAVER = "../datasets/BEAVER/"
+    ARCHER = "../datasets/ARCHER/"
+    ARCHER_ambiguous = "../datasets/ARCHER-ambiguous/"
+    SPIDERtrain = "../datasets/SPIDERtrain/"
     SPIDERtrain_ambiguous = "../datasets/SPIDERtrain-ambiguous/"
 
 class RESULTS(Enum):

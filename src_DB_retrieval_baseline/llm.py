@@ -1,5 +1,6 @@
 import os
 import botocore.session
+from botocore.config import Config
 from ansi_colors import *
 
 #==============.env for llm=====================
@@ -11,7 +12,7 @@ load_dotenv(dotenv_path=env_path)
 #===============================================
 
 DEFAULT_REGION = "eu-central-1"
-DEFAULT_MAX_TOKENS = 20000
+DEFAULT_MAX_TOKENS = 16000
 
 
 def get_bedrock_client():
@@ -23,7 +24,11 @@ def get_bedrock_client():
         or DEFAULT_REGION
     )
 
-    return session.create_client("bedrock-runtime", region_name=region)
+    return session.create_client(
+        "bedrock-runtime",
+        region_name=region,
+        config=Config(read_timeout=600),
+    )
 
 
 def convert_messages_for_bedrock(messages: list):
