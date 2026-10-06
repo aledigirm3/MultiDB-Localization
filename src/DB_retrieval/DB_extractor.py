@@ -25,6 +25,8 @@ QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 
 MAX_VALUES_PER_COLUMN = 5
 TABLE_EMBEDDING_TABLES_PER_DB = 1
+MEMORY_EFFICIENT_QUERY_BATCH_SIZE = 256
+MEMORY_EFFICIENT_TABLE_BATCH_SIZE = 8192
 
 BM25_K1 = 1.3
 BM25_B = 1.0
@@ -141,9 +143,12 @@ def get_bm25_db_scores(
         db_name = table_doc.get("db")
         score = float(scores[index])
         if not math.isfinite(score):
-            raise ValueError(
-                f"BM25 produced a non-finite score for table index {index}."
-            )
+            if bm25.doc_len[index] == 0:
+                score = 0.0
+            else:
+                raise ValueError(
+                    f"BM25 produced a non-finite score for table index {index}."
+                )
         score = max(0.0, score)
         db_table_scores[db_name].append(score)
 
@@ -197,12 +202,16 @@ def build_table_text(table_doc: dict) -> str:
     return table_text
 
 
-def build_table_embeddings(embedder: Embedder, table_docs: list):
+def build_table_embeddings(
+    embedder: Embedder,
+    table_docs: list,
+    as_tensor: bool = True,
+):
     table_texts = [
         build_table_text(table_doc)
         for table_doc in table_docs
     ]
-    return embedder.get_sentences_embeddings(table_texts)
+    return embedder.get_sentences_embeddings(table_texts, as_tensor=as_tensor)
 
 
 def build_table_indices_by_db(table_docs: list) -> dict:
@@ -235,6 +244,101 @@ def aggregate_table_embedding_scores(
         aggregated_scores[:, db_index] = best_scores.mean(dim=1)
 
     return aggregated_scores
+
+
+def aggregate_table_embedding_scores_memory_efficient(
+    query_embeddings,
+    table_embeddings,
+    table_docs: list,
+    database_names: list,
+):
+    """Compute the same per-DB table maximum without the full similarity matrix."""
+    if TABLE_EMBEDDING_TABLES_PER_DB != 1:
+        raise ValueError(
+            "Memory-efficient table scoring requires "
+            "TABLE_EMBEDDING_TABLES_PER_DB = 1."
+        )
+
+    database_indices = {
+        database_name: index
+        for index, database_name in enumerate(database_names)
+    }
+    try:
+        table_database_indices = torch.tensor([
+            database_indices[table_doc["db"]]
+            for table_doc in table_docs
+        ], dtype=torch.long)
+    except KeyError as error:
+        raise ValueError(
+            f"Table document references an unknown database: {error.args[0]}"
+        ) from error
+
+    database_table_counts = torch.bincount(
+        table_database_indices,
+        minlength=len(database_names),
+    )
+    if (database_table_counts == 0).any():
+        missing_database = database_names[
+            int((database_table_counts == 0).nonzero()[0])
+        ]
+        raise ValueError(
+            f"No table documents found for database: {missing_database}"
+        )
+
+    if not isinstance(query_embeddings, torch.Tensor):
+        query_embeddings = torch.as_tensor(query_embeddings)
+    device = query_embeddings.device
+    normalized_queries = util.normalize_embeddings(query_embeddings)
+    aggregated_scores = torch.full(
+        (len(query_embeddings), len(database_names)),
+        -torch.inf,
+        dtype=normalized_queries.dtype,
+        device=device,
+    )
+    all_finite = torch.tensor(True, device=device)
+
+    for table_start in range(
+        0,
+        len(table_docs),
+        MEMORY_EFFICIENT_TABLE_BATCH_SIZE,
+    ):
+        table_end = min(
+            table_start + MEMORY_EFFICIENT_TABLE_BATCH_SIZE,
+            len(table_docs),
+        )
+        table_batch = torch.as_tensor(
+            table_embeddings[table_start:table_end],
+            device=device,
+        )
+        normalized_tables = util.normalize_embeddings(table_batch)
+        database_batch = table_database_indices[table_start:table_end].to(device)
+
+        for query_start in range(
+            0,
+            len(query_embeddings),
+            MEMORY_EFFICIENT_QUERY_BATCH_SIZE,
+        ):
+            query_end = min(
+                query_start + MEMORY_EFFICIENT_QUERY_BATCH_SIZE,
+                len(query_embeddings),
+            )
+            similarities = torch.mm(
+                normalized_queries[query_start:query_end],
+                normalized_tables.transpose(0, 1),
+            )
+            all_finite &= torch.isfinite(similarities).all()
+            aggregated_scores[query_start:query_end].scatter_reduce_(
+                1,
+                database_batch.expand(query_end - query_start, -1),
+                similarities,
+                reduce="amax",
+                include_self=True,
+            )
+
+    if not bool(all_finite):
+        raise ValueError("Table similarities contain non-finite values.")
+
+    return aggregated_scores.cpu()
 
 
 def min_max_normalize(scores: dict) -> dict:
@@ -291,7 +395,12 @@ def sample_question_id(sample: dict, fallback_question_id: int) -> int:
     return sample.get("question_id", fallback_question_id)
 
 
-def extract_DB(embedder: Embedder, dataset: str):
+def extract_DB(
+    embedder: Embedder,
+    dataset: str,
+    memory_efficient: bool = False,
+):
+    """Retrieve databases, optionally streaming table similarities in batches."""
     validate_hyperparameters()
     dataset_paths = get_dataset_paths(dataset)
 
@@ -320,10 +429,19 @@ def extract_DB(embedder: Embedder, dataset: str):
         for description in descriptions
     ]
 
+    if memory_efficient and TABLE_EMBEDDING_TABLES_PER_DB != 1:
+        raise ValueError(
+            "memory_efficient=True requires "
+            "TABLE_EMBEDDING_TABLES_PER_DB = 1."
+        )
+
     bm25 = build_bm25(table_docs)
     description_embeddings = build_description_embeddings(embedder, descriptions)
-    table_embeddings = build_table_embeddings(embedder, table_docs)
-    table_indices_by_db = build_table_indices_by_db(table_docs)
+    table_embeddings = build_table_embeddings(
+        embedder,
+        table_docs,
+        as_tensor=not memory_efficient,
+    )
 
     query_embeddings = embedder.get_sentences_embeddings([
         QUERY_INSTRUCTION + sample["question"]
@@ -333,20 +451,30 @@ def extract_DB(embedder: Embedder, dataset: str):
         query_embeddings,
         description_embeddings,
     ).cpu()
-    table_similarity_matrix = util.cos_sim(
-        query_embeddings,
-        table_embeddings,
-    ).cpu()
     if not torch.isfinite(description_similarity_matrix).all():
         raise ValueError("Description similarities contain non-finite values.")
-    if not torch.isfinite(table_similarity_matrix).all():
-        raise ValueError("Table similarities contain non-finite values.")
 
-    table_db_score_matrix = aggregate_table_embedding_scores(
-        table_similarity_matrix,
-        table_indices_by_db,
-        database_names,
-    )
+    if memory_efficient:
+        table_db_score_matrix = aggregate_table_embedding_scores_memory_efficient(
+            query_embeddings,
+            table_embeddings,
+            table_docs,
+            database_names,
+        )
+    else:
+        table_similarity_matrix = util.cos_sim(
+            query_embeddings,
+            table_embeddings,
+        ).cpu()
+        if not torch.isfinite(table_similarity_matrix).all():
+            raise ValueError("Table similarities contain non-finite values.")
+
+        table_indices_by_db = build_table_indices_by_db(table_docs)
+        table_db_score_matrix = aggregate_table_embedding_scores(
+            table_similarity_matrix,
+            table_indices_by_db,
+            database_names,
+        )
 
     result_list = []
 
@@ -462,7 +590,7 @@ if __name__ == "__main__":
     #Time: 10.43s
 
     print(f"\n{CYAN}Processing SQALE3-ambiguous...{RESET}")
-    extract_DB(embedder, "SQALE3-ambiguous")
+    extract_DB(embedder, "SQALE3-ambiguous", memory_efficient=True)
     print(f"{GREEN}Extraction completed!{RESET}\n")
 
     end = time.perf_counter()

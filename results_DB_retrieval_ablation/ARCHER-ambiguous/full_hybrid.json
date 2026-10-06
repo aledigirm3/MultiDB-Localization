@@ -1,0 +1,198 @@
+[
+    {
+        "question_id": 0,
+        "db_id": "bike_1_3",
+        "question": "The government plans to build four more stations in the third most populous city in California. How many stations will there be in total?",
+        "SQL": "SELECT COUNT ( * ) + 4 AS n_stations FROM station WHERE city = \"San Jose\"",
+        "DB_result": "bike_1_3"
+    },
+    {
+        "question_id": 1,
+        "db_id": "bike_1_3",
+        "question": "If we add four more, what will the total number of stations be in California's 3rd most populous city.",
+        "SQL": "SELECT COUNT ( * ) + 4 AS n_stations FROM station WHERE city = \"San Jose\"",
+        "DB_result": "bike_1_3"
+    },
+    {
+        "question_id": 2,
+        "db_id": "bike_1_1",
+        "question": "What percentage of stations in San Francisco have more than 25 docks?",
+        "SQL": "SELECT 100.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM station WHERE city = \"San Francisco\" ) AS propotion FROM station WHERE city = \"San Francisco\" AND dock_count > 25",
+        "DB_result": "bike_1_1"
+    },
+    {
+        "question_id": 3,
+        "db_id": "bike_1_1",
+        "question": "How many stations, as a percentage of total stations, have more than 25 docks in San Francisco.",
+        "SQL": "SELECT 100.0 * COUNT ( * ) / ( SELECT COUNT ( * ) FROM station WHERE city = \"San Francisco\" ) AS propotion FROM station WHERE city = \"San Francisco\" AND dock_count > 25",
+        "DB_result": "bike_1_1"
+    },
+    {
+        "question_id": 4,
+        "db_id": "customers_and_products_contacts_3",
+        "question": "If the unit price of all Gucci products is 600, how much has Sterling spent so far?",
+        "SQL": "SELECT SUM ( cost ) FROM ( SELECT SUM ( C.order_quantity * 600 ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name = \"gucci\" UNION SELECT SUM ( C.order_quantity * D.product_price ) AS ost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name != \"gucci\" )",
+        "DB_result": "customers_and_products_contacts_3"
+    },
+    {
+        "question_id": 5,
+        "db_id": "customers_and_products_contacts_3",
+        "question": "Calculate Sterling's total spend to date if all Gucci products cost 600 each.",
+        "SQL": "SELECT SUM ( cost ) FROM ( SELECT SUM ( C.order_quantity * 600 ) AS cost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name = \"gucci\" UNION SELECT SUM ( C.order_quantity * D.product_price ) AS ost FROM Customers A JOIN Customer_Orders B ON A.customer_id = B.customer_id JOIN Order_Items C ON B.order_id = C.order_id JOIN Products D ON C.product_id = D.product_id WHERE A.customer_name = \"Sterling\" AND product_name != \"gucci\" )",
+        "DB_result": "customers_and_products_contacts_3"
+    },
+    {
+        "question_id": 6,
+        "db_id": "customers_and_products_contacts_2",
+        "question": "List the highest price, lowest price, and variance of Apple products.",
+        "SQL": "SELECT max_price , min_price , variance FROM ( SELECT 1.0 * ( product_price - AVG ( product_price ) ) * ( product_price - AVG ( product_price ) ) / COUNT ( * ) AS variance FROM Products WHERE product_name = \"Apple\" ) JOIN ( SELECT MAX ( product_price ) AS max_price , MIN ( product_price ) AS min_price FROM Products WHERE product_name = \"Apple\" )",
+        "DB_result": "customers_and_products_contacts_2"
+    },
+    {
+        "question_id": 7,
+        "db_id": "customers_and_products_contacts_2",
+        "question": "Considering only Apple products tell me the highest and lowest prices and also the variance across the Apple range.",
+        "SQL": "SELECT max_price , min_price , variance FROM ( SELECT 1.0 * ( product_price - AVG ( product_price ) ) * ( product_price - AVG ( product_price ) ) / COUNT ( * ) AS variance FROM Products WHERE product_name = \"Apple\" ) JOIN ( SELECT MAX ( product_price ) AS max_price , MIN ( product_price ) AS min_price FROM Products WHERE product_name = \"Apple\" )",
+        "DB_result": "customers_and_products_contacts_2"
+    },
+    {
+        "question_id": 8,
+        "db_id": "formula_1_1",
+        "question": "What is the average lap time over the three sessions for the top ranked driver in the 2009 Australian Grand Prix qualifying?",
+        "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || q1 ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 9,
+        "db_id": "formula_1_1",
+        "question": "For the Australian Grand Prix qualifier in 2009, give me the lap time average from the three sessions of the top ranked driver.",
+        "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || q1 ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 10,
+        "db_id": "formula_1_1",
+        "question": "What is the average lap time over the three sessions for the top ranked driver in the 2009 Australian Grand Prix qualifying, assuming his lap time obtained in q1 was 1:26.026 instead?",
+        "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || \"1:26.026\" ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 11,
+        "db_id": "formula_1_1",
+        "question": "Assuming the top ranked driver of the 2009 Australian Grand Prix qualifier recorded a score of 1:26:026 in the first round then what would their average lap time over all three qualifiers be?",
+        "SQL": "SELECT time ( ( strftime ( \"%s\" , \"00:0\" || \"1:26.026\" ) + strftime ( \"%s\" , \"00:0\" || q2 ) + strftime ( \"%s\" , \"00:0\" || q3 ) ) / 3.0 , \"unixepoch\" ) AS avg_lap FROM qualifying A JOIN races B ON A.raceId = B.raceId WHERE B.name = \"Australian Grand Prix\" AND B.year = \"2009\" AND A.position = \"1\"",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 12,
+        "db_id": "formula_1_3",
+        "question": "What are the first name and last name of the fastest and slowest driver in the first round of the 2006 British Grand Prix qualifying race? What is the difference between their lap time?",
+        "SQL": "SELECT forename_slowest , surname_slowest , forename_fastest , surname_fastest , time ( ( strftime ( \"%s\" , \"00:0\" || slowest_q1 ) - strftime ( \"%s\" , \"00:0\" || fastest_q1 ) ) , \"unixepoch\" ) AS diff FROM ( SELECT MAX ( A.q1 ) AS slowest_q1 , D.forename AS forename_slowest , D.surname AS surname_slowest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" ) JOIN ( SELECT MIN ( A.q1 ) AS fastest_q1 , D.forename AS forename_fastest , D.surname AS surname_fastest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" AND A.q1 != \"\" )",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 13,
+        "db_id": "formula_1_3",
+        "question": "For the British Grand Prix in 2006, which racer was the fastest and which racer was the slowest? Provide their first name, last name, and the difference in lap time between them?",
+        "SQL": "SELECT forename_slowest , surname_slowest , forename_fastest , surname_fastest , time ( ( strftime ( \"%s\" , \"00:0\" || slowest_q1 ) - strftime ( \"%s\" , \"00:0\" || fastest_q1 ) ) , \"unixepoch\" ) AS diff FROM ( SELECT MAX ( A.q1 ) AS slowest_q1 , D.forename AS forename_slowest , D.surname AS surname_slowest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" ) JOIN ( SELECT MIN ( A.q1 ) AS fastest_q1 , D.forename AS forename_fastest , D.surname AS surname_fastest FROM qualifying A JOIN races B ON A.raceId = B.raceId JOIN drivers D ON A.driverId = D.driverId WHERE B.name = \"British Grand Prix\" AND B.year = \"2006\" AND A.q1 != \"\" )",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 14,
+        "db_id": "formula_1_2",
+        "question": "Among the drivers who have the same nationality as the famous football player Cristiano Ronaldo, how many times is the number of players that participated in the 2006 United States Grand Prix greater than that of players who did not?",
+        "SQL": "SELECT 1.0 * n_p / n_all FROM ( SELECT COUNT ( DISTINCT A.driverId ) AS n_p FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" AND C.name = \"United States Grand Prix\" AND C.year = \"2006\" ) JOIN ( SELECT COUNT ( DISTINCT A.driverId ) AS n_all FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" )",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 15,
+        "db_id": "formula_1_2",
+        "question": "Among those professional drivers who share a nationality with Cristiano Ronaldo, what is the ratio between participating drivers to non-participating drivers for the 2006 Grand Prix in the United States?",
+        "SQL": "SELECT 1.0 * n_p / n_all FROM ( SELECT COUNT ( DISTINCT A.driverId ) AS n_p FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" AND C.name = \"United States Grand Prix\" AND C.year = \"2006\" ) JOIN ( SELECT COUNT ( DISTINCT A.driverId ) AS n_all FROM drivers A JOIN results B ON A.driverId = B.driverId JOIN races C ON B.raceId = C.raceID WHERE A.nationality = \"Portuguese\" )",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 16,
+        "db_id": "soccer_1_1",
+        "question": "Among the players with medium attack rating, what is the ratio between the highest and lowest scores which measure the quality of physical strength?",
+        "SQL": "SELECT 1.0 * max_strength / min_strength AS ratio FROM ( SELECT MAX ( A.strength ) AS max_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" ) JOIN ( SELECT MIN ( A.strength ) AS min_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" )",
+        "DB_result": "soccer_1_1"
+    },
+    {
+        "question_id": 17,
+        "db_id": "soccer_1_1",
+        "question": "Find me the ratio of highest to lowest scores as measured by quality of physical strength out of only the players with a medium attack rating.",
+        "SQL": "SELECT 1.0 * max_strength / min_strength AS ratio FROM ( SELECT MAX ( A.strength ) AS max_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" ) JOIN ( SELECT MIN ( A.strength ) AS min_strength FROM Player_Attributes A JOIN Player B ON A.player_fifa_api_id = B.player_fifa_api_id WHERE A.attacking_work_rate = \"medium\" )",
+        "DB_result": "soccer_1_2"
+    },
+    {
+        "question_id": 18,
+        "db_id": "world_1_2",
+        "question": "Among the countries that became independent after 1979, which country has the highest growth rate in GNP if all countries in Oceania have an increase in curretn GNP of 1,000,000?",
+        "SQL": "SELECT name FROM ( SELECT name , GNP + 1000000 AS GNP , GNPOld , IndepYear FROM country WHERE Continent = \"Oceania\" UNION ALL SELECT name , GNP , GNPOld , IndepYear FROM country WHERE Continent != \"Oceania\" ) WHERE IndepYear > 1979 ORDER BY 1.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 19,
+        "db_id": "world_1_2",
+        "question": "Assuming all countries in Oceania have an increase of 1,000,000 in their current GNP, which country among those that gained independence after 1979 has the highest gross national product growth rate?",
+        "SQL": "SELECT name FROM ( SELECT name , GNP + 1000000 AS GNP , GNPOld , IndepYear FROM country WHERE Continent = \"Oceania\" UNION ALL SELECT name , GNP , GNPOld , IndepYear FROM country WHERE Continent != \"Oceania\" ) WHERE IndepYear > 1979 ORDER BY 1.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 20,
+        "db_id": "world_1_2",
+        "question": "Among the countries where Arabic is not the official language, which country has the largest growth rate of GNP if the old GNP of all countries in South America increased by 9999.0?",
+        "SQL": "SELECT Name FROM ( SELECT Name , Code , GNP , GNPOld + 9999.0 AS GNPOld FROM country WHERE Continent = \"South America\" UNION ALL SELECT Name , Code , GNP , GNPOld FROM country WHERE Continent != \"South America\" ) WHERE Code NOT IN ( SELECT CountryCode FROM countrylanguage WHERE Language = \"Arabic\" AND IsOfficial = \"T\" ) ORDER BY 100.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 21,
+        "db_id": "world_1_2",
+        "question": "If all South American countries have an increase of 9999.0 in their previous GNP, which country, among those with non-Arabic official languages, has the highest Gross National Product growth rate?",
+        "SQL": "SELECT Name FROM ( SELECT Name , Code , GNP , GNPOld + 9999.0 AS GNPOld FROM country WHERE Continent = \"South America\" UNION ALL SELECT Name , Code , GNP , GNPOld FROM country WHERE Continent != \"South America\" ) WHERE Code NOT IN ( SELECT CountryCode FROM countrylanguage WHERE Language = \"Arabic\" AND IsOfficial = \"T\" ) ORDER BY 100.0 * ( GNP - GNPOld ) / GNPOld DESC LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 22,
+        "db_id": "world_1_2",
+        "question": "List name, the past and current gross national product of each country in Asia, and estimate the future gross national product if the growth rate remains unchanged.",
+        "SQL": "SELECT name , GNPOld , GNP , GNP + ( GNP - GNPOld ) AS GNPFuture FROM country WHERE Continent = \"Asia\"",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 23,
+        "db_id": "world_1_2",
+        "question": "For each country in Asia, provide a list of their name, the past and current GNP, and estimate their future Gross National Product assuming a constant growth rate.",
+        "SQL": "SELECT name , GNPOld , GNP , GNP + ( GNP - GNPOld ) AS GNPFuture FROM country WHERE Continent = \"Asia\"",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 24,
+        "db_id": "world_1_2",
+        "question": "If the current gross national product of a country with Chinese as its main language is 1000000.0, list name, the past and current gross national product of each country in Asia, and estimate the future gross national product if the growth rate remains unchanged.",
+        "SQL": "SELECT name , GNPOld , GNP , GNP + ( GNP - GNPOld ) AS GNPFuture FROM ( SELECT name , GNPOld , 1000000.0 AS GNP , Continent FROM country WHERE Code IN ( SELECT CountryCode FROM ( SELECT CountryCode , Language , MAX ( Percentage ) FROM countrylanguage GROUP BY CountryCode ) WHERE Language = \"Chinese\" ) UNION ALL SELECT name , GNPOld , GNP , Continent FROM country WHERE Code NOT IN ( SELECT CountryCode FROM ( SELECT CountryCode , Language , MAX ( Percentage ) FROM countrylanguage GROUP BY CountryCode ) WHERE Language = \"Chinese\" ) ) WHERE Continent = \"Asia\"",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 25,
+        "db_id": "world_1_2",
+        "question": "Assuming that the country with Chinese as its primary language has a current GNP of 1000000.0, provide a list of their name, the past and current GNP for each Asian country, and estimate their future Gross National Product assuming a constant growth rate.",
+        "SQL": "SELECT name , GNPOld , GNP , GNP + ( GNP - GNPOld ) AS GNPFuture FROM ( SELECT name , GNPOld , 1000000.0 AS GNP , Continent FROM country WHERE Code IN ( SELECT CountryCode FROM ( SELECT CountryCode , Language , MAX ( Percentage ) FROM countrylanguage GROUP BY CountryCode ) WHERE Language = \"Chinese\" ) UNION ALL SELECT name , GNPOld , GNP , Continent FROM country WHERE Code NOT IN ( SELECT CountryCode FROM ( SELECT CountryCode , Language , MAX ( Percentage ) FROM countrylanguage GROUP BY CountryCode ) WHERE Language = \"Chinese\" ) ) WHERE Continent = \"Asia\"",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 26,
+        "db_id": "world_1_1",
+        "question": "The annual population growth rate in the UK is 0.4%. If the population of countries with a life expectancy greater than 75 in Europe is 103000, what is the population size in the UK one year later?",
+        "SQL": "SELECT Population * ( 1 + 0.004 ) AS population_in_1year FROM ( SELECT Continent , name , 103000 AS Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy > 75 UNION SELECT Continent , name , Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy <= 75 ) WHERE name = \"United Kingdom\"",
+        "DB_result": "world_1_1"
+    },
+    {
+        "question_id": 27,
+        "db_id": "world_1_1",
+        "question": "What will be the population size of the UK after one year, given that the UK has an annual population growth rate of 0.4% and all European countries with a life expectancy greater than 75 have a population of 103000?",
+        "SQL": "SELECT Population * ( 1 + 0.004 ) AS population_in_1year FROM ( SELECT Continent , name , 103000 AS Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy > 75 UNION SELECT Continent , name , Population FROM country WHERE Continent = \"Europe\" AND LifeExpectancy <= 75 ) WHERE name = \"United Kingdom\"",
+        "DB_result": "world_1_1"
+    }
+]

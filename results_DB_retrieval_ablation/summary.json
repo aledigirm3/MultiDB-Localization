@@ -1,0 +1,517 @@
+{
+    "weights": {
+        "description_only": {
+            "description": 1.0,
+            "dense_table": 0.0,
+            "bm25": 0.0
+        },
+        "dense_table_only": {
+            "description": 0.0,
+            "dense_table": 1.0,
+            "bm25": 0.0
+        },
+        "bm25_value_only": {
+            "description": 0.0,
+            "dense_table": 0.0,
+            "bm25": 1.0
+        },
+        "dense_description": {
+            "description": 0.3333333333333333,
+            "dense_table": 0.6666666666666666,
+            "bm25": 0.0
+        },
+        "dense_bm25": {
+            "description": 0.0,
+            "dense_table": 0.6666666666666666,
+            "bm25": 0.3333333333333333
+        },
+        "description_bm25": {
+            "description": 0.5,
+            "dense_table": 0.0,
+            "bm25": 0.5
+        },
+        "full_hybrid": {
+            "description": 0.25,
+            "dense_table": 0.5,
+            "bm25": 0.25
+        },
+        "full_hybrid_no_values": {
+            "description": 0.25,
+            "dense_table": 0.5,
+            "bm25": 0.25
+        }
+    },
+    "datasets": {
+        "BIRDdev": {
+            "samples": 1534,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\BIRDdev_DB_extractor.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 1475,
+                    "accuracy": 0.9615384615384616
+                },
+                "dense_table_only": {
+                    "correct": 1479,
+                    "accuracy": 0.9641460234680573
+                },
+                "bm25_value_only": {
+                    "correct": 1333,
+                    "accuracy": 0.8689700130378096
+                },
+                "dense_description": {
+                    "correct": 1499,
+                    "accuracy": 0.9771838331160365
+                },
+                "dense_bm25": {
+                    "correct": 1509,
+                    "accuracy": 0.983702737940026
+                },
+                "description_bm25": {
+                    "correct": 1498,
+                    "accuracy": 0.9765319426336375
+                },
+                "full_hybrid": {
+                    "correct": 1514,
+                    "accuracy": 0.9869621903520208
+                },
+                "full_hybrid_no_values": {
+                    "correct": 1509,
+                    "accuracy": 0.983702737940026
+                }
+            }
+        },
+        "SPIDERdev1": {
+            "samples": 1034,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\SPIDERdev1_DB_extractor.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 952,
+                    "accuracy": 0.9206963249516441
+                },
+                "dense_table_only": {
+                    "correct": 1005,
+                    "accuracy": 0.971953578336557
+                },
+                "bm25_value_only": {
+                    "correct": 884,
+                    "accuracy": 0.8549323017408124
+                },
+                "dense_description": {
+                    "correct": 1002,
+                    "accuracy": 0.9690522243713733
+                },
+                "dense_bm25": {
+                    "correct": 1004,
+                    "accuracy": 0.9709864603481625
+                },
+                "description_bm25": {
+                    "correct": 966,
+                    "accuracy": 0.9342359767891683
+                },
+                "full_hybrid": {
+                    "correct": 1007,
+                    "accuracy": 0.9738878143133463
+                },
+                "full_hybrid_no_values": {
+                    "correct": 1010,
+                    "accuracy": 0.97678916827853
+                }
+            }
+        },
+        "SPIDERtrain": {
+            "samples": 7000,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\SPIDERtrain_DB_extractor.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 4215,
+                    "accuracy": 0.6021428571428571
+                },
+                "dense_table_only": {
+                    "correct": 5071,
+                    "accuracy": 0.7244285714285714
+                },
+                "bm25_value_only": {
+                    "correct": 4924,
+                    "accuracy": 0.7034285714285714
+                },
+                "dense_description": {
+                    "correct": 5014,
+                    "accuracy": 0.7162857142857143
+                },
+                "dense_bm25": {
+                    "correct": 5377,
+                    "accuracy": 0.7681428571428571
+                },
+                "description_bm25": {
+                    "correct": 5121,
+                    "accuracy": 0.7315714285714285
+                },
+                "full_hybrid": {
+                    "correct": 5334,
+                    "accuracy": 0.762
+                },
+                "full_hybrid_no_values": {
+                    "correct": 5300,
+                    "accuracy": 0.7571428571428571
+                }
+            }
+        },
+        "ARCHER": {
+            "samples": 518,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\ARCHER_DB_extractor.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 460,
+                    "accuracy": 0.888030888030888
+                },
+                "dense_table_only": {
+                    "correct": 475,
+                    "accuracy": 0.916988416988417
+                },
+                "bm25_value_only": {
+                    "correct": 391,
+                    "accuracy": 0.7548262548262549
+                },
+                "dense_description": {
+                    "correct": 483,
+                    "accuracy": 0.9324324324324325
+                },
+                "dense_bm25": {
+                    "correct": 486,
+                    "accuracy": 0.9382239382239382
+                },
+                "description_bm25": {
+                    "correct": 469,
+                    "accuracy": 0.9054054054054054
+                },
+                "full_hybrid": {
+                    "correct": 485,
+                    "accuracy": 0.9362934362934363
+                },
+                "full_hybrid_no_values": {
+                    "correct": 485,
+                    "accuracy": 0.9362934362934363
+                }
+            }
+        },
+        "BIRDdev-ambiguous": {
+            "samples": 126,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\BIRDdev_DB_extractor_ambiguous.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 33,
+                    "accuracy": 0.2619047619047619,
+                    "family_correct": 124,
+                    "family_accuracy": 0.9841269841269841,
+                    "clone_given_family": 0.2661290322580645
+                },
+                "dense_table_only": {
+                    "correct": 76,
+                    "accuracy": 0.6031746031746031,
+                    "family_correct": 122,
+                    "family_accuracy": 0.9682539682539683,
+                    "clone_given_family": 0.6229508196721312
+                },
+                "bm25_value_only": {
+                    "correct": 100,
+                    "accuracy": 0.7936507936507936,
+                    "family_correct": 122,
+                    "family_accuracy": 0.9682539682539683,
+                    "clone_given_family": 0.819672131147541
+                },
+                "dense_description": {
+                    "correct": 77,
+                    "accuracy": 0.6111111111111112,
+                    "family_correct": 125,
+                    "family_accuracy": 0.9920634920634921,
+                    "clone_given_family": 0.616
+                },
+                "dense_bm25": {
+                    "correct": 103,
+                    "accuracy": 0.8174603174603174,
+                    "family_correct": 124,
+                    "family_accuracy": 0.9841269841269841,
+                    "clone_given_family": 0.8306451612903226
+                },
+                "description_bm25": {
+                    "correct": 101,
+                    "accuracy": 0.8015873015873016,
+                    "family_correct": 125,
+                    "family_accuracy": 0.9920634920634921,
+                    "clone_given_family": 0.808
+                },
+                "full_hybrid": {
+                    "correct": 103,
+                    "accuracy": 0.8174603174603174,
+                    "family_correct": 124,
+                    "family_accuracy": 0.9841269841269841,
+                    "clone_given_family": 0.8306451612903226
+                },
+                "full_hybrid_no_values": {
+                    "correct": 33,
+                    "accuracy": 0.2619047619047619,
+                    "family_correct": 124,
+                    "family_accuracy": 0.9841269841269841,
+                    "clone_given_family": 0.2661290322580645
+                }
+            }
+        },
+        "SPIDERdev1-ambiguous": {
+            "samples": 34,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\SPIDERdev1_DB_extractor_ambiguous.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 10,
+                    "accuracy": 0.29411764705882354,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.29411764705882354
+                },
+                "dense_table_only": {
+                    "correct": 26,
+                    "accuracy": 0.7647058823529411,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.7647058823529411
+                },
+                "bm25_value_only": {
+                    "correct": 32,
+                    "accuracy": 0.9411764705882353,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.9411764705882353
+                },
+                "dense_description": {
+                    "correct": 26,
+                    "accuracy": 0.7647058823529411,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.7647058823529411
+                },
+                "dense_bm25": {
+                    "correct": 34,
+                    "accuracy": 1.0,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 1.0
+                },
+                "description_bm25": {
+                    "correct": 32,
+                    "accuracy": 0.9411764705882353,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.9411764705882353
+                },
+                "full_hybrid": {
+                    "correct": 34,
+                    "accuracy": 1.0,
+                    "family_correct": 34,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 1.0
+                },
+                "full_hybrid_no_values": {
+                    "correct": 10,
+                    "accuracy": 0.29411764705882354,
+                    "family_correct": 33,
+                    "family_accuracy": 0.9705882352941176,
+                    "clone_given_family": 0.30303030303030304
+                }
+            }
+        },
+        "SPIDERtrain-ambiguous": {
+            "samples": 151,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\SPIDERtrain_DB_extractor_ambiguous.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 35,
+                    "accuracy": 0.23178807947019867,
+                    "family_correct": 108,
+                    "family_accuracy": 0.7152317880794702,
+                    "clone_given_family": 0.32407407407407407
+                },
+                "dense_table_only": {
+                    "correct": 100,
+                    "accuracy": 0.6622516556291391,
+                    "family_correct": 128,
+                    "family_accuracy": 0.847682119205298,
+                    "clone_given_family": 0.78125
+                },
+                "bm25_value_only": {
+                    "correct": 112,
+                    "accuracy": 0.7417218543046358,
+                    "family_correct": 132,
+                    "family_accuracy": 0.8741721854304636,
+                    "clone_given_family": 0.8484848484848485
+                },
+                "dense_description": {
+                    "correct": 85,
+                    "accuracy": 0.5629139072847682,
+                    "family_correct": 126,
+                    "family_accuracy": 0.8344370860927153,
+                    "clone_given_family": 0.6746031746031746
+                },
+                "dense_bm25": {
+                    "correct": 118,
+                    "accuracy": 0.7814569536423841,
+                    "family_correct": 136,
+                    "family_accuracy": 0.9006622516556292,
+                    "clone_given_family": 0.8676470588235294
+                },
+                "description_bm25": {
+                    "correct": 101,
+                    "accuracy": 0.6688741721854304,
+                    "family_correct": 131,
+                    "family_accuracy": 0.8675496688741722,
+                    "clone_given_family": 0.7709923664122137
+                },
+                "full_hybrid": {
+                    "correct": 115,
+                    "accuracy": 0.7615894039735099,
+                    "family_correct": 136,
+                    "family_accuracy": 0.9006622516556292,
+                    "clone_given_family": 0.8455882352941176
+                },
+                "full_hybrid_no_values": {
+                    "correct": 38,
+                    "accuracy": 0.25165562913907286,
+                    "family_correct": 116,
+                    "family_accuracy": 0.7682119205298014,
+                    "clone_given_family": 0.3275862068965517
+                }
+            }
+        },
+        "ARCHER-ambiguous": {
+            "samples": 28,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\ARCHER_DB_extractor_ambiguous.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 10,
+                    "accuracy": 0.35714285714285715,
+                    "family_correct": 26,
+                    "family_accuracy": 0.9285714285714286,
+                    "clone_given_family": 0.38461538461538464
+                },
+                "dense_table_only": {
+                    "correct": 17,
+                    "accuracy": 0.6071428571428571,
+                    "family_correct": 27,
+                    "family_accuracy": 0.9642857142857143,
+                    "clone_given_family": 0.6296296296296297
+                },
+                "bm25_value_only": {
+                    "correct": 20,
+                    "accuracy": 0.7142857142857143,
+                    "family_correct": 23,
+                    "family_accuracy": 0.8214285714285714,
+                    "clone_given_family": 0.8695652173913043
+                },
+                "dense_description": {
+                    "correct": 17,
+                    "accuracy": 0.6071428571428571,
+                    "family_correct": 27,
+                    "family_accuracy": 0.9642857142857143,
+                    "clone_given_family": 0.6296296296296297
+                },
+                "dense_bm25": {
+                    "correct": 24,
+                    "accuracy": 0.8571428571428571,
+                    "family_correct": 28,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.8571428571428571
+                },
+                "description_bm25": {
+                    "correct": 24,
+                    "accuracy": 0.8571428571428571,
+                    "family_correct": 27,
+                    "family_accuracy": 0.9642857142857143,
+                    "clone_given_family": 0.8888888888888888
+                },
+                "full_hybrid": {
+                    "correct": 25,
+                    "accuracy": 0.8928571428571429,
+                    "family_correct": 28,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.8928571428571429
+                },
+                "full_hybrid_no_values": {
+                    "correct": 11,
+                    "accuracy": 0.39285714285714285,
+                    "family_correct": 28,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.39285714285714285
+                }
+            }
+        },
+        "BEAVER-ambiguous": {
+            "samples": 499,
+            "full_reference": "results_DB_retrieval_tune_BIRDtrain\\DB_retrieval\\BEAVER_DB_extractor_ambiguous.json",
+            "full_reference_mismatches": 0,
+            "variants": {
+                "description_only": {
+                    "correct": 109,
+                    "accuracy": 0.218436873747495,
+                    "family_correct": 414,
+                    "family_accuracy": 0.8296593186372746,
+                    "clone_given_family": 0.2632850241545894
+                },
+                "dense_table_only": {
+                    "correct": 351,
+                    "accuracy": 0.7034068136272545,
+                    "family_correct": 499,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.7034068136272545
+                },
+                "bm25_value_only": {
+                    "correct": 261,
+                    "accuracy": 0.5230460921843687,
+                    "family_correct": 446,
+                    "family_accuracy": 0.8937875751503006,
+                    "clone_given_family": 0.5852017937219731
+                },
+                "dense_description": {
+                    "correct": 335,
+                    "accuracy": 0.6713426853707415,
+                    "family_correct": 497,
+                    "family_accuracy": 0.9959919839679359,
+                    "clone_given_family": 0.6740442655935613
+                },
+                "dense_bm25": {
+                    "correct": 388,
+                    "accuracy": 0.7775551102204409,
+                    "family_correct": 499,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.7775551102204409
+                },
+                "description_bm25": {
+                    "correct": 227,
+                    "accuracy": 0.45490981963927857,
+                    "family_correct": 472,
+                    "family_accuracy": 0.9458917835671342,
+                    "clone_given_family": 0.4809322033898305
+                },
+                "full_hybrid": {
+                    "correct": 380,
+                    "accuracy": 0.7615230460921844,
+                    "family_correct": 499,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.7615230460921844
+                },
+                "full_hybrid_no_values": {
+                    "correct": 161,
+                    "accuracy": 0.3226452905811623,
+                    "family_correct": 499,
+                    "family_accuracy": 1.0,
+                    "clone_given_family": 0.3226452905811623
+                }
+            }
+        }
+    }
+}

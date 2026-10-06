@@ -1,0 +1,240 @@
+[
+    {
+        "question_id": 0,
+        "db_id": "car_1_1",
+        "question": "What is the average edispl of the cars of model volvo?",
+        "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+        "DB_result": "car_1_3"
+    },
+    {
+        "question_id": 1,
+        "db_id": "car_1_1",
+        "question": "What is the average edispl for all volvos?",
+        "SQL": "SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';",
+        "DB_result": "car_1_2"
+    },
+    {
+        "question_id": 2,
+        "db_id": "car_1_1",
+        "question": "For model volvo, how many cylinders does the car with the least accelerate have?",
+        "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+        "DB_result": "car_1_3"
+    },
+    {
+        "question_id": 3,
+        "db_id": "car_1_1",
+        "question": "For a volvo model, how many cylinders does the version with least accelerate have?",
+        "SQL": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+        "DB_result": "car_1_3"
+    },
+    {
+        "question_id": 4,
+        "db_id": "wta_1_1",
+        "question": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+        "DB_result": "wta_1_1"
+    },
+    {
+        "question_id": 5,
+        "db_id": "wta_1_1",
+        "question": "What is the name of the winner with the most rank points who participated in the Australian Open tournament?",
+        "SQL": "SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1",
+        "DB_result": "wta_1_3"
+    },
+    {
+        "question_id": 6,
+        "db_id": "wta_1_2",
+        "question": "How many different winners both participated in the WTA Championships and were left handed?",
+        "SQL": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+        "DB_result": "wta_1_3"
+    },
+    {
+        "question_id": 7,
+        "db_id": "wta_1_2",
+        "question": "Find the number of left handed winners who participated in the WTA Championships.",
+        "SQL": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+        "DB_result": "wta_1_3"
+    },
+    {
+        "question_id": 8,
+        "db_id": "tvshow_2",
+        "question": "List all cartoon directed by \"Ben Jones\".",
+        "SQL": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 9,
+        "db_id": "tvshow_2",
+        "question": "What are the names of all cartoons directed by Ben Jones?",
+        "SQL": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 10,
+        "db_id": "tvshow_2",
+        "question": "find the id of tv channels that do not play any cartoon directed by Ben Jones.",
+        "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 11,
+        "db_id": "tvshow_2",
+        "question": "What are the ids of the TV channels that do not have any cartoons directed by Ben Jones?",
+        "SQL": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 12,
+        "db_id": "tvshow_2",
+        "question": "find the package option of the tv channel that do not have any cartoon directed by Ben Jones.",
+        "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 13,
+        "db_id": "tvshow_2",
+        "question": "What are the package options of all tv channels that are not playing any cartoons directed by Ben Jones?",
+        "SQL": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+        "DB_result": "tvshow_2"
+    },
+    {
+        "question_id": 14,
+        "db_id": "world_1_3",
+        "question": "What is the name of country that has the shortest life expectancy in Asia?",
+        "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 15,
+        "db_id": "world_1_3",
+        "question": "Give the name of the country in Asia with the lowest life expectancy.",
+        "SQL": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 16,
+        "db_id": "world_1_3",
+        "question": "What is the total population and maximum GNP in Asia?",
+        "SQL": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 17,
+        "db_id": "world_1_3",
+        "question": "How many people live in Asia, and what is the largest GNP among them?",
+        "SQL": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 18,
+        "db_id": "world_1_1",
+        "question": "What is the average life expectancy in African countries that are republics?",
+        "SQL": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+        "DB_result": "world_1_1"
+    },
+    {
+        "question_id": 19,
+        "db_id": "world_1_1",
+        "question": "Give the average life expectancy for countries in Africa which are republics?",
+        "SQL": "SELECT avg(LifeExpectancy) FROM country WHERE Continent  =  \"Africa\" AND GovernmentForm  =  \"Republic\"",
+        "DB_result": "world_1_1"
+    },
+    {
+        "question_id": 20,
+        "db_id": "world_1_1",
+        "question": "How many type of governments are in Africa?",
+        "SQL": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+        "DB_result": "world_1_1"
+    },
+    {
+        "question_id": 21,
+        "db_id": "world_1_1",
+        "question": "How many different forms of governments are there in Africa?",
+        "SQL": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+        "DB_result": "world_1_1"
+    },
+    {
+        "question_id": 22,
+        "db_id": "world_1_3",
+        "question": "Which language is the most popular on the Asian continent?",
+        "SQL": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 23,
+        "db_id": "world_1_3",
+        "question": "What is the language that is used by the largest number of Asian nations?",
+        "SQL": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 24,
+        "db_id": "world_1_3",
+        "question": "Find the name, population and expected life length of asian country with the largest area?",
+        "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 25,
+        "db_id": "world_1_3",
+        "question": "What are the name, population, and life expectancy of the largest Asian country by land?",
+        "SQL": "SELECT Name ,  Population ,  LifeExpectancy FROM country WHERE Continent  =  \"Asia\" ORDER BY SurfaceArea DESC LIMIT 1",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 26,
+        "db_id": "world_1_2",
+        "question": "Which cities are in European countries where English is not the official language?",
+        "SQL": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 27,
+        "db_id": "world_1_2",
+        "question": "What are the names of cities in Europe for which English is not the official language?",
+        "SQL": "SELECT DISTINCT T2.Name FROM country AS T1 JOIN city AS T2 ON T2.CountryCode  =  T1.Code WHERE T1.Continent  =  'Europe' AND T1.Name NOT IN (SELECT T3.Name FROM country AS T3 JOIN countrylanguage AS T4 ON T3.Code  =  T4.CountryCode WHERE T4.IsOfficial  =  'T' AND T4.Language  =  'English')",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 28,
+        "db_id": "world_1_3",
+        "question": "Whic`h unique cities are in  Asian countries where Chinese is the official language?",
+        "SQL": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 29,
+        "db_id": "world_1_3",
+        "question": "Return the different names of cities that are in Asia and for which Chinese is the official language.",
+        "SQL": "SELECT DISTINCT T3.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode JOIN city AS T3 ON T1.Code  =  T3.CountryCode WHERE T2.IsOfficial  =  'T' AND T2.Language  =  'Chinese' AND T1.Continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 30,
+        "db_id": "world_1_3",
+        "question": "how many countries are in Asia?",
+        "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 31,
+        "db_id": "world_1_3",
+        "question": "Count the number of countries in Asia.",
+        "SQL": "SELECT count(*) FROM country WHERE continent  =  \"Asia\"",
+        "DB_result": "world_1_3"
+    },
+    {
+        "question_id": 32,
+        "db_id": "world_1_2",
+        "question": "What is the total population and average area of countries in the continent of North America whose area is bigger than 3000？",
+        "SQL": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+        "DB_result": "world_1_2"
+    },
+    {
+        "question_id": 33,
+        "db_id": "world_1_2",
+        "question": "Give the total population and average surface area corresponding to countries in Noth America that have a surface area greater than 3000.",
+        "SQL": "SELECT sum(Population) ,  avg(SurfaceArea) FROM country WHERE Continent  =  \"North America\" AND SurfaceArea  >  3000",
+        "DB_result": "world_1_2"
+    }
+]
