@@ -1,7 +1,7 @@
 {
   "method": "iterative-jar-first-seed-to-db",
   "upstream_commit": "b90504969c2c4f5056142dc98e183974c60c646c",
-  "dataset_dir": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\BEAVER-ambiguous",
+  "dataset_dir": "datasets/BEAVER-ambiguous",
   "encoder": {
     "model": "facebook/contriever-msmarco",
     "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
