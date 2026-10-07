@@ -134,9 +134,9 @@ SQaLE3 is built from revisions pinned in the script. Both
 `datasets/SQALE3/` and `datasets/_sqale3_work/` must be absent before starting:
 
 ```powershell
-Set-Location src
+cd src
 python sqale3_build.py
-Set-Location ..
+cd ..
 ```
 
 The builder filters verified pairs, materializes the DDL, validates query
@@ -147,9 +147,9 @@ For any dataset that already contains SQLite files but lacks
 `src/generate_dev_tables.py`, then run:
 
 ```powershell
-Set-Location src
+cd src
 python generate_dev_tables.py
-Set-Location ..
+cd ..
 ```
 
 The generator refuses to overwrite an existing output. `OUTPUT_PATH = None`
@@ -161,9 +161,9 @@ Run both document functions in this order. They read `dev_tables.json` and the
 SQLite files; the second call adds the normalized BM25 text.
 
 ```powershell
-Set-Location src
+cd src
 python -c "from data_manipulation import create_benchmark_doc, add_bm25_text_to_benchmark_doc; p='../datasets/BIRDdev/'; create_benchmark_doc(p); add_bm25_text_to_benchmark_doc(p)"
-Set-Location ..
+cd ..
 ```
 
 Replace `BIRDdev` with the target directory. `create_benchmark_doc()` writes one
@@ -181,10 +181,10 @@ The following command creates `datasets/BIRDdev-ambiguous/` using the default
 deterministic split and cyclic suffix rotation:
 
 ```powershell
-Set-Location src
+cd src
 python -c "from data_manipulation import create_ambiguous_benchmark; create_ambiguous_benchmark('../datasets/BIRDdev/', overwrite=True)"
 python -c "from data_manipulation import create_benchmark_doc, add_bm25_text_to_benchmark_doc; p='../datasets/BIRDdev-ambiguous/'; create_benchmark_doc(p); add_bm25_text_to_benchmark_doc(p)"
-Set-Location ..
+cd ..
 ```
 
 The repository versions `dev.json` and `ambiguity_metadata.json` for every
@@ -200,18 +200,18 @@ replaces that directory. The second command regenerates `doc.json`.
 Run from `src/DB_retrieval`, where the prompt path is resolved:
 
 ```powershell
-Set-Location src/DB_retrieval
+cd src/DB_retrieval
 python -c "from generate_DB_descriptions import generate_DB_descriptions; generate_DB_descriptions('../../datasets/BIRDdev/dev_tables.json', 'DB_descriptions/BIRDdev_DB_descriptions.json')"
-Set-Location ../..
+cd ../..
 ```
 
 For a content-ambiguous workload, pass `replicate_ambiguous_clones=True` only
 when every source family contains schema-identical `_1`, `_2`, and `_3` clones:
 
 ```powershell
-Set-Location src/DB_retrieval
+cd src/DB_retrieval
 python -c "from generate_DB_descriptions import generate_DB_descriptions; generate_DB_descriptions('../../datasets/BIRDdev-ambiguous/dev_tables.json', 'DB_descriptions/BIRDdev_DB_descriptions_ambiguous.json', replicate_ambiguous_clones=True)"
-Set-Location ../..
+cd ../..
 ```
 
 The generator validates existing complete outputs, resumes its atomic
@@ -241,9 +241,9 @@ under `results/DB_retrieval/`.
 Evaluate every supported result currently present in that directory with:
 
 ```powershell
-Set-Location src/DB_retrieval
+cd src/DB_retrieval
 python evaluation.py
-Set-Location ../..
+cd ../..
 ```
 
 Missing result files are reported and skipped. Accuracy always uses all records,
@@ -271,10 +271,10 @@ Before a complete extraction, select the dataset in `tables_extractor.py`, then
 run:
 
 ```powershell
-Set-Location src/schema_linking/tables_extraction
+cd src/schema_linking/tables_extraction
 python tables_extractor.py
 python evaluation.py
-Set-Location ../../..
+cd ../../..
 ```
 
 The extractor reads `results/DB_retrieval/`, writes
@@ -288,10 +288,10 @@ The current main processes BIRD dev, Spider dev, and ARCHER sequentially. Use
 prompt:
 
 ```powershell
-Set-Location src/schema_linking/attributes_extraction
+cd src/schema_linking/attributes_extraction
 python attributes_extractor.py r
 python evaluation.py
-Set-Location ../../..
+cd ../../..
 ```
 
 Use `sr` in place of `r` for the second prompt. Both variants write the same
@@ -305,10 +305,10 @@ The exhaustive BIRD-train tuning and the fixed ablation are run from the
 retrieval directory:
 
 ```powershell
-Set-Location src/DB_retrieval
+cd src/DB_retrieval
 python tune_DB_retrieval.py
 python DB_extractor_ablation.py
-Set-Location ../..
+cd ../..
 ```
 
 Tuning writes `DB_retrieval_best_hyperparameters.json`. Ablation requires the
@@ -321,10 +321,10 @@ The catalog-wide LLM baseline is configured in
 directory. Both the extractor and evaluator use `results/DB_retrieval/`:
 
 ```powershell
-Set-Location src_DB_retrieval_baseline
+cd src_DB_retrieval_baseline
 python DB_extractor_llm.py
 python evaluation.py
-Set-Location ..
+cd ..
 ```
 
 Iterative-JAR is included only as an experimental comparator through its
@@ -333,6 +333,36 @@ archived outcomes; it is not part of the documented execution pipeline.
 All standard evaluators read the mutable `results/` tree. The tables reported
 below were instead recomputed from the named archived directories, which should
 be preserved as immutable experimental artifacts.
+
+### 9. Reproduce the paper analyses
+
+The identifier distributions, retrieval-error analysis, and catalog-wide LLM
+bias analysis can be reproduced from the repository root:
+
+```powershell
+python analysis/spider_identifier_distribution.py
+python analysis/spider_error_analysis.py
+python analysis/bird_llm_bias_analysis.py
+```
+
+The first script reads the two Spider `doc.json` files, lowercases identifiers,
+counts each name at most once per database, and writes four log-log rank plots
+to `analysis/figures/`. It also records the aggregate counts in
+`analysis/results/spider_identifier_distribution.json`. Plotting requires
+Matplotlib 3.9 or later.
+
+The second script parses the gold SQL of every Hybrid-DB retrieval error and
+measures how often the predicted database contains any or all required table
+and column names. Its random control makes one uniform draw per error from all
+database IDs except the gold ID, using the fixed seed 42. The complete counts,
+denominators, and control results are written to
+`analysis/results/spider_error_analysis.json`.
+
+The third script reads the archived BIRD content-ambiguous predictions and
+reproduces the clone-selection bias analysis for the catalog-wide LLM. It
+reports the suffix distribution over valid LLM outputs and examines the LLM
+outcomes on the 103 samples retrieved correctly by Hybrid-DB. Its checked
+summary is stored in `analysis/results/bird_llm_bias_analysis.json`.
 
 ## Main results
 
