@@ -105,6 +105,8 @@ def extract_attributes(dataset, prompt_type):
                 "ATT_result": sample['TAB_result']
 				}
             result_list.append(item)
+            with open(result_file_path, "w", encoding="utf-8") as f:
+                json.dump(result_list, f, indent=4, ensure_ascii=False)
             continue
 
         schema_text = ""

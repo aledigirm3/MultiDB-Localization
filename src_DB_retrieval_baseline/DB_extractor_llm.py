@@ -82,13 +82,13 @@ def get_dataset_paths(dataset: str) -> Dict[str, Path]:
         print(f"{RED}DATASET NOT FOUND, check the name{RESET}")
         sys.exit(1)
 
-    results_folder = "../results_DB_LLM/DB_retrieval"
+    results_folder = paths.RESULTS.DB_RETRIEVAL.value
 
     return {
         "questions_path": dataset_dir + "/dev.json",
         "doc_path": dataset_dir + '/' + doc_filename,
         "results_folder": results_folder,
-        "result_file_path": results_folder + '/' + result_filename,
+        "result_file_path": os.path.join(results_folder, result_filename),
     }
 
 

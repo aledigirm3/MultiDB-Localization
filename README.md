@@ -265,10 +265,8 @@ generations up to three times.
 Joinable tables are read later from `doc.json` and appended deterministically by
 the extractor; they are not invented by the description LLM.
 
-Before a complete extraction, select the dataset in `tables_extractor.py` and
-disable any historical continuation guard in its sample loop. In particular,
-the current source contains `question_id <= 6010`, which was used only to resume
-a BEAVER run and must not remain active for a fresh experiment. Then run:
+Before a complete extraction, select the dataset in `tables_extractor.py`, then
+run:
 
 ```powershell
 Set-Location src/schema_linking/tables_extraction
@@ -296,9 +294,8 @@ Set-Location ../../..
 
 Use `sr` in place of `r` for the second prompt. Both variants write the same
 filenames under `results/ATT_retrieval/`; archive the first run before starting
-the other. Verify that the output contains the same number of samples as its
-table-extraction input, because a trailing `NONE` shortcut is not immediately
-flushed by the current checkpoint logic.
+the other. The extractor checkpoints every processed sample, including the
+`NONE` shortcut.
 
 ### 8. Reproduce tuning, ablation, and baselines
 
@@ -319,10 +316,7 @@ prediction equality, and writes per-variant files plus
 
 The catalog-wide LLM baseline is configured in
 `src_DB_retrieval_baseline/DB_extractor_llm.py` and must be run from that
-directory. Its extractor currently writes to `results_DB_LLM/DB_retrieval/`,
-whereas `src_DB_retrieval_baseline/paths.py` points the evaluator to
-`results/DB_retrieval/`; set the evaluator path to the intended LLM output
-before running:
+directory. Both the extractor and evaluator use `results/DB_retrieval/`:
 
 ```powershell
 Set-Location src_DB_retrieval_baseline

@@ -194,10 +194,6 @@ def extract_tables(dataset):
     result_list = []
 
     for sample in data:
-
-        if sample['question_id'] <= 6010:
-            continue
-
         query = sample['question']
         db = sample['DB_result']
 
