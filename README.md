@@ -4,7 +4,7 @@ Conventional multi-database Text-to-SQL benchmarks do not reveal whether
 database localization relies on schema evidence or database contents, because
 the two usually vary together. This repository provides the artifacts used to
 study that distinction: the construction of content-ambiguous workloads,
-Hybrid-DB, the Direct LLM and Iterative JAR baselines, the downstream
+Hybrid-DB, the catalog-wide LLM and Iterative-JAR baselines, the downstream
 schema-reduction stages, and the archived experimental predictions.
 
 The schema-reduction pipeline performs three successive selections:
@@ -53,11 +53,11 @@ strict-recall-oriented (`SR`).
 | [src/DB_retrieval/](src/DB_retrieval/) | Hybrid retrieval, description generation, tuning, ablation, and evaluation |
 | [src/schema_linking/tables_extraction/](src/schema_linking/tables_extraction/) | Table-description generation, table selection, and evaluation |
 | [src/schema_linking/attributes_extraction/](src/schema_linking/attributes_extraction/) | `R`/`SR` attribute selection and evaluation |
-| [src/data_manipulation.py](src/data_manipulation.py) | Schema utilities, `doc.json`, SQL analysis, and ambiguous-benchmark construction |
+| [src/data_manipulation.py](src/data_manipulation.py) | Schema utilities, `doc.json`, SQL analysis, and content-ambiguous workload construction |
 | [src/generate_dev_tables.py](src/generate_dev_tables.py) | Deterministic Spider-style schema generation from SQLite metadata |
 | [src/beaver_build.py](src/beaver_build.py) | BEAVER conversion from the published MySQL dumps |
-| [src/sqale3_build.py](src/sqale3_build.py) | Reproducible SQaLe3 conversion from pinned Hugging Face revisions |
-| [src_DB_retrieval_baseline/](src_DB_retrieval_baseline/) | Direct LLM database-selection baseline |
+| [src/sqale3_build.py](src/sqale3_build.py) | Reproducible SQaLE3 conversion from pinned Hugging Face revisions |
+| [src_DB_retrieval_baseline/](src_DB_retrieval_baseline/) | Catalog-wide LLM database-selection baseline |
 | `results_DB_retrieval_*`, `results_gpt-oss-120b-*` | Archived experimental predictions |
 | `results/` | Mutable outputs of local runs; intentionally ignored by Git |
 
@@ -117,7 +117,7 @@ existing artifact that must not be overwritten.
 ### 1. Build or import a base benchmark
 
 BIRD, Spider, and ARCHER are expected to be placed directly in the benchmark
-layout described above. BEAVER and SQaLe3 have dedicated builders.
+layout described above. BEAVER and SQaLE3 have dedicated builders.
 
 BEAVER requires authenticated access to its two Hugging Face repositories:
 
@@ -130,7 +130,7 @@ The builder creates the complete published BEAVER dataset. The 3,693-question
 evaluation subset reported in this repository is an experiment-specific filter
 and is not applied automatically by the builder.
 
-SQaLe3 is built from revisions pinned in the script. Both
+SQaLE3 is built from revisions pinned in the script. Both
 `datasets/SQALE3/` and `datasets/_sqale3_work/` must be absent before starting:
 
 ```powershell
@@ -175,7 +175,7 @@ accent and punctuation removal, digit-token filtering, English Snowball
 stemming, and character four-grams. The first call rewrites `doc.json`; preserve
 an existing file when it is part of a recorded experiment.
 
-### 3. Generate an ambiguous benchmark
+### 3. Generate a content-ambiguous workload
 
 The following command creates `datasets/BIRDdev-ambiguous/` using the default
 deterministic split and cyclic suffix rotation:
@@ -203,8 +203,8 @@ python -c "from generate_DB_descriptions import generate_DB_descriptions; genera
 Set-Location ../..
 ```
 
-For an ambiguous benchmark, pass `replicate_ambiguous_clones=True` only when
-every source family contains schema-identical `_1`, `_2`, and `_3` clones:
+For a content-ambiguous workload, pass `replicate_ambiguous_clones=True` only
+when every source family contains schema-identical `_1`, `_2`, and `_3` clones:
 
 ```powershell
 Set-Location src/DB_retrieval
@@ -231,7 +231,7 @@ embedder = Embedder("BAAI/bge-large-en-v1.5", "cuda")
 extract_DB(embedder, "BIRDdev")
 ```
 
-For the current SQaLe3 ambiguous implementation,
+For the current SQaLE3 content-ambiguous workload,
 `memory_efficient=True` computes the same configured top-1 dense-table score in
 batches instead of materializing the full similarity matrix. Results are saved
 under `results/DB_retrieval/`.
@@ -317,7 +317,7 @@ full-hybrid references in `results_DB_retrieval_tune_BIRDtrain/`, verifies exact
 prediction equality, and writes per-variant files plus
 `results_DB_retrieval_ablation/summary.json`.
 
-The direct LLM baseline is configured in
+The catalog-wide LLM baseline is configured in
 `src_DB_retrieval_baseline/DB_extractor_llm.py` and must be run from that
 directory. Its extractor currently writes to `results_DB_LLM/DB_retrieval/`,
 whereas `src_DB_retrieval_baseline/paths.py` points the evaluator to
@@ -331,7 +331,7 @@ python evaluation.py
 Set-Location ..
 ```
 
-Iterative JAR is included only as an experimental comparator through its
+Iterative-JAR is included only as an experimental comparator through its
 archived outcomes; it is not part of the documented execution pipeline.
 
 All standard evaluators read the mutable `results/` tree. The tables reported
@@ -344,7 +344,7 @@ Database-retrieval accuracy is the fraction of questions for which the selected
 database identifier exactly equals the gold identifier. `ERROR` predictions are
 counted as incorrect.
 
-| Base benchmark | Samples | Hybrid | Iterative JAR | Direct LLM |
+| Base benchmark | Samples | Hybrid | Iterative-JAR | Catalog-wide LLM |
 |---|---:|---:|---:|---:|
 | BIRD dev | 1,534 | 98.70 | 97.33 | 99.74 |
 | Spider dev 1.0 | 1,034 | 97.39 | 96.52 | 99.03 |
@@ -352,27 +352,27 @@ counted as incorrect.
 | ARCHER | 518 | 93.63 | 90.54 | 98.07 |
 | BEAVER subset | 3,693 | 99.81 | 99.70 | 95.97 |
 
-| Ambiguous benchmark | Samples | Hybrid | Iterative JAR | Direct LLM |
+| Content-ambiguous workload | Samples | Hybrid | Iterative-JAR | Catalog-wide LLM |
 |---|---:|---:|---:|---:|
 | BIRD dev | 126 | 81.75 | 40.48 | 52.38 |
 | Spider dev 1.0 | 34 | 100.00 | 26.47 | 100.00 |
 | Spider train | 151 | 76.16 | 31.13 | 75.50 |
 | ARCHER | 28 | 89.29 | 50.00 | 96.43 |
 | BEAVER | 499 | 76.15 | 36.07 | -- |
-| SQaLe3 | 4,281 | 40.43 | 6.52 | -- |
+| SQaLE3 | 4,281 | 40.43 | 6.52 | -- |
 
 The BEAVER experiments use the same 3,693-question subset, obtained by excluding
-4,285 over-represented `dw` questions. The direct LLM baseline uses at most nine
-values per column on BEAVER and 50 on the other reported datasets. It was not
-run on BEAVER-ambiguous or SQaLe3-ambiguous because serializing the full
-candidate catalog exceeded the model context window.
+4,285 over-represented `dw` questions. The catalog-wide LLM baseline uses at
+most nine values per column on BEAVER and 50 on the other reported datasets. It
+was not run on the BEAVER or SQaLE3 content-ambiguous workloads because
+serializing the full candidate catalog exceeded the model context window.
 
 The ablation provides the clearest evidence for the value signal. Removing
 values from both the dense-table and BM25 inputs changes accuracy by at most
 0.49 percentage points on the four tested base benchmarks, but reduces it by
-43.89--70.59 points on the ambiguous variants. On these variants, the selected
-database family is usually still correct; the model loses the evidence needed
-to select the correct content clone.
+43.89--70.59 points on the content-ambiguous workloads. On these workloads, the
+selected database family is usually still correct; the model loses the evidence
+needed to select the correct clone.
 
 ## Reproducibility notes
 
@@ -383,7 +383,7 @@ to select the correct content clone.
   [results_DB_retrieval_ablation/](results_DB_retrieval_ablation/).
 - Hybrid predictions used for the comparison are under
   [results_DB_retrieval_tune_BIRDtrain/](results_DB_retrieval_tune_BIRDtrain/).
-- Direct LLM and Iterative JAR predictions are under
+- Catalog-wide LLM and Iterative-JAR predictions are under
   `results_DB_retrieval_baseline_gpt-oss-120/` and
   `results_DB_retrieval_JARiterative/`, respectively.
 - Current schema-linking outputs are archived separately for the `R` and `SR`
