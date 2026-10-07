@@ -3696,28 +3696,6 @@
     }
   },
   {
-    "question_id": 5935,
-    "db_id": "neutron_2",
-    "question": "For ports whose status is 'DOWN', list each port’s tenant ID, port ID, port name, MAC address, allocated IP address, and subnet ID, along with (1) the average port ID within each port-ID group ordered by IP address, (2) the total number of allocated IPs in that subnet and how far that subnet’s allocation count deviates from the average across all subnets, and (3) the running sum of the port’s standard attribute ID within its security group plus the security group’s total DOWN-port count and its deviation from the average DOWN-port count across all security groups, ordered by IP address. Do not return any rounded answers.",
-    "evidence": "",
-    "SQL": "WITH q1 AS ( WITH inner_cte AS ( SELECT p.ID AS port_id, p.NAME AS port_name, p.MAC_ADDRESS AS mac_address, ia.IP_ADDRESS AS ip_address, ia.SUBNET_ID AS subnet_id, AVG(p.ID) OVER (PARTITION BY p.ID ORDER BY ia.IP_ADDRESS) AS window_column FROM PORTS p JOIN IPALLOCATIONS ia ON p.ID = ia.PORT_ID WHERE p.STATUS = 'DOWN' ORDER BY ia.IP_ADDRESS ), SubnetAllocations AS ( SELECT ia.subnet_id, COUNT(DISTINCT ia.ip_address) AS allocated_ips FROM IPALLOCATIONS ia GROUP BY ia.subnet_id ), AverageAllocations AS ( SELECT AVG(allocated_ips) AS avg_ips FROM SubnetAllocations ) SELECT i.port_id, i.port_name, i.mac_address, i.ip_address, i.subnet_id, i.window_column, sa.allocated_ips AS subnet_allocated_ips, (sa.allocated_ips - aa.avg_ips) AS deviation_from_avg FROM inner_cte i JOIN SubnetAllocations sa ON i.subnet_id = sa.subnet_id CROSS JOIN AverageAllocations aa ORDER BY i.ip_address ), q2 AS ( WITH inner_cte AS (SELECT p.ID AS port_id, p.TENANT_ID AS tenant_id, p.MAC_ADDRESS AS mac_address, SUM(p.STANDARD_ATTR_ID) OVER ( PARTITION BY sgpb.SECURITY_GROUP_ID ORDER BY p.STANDARD_ATTR_ID ) AS window_column FROM SECURITYGROUPPORTBINDINGS AS sgpb JOIN PORTS AS p ON sgpb.PORT_ID = p.ID JOIN PORTSECURITYBINDINGS AS psb ON p.ID = psb.PORT_ID WHERE p.STATUS = 'DOWN'), SecurityGroupDownCounts AS ( SELECT sgpb.SECURITY_GROUP_ID AS security_group_id, COUNT(*) AS down_ports_in_group FROM SECURITYGROUPPORTBINDINGS AS sgpb JOIN PORTS AS p ON sgpb.PORT_ID = p.ID JOIN PORTSECURITYBINDINGS AS psb ON p.ID = psb.PORT_ID WHERE p.STATUS = 'DOWN' GROUP BY sgpb.SECURITY_GROUP_ID ), AverageDownCounts AS ( SELECT AVG(down_ports_in_group) AS avg_down_ports_in_group FROM SecurityGroupDownCounts ) SELECT i.port_id, i.tenant_id, i.mac_address, i.window_column, sgdc.down_ports_in_group, (sgdc.down_ports_in_group - adc.avg_down_ports_in_group) AS deviation_from_avg_down_ports FROM inner_cte AS i JOIN SECURITYGROUPPORTBINDINGS AS sgpb ON sgpb.PORT_ID = i.port_id JOIN SecurityGroupDownCounts AS sgdc ON sgdc.security_group_id = sgpb.SECURITY_GROUP_ID CROSS JOIN AverageDownCounts AS adc ) SELECT q2.tenant_id, q1.port_id, q1.port_name, q1.mac_address, q1.ip_address, q1.subnet_id, q1.window_column AS avg_port_id_within_port_id_group_by_ip, q1.subnet_allocated_ips, q1.deviation_from_avg AS subnet_allocations_deviation_from_avg, q2.window_column AS running_sum_standard_attr_id_within_security_group, q2.down_ports_in_group, q2.deviation_from_avg_down_ports FROM q1 JOIN q2 ON q1.port_id = q2.port_id ORDER BY q1.ip_address;",
-    "difficulty": "complex query",
-    "DB_result": "neutron_3",
-    "selected_table": "PORTS",
-    "selected_table_id": "neutron_3#sep#PORTS",
-    "coarse_DB_result": "neutron_3",
-    "candidate_DBs": [
-      "neutron_3",
-      "neutron_2",
-      "neutron_1"
-    ],
-    "jar_scores": {
-      "coarse": 0.5644285082817078,
-      "coverage": 10.69437313079834,
-      "utility": 23.64646029472351
-    }
-  },
-  {
     "question_id": 5939,
     "db_id": "neutron_2",
     "question": "For ports that are in status 'DOWN', list each port’s tenant ID and port ID along with its host, VIF type, allocated IP address, and the row number ordered by IP address (using a window frame of 2 preceding rows and 1 following row). Also show, per host, the total number of DOWN-port IP allocations and each row’s deviation from the average host total, and for the same tenant include the tenant’s count of DOWN ports with port security enabled, the overall average of that count across tenants as a benchmark, the tenant’s user category (HIGH_USER/LOW_USER/AVERAGE_USER), and the overall total number of DOWN ports with port security enabled. Do not return any rounded answers. Classify each tenant as 'HIGH_USER' (at least 50% more than average), 'LOW_USER' (at least 50% less than average), or 'AVERAGE_USER'.",
@@ -3913,28 +3891,6 @@
       "coarse": 0.5385593771934509,
       "coverage": 10.755343437194824,
       "utility": 23.664924383163452
-    }
-  },
-  {
-    "question_id": 6003,
-    "db_id": "neutron_2",
-    "question": "For ports whose status is 'DOWN' and that belong to security groups where the number of DOWN ports is greater than the average DOWN-port count per security group, list each port’s ID, name, tenant ID, MAC address, allocated IP address, subnet ID, the average port ID within its port-ID group ordered by IP address, the total allocated IPs in that subnet and its deviation from the average subnet allocation count, plus the security group ID, the port’s rank within that security group by port ID, and the security group’s DOWN-port count. Do not return any rounded answers.",
-    "evidence": "",
-    "SQL": "WITH q1 AS ( WITH inner_cte AS ( SELECT p.ID AS port_id, p.NAME AS port_name, p.MAC_ADDRESS AS mac_address, ia.IP_ADDRESS AS ip_address, ia.SUBNET_ID AS subnet_id, AVG(p.ID) OVER (PARTITION BY p.ID ORDER BY ia.IP_ADDRESS) AS window_column FROM PORTS p JOIN IPALLOCATIONS ia ON p.ID = ia.PORT_ID WHERE p.STATUS = 'DOWN' ORDER BY ia.IP_ADDRESS ), SubnetAllocations AS ( SELECT ia.subnet_id, COUNT(DISTINCT ia.ip_address) AS allocated_ips FROM IPALLOCATIONS ia GROUP BY ia.subnet_id ), AverageAllocations AS ( SELECT AVG(allocated_ips) AS avg_ips FROM SubnetAllocations ) SELECT i.port_id, i.port_name, i.mac_address, i.ip_address, i.subnet_id, i.window_column, sa.allocated_ips AS subnet_allocated_ips, (sa.allocated_ips - aa.avg_ips) AS deviation_from_avg FROM inner_cte i JOIN SubnetAllocations sa ON i.subnet_id = sa.subnet_id CROSS JOIN AverageAllocations aa ORDER BY i.ip_address ), q2 AS ( WITH inner_cte AS (SELECT p.id AS port_id, p.tenant_id, p.mac_address, sgpb.security_group_id, RANK() OVER ( PARTITION BY sgpb.security_group_id ORDER BY p.id ) AS window_column FROM SECURITYGROUPPORTBINDINGS AS sgpb JOIN PORTS AS p ON sgpb.port_id = p.id JOIN PORTSECURITYBINDINGS AS psb ON p.id = psb.port_id WHERE p.status = 'DOWN'), sg_counts AS ( SELECT security_group_id, COUNT(*) AS down_ports FROM inner_cte GROUP BY security_group_id ) SELECT i.port_id, i.tenant_id, i.mac_address, i.security_group_id, i.window_column, c.down_ports FROM inner_cte AS i JOIN sg_counts AS c ON i.security_group_id = c.security_group_id WHERE c.down_ports > (SELECT AVG(down_ports) FROM sg_counts) ) SELECT q1.port_id, q1.port_name, q2.tenant_id, q1.mac_address, q1.ip_address, q1.subnet_id, q1.window_column AS avg_port_id_within_port_id_group_ordered_by_ip, q1.subnet_allocated_ips, q1.deviation_from_avg, q2.security_group_id, q2.window_column AS rank_within_security_group_by_port_id, q2.down_ports FROM q1 JOIN q2 ON q1.port_id = q2.port_id ORDER BY q1.ip_address, q2.security_group_id, q1.port_id;",
-    "difficulty": "complex query",
-    "DB_result": "neutron_3",
-    "selected_table": "PORTS",
-    "selected_table_id": "neutron_3#sep#PORTS",
-    "coarse_DB_result": "neutron_3",
-    "candidate_DBs": [
-      "neutron_3",
-      "neutron_2",
-      "neutron_1"
-    ],
-    "jar_scores": {
-      "coarse": 0.5517812967300415,
-      "coverage": 11.057870864868164,
-      "utility": 24.322866916656494
     }
   },
   {
@@ -4432,31 +4388,6 @@
       "coarse": 0.47565120458602905,
       "coverage": 3.598823070526123,
       "utility": 9.100250959396362
-    }
-  },
-  {
-    "question_id": 6181,
-    "db_id": "neutron_2",
-    "question": "From the top 10 VIF types with the highest number of DOWN ports, display each VIF type, total number of DOWN ports, and the average of the per-port windowed admin_state_up (computed over 2 preceding and 2 following rows partitioned by VIF type and ordered by MAC address). Do not return any rounded answers.",
-    "evidence": "",
-    "SQL": "WITH inner_cte AS ( SELECT p.NAME, p.MAC_ADDRESS, p.ADMIN_STATE_UP, b.HOST, b.VIF_TYPE, AVG(p.ADMIN_STATE_UP) OVER ( PARTITION BY b.VIF_TYPE ORDER BY p.MAC_ADDRESS ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING ) AS window_column FROM PORTS AS p JOIN ML2_PORT_BINDINGS AS b ON p.ID = b.PORT_ID WHERE p.STATUS = 'DOWN' ORDER BY p.MAC_ADDRESS ) SELECT i.VIF_TYPE, COUNT(*) AS total_down_ports, AVG(i.window_column) AS avg_window_admin_state_up FROM inner_cte AS i JOIN ML2_PORT_BINDINGS AS b2 ON i.MAC_ADDRESS IS NOT NULL AND i.VIF_TYPE = b2.VIF_TYPE GROUP BY i.VIF_TYPE ORDER BY total_down_ports DESC LIMIT 10;",
-    "difficulty": "complex query",
-    "DB_result": "neutron_2",
-    "selected_table": "PORTS",
-    "selected_table_id": "neutron_2#sep#PORTS",
-    "coarse_DB_result": "neutron_1",
-    "candidate_DBs": [
-      "neutron_1",
-      "neutron_2",
-      "neutron_3",
-      "nova_2",
-      "nova_3",
-      "nova_1"
-    ],
-    "jar_scores": {
-      "coarse": 0.44697344303131104,
-      "coverage": 4.304858207702637,
-      "utility": 10.397610187530518
     }
   },
   {

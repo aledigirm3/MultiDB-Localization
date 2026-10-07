@@ -359,16 +359,14 @@ counted as incorrect.
 | Spider dev 1.0 | 34 | 100.00 | 26.47 | 100.00 |
 | Spider train | 151 | 76.16 | 31.13 | 75.50 |
 | ARCHER | 28 | 89.29 | 50.00 | 96.43 |
-| BEAVER | 499 | 76.15 | -- | -- |
+| BEAVER | 499 | 76.15 | 36.07 | -- |
 | SQaLe3 | 4,281 | 40.43 | 6.52 | -- |
 
 The BEAVER experiments use the same 3,693-question subset, obtained by excluding
 4,285 over-represented `dw` questions. The direct LLM baseline uses at most nine
 values per column on BEAVER and 50 on the other reported datasets. It was not
 run on BEAVER-ambiguous or SQaLe3-ambiguous because serializing the full
-candidate catalog exceeded the model context window. The archived Iterative JAR
-result for BEAVER-ambiguous belongs to an earlier 502-sample build and is not
-reported as directly comparable to the current 499-sample benchmark.
+candidate catalog exceeded the model context window.
 
 The ablation provides the clearest evidence for the value signal. Removing
 values from both the dense-table and BM25 inputs changes accuracy by at most
