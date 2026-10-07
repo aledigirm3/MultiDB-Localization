@@ -1,6 +1,6 @@
 {
-  "source_dataset": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER",
-  "output_dataset": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous",
+  "source_dataset": "ARCHER",
+  "output_dataset": "ARCHER-ambiguous",
   "distinct_ratio_threshold": 0.3,
   "min_split_value_chars": 4,
   "min_split_distinct_values": 3,
@@ -11,7 +11,7 @@
     {
       "db_id": "bike_1",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\bike_1\\bike_1.sqlite",
+      "source_sqlite": "dev_databases/bike_1/bike_1.sqlite",
       "split_rotation_offset": 0,
       "selected_table": "station",
       "selected_column": "city",
@@ -106,7 +106,7 @@
       "parse_errors": [],
       "clones": {
         "bike_1_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_1\\bike_1_1.sqlite",
+          "sqlite_path": "dev_databases/bike_1_1/bike_1_1.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "san francisco"
@@ -124,7 +124,7 @@
           "foreign_key_check_error": null
         },
         "bike_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_2\\bike_1_2.sqlite",
+          "sqlite_path": "dev_databases/bike_1_2/bike_1_2.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "palo alto"
@@ -142,7 +142,7 @@
           "foreign_key_check_error": null
         },
         "bike_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\bike_1_3\\bike_1_3.sqlite",
+          "sqlite_path": "dev_databases/bike_1_3/bike_1_3.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -178,7 +178,7 @@
     {
       "db_id": "customers_and_products_contacts",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\customers_and_products_contacts\\customers_and_products_contacts.sqlite",
+      "source_sqlite": "dev_databases/customers_and_products_contacts/customers_and_products_contacts.sqlite",
       "split_rotation_offset": 1,
       "selected_table": "Products",
       "selected_column": "product_name",
@@ -257,7 +257,7 @@
       "parse_errors": [],
       "clones": {
         "customers_and_products_contacts_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_1\\customers_and_products_contacts_1.sqlite",
+          "sqlite_path": "dev_databases/customers_and_products_contacts_1/customers_and_products_contacts_1.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -279,7 +279,7 @@
           "foreign_key_check_error": null
         },
         "customers_and_products_contacts_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_2\\customers_and_products_contacts_2.sqlite",
+          "sqlite_path": "dev_databases/customers_and_products_contacts_2/customers_and_products_contacts_2.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "appl"
@@ -300,7 +300,7 @@
           "foreign_key_check_error": null
         },
         "customers_and_products_contacts_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\customers_and_products_contacts_3\\customers_and_products_contacts_3.sqlite",
+          "sqlite_path": "dev_databases/customers_and_products_contacts_3/customers_and_products_contacts_3.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "gucci"
@@ -338,7 +338,7 @@
     {
       "db_id": "formula_1",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\formula_1\\formula_1.sqlite",
+      "source_sqlite": "dev_databases/formula_1/formula_1.sqlite",
       "split_rotation_offset": 2,
       "selected_table": "races",
       "selected_column": "name",
@@ -517,7 +517,7 @@
       "parse_errors": [],
       "clones": {
         "formula_1_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_1\\formula_1_1.sqlite",
+          "sqlite_path": "dev_databases/formula_1_1/formula_1_1.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "australian grand prix"
@@ -544,7 +544,7 @@
           "foreign_key_check_error": null
         },
         "formula_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_2\\formula_1_2.sqlite",
+          "sqlite_path": "dev_databases/formula_1_2/formula_1_2.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -572,7 +572,7 @@
           "foreign_key_check_error": null
         },
         "formula_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\formula_1_3\\formula_1_3.sqlite",
+          "sqlite_path": "dev_databases/formula_1_3/formula_1_3.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "british grand prix"
@@ -621,7 +621,7 @@
     {
       "db_id": "soccer_1",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\soccer_1\\soccer_1.sqlite",
+      "source_sqlite": "dev_databases/soccer_1/soccer_1.sqlite",
       "split_rotation_offset": 0,
       "selected_table": "Player_Attributes",
       "selected_column": "attacking_work_rate",
@@ -712,7 +712,7 @@
       "parse_errors": [],
       "clones": {
         "soccer_1_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_1\\soccer_1_1.sqlite",
+          "sqlite_path": "dev_databases/soccer_1_1/soccer_1_1.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "medium"
@@ -732,7 +732,7 @@
           "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
         },
         "soccer_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_2\\soccer_1_2.sqlite",
+          "sqlite_path": "dev_databases/soccer_1_2/soccer_1_2.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "high"
@@ -752,7 +752,7 @@
           "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
         },
         "soccer_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\soccer_1_3\\soccer_1_3.sqlite",
+          "sqlite_path": "dev_databases/soccer_1_3/soccer_1_3.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -784,7 +784,7 @@
     {
       "db_id": "wine_1",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\wine_1\\wine_1.sqlite",
+      "source_sqlite": "dev_databases/wine_1/wine_1.sqlite",
       "split_rotation_offset": 1,
       "selected_table": "wine",
       "selected_column": "Grape",
@@ -962,7 +962,7 @@
       "parse_errors": [],
       "clones": {
         "wine_1_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_1\\wine_1_1.sqlite",
+          "sqlite_path": "dev_databases/wine_1_1/wine_1_1.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -980,7 +980,7 @@
           "foreign_key_check_error": null
         },
         "wine_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_2\\wine_1_2.sqlite",
+          "sqlite_path": "dev_databases/wine_1_2/wine_1_2.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "pinot noir"
@@ -997,7 +997,7 @@
           "foreign_key_check_error": null
         },
         "wine_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\wine_1_3\\wine_1_3.sqlite",
+          "sqlite_path": "dev_databases/wine_1_3/wine_1_3.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "zinfandel"
@@ -1023,7 +1023,7 @@
     {
       "db_id": "world_1",
       "status": "created",
-      "source_sqlite": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER\\dev_databases\\world_1\\world_1.sqlite",
+      "source_sqlite": "dev_databases/world_1/world_1.sqlite",
       "split_rotation_offset": 2,
       "selected_table": "country",
       "selected_column": "Continent",
@@ -1152,7 +1152,7 @@
       "parse_errors": [],
       "clones": {
         "world_1_1": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_1\\world_1_1.sqlite",
+          "sqlite_path": "dev_databases/world_1_1/world_1_1.sqlite",
           "split_kind": "secondary_value",
           "split_keep_values": [
             "europ"
@@ -1169,7 +1169,7 @@
           "foreign_key_check_error": null
         },
         "world_1_2": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_2\\world_1_2.sqlite",
+          "sqlite_path": "dev_databases/world_1_2/world_1_2.sqlite",
           "split_kind": "remaining_values",
           "split_keep_values": [],
           "split_excluded_values": [
@@ -1187,7 +1187,7 @@
           "foreign_key_check_error": null
         },
         "world_1_3": {
-          "sqlite_path": "C:\\Users\\aless\\dev\\NLQ-Tables\\datasets\\ARCHER-ambiguous\\dev_databases\\world_1_3\\world_1_3.sqlite",
+          "sqlite_path": "dev_databases/world_1_3/world_1_3.sqlite",
           "split_kind": "primary_value",
           "split_keep_values": [
             "north america"

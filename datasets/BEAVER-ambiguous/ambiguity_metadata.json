@@ -1,0 +1,2551 @@
+{
+  "source_dataset": "BEAVER",
+  "output_dataset": "BEAVER-ambiguous",
+  "distinct_ratio_threshold": 0.3,
+  "min_split_value_chars": 4,
+  "min_split_distinct_values": 3,
+  "selection_method": "low-cardinality normalized text columns ranked by SQL equality/IN literal matches whose normalized value length is greater than 3 and whose usable distinct value count is at least 3. A selected column must also have at least one usable normalized value mentioned in a normalized natural-language question for the same database",
+  "split_policy": "Duplicated databases are ordered by db_id. Their primary, secondary, and remaining value groups are assigned cyclically to suffixes _1, _2, and _3 using rotation offsets 0, 1, and 2. The rotation only relabels the groups; child rows referencing removed parent rows are removed recursively.",
+  "sample_assignment_policy": "Each sample must contain an explicit SQL equality/IN reference to the selected split column with a value present in that column and longer than 3 normalized characters. Then the SQL query is executed on the original database and on all clones. A sample is written to dev.json only when exactly one clone returns the same result as the original query. Samples without an explicit split reference, with only short split values, where multiple clones match, or where no clone matches, are skipped.",
+  "databases": [
+    {
+      "db_id": "dw",
+      "status": "created",
+      "source_sqlite": "dev_databases/dw/dw.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "COURSE_CATALOG_SUBJECT_OFFERED",
+      "selected_column": "DEPARTMENT_NAME",
+      "row_count": 10000,
+      "raw_distinct_count": 51,
+      "distinct_ratio": 0.0051,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 51,
+      "sql_sample_hits": 672,
+      "sql_total_mentions": 969,
+      "sql_value_mentions": {
+        "mathemat": 917,
+        "electr eng comput sci": 14,
+        "polit scienc": 31,
+        "physic": 1,
+        "manag": 3,
+        "biolog": 2,
+        "chemistri": 1
+      },
+      "question_sample_hits": 2945,
+      "question_value_mentions": {
+        "chemistri": 751,
+        "mathemat": 1855,
+        "polit scienc": 473,
+        "biolog": 596,
+        "histori": 48,
+        "mechan engin": 52,
+        "physic": 143,
+        "electr eng comput sci": 95,
+        "manag": 88,
+        "econom": 6,
+        "music": 2,
+        "anthropolog": 1,
+        "human": 1
+      },
+      "primary_split_value": "mathemat",
+      "primary_split_raw_values": [
+        "Mathematics"
+      ],
+      "secondary_split_value": "polit scienc",
+      "secondary_split_raw_values": [
+        "Political Science"
+      ],
+      "remaining_split_value_count": 49,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "manag",
+          "frequency": 902,
+          "raw_values": [
+            "Management"
+          ]
+        },
+        {
+          "normalized_value": "electr eng comput sci",
+          "frequency": 797,
+          "raw_values": [
+            "Electrical Eng & Computer Sci"
+          ]
+        },
+        {
+          "normalized_value": "mechan engin",
+          "frequency": 523,
+          "raw_values": [
+            "Mechanical Engineering"
+          ]
+        },
+        {
+          "normalized_value": "architectur",
+          "frequency": 484,
+          "raw_values": [
+            "Architecture"
+          ]
+        },
+        {
+          "normalized_value": "urban studi and plan",
+          "frequency": 423,
+          "raw_values": [
+            "Urban Studies and Planning"
+          ]
+        },
+        {
+          "normalized_value": "civil and environment eng",
+          "frequency": 376,
+          "raw_values": [
+            "Civil and Environmental Eng"
+          ]
+        },
+        {
+          "normalized_value": "earth atmo planetari sci",
+          "frequency": 371,
+          "raw_values": [
+            "Earth, Atmos & Planetary Sci"
+          ]
+        },
+        {
+          "normalized_value": "chemic engin",
+          "frequency": 344,
+          "raw_values": [
+            "Chemical Engineering"
+          ]
+        },
+        {
+          "normalized_value": "health scienc technolog",
+          "frequency": 314,
+          "raw_values": [
+            "Health Sciences & Technology"
+          ]
+        },
+        {
+          "normalized_value": "physic",
+          "frequency": 293,
+          "raw_values": [
+            "Physics"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "manag",
+          "frequency": 902,
+          "raw_values": [
+            "Management"
+          ]
+        },
+        {
+          "normalized_value": "electr eng comput sci",
+          "frequency": 797,
+          "raw_values": [
+            "Electrical Eng & Computer Sci"
+          ]
+        },
+        {
+          "normalized_value": "mechan engin",
+          "frequency": 523,
+          "raw_values": [
+            "Mechanical Engineering"
+          ]
+        },
+        {
+          "normalized_value": "architectur",
+          "frequency": 484,
+          "raw_values": [
+            "Architecture"
+          ]
+        },
+        {
+          "normalized_value": "mathemat",
+          "frequency": 470,
+          "raw_values": [
+            "Mathematics"
+          ]
+        },
+        {
+          "normalized_value": "urban studi and plan",
+          "frequency": 423,
+          "raw_values": [
+            "Urban Studies and Planning"
+          ]
+        },
+        {
+          "normalized_value": "civil and environment eng",
+          "frequency": 376,
+          "raw_values": [
+            "Civil and Environmental Eng"
+          ]
+        },
+        {
+          "normalized_value": "earth atmo planetari sci",
+          "frequency": 371,
+          "raw_values": [
+            "Earth, Atmos & Planetary Sci"
+          ]
+        },
+        {
+          "normalized_value": "chemic engin",
+          "frequency": 344,
+          "raw_values": [
+            "Chemical Engineering"
+          ]
+        },
+        {
+          "normalized_value": "health scienc technolog",
+          "frequency": 314,
+          "raw_values": [
+            "Health Sciences & Technology"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "dw_1": {
+          "sqlite_path": "dev_databases/dw_1/dw_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "mathemat"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 470,
+          "table_counts": {
+            "ACADEMIC_TERM_PARAMETER": 3,
+            "ACADEMIC_TERMS": 144,
+            "ACADEMIC_TERMS_ALL": 300,
+            "BUILDINGS": 211,
+            "CIP": 3059,
+            "CIP_WITH_VERSION": 6350,
+            "CIS_COURSE_CATALOG": 10000,
+            "CIS_HASS_ATTRIBUTE": 17,
+            "COURSE_CATALOG_SUBJECT_OFFERED": 470,
+            "DRUPAL_COURSE_CATALOG": 10000,
+            "DRUPAL_EMPLOYEE_DIRECTORY": 10000,
+            "EMPLOYEE_DIRECTORY": 10000,
+            "ESTIMATED_SURCHARGES_ESTONLY": 0,
+            "FAC_BUILDING": 242,
+            "FAC_BUILDING_ADDRESS": 785,
+            "FAC_FLOOR": 1079,
+            "FAC_MAJOR_USE": 14,
+            "FAC_ORGANIZATION": 169,
+            "FAC_ROOMS": 10000,
+            "FCLT_BUILDING": 242,
+            "FCLT_BUILDING_ADDRESS": 785,
+            "FCLT_BUILDING_ADDRESS_HIST": 10000,
+            "FCLT_BUILDING_HIST": 10000,
+            "FCLT_BUILDING_HIST_1": 10000,
+            "FCLT_FLOOR": 1079,
+            "FCLT_FLOOR_HIST": 10000,
+            "FCLT_MAJOR_USE": 14,
+            "FCLT_MAJOR_USE_HIST": 1680,
+            "FCLT_ORG_DLC_KEY": 168,
+            "FCLT_ORGANIZATION": 180,
+            "FCLT_ORGANIZATION_HIST": 10000,
+            "FCLT_ROOMS": 10000,
+            "FCLT_ROOMS_HIST": 10000,
+            "FRC_FISCAL_PERIODS": 10,
+            "FUND_CENTER_HIERARCHY": 0,
+            "HR_FACULTY_ROSTER": 681,
+            "HR_ORG_UNIT": 641,
+            "HR_ORG_UNIT_NEW": 691,
+            "IAP_SUBJECT_CATEGORY": 49,
+            "IAP_SUBJECT_DETAIL": 465,
+            "IAP_SUBJECT_PERSON": 1113,
+            "IAP_SUBJECT_SESSION": 1199,
+            "IAP_SUBJECT_SPONSOR": 68,
+            "IR_INSTITUTION": 10000,
+            "LIBRARY_COURSE_INSTRUCTOR": 10000,
+            "LIBRARY_MATERIAL_STATUS": 6,
+            "LIBRARY_RESERVE_CATALOG": 10000,
+            "LIBRARY_RESERVE_MATRL_DETAIL": 10000,
+            "LIBRARY_SUBJECT_OFFERED": 10000,
+            "MASTER_DEPT_DCODE_PARENT": 340,
+            "MASTER_DEPT_HIERARCHY": 310,
+            "MASTER_DEPT_HIERARCHY_LINKS": 10000,
+            "MIT_HOLIDAY_CLOSING_CALENDAR": 580,
+            "MIT_STUDENT_DIRECTORY": 10000,
+            "MOIRA_LIST": 10000,
+            "MOIRA_LIST_DETAIL": 10000,
+            "MOIRA_LIST_OWNER": 10000,
+            "OPA_PERSON_CURRENT": 0,
+            "PERSON_AUTH_AREA": 10000,
+            "PROFIT_CENTER_GROUP": 0,
+            "ROLES_FIN_PA": 1395,
+            "SE_PERSON": 10000,
+            "SIS_ADMIN_DEPARTMENT": 179,
+            "SIS_COURSE_DESCRIPTION": 695,
+            "SIS_DEPARTMENT": 128,
+            "SIS_LOOKUP": 67,
+            "SIS_SUBJECT_CODE": 221,
+            "SIS_TERM_ADDRESS_CATEGORY": 112,
+            "SPACE_DETAIL": 10000,
+            "SPACE_FLOOR": 49,
+            "SPACE_SUPERVISOR_USAGE": 2135,
+            "SPACE_UNIT": 150,
+            "SPACE_UNIT2": 139,
+            "SPACE_USAGE": 88,
+            "STUDENT_DEGREE_PROGRAM": 1202,
+            "STUDENT_DEPARTMENT": 79,
+            "STUDENT_ETHNIC_SUBGROUP": 46,
+            "SUBJECT_ATTRIBUTE": 104,
+            "SUBJECT_ENROLLABLE": 10000,
+            "SUBJECT_GROUPING": 10000,
+            "SUBJECT_IAP_SCHEDULE": 1199,
+            "SUBJECT_OFFERED": 10000,
+            "SUBJECT_OFFERED_SUMMARY": 10000,
+            "SUBJECT_SELECTOR": 0,
+            "SUBJECT_SUMMARY": 10000,
+            "TIME_DAY": 10000,
+            "TIME_MONTH": 640,
+            "TIME_QUARTER": 144,
+            "TIP_DETAIL": 10000,
+            "TIP_MATERIAL": 10000,
+            "TIP_MATERIAL_STATUS": 12,
+            "TIP_SUBJECT_OFFERED": 10000,
+            "TOP_LEVEL_DOMAIN": 249,
+            "WAREHOUSE_USERS": 10000,
+            "ZIP_CANADA": 10000,
+            "ZIP_USA": 10000,
+            "ZPM_ROOMS_LOAD": 10000
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "dw_2": {
+          "sqlite_path": "dev_databases/dw_2/dw_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "polit scienc"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 282,
+          "table_counts": {
+            "ACADEMIC_TERM_PARAMETER": 3,
+            "ACADEMIC_TERMS": 144,
+            "ACADEMIC_TERMS_ALL": 300,
+            "BUILDINGS": 211,
+            "CIP": 3059,
+            "CIP_WITH_VERSION": 6350,
+            "CIS_COURSE_CATALOG": 10000,
+            "CIS_HASS_ATTRIBUTE": 17,
+            "COURSE_CATALOG_SUBJECT_OFFERED": 282,
+            "DRUPAL_COURSE_CATALOG": 10000,
+            "DRUPAL_EMPLOYEE_DIRECTORY": 10000,
+            "EMPLOYEE_DIRECTORY": 10000,
+            "ESTIMATED_SURCHARGES_ESTONLY": 0,
+            "FAC_BUILDING": 242,
+            "FAC_BUILDING_ADDRESS": 785,
+            "FAC_FLOOR": 1079,
+            "FAC_MAJOR_USE": 14,
+            "FAC_ORGANIZATION": 169,
+            "FAC_ROOMS": 10000,
+            "FCLT_BUILDING": 242,
+            "FCLT_BUILDING_ADDRESS": 785,
+            "FCLT_BUILDING_ADDRESS_HIST": 10000,
+            "FCLT_BUILDING_HIST": 10000,
+            "FCLT_BUILDING_HIST_1": 10000,
+            "FCLT_FLOOR": 1079,
+            "FCLT_FLOOR_HIST": 10000,
+            "FCLT_MAJOR_USE": 14,
+            "FCLT_MAJOR_USE_HIST": 1680,
+            "FCLT_ORG_DLC_KEY": 168,
+            "FCLT_ORGANIZATION": 180,
+            "FCLT_ORGANIZATION_HIST": 10000,
+            "FCLT_ROOMS": 10000,
+            "FCLT_ROOMS_HIST": 10000,
+            "FRC_FISCAL_PERIODS": 10,
+            "FUND_CENTER_HIERARCHY": 0,
+            "HR_FACULTY_ROSTER": 681,
+            "HR_ORG_UNIT": 641,
+            "HR_ORG_UNIT_NEW": 691,
+            "IAP_SUBJECT_CATEGORY": 49,
+            "IAP_SUBJECT_DETAIL": 465,
+            "IAP_SUBJECT_PERSON": 1113,
+            "IAP_SUBJECT_SESSION": 1199,
+            "IAP_SUBJECT_SPONSOR": 68,
+            "IR_INSTITUTION": 10000,
+            "LIBRARY_COURSE_INSTRUCTOR": 10000,
+            "LIBRARY_MATERIAL_STATUS": 6,
+            "LIBRARY_RESERVE_CATALOG": 10000,
+            "LIBRARY_RESERVE_MATRL_DETAIL": 10000,
+            "LIBRARY_SUBJECT_OFFERED": 10000,
+            "MASTER_DEPT_DCODE_PARENT": 340,
+            "MASTER_DEPT_HIERARCHY": 310,
+            "MASTER_DEPT_HIERARCHY_LINKS": 10000,
+            "MIT_HOLIDAY_CLOSING_CALENDAR": 580,
+            "MIT_STUDENT_DIRECTORY": 10000,
+            "MOIRA_LIST": 10000,
+            "MOIRA_LIST_DETAIL": 10000,
+            "MOIRA_LIST_OWNER": 10000,
+            "OPA_PERSON_CURRENT": 0,
+            "PERSON_AUTH_AREA": 10000,
+            "PROFIT_CENTER_GROUP": 0,
+            "ROLES_FIN_PA": 1395,
+            "SE_PERSON": 10000,
+            "SIS_ADMIN_DEPARTMENT": 179,
+            "SIS_COURSE_DESCRIPTION": 695,
+            "SIS_DEPARTMENT": 128,
+            "SIS_LOOKUP": 67,
+            "SIS_SUBJECT_CODE": 221,
+            "SIS_TERM_ADDRESS_CATEGORY": 112,
+            "SPACE_DETAIL": 10000,
+            "SPACE_FLOOR": 49,
+            "SPACE_SUPERVISOR_USAGE": 2135,
+            "SPACE_UNIT": 150,
+            "SPACE_UNIT2": 139,
+            "SPACE_USAGE": 88,
+            "STUDENT_DEGREE_PROGRAM": 1202,
+            "STUDENT_DEPARTMENT": 79,
+            "STUDENT_ETHNIC_SUBGROUP": 46,
+            "SUBJECT_ATTRIBUTE": 104,
+            "SUBJECT_ENROLLABLE": 10000,
+            "SUBJECT_GROUPING": 10000,
+            "SUBJECT_IAP_SCHEDULE": 1199,
+            "SUBJECT_OFFERED": 10000,
+            "SUBJECT_OFFERED_SUMMARY": 10000,
+            "SUBJECT_SELECTOR": 0,
+            "SUBJECT_SUMMARY": 10000,
+            "TIME_DAY": 10000,
+            "TIME_MONTH": 640,
+            "TIME_QUARTER": 144,
+            "TIP_DETAIL": 10000,
+            "TIP_MATERIAL": 10000,
+            "TIP_MATERIAL_STATUS": 12,
+            "TIP_SUBJECT_OFFERED": 10000,
+            "TOP_LEVEL_DOMAIN": 249,
+            "WAREHOUSE_USERS": 10000,
+            "ZIP_CANADA": 10000,
+            "ZIP_USA": 10000,
+            "ZPM_ROOMS_LOAD": 10000
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "dw_3": {
+          "sqlite_path": "dev_databases/dw_3/dw_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "mathemat",
+            "polit scienc"
+          ],
+          "selected_table_row_count": 9248,
+          "table_counts": {
+            "ACADEMIC_TERM_PARAMETER": 3,
+            "ACADEMIC_TERMS": 144,
+            "ACADEMIC_TERMS_ALL": 300,
+            "BUILDINGS": 211,
+            "CIP": 3059,
+            "CIP_WITH_VERSION": 6350,
+            "CIS_COURSE_CATALOG": 10000,
+            "CIS_HASS_ATTRIBUTE": 17,
+            "COURSE_CATALOG_SUBJECT_OFFERED": 9248,
+            "DRUPAL_COURSE_CATALOG": 10000,
+            "DRUPAL_EMPLOYEE_DIRECTORY": 10000,
+            "EMPLOYEE_DIRECTORY": 10000,
+            "ESTIMATED_SURCHARGES_ESTONLY": 0,
+            "FAC_BUILDING": 242,
+            "FAC_BUILDING_ADDRESS": 785,
+            "FAC_FLOOR": 1079,
+            "FAC_MAJOR_USE": 14,
+            "FAC_ORGANIZATION": 169,
+            "FAC_ROOMS": 10000,
+            "FCLT_BUILDING": 242,
+            "FCLT_BUILDING_ADDRESS": 785,
+            "FCLT_BUILDING_ADDRESS_HIST": 10000,
+            "FCLT_BUILDING_HIST": 10000,
+            "FCLT_BUILDING_HIST_1": 10000,
+            "FCLT_FLOOR": 1079,
+            "FCLT_FLOOR_HIST": 10000,
+            "FCLT_MAJOR_USE": 14,
+            "FCLT_MAJOR_USE_HIST": 1680,
+            "FCLT_ORG_DLC_KEY": 168,
+            "FCLT_ORGANIZATION": 180,
+            "FCLT_ORGANIZATION_HIST": 10000,
+            "FCLT_ROOMS": 10000,
+            "FCLT_ROOMS_HIST": 10000,
+            "FRC_FISCAL_PERIODS": 10,
+            "FUND_CENTER_HIERARCHY": 0,
+            "HR_FACULTY_ROSTER": 681,
+            "HR_ORG_UNIT": 641,
+            "HR_ORG_UNIT_NEW": 691,
+            "IAP_SUBJECT_CATEGORY": 49,
+            "IAP_SUBJECT_DETAIL": 465,
+            "IAP_SUBJECT_PERSON": 1113,
+            "IAP_SUBJECT_SESSION": 1199,
+            "IAP_SUBJECT_SPONSOR": 68,
+            "IR_INSTITUTION": 10000,
+            "LIBRARY_COURSE_INSTRUCTOR": 10000,
+            "LIBRARY_MATERIAL_STATUS": 6,
+            "LIBRARY_RESERVE_CATALOG": 10000,
+            "LIBRARY_RESERVE_MATRL_DETAIL": 10000,
+            "LIBRARY_SUBJECT_OFFERED": 10000,
+            "MASTER_DEPT_DCODE_PARENT": 340,
+            "MASTER_DEPT_HIERARCHY": 310,
+            "MASTER_DEPT_HIERARCHY_LINKS": 10000,
+            "MIT_HOLIDAY_CLOSING_CALENDAR": 580,
+            "MIT_STUDENT_DIRECTORY": 10000,
+            "MOIRA_LIST": 10000,
+            "MOIRA_LIST_DETAIL": 10000,
+            "MOIRA_LIST_OWNER": 10000,
+            "OPA_PERSON_CURRENT": 0,
+            "PERSON_AUTH_AREA": 10000,
+            "PROFIT_CENTER_GROUP": 0,
+            "ROLES_FIN_PA": 1395,
+            "SE_PERSON": 10000,
+            "SIS_ADMIN_DEPARTMENT": 179,
+            "SIS_COURSE_DESCRIPTION": 695,
+            "SIS_DEPARTMENT": 128,
+            "SIS_LOOKUP": 67,
+            "SIS_SUBJECT_CODE": 221,
+            "SIS_TERM_ADDRESS_CATEGORY": 112,
+            "SPACE_DETAIL": 10000,
+            "SPACE_FLOOR": 49,
+            "SPACE_SUPERVISOR_USAGE": 2135,
+            "SPACE_UNIT": 150,
+            "SPACE_UNIT2": 139,
+            "SPACE_USAGE": 88,
+            "STUDENT_DEGREE_PROGRAM": 1202,
+            "STUDENT_DEPARTMENT": 79,
+            "STUDENT_ETHNIC_SUBGROUP": 46,
+            "SUBJECT_ATTRIBUTE": 104,
+            "SUBJECT_ENROLLABLE": 10000,
+            "SUBJECT_GROUPING": 10000,
+            "SUBJECT_IAP_SCHEDULE": 1199,
+            "SUBJECT_OFFERED": 10000,
+            "SUBJECT_OFFERED_SUMMARY": 10000,
+            "SUBJECT_SELECTOR": 0,
+            "SUBJECT_SUMMARY": 10000,
+            "TIME_DAY": 10000,
+            "TIME_MONTH": 640,
+            "TIME_QUARTER": 144,
+            "TIP_DETAIL": 10000,
+            "TIP_MATERIAL": 10000,
+            "TIP_MATERIAL_STATUS": 12,
+            "TIP_SUBJECT_OFFERED": 10000,
+            "TOP_LEVEL_DOMAIN": 249,
+            "WAREHOUSE_USERS": 10000,
+            "ZIP_CANADA": 10000,
+            "ZIP_USA": 10000,
+            "ZPM_ROOMS_LOAD": 10000
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 151,
+        "clone_3_matches_original": 10,
+        "clone_2_matches_original": 4
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 5236,
+        "skipped_no_clone_matches_original": 502,
+        "skipped_multiple_clones_match_original": 5
+      }
+    },
+    {
+      "db_id": "neutron",
+      "status": "created",
+      "source_sqlite": "dev_databases/neutron/neutron.sqlite",
+      "split_rotation_offset": 1,
+      "selected_table": "PORTS",
+      "selected_column": "STATUS",
+      "row_count": 3775,
+      "raw_distinct_count": 4,
+      "distinct_ratio": 0.0010596026490066225,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 3,
+      "sql_sample_hits": 351,
+      "sql_total_mentions": 517,
+      "sql_value_mentions": {
+        "down": 511,
+        "activ": 3,
+        "build": 3
+      },
+      "question_sample_hits": 484,
+      "question_value_mentions": {
+        "down": 349,
+        "activ": 157,
+        "build": 1
+      },
+      "primary_split_value": "down",
+      "primary_split_raw_values": [
+        "DOWN"
+      ],
+      "secondary_split_value": "activ",
+      "secondary_split_raw_values": [
+        "ACTIVE"
+      ],
+      "remaining_split_value_count": 1,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "build",
+          "frequency": 18,
+          "raw_values": [
+            "BUILD"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "down",
+          "frequency": 2700,
+          "raw_values": [
+            "DOWN"
+          ]
+        },
+        {
+          "normalized_value": "activ",
+          "frequency": 1034,
+          "raw_values": [
+            "ACTIVE"
+          ]
+        },
+        {
+          "normalized_value": "build",
+          "frequency": 18,
+          "raw_values": [
+            "BUILD"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "neutron_1": {
+          "sqlite_path": "dev_databases/neutron_1/neutron_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "down",
+            "activ"
+          ],
+          "selected_table_row_count": 41,
+          "table_counts": {
+            "ADDRESS_SCOPES": 0,
+            "AGENTS": 129,
+            "ALEMBIC_VERSION": 1,
+            "ALEMBIC_VERSION_FWAAS": 2,
+            "ALEMBIC_VERSION_LBAAS": 2,
+            "ALLOWEDADDRESSPAIRS": 0,
+            "ARISTA_PROVISIONED_NETS": 0,
+            "ARISTA_PROVISIONED_TENANTS": 0,
+            "ARISTA_PROVISIONED_VMS": 0,
+            "AUTO_ALLOCATED_TOPOLOGIES": 0,
+            "BGP_PEERS": 0,
+            "BGP_SPEAKER_DRAGENT_BINDINGS": 0,
+            "BGP_SPEAKER_NETWORK_BINDINGS": 0,
+            "BGP_SPEAKER_PEER_BINDINGS": 0,
+            "BGP_SPEAKERS": 0,
+            "BROCADENETWORKS": 0,
+            "BROCADEPORTS": 0,
+            "CISCO_CSR_IDENTIFIER_MAP": 0,
+            "CISCO_FIREWALL_ASSOCIATIONS": 0,
+            "CISCO_HOSTING_DEVICES": 0,
+            "CISCO_ML2_APIC_CONTRACTS": 0,
+            "CISCO_ML2_APIC_HOST_LINKS": 0,
+            "CISCO_ML2_APIC_NAMES": 0,
+            "CISCO_ML2_N1KV_NETWORK_BINDINGS": 0,
+            "CISCO_ML2_N1KV_NETWORK_PROFILES": 0,
+            "CISCO_ML2_N1KV_POLICY_PROFILES": 0,
+            "CISCO_ML2_N1KV_PORT_BINDINGS": 0,
+            "CISCO_ML2_N1KV_PROFILE_BINDINGS": 0,
+            "CISCO_ML2_N1KV_VLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_N1KV_VXLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_NEXUS_NVE": 0,
+            "CISCO_ML2_NEXUSPORT_BINDINGS": 0,
+            "CISCO_PORT_MAPPINGS": 0,
+            "CISCO_ROUTER_MAPPINGS": 0,
+            "CONSISTENCYHASHES": 0,
+            "DEFAULT_SECURITY_GROUP": 804,
+            "DNSNAMESERVERS": 65,
+            "DVR_HOST_MACS": 0,
+            "EXTERNALNETWORKS": 1,
+            "EXTRADHCPOPTS": 0,
+            "FIREWALL_POLICIES": 0,
+            "FIREWALL_ROUTER_ASSOCIATIONS": 0,
+            "FIREWALL_RULES": 0,
+            "FIREWALLS": 0,
+            "FLAVORS": 0,
+            "FLAVORSERVICEPROFILEBINDINGS": 0,
+            "FLOATINGIPDNSES": 0,
+            "FLOATINGIPS": 13,
+            "HA_ROUTER_AGENT_PORT_BINDINGS": 0,
+            "HA_ROUTER_NETWORKS": 0,
+            "HA_ROUTER_VRID_ALLOCATIONS": 0,
+            "HEALTHMONITORS": 3,
+            "IKEPOLICIES": 0,
+            "IPALLOCATIONPOOLS": 49,
+            "IPALLOCATIONS": 42,
+            "IPAMALLOCATIONPOOLS": 0,
+            "IPAMALLOCATIONS": 0,
+            "IPAMAVAILABILITYRANGES": 0,
+            "IPAMSUBNETS": 0,
+            "IPAVAILABILITYRANGES": 184,
+            "IPSEC_SITE_CONNECTIONS": 0,
+            "IPSECPEERCIDRS": 0,
+            "IPSECPOLICIES": 0,
+            "LBAAS_HEALTHMONITORS": 0,
+            "LBAAS_L7POLICIES": 0,
+            "LBAAS_L7RULES": 0,
+            "LBAAS_LISTENERS": 0,
+            "LBAAS_LOADBALANCER_STATISTICS": 0,
+            "LBAAS_LOADBALANCERAGENTBINDINGS": 0,
+            "LBAAS_LOADBALANCERS": 0,
+            "LBAAS_MEMBERS": 0,
+            "LBAAS_POOLS": 0,
+            "LBAAS_SESSIONPERSISTENCES": 0,
+            "LBAAS_SNI": 0,
+            "LSN": 0,
+            "LSN_PORT": 0,
+            "MACLEARNINGSTATES": 0,
+            "MEMBERS": 1,
+            "METERINGLABELRULES": 0,
+            "METERINGLABELS": 0,
+            "ML2_BROCADENETWORKS": 0,
+            "ML2_BROCADEPORTS": 0,
+            "ML2_DVR_PORT_BINDINGS": 0,
+            "ML2_FLAT_ALLOCATIONS": 0,
+            "ML2_GENEVE_ALLOCATIONS": 0,
+            "ML2_GENEVE_ENDPOINTS": 0,
+            "ML2_GRE_ALLOCATIONS": 1000,
+            "ML2_GRE_ENDPOINTS": 124,
+            "ML2_NETWORK_SEGMENTS": 49,
+            "ML2_NEXUS_VXLAN_ALLOCATIONS": 0,
+            "ML2_NEXUS_VXLAN_MCAST_GROUPS": 0,
+            "ML2_PORT_BINDING_LEVELS": 18,
+            "ML2_PORT_BINDINGS": 41,
+            "ML2_UCSM_PORT_PROFILES": 0,
+            "ML2_VLAN_ALLOCATIONS": 9,
+            "ML2_VXLAN_ALLOCATIONS": 0,
+            "ML2_VXLAN_ENDPOINTS": 0,
+            "MULTI_PROVIDER_NETWORKS": 0,
+            "NETWORKCONNECTIONS": 0,
+            "NETWORKDHCPAGENTBINDINGS": 45,
+            "NETWORKDNSDOMAINS": 0,
+            "NETWORKGATEWAYDEVICEREFERENCES": 0,
+            "NETWORKGATEWAYDEVICES": 0,
+            "NETWORKGATEWAYS": 0,
+            "NETWORKQUEUEMAPPINGS": 0,
+            "NETWORKRBACS": 14,
+            "NETWORKS": 49,
+            "NETWORKSECURITYBINDINGS": 36,
+            "NEUTRON_NSX_NETWORK_MAPPINGS": 0,
+            "NEUTRON_NSX_PORT_MAPPINGS": 0,
+            "NEUTRON_NSX_ROUTER_MAPPINGS": 0,
+            "NEUTRON_NSX_SECURITY_GROUP_MAPPINGS": 0,
+            "NEXTHOPS": 0,
+            "NSXV_EDGE_DHCP_STATIC_BINDINGS": 0,
+            "NSXV_EDGE_MONITOR_MAPPINGS": 0,
+            "NSXV_EDGE_POOL_MAPPINGS": 0,
+            "NSXV_EDGE_VIP_MAPPINGS": 0,
+            "NSXV_EDGE_VNIC_BINDINGS": 0,
+            "NSXV_FIREWALL_RULE_BINDINGS": 0,
+            "NSXV_INTERNAL_EDGES": 0,
+            "NSXV_INTERNAL_NETWORKS": 0,
+            "NSXV_PORT_INDEX_MAPPINGS": 0,
+            "NSXV_PORT_VNIC_MAPPINGS": 0,
+            "NSXV_ROUTER_BINDINGS": 0,
+            "NSXV_ROUTER_EXT_ATTRIBUTES": 0,
+            "NSXV_RULE_MAPPINGS": 0,
+            "NSXV_SECURITY_GROUP_SECTION_MAPPINGS": 0,
+            "NSXV_SPOOFGUARD_POLICY_NETWORK_MAPPINGS": 0,
+            "NSXV_TZ_NETWORK_BINDINGS": 0,
+            "NSXV_VDR_DHCP_BINDINGS": 0,
+            "NUAGE_NET_PARTITION_ROUTER_MAPPING": 0,
+            "NUAGE_NET_PARTITIONS": 0,
+            "NUAGE_PROVIDER_NET_BINDINGS": 0,
+            "NUAGE_SUBNET_L2DOM_MAPPING": 0,
+            "POOLLOADBALANCERAGENTBINDINGS": 0,
+            "POOLMONITORASSOCIATIONS": 0,
+            "POOLS": 1,
+            "POOLSTATISTICSS": 1,
+            "PORTBINDINGPORTS": 0,
+            "PORTDNSES": 0,
+            "PORTQUEUEMAPPINGS": 0,
+            "PORTS": 41,
+            "PORTSECURITYBINDINGS": 34,
+            "PROVIDERRESOURCEASSOCIATIONS": 38,
+            "QOS_BANDWIDTH_LIMIT_RULES": 0,
+            "QOS_NETWORK_POLICY_BINDINGS": 0,
+            "QOS_POLICIES": 0,
+            "QOS_PORT_POLICY_BINDINGS": 0,
+            "QOSPOLICYRBACS": 0,
+            "QOSQUEUES": 0,
+            "QUOTAS": 1521,
+            "QUOTAUSAGES": 810,
+            "RESERVATIONS": 5,
+            "RESOURCEDELTAS": 5,
+            "ROUTER_EXTRA_ATTRIBUTES": 27,
+            "ROUTERL3AGENTBINDINGS": 27,
+            "ROUTERPORTS": 15,
+            "ROUTERROUTES": 0,
+            "ROUTERRULES": 0,
+            "ROUTERS": 27,
+            "SECURITYGROUPPORTBINDINGS": 5,
+            "SECURITYGROUPRULES": 9004,
+            "SECURITYGROUPS": 1798,
+            "SERVICEPROFILES": 0,
+            "SESSIONPERSISTENCES": 0,
+            "STANDARDATTRIBUTES": 14725,
+            "SUBNETPOOLPREFIXES": 0,
+            "SUBNETPOOLS": 0,
+            "SUBNETROUTES": 6,
+            "SUBNETS": 49,
+            "TAGS": 0,
+            "TZ_NETWORK_BINDINGS": 0,
+            "VCNS_ROUTER_BINDINGS": 0,
+            "VIPS": 0,
+            "VPNSERVICES": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "neutron_2": {
+          "sqlite_path": "dev_databases/neutron_2/neutron_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "down"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 2700,
+          "table_counts": {
+            "ADDRESS_SCOPES": 0,
+            "AGENTS": 129,
+            "ALEMBIC_VERSION": 1,
+            "ALEMBIC_VERSION_FWAAS": 2,
+            "ALEMBIC_VERSION_LBAAS": 2,
+            "ALLOWEDADDRESSPAIRS": 0,
+            "ARISTA_PROVISIONED_NETS": 0,
+            "ARISTA_PROVISIONED_TENANTS": 0,
+            "ARISTA_PROVISIONED_VMS": 0,
+            "AUTO_ALLOCATED_TOPOLOGIES": 0,
+            "BGP_PEERS": 0,
+            "BGP_SPEAKER_DRAGENT_BINDINGS": 0,
+            "BGP_SPEAKER_NETWORK_BINDINGS": 0,
+            "BGP_SPEAKER_PEER_BINDINGS": 0,
+            "BGP_SPEAKERS": 0,
+            "BROCADENETWORKS": 0,
+            "BROCADEPORTS": 0,
+            "CISCO_CSR_IDENTIFIER_MAP": 0,
+            "CISCO_FIREWALL_ASSOCIATIONS": 0,
+            "CISCO_HOSTING_DEVICES": 0,
+            "CISCO_ML2_APIC_CONTRACTS": 0,
+            "CISCO_ML2_APIC_HOST_LINKS": 0,
+            "CISCO_ML2_APIC_NAMES": 0,
+            "CISCO_ML2_N1KV_NETWORK_BINDINGS": 0,
+            "CISCO_ML2_N1KV_NETWORK_PROFILES": 0,
+            "CISCO_ML2_N1KV_POLICY_PROFILES": 0,
+            "CISCO_ML2_N1KV_PORT_BINDINGS": 0,
+            "CISCO_ML2_N1KV_PROFILE_BINDINGS": 0,
+            "CISCO_ML2_N1KV_VLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_N1KV_VXLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_NEXUS_NVE": 0,
+            "CISCO_ML2_NEXUSPORT_BINDINGS": 0,
+            "CISCO_PORT_MAPPINGS": 0,
+            "CISCO_ROUTER_MAPPINGS": 0,
+            "CONSISTENCYHASHES": 0,
+            "DEFAULT_SECURITY_GROUP": 804,
+            "DNSNAMESERVERS": 65,
+            "DVR_HOST_MACS": 0,
+            "EXTERNALNETWORKS": 1,
+            "EXTRADHCPOPTS": 0,
+            "FIREWALL_POLICIES": 0,
+            "FIREWALL_ROUTER_ASSOCIATIONS": 0,
+            "FIREWALL_RULES": 0,
+            "FIREWALLS": 0,
+            "FLAVORS": 0,
+            "FLAVORSERVICEPROFILEBINDINGS": 0,
+            "FLOATINGIPDNSES": 0,
+            "FLOATINGIPS": 0,
+            "HA_ROUTER_AGENT_PORT_BINDINGS": 0,
+            "HA_ROUTER_NETWORKS": 0,
+            "HA_ROUTER_VRID_ALLOCATIONS": 0,
+            "HEALTHMONITORS": 3,
+            "IKEPOLICIES": 0,
+            "IPALLOCATIONPOOLS": 49,
+            "IPALLOCATIONS": 2700,
+            "IPAMALLOCATIONPOOLS": 0,
+            "IPAMALLOCATIONS": 0,
+            "IPAMAVAILABILITYRANGES": 0,
+            "IPAMSUBNETS": 0,
+            "IPAVAILABILITYRANGES": 184,
+            "IPSEC_SITE_CONNECTIONS": 0,
+            "IPSECPEERCIDRS": 0,
+            "IPSECPOLICIES": 0,
+            "LBAAS_HEALTHMONITORS": 0,
+            "LBAAS_L7POLICIES": 0,
+            "LBAAS_L7RULES": 0,
+            "LBAAS_LISTENERS": 0,
+            "LBAAS_LOADBALANCER_STATISTICS": 1,
+            "LBAAS_LOADBALANCERAGENTBINDINGS": 1,
+            "LBAAS_LOADBALANCERS": 1,
+            "LBAAS_MEMBERS": 0,
+            "LBAAS_POOLS": 0,
+            "LBAAS_SESSIONPERSISTENCES": 0,
+            "LBAAS_SNI": 0,
+            "LSN": 0,
+            "LSN_PORT": 0,
+            "MACLEARNINGSTATES": 0,
+            "MEMBERS": 1,
+            "METERINGLABELRULES": 0,
+            "METERINGLABELS": 0,
+            "ML2_BROCADENETWORKS": 0,
+            "ML2_BROCADEPORTS": 0,
+            "ML2_DVR_PORT_BINDINGS": 0,
+            "ML2_FLAT_ALLOCATIONS": 0,
+            "ML2_GENEVE_ALLOCATIONS": 0,
+            "ML2_GENEVE_ENDPOINTS": 0,
+            "ML2_GRE_ALLOCATIONS": 1000,
+            "ML2_GRE_ENDPOINTS": 124,
+            "ML2_NETWORK_SEGMENTS": 49,
+            "ML2_NEXUS_VXLAN_ALLOCATIONS": 0,
+            "ML2_NEXUS_VXLAN_MCAST_GROUPS": 0,
+            "ML2_PORT_BINDING_LEVELS": 2649,
+            "ML2_PORT_BINDINGS": 2663,
+            "ML2_UCSM_PORT_PROFILES": 0,
+            "ML2_VLAN_ALLOCATIONS": 9,
+            "ML2_VXLAN_ALLOCATIONS": 0,
+            "ML2_VXLAN_ENDPOINTS": 0,
+            "MULTI_PROVIDER_NETWORKS": 0,
+            "NETWORKCONNECTIONS": 0,
+            "NETWORKDHCPAGENTBINDINGS": 45,
+            "NETWORKDNSDOMAINS": 0,
+            "NETWORKGATEWAYDEVICEREFERENCES": 0,
+            "NETWORKGATEWAYDEVICES": 0,
+            "NETWORKGATEWAYS": 0,
+            "NETWORKQUEUEMAPPINGS": 0,
+            "NETWORKRBACS": 14,
+            "NETWORKS": 49,
+            "NETWORKSECURITYBINDINGS": 36,
+            "NEUTRON_NSX_NETWORK_MAPPINGS": 0,
+            "NEUTRON_NSX_PORT_MAPPINGS": 0,
+            "NEUTRON_NSX_ROUTER_MAPPINGS": 0,
+            "NEUTRON_NSX_SECURITY_GROUP_MAPPINGS": 0,
+            "NEXTHOPS": 0,
+            "NSXV_EDGE_DHCP_STATIC_BINDINGS": 0,
+            "NSXV_EDGE_MONITOR_MAPPINGS": 0,
+            "NSXV_EDGE_POOL_MAPPINGS": 0,
+            "NSXV_EDGE_VIP_MAPPINGS": 0,
+            "NSXV_EDGE_VNIC_BINDINGS": 0,
+            "NSXV_FIREWALL_RULE_BINDINGS": 0,
+            "NSXV_INTERNAL_EDGES": 0,
+            "NSXV_INTERNAL_NETWORKS": 0,
+            "NSXV_PORT_INDEX_MAPPINGS": 0,
+            "NSXV_PORT_VNIC_MAPPINGS": 0,
+            "NSXV_ROUTER_BINDINGS": 0,
+            "NSXV_ROUTER_EXT_ATTRIBUTES": 0,
+            "NSXV_RULE_MAPPINGS": 0,
+            "NSXV_SECURITY_GROUP_SECTION_MAPPINGS": 0,
+            "NSXV_SPOOFGUARD_POLICY_NETWORK_MAPPINGS": 0,
+            "NSXV_TZ_NETWORK_BINDINGS": 0,
+            "NSXV_VDR_DHCP_BINDINGS": 0,
+            "NUAGE_NET_PARTITION_ROUTER_MAPPING": 0,
+            "NUAGE_NET_PARTITIONS": 0,
+            "NUAGE_PROVIDER_NET_BINDINGS": 0,
+            "NUAGE_SUBNET_L2DOM_MAPPING": 0,
+            "POOLLOADBALANCERAGENTBINDINGS": 0,
+            "POOLMONITORASSOCIATIONS": 0,
+            "POOLS": 1,
+            "POOLSTATISTICSS": 1,
+            "PORTBINDINGPORTS": 0,
+            "PORTDNSES": 0,
+            "PORTQUEUEMAPPINGS": 0,
+            "PORTS": 2700,
+            "PORTSECURITYBINDINGS": 2171,
+            "PROVIDERRESOURCEASSOCIATIONS": 38,
+            "QOS_BANDWIDTH_LIMIT_RULES": 0,
+            "QOS_NETWORK_POLICY_BINDINGS": 0,
+            "QOS_POLICIES": 0,
+            "QOS_PORT_POLICY_BINDINGS": 0,
+            "QOSPOLICYRBACS": 0,
+            "QOSQUEUES": 0,
+            "QUOTAS": 1521,
+            "QUOTAUSAGES": 810,
+            "RESERVATIONS": 5,
+            "RESOURCEDELTAS": 5,
+            "ROUTER_EXTRA_ATTRIBUTES": 12,
+            "ROUTERL3AGENTBINDINGS": 12,
+            "ROUTERPORTS": 0,
+            "ROUTERROUTES": 0,
+            "ROUTERRULES": 0,
+            "ROUTERS": 12,
+            "SECURITYGROUPPORTBINDINGS": 3637,
+            "SECURITYGROUPRULES": 9004,
+            "SECURITYGROUPS": 1798,
+            "SERVICEPROFILES": 0,
+            "SESSIONPERSISTENCES": 0,
+            "STANDARDATTRIBUTES": 14725,
+            "SUBNETPOOLPREFIXES": 0,
+            "SUBNETPOOLS": 0,
+            "SUBNETROUTES": 6,
+            "SUBNETS": 49,
+            "TAGS": 0,
+            "TZ_NETWORK_BINDINGS": 0,
+            "VCNS_ROUTER_BINDINGS": 0,
+            "VIPS": 0,
+            "VPNSERVICES": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "neutron_3": {
+          "sqlite_path": "dev_databases/neutron_3/neutron_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "activ"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 1034,
+          "table_counts": {
+            "ADDRESS_SCOPES": 0,
+            "AGENTS": 129,
+            "ALEMBIC_VERSION": 1,
+            "ALEMBIC_VERSION_FWAAS": 2,
+            "ALEMBIC_VERSION_LBAAS": 2,
+            "ALLOWEDADDRESSPAIRS": 1,
+            "ARISTA_PROVISIONED_NETS": 0,
+            "ARISTA_PROVISIONED_TENANTS": 0,
+            "ARISTA_PROVISIONED_VMS": 0,
+            "AUTO_ALLOCATED_TOPOLOGIES": 0,
+            "BGP_PEERS": 0,
+            "BGP_SPEAKER_DRAGENT_BINDINGS": 0,
+            "BGP_SPEAKER_NETWORK_BINDINGS": 0,
+            "BGP_SPEAKER_PEER_BINDINGS": 0,
+            "BGP_SPEAKERS": 0,
+            "BROCADENETWORKS": 0,
+            "BROCADEPORTS": 0,
+            "CISCO_CSR_IDENTIFIER_MAP": 0,
+            "CISCO_FIREWALL_ASSOCIATIONS": 0,
+            "CISCO_HOSTING_DEVICES": 0,
+            "CISCO_ML2_APIC_CONTRACTS": 0,
+            "CISCO_ML2_APIC_HOST_LINKS": 0,
+            "CISCO_ML2_APIC_NAMES": 0,
+            "CISCO_ML2_N1KV_NETWORK_BINDINGS": 0,
+            "CISCO_ML2_N1KV_NETWORK_PROFILES": 0,
+            "CISCO_ML2_N1KV_POLICY_PROFILES": 0,
+            "CISCO_ML2_N1KV_PORT_BINDINGS": 0,
+            "CISCO_ML2_N1KV_PROFILE_BINDINGS": 0,
+            "CISCO_ML2_N1KV_VLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_N1KV_VXLAN_ALLOCATIONS": 0,
+            "CISCO_ML2_NEXUS_NVE": 0,
+            "CISCO_ML2_NEXUSPORT_BINDINGS": 0,
+            "CISCO_PORT_MAPPINGS": 0,
+            "CISCO_ROUTER_MAPPINGS": 0,
+            "CONSISTENCYHASHES": 0,
+            "DEFAULT_SECURITY_GROUP": 804,
+            "DNSNAMESERVERS": 65,
+            "DVR_HOST_MACS": 0,
+            "EXTERNALNETWORKS": 1,
+            "EXTRADHCPOPTS": 0,
+            "FIREWALL_POLICIES": 0,
+            "FIREWALL_ROUTER_ASSOCIATIONS": 0,
+            "FIREWALL_RULES": 0,
+            "FIREWALLS": 0,
+            "FLAVORS": 0,
+            "FLAVORSERVICEPROFILEBINDINGS": 0,
+            "FLOATINGIPDNSES": 0,
+            "FLOATINGIPS": 0,
+            "HA_ROUTER_AGENT_PORT_BINDINGS": 0,
+            "HA_ROUTER_NETWORKS": 0,
+            "HA_ROUTER_VRID_ALLOCATIONS": 0,
+            "HEALTHMONITORS": 3,
+            "IKEPOLICIES": 0,
+            "IPALLOCATIONPOOLS": 49,
+            "IPALLOCATIONS": 1039,
+            "IPAMALLOCATIONPOOLS": 0,
+            "IPAMALLOCATIONS": 0,
+            "IPAMAVAILABILITYRANGES": 0,
+            "IPAMSUBNETS": 0,
+            "IPAVAILABILITYRANGES": 184,
+            "IPSEC_SITE_CONNECTIONS": 0,
+            "IPSECPEERCIDRS": 0,
+            "IPSECPOLICIES": 0,
+            "LBAAS_HEALTHMONITORS": 0,
+            "LBAAS_L7POLICIES": 0,
+            "LBAAS_L7RULES": 0,
+            "LBAAS_LISTENERS": 5,
+            "LBAAS_LOADBALANCER_STATISTICS": 5,
+            "LBAAS_LOADBALANCERAGENTBINDINGS": 5,
+            "LBAAS_LOADBALANCERS": 5,
+            "LBAAS_MEMBERS": 22,
+            "LBAAS_POOLS": 5,
+            "LBAAS_SESSIONPERSISTENCES": 0,
+            "LBAAS_SNI": 0,
+            "LSN": 0,
+            "LSN_PORT": 0,
+            "MACLEARNINGSTATES": 0,
+            "MEMBERS": 4,
+            "METERINGLABELRULES": 0,
+            "METERINGLABELS": 0,
+            "ML2_BROCADENETWORKS": 0,
+            "ML2_BROCADEPORTS": 0,
+            "ML2_DVR_PORT_BINDINGS": 0,
+            "ML2_FLAT_ALLOCATIONS": 0,
+            "ML2_GENEVE_ALLOCATIONS": 0,
+            "ML2_GENEVE_ENDPOINTS": 0,
+            "ML2_GRE_ALLOCATIONS": 1000,
+            "ML2_GRE_ENDPOINTS": 124,
+            "ML2_NETWORK_SEGMENTS": 49,
+            "ML2_NEXUS_VXLAN_ALLOCATIONS": 0,
+            "ML2_NEXUS_VXLAN_MCAST_GROUPS": 0,
+            "ML2_PORT_BINDING_LEVELS": 1025,
+            "ML2_PORT_BINDINGS": 1026,
+            "ML2_UCSM_PORT_PROFILES": 0,
+            "ML2_VLAN_ALLOCATIONS": 9,
+            "ML2_VXLAN_ALLOCATIONS": 0,
+            "ML2_VXLAN_ENDPOINTS": 0,
+            "MULTI_PROVIDER_NETWORKS": 0,
+            "NETWORKCONNECTIONS": 0,
+            "NETWORKDHCPAGENTBINDINGS": 45,
+            "NETWORKDNSDOMAINS": 0,
+            "NETWORKGATEWAYDEVICEREFERENCES": 0,
+            "NETWORKGATEWAYDEVICES": 0,
+            "NETWORKGATEWAYS": 0,
+            "NETWORKQUEUEMAPPINGS": 0,
+            "NETWORKRBACS": 14,
+            "NETWORKS": 49,
+            "NETWORKSECURITYBINDINGS": 36,
+            "NEUTRON_NSX_NETWORK_MAPPINGS": 0,
+            "NEUTRON_NSX_PORT_MAPPINGS": 0,
+            "NEUTRON_NSX_ROUTER_MAPPINGS": 0,
+            "NEUTRON_NSX_SECURITY_GROUP_MAPPINGS": 0,
+            "NEXTHOPS": 0,
+            "NSXV_EDGE_DHCP_STATIC_BINDINGS": 0,
+            "NSXV_EDGE_MONITOR_MAPPINGS": 0,
+            "NSXV_EDGE_POOL_MAPPINGS": 0,
+            "NSXV_EDGE_VIP_MAPPINGS": 0,
+            "NSXV_EDGE_VNIC_BINDINGS": 0,
+            "NSXV_FIREWALL_RULE_BINDINGS": 0,
+            "NSXV_INTERNAL_EDGES": 0,
+            "NSXV_INTERNAL_NETWORKS": 0,
+            "NSXV_PORT_INDEX_MAPPINGS": 0,
+            "NSXV_PORT_VNIC_MAPPINGS": 0,
+            "NSXV_ROUTER_BINDINGS": 0,
+            "NSXV_ROUTER_EXT_ATTRIBUTES": 0,
+            "NSXV_RULE_MAPPINGS": 0,
+            "NSXV_SECURITY_GROUP_SECTION_MAPPINGS": 0,
+            "NSXV_SPOOFGUARD_POLICY_NETWORK_MAPPINGS": 0,
+            "NSXV_TZ_NETWORK_BINDINGS": 0,
+            "NSXV_VDR_DHCP_BINDINGS": 0,
+            "NUAGE_NET_PARTITION_ROUTER_MAPPING": 0,
+            "NUAGE_NET_PARTITIONS": 0,
+            "NUAGE_PROVIDER_NET_BINDINGS": 0,
+            "NUAGE_SUBNET_L2DOM_MAPPING": 0,
+            "POOLLOADBALANCERAGENTBINDINGS": 0,
+            "POOLMONITORASSOCIATIONS": 1,
+            "POOLS": 2,
+            "POOLSTATISTICSS": 2,
+            "PORTBINDINGPORTS": 0,
+            "PORTDNSES": 0,
+            "PORTQUEUEMAPPINGS": 0,
+            "PORTS": 1034,
+            "PORTSECURITYBINDINGS": 989,
+            "PROVIDERRESOURCEASSOCIATIONS": 38,
+            "QOS_BANDWIDTH_LIMIT_RULES": 0,
+            "QOS_NETWORK_POLICY_BINDINGS": 0,
+            "QOS_POLICIES": 0,
+            "QOS_PORT_POLICY_BINDINGS": 0,
+            "QOSPOLICYRBACS": 0,
+            "QOSQUEUES": 0,
+            "QUOTAS": 1521,
+            "QUOTAUSAGES": 810,
+            "RESERVATIONS": 5,
+            "RESOURCEDELTAS": 5,
+            "ROUTER_EXTRA_ATTRIBUTES": 12,
+            "ROUTERL3AGENTBINDINGS": 12,
+            "ROUTERPORTS": 9,
+            "ROUTERROUTES": 0,
+            "ROUTERRULES": 0,
+            "ROUTERS": 12,
+            "SECURITYGROUPPORTBINDINGS": 2279,
+            "SECURITYGROUPRULES": 9004,
+            "SECURITYGROUPS": 1798,
+            "SERVICEPROFILES": 0,
+            "SESSIONPERSISTENCES": 1,
+            "STANDARDATTRIBUTES": 14725,
+            "SUBNETPOOLPREFIXES": 0,
+            "SUBNETPOOLS": 0,
+            "SUBNETROUTES": 6,
+            "SUBNETS": 49,
+            "TAGS": 0,
+            "TZ_NETWORK_BINDINGS": 0,
+            "VCNS_ROUTER_BINDINGS": 0,
+            "VIPS": 1,
+            "VPNSERVICES": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 160
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 666,
+        "skipped_no_clone_matches_original": 185,
+        "skipped_multiple_clones_match_original": 6
+      }
+    },
+    {
+      "db_id": "nova",
+      "status": "created",
+      "source_sqlite": "dev_databases/nova/nova.sqlite",
+      "split_rotation_offset": 2,
+      "selected_table": "MIGRATIONS",
+      "selected_column": "STATUS",
+      "row_count": 3555,
+      "raw_distinct_count": 13,
+      "distinct_ratio": 0.0036568213783403658,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 11,
+      "sql_sample_hits": 482,
+      "sql_total_mentions": 1050,
+      "sql_value_mentions": {
+        "complet": 636,
+        "confirm": 82,
+        "fail": 98,
+        "error": 98,
+        "accept": 68,
+        "revert": 68
+      },
+      "question_sample_hits": 449,
+      "question_value_mentions": {
+        "complet": 437,
+        "confirm": 33,
+        "fail": 39,
+        "accept": 20,
+        "revert": 20,
+        "error": 38
+      },
+      "primary_split_value": "complet",
+      "primary_split_raw_values": [
+        "completed"
+      ],
+      "secondary_split_value": "error",
+      "secondary_split_raw_values": [
+        "error"
+      ],
+      "remaining_split_value_count": 9,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "confirm",
+          "frequency": 904,
+          "raw_values": [
+            "confirmed",
+            "confirming"
+          ]
+        },
+        {
+          "normalized_value": "pre migrat",
+          "frequency": 47,
+          "raw_values": [
+            "pre-migrating"
+          ]
+        },
+        {
+          "normalized_value": "queu",
+          "frequency": 43,
+          "raw_values": [
+            "queued"
+          ]
+        },
+        {
+          "normalized_value": "cancel",
+          "frequency": 10,
+          "raw_values": [
+            "cancelled"
+          ]
+        },
+        {
+          "normalized_value": "revert",
+          "frequency": 10,
+          "raw_values": [
+            "reverted"
+          ]
+        },
+        {
+          "normalized_value": "finish",
+          "frequency": 3,
+          "raw_values": [
+            "finished"
+          ]
+        },
+        {
+          "normalized_value": "accept",
+          "frequency": 2,
+          "raw_values": [
+            "accepted"
+          ]
+        },
+        {
+          "normalized_value": "done",
+          "frequency": 2,
+          "raw_values": [
+            "done"
+          ]
+        },
+        {
+          "normalized_value": "fail",
+          "frequency": 2,
+          "raw_values": [
+            "failed"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "complet",
+          "frequency": 2035,
+          "raw_values": [
+            "completed"
+          ]
+        },
+        {
+          "normalized_value": "confirm",
+          "frequency": 904,
+          "raw_values": [
+            "confirmed",
+            "confirming"
+          ]
+        },
+        {
+          "normalized_value": "error",
+          "frequency": 495,
+          "raw_values": [
+            "error"
+          ]
+        },
+        {
+          "normalized_value": "pre migrat",
+          "frequency": 47,
+          "raw_values": [
+            "pre-migrating"
+          ]
+        },
+        {
+          "normalized_value": "queu",
+          "frequency": 43,
+          "raw_values": [
+            "queued"
+          ]
+        },
+        {
+          "normalized_value": "cancel",
+          "frequency": 10,
+          "raw_values": [
+            "cancelled"
+          ]
+        },
+        {
+          "normalized_value": "revert",
+          "frequency": 10,
+          "raw_values": [
+            "reverted"
+          ]
+        },
+        {
+          "normalized_value": "finish",
+          "frequency": 3,
+          "raw_values": [
+            "finished"
+          ]
+        },
+        {
+          "normalized_value": "accept",
+          "frequency": 2,
+          "raw_values": [
+            "accepted"
+          ]
+        },
+        {
+          "normalized_value": "done",
+          "frequency": 2,
+          "raw_values": [
+            "done"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "nova_1": {
+          "sqlite_path": "dev_databases/nova_1/nova_1.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "error"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 495,
+          "table_counts": {
+            "AGENT_BUILDS": 0,
+            "AGGREGATE_HOSTS": 584,
+            "AGGREGATE_METADATA": 38,
+            "AGGREGATES": 21,
+            "ALLOCATIONS": 0,
+            "BLOCK_DEVICE_MAPPING": 16798,
+            "BW_USAGE_CACHE": 0,
+            "CELLS": 0,
+            "CERTIFICATES": 127,
+            "COMPUTE_NODES": 139,
+            "CONSOLE_POOLS": 0,
+            "CONSOLES": 0,
+            "DNS_DOMAINS": 0,
+            "FIXED_IPS": 63724,
+            "FLOATING_IPS": 8190,
+            "INSTANCE_ACTIONS": 27472,
+            "INSTANCE_ACTIONS_EVENTS": 41690,
+            "INSTANCE_EXTRA": 7253,
+            "INSTANCE_FAULTS": 5624,
+            "INSTANCE_GROUP_MEMBER": 4085,
+            "INSTANCE_GROUP_POLICY": 228,
+            "INSTANCE_GROUPS": 230,
+            "INSTANCE_ID_MAPPINGS": 277653,
+            "INSTANCE_INFO_CACHES": 7226,
+            "INSTANCE_METADATA": 36,
+            "INSTANCE_SYSTEM_METADATA": 76723,
+            "INSTANCE_TYPE_EXTRA_SPECS": 135,
+            "INSTANCE_TYPE_PROJECTS": 232,
+            "INSTANCE_TYPES": 190,
+            "INSTANCES": 7922,
+            "INVENTORIES": 0,
+            "KEY_PAIRS": 3132,
+            "MIGRATE_VERSION": 1,
+            "MIGRATIONS": 495,
+            "NETWORKS": 1,
+            "PCI_DEVICES": 16,
+            "PROJECT_USER_QUOTAS": 0,
+            "PROVIDER_FW_RULES": 0,
+            "QUOTA_CLASSES": 13,
+            "QUOTA_USAGES": 3619,
+            "QUOTAS": 3579,
+            "RESERVATIONS": 42003,
+            "RESOURCE_PROVIDER_AGGREGATES": 0,
+            "RESOURCE_PROVIDERS": 0,
+            "S3_IMAGES": 2419,
+            "SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SECURITY_GROUP_RULES": 152,
+            "SECURITY_GROUPS": 601,
+            "SERVICES": 149,
+            "SHADOW_AGENT_BUILDS": 0,
+            "SHADOW_AGGREGATE_HOSTS": 516,
+            "SHADOW_AGGREGATE_METADATA": 4,
+            "SHADOW_AGGREGATES": 0,
+            "SHADOW_BLOCK_DEVICE_MAPPING": 212755,
+            "SHADOW_BW_USAGE_CACHE": 0,
+            "SHADOW_CELLS": 0,
+            "SHADOW_CERTIFICATES": 0,
+            "SHADOW_COMPUTE_NODES": 3,
+            "SHADOW_CONSOLE_POOLS": 0,
+            "SHADOW_CONSOLES": 0,
+            "SHADOW_DNS_DOMAINS": 0,
+            "SHADOW_FIXED_IPS": 15,
+            "SHADOW_FLOATING_IPS": 0,
+            "SHADOW_INSTANCE_ACTIONS": 523265,
+            "SHADOW_INSTANCE_ACTIONS_EVENTS": 663442,
+            "SHADOW_INSTANCE_EXTRA": 179772,
+            "SHADOW_INSTANCE_FAULTS": 201285,
+            "SHADOW_INSTANCE_GROUP_MEMBER": 84,
+            "SHADOW_INSTANCE_GROUP_POLICY": 2,
+            "SHADOW_INSTANCE_GROUPS": 0,
+            "SHADOW_INSTANCE_ID_MAPPINGS": 0,
+            "SHADOW_INSTANCE_INFO_CACHES": 263732,
+            "SHADOW_INSTANCE_METADATA": 1554,
+            "SHADOW_INSTANCE_SYSTEM_METADATA": 4879813,
+            "SHADOW_INSTANCE_TYPE_EXTRA_SPECS": 53,
+            "SHADOW_INSTANCE_TYPE_PROJECTS": 104,
+            "SHADOW_INSTANCE_TYPES": 0,
+            "SHADOW_INSTANCES": 709892,
+            "SHADOW_KEY_PAIRS": 51,
+            "SHADOW_MIGRATE_VERSION": 0,
+            "SHADOW_MIGRATIONS": 2112,
+            "SHADOW_NETWORKS": 0,
+            "SHADOW_PCI_DEVICES": 8,
+            "SHADOW_PROJECT_USER_QUOTAS": 0,
+            "SHADOW_PROVIDER_FW_RULES": 0,
+            "SHADOW_QUOTA_CLASSES": 0,
+            "SHADOW_QUOTA_USAGES": 0,
+            "SHADOW_QUOTAS": 0,
+            "SHADOW_RESERVATIONS": 1297676,
+            "SHADOW_S3_IMAGES": 0,
+            "SHADOW_SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SHADOW_SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SHADOW_SECURITY_GROUP_RULES": 40,
+            "SHADOW_SECURITY_GROUPS": 0,
+            "SHADOW_SERVICES": 110,
+            "SHADOW_SNAPSHOT_ID_MAPPINGS": 0,
+            "SHADOW_SNAPSHOTS": 1,
+            "SHADOW_TASK_LOG": 0,
+            "SHADOW_VIRTUAL_INTERFACES": 742,
+            "SHADOW_VOLUME_ID_MAPPINGS": 0,
+            "SHADOW_VOLUME_USAGE_CACHE": 0,
+            "SNAPSHOT_ID_MAPPINGS": 1,
+            "SNAPSHOTS": 1,
+            "TAGS": 0,
+            "TASK_LOG": 0,
+            "VIRTUAL_INTERFACES": 0,
+            "VOLUME_ID_MAPPINGS": 65,
+            "VOLUME_USAGE_CACHE": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "nova_2": {
+          "sqlite_path": "dev_databases/nova_2/nova_2.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "complet",
+            "error"
+          ],
+          "selected_table_row_count": 1025,
+          "table_counts": {
+            "AGENT_BUILDS": 0,
+            "AGGREGATE_HOSTS": 584,
+            "AGGREGATE_METADATA": 38,
+            "AGGREGATES": 21,
+            "ALLOCATIONS": 0,
+            "BLOCK_DEVICE_MAPPING": 16798,
+            "BW_USAGE_CACHE": 0,
+            "CELLS": 0,
+            "CERTIFICATES": 127,
+            "COMPUTE_NODES": 139,
+            "CONSOLE_POOLS": 0,
+            "CONSOLES": 0,
+            "DNS_DOMAINS": 0,
+            "FIXED_IPS": 63724,
+            "FLOATING_IPS": 8190,
+            "INSTANCE_ACTIONS": 27472,
+            "INSTANCE_ACTIONS_EVENTS": 41690,
+            "INSTANCE_EXTRA": 7253,
+            "INSTANCE_FAULTS": 5624,
+            "INSTANCE_GROUP_MEMBER": 4085,
+            "INSTANCE_GROUP_POLICY": 228,
+            "INSTANCE_GROUPS": 230,
+            "INSTANCE_ID_MAPPINGS": 277653,
+            "INSTANCE_INFO_CACHES": 7226,
+            "INSTANCE_METADATA": 36,
+            "INSTANCE_SYSTEM_METADATA": 76723,
+            "INSTANCE_TYPE_EXTRA_SPECS": 135,
+            "INSTANCE_TYPE_PROJECTS": 232,
+            "INSTANCE_TYPES": 190,
+            "INSTANCES": 7922,
+            "INVENTORIES": 0,
+            "KEY_PAIRS": 3132,
+            "MIGRATE_VERSION": 1,
+            "MIGRATIONS": 1025,
+            "NETWORKS": 1,
+            "PCI_DEVICES": 16,
+            "PROJECT_USER_QUOTAS": 0,
+            "PROVIDER_FW_RULES": 0,
+            "QUOTA_CLASSES": 13,
+            "QUOTA_USAGES": 3619,
+            "QUOTAS": 3579,
+            "RESERVATIONS": 42003,
+            "RESOURCE_PROVIDER_AGGREGATES": 0,
+            "RESOURCE_PROVIDERS": 0,
+            "S3_IMAGES": 2419,
+            "SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SECURITY_GROUP_RULES": 152,
+            "SECURITY_GROUPS": 601,
+            "SERVICES": 149,
+            "SHADOW_AGENT_BUILDS": 0,
+            "SHADOW_AGGREGATE_HOSTS": 516,
+            "SHADOW_AGGREGATE_METADATA": 4,
+            "SHADOW_AGGREGATES": 0,
+            "SHADOW_BLOCK_DEVICE_MAPPING": 212755,
+            "SHADOW_BW_USAGE_CACHE": 0,
+            "SHADOW_CELLS": 0,
+            "SHADOW_CERTIFICATES": 0,
+            "SHADOW_COMPUTE_NODES": 3,
+            "SHADOW_CONSOLE_POOLS": 0,
+            "SHADOW_CONSOLES": 0,
+            "SHADOW_DNS_DOMAINS": 0,
+            "SHADOW_FIXED_IPS": 15,
+            "SHADOW_FLOATING_IPS": 0,
+            "SHADOW_INSTANCE_ACTIONS": 523265,
+            "SHADOW_INSTANCE_ACTIONS_EVENTS": 663442,
+            "SHADOW_INSTANCE_EXTRA": 179772,
+            "SHADOW_INSTANCE_FAULTS": 201285,
+            "SHADOW_INSTANCE_GROUP_MEMBER": 84,
+            "SHADOW_INSTANCE_GROUP_POLICY": 2,
+            "SHADOW_INSTANCE_GROUPS": 0,
+            "SHADOW_INSTANCE_ID_MAPPINGS": 0,
+            "SHADOW_INSTANCE_INFO_CACHES": 263732,
+            "SHADOW_INSTANCE_METADATA": 1554,
+            "SHADOW_INSTANCE_SYSTEM_METADATA": 4879813,
+            "SHADOW_INSTANCE_TYPE_EXTRA_SPECS": 53,
+            "SHADOW_INSTANCE_TYPE_PROJECTS": 104,
+            "SHADOW_INSTANCE_TYPES": 0,
+            "SHADOW_INSTANCES": 709892,
+            "SHADOW_KEY_PAIRS": 51,
+            "SHADOW_MIGRATE_VERSION": 0,
+            "SHADOW_MIGRATIONS": 2112,
+            "SHADOW_NETWORKS": 0,
+            "SHADOW_PCI_DEVICES": 8,
+            "SHADOW_PROJECT_USER_QUOTAS": 0,
+            "SHADOW_PROVIDER_FW_RULES": 0,
+            "SHADOW_QUOTA_CLASSES": 0,
+            "SHADOW_QUOTA_USAGES": 0,
+            "SHADOW_QUOTAS": 0,
+            "SHADOW_RESERVATIONS": 1297676,
+            "SHADOW_S3_IMAGES": 0,
+            "SHADOW_SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SHADOW_SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SHADOW_SECURITY_GROUP_RULES": 40,
+            "SHADOW_SECURITY_GROUPS": 0,
+            "SHADOW_SERVICES": 110,
+            "SHADOW_SNAPSHOT_ID_MAPPINGS": 0,
+            "SHADOW_SNAPSHOTS": 1,
+            "SHADOW_TASK_LOG": 0,
+            "SHADOW_VIRTUAL_INTERFACES": 742,
+            "SHADOW_VOLUME_ID_MAPPINGS": 0,
+            "SHADOW_VOLUME_USAGE_CACHE": 0,
+            "SNAPSHOT_ID_MAPPINGS": 1,
+            "SNAPSHOTS": 1,
+            "TAGS": 0,
+            "TASK_LOG": 0,
+            "VIRTUAL_INTERFACES": 0,
+            "VOLUME_ID_MAPPINGS": 65,
+            "VOLUME_USAGE_CACHE": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "nova_3": {
+          "sqlite_path": "dev_databases/nova_3/nova_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "complet"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 2035,
+          "table_counts": {
+            "AGENT_BUILDS": 0,
+            "AGGREGATE_HOSTS": 584,
+            "AGGREGATE_METADATA": 38,
+            "AGGREGATES": 21,
+            "ALLOCATIONS": 0,
+            "BLOCK_DEVICE_MAPPING": 16798,
+            "BW_USAGE_CACHE": 0,
+            "CELLS": 0,
+            "CERTIFICATES": 127,
+            "COMPUTE_NODES": 139,
+            "CONSOLE_POOLS": 0,
+            "CONSOLES": 0,
+            "DNS_DOMAINS": 0,
+            "FIXED_IPS": 63724,
+            "FLOATING_IPS": 8190,
+            "INSTANCE_ACTIONS": 27472,
+            "INSTANCE_ACTIONS_EVENTS": 41690,
+            "INSTANCE_EXTRA": 7253,
+            "INSTANCE_FAULTS": 5624,
+            "INSTANCE_GROUP_MEMBER": 4085,
+            "INSTANCE_GROUP_POLICY": 228,
+            "INSTANCE_GROUPS": 230,
+            "INSTANCE_ID_MAPPINGS": 277653,
+            "INSTANCE_INFO_CACHES": 7226,
+            "INSTANCE_METADATA": 36,
+            "INSTANCE_SYSTEM_METADATA": 76723,
+            "INSTANCE_TYPE_EXTRA_SPECS": 135,
+            "INSTANCE_TYPE_PROJECTS": 232,
+            "INSTANCE_TYPES": 190,
+            "INSTANCES": 7922,
+            "INVENTORIES": 0,
+            "KEY_PAIRS": 3132,
+            "MIGRATE_VERSION": 1,
+            "MIGRATIONS": 2035,
+            "NETWORKS": 1,
+            "PCI_DEVICES": 16,
+            "PROJECT_USER_QUOTAS": 0,
+            "PROVIDER_FW_RULES": 0,
+            "QUOTA_CLASSES": 13,
+            "QUOTA_USAGES": 3619,
+            "QUOTAS": 3579,
+            "RESERVATIONS": 42003,
+            "RESOURCE_PROVIDER_AGGREGATES": 0,
+            "RESOURCE_PROVIDERS": 0,
+            "S3_IMAGES": 2419,
+            "SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SECURITY_GROUP_RULES": 152,
+            "SECURITY_GROUPS": 601,
+            "SERVICES": 149,
+            "SHADOW_AGENT_BUILDS": 0,
+            "SHADOW_AGGREGATE_HOSTS": 516,
+            "SHADOW_AGGREGATE_METADATA": 4,
+            "SHADOW_AGGREGATES": 0,
+            "SHADOW_BLOCK_DEVICE_MAPPING": 212755,
+            "SHADOW_BW_USAGE_CACHE": 0,
+            "SHADOW_CELLS": 0,
+            "SHADOW_CERTIFICATES": 0,
+            "SHADOW_COMPUTE_NODES": 3,
+            "SHADOW_CONSOLE_POOLS": 0,
+            "SHADOW_CONSOLES": 0,
+            "SHADOW_DNS_DOMAINS": 0,
+            "SHADOW_FIXED_IPS": 15,
+            "SHADOW_FLOATING_IPS": 0,
+            "SHADOW_INSTANCE_ACTIONS": 523265,
+            "SHADOW_INSTANCE_ACTIONS_EVENTS": 663442,
+            "SHADOW_INSTANCE_EXTRA": 179772,
+            "SHADOW_INSTANCE_FAULTS": 201285,
+            "SHADOW_INSTANCE_GROUP_MEMBER": 84,
+            "SHADOW_INSTANCE_GROUP_POLICY": 2,
+            "SHADOW_INSTANCE_GROUPS": 0,
+            "SHADOW_INSTANCE_ID_MAPPINGS": 0,
+            "SHADOW_INSTANCE_INFO_CACHES": 263732,
+            "SHADOW_INSTANCE_METADATA": 1554,
+            "SHADOW_INSTANCE_SYSTEM_METADATA": 4879813,
+            "SHADOW_INSTANCE_TYPE_EXTRA_SPECS": 53,
+            "SHADOW_INSTANCE_TYPE_PROJECTS": 104,
+            "SHADOW_INSTANCE_TYPES": 0,
+            "SHADOW_INSTANCES": 709892,
+            "SHADOW_KEY_PAIRS": 51,
+            "SHADOW_MIGRATE_VERSION": 0,
+            "SHADOW_MIGRATIONS": 2112,
+            "SHADOW_NETWORKS": 0,
+            "SHADOW_PCI_DEVICES": 8,
+            "SHADOW_PROJECT_USER_QUOTAS": 0,
+            "SHADOW_PROVIDER_FW_RULES": 0,
+            "SHADOW_QUOTA_CLASSES": 0,
+            "SHADOW_QUOTA_USAGES": 0,
+            "SHADOW_QUOTAS": 0,
+            "SHADOW_RESERVATIONS": 1297676,
+            "SHADOW_S3_IMAGES": 0,
+            "SHADOW_SECURITY_GROUP_DEFAULT_RULES": 0,
+            "SHADOW_SECURITY_GROUP_INSTANCE_ASSOCIATION": 0,
+            "SHADOW_SECURITY_GROUP_RULES": 40,
+            "SHADOW_SECURITY_GROUPS": 0,
+            "SHADOW_SERVICES": 110,
+            "SHADOW_SNAPSHOT_ID_MAPPINGS": 0,
+            "SHADOW_SNAPSHOTS": 1,
+            "SHADOW_TASK_LOG": 0,
+            "SHADOW_VIRTUAL_INTERFACES": 742,
+            "SHADOW_VOLUME_ID_MAPPINGS": 0,
+            "SHADOW_VOLUME_USAGE_CACHE": 0,
+            "SNAPSHOT_ID_MAPPINGS": 1,
+            "SNAPSHOTS": 1,
+            "TAGS": 0,
+            "TASK_LOG": 0,
+            "VIRTUAL_INTERFACES": 0,
+            "VOLUME_ID_MAPPINGS": 65,
+            "VOLUME_USAGE_CACHE": 0
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 158,
+        "clone_2_matches_original": 16
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 571,
+        "skipped_no_clone_matches_original": 304,
+        "skipped_multiple_clones_match_original": 4
+      }
+    }
+  ],
+  "dev_json": {
+    "samples_read": 7978,
+    "samples_written": 499,
+    "samples_skipped": 7479,
+    "assignment_counts": {
+      "clone_1_matches_original": 151,
+      "clone_3_matches_original": 168,
+      "clone_2_matches_original": 180
+    },
+    "skipped_assignment_counts": {
+      "skipped_no_explicit_split_reference": 6473,
+      "skipped_no_clone_matches_original": 991,
+      "skipped_multiple_clones_match_original": 15
+    },
+    "skipped_samples": [
+      {
+        "question_id": 0,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 1,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 2,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 3,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 4,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: LN",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: LN",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: LN",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: LN",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 5,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 7,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 8,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 9,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 10,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 11,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 12,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 13,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 14,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 15,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 16,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 17,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 18,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 19,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 20,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 21,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 23,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 24,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 25,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 26,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 27,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 28,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 29,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 30,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 31,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 32,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "near \"WITH\": syntax error",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 33,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 34,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: VARIANCE",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 35,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 36,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 38,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 39,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 40,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: VARIANCE",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 41,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: VARIANCE",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 42,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: VARIANCE",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: VARIANCE",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 43,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 44,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 45,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 46,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 47,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 48,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 49,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 50,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 51,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 52,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 53,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 54,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "near \"WITH\": syntax error",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 55,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: STDDEV",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 57,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 58,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 59,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 60,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 61,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 62,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 63,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 64,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 65,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 66,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "near \"WITH\": syntax error",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "near \"WITH\": syntax error",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 68,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 69,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 70,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 71,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 72,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 73,
+        "db_id": "dw",
+        "reason": "skipped_no_clone_matches_original",
+        "note": {
+          "original_ok": false,
+          "original_error": "no such function: STDDEV",
+          "original_row_count": 0,
+          "order_sensitive": true,
+          "matching_clones": [],
+          "clones": {
+            "1": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "2": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            },
+            "3": {
+              "ok": false,
+              "error": "no such function: STDDEV",
+              "row_count": 0,
+              "matches_original": false
+            }
+          }
+        }
+      },
+      {
+        "question_id": 74,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 75,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 76,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 77,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 78,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 80,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 81,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 82,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 83,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 84,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 85,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 86,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 87,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 88,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 89,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 90,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 91,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 92,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 93,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 96,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 97,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 98,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 99,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 100,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 101,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 102,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 103,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 104,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 107,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 108,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 109,
+        "db_id": "dw",
+        "reason": "skipped_no_explicit_split_reference"
+      }
+    ],
+    "assignment_notes": []
+  }
+}

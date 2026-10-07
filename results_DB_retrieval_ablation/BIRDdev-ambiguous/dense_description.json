@@ -1,0 +1,884 @@
+[
+    {
+        "question_id": 16,
+        "db_id": "california_schools_3",
+        "question": "How many schools in merged Alameda have number of test takers less than 100?",
+        "SQL": "SELECT COUNT(T1.CDSCode) FROM schools AS T1 INNER JOIN satscores AS T2 ON T1.CDSCode = T2.cds WHERE T1.StatusType = 'Merged' AND T2.NumTstTakr < 100 AND T1.County = 'Lake'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 20,
+        "db_id": "california_schools_3",
+        "question": "How many schools in Amador which the Low Grade is 9 and the High Grade is 12?",
+        "SQL": "SELECT COUNT(T1.`School Name`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Amador' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 26,
+        "db_id": "california_schools_3",
+        "question": "State the names and full communication address of high schools in Monterey which has more than 800 free or reduced price meals for ages 15-17?",
+        "SQL": "SELECT T1.`School Name`, T2.Street, T2.City, T2.State, T2.Zip FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Monterey' AND T1.`Free Meal Count (Ages 5-17)` > 800 AND T1.`School Type` = 'High Schools (Public)'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 38,
+        "db_id": "california_schools_1",
+        "question": "What are the webpages for the Los Angeles County school that has between 2,000 and 3,000 test takers?",
+        "SQL": "SELECT T2.Website FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE T1.NumTstTakr BETWEEN 2000 AND 3000 AND T2.County = 'Los Angeles'",
+        "DB_result": "california_schools_1"
+    },
+    {
+        "question_id": 39,
+        "db_id": "california_schools_3",
+        "question": "What is the average number of test takers from Fresno schools that opened between 1/1/1980 and 12/31/1980?",
+        "SQL": "SELECT AVG(T1.NumTstTakr) FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE strftime('%Y', T2.OpenDate) = '1980' AND T2.County = 'Fresno'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 47,
+        "db_id": "california_schools_3",
+        "question": "What is the monthly average number of schools that opened in Alameda County under the jurisdiction of the Elementary School District in 1980?",
+        "SQL": "SELECT CAST(COUNT(School) AS REAL) / 12 FROM schools WHERE DOC = 52 AND County = 'Alameda' AND strftime('%Y', OpenDate) = '1980'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 48,
+        "db_id": "california_schools_3",
+        "question": "What is the ratio of merged Unified School District schools in Orange County to merged Elementary School District schools?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN DOC = 54 THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN DOC = 52 THEN 1 ELSE 0 END) FROM schools WHERE StatusType = 'Merged' AND County = 'Orange'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 55,
+        "db_id": "california_schools_3",
+        "question": "Of the schools with a mailing state address in California, what is the ratio of the schools located in the county of Colusa against the school located in the county of Humboldt?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN County = 'Colusa' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN County = 'Humboldt' THEN 1 ELSE 0 END) FROM schools WHERE MailState = 'CA'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 60,
+        "db_id": "california_schools_3",
+        "question": "What are the websites for all the partially virtual chartered schools located in San Joaquin?",
+        "SQL": "SELECT Website FROM schools WHERE County = 'San Joaquin' AND Virtual = 'P' AND Charter = 1",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 62,
+        "db_id": "california_schools_1",
+        "question": "What is the total number of non-chartered schools in the county of Los Angeles with a percent (%) of eligible free meals for grades 1 through 12 that is less than 0.18%?",
+        "SQL": "SELECT COUNT(T2.School) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Los Angeles' AND T2.Charter = 0 AND CAST(T1.`Free Meal Count (K-12)` AS REAL) * 100 / T1.`Enrollment (K-12)` < 0.18",
+        "DB_result": "california_schools_1"
+    },
+    {
+        "question_id": 65,
+        "db_id": "california_schools_3",
+        "question": "What is the ratio in percentage of Santa Clara County schools that are locally funded compared to all other types of charter school funding?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN FundingType = 'Locally funded' THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN FundingType != 'Locally funded' THEN 1 ELSE 0 END) FROM schools WHERE County = 'Santa Clara' AND Charter = 1",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 66,
+        "db_id": "california_schools_3",
+        "question": "Between 1/1/2000 to 12/31/2005, how many directly funded schools opened in the county of Stanislaus?",
+        "SQL": "SELECT COUNT(School) FROM schools WHERE strftime('%Y', OpenDate) BETWEEN '2000' AND '2005' AND County = 'Stanislaus' AND FundingType = 'Directly funded'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 70,
+        "db_id": "california_schools_3",
+        "question": "How many active and closed District Community Day Schools are there in the county of Alpine?",
+        "SQL": "SELECT COUNT(School) FROM schools WHERE (StatusType = 'Closed' OR StatusType = 'Active') AND SOC = 69 AND County = 'Alpine'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 76,
+        "db_id": "california_schools_3",
+        "question": "What is the city location of the high school level school with Lunch Provision 2 whose lowest grade is 9 and the highest grade is 12 in the county of Merced?",
+        "SQL": "SELECT T2.City FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T1.`NSLP Provision Status` = 'Lunch Provision 2' AND T2.County = 'Merced' AND T1.`Low Grade` = 9 AND T1.`High Grade` = 12 AND T2.EILCode = 'HS'",
+        "DB_result": "california_schools_3"
+    },
+    {
+        "question_id": 77,
+        "db_id": "california_schools_1",
+        "question": "Which schools served a grade span of Kindergarten to 9th grade in the county of Los Angeles and what is its Percent (%) Eligible FRPM (Ages 5-17)?",
+        "SQL": "SELECT T2.School, T1.`FRPM Count (Ages 5-17)` * 100 / T1.`Enrollment (Ages 5-17)` FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Los Angeles' AND T2.GSserved = 'K-9'",
+        "DB_result": "california_schools_1"
+    },
+    {
+        "question_id": 79,
+        "db_id": "california_schools_2",
+        "question": "Between San Diego and Santa Barbara, which county offers the most number of schools that does not offer physical building? Indicate the amount.",
+        "SQL": "SELECT County, COUNT(Virtual) FROM schools WHERE (County = 'San Diego' OR County = 'Santa Barbara') AND Virtual = 'F' GROUP BY County ORDER BY COUNT(Virtual) DESC LIMIT 1",
+        "DB_result": "california_schools_2"
+    },
+    {
+        "question_id": 87,
+        "db_id": "california_schools_3",
+        "question": "What are the valid e-mail addresses of the administrator of the school located in the San Bernardino county, City of San Bernardino City Unified that opened between 1/1/2009 to 12/31/2010 whose school types are public Intermediate/Middle Schools and Unified Schools?",
+        "SQL": "SELECT T2.AdmEmail1, T2.AdmEmail2 FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'San Bernardino' AND T2.City = 'San Bernardino' AND T2.DOC = 54 AND strftime('%Y', T2.OpenDate) BETWEEN '2009' AND '2010' AND T2.SOC = 62",
+        "DB_result": "california_schools_2"
+    },
+    {
+        "question_id": 89,
+        "db_id": "financial_3",
+        "question": "How many accounts who choose issuance after transaction are staying in East Bohemia region?",
+        "SQL": "SELECT COUNT(T2.account_id) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id WHERE T1.A3 = 'east Bohemia' AND T2.frequency = 'POPLATEK PO OBRATU'",
+        "DB_result": "financial_2"
+    },
+    {
+        "question_id": 90,
+        "db_id": "financial_2",
+        "question": "How many accounts who have region in Prague are eligible for loans?",
+        "SQL": "SELECT COUNT(T1.account_id) FROM account AS T1 INNER JOIN loan AS T2 ON T1.account_id = T2.account_id INNER JOIN district AS T3 ON T1.district_id = T3.district_id WHERE T3.A3 = 'Prague'",
+        "DB_result": "financial_2"
+    },
+    {
+        "question_id": 93,
+        "db_id": "financial_1",
+        "question": "How many male customers who are living in North Bohemia have average salary greater than 8000?",
+        "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'M' AND T2.A3 = 'north Bohemia' AND T2.A11 > 8000",
+        "DB_result": "financial_1"
+    },
+    {
+        "question_id": 114,
+        "db_id": "financial_2",
+        "question": "For the first client who opened his/her account in Prague, what is his/her account ID?",
+        "SQL": "SELECT T1.account_id FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'Prague' ORDER BY T1.date ASC LIMIT 1",
+        "DB_result": "financial_3"
+    },
+    {
+        "question_id": 115,
+        "db_id": "financial_2",
+        "question": "For the branch which located in the south Bohemia with biggest number of inhabitants, what is the percentage of the male clients?",
+        "SQL": "SELECT CAST(SUM(T1.gender = 'M') AS REAL) * 100 / COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'south Bohemia' GROUP BY T2.A4 ORDER BY T2.A4 DESC LIMIT 1",
+        "DB_result": "financial_2"
+    },
+    {
+        "question_id": 120,
+        "db_id": "financial_3",
+        "question": "From Year 1995 to 2000, who are the accounts holders from 'east Bohemia'. State the account ID the frequency of statement issuance.",
+        "SQL": "SELECT T1.account_id, T1.frequency FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A3 = 'east Bohemia' AND STRFTIME('%Y', T1.date) BETWEEN '1995' AND '2000'",
+        "DB_result": "financial_3"
+    },
+    {
+        "question_id": 147,
+        "db_id": "financial_2",
+        "question": "How many female clients' accounts are in the region of South Bohemia?",
+        "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'F' AND T2.A3 = 'south Bohemia'",
+        "DB_result": "financial_2"
+    },
+    {
+        "question_id": 150,
+        "db_id": "financial_1",
+        "question": "How many accounts in North Bohemia has made a transaction with the partner's bank being AB?",
+        "SQL": "SELECT COUNT(T2.account_id) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id INNER JOIN trans AS T3 ON T2.account_id = T3.account_id WHERE T3.bank = 'AB' AND T1.A3 = 'north Bohemia'",
+        "DB_result": "financial_3"
+    },
+    {
+        "question_id": 180,
+        "db_id": "financial_3",
+        "question": "Please provide a list of clients who were born between 1983 and 1987 and whose account branch is in East Bohemia, along with their IDs.",
+        "SQL": "SELECT T1.client_id, T3.account_id FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T4 ON T1.client_id = T4.client_id INNER JOIN account AS T3 ON T2.district_id = T3.district_id and T4.account_id = T3.account_id WHERE T2.A3 = 'east Bohemia' AND STRFTIME('%Y', T1.birth_date) BETWEEN '1983' AND '1987'",
+        "DB_result": "financial_3"
+    },
+    {
+        "question_id": 185,
+        "db_id": "financial_2",
+        "question": "What proportion of customers who have accounts at the Prague branch are female?",
+        "SQL": "SELECT CAST(SUM(T2.gender = 'F') AS REAL) / COUNT(T2.client_id) * 100 FROM district AS T1 INNER JOIN client AS T2 ON T1.district_id = T2.district_id WHERE T1.A3 = 'Prague'",
+        "DB_result": "financial_2"
+    },
+    {
+        "question_id": 190,
+        "db_id": "financial_3",
+        "question": "How many clients who were born in 1920 stay in east Bohemia?",
+        "SQL": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE STRFTIME('%Y', T1.birth_date) = '1920' AND T2.A3 = 'east Bohemia'",
+        "DB_result": "financial_3"
+    },
+    {
+        "question_id": 353,
+        "db_id": "card_games_2",
+        "question": "List all the sets available in Italian translation. State the total number of cards per set.",
+        "SQL": "SELECT T1.name, T1.totalSetSize FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Italian'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 400,
+        "db_id": "card_games_1",
+        "question": "Lists the set code of all cards translated into Spanish.",
+        "SQL": "SELECT setCode FROM set_translations WHERE language = 'Spanish'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 405,
+        "db_id": "card_games_1",
+        "question": "How many Brazilian Portuguese translated sets are inside the Commander block?",
+        "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Portuguese (Brazil)' AND T1.block = 'Commander'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 430,
+        "db_id": "card_games_2",
+        "question": "Please list top two sets of cards with their IDs that have Italian-language cards and are located in the Shadowmoor block in alphabetical order.",
+        "SQL": "SELECT T1.name, T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T1.block = 'Shadowmoor' AND T2.language = 'Italian' ORDER BY T1.id LIMIT 2",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 431,
+        "db_id": "card_games_3",
+        "question": "Which set is not available outside of the United States and has foil cards with Japanese writing on them? Please include the set ID in your response.",
+        "SQL": "SELECT T1.name, T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Japanese' AND T1.isFoilOnly = 1 AND T1.isForeignOnly = 0",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 432,
+        "db_id": "card_games_1",
+        "question": "Which Russian set of cards contains the most cards overall?",
+        "SQL": "SELECT T1.id FROM sets AS T1 INNER JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T2.language = 'Russian' GROUP BY T1.baseSetSize ORDER BY T1.baseSetSize DESC LIMIT 1",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 434,
+        "db_id": "card_games_3",
+        "question": "How many sets are available just in Japanese and not in Magic: The Gathering Online?",
+        "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.language = 'Japanese'  AND (T1.mtgoCode IS NULL OR T1.mtgoCode = '')",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 462,
+        "db_id": "card_games_2",
+        "question": "What's the Italian name of the set of cards with \"Ancestor's Chosen\" is in?",
+        "SQL": "SELECT translation FROM set_translations WHERE setCode IN ( SELECT setCode FROM cards WHERE name = 'Ancestor''s Chosen' ) AND language = 'Italian'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 465,
+        "db_id": "card_games_1",
+        "question": "For the set of cards with \"Ancestor's Chosen\" in it, is there a Korean version of it?",
+        "SQL": "SELECT IIF(SUM(CASE WHEN T2.language = 'Korean' AND T2.translation IS NOT NULL THEN 1 ELSE 0 END) > 0, 'YES', 'NO') FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Ancestor''s Chosen'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 468,
+        "db_id": "card_games_1",
+        "question": "What is the Simplified Chinese translation of the name of the set \"Eighth Edition\"?",
+        "SQL": "SELECT T2.translation FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.name = 'Eighth Edition' AND T2.language = 'Chinese Simplified'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 472,
+        "db_id": "card_games_2",
+        "question": "Among the sets in the block \"Ice Age\", how many of them have an Italian translation?",
+        "SQL": "SELECT COUNT(DISTINCT T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T1.block = 'Ice Age' AND T2.language = 'Italian' AND T2.translation IS NOT NULL",
+        "DB_result": "card_games_2"
+    },
+    {
+        "question_id": 474,
+        "db_id": "card_games_2",
+        "question": "Among the sets of cards that have an Italian translation, how many of them have a base set number of under 100?",
+        "SQL": "SELECT COUNT(T1.id) FROM sets AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.code WHERE T2.translation IS NOT NULL AND T1.baseSetSize < 100 AND T2.language = 'Italian'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 498,
+        "db_id": "card_games_1",
+        "question": "What's the French name of the set of cards with \"Tendo Ice Bridge\" is in?",
+        "SQL": "SELECT T2.translation FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Tendo Ice Bridge' AND T2.language = 'French' AND T2.translation IS NOT NULL",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 500,
+        "db_id": "card_games_3",
+        "question": "Tell the Japanese name of the set which card \"Fellwar Stone\" is in it.",
+        "SQL": "SELECT T2.translation FROM cards AS T1 INNER JOIN set_translations AS T2 ON T2.setCode = T1.setCode WHERE T1.name = 'Fellwar Stone' AND T2.language = 'Japanese' AND T2.translation IS NOT NULL",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 505,
+        "db_id": "card_games_1",
+        "question": "Show the Simplified Chinese translation of the name of the set \"Mirrodin\"?",
+        "SQL": "SELECT translation FROM set_translations WHERE setCode IN ( SELECT code FROM sets WHERE name = 'Mirrodin' ) AND language = 'Chinese Simplified'",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 506,
+        "db_id": "card_games_3",
+        "question": "For all the set of cards that has Japanese translation, what is the percentage of them are only available in non-foil?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN isNonFoilOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Japanese' )",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 507,
+        "db_id": "card_games_1",
+        "question": "For all the set of cards that has Brazil Portuguese translation, what is the percentage of them are only available online?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN isOnlineOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(id) FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Portuguese (Brazil)' )",
+        "DB_result": "card_games_1"
+    },
+    {
+        "question_id": 529,
+        "db_id": "card_games_1",
+        "question": "Find and list the names of sets which doesn't have Japanese translation but have Korean translation.",
+        "SQL": "SELECT name FROM sets WHERE code IN ( SELECT setCode FROM set_translations WHERE language = 'Korean' AND language NOT LIKE '%Japanese%' )",
+        "DB_result": "card_games_3"
+    },
+    {
+        "question_id": 560,
+        "db_id": "codebase_community_2",
+        "question": "Give the number of \"Revival\" badges.",
+        "SQL": "SELECT COUNT(Id) FROM badges WHERE Name = 'Revival'",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 580,
+        "db_id": "codebase_community_2",
+        "question": "Name 10 users with the badge name 'Necromancer.'",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Necromancer' LIMIT 10",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 591,
+        "db_id": "codebase_community_3",
+        "question": "How many users are awarded with supporter badge during year 2011?",
+        "SQL": "SELECT COUNT(Id) FROM badges WHERE STRFTIME('%Y', Date) = '2011' AND Name = 'Supporter'",
+        "DB_result": "codebase_community_3"
+    },
+    {
+        "question_id": 597,
+        "db_id": "codebase_community_1",
+        "question": "How many users from India have the teacher badges?",
+        "SQL": "SELECT COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.Location = 'India' AND T1.Name = 'Teacher'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 598,
+        "db_id": "codebase_community_2",
+        "question": "What is the percentage difference of student badges given during 2010 and 2011?",
+        "SQL": "SELECT CAST(SUM(IIF(STRFTIME('%Y', Date) = '2010', 1, 0)) AS REAL) * 100 / COUNT(Id) - CAST(SUM(IIF(STRFTIME('%Y', Date) = '2011', 1, 0)) AS REAL) * 100 / COUNT(Id) FROM badges WHERE Name = 'Student'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 605,
+        "db_id": "codebase_community_2",
+        "question": "How many users obtained the \"Announcer\" badge?",
+        "SQL": "SELECT COUNT(id) FROM badges WHERE Name = 'Announcer'",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 614,
+        "db_id": "codebase_community_1",
+        "question": "Among the users who obtained the \"Teacher\" badge, calculate their percentage of users",
+        "SQL": "SELECT CAST(COUNT(T1.Id) AS REAL) * 100 / (SELECT COUNT(Id) FROM users) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Teacher'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 615,
+        "db_id": "codebase_community_2",
+        "question": "Among the users who obtained the \"Organizer\" badges, calculate the percentage of users who are teenagers.",
+        "SQL": "SELECT CAST(SUM(IIF(T2.Age BETWEEN 13 AND 18, 1, 0)) AS REAL) * 100 / COUNT(T1.Id) FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.`Name` = 'Organizer'",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 619,
+        "db_id": "codebase_community_3",
+        "question": "How many adults who obtained the badge Supporter?",
+        "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Supporter' AND T1.Age BETWEEN 19 AND 65",
+        "DB_result": "codebase_community_3"
+    },
+    {
+        "question_id": 623,
+        "db_id": "codebase_community_3",
+        "question": "How many elders obtained the \"Supporter\" badge?",
+        "SQL": "SELECT COUNT(T1.Id) FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T1.Age > 65 AND T2.Name = 'Supporter'",
+        "DB_result": "codebase_community_3"
+    },
+    {
+        "question_id": 638,
+        "db_id": "codebase_community_2",
+        "question": "List all the name of users that obtained the Organizer Badges.",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.`Name` = 'Organizer'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 641,
+        "db_id": "codebase_community_2",
+        "question": "How many users received commentator badges in 2014?",
+        "SQL": "SELECT COUNT(Id) FROM badges WHERE Name = 'Commentator' AND STRFTIME('%Y', Date) = '2014'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 650,
+        "db_id": "codebase_community_2",
+        "question": "Describe the last accessed date and location of the users who received the outliers badge.",
+        "SQL": "SELECT T1.LastAccessDate, T1.Location FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'outliers'",
+        "DB_result": "codebase_community_1"
+    },
+    {
+        "question_id": 671,
+        "db_id": "codebase_community_2",
+        "question": "What is the display name of the user who acquired the first Autobiographer badge?",
+        "SQL": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.`Name` = 'Autobiographer' ORDER BY T2.Date LIMIT 1",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 695,
+        "db_id": "codebase_community_2",
+        "question": "How many users were awarded with 'Citizen Patrol' badge?",
+        "SQL": "SELECT COUNT(id) FROM badges WHERE `Name` = 'Citizen Patrol'",
+        "DB_result": "codebase_community_2"
+    },
+    {
+        "question_id": 854,
+        "db_id": "formula_1_1",
+        "question": "What is the coordinates location of the circuits for Australian grand prix?",
+        "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Australian Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 857,
+        "db_id": "formula_1_3",
+        "question": "Give the coordinate position for Abu Dhabi Grand Prix.",
+        "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Abu Dhabi Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 862,
+        "db_id": "formula_1_3",
+        "question": "For the Bahrain Grand Prix in 2007, how many drivers not finished the game?",
+        "SQL": "SELECT COUNT(T3.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2007 AND T1.name = 'Bahrain Grand Prix' AND T2.time IS NULL",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 868,
+        "db_id": "formula_1_3",
+        "question": "Where is Malaysian Grand Prix held? Give the location coordinates.",
+        "SQL": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Malaysian Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 874,
+        "db_id": "formula_1_3",
+        "question": "Who finished second in the San Marino Grand Prix in 2006?",
+        "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.year = 2006 AND T1.name = 'San Marino Grand Prix' AND T2.position = 2",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 882,
+        "db_id": "formula_1_3",
+        "question": "Which year was the first Singapore Grand Prix?",
+        "SQL": "SELECT year FROM races WHERE name = 'Singapore Grand Prix' ORDER BY year ASC LIMIT 1",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 888,
+        "db_id": "formula_1_3",
+        "question": "In which country was the first European Grand Prix hosted? Name the circuit and location.",
+        "SQL": "SELECT T1.country, T1.location FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'European Grand Prix' ORDER BY T2.year ASC LIMIT 1",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 889,
+        "db_id": "formula_1_3",
+        "question": "When was the last f1 season whereby Brands Hatch hosted the British Grand Prix?",
+        "SQL": "SELECT T2.date FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T1.name = 'Brands Hatch' AND T2.name = 'British Grand Prix' ORDER BY T2.year DESC LIMIT 1",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 890,
+        "db_id": "formula_1_3",
+        "question": "How many seasons has Silverstone Circuit hosted the United Kindom grand prix?",
+        "SQL": "SELECT COUNT(T2.circuitid) FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T1.name = 'Silverstone Circuit' AND T2.name = 'British Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 891,
+        "db_id": "formula_1_3",
+        "question": "Name all drivers in the 2010 Singapore Grand Prix order by their position stands.",
+        "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN driverStandings AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Singapore Grand Prix' AND T1.year = 2010 ORDER BY T2.position ASC",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 893,
+        "db_id": "formula_1_3",
+        "question": "Name the top 3 drivers and the points they scored in the 2017 Chinese Grand Prix.",
+        "SQL": "SELECT T3.forename, T3.surname, T2.points FROM races AS T1 INNER JOIN driverStandings AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Chinese Grand Prix' AND T1.year = 2017 ORDER BY T2.points DESC LIMIT 3",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 895,
+        "db_id": "formula_1_3",
+        "question": "What is the average lap time for Lewis Hamilton in the 2009 Malaysian Grand Prix?",
+        "SQL": "SELECT AVG(T2.milliseconds) FROM races AS T1 INNER JOIN lapTimes AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T3.forename = 'Lewis' AND T3.surname = 'Hamilton' AND T1.year = 2009 AND T1.name = 'Malaysian Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 909,
+        "db_id": "formula_1_3",
+        "question": "Among all European Grand Prix races, what is the percentage of the races were hosted in Germany?",
+        "SQL": "SELECT CAST(COUNT(CASE WHEN T1.country = 'Germany' THEN T2.circuitID END) AS REAL) * 100 / COUNT(T2.circuitId) FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'European Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 919,
+        "db_id": "formula_1_3",
+        "question": "Which circuit did the 2009 Spanish Grand Prix use?",
+        "SQL": "SELECT T1.name FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 922,
+        "db_id": "formula_1_3",
+        "question": "What time did the the 2010's Formula_1 race took place on the Abu Dhabi Circuit?",
+        "SQL": "SELECT T2.date, T2.time FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2010 AND T2.name = 'Abu Dhabi Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 925,
+        "db_id": "formula_1_3",
+        "question": "Please give the link of the website that shows more information about the circuits the Spanish Grand Prix used in 2009.",
+        "SQL": "SELECT T1.url FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 928,
+        "db_id": "formula_1_3",
+        "question": "Which driver ranked the first in the Canadian Grand Prix in 2007? Please give his reference name.",
+        "SQL": "SELECT T3.forename, T3.surname, T3.driverRef FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T1.name = 'Canadian Grand Prix' AND T2.rank = 1 AND T1.year = 2007",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 931,
+        "db_id": "formula_1_3",
+        "question": "What was the fastest lap speed among all drivers in the 2009 Spanish Grand Prix?",
+        "SQL": "SELECT T2.fastestLapSpeed FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.name = 'Spanish Grand Prix' AND T1.year = 2009 AND T2.fastestLapSpeed IS NOT NULL ORDER BY T2.fastestLapSpeed DESC LIMIT 1",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 933,
+        "db_id": "formula_1_3",
+        "question": "What was Lewis Hamilton's final rank in the 2008 Chinese Grand Prix?",
+        "SQL": "SELECT T2.positionOrder FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T3.forename = 'Lewis' AND T3.surname = 'Hamilton' AND T1.name = 'Chinese Grand Prix' AND T1.year = 2008",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 934,
+        "db_id": "formula_1_1",
+        "question": "Which driver was in the no. 4 grid formation when starting the race in 1989's Australian Grand Prix? Please give his forename and surname.",
+        "SQL": "SELECT T3.forename, T3.surname FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId INNER JOIN drivers AS T3 ON T3.driverId = T2.driverId WHERE T2.grid = 4 AND T1.name = 'Australian Grand Prix' AND T1.year = 1989",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 935,
+        "db_id": "formula_1_1",
+        "question": "How many drivers managed to finish the race in the 2008 Australian Grand Prix?",
+        "SQL": "SELECT COUNT(T2.driverId) FROM races AS T1 INNER JOIN results AS T2 ON T2.raceId = T1.raceId WHERE T1.name = 'Australian Grand Prix' AND T1.year = 2008 AND T2.time IS NOT NULL",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 936,
+        "db_id": "formula_1_1",
+        "question": "Which was the fastest lap for Lewis Hamilton in the 2008 Australian Grand Prix?",
+        "SQL": "SELECT T1.fastestLap FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN drivers AS T3 on T1.driverId = T3.driverId WHERE T2.name = 'Australian Grand Prix' AND T2.year = 2008 AND T3.forename = 'Lewis' AND T3.surname = 'Hamilton'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 937,
+        "db_id": "formula_1_3",
+        "question": "What's the finish time for the driver who ranked second in 2008's AustChineseralian Grand Prix?",
+        "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank = 2 AND T2.name = 'Chinese Grand Prix' AND T2.year = 2008",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 938,
+        "db_id": "formula_1_1",
+        "question": "Who was the champion of 2008's Australian Grand Prix and where can I know more about him?",
+        "SQL": "SELECT T1.forename, T1.surname, T1.url FROM drivers AS T1 INNER JOIN results AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T3.name = 'Australian Grand Prix' AND T2.time LIKE '_:%:__.___' AND T3.year = 2008",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 939,
+        "db_id": "formula_1_1",
+        "question": "How many drivers from the UN participated in the 2008 Australian Grand Prix?",
+        "SQL": "SELECT COUNT(*) FROM drivers AS T1 INNER JOIN results AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T3.name = 'Australian Grand Prix' AND T1.nationality = 'British' AND T3.year = 2008",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 940,
+        "db_id": "formula_1_3",
+        "question": "Among the drivers that finished the race in the 2008 Chinese Grand Prix, how many of them have participated in Formula_1 races?",
+        "SQL": "SELECT COUNT(*) FROM ( SELECT T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.name = 'Chinese Grand Prix' AND T2.year = 2008 AND T1.time IS NOT NULL GROUP BY T1.driverId HAVING COUNT(T2.raceId) > 0 )",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 943,
+        "db_id": "formula_1_1",
+        "question": "What is the rate of drivers completing all the laps in the 2008 Australian Grand Prix?",
+        "SQL": "SELECT CAST(SUM(IIF(T1.time IS NOT NULL, 1, 0)) AS REAL) * 100 / COUNT(T1.resultId) FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Australian Grand Prix' AND T2.year = 2008",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 944,
+        "db_id": "formula_1_1",
+        "question": "How much faster in percentage is the champion than the driver who finished the race last in the 2008 Australian Grand Prix?",
+        "SQL": "WITH time_in_seconds AS ( SELECT T1.positionOrder, CASE WHEN T1.positionOrder = 1 THEN (CAST(SUBSTR(T1.time, 1, 1) AS REAL) * 3600) + (CAST(SUBSTR(T1.time, 3, 2) AS REAL) * 60) + CAST(SUBSTR(T1.time, 6) AS REAL) ELSE CAST(SUBSTR(T1.time, 2) AS REAL) END AS time_seconds FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Australian Grand Prix' AND T1.time IS NOT NULL AND T2.year = 2008 ), champion_time AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = 1), last_driver_incremental AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = (SELECT MAX(positionOrder) FROM time_in_seconds) ) SELECT (CAST((SELECT time_seconds FROM last_driver_incremental) AS REAL) * 100) / (SELECT time_seconds + (SELECT time_seconds FROM last_driver_incremental) FROM champion_time)",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 960,
+        "db_id": "formula_1_3",
+        "question": "What is the average of fastest lap speed in the 2009 Spanish Grand Prix race?",
+        "SQL": "SELECT AVG(T1.fastestLapSpeed) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.year = 2009 AND T2.name = 'Spanish Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 985,
+        "db_id": "formula_1_3",
+        "question": "Among the drivers who participated in the French Grand Prix, who has the slowest time in the 3rd lap.",
+        "SQL": "SELECT T1.driverId FROM lapTimes AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.name = 'French Grand Prix' AND T1.lap = 3 ORDER BY T1.time DESC LIMIT 1",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 987,
+        "db_id": "formula_1_3",
+        "question": "What is the average fastest lap time of the top 10 drivers in the 2006 United States Grand Prix?",
+        "SQL": "SELECT AVG(T1.fastestLapTime) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T1.rank < 11 AND T2.year = 2006 AND T2.name = 'United States Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 989,
+        "db_id": "formula_1_3",
+        "question": "Who is the champion of the Canadian Grand Prix in 2008? Indicate his finish time.",
+        "SQL": "SELECT T1.time FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Canadian Grand Prix' AND T2.year = 2008 AND T1.time LIKE '_:%:__.___'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 990,
+        "db_id": "formula_1_3",
+        "question": "What is the constructor reference name of the champion in the 2009 Singapore Grand Prix? Please give its website.",
+        "SQL": "SELECT T3.constructorRef, T3.url FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN constructors AS T3 on T1.constructorId = T3.constructorId WHERE T2.name = 'Singapore Grand Prix' AND T2.year = 2009 AND T1.time LIKE '_:%:__.___'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 994,
+        "db_id": "formula_1_3",
+        "question": "Which constructor scored most points from Monaco Grand Prix between 1980 and 2010? List the score, name and nationality of this team.",
+        "SQL": "SELECT SUM(T1.points), T2.name, T2.nationality FROM constructorResults AS T1 INNER JOIN constructors AS T2 ON T1.constructorId = T2.constructorId INNER JOIN races AS T3 ON T3.raceid = T1.raceid WHERE T3.name = 'Monaco Grand Prix' AND T3.year BETWEEN 1980 AND 2010 GROUP BY T2.name ORDER BY SUM(T1.points) DESC LIMIT 1",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 995,
+        "db_id": "formula_1_3",
+        "question": "What is the average score of Lewis Hamilton among all the Turkish Grand Prix?",
+        "SQL": "SELECT AVG(T2.points) FROM drivers AS T1 INNER JOIN driverStandings AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T3.raceId = T2.raceId WHERE T1.forename = 'Lewis' AND T1.surname = 'Hamilton' AND T3.name = 'Turkish Grand Prix'",
+        "DB_result": "formula_1_3"
+    },
+    {
+        "question_id": 1003,
+        "db_id": "formula_1_3",
+        "question": "How many accidents did the driver who had the highest number accidents in the Canadian Grand Prix have?",
+        "SQL": "SELECT COUNT(T1.driverId) FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN status AS T3 on T1.statusId = T3.statusId WHERE T3.statusId = 3 AND T2.name = 'Canadian Grand Prix' GROUP BY T1.driverId ORDER BY COUNT(T1.driverId) DESC LIMIT 1",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 1008,
+        "db_id": "formula_1_1",
+        "question": "During which lap did Lewis Hamilton take a pit stop during the 2011 Australian Grand Prix?",
+        "SQL": "SELECT T1.lap FROM pitStops AS T1 INNER JOIN drivers AS T2 on T1.driverId = T2.driverId INNER JOIN races AS T3 on T1.raceId = T3.raceId WHERE T2.forename = 'Lewis' AND T2.surname = 'Hamilton' AND T3.year = 2011 AND T3.name = 'Australian Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 1009,
+        "db_id": "formula_1_1",
+        "question": "Please list the time each driver spent at the pit stop during the 2011 Australian Grand Prix.",
+        "SQL": "SELECT T1.duration FROM pitStops AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId WHERE T2.year = 2011 AND T2.name = 'Australian Grand Prix'",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 1013,
+        "db_id": "formula_1_2",
+        "question": "What is the lap record for the Austrian Grand Prix Circuit?",
+        "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.fastestLapTime FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL) SELECT MIN(fastest_lap_times.fastestLapTime) as lap_record FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix'",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 1015,
+        "db_id": "formula_1_2",
+        "question": "In which Formula_1 race was the lap record for the Austrian Grand Prix Circuit set?",
+        "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.FastestLapTime, (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) as time_in_seconds FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL ) SELECT T2.name FROM races AS T2 INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId INNER JOIN results AS T1 on T2.raceId = T1.raceId INNER JOIN ( SELECT MIN(fastest_lap_times.time_in_seconds) as min_time_in_seconds FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix') AS T4 ON (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) = T4.min_time_in_seconds WHERE T2.name = 'Austrian Grand Prix'",
+        "DB_result": "formula_1_2"
+    },
+    {
+        "question_id": 1016,
+        "db_id": "formula_1_2",
+        "question": "In the race a driver set the lap record for the Austrian Grand Prix Circuit, how long did he spent at the pit stop at that same race?",
+        "SQL": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.driverId, T1.FastestLapTime, (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) as time_in_seconds FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL), lap_record_race AS ( SELECT T1.raceId, T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId INNER JOIN ( SELECT MIN(fastest_lap_times.time_in_seconds) as min_time_in_seconds FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix') AS T4 ON (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) = T4.min_time_in_seconds WHERE T2.name = 'Austrian Grand Prix') SELECT T4.duration FROM lap_record_race INNER JOIN pitStops AS T4 on lap_record_race.raceId = T4.raceId AND lap_record_race.driverId = T4.driverId",
+        "DB_result": "formula_1_1"
+    },
+    {
+        "question_id": 1053,
+        "db_id": "european_football_2_2",
+        "question": "List the football teams that has a chance creation passing class of Risky. Inidcate its short name only.",
+        "SQL": "SELECT DISTINCT t1.team_short_name FROM Team AS t1 INNER JOIN Team_attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.chanceCreationPassingClass = 'Risky'",
+        "DB_result": "european_football_2_3"
+    },
+    {
+        "question_id": 1130,
+        "db_id": "european_football_2_3",
+        "question": "What are the short name of team who played safe while creating chance of passing?",
+        "SQL": "SELECT DISTINCT t1.team_short_name FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.chanceCreationPassingClass = 'Safe'",
+        "DB_result": "european_football_2_3"
+    },
+    {
+        "question_id": 1178,
+        "db_id": "thrombosis_prediction_2",
+        "question": "What was the gender of the first AORTITIS diagnosed patient?",
+        "SQL": "SELECT SEX FROM Patient WHERE Diagnosis = 'AORTITIS' AND `First Date` IS NOT NULL ORDER BY `First Date` ASC LIMIT 1",
+        "DB_result": "thrombosis_prediction_3"
+    },
+    {
+        "question_id": 1309,
+        "db_id": "thrombosis_prediction_1",
+        "question": "Please list a patient's platelet level if it is within the normal range and if he or she is diagnosed with MCTD.",
+        "SQL": "SELECT T2.PLT FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'MCTD' AND T2.PLT BETWEEN 100 AND 400",
+        "DB_result": "thrombosis_prediction_2"
+    },
+    {
+        "question_id": 1331,
+        "db_id": "student_club_3",
+        "question": "What is the amount of the funds that the Vice President received?",
+        "SQL": "SELECT T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Vice President'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1333,
+        "db_id": "student_club_1",
+        "question": "What city and state did the President of the Student_Club grow up?",
+        "SQL": "SELECT T2.city, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.position = 'President'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1354,
+        "db_id": "student_club_3",
+        "question": "State the major name for the Vice President of the club.",
+        "SQL": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'Vice President'",
+        "DB_result": "student_club_2"
+    },
+    {
+        "question_id": 1356,
+        "db_id": "student_club_1",
+        "question": "Which department was the President of the club in?",
+        "SQL": "SELECT T2.department FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'President'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1370,
+        "db_id": "student_club_3",
+        "question": "List all the expenses incurred by the vice president.",
+        "SQL": "SELECT T2.expense_id, T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Vice President'",
+        "DB_result": "student_club_2"
+    },
+    {
+        "question_id": 1377,
+        "db_id": "student_club_1",
+        "question": "How many student have the position of president?",
+        "SQL": "SELECT COUNT(member_id) FROM member WHERE position = 'President'",
+        "DB_result": "california_schools_2"
+    },
+    {
+        "question_id": 1393,
+        "db_id": "student_club_1",
+        "question": "Provide the full name and email address of the Student_Club's Secretary.",
+        "SQL": "SELECT first_name, last_name, email FROM member WHERE position = 'Secretary'",
+        "DB_result": "student_club_3"
+    },
+    {
+        "question_id": 1420,
+        "db_id": "student_club_3",
+        "question": "State the name of major that Vice President has joined.",
+        "SQL": "SELECT T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'Vice President'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1421,
+        "db_id": "student_club_2",
+        "question": "Calculate the percentage of members who are major Business in the list?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN T2.major_name = 'Business' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.member_id) FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Member'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1424,
+        "db_id": "student_club_2",
+        "question": "Among the members, how many of them have an extra large t-shirt size?",
+        "SQL": "SELECT COUNT(member_id) FROM member WHERE position = 'Member' AND t_shirt_size = 'X-Large'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1426,
+        "db_id": "student_club_2",
+        "question": "List the last name of members with a major in environmental engineering and include its department and college name.",
+        "SQL": "SELECT T2.last_name, T1.department, T1.college FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'Member' AND T1.major_name = 'Environmental Engineering'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1428,
+        "db_id": "student_club_2",
+        "question": "List the city and state of members enrolled under electrical and computer engineering department.",
+        "SQL": "SELECT city, state FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN zip_code AS T3 ON T3.zip_code = T1.zip WHERE department = 'Electrical and Computer Engineering Department' AND position = 'Member'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1429,
+        "db_id": "student_club_3",
+        "question": "What is the name of the social event that was attended by the vice president of the Student_Club located at 900 E. Washington St.?",
+        "SQL": "SELECT T2.event_name FROM attendance AS T1 INNER JOIN event AS T2 ON T2.event_id = T1.link_to_event INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id WHERE T3.position = 'Vice President' AND T2.location = '900 E. Washington St.' AND T2.type = 'Social'",
+        "DB_result": "student_club_2"
+    },
+    {
+        "question_id": 1431,
+        "db_id": "student_club_2",
+        "question": "List the last name of the members of the club that attended the women's soccer event.",
+        "SQL": "SELECT T3.last_name FROM attendance AS T1 INNER JOIN event AS T2 ON T2.event_id = T1.link_to_event INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id WHERE T2.event_name = 'Women''s Soccer' AND T3.position = 'Member'",
+        "DB_result": "student_club_2"
+    },
+    {
+        "question_id": 1432,
+        "db_id": "student_club_2",
+        "question": "Among the members with t-shirt size of medium, what is the percentage of the amount 50 received by the Student_Club?",
+        "SQL": "SELECT CAST(SUM(CASE WHEN T2.amount = 50 THEN 1.0 ELSE 0 END) AS REAL) * 100 / COUNT(T2.income_id) FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.position = 'Member' AND T1.t_shirt_size = 'Medium'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1441,
+        "db_id": "student_club_2",
+        "question": "How many members have education major in the College of Education & Human Services?",
+        "SQL": "SELECT COUNT(T1.member_id) FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Member' AND T2.major_name LIKE '%Education%' AND T2.college = 'College of Education & Human Services'",
+        "DB_result": "student_club_1"
+    },
+    {
+        "question_id": 1466,
+        "db_id": "student_club_1",
+        "question": "Write the full name of the club member with the position of 'Secretary' and list which college the club member belongs to.",
+        "SQL": "SELECT T1.first_name, T1.last_name, college FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Secretary'",
+        "DB_result": "student_club_2"
+    },
+    {
+        "question_id": 1470,
+        "db_id": "debit_card_specializing_1",
+        "question": "How many gas stations in CZE has Premium gas?",
+        "SQL": "SELECT COUNT(GasStationID) FROM gasstations WHERE Country = 'CZE' AND Segment = 'Premium'",
+        "DB_result": "debit_card_specializing_1"
+    },
+    {
+        "question_id": 1484,
+        "db_id": "debit_card_specializing_3",
+        "question": "How many more \"discount\" gas stations does the Czech Republic have compared to Slovakia?",
+        "SQL": "SELECT SUM(IIF(Country = 'CZE', 1, 0)) - SUM(IIF(Country = 'SVK', 1, 0)) FROM gasstations WHERE Segment = 'Discount'",
+        "DB_result": "debit_card_specializing_3"
+    },
+    {
+        "question_id": 1491,
+        "db_id": "debit_card_specializing_2",
+        "question": "Which country has more \"value for money\" gas stations? Please give a total number of \"value for money\" gas stations in each country.",
+        "SQL": "SELECT Country , ( SELECT COUNT(GasStationID) FROM gasstations WHERE Segment = 'Value for money' ) FROM gasstations WHERE Segment = 'Value for money' GROUP BY Country ORDER BY COUNT(GasStationID) DESC LIMIT 1",
+        "DB_result": "debit_card_specializing_2"
+    }
+]

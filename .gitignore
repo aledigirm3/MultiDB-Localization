@@ -209,13 +209,7 @@ __marimo__/
 # Other
 results/
 dev_databases/
-BIRDdev-ambiguous/
-SPIDERdev1.0-ambiguous/
-BIRDtrain/
-BIRDtrain-ambiguous/
-SPIDERtrain-ambiguous/
-BEAVER-ambiguous/
-SQALE3/
-SQALE3-ambiguous/
 agent.md
 iterative_jar/
+SQALE3/
+SQALE3-ambiguous/

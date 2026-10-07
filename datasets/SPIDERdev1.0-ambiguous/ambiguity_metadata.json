@@ -1,0 +1,1473 @@
+{
+  "source_dataset": "SPIDERdev1.0",
+  "output_dataset": "SPIDERdev1.0-ambiguous",
+  "distinct_ratio_threshold": 0.3,
+  "min_split_value_chars": 4,
+  "min_split_distinct_values": 3,
+  "selection_method": "low-cardinality normalized text columns ranked by SQL equality/IN literal matches whose normalized value length is greater than 3 and whose usable distinct value count is at least 3. A selected column must also have at least one usable normalized value mentioned in a normalized natural-language question for the same database",
+  "split_policy": "Duplicated databases are ordered by db_id. Their primary, secondary, and remaining value groups are assigned cyclically to suffixes _1, _2, and _3 using rotation offsets 0, 1, and 2. The rotation only relabels the groups; child rows referencing removed parent rows are removed recursively.",
+  "sample_assignment_policy": "Each sample must contain an explicit SQL equality/IN reference to the selected split column with a value present in that column and longer than 3 normalized characters. Then the SQL query is executed on the original database and on all clones. A sample is written to dev.json only when exactly one clone returns the same result as the original query. Samples without an explicit split reference, with only short split values, where multiple clones match, or where no clone matches, are skipped.",
+  "databases": [
+    {
+      "db_id": "dog_kennels",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "flight_2",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "pets_1",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "concert_singer",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "museum_visit",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "battle_death",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "student_transcripts_tracking",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "singer",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "cre_Doc_Template_Mgt",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "world_1",
+      "status": "created",
+      "source_sqlite": "dev_databases/world_1/world_1.sqlite",
+      "split_rotation_offset": 2,
+      "selected_table": "country",
+      "selected_column": "Continent",
+      "row_count": 239,
+      "raw_distinct_count": 7,
+      "distinct_ratio": 0.029288702928870293,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 7,
+      "sql_sample_hits": 30,
+      "sql_total_mentions": 36,
+      "sql_value_mentions": {
+        "asia": 18,
+        "africa": 8,
+        "europ": 8,
+        "north america": 2
+      },
+      "question_sample_hits": 24,
+      "question_value_mentions": {
+        "africa": 7,
+        "asia": 11,
+        "europ": 7,
+        "north america": 1
+      },
+      "primary_split_value": "asia",
+      "primary_split_raw_values": [
+        "Asia"
+      ],
+      "secondary_split_value": "africa",
+      "secondary_split_raw_values": [
+        "Africa"
+      ],
+      "remaining_split_value_count": 5,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "europ",
+          "frequency": 46,
+          "raw_values": [
+            "Europe"
+          ]
+        },
+        {
+          "normalized_value": "north america",
+          "frequency": 37,
+          "raw_values": [
+            "North America"
+          ]
+        },
+        {
+          "normalized_value": "oceania",
+          "frequency": 28,
+          "raw_values": [
+            "Oceania"
+          ]
+        },
+        {
+          "normalized_value": "south america",
+          "frequency": 14,
+          "raw_values": [
+            "South America"
+          ]
+        },
+        {
+          "normalized_value": "antarctica",
+          "frequency": 5,
+          "raw_values": [
+            "Antarctica"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "africa",
+          "frequency": 58,
+          "raw_values": [
+            "Africa"
+          ]
+        },
+        {
+          "normalized_value": "asia",
+          "frequency": 51,
+          "raw_values": [
+            "Asia"
+          ]
+        },
+        {
+          "normalized_value": "europ",
+          "frequency": 46,
+          "raw_values": [
+            "Europe"
+          ]
+        },
+        {
+          "normalized_value": "north america",
+          "frequency": 37,
+          "raw_values": [
+            "North America"
+          ]
+        },
+        {
+          "normalized_value": "oceania",
+          "frequency": 28,
+          "raw_values": [
+            "Oceania"
+          ]
+        },
+        {
+          "normalized_value": "south america",
+          "frequency": 14,
+          "raw_values": [
+            "South America"
+          ]
+        },
+        {
+          "normalized_value": "antarctica",
+          "frequency": 5,
+          "raw_values": [
+            "Antarctica"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "world_1_1": {
+          "sqlite_path": "dev_databases/world_1_1/world_1_1.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "africa"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 58,
+          "table_counts": {
+            "city": 366,
+            "sqlite_sequence": 1,
+            "country": 58,
+            "countrylanguage": 310
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "world_1_2": {
+          "sqlite_path": "dev_databases/world_1_2/world_1_2.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "asia",
+            "africa"
+          ],
+          "selected_table_row_count": 130,
+          "table_counts": {
+            "city": 1947,
+            "sqlite_sequence": 1,
+            "country": 130,
+            "countrylanguage": 435
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "world_1_3": {
+          "sqlite_path": "dev_databases/world_1_3/world_1_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "asia"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 51,
+          "table_counts": {
+            "city": 1766,
+            "sqlite_sequence": 1,
+            "country": 51,
+            "countrylanguage": 239
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 12,
+        "clone_1_matches_original": 4,
+        "clone_2_matches_original": 4
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 90,
+        "skipped_no_clone_matches_original": 8,
+        "skipped_multiple_clones_match_original": 2
+      }
+    },
+    {
+      "db_id": "employee_hire_evaluation",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "network_1",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "poker_player",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "real_estate_properties",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "course_teach",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "voter_1",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "wta_1",
+      "status": "created",
+      "source_sqlite": "dev_databases/wta_1/wta_1.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "matches",
+      "selected_column": "tourney_name",
+      "row_count": 278,
+      "raw_distinct_count": 53,
+      "distinct_ratio": 0.1906474820143885,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 52,
+      "sql_sample_hits": 6,
+      "sql_total_mentions": 8,
+      "sql_value_mentions": {
+        "wta championship": 4,
+        "australian open": 4
+      },
+      "question_sample_hits": 6,
+      "question_value_mentions": {
+        "wta championship": 4,
+        "australian open": 4
+      },
+      "primary_split_value": "australian open",
+      "primary_split_raw_values": [
+        "Australian Open"
+      ],
+      "secondary_split_value": "wta championship",
+      "secondary_split_raw_values": [
+        "WTA Championships"
+      ],
+      "remaining_split_value_count": 50,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "indian well",
+          "frequency": 27,
+          "raw_values": [
+            "Indian Wells"
+          ]
+        },
+        {
+          "normalized_value": "us open",
+          "frequency": 19,
+          "raw_values": [
+            "Us Open"
+          ]
+        },
+        {
+          "normalized_value": "miami",
+          "frequency": 16,
+          "raw_values": [
+            "Miami"
+          ]
+        },
+        {
+          "normalized_value": "wimbledon",
+          "frequency": 16,
+          "raw_values": [
+            "Wimbledon"
+          ]
+        },
+        {
+          "normalized_value": "singapor",
+          "frequency": 15,
+          "raw_values": [
+            "Singapore"
+          ]
+        },
+        {
+          "normalized_value": "cincinnati",
+          "frequency": 13,
+          "raw_values": [
+            "Cincinnati"
+          ]
+        },
+        {
+          "normalized_value": "french open",
+          "frequency": 11,
+          "raw_values": [
+            "French Open"
+          ]
+        },
+        {
+          "normalized_value": "montreal",
+          "frequency": 9,
+          "raw_values": [
+            "Montreal"
+          ]
+        },
+        {
+          "normalized_value": "wuhan",
+          "frequency": 8,
+          "raw_values": [
+            "Wuhan"
+          ]
+        },
+        {
+          "normalized_value": "eastbourn",
+          "frequency": 7,
+          "raw_values": [
+            "Eastbourne"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "indian well",
+          "frequency": 27,
+          "raw_values": [
+            "Indian Wells"
+          ]
+        },
+        {
+          "normalized_value": "us open",
+          "frequency": 19,
+          "raw_values": [
+            "Us Open"
+          ]
+        },
+        {
+          "normalized_value": "miami",
+          "frequency": 16,
+          "raw_values": [
+            "Miami"
+          ]
+        },
+        {
+          "normalized_value": "wimbledon",
+          "frequency": 16,
+          "raw_values": [
+            "Wimbledon"
+          ]
+        },
+        {
+          "normalized_value": "singapor",
+          "frequency": 15,
+          "raw_values": [
+            "Singapore"
+          ]
+        },
+        {
+          "normalized_value": "cincinnati",
+          "frequency": 13,
+          "raw_values": [
+            "Cincinnati"
+          ]
+        },
+        {
+          "normalized_value": "australian open",
+          "frequency": 12,
+          "raw_values": [
+            "Australian Open"
+          ]
+        },
+        {
+          "normalized_value": "wta championship",
+          "frequency": 12,
+          "raw_values": [
+            "WTA Championships"
+          ]
+        },
+        {
+          "normalized_value": "french open",
+          "frequency": 11,
+          "raw_values": [
+            "French Open"
+          ]
+        },
+        {
+          "normalized_value": "montreal",
+          "frequency": 9,
+          "raw_values": [
+            "Montreal"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "wta_1_1": {
+          "sqlite_path": "dev_databases/wta_1_1/wta_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "australian open"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 12,
+          "table_counts": {
+            "players": 20662,
+            "matches": 12,
+            "rankings": 510437
+          },
+          "foreign_key_check": [
+            [
+              "rankings",
+              1593272,
+              "players",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 1,
+          "foreign_key_check_error": null
+        },
+        "wta_1_2": {
+          "sqlite_path": "dev_databases/wta_1_2/wta_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "wta championship"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 12,
+          "table_counts": {
+            "players": 20662,
+            "matches": 12,
+            "rankings": 510437
+          },
+          "foreign_key_check": [
+            [
+              "rankings",
+              1593272,
+              "players",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 1,
+          "foreign_key_check_error": null
+        },
+        "wta_1_3": {
+          "sqlite_path": "dev_databases/wta_1_3/wta_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "australian open",
+            "wta championship"
+          ],
+          "selected_table_row_count": 254,
+          "table_counts": {
+            "players": 20662,
+            "matches": 254,
+            "rankings": 510437
+          },
+          "foreign_key_check": [
+            [
+              "rankings",
+              1593272,
+              "players",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 1,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 2,
+        "clone_2_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 56,
+        "skipped_no_clone_matches_original": 2
+      }
+    },
+    {
+      "db_id": "orchestra",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "car_1",
+      "status": "created",
+      "source_sqlite": "dev_databases/car_1/car_1.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "car_names",
+      "selected_column": "Model",
+      "row_count": 406,
+      "raw_distinct_count": 33,
+      "distinct_ratio": 0.0812807881773399,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 29,
+      "sql_sample_hits": 4,
+      "sql_total_mentions": 4,
+      "sql_value_mentions": {
+        "volvo": 4
+      },
+      "question_sample_hits": 8,
+      "question_value_mentions": {
+        "volvo": 4,
+        "ford": 2,
+        "fiat": 2
+      },
+      "primary_split_value": "volvo",
+      "primary_split_raw_values": [
+        "volvo"
+      ],
+      "secondary_split_value": "ford",
+      "secondary_split_raw_values": [
+        "ford"
+      ],
+      "remaining_split_value_count": 27,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "chevrolet",
+          "frequency": 48,
+          "raw_values": [
+            "chevrolet"
+          ]
+        },
+        {
+          "normalized_value": "plymouth",
+          "frequency": 32,
+          "raw_values": [
+            "plymouth"
+          ]
+        },
+        {
+          "normalized_value": "dodg",
+          "frequency": 28,
+          "raw_values": [
+            "dodge"
+          ]
+        },
+        {
+          "normalized_value": "toyota",
+          "frequency": 26,
+          "raw_values": [
+            "toyota"
+          ]
+        },
+        {
+          "normalized_value": "datsun",
+          "frequency": 23,
+          "raw_values": [
+            "datsun"
+          ]
+        },
+        {
+          "normalized_value": "volkswagen",
+          "frequency": 23,
+          "raw_values": [
+            " volkswagen",
+            "volkswagen"
+          ]
+        },
+        {
+          "normalized_value": "buick",
+          "frequency": 17,
+          "raw_values": [
+            "buick"
+          ]
+        },
+        {
+          "normalized_value": "pontiac",
+          "frequency": 16,
+          "raw_values": [
+            "pontiac"
+          ]
+        },
+        {
+          "normalized_value": "honda",
+          "frequency": 13,
+          "raw_values": [
+            "honda"
+          ]
+        },
+        {
+          "normalized_value": "mazda",
+          "frequency": 12,
+          "raw_values": [
+            "mazda"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "ford",
+          "frequency": 53,
+          "raw_values": [
+            "ford"
+          ]
+        },
+        {
+          "normalized_value": "chevrolet",
+          "frequency": 48,
+          "raw_values": [
+            "chevrolet"
+          ]
+        },
+        {
+          "normalized_value": "plymouth",
+          "frequency": 32,
+          "raw_values": [
+            "plymouth"
+          ]
+        },
+        {
+          "normalized_value": "dodg",
+          "frequency": 28,
+          "raw_values": [
+            "dodge"
+          ]
+        },
+        {
+          "normalized_value": "toyota",
+          "frequency": 26,
+          "raw_values": [
+            "toyota"
+          ]
+        },
+        {
+          "normalized_value": "datsun",
+          "frequency": 23,
+          "raw_values": [
+            "datsun"
+          ]
+        },
+        {
+          "normalized_value": "volkswagen",
+          "frequency": 23,
+          "raw_values": [
+            " volkswagen",
+            "volkswagen"
+          ]
+        },
+        {
+          "normalized_value": "buick",
+          "frequency": 17,
+          "raw_values": [
+            "buick"
+          ]
+        },
+        {
+          "normalized_value": "pontiac",
+          "frequency": 16,
+          "raw_values": [
+            "pontiac"
+          ]
+        },
+        {
+          "normalized_value": "honda",
+          "frequency": 13,
+          "raw_values": [
+            "honda"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "car_1_1": {
+          "sqlite_path": "dev_databases/car_1_1/car_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "volvo"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 6,
+          "table_counts": {
+            "continents": 5,
+            "countries": 15,
+            "car_makers": 22,
+            "model_list": 36,
+            "car_names": 6,
+            "cars_data": 6
+          },
+          "foreign_key_check": [
+            [
+              "model_list",
+              14,
+              "car_makers",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 1,
+          "foreign_key_check_error": null
+        },
+        "car_1_2": {
+          "sqlite_path": "dev_databases/car_1_2/car_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "ford"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 53,
+          "table_counts": {
+            "continents": 5,
+            "countries": 15,
+            "car_makers": 22,
+            "model_list": 36,
+            "car_names": 53,
+            "cars_data": 53
+          },
+          "foreign_key_check": [
+            [
+              "model_list",
+              14,
+              "car_makers",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 1,
+          "foreign_key_check_error": null
+        },
+        "car_1_3": {
+          "sqlite_path": "dev_databases/car_1_3/car_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "volvo",
+            "ford"
+          ],
+          "selected_table_row_count": 347,
+          "table_counts": {
+            "continents": 5,
+            "countries": 15,
+            "car_makers": 22,
+            "model_list": 36,
+            "car_names": 347,
+            "cars_data": 347
+          },
+          "foreign_key_check": [
+            [
+              "car_names",
+              340,
+              "model_list",
+              0
+            ],
+            [
+              "model_list",
+              14,
+              "car_makers",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 2,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 4
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 88
+      }
+    },
+    {
+      "db_id": "tvshow",
+      "status": "created",
+      "source_sqlite": "dev_databases/tvshow/tvshow.sqlite",
+      "split_rotation_offset": 1,
+      "selected_table": "Cartoon",
+      "selected_column": "Directed_by",
+      "row_count": 12,
+      "raw_distinct_count": 3,
+      "distinct_ratio": 0.25,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 3,
+      "sql_sample_hits": 10,
+      "sql_total_mentions": 14,
+      "sql_value_mentions": {
+        "ben jone": 10,
+        "brandon vietti": 2,
+        "michael chang": 2
+      },
+      "question_sample_hits": 10,
+      "question_value_mentions": {
+        "ben jone": 10,
+        "brandon vietti": 2,
+        "michael chang": 2
+      },
+      "primary_split_value": "ben jone",
+      "primary_split_raw_values": [
+        "Ben Jones"
+      ],
+      "secondary_split_value": "brandon vietti",
+      "secondary_split_raw_values": [
+        "Brandon Vietti"
+      ],
+      "remaining_split_value_count": 1,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "michael chang",
+          "frequency": 4,
+          "raw_values": [
+            "Michael Chang"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "ben jone",
+          "frequency": 4,
+          "raw_values": [
+            "Ben Jones"
+          ]
+        },
+        {
+          "normalized_value": "brandon vietti",
+          "frequency": 4,
+          "raw_values": [
+            "Brandon Vietti"
+          ]
+        },
+        {
+          "normalized_value": "michael chang",
+          "frequency": 4,
+          "raw_values": [
+            "Michael Chang"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "tvshow_1": {
+          "sqlite_path": "dev_databases/tvshow_1/tvshow_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "ben jone",
+            "brandon vietti"
+          ],
+          "selected_table_row_count": 4,
+          "table_counts": {
+            "TV_Channel": 15,
+            "TV_series": 12,
+            "Cartoon": 4
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "tvshow_2": {
+          "sqlite_path": "dev_databases/tvshow_2/tvshow_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "ben jone"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 4,
+          "table_counts": {
+            "TV_Channel": 15,
+            "TV_series": 12,
+            "Cartoon": 4
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "tvshow_3": {
+          "sqlite_path": "dev_databases/tvshow_3/tvshow_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "brandon vietti"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 4,
+          "table_counts": {
+            "TV_Channel": 15,
+            "TV_series": 12,
+            "Cartoon": 4
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 6
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 52,
+        "skipped_no_clone_matches_original": 4
+      }
+    }
+  ],
+  "dev_json": {
+    "samples_read": 1034,
+    "samples_written": 34,
+    "samples_skipped": 1000,
+    "assignment_counts": {
+      "clone_1_matches_original": 10,
+      "clone_2_matches_original": 12,
+      "clone_3_matches_original": 12
+    },
+    "skipped_assignment_counts": {
+      "skipped_no_explicit_split_reference": 286,
+      "skipped_no_clone_matches_original": 14,
+      "skipped_multiple_clones_match_original": 2
+    },
+    "skipped_samples": [
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "concert_singer",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "pets_1",
+        "reason": "db_not_duplicated"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": null,
+        "db_id": "car_1",
+        "reason": "skipped_no_explicit_split_reference"
+      }
+    ],
+    "assignment_notes": []
+  }
+}

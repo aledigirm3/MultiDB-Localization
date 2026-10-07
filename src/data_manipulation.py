@@ -1936,8 +1936,8 @@ def create_ambiguous_benchmark(
     output_schemas = []
     created_databases = {}
     metadata = {
-        "source_dataset": str(dataset_dir),
-        "output_dataset": str(output_dir),
+        "source_dataset": dataset_dir.name,
+        "output_dataset": output_dir.name,
         "distinct_ratio_threshold": distinct_ratio_threshold,
         "min_split_value_chars": min_split_value_chars,
         "min_split_distinct_values": min_split_distinct_values,
@@ -2043,7 +2043,7 @@ def create_ambiguous_benchmark(
         db_metadata.update(
             {
                 "status": "created",
-                "source_sqlite": str(sqlite_path),
+                "source_sqlite": sqlite_path.relative_to(dataset_dir).as_posix(),
                 "split_rotation_offset": rotation_offset,
                 "selected_table": split_info["table_name"],
                 "selected_column": split_info["column_name"],
@@ -2070,7 +2070,11 @@ def create_ambiguous_benchmark(
                 "parse_errors": split_info["parse_errors"],
                 "clones": {
                     f"{db_id}_{clone_number}": {
-                        "sqlite_path": str(clone_paths[clone_number]),
+                        "sqlite_path": (
+                            clone_paths[clone_number]
+                            .relative_to(output_dir)
+                            .as_posix()
+                        ),
                         **clone_stats[clone_number],
                     }
                     for clone_number in clone_split_rules

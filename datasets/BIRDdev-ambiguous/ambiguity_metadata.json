@@ -1,0 +1,3465 @@
+{
+  "source_dataset": "BIRDdev",
+  "output_dataset": "BIRDdev-ambiguous",
+  "distinct_ratio_threshold": 0.3,
+  "min_split_value_chars": 4,
+  "min_split_distinct_values": 3,
+  "selection_method": "low-cardinality normalized text columns ranked by SQL equality/IN literal matches whose normalized value length is greater than 3 and whose usable distinct value count is at least 3. A selected column must also have at least one usable normalized value mentioned in a normalized natural-language question for the same database",
+  "split_policy": "Duplicated databases are ordered by db_id. Their primary, secondary, and remaining value groups are assigned cyclically to suffixes _1, _2, and _3 using rotation offsets 0, 1, and 2. The rotation only relabels the groups; child rows referencing removed parent rows are removed recursively.",
+  "sample_assignment_policy": "Each sample must contain an explicit SQL equality/IN reference to the selected split column with a value present in that column and longer than 3 normalized characters. Then the SQL query is executed on the original database and on all clones. A sample is written to dev.json only when exactly one clone returns the same result as the original query. Samples without an explicit split reference, with only short split values, where multiple clones match, or where no clone matches, are skipped.",
+  "databases": [
+    {
+      "db_id": "debit_card_specializing",
+      "status": "created",
+      "source_sqlite": "dev_databases/debit_card_specializing/debit_card_specializing.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "gasstations",
+      "selected_column": "Segment",
+      "row_count": 5716,
+      "raw_distinct_count": 5,
+      "distinct_ratio": 0.0008747375787263821,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 5,
+      "sql_sample_hits": 5,
+      "sql_total_mentions": 6,
+      "sql_value_mentions": {
+        "premium": 3,
+        "discount": 1,
+        "valu for money": 2
+      },
+      "question_sample_hits": 5,
+      "question_value_mentions": {
+        "premium": 3,
+        "discount": 1,
+        "valu for money": 1
+      },
+      "primary_split_value": "premium",
+      "primary_split_raw_values": [
+        "Premium"
+      ],
+      "secondary_split_value": "valu for money",
+      "secondary_split_raw_values": [
+        "Value for money"
+      ],
+      "remaining_split_value_count": 3,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "other",
+          "frequency": 2392,
+          "raw_values": [
+            "Other"
+          ]
+        },
+        {
+          "normalized_value": "nonam",
+          "frequency": 1005,
+          "raw_values": [
+            "Noname"
+          ]
+        },
+        {
+          "normalized_value": "discount",
+          "frequency": 294,
+          "raw_values": [
+            "Discount"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "other",
+          "frequency": 2392,
+          "raw_values": [
+            "Other"
+          ]
+        },
+        {
+          "normalized_value": "premium",
+          "frequency": 1428,
+          "raw_values": [
+            "Premium"
+          ]
+        },
+        {
+          "normalized_value": "nonam",
+          "frequency": 1005,
+          "raw_values": [
+            "Noname"
+          ]
+        },
+        {
+          "normalized_value": "valu for money",
+          "frequency": 597,
+          "raw_values": [
+            "Value for money"
+          ]
+        },
+        {
+          "normalized_value": "discount",
+          "frequency": 294,
+          "raw_values": [
+            "Discount"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "debit_card_specializing_1": {
+          "sqlite_path": "dev_databases/debit_card_specializing_1/debit_card_specializing_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "premium"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 1428,
+          "table_counts": {
+            "customers": 32461,
+            "gasstations": 1428,
+            "products": 591,
+            "transactions_1k": 1000,
+            "yearmonth": 383282
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "debit_card_specializing_2": {
+          "sqlite_path": "dev_databases/debit_card_specializing_2/debit_card_specializing_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "valu for money"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 597,
+          "table_counts": {
+            "customers": 32461,
+            "gasstations": 597,
+            "products": 591,
+            "transactions_1k": 1000,
+            "yearmonth": 383282
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "debit_card_specializing_3": {
+          "sqlite_path": "dev_databases/debit_card_specializing_3/debit_card_specializing_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "premium",
+            "valu for money"
+          ],
+          "selected_table_row_count": 3691,
+          "table_counts": {
+            "customers": 32461,
+            "gasstations": 3691,
+            "products": 591,
+            "transactions_1k": 1000,
+            "yearmonth": 383282
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 1,
+        "clone_3_matches_original": 1,
+        "clone_2_matches_original": 1
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 59,
+        "skipped_no_clone_matches_original": 2
+      }
+    },
+    {
+      "db_id": "financial",
+      "status": "created",
+      "source_sqlite": "dev_databases/financial/financial.sqlite",
+      "split_rotation_offset": 2,
+      "selected_table": "district",
+      "selected_column": "A3",
+      "row_count": 77,
+      "raw_distinct_count": 8,
+      "distinct_ratio": 0.1038961038961039,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 8,
+      "sql_sample_hits": 13,
+      "sql_total_mentions": 14,
+      "sql_value_mentions": {
+        "east bohemia": 5,
+        "pragu": 3,
+        "north bohemia": 3,
+        "south bohemia": 3
+      },
+      "question_sample_hits": 13,
+      "question_value_mentions": {
+        "east bohemia": 4,
+        "pragu": 3,
+        "north bohemia": 3,
+        "south bohemia": 3
+      },
+      "primary_split_value": "east bohemia",
+      "primary_split_raw_values": [
+        "east Bohemia"
+      ],
+      "secondary_split_value": "north bohemia",
+      "secondary_split_raw_values": [
+        "north Bohemia"
+      ],
+      "remaining_split_value_count": 6,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "south moravia",
+          "frequency": 14,
+          "raw_values": [
+            "south Moravia"
+          ]
+        },
+        {
+          "normalized_value": "central bohemia",
+          "frequency": 12,
+          "raw_values": [
+            "central Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "north moravia",
+          "frequency": 11,
+          "raw_values": [
+            "north Moravia"
+          ]
+        },
+        {
+          "normalized_value": "west bohemia",
+          "frequency": 10,
+          "raw_values": [
+            "west Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "south bohemia",
+          "frequency": 8,
+          "raw_values": [
+            "south Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "pragu",
+          "frequency": 1,
+          "raw_values": [
+            "Prague"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "south moravia",
+          "frequency": 14,
+          "raw_values": [
+            "south Moravia"
+          ]
+        },
+        {
+          "normalized_value": "central bohemia",
+          "frequency": 12,
+          "raw_values": [
+            "central Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "east bohemia",
+          "frequency": 11,
+          "raw_values": [
+            "east Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "north moravia",
+          "frequency": 11,
+          "raw_values": [
+            "north Moravia"
+          ]
+        },
+        {
+          "normalized_value": "north bohemia",
+          "frequency": 10,
+          "raw_values": [
+            "north Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "west bohemia",
+          "frequency": 10,
+          "raw_values": [
+            "west Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "south bohemia",
+          "frequency": 8,
+          "raw_values": [
+            "south Bohemia"
+          ]
+        },
+        {
+          "normalized_value": "pragu",
+          "frequency": 1,
+          "raw_values": [
+            "Prague"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "financial_1": {
+          "sqlite_path": "dev_databases/financial_1/financial_1.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "north bohemia"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 10,
+          "table_counts": {
+            "account": 457,
+            "card": 106,
+            "client": 561,
+            "disp": 517,
+            "district": 10,
+            "loan": 61,
+            "order": 678,
+            "trans": 107171
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "financial_2": {
+          "sqlite_path": "dev_databases/financial_2/financial_2.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "east bohemia",
+            "north bohemia"
+          ],
+          "selected_table_row_count": 56,
+          "table_counts": {
+            "account": 3499,
+            "card": 670,
+            "client": 4148,
+            "disp": 4073,
+            "district": 56,
+            "loan": 537,
+            "order": 5080,
+            "trans": 827414
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "financial_3": {
+          "sqlite_path": "dev_databases/financial_3/financial_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "east bohemia"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 11,
+          "table_counts": {
+            "account": 544,
+            "card": 89,
+            "client": 660,
+            "disp": 593,
+            "district": 11,
+            "loan": 84,
+            "order": 713,
+            "trans": 121735
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 4,
+        "clone_2_matches_original": 5,
+        "clone_1_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 93,
+        "skipped_no_clone_matches_original": 2
+      }
+    },
+    {
+      "db_id": "formula_1",
+      "status": "created",
+      "source_sqlite": "dev_databases/formula_1/formula_1.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "races",
+      "selected_column": "name",
+      "row_count": 976,
+      "raw_distinct_count": 42,
+      "distinct_ratio": 0.0430327868852459,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 42,
+      "sql_sample_hits": 41,
+      "sql_total_mentions": 43,
+      "sql_value_mentions": {
+        "australian grand prix": 10,
+        "abu dhabi grand prix": 2,
+        "bahrain grand prix": 1,
+        "malaysian grand prix": 2,
+        "san marino grand prix": 1,
+        "singapor grand prix": 3,
+        "european grand prix": 2,
+        "british grand prix": 2,
+        "chines grand prix": 4,
+        "spanish grand prix": 4,
+        "canadian grand prix": 3,
+        "french grand prix": 1,
+        "unit state grand prix": 1,
+        "monaco grand prix": 1,
+        "turkish grand prix": 1,
+        "austrian grand prix": 5
+      },
+      "question_sample_hits": 38,
+      "question_value_mentions": {
+        "australian grand prix": 10,
+        "abu dhabi grand prix": 1,
+        "bahrain grand prix": 1,
+        "malaysian grand prix": 2,
+        "san marino grand prix": 1,
+        "singapor grand prix": 3,
+        "european grand prix": 2,
+        "british grand prix": 1,
+        "chines grand prix": 3,
+        "spanish grand prix": 4,
+        "canadian grand prix": 3,
+        "french grand prix": 1,
+        "unit state grand prix": 1,
+        "monaco grand prix": 1,
+        "turkish grand prix": 1,
+        "austrian grand prix": 3
+      },
+      "primary_split_value": "australian grand prix",
+      "primary_split_raw_values": [
+        "Australian Grand Prix"
+      ],
+      "secondary_split_value": "austrian grand prix",
+      "secondary_split_raw_values": [
+        "Austrian Grand Prix"
+      ],
+      "remaining_split_value_count": 40,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "british grand prix",
+          "frequency": 68,
+          "raw_values": [
+            "British Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "italian grand prix",
+          "frequency": 68,
+          "raw_values": [
+            "Italian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "monaco grand prix",
+          "frequency": 64,
+          "raw_values": [
+            "Monaco Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "belgian grand prix",
+          "frequency": 62,
+          "raw_values": [
+            "Belgian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "german grand prix",
+          "frequency": 62,
+          "raw_values": [
+            "German Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "french grand prix",
+          "frequency": 58,
+          "raw_values": [
+            "French Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "canadian grand prix",
+          "frequency": 48,
+          "raw_values": [
+            "Canadian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "spanish grand prix",
+          "frequency": 47,
+          "raw_values": [
+            "Spanish Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "brazilian grand prix",
+          "frequency": 45,
+          "raw_values": [
+            "Brazilian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "unit state grand prix",
+          "frequency": 39,
+          "raw_values": [
+            "United States Grand Prix"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "british grand prix",
+          "frequency": 68,
+          "raw_values": [
+            "British Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "italian grand prix",
+          "frequency": 68,
+          "raw_values": [
+            "Italian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "monaco grand prix",
+          "frequency": 64,
+          "raw_values": [
+            "Monaco Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "belgian grand prix",
+          "frequency": 62,
+          "raw_values": [
+            "Belgian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "german grand prix",
+          "frequency": 62,
+          "raw_values": [
+            "German Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "french grand prix",
+          "frequency": 58,
+          "raw_values": [
+            "French Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "canadian grand prix",
+          "frequency": 48,
+          "raw_values": [
+            "Canadian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "spanish grand prix",
+          "frequency": 47,
+          "raw_values": [
+            "Spanish Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "brazilian grand prix",
+          "frequency": 45,
+          "raw_values": [
+            "Brazilian Grand Prix"
+          ]
+        },
+        {
+          "normalized_value": "unit state grand prix",
+          "frequency": 39,
+          "raw_values": [
+            "United States Grand Prix"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "formula_1_1": {
+          "sqlite_path": "dev_databases/formula_1_1/formula_1_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "australian grand prix"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 33,
+          "table_counts": {
+            "circuits": 72,
+            "constructors": 208,
+            "drivers": 840,
+            "seasons": 68,
+            "races": 33,
+            "constructorResults": 403,
+            "constructorStandings": 376,
+            "driverStandings": 749,
+            "lapTimes": 19845,
+            "pitStops": 255,
+            "qualifying": 480,
+            "status": 134,
+            "results": 790
+          },
+          "foreign_key_check": [
+            [
+              "races",
+              1,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              18,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              36,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              55,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              71,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              90,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              108,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              124,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              141,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              158,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              175,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              191,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              207,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              224,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              338,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              841,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              860,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              880,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              900,
+              "circuits",
+              0
+            ],
+            [
+              "races",
+              926,
+              "circuits",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 22,
+          "foreign_key_check_error": null
+        },
+        "formula_1_2": {
+          "sqlite_path": "dev_databases/formula_1_2/formula_1_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "austrian grand prix"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 30,
+          "table_counts": {
+            "circuits": 72,
+            "constructors": 208,
+            "drivers": 840,
+            "seasons": 68,
+            "races": 30,
+            "constructorResults": 382,
+            "constructorStandings": 412,
+            "driverStandings": 979,
+            "lapTimes": 12933,
+            "pitStops": 158,
+            "qualifying": 126,
+            "status": 134,
+            "results": 741
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "formula_1_3": {
+          "sqlite_path": "dev_databases/formula_1_3/formula_1_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "australian grand prix",
+            "austrian grand prix"
+          ],
+          "selected_table_row_count": 913,
+          "table_counts": {
+            "circuits": 72,
+            "constructors": 208,
+            "drivers": 840,
+            "seasons": 68,
+            "races": 913,
+            "constructorResults": 10297,
+            "constructorStandings": 11048,
+            "driverStandings": 29850,
+            "lapTimes": 387591,
+            "pitStops": 5657,
+            "qualifying": 6791,
+            "status": 134,
+            "results": 22126
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_1_matches_original": 10,
+        "clone_3_matches_original": 28,
+        "clone_2_matches_original": 3
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 133
+      }
+    },
+    {
+      "db_id": "california_schools",
+      "status": "created",
+      "source_sqlite": "dev_databases/california_schools/california_schools.sqlite",
+      "split_rotation_offset": 0,
+      "selected_table": "schools",
+      "selected_column": "County",
+      "row_count": 17686,
+      "raw_distinct_count": 58,
+      "distinct_ratio": 0.0032794300576727354,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 58,
+      "sql_sample_hits": 17,
+      "sql_total_mentions": 19,
+      "sql_value_mentions": {
+        "lake": 1,
+        "amador": 1,
+        "monterey": 1,
+        "los angel": 3,
+        "fresno": 1,
+        "alameda": 1,
+        "orang": 1,
+        "humboldt": 1,
+        "colusa": 1,
+        "san joaquin": 1,
+        "santa clara": 1,
+        "stanislaus": 1,
+        "alpin": 1,
+        "merc": 1,
+        "san diego": 1,
+        "santa barbara": 1,
+        "san bernardino": 1
+      },
+      "question_sample_hits": 28,
+      "question_value_mentions": {
+        "alameda": 3,
+        "fresno": 6,
+        "amador": 1,
+        "los angel": 4,
+        "contra costa": 1,
+        "riversid": 1,
+        "monterey": 1,
+        "orang": 1,
+        "humboldt": 1,
+        "colusa": 1,
+        "san joaquin": 2,
+        "santa clara": 1,
+        "stanislaus": 1,
+        "san francisco": 1,
+        "alpin": 1,
+        "merc": 1,
+        "san diego": 1,
+        "santa barbara": 1,
+        "san bernardino": 1
+      },
+      "primary_split_value": "los angel",
+      "primary_split_raw_values": [
+        "Los Angeles"
+      ],
+      "secondary_split_value": "san diego",
+      "secondary_split_raw_values": [
+        "San Diego"
+      ],
+      "remaining_split_value_count": 56,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "orang",
+          "frequency": 886,
+          "raw_values": [
+            "Orange"
+          ]
+        },
+        {
+          "normalized_value": "san bernardino",
+          "frequency": 861,
+          "raw_values": [
+            "San Bernardino"
+          ]
+        },
+        {
+          "normalized_value": "santa clara",
+          "frequency": 780,
+          "raw_values": [
+            "Santa Clara"
+          ]
+        },
+        {
+          "normalized_value": "alameda",
+          "frequency": 761,
+          "raw_values": [
+            "Alameda"
+          ]
+        },
+        {
+          "normalized_value": "riversid",
+          "frequency": 743,
+          "raw_values": [
+            "Riverside"
+          ]
+        },
+        {
+          "normalized_value": "sacramento",
+          "frequency": 622,
+          "raw_values": [
+            "Sacramento"
+          ]
+        },
+        {
+          "normalized_value": "fresno",
+          "frequency": 620,
+          "raw_values": [
+            "Fresno"
+          ]
+        },
+        {
+          "normalized_value": "contra costa",
+          "frequency": 465,
+          "raw_values": [
+            "Contra Costa"
+          ]
+        },
+        {
+          "normalized_value": "kern",
+          "frequency": 443,
+          "raw_values": [
+            "Kern"
+          ]
+        },
+        {
+          "normalized_value": "san joaquin",
+          "frequency": 427,
+          "raw_values": [
+            "San Joaquin"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "los angel",
+          "frequency": 3636,
+          "raw_values": [
+            "Los Angeles"
+          ]
+        },
+        {
+          "normalized_value": "san diego",
+          "frequency": 1139,
+          "raw_values": [
+            "San Diego"
+          ]
+        },
+        {
+          "normalized_value": "orang",
+          "frequency": 886,
+          "raw_values": [
+            "Orange"
+          ]
+        },
+        {
+          "normalized_value": "san bernardino",
+          "frequency": 861,
+          "raw_values": [
+            "San Bernardino"
+          ]
+        },
+        {
+          "normalized_value": "santa clara",
+          "frequency": 780,
+          "raw_values": [
+            "Santa Clara"
+          ]
+        },
+        {
+          "normalized_value": "alameda",
+          "frequency": 761,
+          "raw_values": [
+            "Alameda"
+          ]
+        },
+        {
+          "normalized_value": "riversid",
+          "frequency": 743,
+          "raw_values": [
+            "Riverside"
+          ]
+        },
+        {
+          "normalized_value": "sacramento",
+          "frequency": 622,
+          "raw_values": [
+            "Sacramento"
+          ]
+        },
+        {
+          "normalized_value": "fresno",
+          "frequency": 620,
+          "raw_values": [
+            "Fresno"
+          ]
+        },
+        {
+          "normalized_value": "contra costa",
+          "frequency": 465,
+          "raw_values": [
+            "Contra Costa"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "california_schools_1": {
+          "sqlite_path": "dev_databases/california_schools_1/california_schools_1.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "los angel"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 3636,
+          "table_counts": {
+            "frpm": 2218,
+            "satscores": 467,
+            "schools": 3636
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "california_schools_2": {
+          "sqlite_path": "dev_databases/california_schools_2/california_schools_2.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "san diego"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 1139,
+          "table_counts": {
+            "frpm": 755,
+            "satscores": 167,
+            "schools": 1139
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "california_schools_3": {
+          "sqlite_path": "dev_databases/california_schools_3/california_schools_3.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "los angel",
+            "san diego"
+          ],
+          "selected_table_row_count": 12911,
+          "table_counts": {
+            "frpm": 7013,
+            "satscores": 1424,
+            "schools": 12911
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 13,
+        "clone_1_matches_original": 3,
+        "clone_2_matches_original": 1
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 72
+      }
+    },
+    {
+      "db_id": "card_games",
+      "status": "created",
+      "source_sqlite": "dev_databases/card_games/card_games.sqlite",
+      "split_rotation_offset": 1,
+      "selected_table": "set_translations",
+      "selected_column": "language",
+      "row_count": 1210,
+      "raw_distinct_count": 10,
+      "distinct_ratio": 0.008264462809917356,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 10,
+      "sql_sample_hits": 20,
+      "sql_total_mentions": 20,
+      "sql_value_mentions": {
+        "italian": 5,
+        "spanish": 1,
+        "portugues brazil": 2,
+        "japanes": 5,
+        "russian": 1,
+        "chines simplifi": 3,
+        "korean": 2,
+        "french": 1
+      },
+      "question_sample_hits": 32,
+      "question_value_mentions": {
+        "japanes": 8,
+        "chines simplifi": 3,
+        "italian": 8,
+        "german": 3,
+        "russian": 2,
+        "french": 5,
+        "spanish": 2,
+        "korean": 2
+      },
+      "primary_split_value": "italian",
+      "primary_split_raw_values": [
+        "Italian"
+      ],
+      "secondary_split_value": "japanes",
+      "secondary_split_raw_values": [
+        "Japanese"
+      ],
+      "remaining_split_value_count": 8,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "chines simplifi",
+          "frequency": 121,
+          "raw_values": [
+            "Chinese Simplified"
+          ]
+        },
+        {
+          "normalized_value": "chines tradit",
+          "frequency": 121,
+          "raw_values": [
+            "Chinese Traditional"
+          ]
+        },
+        {
+          "normalized_value": "french",
+          "frequency": 121,
+          "raw_values": [
+            "French"
+          ]
+        },
+        {
+          "normalized_value": "german",
+          "frequency": 121,
+          "raw_values": [
+            "German"
+          ]
+        },
+        {
+          "normalized_value": "korean",
+          "frequency": 121,
+          "raw_values": [
+            "Korean"
+          ]
+        },
+        {
+          "normalized_value": "portugues brazil",
+          "frequency": 121,
+          "raw_values": [
+            "Portuguese (Brazil)"
+          ]
+        },
+        {
+          "normalized_value": "russian",
+          "frequency": 121,
+          "raw_values": [
+            "Russian"
+          ]
+        },
+        {
+          "normalized_value": "spanish",
+          "frequency": 121,
+          "raw_values": [
+            "Spanish"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "chines simplifi",
+          "frequency": 121,
+          "raw_values": [
+            "Chinese Simplified"
+          ]
+        },
+        {
+          "normalized_value": "chines tradit",
+          "frequency": 121,
+          "raw_values": [
+            "Chinese Traditional"
+          ]
+        },
+        {
+          "normalized_value": "french",
+          "frequency": 121,
+          "raw_values": [
+            "French"
+          ]
+        },
+        {
+          "normalized_value": "german",
+          "frequency": 121,
+          "raw_values": [
+            "German"
+          ]
+        },
+        {
+          "normalized_value": "italian",
+          "frequency": 121,
+          "raw_values": [
+            "Italian"
+          ]
+        },
+        {
+          "normalized_value": "japanes",
+          "frequency": 121,
+          "raw_values": [
+            "Japanese"
+          ]
+        },
+        {
+          "normalized_value": "korean",
+          "frequency": 121,
+          "raw_values": [
+            "Korean"
+          ]
+        },
+        {
+          "normalized_value": "portugues brazil",
+          "frequency": 121,
+          "raw_values": [
+            "Portuguese (Brazil)"
+          ]
+        },
+        {
+          "normalized_value": "russian",
+          "frequency": 121,
+          "raw_values": [
+            "Russian"
+          ]
+        },
+        {
+          "normalized_value": "spanish",
+          "frequency": 121,
+          "raw_values": [
+            "Spanish"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "card_games_1": {
+          "sqlite_path": "dev_databases/card_games_1/card_games_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "italian",
+            "japanes"
+          ],
+          "selected_table_row_count": 968,
+          "table_counts": {
+            "cards": 56822,
+            "foreign_data": 229186,
+            "legalities": 427907,
+            "sets": 551,
+            "set_translations": 968,
+            "rulings": 87769
+          },
+          "foreign_key_check": [
+            [
+              "legalities",
+              14697,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14698,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14699,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14700,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14701,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14702,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14703,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14704,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18868,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18869,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18870,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18871,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18872,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18873,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18874,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18875,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79990,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79991,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79992,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79993,
+              "cards",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        },
+        "card_games_2": {
+          "sqlite_path": "dev_databases/card_games_2/card_games_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "italian"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 121,
+          "table_counts": {
+            "cards": 56822,
+            "foreign_data": 229186,
+            "legalities": 427907,
+            "sets": 551,
+            "set_translations": 121,
+            "rulings": 87769
+          },
+          "foreign_key_check": [
+            [
+              "legalities",
+              14697,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14698,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14699,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14700,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14701,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14702,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14703,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14704,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18868,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18869,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18870,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18871,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18872,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18873,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18874,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18875,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79990,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79991,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79992,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79993,
+              "cards",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        },
+        "card_games_3": {
+          "sqlite_path": "dev_databases/card_games_3/card_games_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "japanes"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 121,
+          "table_counts": {
+            "cards": 56822,
+            "foreign_data": 229186,
+            "legalities": 427907,
+            "sets": 551,
+            "set_translations": 121,
+            "rulings": 87769
+          },
+          "foreign_key_check": [
+            [
+              "legalities",
+              14697,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14698,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14699,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14700,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14701,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14702,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14703,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              14704,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18868,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18869,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18870,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18871,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18872,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18873,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18874,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              18875,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79990,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79991,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79992,
+              "cards",
+              0
+            ],
+            [
+              "legalities",
+              79993,
+              "cards",
+              0
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 5,
+        "clone_1_matches_original": 9,
+        "clone_3_matches_original": 4
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 171,
+        "skipped_no_clone_matches_original": 2
+      }
+    },
+    {
+      "db_id": "european_football_2",
+      "status": "created",
+      "source_sqlite": "dev_databases/european_football_2/european_football_2.sqlite",
+      "split_rotation_offset": 1,
+      "selected_table": "Team_Attributes",
+      "selected_column": "chanceCreationPassingClass",
+      "row_count": 1458,
+      "raw_distinct_count": 3,
+      "distinct_ratio": 0.00205761316872428,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 3,
+      "sql_sample_hits": 2,
+      "sql_total_mentions": 2,
+      "sql_value_mentions": {
+        "riski": 1,
+        "safe": 1
+      },
+      "question_sample_hits": 3,
+      "question_value_mentions": {
+        "normal": 1,
+        "riski": 1,
+        "safe": 1
+      },
+      "primary_split_value": "riski",
+      "primary_split_raw_values": [
+        "Risky"
+      ],
+      "secondary_split_value": "safe",
+      "secondary_split_raw_values": [
+        "Safe"
+      ],
+      "remaining_split_value_count": 1,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "normal",
+          "frequency": 1231,
+          "raw_values": [
+            "Normal"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "normal",
+          "frequency": 1231,
+          "raw_values": [
+            "Normal"
+          ]
+        },
+        {
+          "normalized_value": "riski",
+          "frequency": 171,
+          "raw_values": [
+            "Risky"
+          ]
+        },
+        {
+          "normalized_value": "safe",
+          "frequency": 56,
+          "raw_values": [
+            "Safe"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "european_football_2_1": {
+          "sqlite_path": "dev_databases/european_football_2_1/european_football_2_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "riski",
+            "safe"
+          ],
+          "selected_table_row_count": 1231,
+          "table_counts": {
+            "Player_Attributes": 183978,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 1231,
+            "Match": 25979
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        },
+        "european_football_2_2": {
+          "sqlite_path": "dev_databases/european_football_2_2/european_football_2_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "riski"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 171,
+          "table_counts": {
+            "Player_Attributes": 183978,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 171,
+            "Match": 25979
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        },
+        "european_football_2_3": {
+          "sqlite_path": "dev_databases/european_football_2_3/european_football_2_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "safe"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 56,
+          "table_counts": {
+            "Player_Attributes": 183978,
+            "Player": 11060,
+            "League": 11,
+            "Country": 11,
+            "Team": 299,
+            "Team_Attributes": 56,
+            "Match": 25979
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": "foreign key mismatch - \"Team_Attributes\" referencing \"Team\""
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 1,
+        "clone_3_matches_original": 1
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 127
+      }
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "status": "created",
+      "source_sqlite": "dev_databases/thrombosis_prediction/thrombosis_prediction.sqlite",
+      "split_rotation_offset": 2,
+      "selected_table": "Patient",
+      "selected_column": "Diagnosis",
+      "row_count": 1238,
+      "raw_distinct_count": 220,
+      "distinct_ratio": 0.1777059773828756,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 178,
+      "sql_sample_hits": 3,
+      "sql_total_mentions": 3,
+      "sql_value_mentions": {
+        "aortiti": 1,
+        "behcet": 1,
+        "mctd": 1
+      },
+      "question_sample_hits": 5,
+      "question_value_mentions": {
+        "aortiti": 1,
+        "behcet": 3,
+        "mctd": 1
+      },
+      "primary_split_value": "behcet",
+      "primary_split_raw_values": [
+        "BEHCET",
+        "BEHCET ("
+      ],
+      "secondary_split_value": "mctd",
+      "secondary_split_raw_values": [
+        "MCTD"
+      ],
+      "remaining_split_value_count": 176,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "sle sjs",
+          "frequency": 37,
+          "raw_values": [
+            "SLE\u001dSJS",
+            "SLE, SJS"
+          ]
+        },
+        {
+          "normalized_value": "ra sjs",
+          "frequency": 27,
+          "raw_values": [
+            "RA, SJS",
+            "RA,SJS"
+          ]
+        },
+        {
+          "normalized_value": "sjs susp",
+          "frequency": 26,
+          "raw_values": [
+            "SJS susp"
+          ]
+        },
+        {
+          "normalized_value": "ra susp",
+          "frequency": 20,
+          "raw_values": [
+            "RA susp",
+            "RA susp."
+          ]
+        },
+        {
+          "normalized_value": "sle susp",
+          "frequency": 19,
+          "raw_values": [
+            "SLE susp"
+          ]
+        },
+        {
+          "normalized_value": "sle ap",
+          "frequency": 15,
+          "raw_values": [
+            "SLE, APS"
+          ]
+        },
+        {
+          "normalized_value": "aortiti",
+          "frequency": 13,
+          "raw_values": [
+            "AORTITIS"
+          ]
+        },
+        {
+          "normalized_value": "pss sjs",
+          "frequency": 13,
+          "raw_values": [
+            "PSS, SJS",
+            "PSS,SJS"
+          ]
+        },
+        {
+          "normalized_value": "collagen susp",
+          "frequency": 11,
+          "raw_values": [
+            "collagen susp"
+          ]
+        },
+        {
+          "normalized_value": "raynaud",
+          "frequency": 9,
+          "raw_values": [
+            "Raynaud"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "behcet",
+          "frequency": 91,
+          "raw_values": [
+            "BEHCET",
+            "BEHCET ("
+          ]
+        },
+        {
+          "normalized_value": "sle sjs",
+          "frequency": 37,
+          "raw_values": [
+            "SLE\u001dSJS",
+            "SLE, SJS"
+          ]
+        },
+        {
+          "normalized_value": "mctd",
+          "frequency": 35,
+          "raw_values": [
+            "MCTD"
+          ]
+        },
+        {
+          "normalized_value": "ra sjs",
+          "frequency": 27,
+          "raw_values": [
+            "RA, SJS",
+            "RA,SJS"
+          ]
+        },
+        {
+          "normalized_value": "sjs susp",
+          "frequency": 26,
+          "raw_values": [
+            "SJS susp"
+          ]
+        },
+        {
+          "normalized_value": "ra susp",
+          "frequency": 20,
+          "raw_values": [
+            "RA susp",
+            "RA susp."
+          ]
+        },
+        {
+          "normalized_value": "sle susp",
+          "frequency": 19,
+          "raw_values": [
+            "SLE susp"
+          ]
+        },
+        {
+          "normalized_value": "sle ap",
+          "frequency": 15,
+          "raw_values": [
+            "SLE, APS"
+          ]
+        },
+        {
+          "normalized_value": "aortiti",
+          "frequency": 13,
+          "raw_values": [
+            "AORTITIS"
+          ]
+        },
+        {
+          "normalized_value": "pss sjs",
+          "frequency": 13,
+          "raw_values": [
+            "PSS, SJS",
+            "PSS,SJS"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "thrombosis_prediction_1": {
+          "sqlite_path": "dev_databases/thrombosis_prediction_1/thrombosis_prediction_1.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "mctd"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 35,
+          "table_counts": {
+            "Examination": 38,
+            "Patient": 35,
+            "Laboratory": 156
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "thrombosis_prediction_2": {
+          "sqlite_path": "dev_databases/thrombosis_prediction_2/thrombosis_prediction_2.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "behcet",
+            "mctd"
+          ],
+          "selected_table_row_count": 1112,
+          "table_counts": {
+            "Examination": 100,
+            "Patient": 1112,
+            "Laboratory": 13161
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "thrombosis_prediction_3": {
+          "sqlite_path": "dev_databases/thrombosis_prediction_3/thrombosis_prediction_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "behcet"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 91,
+          "table_counts": {
+            "Examination": 40,
+            "Patient": 91,
+            "Laboratory": 591
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 1,
+        "clone_1_matches_original": 1
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 147,
+        "skipped_split_reference_value_not_in_column": 13,
+        "skipped_no_clone_matches_original": 1
+      }
+    },
+    {
+      "db_id": "toxicology",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate_with_three_usable_values"
+    },
+    {
+      "db_id": "student_club",
+      "status": "created",
+      "source_sqlite": "dev_databases/student_club/student_club.sqlite",
+      "split_rotation_offset": 1,
+      "selected_table": "member",
+      "selected_column": "position",
+      "row_count": 33,
+      "raw_distinct_count": 6,
+      "distinct_ratio": 0.18181818181818182,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 6,
+      "sql_sample_hits": 17,
+      "sql_total_mentions": 17,
+      "sql_value_mentions": {
+        "vice presid": 5,
+        "presid": 3,
+        "secretari": 2,
+        "member": 7
+      },
+      "question_sample_hits": 51,
+      "question_value_mentions": {
+        "vice presid": 6,
+        "presid": 9,
+        "member": 41,
+        "secretari": 2
+      },
+      "primary_split_value": "member",
+      "primary_split_raw_values": [
+        "Member"
+      ],
+      "secondary_split_value": "vice presid",
+      "secondary_split_raw_values": [
+        "Vice President"
+      ],
+      "remaining_split_value_count": 4,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "inact",
+          "frequency": 3,
+          "raw_values": [
+            "Inactive"
+          ]
+        },
+        {
+          "normalized_value": "presid",
+          "frequency": 1,
+          "raw_values": [
+            "President"
+          ]
+        },
+        {
+          "normalized_value": "secretari",
+          "frequency": 1,
+          "raw_values": [
+            "Secretary"
+          ]
+        },
+        {
+          "normalized_value": "treasur",
+          "frequency": 1,
+          "raw_values": [
+            "Treasurer"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "member",
+          "frequency": 26,
+          "raw_values": [
+            "Member"
+          ]
+        },
+        {
+          "normalized_value": "inact",
+          "frequency": 3,
+          "raw_values": [
+            "Inactive"
+          ]
+        },
+        {
+          "normalized_value": "presid",
+          "frequency": 1,
+          "raw_values": [
+            "President"
+          ]
+        },
+        {
+          "normalized_value": "secretari",
+          "frequency": 1,
+          "raw_values": [
+            "Secretary"
+          ]
+        },
+        {
+          "normalized_value": "treasur",
+          "frequency": 1,
+          "raw_values": [
+            "Treasurer"
+          ]
+        },
+        {
+          "normalized_value": "vice presid",
+          "frequency": 1,
+          "raw_values": [
+            "Vice President"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "student_club_1": {
+          "sqlite_path": "dev_databases/student_club_1/student_club_1.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "member",
+            "vice presid"
+          ],
+          "selected_table_row_count": 6,
+          "table_counts": {
+            "event": 42,
+            "major": 113,
+            "zip_code": 41877,
+            "attendance": 63,
+            "budget": 52,
+            "expense": 21,
+            "income": 9,
+            "member": 6
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "student_club_2": {
+          "sqlite_path": "dev_databases/student_club_2/student_club_2.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "member"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 26,
+          "table_counts": {
+            "event": 42,
+            "major": 113,
+            "zip_code": 41877,
+            "attendance": 247,
+            "budget": 52,
+            "expense": 0,
+            "income": 29,
+            "member": 26
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        },
+        "student_club_3": {
+          "sqlite_path": "dev_databases/student_club_3/student_club_3.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "vice presid"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 1,
+          "table_counts": {
+            "event": 42,
+            "major": 113,
+            "zip_code": 41877,
+            "attendance": 16,
+            "budget": 52,
+            "expense": 11,
+            "income": 4,
+            "member": 1
+          },
+          "foreign_key_check": [],
+          "foreign_key_check_count": 0,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_3_matches_original": 5,
+        "clone_1_matches_original": 5,
+        "clone_2_matches_original": 7
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 141
+      }
+    },
+    {
+      "db_id": "superhero",
+      "status": "skipped",
+      "reason": "no_low_cardinality_text_candidate"
+    },
+    {
+      "db_id": "codebase_community",
+      "status": "created",
+      "source_sqlite": "dev_databases/codebase_community/codebase_community.sqlite",
+      "split_rotation_offset": 2,
+      "selected_table": "badges",
+      "selected_column": "Name",
+      "row_count": 79851,
+      "raw_distinct_count": 153,
+      "distinct_ratio": 0.0019160686779126123,
+      "min_split_value_chars": 4,
+      "min_split_distinct_values": 3,
+      "usable_distinct_count": 149,
+      "sql_sample_hits": 16,
+      "sql_total_mentions": 17,
+      "sql_value_mentions": {
+        "reviv": 1,
+        "necromanc": 1,
+        "support": 4,
+        "teacher": 3,
+        "student": 1,
+        "announc": 1,
+        "organ": 2,
+        "comment": 1,
+        "outlier": 1,
+        "autobiograph": 1,
+        "citizen patrol": 1
+      },
+      "question_sample_hits": 64,
+      "question_value_mentions": {
+        "comment": 41,
+        "mean": 1,
+        "correl": 1,
+        "bayesian": 2,
+        "reviv": 1,
+        "data visual": 1,
+        "necromanc": 1,
+        "editor": 1,
+        "standard deviat": 1,
+        "varianc": 1,
+        "support": 4,
+        "teacher": 3,
+        "student": 1,
+        "announc": 1,
+        "organ": 2,
+        "outlier": 1,
+        "hypothesi test": 1,
+        "autobiograph": 1,
+        "citizen patrol": 1,
+        "cluster": 1,
+        "sampl": 1,
+        "regress": 1,
+        "likert": 1
+      },
+      "primary_split_value": "support",
+      "primary_split_raw_values": [
+        "Supporter"
+      ],
+      "secondary_split_value": "teacher",
+      "secondary_split_raw_values": [
+        "Teacher"
+      ],
+      "remaining_split_value_count": 147,
+      "remaining_split_values_preview": [
+        {
+          "normalized_value": "student",
+          "frequency": 14847,
+          "raw_values": [
+            "Student"
+          ]
+        },
+        {
+          "normalized_value": "editor",
+          "frequency": 8453,
+          "raw_values": [
+            "Editor"
+          ]
+        },
+        {
+          "normalized_value": "scholar",
+          "frequency": 6523,
+          "raw_values": [
+            "Scholar"
+          ]
+        },
+        {
+          "normalized_value": "popular question",
+          "frequency": 4536,
+          "raw_values": [
+            "Popular Question"
+          ]
+        },
+        {
+          "normalized_value": "autobiograph",
+          "frequency": 4480,
+          "raw_values": [
+            "Autobiographer"
+          ]
+        },
+        {
+          "normalized_value": "tumblewe",
+          "frequency": 3268,
+          "raw_values": [
+            "Tumbleweed"
+          ]
+        },
+        {
+          "normalized_value": "nice answer",
+          "frequency": 2570,
+          "raw_values": [
+            "Nice Answer"
+          ]
+        },
+        {
+          "normalized_value": "yearl",
+          "frequency": 2293,
+          "raw_values": [
+            "Yearling"
+          ]
+        },
+        {
+          "normalized_value": "comment",
+          "frequency": 2047,
+          "raw_values": [
+            "Commentator"
+          ]
+        },
+        {
+          "normalized_value": "notabl question",
+          "frequency": 1725,
+          "raw_values": [
+            "Notable Question"
+          ]
+        }
+      ],
+      "top_db_values": [
+        {
+          "normalized_value": "student",
+          "frequency": 14847,
+          "raw_values": [
+            "Student"
+          ]
+        },
+        {
+          "normalized_value": "support",
+          "frequency": 8828,
+          "raw_values": [
+            "Supporter"
+          ]
+        },
+        {
+          "normalized_value": "editor",
+          "frequency": 8453,
+          "raw_values": [
+            "Editor"
+          ]
+        },
+        {
+          "normalized_value": "scholar",
+          "frequency": 6523,
+          "raw_values": [
+            "Scholar"
+          ]
+        },
+        {
+          "normalized_value": "teacher",
+          "frequency": 4679,
+          "raw_values": [
+            "Teacher"
+          ]
+        },
+        {
+          "normalized_value": "popular question",
+          "frequency": 4536,
+          "raw_values": [
+            "Popular Question"
+          ]
+        },
+        {
+          "normalized_value": "autobiograph",
+          "frequency": 4480,
+          "raw_values": [
+            "Autobiographer"
+          ]
+        },
+        {
+          "normalized_value": "tumblewe",
+          "frequency": 3268,
+          "raw_values": [
+            "Tumbleweed"
+          ]
+        },
+        {
+          "normalized_value": "nice answer",
+          "frequency": 2570,
+          "raw_values": [
+            "Nice Answer"
+          ]
+        },
+        {
+          "normalized_value": "yearl",
+          "frequency": 2293,
+          "raw_values": [
+            "Yearling"
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "clones": {
+        "codebase_community_1": {
+          "sqlite_path": "dev_databases/codebase_community_1/codebase_community_1.sqlite",
+          "split_kind": "secondary_value",
+          "split_keep_values": [
+            "teacher"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 4679,
+          "table_counts": {
+            "badges": 4679,
+            "comments": 174285,
+            "postHistory": 303155,
+            "postLinks": 11102,
+            "posts": 91966,
+            "tags": 1032,
+            "users": 40325,
+            "votes": 38930
+          },
+          "foreign_key_check": [
+            [
+              "tags",
+              541,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              33618,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              48020,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55496,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55506,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              89878,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              104178,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              1724430,
+              "posts",
+              1
+            ],
+            [
+              "postLinks",
+              1836154,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149462,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149575,
+              "posts",
+              0
+            ],
+            [
+              "postHistory",
+              107273,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              107275,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151740,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151742,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151758,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151759,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175544,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175546,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175559,
+              "posts",
+              1
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        },
+        "codebase_community_2": {
+          "sqlite_path": "dev_databases/codebase_community_2/codebase_community_2.sqlite",
+          "split_kind": "remaining_values",
+          "split_keep_values": [],
+          "split_excluded_values": [
+            "support",
+            "teacher"
+          ],
+          "selected_table_row_count": 66344,
+          "table_counts": {
+            "badges": 66344,
+            "comments": 174285,
+            "postHistory": 303155,
+            "postLinks": 11102,
+            "posts": 91966,
+            "tags": 1032,
+            "users": 40325,
+            "votes": 38930
+          },
+          "foreign_key_check": [
+            [
+              "tags",
+              541,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              33618,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              48020,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55496,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55506,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              89878,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              104178,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              1724430,
+              "posts",
+              1
+            ],
+            [
+              "postLinks",
+              1836154,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149462,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149575,
+              "posts",
+              0
+            ],
+            [
+              "postHistory",
+              107273,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              107275,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151740,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151742,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151758,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151759,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175544,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175546,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175559,
+              "posts",
+              1
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        },
+        "codebase_community_3": {
+          "sqlite_path": "dev_databases/codebase_community_3/codebase_community_3.sqlite",
+          "split_kind": "primary_value",
+          "split_keep_values": [
+            "support"
+          ],
+          "split_excluded_values": [],
+          "selected_table_row_count": 8828,
+          "table_counts": {
+            "badges": 8828,
+            "comments": 174285,
+            "postHistory": 303155,
+            "postLinks": 11102,
+            "posts": 91966,
+            "tags": 1032,
+            "users": 40325,
+            "votes": 38930
+          },
+          "foreign_key_check": [
+            [
+              "tags",
+              541,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              33618,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              48020,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55496,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              55506,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              89878,
+              "posts",
+              0
+            ],
+            [
+              "posts",
+              104178,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              1724430,
+              "posts",
+              1
+            ],
+            [
+              "postLinks",
+              1836154,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149462,
+              "posts",
+              0
+            ],
+            [
+              "postLinks",
+              3149575,
+              "posts",
+              0
+            ],
+            [
+              "postHistory",
+              107273,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              107275,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151740,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151742,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151758,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              151759,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175544,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175546,
+              "posts",
+              1
+            ],
+            [
+              "postHistory",
+              175559,
+              "posts",
+              1
+            ]
+          ],
+          "foreign_key_check_count": 88,
+          "foreign_key_check_error": null
+        }
+      },
+      "dev_assignment_counts": {
+        "clone_2_matches_original": 10,
+        "clone_3_matches_original": 3,
+        "clone_1_matches_original": 2
+      },
+      "dev_skipped_counts": {
+        "skipped_no_explicit_split_reference": 170,
+        "skipped_no_clone_matches_original": 1
+      }
+    }
+  ],
+  "dev_json": {
+    "samples_read": 1534,
+    "samples_written": 126,
+    "samples_skipped": 1408,
+    "assignment_counts": {
+      "clone_3_matches_original": 59,
+      "clone_1_matches_original": 33,
+      "clone_2_matches_original": 34
+    },
+    "skipped_assignment_counts": {
+      "skipped_no_explicit_split_reference": 1113,
+      "skipped_no_clone_matches_original": 8,
+      "skipped_split_reference_value_not_in_column": 13
+    },
+    "skipped_samples": [
+      {
+        "question_id": 0,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 1,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 2,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 3,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 4,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 5,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 6,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 7,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 8,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 9,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 10,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 11,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 12,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 13,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 14,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 15,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 17,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 18,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 19,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 21,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 22,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 23,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 24,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 25,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 27,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 28,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 29,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 30,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 31,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 32,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 33,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 34,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 35,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 36,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 37,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 40,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 41,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 42,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 43,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 44,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 45,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 46,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 49,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 50,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 51,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 52,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 53,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 54,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 56,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 57,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 58,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 59,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 61,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 63,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 64,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 67,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 68,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 69,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 71,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 72,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 73,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 74,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 75,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 78,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 80,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 81,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 82,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 83,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 84,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 85,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 86,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 88,
+        "db_id": "california_schools",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 91,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 92,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 94,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 95,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 96,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 97,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 98,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 99,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 100,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 101,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 102,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 103,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 104,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 105,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 106,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 107,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 108,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 109,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 110,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 111,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 112,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 113,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 116,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 117,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 118,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 119,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 121,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      },
+      {
+        "question_id": 122,
+        "db_id": "financial",
+        "reason": "skipped_no_explicit_split_reference"
+      }
+    ],
+    "assignment_notes": []
+  }
+}
