@@ -1,8 +1,13 @@
-# NLQ-Tables
+# Database Localization for Multi-Database Text-to-SQL
 
-NLQ-Tables is a schema-reduction pipeline for multi-database Text-to-SQL. Given
-a natural-language question and a catalog of relational databases, it performs
-three successive selections:
+Conventional multi-database Text-to-SQL benchmarks do not reveal whether
+database localization relies on schema evidence or database contents, because
+the two usually vary together. This repository provides the artifacts used to
+study that distinction: the construction of content-ambiguous workloads,
+Hybrid-DB, the Direct LLM and Iterative JAR baselines, the downstream
+schema-reduction stages, and the archived experimental predictions.
+
+The schema-reduction pipeline performs three successive selections:
 
 ```text
 question -> database retrieval -> table extraction -> attribute extraction
@@ -13,13 +18,7 @@ The repository does not generate the final SQL query. Its purpose is to reduce
 the search space presented to a downstream Text-to-SQL system while preserving
 the schema elements required by the gold query.
 
-The main contribution is a hybrid database retriever that combines global
-database semantics, local table semantics, and lexical evidence from schema
-identifiers and cell values. The repository also contains an LLM-based schema
-linking pipeline, controlled ambiguous benchmarks, two retrieval baselines, and
-the artifacts used in the reported experiments.
-
-## Method overview
+## Hybrid-DB
 
 The hybrid retriever assigns each candidate database three query-dependent
 scores:
