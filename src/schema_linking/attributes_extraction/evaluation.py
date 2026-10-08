@@ -1,8 +1,10 @@
-import os
-import sys
+import argparse
 import json
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[2]))
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 from tables_extraction.evaluation import TAB_extraction_eval
 from data_manipulation import (
     create_attribute_mapping,
@@ -12,25 +14,28 @@ from data_manipulation import (
     lowercase_dict,
 )
 from ansi_colors import *
-import paths
 
 
-def ATT_extraction_eval(dataset):
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_RESULTS_DIR = PROJECT_ROOT / "results" / "ATT_retrieval"
+
+
+def ATT_extraction_eval(dataset, results_dir=DEFAULT_RESULTS_DIR):
 
     # errors_ids = TAB_extraction_eval(dataset)
 
     if dataset == 'BIRDdev':
         print(f"\n{CYAN}BIRDdev ATT extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'BIRDdev_ATT_extractor.json'
-        schema_filename = '../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json'
+        filename = Path(results_dir) / 'BIRDdev_ATT_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'BIRDdev' / 'dev_tables.json'
     elif dataset == 'SPIDERdev1':
         print(f"\n{CYAN}SPIDERdev1 ATT extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'SPIDERdev1_ATT_extractor.json'
-        schema_filename = '../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json'
+        filename = Path(results_dir) / 'SPIDERdev1_ATT_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'SPIDERdev1.0' / 'dev_tables.json'
     elif dataset == 'ARCHER':
         print(f"\n{CYAN}ARCHER ATT extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.ATT_RETRIEVAL.value + 'ARCHER_ATT_extractor.json'
-        schema_filename = '../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json'
+        filename = Path(results_dir) / 'ARCHER_ATT_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'ARCHER' / 'dev_tables.json'
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
@@ -162,16 +167,34 @@ def ATT_extraction_eval(dataset):
 
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Evaluate attribute-extraction predictions."
+    )
+    parser.add_argument(
+        "--results-dir",
+        type=Path,
+        default=DEFAULT_RESULTS_DIR,
+        help=(
+            "Directory containing the attribute-extraction prediction files "
+            f"(default: {DEFAULT_RESULTS_DIR})."
+        ),
+    )
+    return parser.parse_args()
+
+
 if __name__ == '__main__':
+
+    args = parse_args()
 
     print(f"===================={BLUE}BIRDdev end-to-end pipeline EVALUATION{RESET}=====================")
     dataset = 'BIRDdev'
-    ATT_extraction_eval(dataset)
+    ATT_extraction_eval(dataset, args.results_dir)
 
     print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
     dataset = 'SPIDERdev1'
-    ATT_extraction_eval(dataset)
+    ATT_extraction_eval(dataset, args.results_dir)
 
-    print(f"===================={BLUE}SPIDERdev1.0 end-to-end pipeline EVALUATION{RESET}====================")
+    print(f"===================={BLUE}ARCHER end-to-end pipeline EVALUATION{RESET}====================")
     dataset = 'ARCHER'
-    ATT_extraction_eval(dataset)
+    ATT_extraction_eval(dataset, args.results_dir)

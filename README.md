@@ -249,7 +249,7 @@ cd ../..
 Missing result files are reported and skipped. Accuracy always uses all records,
 including `ERROR` predictions.
 
-#### Paper Tables 3--5
+#### Paper Tables 3--7
 
 The following aliases identify the archived predictions used in the paper:
 
@@ -258,6 +258,9 @@ The following aliases identify the archived predictions used in the paper:
 | `<HYBRID>` | Hybrid-DB | `results_DB_retrieval_tune_BIRDtrain/DB_retrieval` |
 | `<ITERATIVE_JAR>` | Iterative-JAR | `results_DB_retrieval_JARiterative/DB_retrieval` |
 | `<CATALOG_LLM>` | catalog-wide LLM | `results_DB_retrieval_baseline_gpt-oss-120/DB_retrieval` |
+| `<TABLE>` | table extraction (shared by `R` and `SR`) | `results_gpt-oss-120b-R/TAB_retrieval` |
+| `<ATTRIBUTE_R>` | attribute extraction (`R`) | `results_gpt-oss-120b-R/ATT_retrieval` |
+| `<ATTRIBUTE_SR>` | attribute extraction (`SR`) | `results_gpt-oss-120b-SR/ATT_retrieval` |
 
 Run each command from the repository root once for every result directory listed
 for that table, replacing `<RESULTS_DIR>` with its path above.
@@ -267,11 +270,19 @@ for that table, replacing `<RESULTS_DIR>` with its path above.
 | Table 3 | Exact database-localization accuracy on standard benchmarks | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR>` |
 | Table 4 | Exact clone-localization accuracy on content-ambiguous workloads | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR>` |
 | Table 5 | Family Accuracy and exact clone accuracy conditioned on the correct family | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR> --family-metrics` |
+| Table 6 | Table-extraction metrics | `<TABLE>` | `python src/schema_linking/tables_extraction/evaluation.py --results-dir <RESULTS_DIR>` |
+| Table 7 | Attribute-extraction metrics for `R` and `SR` | `<ATTRIBUTE_R>`, `<ATTRIBUTE_SR>` | `python src/schema_linking/attributes_extraction/evaluation.py --results-dir <RESULTS_DIR>` |
 
 One evaluator invocation reports every supported file in the selected archive;
 therefore the same run provides the standard results for Table 3 and the exact
 clone results for Table 4. Missing results for non-executable method--workload
-pairs are reported and skipped.
+pairs are reported and skipped. In the table evaluator, `TABLE STRICT RECALL`
+corresponds to `Strict E2E` and its `for table extraction only` variant to
+`Strict|DB`. In the attribute evaluator, `STRICT RECALL` corresponds to
+`Strict E2E` and its `for schema linking only` variant to `Strict|DB`. The
+evaluators print fractions; the paper reports percentages rounded to two decimal
+places. The `TAB_retrieval` files archived under `R` and `SR` are byte-identical;
+Table 6 uses the `R` copy as the canonical path.
 
 ### 6. Generate table descriptions, extract tables, and evaluate
 

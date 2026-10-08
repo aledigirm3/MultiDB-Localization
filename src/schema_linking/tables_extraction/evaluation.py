@@ -1,41 +1,42 @@
-import os
-import sys
+import argparse
 import json
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[2]))
 from data_manipulation import create_table_name_mapping, create_db_schema_dictionary, create_db_original_schema_dictionary, extract_tables_and_columns
 from ansi_colors import *
-import paths
 
 
-def TAB_extraction_eval(dataset):
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_RESULTS_DIR = PROJECT_ROOT / "results" / "TAB_retrieval"
+
+
+def TAB_extraction_eval(dataset, results_dir=DEFAULT_RESULTS_DIR):
 
     if dataset == 'BIRDdev':
         print(f"\n{CYAN}BIRDdev TAB extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BIRDdev_TAB_extractor.json'
-        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
-        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
-        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.BIRDdev.value + 'dev_tables.json')
+        filename = Path(results_dir) / 'BIRDdev_TAB_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'BIRDdev' / 'dev_tables.json'
     elif dataset == 'SPIDERdev1':
         print(f"\n{CYAN}SPIDERdev1 TAB extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'SPIDERdev1_TAB_extractor.json'
-        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
-        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
-        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.SPIDERdev1.value + 'dev_tables.json')
+        filename = Path(results_dir) / 'SPIDERdev1_TAB_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'SPIDERdev1.0' / 'dev_tables.json'
     elif dataset == 'BEAVER':
         print(f"\n{CYAN}BEAVER TAB extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'BEAVER_TAB_extractor.json'
-        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
-        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
-        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.BEAVER.value + 'dev_tables.json')
+        filename = Path(results_dir) / 'BEAVER_TAB_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'BEAVER' / 'dev_tables.json'
     elif dataset == 'ARCHER':
         print(f"\n{CYAN}ARCHER TAB extraction evaluation{RESET}")
-        filename = '../../' + paths.RESULTS.TAB_RETRIEVAL.value + 'ARCHER_TAB_extractor.json'
-        table_name_mapping = create_table_name_mapping('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
-        database_schemas = create_db_schema_dictionary('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
-        database_original_schemas = create_db_original_schema_dictionary('../../' + paths.DATASETS.ARCHER.value + 'dev_tables.json')
+        filename = Path(results_dir) / 'ARCHER_TAB_extractor.json'
+        schema_filename = PROJECT_ROOT / 'datasets' / 'ARCHER' / 'dev_tables.json'
     else:
         print(f"{RED}INVALID DATASET!{RESET}")
         sys.exit(1)
+
+    table_name_mapping = create_table_name_mapping(schema_filename)
+    database_schemas = create_db_schema_dictionary(schema_filename)
+    database_original_schemas = create_db_original_schema_dictionary(schema_filename)
 
     try:
         with open(filename, "r", encoding="utf-8") as f:
@@ -144,16 +145,34 @@ def TAB_extraction_eval(dataset):
 
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Evaluate table-extraction predictions."
+    )
+    parser.add_argument(
+        "--results-dir",
+        type=Path,
+        default=DEFAULT_RESULTS_DIR,
+        help=(
+            "Directory containing the table-extraction prediction files "
+            f"(default: {DEFAULT_RESULTS_DIR})."
+        ),
+    )
+    return parser.parse_args()
+
+
 if __name__ == '__main__':
 
+    args = parse_args()
+
     dataset = 'BIRDdev'
-    TAB_extraction_eval(dataset)
+    TAB_extraction_eval(dataset, args.results_dir)
 
     dataset = 'SPIDERdev1'
-    TAB_extraction_eval(dataset)
+    TAB_extraction_eval(dataset, args.results_dir)
 
     dataset = 'BEAVER'
-    TAB_extraction_eval(dataset)
+    TAB_extraction_eval(dataset, args.results_dir)
 
     dataset = 'ARCHER'
-    TAB_extraction_eval(dataset)
+    TAB_extraction_eval(dataset, args.results_dir)
