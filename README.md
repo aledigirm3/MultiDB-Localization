@@ -249,6 +249,30 @@ cd ../..
 Missing result files are reported and skipped. Accuracy always uses all records,
 including `ERROR` predictions.
 
+#### Paper Tables 3--5
+
+The following aliases identify the archived predictions used in the paper:
+
+| Alias | Method | Result directory |
+|---|---|---|
+| `<HYBRID>` | Hybrid-DB | `results_DB_retrieval_tune_BIRDtrain/DB_retrieval` |
+| `<ITERATIVE_JAR>` | Iterative-JAR | `results_DB_retrieval_JARiterative/DB_retrieval` |
+| `<CATALOG_LLM>` | catalog-wide LLM | `results_DB_retrieval_baseline_gpt-oss-120/DB_retrieval` |
+
+Run each command from the repository root once for every result directory listed
+for that table, replacing `<RESULTS_DIR>` with its path above.
+
+| Paper table | Reproduced results | Result directories | Command |
+|---|---|---|---|
+| Table 3 | Exact database-localization accuracy on standard benchmarks | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR>` |
+| Table 4 | Exact clone-localization accuracy on content-ambiguous workloads | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR>` |
+| Table 5 | Family Accuracy and exact clone accuracy conditioned on the correct family | `<HYBRID>`, `<ITERATIVE_JAR>`, `<CATALOG_LLM>` | `python src/DB_retrieval/evaluation.py --results-dir <RESULTS_DIR> --family-metrics` |
+
+One evaluator invocation reports every supported file in the selected archive;
+therefore the same run provides the standard results for Table 3 and the exact
+clone results for Table 4. Missing results for non-executable method--workload
+pairs are reported and skipped.
+
 ### 6. Generate table descriptions, extract tables, and evaluate
 
 Set `SCHEMA_FILE` and `OUTPUT_FILE` in
